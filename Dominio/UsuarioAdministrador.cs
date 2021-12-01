@@ -14,7 +14,7 @@ namespace Dominio
 
         public UsuarioAdministrador()
         {
-            Pass = "123";
+            
         }
         public UsuarioAdministrador(string nombre, string apellido, DateTime fechaNacimiento, string mail,string contraseña)
         {
@@ -22,7 +22,7 @@ namespace Dominio
             Apellido = apellido;
             FechaNacimiento = fechaNacimiento;
             Mail = mail;
-            Pass = "123";
+            Pass = contraseña;
         }
     }
 }

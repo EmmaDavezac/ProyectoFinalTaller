@@ -12,16 +12,14 @@ namespace Programa
 {
     public partial class MenuPrincipal : Form
     {
+        private string NombreUsuario { get; set; }
         public MenuPrincipal(string nombreUsuario)
         {
             InitializeComponent();
-            label1.Text = "Usuario: "+nombreUsuario;
+            NombreUsuario = nombreUsuario;
+            labelNombreUsuario.Text = "Usuario: "+NombreUsuario;
         }
-        public MenuPrincipal()
-        {
-            InitializeComponent();
-            
-        }
+        
 
         private void Menu_Load(object sender, EventArgs e)
         {
@@ -31,7 +29,7 @@ namespace Programa
         private void botonAñadirUsuario_Click(object sender, EventArgs e)
         {
             this.Hide();
-            AgregarUsuario ventanaAgregarCliente = new AgregarUsuario();
+            RegistrarUsuario ventanaAgregarCliente = new RegistrarUsuario(NombreUsuario);
             ventanaAgregarCliente.Show();
         }
 
@@ -43,7 +41,7 @@ namespace Programa
 
         private void botonVerUsuarios_Click(object sender, EventArgs e)
         {
-            VerUsuarios ventana=new VerUsuarios();
+            VerUsuarios ventana=new VerUsuarios(NombreUsuario);
             this.Hide();
             ventana.Show();
         }
@@ -89,6 +87,27 @@ namespace Programa
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void buttonRegistrarAdministrador_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            RegistrarAdministrador ventana = new RegistrarAdministrador(NombreUsuario);
+            ventana.Show();
+        }
+
+        private void buttonBuscarAdministrador_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            ConsultarAdministrador ventana = new ConsultarAdministrador();
+            ventana.Show();
+        }
+
+        private void buttonVerAdministradores_Click(object sender, EventArgs e)
+        {
+            VerAdministradores ventana = new VerAdministradores(NombreUsuario);
+            this.Hide();
+            ventana.Show();
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿
 namespace Programa
 {
-    partial class VerUsuarios
+    partial class VerAdministradores
     {
         /// <summary>
         /// Required designer variable.
@@ -29,64 +29,36 @@ namespace Programa
         /// </summary>
         private void InitializeComponent()
         {
-            this.buttonSalir = new System.Windows.Forms.Button();
-            this.botonVolver = new System.Windows.Forms.Button();
-            this.dgvUsuarios = new System.Windows.Forms.DataGridView();
+            this.dgvAdministradores = new System.Windows.Forms.DataGridView();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FechaNacimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Scoring = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).BeginInit();
+            this.botonVolver = new System.Windows.Forms.Button();
+            this.buttonSalir = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAdministradores)).BeginInit();
             this.SuspendLayout();
             // 
-            // buttonSalir
+            // dgvAdministradores
             // 
-            this.buttonSalir.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonSalir.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonSalir.Location = new System.Drawing.Point(524, 406);
-            this.buttonSalir.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.buttonSalir.Name = "buttonSalir";
-            this.buttonSalir.Size = new System.Drawing.Size(89, 23);
-            this.buttonSalir.TabIndex = 6;
-            this.buttonSalir.Text = "Salir";
-            this.buttonSalir.UseVisualStyleBackColor = true;
-            this.buttonSalir.Click += new System.EventHandler(this.buttonSalir_Click);
-            // 
-            // botonVolver
-            // 
-            this.botonVolver.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.botonVolver.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.botonVolver.Location = new System.Drawing.Point(431, 406);
-            this.botonVolver.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.botonVolver.Name = "botonVolver";
-            this.botonVolver.Size = new System.Drawing.Size(89, 23);
-            this.botonVolver.TabIndex = 7;
-            this.botonVolver.Text = "Volver";
-            this.botonVolver.UseVisualStyleBackColor = true;
-            this.botonVolver.Click += new System.EventHandler(this.botonVolver_Click);
-            // 
-            // dgvUsuarios
-            // 
-            this.dgvUsuarios.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.dgvUsuarios.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvUsuarios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvAdministradores.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dgvAdministradores.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvAdministradores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAdministradores.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
             this.Nombre,
             this.Apellido,
             this.FechaNacimiento,
-            this.Email,
-            this.Scoring});
-            this.dgvUsuarios.GridColor = System.Drawing.SystemColors.Control;
-            this.dgvUsuarios.Location = new System.Drawing.Point(12, 36);
-            this.dgvUsuarios.Name = "dgvUsuarios";
-            this.dgvUsuarios.ReadOnly = true;
-            this.dgvUsuarios.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dgvUsuarios.Size = new System.Drawing.Size(606, 364);
-            this.dgvUsuarios.TabIndex = 8;
-            this.dgvUsuarios.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsuarios_CellContentClick);
+            this.Email});
+            this.dgvAdministradores.GridColor = System.Drawing.SystemColors.Control;
+            this.dgvAdministradores.Location = new System.Drawing.Point(23, 36);
+            this.dgvAdministradores.Name = "dgvAdministradores";
+            this.dgvAdministradores.ReadOnly = true;
+            this.dgvAdministradores.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgvAdministradores.Size = new System.Drawing.Size(580, 364);
+            this.dgvAdministradores.TabIndex = 11;
+            this.dgvAdministradores.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAdministradores_CellContentClick);
             // 
             // Id
             // 
@@ -103,6 +75,7 @@ namespace Programa
             this.Nombre.Name = "Nombre";
             this.Nombre.ReadOnly = true;
             this.Nombre.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Nombre.Width = 120;
             // 
             // Apellido
             // 
@@ -110,6 +83,7 @@ namespace Programa
             this.Apellido.Name = "Apellido";
             this.Apellido.ReadOnly = true;
             this.Apellido.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Apellido.Width = 120;
             // 
             // FechaNacimiento
             // 
@@ -117,6 +91,7 @@ namespace Programa
             this.FechaNacimiento.Name = "FechaNacimiento";
             this.FechaNacimiento.ReadOnly = true;
             this.FechaNacimiento.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.FechaNacimiento.Width = 120;
             // 
             // Email
             // 
@@ -124,48 +99,65 @@ namespace Programa
             this.Email.Name = "Email";
             this.Email.ReadOnly = true;
             this.Email.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Email.Width = 120;
             // 
-            // Scoring
+            // botonVolver
             // 
-            this.Scoring.HeaderText = "Scoring";
-            this.Scoring.MaxInputLength = 10;
-            this.Scoring.Name = "Scoring";
-            this.Scoring.ReadOnly = true;
-            this.Scoring.Width = 80;
+            this.botonVolver.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.botonVolver.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.botonVolver.Location = new System.Drawing.Point(431, 406);
+            this.botonVolver.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.botonVolver.Name = "botonVolver";
+            this.botonVolver.Size = new System.Drawing.Size(89, 23);
+            this.botonVolver.TabIndex = 10;
+            this.botonVolver.Text = "Volver";
+            this.botonVolver.UseVisualStyleBackColor = true;
+            this.botonVolver.Click += new System.EventHandler(this.botonVolver_Click);
             // 
-            // VerUsuarios
+            // buttonSalir
             // 
-            this.AcceptButton = this.botonVolver;
+            this.buttonSalir.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.buttonSalir.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.buttonSalir.Location = new System.Drawing.Point(524, 406);
+            this.buttonSalir.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.buttonSalir.Name = "buttonSalir";
+            this.buttonSalir.Size = new System.Drawing.Size(89, 23);
+            this.buttonSalir.TabIndex = 9;
+            this.buttonSalir.Text = "Salir";
+            this.buttonSalir.UseVisualStyleBackColor = true;
+            this.buttonSalir.Click += new System.EventHandler(this.buttonSalir_Click);
+            // 
+            // VerAdministradores
+            // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(624, 441);
-            this.Controls.Add(this.dgvUsuarios);
+            this.Controls.Add(this.dgvAdministradores);
             this.Controls.Add(this.botonVolver);
             this.Controls.Add(this.buttonSalir);
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(640, 480);
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(640, 480);
-            this.Name = "VerUsuarios";
+            this.Name = "VerAdministradores";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Ver Usuarios";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.VerUsuarios_FormClosed);
-            this.Load += new System.EventHandler(this.VerUsuarios_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).EndInit();
+            this.Text = "VerAdministradores";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.VerAdministradores_FormClosed);
+            this.Load += new System.EventHandler(this.VerAdministradores_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAdministradores)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button buttonSalir;
-        private System.Windows.Forms.Button botonVolver;
-        private System.Windows.Forms.DataGridView dgvUsuarios;
+        private System.Windows.Forms.DataGridView dgvAdministradores;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn Apellido;
         private System.Windows.Forms.DataGridViewTextBoxColumn FechaNacimiento;
         private System.Windows.Forms.DataGridViewTextBoxColumn Email;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Scoring;
+        private System.Windows.Forms.Button botonVolver;
+        private System.Windows.Forms.Button buttonSalir;
     }
 }

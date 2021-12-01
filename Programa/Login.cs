@@ -13,8 +13,10 @@ namespace Programa
 {
     public partial class Login : Form
     {
+       
         public Login()
         {
+            
             InitializeComponent();
         }
 
@@ -47,12 +49,12 @@ namespace Programa
                         MenuPrincipal ventanaMenu = new MenuPrincipal(usuario.Nombre+" "+usuario.Apellido);
                         ventanaMenu.Show();
                     }
-                    else { MessageBox.Show("La contraseña ingresada es incorrecta ", "Error", MessageBoxButtons.OK);botonIniciarSesion.Enabled = false; }
+                    else { labelError.Text = "La contraseña ingresada es incorrecta ";botonIniciarSesion.Enabled = false; textBoxContraseña.Focus(); }
 
                 }
-                else { MessageBox.Show("El usuario No existe", "Error", MessageBoxButtons.OK); botonIniciarSesion.Enabled = false; }
+                else { labelError.Text = "El usuario No existe"; botonIniciarSesion.Enabled = false; textBoxId.Focus(); }
             }
-            else { MessageBox.Show("El Id ingresado es incorrecto ", "Error", MessageBoxButtons.OK); botonIniciarSesion.Enabled = false; }
+            else { labelError.Text = "El Id ingresado es incorrecto "; botonIniciarSesion.Enabled = false; textBoxId.Focus(); }
 
             
            
@@ -67,6 +69,29 @@ namespace Programa
         private void textBoxContraseña_TextChanged(object sender, EventArgs e)
         {
             botonIniciarSesion.Enabled = true;
+        }
+
+        private void buttonRegistrarse_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            RegistrarAdministrador ventana = new RegistrarAdministrador();
+            ventana.Show();
+        }
+
+       
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (textBoxContraseña.UseSystemPasswordChar==true)
+            {
+                textBoxContraseña.UseSystemPasswordChar = false;
+                buttonMostrar.Text = "Ocultar";
+            }
+            else
+            {
+                textBoxContraseña.UseSystemPasswordChar = true;
+                buttonMostrar.Text = "Mostrar";
+            }
         }
     }
 }

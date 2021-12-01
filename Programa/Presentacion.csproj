@@ -56,17 +56,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AgregarAdministrador.cs">
+    <Compile Include="ConsultarAdministrador.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AgregarAdministrador.Designer.cs">
-      <DependentUpon>AgregarAdministrador.cs</DependentUpon>
+    <Compile Include="ConsultarAdministrador.Designer.cs">
+      <DependentUpon>ConsultarAdministrador.cs</DependentUpon>
     </Compile>
-    <Compile Include="AgregarUsuario.cs">
+    <Compile Include="RegistrarAdministrador.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AgregarUsuario.Designer.cs">
-      <DependentUpon>AgregarUsuario.cs</DependentUpon>
+    <Compile Include="RegistrarAdministrador.Designer.cs">
+      <DependentUpon>RegistrarAdministrador.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RegistrarUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegistrarUsuario.Designer.cs">
+      <DependentUpon>RegistrarUsuario.cs</DependentUpon>
     </Compile>
     <Compile Include="ConsultarUsuario.cs">
       <SubType>Form</SubType>
@@ -88,17 +94,26 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VerAdministradores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VerAdministradores.Designer.cs">
+      <DependentUpon>VerAdministradores.cs</DependentUpon>
+    </Compile>
     <Compile Include="VerUsuarios.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="VerUsuarios.Designer.cs">
       <DependentUpon>VerUsuarios.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="AgregarAdministrador.resx">
-      <DependentUpon>AgregarAdministrador.cs</DependentUpon>
+    <EmbeddedResource Include="ConsultarAdministrador.resx">
+      <DependentUpon>ConsultarAdministrador.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AgregarUsuario.resx">
-      <DependentUpon>AgregarUsuario.cs</DependentUpon>
+    <EmbeddedResource Include="RegistrarAdministrador.resx">
+      <DependentUpon>RegistrarAdministrador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RegistrarUsuario.resx">
+      <DependentUpon>RegistrarUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ConsultarUsuario.resx">
       <DependentUpon>ConsultarUsuario.cs</DependentUpon>
@@ -121,6 +136,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="VerAdministradores.resx">
+      <DependentUpon>VerAdministradores.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="VerUsuarios.resx">
       <DependentUpon>VerUsuarios.cs</DependentUpon>
     </EmbeddedResource>

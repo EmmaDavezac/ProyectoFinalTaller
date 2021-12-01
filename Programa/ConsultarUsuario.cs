@@ -26,19 +26,20 @@ namespace Programa
 
         private void buttonBuscarUsuario_Click(object sender, EventArgs e)
         {
-            if (textBoxId.Text!=null&&(textBoxId.Text).All(char.IsDigit))
+            if (textBoxId.Text!=null&&(textBoxId.Text).All(char.IsDigit)&& textBoxId.Text !="")
             {
-                Usuario usuario = new Fachada().ObtenerUsuario(Convert.ToInt32(textBoxId.Text));
+                UsuarioSimple usuario = new Fachada().ObtenerUsuario(Convert.ToInt32(textBoxId.Text));
                 if (usuario!=null)
                 {
                     textBoxNombre.Text = usuario.Nombre;
                     textBoxApellido.Text = usuario.Apellido;
-                    textBoxFecha.Text = Convert.ToString(usuario.FechaNacimiento);
+                    textBoxFecha.Text = Convert.ToString(usuario.FechaNacimiento.Date);
                     textBoxMail.Text = usuario.Mail;
+                    textBoxScoring.Text = Convert.ToString(usuario.Scoring);
                     buttonBuscarUsuario.Enabled = false; 
-                } else { MessageBox.Show("El usuario No existe", "Error", MessageBoxButtons.OK); }
+                } else { labelError.Text = "El Id ingresado no corresponde a un usuario registrado "; buttonBuscarUsuario.Enabled = false; textBoxId.Focus(); }
             }
-            else { MessageBox.Show("El Id ingresado es incorrecto ", "Error", MessageBoxButtons.OK); }
+            else { labelError.Text="El Id ingresado es incorrecto ";buttonBuscarUsuario.Enabled = false; textBoxId.Focus(); }
         }
 
         private void textBoxId_TextChanged(object sender, EventArgs e)
@@ -54,6 +55,21 @@ namespace Programa
         }
 
         private void ConsultarUsuario_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonSalir_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }

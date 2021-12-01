@@ -258,6 +258,24 @@
   <data name="&gt;&gt;buttonSalir.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
+  <data name="buttonActualizarUsuario.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonActualizarUsuario.Location" type="System.Drawing.Point, System.Drawing">
+    <value>20, 106</value>
+  </data>
+  <data name="buttonActualizarUsuario.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 3, 2, 3</value>
+  </data>
+  <data name="buttonActualizarUsuario.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 23</value>
+  </data>
+  <data name="buttonActualizarUsuario.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="buttonActualizarUsuario.Text" xml:space="preserve">
+    <value>Actualizar Usuario</value>
+  </data>
   <data name="&gt;&gt;buttonActualizarUsuario.Name" xml:space="preserve">
     <value>buttonActualizarUsuario</value>
   </data>
@@ -293,108 +311,6 @@
   </data>
   <data name="&gt;&gt;groupBoxUsuarios.ZOrder" xml:space="preserve">
     <value>5</value>
-  </data>
-  <data name="buttonActualizarUsuario.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="buttonActualizarUsuario.Location" type="System.Drawing.Point, System.Drawing">
-    <value>20, 106</value>
-  </data>
-  <data name="buttonActualizarUsuario.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 3, 2, 3</value>
-  </data>
-  <data name="buttonActualizarUsuario.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 23</value>
-  </data>
-  <data name="buttonActualizarUsuario.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="buttonActualizarUsuario.Text" xml:space="preserve">
-    <value>Actualizar Usuario</value>
-  </data>
-  <data name="&gt;&gt;buttonActualizarUsuario.Name" xml:space="preserve">
-    <value>buttonActualizarUsuario</value>
-  </data>
-  <data name="&gt;&gt;buttonActualizarUsuario.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonActualizarUsuario.Parent" xml:space="preserve">
-    <value>groupBoxUsuarios</value>
-  </data>
-  <data name="&gt;&gt;buttonActualizarUsuario.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;buttonActualizarLibro.Name" xml:space="preserve">
-    <value>buttonActualizarLibro</value>
-  </data>
-  <data name="&gt;&gt;buttonActualizarLibro.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonActualizarLibro.Parent" xml:space="preserve">
-    <value>groupBoxLibros</value>
-  </data>
-  <data name="&gt;&gt;buttonActualizarLibro.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;buttonAñadirLibro.Name" xml:space="preserve">
-    <value>buttonAñadirLibro</value>
-  </data>
-  <data name="&gt;&gt;buttonAñadirLibro.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonAñadirLibro.Parent" xml:space="preserve">
-    <value>groupBoxLibros</value>
-  </data>
-  <data name="&gt;&gt;buttonAñadirLibro.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;buttonBuscarLibro.Name" xml:space="preserve">
-    <value>buttonBuscarLibro</value>
-  </data>
-  <data name="&gt;&gt;buttonBuscarLibro.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonBuscarLibro.Parent" xml:space="preserve">
-    <value>groupBoxLibros</value>
-  </data>
-  <data name="&gt;&gt;buttonBuscarLibro.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;buttonVerLibros.Name" xml:space="preserve">
-    <value>buttonVerLibros</value>
-  </data>
-  <data name="&gt;&gt;buttonVerLibros.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonVerLibros.Parent" xml:space="preserve">
-    <value>groupBoxLibros</value>
-  </data>
-  <data name="&gt;&gt;buttonVerLibros.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="groupBoxLibros.Location" type="System.Drawing.Point, System.Drawing">
-    <value>217, 50</value>
-  </data>
-  <data name="groupBoxLibros.Size" type="System.Drawing.Size, System.Drawing">
-    <value>170, 150</value>
-  </data>
-  <data name="groupBoxLibros.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="groupBoxLibros.Text" xml:space="preserve">
-    <value>Opciones Libros</value>
-  </data>
-  <data name="&gt;&gt;groupBoxLibros.Name" xml:space="preserve">
-    <value>groupBoxLibros</value>
-  </data>
-  <data name="&gt;&gt;groupBoxLibros.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBoxLibros.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;groupBoxLibros.ZOrder" xml:space="preserve">
-    <value>4</value>
   </data>
   <data name="buttonActualizarLibro.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -516,77 +432,29 @@
   <data name="&gt;&gt;buttonVerLibros.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="&gt;&gt;buttonRegistrarDevolucion.Name" xml:space="preserve">
-    <value>buttonRegistrarDevolucion</value>
+  <data name="groupBoxLibros.Location" type="System.Drawing.Point, System.Drawing">
+    <value>217, 50</value>
   </data>
-  <data name="&gt;&gt;buttonRegistrarDevolucion.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonRegistrarDevolucion.Parent" xml:space="preserve">
-    <value>groupBoxPrestamos</value>
-  </data>
-  <data name="&gt;&gt;buttonRegistrarDevolucion.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;buttonRegistrarPrestamo.Name" xml:space="preserve">
-    <value>buttonRegistrarPrestamo</value>
-  </data>
-  <data name="&gt;&gt;buttonRegistrarPrestamo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonRegistrarPrestamo.Parent" xml:space="preserve">
-    <value>groupBoxPrestamos</value>
-  </data>
-  <data name="&gt;&gt;buttonRegistrarPrestamo.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;buttonBuscarPrestamo.Name" xml:space="preserve">
-    <value>buttonBuscarPrestamo</value>
-  </data>
-  <data name="&gt;&gt;buttonBuscarPrestamo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonBuscarPrestamo.Parent" xml:space="preserve">
-    <value>groupBoxPrestamos</value>
-  </data>
-  <data name="&gt;&gt;buttonBuscarPrestamo.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;buttonVerUsuarios.Name" xml:space="preserve">
-    <value>buttonVerUsuarios</value>
-  </data>
-  <data name="&gt;&gt;buttonVerUsuarios.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonVerUsuarios.Parent" xml:space="preserve">
-    <value>groupBoxPrestamos</value>
-  </data>
-  <data name="&gt;&gt;buttonVerUsuarios.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="groupBoxPrestamos.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 219</value>
-  </data>
-  <data name="groupBoxPrestamos.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="groupBoxLibros.Size" type="System.Drawing.Size, System.Drawing">
     <value>170, 150</value>
   </data>
-  <data name="groupBoxPrestamos.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
+  <data name="groupBoxLibros.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
   </data>
-  <data name="groupBoxPrestamos.Text" xml:space="preserve">
-    <value>Opciones Prestamos</value>
+  <data name="groupBoxLibros.Text" xml:space="preserve">
+    <value>Opciones Libros</value>
   </data>
-  <data name="&gt;&gt;groupBoxPrestamos.Name" xml:space="preserve">
-    <value>groupBoxPrestamos</value>
+  <data name="&gt;&gt;groupBoxLibros.Name" xml:space="preserve">
+    <value>groupBoxLibros</value>
   </data>
-  <data name="&gt;&gt;groupBoxPrestamos.Type" xml:space="preserve">
+  <data name="&gt;&gt;groupBoxLibros.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;groupBoxPrestamos.Parent" xml:space="preserve">
+  <data name="&gt;&gt;groupBoxLibros.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;groupBoxPrestamos.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="&gt;&gt;groupBoxLibros.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
   <data name="buttonRegistrarDevolucion.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -708,77 +576,29 @@
   <data name="&gt;&gt;buttonVerUsuarios.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="&gt;&gt;buttonModificarAdministrador.Name" xml:space="preserve">
-    <value>buttonModificarAdministrador</value>
+  <data name="groupBoxPrestamos.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 219</value>
   </data>
-  <data name="&gt;&gt;buttonModificarAdministrador.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonModificarAdministrador.Parent" xml:space="preserve">
-    <value>groupBoxAdministradores</value>
-  </data>
-  <data name="&gt;&gt;buttonModificarAdministrador.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;buttonRegistrarAdministrador.Name" xml:space="preserve">
-    <value>buttonRegistrarAdministrador</value>
-  </data>
-  <data name="&gt;&gt;buttonRegistrarAdministrador.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonRegistrarAdministrador.Parent" xml:space="preserve">
-    <value>groupBoxAdministradores</value>
-  </data>
-  <data name="&gt;&gt;buttonRegistrarAdministrador.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;buttonBuscarAdministrador.Name" xml:space="preserve">
-    <value>buttonBuscarAdministrador</value>
-  </data>
-  <data name="&gt;&gt;buttonBuscarAdministrador.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonBuscarAdministrador.Parent" xml:space="preserve">
-    <value>groupBoxAdministradores</value>
-  </data>
-  <data name="&gt;&gt;buttonBuscarAdministrador.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;buttonVerAdministradores.Name" xml:space="preserve">
-    <value>buttonVerAdministradores</value>
-  </data>
-  <data name="&gt;&gt;buttonVerAdministradores.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonVerAdministradores.Parent" xml:space="preserve">
-    <value>groupBoxAdministradores</value>
-  </data>
-  <data name="&gt;&gt;buttonVerAdministradores.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="groupBoxAdministradores.Location" type="System.Drawing.Point, System.Drawing">
-    <value>216, 219</value>
-  </data>
-  <data name="groupBoxAdministradores.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="groupBoxPrestamos.Size" type="System.Drawing.Size, System.Drawing">
     <value>170, 150</value>
   </data>
-  <data name="groupBoxAdministradores.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
+  <data name="groupBoxPrestamos.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
   </data>
-  <data name="groupBoxAdministradores.Text" xml:space="preserve">
-    <value>Opciones Administradores</value>
+  <data name="groupBoxPrestamos.Text" xml:space="preserve">
+    <value>Opciones Prestamos</value>
   </data>
-  <data name="&gt;&gt;groupBoxAdministradores.Name" xml:space="preserve">
-    <value>groupBoxAdministradores</value>
+  <data name="&gt;&gt;groupBoxPrestamos.Name" xml:space="preserve">
+    <value>groupBoxPrestamos</value>
   </data>
-  <data name="&gt;&gt;groupBoxAdministradores.Type" xml:space="preserve">
+  <data name="&gt;&gt;groupBoxPrestamos.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;groupBoxAdministradores.Parent" xml:space="preserve">
+  <data name="&gt;&gt;groupBoxPrestamos.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;groupBoxAdministradores.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="&gt;&gt;groupBoxPrestamos.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="buttonModificarAdministrador.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -826,7 +646,7 @@
     <value>0</value>
   </data>
   <data name="buttonRegistrarAdministrador.Text" xml:space="preserve">
-    <value>Añadir Administrador</value>
+    <value>Registrar Administrador</value>
   </data>
   <data name="&gt;&gt;buttonRegistrarAdministrador.Name" xml:space="preserve">
     <value>buttonRegistrarAdministrador</value>
@@ -900,77 +720,29 @@
   <data name="&gt;&gt;buttonVerAdministradores.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="&gt;&gt;button1.Name" xml:space="preserve">
-    <value>button1</value>
+  <data name="groupBoxAdministradores.Location" type="System.Drawing.Point, System.Drawing">
+    <value>216, 219</value>
   </data>
-  <data name="&gt;&gt;button1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;button1.Parent" xml:space="preserve">
-    <value>groupBoxEjemplares</value>
-  </data>
-  <data name="&gt;&gt;button1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;button2.Name" xml:space="preserve">
-    <value>button2</value>
-  </data>
-  <data name="&gt;&gt;button2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;button2.Parent" xml:space="preserve">
-    <value>groupBoxEjemplares</value>
-  </data>
-  <data name="&gt;&gt;button2.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;button3.Name" xml:space="preserve">
-    <value>button3</value>
-  </data>
-  <data name="&gt;&gt;button3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;button3.Parent" xml:space="preserve">
-    <value>groupBoxEjemplares</value>
-  </data>
-  <data name="&gt;&gt;button3.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;button4.Name" xml:space="preserve">
-    <value>button4</value>
-  </data>
-  <data name="&gt;&gt;button4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;button4.Parent" xml:space="preserve">
-    <value>groupBoxEjemplares</value>
-  </data>
-  <data name="&gt;&gt;button4.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="groupBoxEjemplares.Location" type="System.Drawing.Point, System.Drawing">
-    <value>416, 50</value>
-  </data>
-  <data name="groupBoxEjemplares.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="groupBoxAdministradores.Size" type="System.Drawing.Size, System.Drawing">
     <value>170, 150</value>
   </data>
-  <data name="groupBoxEjemplares.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
+  <data name="groupBoxAdministradores.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
   </data>
-  <data name="groupBoxEjemplares.Text" xml:space="preserve">
-    <value>Opciones Ejemplares</value>
+  <data name="groupBoxAdministradores.Text" xml:space="preserve">
+    <value>Opciones Administradores</value>
   </data>
-  <data name="&gt;&gt;groupBoxEjemplares.Name" xml:space="preserve">
-    <value>groupBoxEjemplares</value>
+  <data name="&gt;&gt;groupBoxAdministradores.Name" xml:space="preserve">
+    <value>groupBoxAdministradores</value>
   </data>
-  <data name="&gt;&gt;groupBoxEjemplares.Type" xml:space="preserve">
+  <data name="&gt;&gt;groupBoxAdministradores.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;groupBoxEjemplares.Parent" xml:space="preserve">
+  <data name="&gt;&gt;groupBoxAdministradores.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;groupBoxEjemplares.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;groupBoxAdministradores.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="button1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1092,31 +864,55 @@
   <data name="&gt;&gt;button4.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>404, 9</value>
+  <data name="groupBoxEjemplares.Location" type="System.Drawing.Point, System.Drawing">
+    <value>416, 50</value>
   </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>182, 31</value>
+  <data name="groupBoxEjemplares.Size" type="System.Drawing.Size, System.Drawing">
+    <value>170, 150</value>
   </data>
-  <data name="label1.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
+  <data name="groupBoxEjemplares.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
   </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>labelNombreUsuario</value>
+  <data name="groupBoxEjemplares.Text" xml:space="preserve">
+    <value>Opciones Ejemplares</value>
   </data>
-  <data name="label1.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleCenter</value>
+  <data name="&gt;&gt;groupBoxEjemplares.Name" xml:space="preserve">
+    <value>groupBoxEjemplares</value>
   </data>
-  <data name="&gt;&gt;label1.Name" xml:space="preserve">
-    <value>label1</value>
+  <data name="&gt;&gt;groupBoxEjemplares.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;label1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;groupBoxEjemplares.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;groupBoxEjemplares.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="labelNombreUsuario.Location" type="System.Drawing.Point, System.Drawing">
+    <value>404, 9</value>
+  </data>
+  <data name="labelNombreUsuario.Size" type="System.Drawing.Size, System.Drawing">
+    <value>182, 31</value>
+  </data>
+  <data name="labelNombreUsuario.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="labelNombreUsuario.Text" xml:space="preserve">
+    <value>Nombre de Usuario</value>
+  </data>
+  <data name="labelNombreUsuario.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;labelNombreUsuario.Name" xml:space="preserve">
+    <value>labelNombreUsuario</value>
+  </data>
+  <data name="&gt;&gt;labelNombreUsuario.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelNombreUsuario.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;labelNombreUsuario.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">

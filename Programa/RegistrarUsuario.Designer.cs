@@ -1,7 +1,7 @@
 ﻿
 namespace Programa
 {
-    partial class AgregarUsuario
+    partial class RegistrarUsuario
     {
         /// <summary>
         /// Required designer variable.
@@ -146,7 +146,7 @@ namespace Programa
             // 
             // buttonAñadirUsuario
             // 
-            this.buttonAñadirUsuario.Location = new System.Drawing.Point(376, 260);
+            this.buttonAñadirUsuario.Location = new System.Drawing.Point(376, 251);
             this.buttonAñadirUsuario.Name = "buttonAñadirUsuario";
             this.buttonAñadirUsuario.Size = new System.Drawing.Size(89, 23);
             this.buttonAñadirUsuario.TabIndex = 19;
@@ -158,13 +158,13 @@ namespace Programa
             // 
             this.labelError.AutoSize = true;
             this.labelError.ForeColor = System.Drawing.Color.Red;
-            this.labelError.Location = new System.Drawing.Point(262, 240);
+            this.labelError.Location = new System.Drawing.Point(262, 229);
             this.labelError.Name = "labelError";
             this.labelError.Size = new System.Drawing.Size(0, 13);
             this.labelError.TabIndex = 20;
             this.labelError.Click += new System.EventHandler(this.labelError_Click);
             // 
-            // AgregarUsuario
+            // RegistrarUsuario
             // 
             this.AcceptButton = this.buttonAñadirUsuario;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -186,9 +186,9 @@ namespace Programa
             this.MaximumSize = new System.Drawing.Size(640, 480);
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(640, 480);
-            this.Name = "AgregarUsuario";
+            this.Name = "RegistrarUsuario";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Agregar Usuario";
+            this.Text = "Registrar Usuario";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AgregarCliente_FormClosed);
             this.Load += new System.EventHandler(this.AgregarUsuario_Load);
             this.ResumeLayout(false);

@@ -36,6 +36,8 @@ namespace Programa
             this.labelConstraseña = new System.Windows.Forms.Label();
             this.botonIniciarSesion = new System.Windows.Forms.Button();
             this.buttonRegistrarse = new System.Windows.Forms.Button();
+            this.labelError = new System.Windows.Forms.Label();
+            this.buttonMostrar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBoxId
@@ -96,7 +98,7 @@ namespace Programa
             // 
             this.botonIniciarSesion.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.botonIniciarSesion.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.botonIniciarSesion.Location = new System.Drawing.Point(315, 254);
+            this.botonIniciarSesion.Location = new System.Drawing.Point(315, 263);
             this.botonIniciarSesion.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.botonIniciarSesion.Name = "botonIniciarSesion";
             this.botonIniciarSesion.Size = new System.Drawing.Size(89, 23);
@@ -109,13 +111,33 @@ namespace Programa
             // 
             this.buttonRegistrarse.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.buttonRegistrarse.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonRegistrarse.Location = new System.Drawing.Point(222, 254);
+            this.buttonRegistrarse.Location = new System.Drawing.Point(222, 263);
             this.buttonRegistrarse.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.buttonRegistrarse.Name = "buttonRegistrarse";
             this.buttonRegistrarse.Size = new System.Drawing.Size(89, 23);
             this.buttonRegistrarse.TabIndex = 8;
             this.buttonRegistrarse.Text = "Registrarse";
             this.buttonRegistrarse.UseVisualStyleBackColor = true;
+            this.buttonRegistrarse.Click += new System.EventHandler(this.buttonRegistrarse_Click);
+            // 
+            // labelError
+            // 
+            this.labelError.AutoSize = true;
+            this.labelError.ForeColor = System.Drawing.Color.Red;
+            this.labelError.Location = new System.Drawing.Point(219, 243);
+            this.labelError.Name = "labelError";
+            this.labelError.Size = new System.Drawing.Size(0, 13);
+            this.labelError.TabIndex = 33;
+            // 
+            // buttonMostrar
+            // 
+            this.buttonMostrar.Location = new System.Drawing.Point(410, 208);
+            this.buttonMostrar.Name = "buttonMostrar";
+            this.buttonMostrar.Size = new System.Drawing.Size(53, 23);
+            this.buttonMostrar.TabIndex = 34;
+            this.buttonMostrar.Text = "Mostrar";
+            this.buttonMostrar.UseVisualStyleBackColor = true;
+            this.buttonMostrar.Click += new System.EventHandler(this.button1_Click);
             // 
             // Login
             // 
@@ -123,6 +145,8 @@ namespace Programa
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(624, 441);
+            this.Controls.Add(this.buttonMostrar);
+            this.Controls.Add(this.labelError);
             this.Controls.Add(this.buttonRegistrarse);
             this.Controls.Add(this.botonIniciarSesion);
             this.Controls.Add(this.labelConstraseña);
@@ -152,5 +176,7 @@ namespace Programa
         private System.Windows.Forms.Label labelConstraseña;
         private System.Windows.Forms.Button botonIniciarSesion;
         private System.Windows.Forms.Button buttonRegistrarse;
+        private System.Windows.Forms.Label labelError;
+        private System.Windows.Forms.Button buttonMostrar;
     }
 }

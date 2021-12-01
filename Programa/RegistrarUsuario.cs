@@ -10,11 +10,13 @@ using System.Windows.Forms;
 using Nucleo;
 
 namespace Programa
-{
-    public partial class AgregarUsuario : Form
+{   
+    public partial class RegistrarUsuario : Form
     {
-        public AgregarUsuario()
+        private string NombreUsuario { get; set; }
+        public RegistrarUsuario(string nombreUsuario)
         {
+            NombreUsuario = nombreUsuario;
             InitializeComponent();
         }
 
@@ -26,7 +28,7 @@ namespace Programa
         private void botonVolver_Click(object sender, EventArgs e)
         {
             this.Hide();
-            MenuPrincipal ventanaMenu = new MenuPrincipal();
+            MenuPrincipal ventanaMenu = new MenuPrincipal(NombreUsuario);
             ventanaMenu.Show();
         }
 
@@ -53,7 +55,7 @@ namespace Programa
                 Fachada fachada = new Fachada();
                 fachada.AñadirUsuario(textBoxNombre.Text, textBoxApellido.Text, dateTimePickerFechaNacimiento.Value, textBoxMail.Text);
                 this.Hide();
-                MenuPrincipal ventanaMenu = new MenuPrincipal();
+                MenuPrincipal ventanaMenu = new MenuPrincipal(NombreUsuario);
                 ventanaMenu.Show();
             }
             else

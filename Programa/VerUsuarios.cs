@@ -14,8 +14,10 @@ namespace Programa
 {
     public partial class VerUsuarios : Form
     {
-        public VerUsuarios()
+        private string NombreUsuario { get; set; }
+        public VerUsuarios(string nombreUsuario)
         {
+            NombreUsuario = nombreUsuario;
             InitializeComponent();
             foreach (var item in new Fachada().ObtenerUsuarios() )
             {
@@ -25,6 +27,7 @@ namespace Programa
                 dgvUsuarios.Rows[n].Cells[2].Value =item.Apellido;
                 dgvUsuarios.Rows[n].Cells[3].Value =item.FechaNacimiento;
                 dgvUsuarios.Rows[n].Cells[4].Value =item.Mail;
+                dgvUsuarios.Rows[n].Cells[5].Value = item.Scoring;
             }
         }
 
@@ -37,7 +40,7 @@ namespace Programa
         private void botonVolver_Click(object sender, EventArgs e)
         {
             this.Hide();
-            MenuPrincipal ventanaMenu = new MenuPrincipal();
+            MenuPrincipal ventanaMenu = new MenuPrincipal(NombreUsuario);
             ventanaMenu.Show();
         }
 
@@ -54,6 +57,11 @@ namespace Programa
         private void VerUsuarios_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void VerUsuarios_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

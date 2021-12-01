@@ -57,7 +57,7 @@ namespace Programa
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelNombreUsuario = new System.Windows.Forms.Label();
             this.groupBoxUsuarios.SuspendLayout();
             this.groupBoxLibros.SuspendLayout();
             this.groupBoxPrestamos.SuspendLayout();
@@ -215,18 +215,21 @@ namespace Programa
             this.buttonRegistrarAdministrador.Name = "buttonRegistrarAdministrador";
             this.buttonRegistrarAdministrador.TabStop = false;
             this.buttonRegistrarAdministrador.UseVisualStyleBackColor = true;
+            this.buttonRegistrarAdministrador.Click += new System.EventHandler(this.buttonRegistrarAdministrador_Click);
             // 
             // buttonBuscarAdministrador
             // 
             resources.ApplyResources(this.buttonBuscarAdministrador, "buttonBuscarAdministrador");
             this.buttonBuscarAdministrador.Name = "buttonBuscarAdministrador";
             this.buttonBuscarAdministrador.UseVisualStyleBackColor = true;
+            this.buttonBuscarAdministrador.Click += new System.EventHandler(this.buttonBuscarAdministrador_Click);
             // 
             // buttonVerAdministradores
             // 
             resources.ApplyResources(this.buttonVerAdministradores, "buttonVerAdministradores");
             this.buttonVerAdministradores.Name = "buttonVerAdministradores";
             this.buttonVerAdministradores.UseVisualStyleBackColor = true;
+            this.buttonVerAdministradores.Click += new System.EventHandler(this.buttonVerAdministradores_Click);
             // 
             // groupBoxEjemplares
             // 
@@ -263,20 +266,20 @@ namespace Programa
             this.button4.Name = "button4";
             this.button4.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // labelNombreUsuario
             // 
-            this.label1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label1.ForeColor = System.Drawing.SystemColors.ControlLight;
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.Name = "label1";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.labelNombreUsuario.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.labelNombreUsuario.ForeColor = System.Drawing.SystemColors.ControlLight;
+            resources.ApplyResources(this.labelNombreUsuario, "labelNombreUsuario");
+            this.labelNombreUsuario.Name = "labelNombreUsuario";
+            this.labelNombreUsuario.Click += new System.EventHandler(this.label1_Click);
             // 
             // MenuPrincipal
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.buttonSalir;
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.labelNombreUsuario);
             this.Controls.Add(this.groupBoxEjemplares);
             this.Controls.Add(this.groupBoxAdministradores);
             this.Controls.Add(this.groupBoxPrestamos);
@@ -327,7 +330,7 @@ namespace Programa
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelNombreUsuario;
     }
 }
 
