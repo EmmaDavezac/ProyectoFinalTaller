@@ -53,5 +53,10 @@ namespace Programa
         {
             Application.Exit();
         }
+
+        private void Registrarse_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

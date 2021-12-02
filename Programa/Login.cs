@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Nucleo;
-using Dominio;
 namespace Programa
 {
     public partial class Login : Form
@@ -40,13 +39,13 @@ namespace Programa
         {
             if (textBoxId.Text != null && (textBoxId.Text).All(char.IsDigit)&&textBoxId.Text != "")
             {
-                Usuario usuario = new Fachada().ObtenerAdministrador(Convert.ToInt32(textBoxId.Text));
-                if (usuario != null)
+                Fachada fachada = new Fachada();
+                if (new Fachada().ObtenerAdministrador(Convert.ToInt32(textBoxId.Text)) != null)
                 {
-                    if (textBoxContraseña.Text!=null &&new Fachada().VerficarContraseña(usuario.Id,textBoxContraseña.Text))
+                    if (textBoxContraseña.Text!=null &&fachada.VerficarContraseña(fachada.ObtenerAdministrador(Convert.ToInt32(textBoxId.Text)).Id,textBoxContraseña.Text))
                     {
                         this.Hide();
-                        MenuPrincipal ventanaMenu = new MenuPrincipal(usuario.Nombre+" "+usuario.Apellido);
+                        MenuPrincipal ventanaMenu = new MenuPrincipal(fachada.ObtenerAdministrador(Convert.ToInt32(textBoxId.Text)).Nombre + " "+fachada.ObtenerAdministrador(Convert.ToInt32(textBoxId.Text)).Apellido);
                         ventanaMenu.Show();
                     }
                     else { labelError.Text = "La contraseña ingresada es incorrecta ";botonIniciarSesion.Enabled = false; textBoxContraseña.Focus(); }
@@ -97,6 +96,11 @@ namespace Programa
         private void Login_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

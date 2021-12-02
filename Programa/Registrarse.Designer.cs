@@ -201,6 +201,7 @@ namespace Programa
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Registrarse";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Registrarse_FormClosed);
+            this.Load += new System.EventHandler(this.Registrarse_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
