@@ -17,9 +17,11 @@ namespace Programa
         private string NombreUsuario { get; set; }
         public VerAdministradores(string nombreUsuario)
         {
-            NombreUsuario = nombreUsuario;
+           
             InitializeComponent();
-            foreach (var item in new Fachada().ObtenerUsuarios())
+            NombreUsuario = nombreUsuario;
+            labelNombreUsuario.Text = "Usuario: " + NombreUsuario;
+            foreach (var item in new Fachada().ObtenerAdministradores())
             {
                 int n = dgvAdministradores.Rows.Add();
                 dgvAdministradores.Rows[n].Cells[0].Value = item.Id;

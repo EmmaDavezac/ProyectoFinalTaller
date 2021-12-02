@@ -14,9 +14,12 @@ namespace Programa
 {
     public partial class ConsultarUsuario : Form
     {
-        public ConsultarUsuario()
+        private string NombreUsuario { get; set; }
+        public ConsultarUsuario(string nombreUsuario)
         {
             InitializeComponent();
+            NombreUsuario = nombreUsuario;
+            labelNombreUsuario.Text = "Usuario: " + NombreUsuario;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -50,7 +53,7 @@ namespace Programa
         private void botonVolver_Click(object sender, EventArgs e)
         {
             this.Hide();
-            MenuPrincipal ventana = new MenuPrincipal();
+            MenuPrincipal ventana = new MenuPrincipal(NombreUsuario);
             ventana.Show();
         }
 
@@ -72,6 +75,11 @@ namespace Programa
         private void buttonSalir_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void ConsultarUsuario_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -43,6 +43,7 @@ namespace Programa
             this.textBoxNombre = new System.Windows.Forms.TextBox();
             this.botonVolver = new System.Windows.Forms.Button();
             this.buttonSalir = new System.Windows.Forms.Button();
+            this.labelNombreUsuario = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // textBoxFecha
@@ -175,11 +176,25 @@ namespace Programa
             this.buttonSalir.UseVisualStyleBackColor = true;
             this.buttonSalir.Click += new System.EventHandler(this.buttonSalir_Click);
             // 
+            // labelNombreUsuario
+            // 
+            this.labelNombreUsuario.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.labelNombreUsuario.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.labelNombreUsuario.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.labelNombreUsuario.Location = new System.Drawing.Point(430, 9);
+            this.labelNombreUsuario.Name = "labelNombreUsuario";
+            this.labelNombreUsuario.Size = new System.Drawing.Size(182, 31);
+            this.labelNombreUsuario.TabIndex = 53;
+            this.labelNombreUsuario.Text = "Nombre de Usuario";
+            this.labelNombreUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // ConsultarAdministrador
             // 
+            this.AcceptButton = this.buttonBuscarAdministrador;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(624, 441);
+            this.Controls.Add(this.labelNombreUsuario);
             this.Controls.Add(this.textBoxFecha);
             this.Controls.Add(this.textBoxId);
             this.Controls.Add(this.label1);
@@ -223,5 +238,6 @@ namespace Programa
         private System.Windows.Forms.TextBox textBoxNombre;
         private System.Windows.Forms.Button botonVolver;
         private System.Windows.Forms.Button buttonSalir;
+        private System.Windows.Forms.Label labelNombreUsuario;
     }
 }

@@ -14,9 +14,12 @@ namespace Programa
 {
     public partial class ConsultarAdministrador : Form
     {
-        public ConsultarAdministrador()
+        private string NombreUsuario { get; set; }
+        public ConsultarAdministrador(string nombreUsuario)
         {
             InitializeComponent();
+            NombreUsuario = nombreUsuario;
+            labelNombreUsuario.Text = "Usuario: " + NombreUsuario;
         }
 
         private void buttonBuscarUsuario_Click(object sender, EventArgs e)
@@ -45,7 +48,7 @@ namespace Programa
         private void botonVolver_Click(object sender, EventArgs e)
         {
             this.Hide();
-            MenuPrincipal ventana = new MenuPrincipal();
+            MenuPrincipal ventana = new MenuPrincipal(NombreUsuario);
             ventana.Show();
         }
 

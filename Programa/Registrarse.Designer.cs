@@ -1,7 +1,7 @@
 ﻿
 namespace Programa
 {
-    partial class RegistrarAdministrador
+    partial class Registrarse
     {
         /// <summary>
         /// Required designer variable.
@@ -29,6 +29,8 @@ namespace Programa
         /// </summary>
         private void InitializeComponent()
         {
+            this.labelContraseña = new System.Windows.Forms.Label();
+            this.textBoxContraseña = new System.Windows.Forms.TextBox();
             this.labelError = new System.Windows.Forms.Label();
             this.buttonRegistrarAdministrador = new System.Windows.Forms.Button();
             this.labelMail = new System.Windows.Forms.Label();
@@ -41,10 +43,23 @@ namespace Programa
             this.textBoxNombre = new System.Windows.Forms.TextBox();
             this.botonVolver = new System.Windows.Forms.Button();
             this.buttonSalir = new System.Windows.Forms.Button();
-            this.labelContraseña = new System.Windows.Forms.Label();
-            this.textBoxContraseña = new System.Windows.Forms.TextBox();
-            this.labelNombreUsuario = new System.Windows.Forms.Label();
             this.SuspendLayout();
+            // 
+            // labelContraseña
+            // 
+            this.labelContraseña.AutoSize = true;
+            this.labelContraseña.Location = new System.Drawing.Point(155, 230);
+            this.labelContraseña.Name = "labelContraseña";
+            this.labelContraseña.Size = new System.Drawing.Size(61, 13);
+            this.labelContraseña.TabIndex = 49;
+            this.labelContraseña.Text = "Contraseña";
+            // 
+            // textBoxContraseña
+            // 
+            this.textBoxContraseña.Location = new System.Drawing.Point(265, 223);
+            this.textBoxContraseña.Name = "textBoxContraseña";
+            this.textBoxContraseña.Size = new System.Drawing.Size(200, 20);
+            this.textBoxContraseña.TabIndex = 48;
             // 
             // labelError
             // 
@@ -53,17 +68,17 @@ namespace Programa
             this.labelError.Location = new System.Drawing.Point(262, 246);
             this.labelError.Name = "labelError";
             this.labelError.Size = new System.Drawing.Size(0, 13);
-            this.labelError.TabIndex = 32;
+            this.labelError.TabIndex = 47;
             // 
             // buttonRegistrarAdministrador
             // 
             this.buttonRegistrarAdministrador.Location = new System.Drawing.Point(376, 276);
             this.buttonRegistrarAdministrador.Name = "buttonRegistrarAdministrador";
             this.buttonRegistrarAdministrador.Size = new System.Drawing.Size(89, 23);
-            this.buttonRegistrarAdministrador.TabIndex = 31;
+            this.buttonRegistrarAdministrador.TabIndex = 46;
             this.buttonRegistrarAdministrador.Text = "Registrar Administrador";
             this.buttonRegistrarAdministrador.UseVisualStyleBackColor = true;
-            this.buttonRegistrarAdministrador.Click += new System.EventHandler(this.buttonAñadirUsuario_Click);
+            this.buttonRegistrarAdministrador.Click += new System.EventHandler(this.buttonRegistrarAdministrador_Click);
             // 
             // labelMail
             // 
@@ -71,7 +86,7 @@ namespace Programa
             this.labelMail.Location = new System.Drawing.Point(155, 204);
             this.labelMail.Name = "labelMail";
             this.labelMail.Size = new System.Drawing.Size(26, 13);
-            this.labelMail.TabIndex = 30;
+            this.labelMail.TabIndex = 45;
             this.labelMail.Text = "Mail";
             // 
             // labelFechaNacimiento
@@ -80,7 +95,7 @@ namespace Programa
             this.labelFechaNacimiento.Location = new System.Drawing.Point(155, 178);
             this.labelFechaNacimiento.Name = "labelFechaNacimiento";
             this.labelFechaNacimiento.Size = new System.Drawing.Size(90, 13);
-            this.labelFechaNacimiento.TabIndex = 29;
+            this.labelFechaNacimiento.TabIndex = 44;
             this.labelFechaNacimiento.Text = "FechaNacimiento";
             // 
             // labelApellido
@@ -89,7 +104,7 @@ namespace Programa
             this.labelApellido.Location = new System.Drawing.Point(155, 152);
             this.labelApellido.Name = "labelApellido";
             this.labelApellido.Size = new System.Drawing.Size(44, 13);
-            this.labelApellido.TabIndex = 28;
+            this.labelApellido.TabIndex = 43;
             this.labelApellido.Text = "Apellido";
             // 
             // labelNombre
@@ -98,7 +113,7 @@ namespace Programa
             this.labelNombre.Location = new System.Drawing.Point(155, 126);
             this.labelNombre.Name = "labelNombre";
             this.labelNombre.Size = new System.Drawing.Size(44, 13);
-            this.labelNombre.TabIndex = 27;
+            this.labelNombre.TabIndex = 42;
             this.labelNombre.Text = "Nombre";
             // 
             // dateTimePickerFechaNacimiento
@@ -108,33 +123,29 @@ namespace Programa
             this.dateTimePickerFechaNacimiento.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             this.dateTimePickerFechaNacimiento.Name = "dateTimePickerFechaNacimiento";
             this.dateTimePickerFechaNacimiento.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePickerFechaNacimiento.TabIndex = 26;
+            this.dateTimePickerFechaNacimiento.TabIndex = 41;
             this.dateTimePickerFechaNacimiento.Value = new System.DateTime(2021, 12, 1, 0, 0, 0, 0);
-            this.dateTimePickerFechaNacimiento.ValueChanged += new System.EventHandler(this.dateTimePickerFechaNacimiento_ValueChanged);
             // 
             // textBoxMail
             // 
             this.textBoxMail.Location = new System.Drawing.Point(265, 197);
             this.textBoxMail.Name = "textBoxMail";
             this.textBoxMail.Size = new System.Drawing.Size(200, 20);
-            this.textBoxMail.TabIndex = 25;
-            this.textBoxMail.TextChanged += new System.EventHandler(this.textBoxMail_TextChanged);
+            this.textBoxMail.TabIndex = 40;
             // 
             // textBoxApellido
             // 
             this.textBoxApellido.Location = new System.Drawing.Point(265, 149);
             this.textBoxApellido.Name = "textBoxApellido";
             this.textBoxApellido.Size = new System.Drawing.Size(200, 20);
-            this.textBoxApellido.TabIndex = 24;
-            this.textBoxApellido.TextChanged += new System.EventHandler(this.textBoxApellido_TextChanged);
+            this.textBoxApellido.TabIndex = 39;
             // 
             // textBoxNombre
             // 
             this.textBoxNombre.Location = new System.Drawing.Point(265, 123);
             this.textBoxNombre.Name = "textBoxNombre";
             this.textBoxNombre.Size = new System.Drawing.Size(200, 20);
-            this.textBoxNombre.TabIndex = 23;
-            this.textBoxNombre.TextChanged += new System.EventHandler(this.textBoxNombre_TextChanged);
+            this.textBoxNombre.TabIndex = 38;
             // 
             // botonVolver
             // 
@@ -144,7 +155,7 @@ namespace Programa
             this.botonVolver.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.botonVolver.Name = "botonVolver";
             this.botonVolver.Size = new System.Drawing.Size(89, 23);
-            this.botonVolver.TabIndex = 22;
+            this.botonVolver.TabIndex = 37;
             this.botonVolver.Text = "Volver";
             this.botonVolver.UseVisualStyleBackColor = true;
             this.botonVolver.Click += new System.EventHandler(this.botonVolver_Click);
@@ -157,48 +168,17 @@ namespace Programa
             this.buttonSalir.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.buttonSalir.Name = "buttonSalir";
             this.buttonSalir.Size = new System.Drawing.Size(89, 23);
-            this.buttonSalir.TabIndex = 21;
+            this.buttonSalir.TabIndex = 36;
             this.buttonSalir.Text = "Salir";
             this.buttonSalir.UseVisualStyleBackColor = true;
             this.buttonSalir.Click += new System.EventHandler(this.buttonSalir_Click);
             // 
-            // labelContraseña
-            // 
-            this.labelContraseña.AutoSize = true;
-            this.labelContraseña.Location = new System.Drawing.Point(155, 230);
-            this.labelContraseña.Name = "labelContraseña";
-            this.labelContraseña.Size = new System.Drawing.Size(61, 13);
-            this.labelContraseña.TabIndex = 34;
-            this.labelContraseña.Text = "Contraseña";
-            this.labelContraseña.Click += new System.EventHandler(this.label1_Click);
-            // 
-            // textBoxContraseña
-            // 
-            this.textBoxContraseña.Location = new System.Drawing.Point(265, 223);
-            this.textBoxContraseña.Name = "textBoxContraseña";
-            this.textBoxContraseña.Size = new System.Drawing.Size(200, 20);
-            this.textBoxContraseña.TabIndex = 33;
-            this.textBoxContraseña.TextChanged += new System.EventHandler(this.textBoxContraseña_TextChanged);
-            // 
-            // labelNombreUsuario
-            // 
-            this.labelNombreUsuario.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.labelNombreUsuario.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.labelNombreUsuario.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.labelNombreUsuario.Location = new System.Drawing.Point(431, 9);
-            this.labelNombreUsuario.Name = "labelNombreUsuario";
-            this.labelNombreUsuario.Size = new System.Drawing.Size(182, 31);
-            this.labelNombreUsuario.TabIndex = 35;
-            this.labelNombreUsuario.Text = "Nombre de Usuario";
-            this.labelNombreUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // RegistrarAdministrador
+            // Registrarse
             // 
             this.AcceptButton = this.buttonRegistrarAdministrador;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(624, 441);
-            this.Controls.Add(this.labelNombreUsuario);
             this.Controls.Add(this.labelContraseña);
             this.Controls.Add(this.textBoxContraseña);
             this.Controls.Add(this.labelError);
@@ -217,11 +197,10 @@ namespace Programa
             this.MaximumSize = new System.Drawing.Size(640, 480);
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(640, 480);
-            this.Name = "RegistrarAdministrador";
+            this.Name = "Registrarse";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Registrar Administrador";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.RegistrarAdministrador_FormClosed);
-            this.Load += new System.EventHandler(this.AgregarAdministrador_Load);
+            this.Text = "Registrarse";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Registrarse_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -229,6 +208,8 @@ namespace Programa
 
         #endregion
 
+        private System.Windows.Forms.Label labelContraseña;
+        private System.Windows.Forms.TextBox textBoxContraseña;
         private System.Windows.Forms.Label labelError;
         private System.Windows.Forms.Button buttonRegistrarAdministrador;
         private System.Windows.Forms.Label labelMail;
@@ -241,8 +222,5 @@ namespace Programa
         private System.Windows.Forms.TextBox textBoxNombre;
         private System.Windows.Forms.Button botonVolver;
         private System.Windows.Forms.Button buttonSalir;
-        private System.Windows.Forms.Label labelContraseña;
-        private System.Windows.Forms.TextBox textBoxContraseña;
-        private System.Windows.Forms.Label labelNombreUsuario;
     }
 }

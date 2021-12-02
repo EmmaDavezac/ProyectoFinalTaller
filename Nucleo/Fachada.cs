@@ -54,6 +54,29 @@ namespace Nucleo
         }
         public IEnumerable<UsuarioSimple> ObtenerUsuarios()
         { return unitOfWork.RepositorioUsuarios.GetAll(); }
+        public IEnumerable<UsuarioAdministrador> ObtenerAdministradores()
+        { return unitOfWork.RepositorioAdministradores.GetAll(); }
+        public IEnumerable<Libro> ObtenerLibros()
+        { return unitOfWork.RepositorioLibros.GetAll(); }
+        public IEnumerable<Ejemplar> ObtenerEjemplares()
+        { return unitOfWork.RepositorioEjemplares.GetAll(); }
+        public IEnumerable<Prestamo> ObtenerPrestamos()
+        { return unitOfWork.RepositorioPrestamos.GetAll(); }
+        public int ObtenerUltimoIdUsuario()
+
+        {return ObtenerUsuarios().Last().Id; }
+        public int ObtenerUltimoIdAdministrador()
+
+        { return ObtenerAdministradores().Last().Id; }
+        public int ObtenerUltimoIdLibro()
+
+        { return ObtenerLibros().Last().Id; }
+        public int ObtenerUltimoIdEjemplar()
+
+        { return ObtenerEjemplares().Last().Id; }
+        public int ObtenerUltimoIdPrestamo()
+
+        { return ObtenerPrestamos().Last().Id; }
 
     }
 }

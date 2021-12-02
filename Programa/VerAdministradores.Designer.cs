@@ -37,6 +37,7 @@ namespace Programa
             this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.botonVolver = new System.Windows.Forms.Button();
             this.buttonSalir = new System.Windows.Forms.Button();
+            this.labelNombreUsuario = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAdministradores)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,11 +53,11 @@ namespace Programa
             this.FechaNacimiento,
             this.Email});
             this.dgvAdministradores.GridColor = System.Drawing.SystemColors.Control;
-            this.dgvAdministradores.Location = new System.Drawing.Point(23, 36);
+            this.dgvAdministradores.Location = new System.Drawing.Point(12, 43);
             this.dgvAdministradores.Name = "dgvAdministradores";
             this.dgvAdministradores.ReadOnly = true;
             this.dgvAdministradores.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dgvAdministradores.Size = new System.Drawing.Size(580, 364);
+            this.dgvAdministradores.Size = new System.Drawing.Size(601, 354);
             this.dgvAdministradores.TabIndex = 11;
             this.dgvAdministradores.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAdministradores_CellContentClick);
             // 
@@ -127,11 +128,25 @@ namespace Programa
             this.buttonSalir.UseVisualStyleBackColor = true;
             this.buttonSalir.Click += new System.EventHandler(this.buttonSalir_Click);
             // 
+            // labelNombreUsuario
+            // 
+            this.labelNombreUsuario.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.labelNombreUsuario.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.labelNombreUsuario.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.labelNombreUsuario.Location = new System.Drawing.Point(431, 9);
+            this.labelNombreUsuario.Name = "labelNombreUsuario";
+            this.labelNombreUsuario.Size = new System.Drawing.Size(182, 31);
+            this.labelNombreUsuario.TabIndex = 12;
+            this.labelNombreUsuario.Text = "Nombre de Usuario";
+            this.labelNombreUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // VerAdministradores
             // 
+            this.AcceptButton = this.botonVolver;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(624, 441);
+            this.Controls.Add(this.labelNombreUsuario);
             this.Controls.Add(this.dgvAdministradores);
             this.Controls.Add(this.botonVolver);
             this.Controls.Add(this.buttonSalir);
@@ -152,12 +167,13 @@ namespace Programa
         #endregion
 
         private System.Windows.Forms.DataGridView dgvAdministradores;
+        private System.Windows.Forms.Button botonVolver;
+        private System.Windows.Forms.Button buttonSalir;
+        private System.Windows.Forms.Label labelNombreUsuario;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn Apellido;
         private System.Windows.Forms.DataGridViewTextBoxColumn FechaNacimiento;
         private System.Windows.Forms.DataGridViewTextBoxColumn Email;
-        private System.Windows.Forms.Button botonVolver;
-        private System.Windows.Forms.Button buttonSalir;
     }
 }

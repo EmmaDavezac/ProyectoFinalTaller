@@ -17,7 +17,7 @@ namespace Programa
         private string NombreUsuario { get; set; }
         public VerUsuarios(string nombreUsuario)
         {
-            NombreUsuario = nombreUsuario;
+            
             InitializeComponent();
             foreach (var item in new Fachada().ObtenerUsuarios() )
             {
@@ -29,6 +29,8 @@ namespace Programa
                 dgvUsuarios.Rows[n].Cells[4].Value =item.Mail;
                 dgvUsuarios.Rows[n].Cells[5].Value = item.Scoring;
             }
+            NombreUsuario = nombreUsuario;
+            labelNombreUsuario.Text = "Usuario: " + NombreUsuario;
         }
 
         private void buttonSalir_Click(object sender, EventArgs e)

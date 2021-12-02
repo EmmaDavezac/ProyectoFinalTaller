@@ -889,7 +889,7 @@
     <value>1</value>
   </data>
   <data name="labelNombreUsuario.Location" type="System.Drawing.Point, System.Drawing">
-    <value>404, 9</value>
+    <value>431, 9</value>
   </data>
   <data name="labelNombreUsuario.Size" type="System.Drawing.Size, System.Drawing">
     <value>182, 31</value>

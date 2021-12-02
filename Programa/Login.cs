@@ -74,7 +74,7 @@ namespace Programa
         private void buttonRegistrarse_Click(object sender, EventArgs e)
         {
             this.Hide();
-            RegistrarAdministrador ventana = new RegistrarAdministrador();
+            Registrarse ventana = new Registrarse();
             ventana.Show();
         }
 
@@ -92,6 +92,11 @@ namespace Programa
                 textBoxContraseña.UseSystemPasswordChar = true;
                 buttonMostrar.Text = "Mostrar";
             }
+        }
+
+        private void Login_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

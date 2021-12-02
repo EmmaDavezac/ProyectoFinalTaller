@@ -16,8 +16,10 @@ namespace Programa
         private string NombreUsuario { get; set; }
         public RegistrarUsuario(string nombreUsuario)
         {
-            NombreUsuario = nombreUsuario;
+            
             InitializeComponent();
+            NombreUsuario = nombreUsuario;
+            labelNombreUsuario.Text = "Usuario: " + NombreUsuario;
         }
 
         private void buttonSalir_Click(object sender, EventArgs e)
@@ -54,6 +56,7 @@ namespace Programa
             {
                 Fachada fachada = new Fachada();
                 fachada.AñadirUsuario(textBoxNombre.Text, textBoxApellido.Text, dateTimePickerFechaNacimiento.Value, textBoxMail.Text);
+                MessageBox.Show("El Usuario ha sido creado, el id  es: " + fachada.ObtenerUltimoIdUsuario(), "Operacion Exitosa", MessageBoxButtons.OK);
                 this.Hide();
                 MenuPrincipal ventanaMenu = new MenuPrincipal(NombreUsuario);
                 ventanaMenu.Show();

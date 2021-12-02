@@ -48,7 +48,7 @@ namespace Programa
 
         private void botonBuscarUsuario_Click(object sender, EventArgs e)
         {
-            ConsultarUsuario ventana = new ConsultarUsuario();
+            ConsultarUsuario ventana = new ConsultarUsuario(NombreUsuario);
             this.Hide();
             ventana.Show();
         }
@@ -99,7 +99,7 @@ namespace Programa
         private void buttonBuscarAdministrador_Click(object sender, EventArgs e)
         {
             this.Hide();
-            ConsultarAdministrador ventana = new ConsultarAdministrador();
+            ConsultarAdministrador ventana = new ConsultarAdministrador(NombreUsuario);
             ventana.Show();
         }
 

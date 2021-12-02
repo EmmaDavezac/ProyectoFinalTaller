@@ -45,6 +45,7 @@ namespace Programa
             this.textBoxFecha = new System.Windows.Forms.TextBox();
             this.labelScoring = new System.Windows.Forms.Label();
             this.textBoxScoring = new System.Windows.Forms.TextBox();
+            this.labelNombreUsuario = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // labelError
@@ -197,12 +198,25 @@ namespace Programa
             this.textBoxScoring.TabIndex = 37;
             this.textBoxScoring.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
+            // labelNombreUsuario
+            // 
+            this.labelNombreUsuario.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.labelNombreUsuario.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.labelNombreUsuario.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.labelNombreUsuario.Location = new System.Drawing.Point(431, 9);
+            this.labelNombreUsuario.Name = "labelNombreUsuario";
+            this.labelNombreUsuario.Size = new System.Drawing.Size(182, 31);
+            this.labelNombreUsuario.TabIndex = 39;
+            this.labelNombreUsuario.Text = "Nombre de Usuario";
+            this.labelNombreUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // ConsultarUsuario
             // 
             this.AcceptButton = this.buttonBuscarUsuario;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(624, 441);
+            this.Controls.Add(this.labelNombreUsuario);
             this.Controls.Add(this.labelScoring);
             this.Controls.Add(this.textBoxScoring);
             this.Controls.Add(this.textBoxFecha);
@@ -227,6 +241,7 @@ namespace Programa
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Consultar Usuario";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ConsultarUsuario_FormClosed);
+            this.Load += new System.EventHandler(this.ConsultarUsuario_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -250,5 +265,6 @@ namespace Programa
         private System.Windows.Forms.TextBox textBoxFecha;
         private System.Windows.Forms.Label labelScoring;
         private System.Windows.Forms.TextBox textBoxScoring;
+        private System.Windows.Forms.Label labelNombreUsuario;
     }
 }

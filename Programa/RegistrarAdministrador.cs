@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Dominio;
 using Nucleo;
 
 namespace Programa
@@ -17,8 +16,10 @@ namespace Programa
         private string NombreUsuario { get; set; }
         public RegistrarAdministrador(string nombreUsuario)
         {
-            NombreUsuario = nombreUsuario;
+            
             InitializeComponent();
+            NombreUsuario = nombreUsuario;
+            labelNombreUsuario.Text = "Usuario: " + NombreUsuario;
         }
 
         private void AgregarAdministrador_Load(object sender, EventArgs e)
@@ -37,6 +38,7 @@ namespace Programa
             {
                 Fachada fachada = new Fachada();
                 fachada.AñadirAdministrador(textBoxNombre.Text, textBoxApellido.Text, dateTimePickerFechaNacimiento.Value, textBoxMail.Text,textBoxContraseña.Text);
+                MessageBox.Show("El Administrador ha sido creado, el id de acceso es: " + fachada.ObtenerUltimoIdAdministrador(), "Operacion Exitosa", MessageBoxButtons.OK);
                 this.Hide();
                 Login ventana= new Login();
                 ventana.Show();
@@ -52,8 +54,8 @@ namespace Programa
         private void botonVolver_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Login ventanaMenu = new Login();
-            ventanaMenu.Show();
+            MenuPrincipal ventana = new MenuPrincipal(NombreUsuario);
+            ventana.Show();
         }
 
         private void buttonSalir_Click(object sender, EventArgs e)

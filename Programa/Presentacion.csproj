@@ -68,6 +68,12 @@
     <Compile Include="RegistrarAdministrador.Designer.cs">
       <DependentUpon>RegistrarAdministrador.cs</DependentUpon>
     </Compile>
+    <Compile Include="Registrarse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Registrarse.Designer.cs">
+      <DependentUpon>Registrarse.cs</DependentUpon>
+    </Compile>
     <Compile Include="RegistrarUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -111,6 +117,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RegistrarAdministrador.resx">
       <DependentUpon>RegistrarAdministrador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Registrarse.resx">
+      <DependentUpon>Registrarse.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RegistrarUsuario.resx">
       <DependentUpon>RegistrarUsuario.cs</DependentUpon>
