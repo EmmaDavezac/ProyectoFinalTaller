@@ -56,6 +56,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BuscarLibrosAPI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BuscarLibrosAPI.Designer.cs">
+      <DependentUpon>BuscarLibrosAPI.cs</DependentUpon>
+    </Compile>
     <Compile Include="ConsultarAdministrador.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,6 +118,9 @@
     <Compile Include="VerUsuarios.Designer.cs">
       <DependentUpon>VerUsuarios.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="BuscarLibrosAPI.resx">
+      <DependentUpon>BuscarLibrosAPI.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ConsultarAdministrador.resx">
       <DependentUpon>ConsultarAdministrador.cs</DependentUpon>
     </EmbeddedResource>
@@ -173,6 +182,10 @@
     <ProjectReference Include="..\Nucleo\Nucleo.csproj">
       <Project>{42580751-3ea3-4055-99f8-a2350fc23d8a}</Project>
       <Name>Nucleo</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ServiciosAPILibros\ServiciosAPILibros.csproj">
+      <Project>{a91220c9-fba8-454f-b911-4f9002e08fbf}</Project>
+      <Name>ServiciosAPILibros</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

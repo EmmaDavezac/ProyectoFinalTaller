@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace Programa
 {
-    static class Programa
+    static class Presentacion
     {
         /// <summary>
         /// Punto de entrada principal para la aplicación.

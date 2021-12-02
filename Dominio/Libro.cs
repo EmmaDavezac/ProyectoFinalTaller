@@ -9,15 +9,17 @@ namespace Dominio
     public class Libro
     { 
         public int Id { get; set; }
-        public string ISBN  { get; set; }
+        //public string ISBN  { get; set; }
         public string Titulo { get; set; }
         public string Autor { get; set; }
+        public string AñoPrimeraPublicacion { get; set; }
         public IEnumerable<Ejemplar> Ejemplares { get; set; }
-        public Libro(string unISBN,string titulo,string autor)
+        public Libro(string titulo,string autor,string añoPrimeraPublicacion)
         {
-            ISBN = unISBN;
+            //ISBN = unISBN;
             Titulo = titulo;
             Autor = autor;
+            AñoPrimeraPublicacion = añoPrimeraPublicacion;
         }
     }
 }

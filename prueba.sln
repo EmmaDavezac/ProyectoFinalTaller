@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentacion", "Programa\Pr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nucleo", "Nucleo\Nucleo.csproj", "{42580751-3EA3-4055-99F8-A2350FC23D8A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiciosAPILibros", "ServiciosAPILibros\ServiciosAPILibros.csproj", "{A91220C9-FBA8-454F-B911-4F9002E08FBF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{42580751-3EA3-4055-99F8-A2350FC23D8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{42580751-3EA3-4055-99F8-A2350FC23D8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{42580751-3EA3-4055-99F8-A2350FC23D8A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A91220C9-FBA8-454F-B911-4F9002E08FBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A91220C9-FBA8-454F-B911-4F9002E08FBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A91220C9-FBA8-454F-B911-4F9002E08FBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A91220C9-FBA8-454F-B911-4F9002E08FBF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

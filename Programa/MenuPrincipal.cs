@@ -109,5 +109,12 @@ namespace Programa
             this.Hide();
             ventana.Show();
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            BuscarLibrosAPI ventana = new BuscarLibrosAPI(NombreUsuario);
+            this.Hide();
+            ventana.Show();
+        }
     }
 }
