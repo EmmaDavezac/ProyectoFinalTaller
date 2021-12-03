@@ -39,16 +39,16 @@ namespace Programa
         {
             if (textBoxId.Text != null && (textBoxId.Text).All(char.IsDigit)&&textBoxId.Text != "")
             {
-                Fachada fachada = new Fachada();
-                if (new Fachada().ObtenerAdministrador(Convert.ToInt32(textBoxId.Text)) != null)
+                Nucleo.Nucleo fachada = new Nucleo.Nucleo();
+                if (new Nucleo.Nucleo().ObtenerAdministrador(Convert.ToInt32(textBoxId.Text)) != null)
                 {
-                    if (textBoxContraseña.Text!=null &&fachada.VerficarContraseña(fachada.ObtenerAdministrador(Convert.ToInt32(textBoxId.Text)).Id,textBoxContraseña.Text))
+                    if (textBoxContraseña.Text!=null && fachada.VerficarContraseña(fachada.ObtenerAdministrador(Convert.ToInt32(textBoxId.Text)).Id, textBoxContraseña.Text))
                     {
                         this.Hide();
-                        MenuPrincipal ventanaMenu = new MenuPrincipal(fachada.ObtenerAdministrador(Convert.ToInt32(textBoxId.Text)).Nombre + " "+fachada.ObtenerAdministrador(Convert.ToInt32(textBoxId.Text)).Apellido);
+                        MenuPrincipal ventanaMenu = new MenuPrincipal(fachada.ObtenerAdministrador(Convert.ToInt32(textBoxId.Text)).Nombre + " "+ fachada.ObtenerAdministrador(Convert.ToInt32(textBoxId.Text)).Apellido);
                         ventanaMenu.Show();
                     }
-                    else { labelError.Text = "La contraseña ingresada es incorrecta ";botonIniciarSesion.Enabled = false; textBoxContraseña.Focus(); }
+                    else { labelError.Text = "La contraseña ingresada es incorrecta "; botonIniciarSesion.Enabled = false; textBoxContraseña.Focus(); }
 
                 }
                 else { labelError.Text = "El usuario No existe"; botonIniciarSesion.Enabled = false; textBoxId.Focus(); }

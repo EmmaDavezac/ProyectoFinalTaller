@@ -112,7 +112,7 @@ namespace Programa
 
         private void button6_Click(object sender, EventArgs e)
         {
-            BuscarLibrosAPI ventana = new BuscarLibrosAPI(NombreUsuario);
+            RegistrarLibro ventana = new RegistrarLibro(NombreUsuario);
             this.Hide();
             ventana.Show();
         }

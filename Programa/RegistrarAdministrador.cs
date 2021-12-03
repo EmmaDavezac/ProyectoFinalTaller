@@ -36,7 +36,7 @@ namespace Programa
         {
             if (textBoxApellido.Text != null && textBoxNombre.Text != null && textBoxMail.Text != null && dateTimePickerFechaNacimiento.Value.Date != DateTime.Now.Date&&textBoxContraseña.Text!=null)
             {
-                Fachada fachada = new Fachada();
+                Nucleo.Nucleo fachada = new Nucleo.Nucleo();
                 fachada.AñadirAdministrador(textBoxNombre.Text, textBoxApellido.Text, dateTimePickerFechaNacimiento.Value, textBoxMail.Text,textBoxContraseña.Text);
                 MessageBox.Show("El Administrador ha sido creado, el id de acceso es: " + fachada.ObtenerUltimoIdAdministrador(), "Operacion Exitosa", MessageBoxButtons.OK);
                 this.Hide();

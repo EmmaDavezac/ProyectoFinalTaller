@@ -20,7 +20,7 @@ namespace Programa
             InitializeComponent();
             NombreUsuario = nombreUsuario;
             labelNombreUsuario.Text = "Usuario: " + NombreUsuario;
-            foreach (var item in new Fachada().ObtenerAdministradores())
+            foreach (var item in new Nucleo.Nucleo().ObtenerAdministradores())
             {
                 int n = dgvAdministradores.Rows.Add();
                 dgvAdministradores.Rows[n].Cells[0].Value = item.Id;

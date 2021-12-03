@@ -54,7 +54,7 @@ namespace Programa
 
             if (textBoxApellido.Text != null && textBoxNombre.Text != null && textBoxMail.Text != null && dateTimePickerFechaNacimiento.Value.Date != DateTime.Now.Date)
             {
-                Fachada fachada = new Fachada();
+                Nucleo.Nucleo fachada = new Nucleo.Nucleo();
                 fachada.AñadirUsuario(textBoxNombre.Text, textBoxApellido.Text, dateTimePickerFechaNacimiento.Value, textBoxMail.Text);
                 MessageBox.Show("El Usuario ha sido creado, el id  es: " + fachada.ObtenerUltimoIdUsuario(), "Operacion Exitosa", MessageBoxButtons.OK);
                 this.Hide();

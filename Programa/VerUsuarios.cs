@@ -18,14 +18,14 @@ namespace Programa
         {
             
             InitializeComponent();
-            foreach (var item in new Fachada().ObtenerUsuarios() )
+            foreach (var item in new Nucleo.Nucleo().ObtenerUsuarios() )
             {
-                int n=dgvUsuarios.Rows.Add();
-                dgvUsuarios.Rows[n].Cells[0].Value =item.Id;
-                dgvUsuarios.Rows[n].Cells[1].Value =item.Nombre;
-                dgvUsuarios.Rows[n].Cells[2].Value =item.Apellido;
-                dgvUsuarios.Rows[n].Cells[3].Value =item.FechaNacimiento;
-                dgvUsuarios.Rows[n].Cells[4].Value =item.Mail;
+                int n= dgvUsuarios.Rows.Add();
+                dgvUsuarios.Rows[n].Cells[0].Value = item.Id;
+                dgvUsuarios.Rows[n].Cells[1].Value = item.Nombre;
+                dgvUsuarios.Rows[n].Cells[2].Value = item.Apellido;
+                dgvUsuarios.Rows[n].Cells[3].Value = item.FechaNacimiento;
+                dgvUsuarios.Rows[n].Cells[4].Value = item.Mail;
                 dgvUsuarios.Rows[n].Cells[5].Value = item.Scoring;
             }
             NombreUsuario = nombreUsuario;

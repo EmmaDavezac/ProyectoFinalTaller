@@ -12,7 +12,7 @@ using Dominio;
 
 namespace ServiciosAPILibros
 {
-    public class APILibros
+    public class APIOpenLibrary:IServiciosAPILibros
     {
         public string TratarCadenaBusqueda(string ca)
         {
@@ -25,12 +25,12 @@ namespace ServiciosAPILibros
                     c = c + "+" + palabra;
                 else c = c + palabra;
             }
-            return c;
+            return c.ToUpper();
 
         }
         public List<Libro> ListaPorCoincidecia(string cadena)
         {  // Establecimiento del protocolo ssl de transporte
-            System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
             List<Libro> lista = new List<Libro>();
             // Url de ejemplo
             var mUrl = "http://openlibrary.org/search.json?q=" + TratarCadenaBusqueda(cadena);
@@ -56,7 +56,8 @@ namespace ServiciosAPILibros
                     // Se iteran cada uno de los resultados.
                     string titulo;
                     string autor;
-                    string añoPrimeraPublicacion;
+                    string añoPublicacion;
+                    string isbn;
 
                     foreach (var bResponseItem in mResponseJSON.docs)
                     {
@@ -73,12 +74,18 @@ namespace ServiciosAPILibros
                              autor= HttpUtility.HtmlDecode(bResponseItem.author_name.ToString());
                             }
                             else {  autor = "desconocido"; }
-                        if (bResponseItem.first_publish_year != null)
+                        if (bResponseItem.publish_year != null)
                             {
-                             añoPrimeraPublicacion = HttpUtility.HtmlDecode(bResponseItem.first_publish_year.ToString());
+                             añoPublicacion = HttpUtility.HtmlDecode(bResponseItem.publish_year.ToString());
                             }
-                            else { añoPrimeraPublicacion = "desconocido"; }
-                        lista.Add(new Libro(titulo, autor, añoPrimeraPublicacion));
+                            else { añoPublicacion = "desconocido"; }
+
+                        if (bResponseItem.isbn != null)
+                        {
+                            isbn = HttpUtility.HtmlDecode(bResponseItem.isbn.ToString());
+                        }
+                        else { isbn = "desconocido"; }
+                        lista.Add(new Libro(isbn,titulo, autor, añoPublicacion));
                     }
                 }
                 

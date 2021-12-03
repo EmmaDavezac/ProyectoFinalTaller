@@ -31,7 +31,7 @@ namespace Programa
         {
             if (textBoxId.Text!=null&&(textBoxId.Text).All(char.IsDigit)&& textBoxId.Text !="")
             {
-                UsuarioSimple usuario = new Fachada().ObtenerUsuario(Convert.ToInt32(textBoxId.Text));
+                UsuarioSimple usuario = new Nucleo.Nucleo().ObtenerUsuario(Convert.ToInt32(textBoxId.Text));
                 if (usuario!=null)
                 {
                     textBoxNombre.Text = usuario.Nombre;
