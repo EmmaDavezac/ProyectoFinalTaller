@@ -30,6 +30,10 @@ namespace Programa
         private void InitializeComponent()
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Titulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Autor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AñoPublicacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ISBN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.textBoxBuscar = new System.Windows.Forms.TextBox();
             this.buttonBuscar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -44,10 +48,6 @@ namespace Programa
             this.labelResultados = new System.Windows.Forms.Label();
             this.textBoxISBN = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.Titulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Autor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AñoPublicacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ISBN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buttonBuscarPorISBN = new System.Windows.Forms.Button();
             this.buttonGuardar = new System.Windows.Forms.Button();
             this.textBoxBuscarPorISBN = new System.Windows.Forms.TextBox();
@@ -59,17 +59,47 @@ namespace Programa
             // 
             // dataGridView1
             // 
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
+            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Titulo,
             this.Autor,
             this.AñoPublicacion,
             this.ISBN});
+            this.dataGridView1.GridColor = System.Drawing.SystemColors.Control;
             this.dataGridView1.Location = new System.Drawing.Point(4, 178);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(768, 328);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // Titulo
+            // 
+            this.Titulo.HeaderText = "Titulo";
+            this.Titulo.Name = "Titulo";
+            this.Titulo.ReadOnly = true;
+            this.Titulo.Width = 300;
+            // 
+            // Autor
+            // 
+            this.Autor.HeaderText = "Autor";
+            this.Autor.Name = "Autor";
+            this.Autor.ReadOnly = true;
+            this.Autor.Width = 300;
+            // 
+            // AñoPublicacion
+            // 
+            this.AñoPublicacion.HeaderText = "Año Publicacion";
+            this.AñoPublicacion.Name = "AñoPublicacion";
+            this.AñoPublicacion.ReadOnly = true;
+            this.AñoPublicacion.Width = 125;
+            // 
+            // ISBN
+            // 
+            this.ISBN.HeaderText = "ISBN";
+            this.ISBN.Name = "ISBN";
+            this.ISBN.ReadOnly = true;
             // 
             // textBoxBuscar
             // 
@@ -200,33 +230,6 @@ namespace Programa
             this.label5.Text = "ISBN";
             this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
-            // Titulo
-            // 
-            this.Titulo.HeaderText = "Titulo";
-            this.Titulo.Name = "Titulo";
-            this.Titulo.ReadOnly = true;
-            this.Titulo.Width = 300;
-            // 
-            // Autor
-            // 
-            this.Autor.HeaderText = "Autor";
-            this.Autor.Name = "Autor";
-            this.Autor.ReadOnly = true;
-            this.Autor.Width = 300;
-            // 
-            // AñoPublicacion
-            // 
-            this.AñoPublicacion.HeaderText = "Año Publicacion";
-            this.AñoPublicacion.Name = "AñoPublicacion";
-            this.AñoPublicacion.ReadOnly = true;
-            this.AñoPublicacion.Width = 125;
-            // 
-            // ISBN
-            // 
-            this.ISBN.HeaderText = "ISBN";
-            this.ISBN.Name = "ISBN";
-            this.ISBN.ReadOnly = true;
-            // 
             // buttonBuscarPorISBN
             // 
             this.buttonBuscarPorISBN.Location = new System.Drawing.Point(697, 114);
@@ -287,6 +290,7 @@ namespace Programa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(784, 561);
             this.Controls.Add(this.buttonBorrarDatos);
             this.Controls.Add(this.lableResultadosISBN);

@@ -30,39 +30,38 @@ namespace Programa
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuPrincipal));
-            this.botonRegistrarUsuario = new System.Windows.Forms.Button();
-            this.botonBuscarUsuario = new System.Windows.Forms.Button();
             this.botonVolver = new System.Windows.Forms.Button();
-            this.botonVerUsuarios = new System.Windows.Forms.Button();
-            this.buttonSalir = new System.Windows.Forms.Button();
-            this.groupBoxUsuarios = new System.Windows.Forms.GroupBox();
-            this.buttonActualizarUsuario = new System.Windows.Forms.Button();
-            this.groupBoxLibros = new System.Windows.Forms.GroupBox();
-            this.buttonActualizarLibro = new System.Windows.Forms.Button();
-            this.buttonAñadirLibro = new System.Windows.Forms.Button();
-            this.buttonBuscarLibro = new System.Windows.Forms.Button();
-            this.buttonVerLibros = new System.Windows.Forms.Button();
-            this.groupBoxPrestamos = new System.Windows.Forms.GroupBox();
-            this.buttonRegistrarDevolucion = new System.Windows.Forms.Button();
-            this.buttonRegistrarPrestamo = new System.Windows.Forms.Button();
-            this.buttonBuscarPrestamo = new System.Windows.Forms.Button();
-            this.buttonVerUsuarios = new System.Windows.Forms.Button();
-            this.groupBoxAdministradores = new System.Windows.Forms.GroupBox();
-            this.buttonModificarAdministrador = new System.Windows.Forms.Button();
-            this.buttonRegistrarAdministrador = new System.Windows.Forms.Button();
-            this.buttonBuscarAdministrador = new System.Windows.Forms.Button();
-            this.buttonVerAdministradores = new System.Windows.Forms.Button();
-            this.groupBoxEjemplares = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
             this.labelNombreUsuario = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
+            this.botonVerUsuarios = new System.Windows.Forms.Button();
+            this.botonBuscarUsuario = new System.Windows.Forms.Button();
+            this.botonRegistrarUsuario = new System.Windows.Forms.Button();
+            this.buttonActualizarUsuario = new System.Windows.Forms.Button();
+            this.groupBoxUsuarios = new System.Windows.Forms.GroupBox();
+            this.buttonVerLibros = new System.Windows.Forms.Button();
+            this.buttonBuscarLibro = new System.Windows.Forms.Button();
+            this.buttonAñadirLibro = new System.Windows.Forms.Button();
+            this.buttonActualizarLibro = new System.Windows.Forms.Button();
+            this.groupBoxLibros = new System.Windows.Forms.GroupBox();
+            this.buttonVerUsuarios = new System.Windows.Forms.Button();
+            this.buttonBuscarPrestamo = new System.Windows.Forms.Button();
+            this.buttonRegistrarPrestamo = new System.Windows.Forms.Button();
+            this.buttonRegistrarDevolucion = new System.Windows.Forms.Button();
+            this.groupBoxPrestamos = new System.Windows.Forms.GroupBox();
+            this.buttonVerAdministradores = new System.Windows.Forms.Button();
+            this.buttonBuscarAdministrador = new System.Windows.Forms.Button();
+            this.buttonRegistrarAdministrador = new System.Windows.Forms.Button();
+            this.buttonModificarAdministrador = new System.Windows.Forms.Button();
+            this.groupBoxAdministradores = new System.Windows.Forms.GroupBox();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.groupBoxEjemplares = new System.Windows.Forms.GroupBox();
             this.button8 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBoxUsuarios.SuspendLayout();
             this.groupBoxLibros.SuspendLayout();
             this.groupBoxPrestamos.SuspendLayout();
@@ -70,21 +69,6 @@ namespace Programa
             this.groupBoxEjemplares.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // botonRegistrarUsuario
-            // 
-            resources.ApplyResources(this.botonRegistrarUsuario, "botonRegistrarUsuario");
-            this.botonRegistrarUsuario.Name = "botonRegistrarUsuario";
-            this.botonRegistrarUsuario.TabStop = false;
-            this.botonRegistrarUsuario.UseVisualStyleBackColor = true;
-            this.botonRegistrarUsuario.Click += new System.EventHandler(this.botonAñadirUsuario_Click);
-            // 
-            // botonBuscarUsuario
-            // 
-            resources.ApplyResources(this.botonBuscarUsuario, "botonBuscarUsuario");
-            this.botonBuscarUsuario.Name = "botonBuscarUsuario";
-            this.botonBuscarUsuario.UseVisualStyleBackColor = true;
-            this.botonBuscarUsuario.Click += new System.EventHandler(this.botonBuscarUsuario_Click);
             // 
             // botonVolver
             // 
@@ -94,6 +78,14 @@ namespace Programa
             this.botonVolver.UseVisualStyleBackColor = true;
             this.botonVolver.Click += new System.EventHandler(this.botonSalir_Click);
             // 
+            // labelNombreUsuario
+            // 
+            this.labelNombreUsuario.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.labelNombreUsuario.ForeColor = System.Drawing.SystemColors.ControlLight;
+            resources.ApplyResources(this.labelNombreUsuario, "labelNombreUsuario");
+            this.labelNombreUsuario.Name = "labelNombreUsuario";
+            this.labelNombreUsuario.Click += new System.EventHandler(this.label1_Click);
+            // 
             // botonVerUsuarios
             // 
             resources.ApplyResources(this.botonVerUsuarios, "botonVerUsuarios");
@@ -101,13 +93,26 @@ namespace Programa
             this.botonVerUsuarios.UseVisualStyleBackColor = true;
             this.botonVerUsuarios.Click += new System.EventHandler(this.botonVerUsuarios_Click);
             // 
-            // buttonSalir
+            // botonBuscarUsuario
             // 
-            this.buttonSalir.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            resources.ApplyResources(this.buttonSalir, "buttonSalir");
-            this.buttonSalir.Name = "buttonSalir";
-            this.buttonSalir.UseVisualStyleBackColor = true;
-            this.buttonSalir.Click += new System.EventHandler(this.buttonSalir_Click);
+            resources.ApplyResources(this.botonBuscarUsuario, "botonBuscarUsuario");
+            this.botonBuscarUsuario.Name = "botonBuscarUsuario";
+            this.botonBuscarUsuario.UseVisualStyleBackColor = true;
+            this.botonBuscarUsuario.Click += new System.EventHandler(this.botonBuscarUsuario_Click);
+            // 
+            // botonRegistrarUsuario
+            // 
+            resources.ApplyResources(this.botonRegistrarUsuario, "botonRegistrarUsuario");
+            this.botonRegistrarUsuario.Name = "botonRegistrarUsuario";
+            this.botonRegistrarUsuario.TabStop = false;
+            this.botonRegistrarUsuario.UseVisualStyleBackColor = true;
+            this.botonRegistrarUsuario.Click += new System.EventHandler(this.botonAñadirUsuario_Click);
+            // 
+            // buttonActualizarUsuario
+            // 
+            resources.ApplyResources(this.buttonActualizarUsuario, "buttonActualizarUsuario");
+            this.buttonActualizarUsuario.Name = "buttonActualizarUsuario";
+            this.buttonActualizarUsuario.UseVisualStyleBackColor = true;
             // 
             // groupBoxUsuarios
             // 
@@ -120,11 +125,31 @@ namespace Programa
             this.groupBoxUsuarios.TabStop = false;
             this.groupBoxUsuarios.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
-            // buttonActualizarUsuario
+            // buttonVerLibros
             // 
-            resources.ApplyResources(this.buttonActualizarUsuario, "buttonActualizarUsuario");
-            this.buttonActualizarUsuario.Name = "buttonActualizarUsuario";
-            this.buttonActualizarUsuario.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.buttonVerLibros, "buttonVerLibros");
+            this.buttonVerLibros.Name = "buttonVerLibros";
+            this.buttonVerLibros.UseVisualStyleBackColor = true;
+            this.buttonVerLibros.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // buttonBuscarLibro
+            // 
+            resources.ApplyResources(this.buttonBuscarLibro, "buttonBuscarLibro");
+            this.buttonBuscarLibro.Name = "buttonBuscarLibro";
+            this.buttonBuscarLibro.UseVisualStyleBackColor = true;
+            // 
+            // buttonAñadirLibro
+            // 
+            resources.ApplyResources(this.buttonAñadirLibro, "buttonAñadirLibro");
+            this.buttonAñadirLibro.Name = "buttonAñadirLibro";
+            this.buttonAñadirLibro.TabStop = false;
+            this.buttonAñadirLibro.UseVisualStyleBackColor = true;
+            // 
+            // buttonActualizarLibro
+            // 
+            resources.ApplyResources(this.buttonActualizarLibro, "buttonActualizarLibro");
+            this.buttonActualizarLibro.Name = "buttonActualizarLibro";
+            this.buttonActualizarLibro.UseVisualStyleBackColor = true;
             // 
             // groupBoxLibros
             // 
@@ -136,31 +161,30 @@ namespace Programa
             this.groupBoxLibros.Name = "groupBoxLibros";
             this.groupBoxLibros.TabStop = false;
             // 
-            // buttonActualizarLibro
+            // buttonVerUsuarios
             // 
-            resources.ApplyResources(this.buttonActualizarLibro, "buttonActualizarLibro");
-            this.buttonActualizarLibro.Name = "buttonActualizarLibro";
-            this.buttonActualizarLibro.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.buttonVerUsuarios, "buttonVerUsuarios");
+            this.buttonVerUsuarios.Name = "buttonVerUsuarios";
+            this.buttonVerUsuarios.UseVisualStyleBackColor = true;
             // 
-            // buttonAñadirLibro
+            // buttonBuscarPrestamo
             // 
-            resources.ApplyResources(this.buttonAñadirLibro, "buttonAñadirLibro");
-            this.buttonAñadirLibro.Name = "buttonAñadirLibro";
-            this.buttonAñadirLibro.TabStop = false;
-            this.buttonAñadirLibro.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.buttonBuscarPrestamo, "buttonBuscarPrestamo");
+            this.buttonBuscarPrestamo.Name = "buttonBuscarPrestamo";
+            this.buttonBuscarPrestamo.UseVisualStyleBackColor = true;
             // 
-            // buttonBuscarLibro
+            // buttonRegistrarPrestamo
             // 
-            resources.ApplyResources(this.buttonBuscarLibro, "buttonBuscarLibro");
-            this.buttonBuscarLibro.Name = "buttonBuscarLibro";
-            this.buttonBuscarLibro.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.buttonRegistrarPrestamo, "buttonRegistrarPrestamo");
+            this.buttonRegistrarPrestamo.Name = "buttonRegistrarPrestamo";
+            this.buttonRegistrarPrestamo.TabStop = false;
+            this.buttonRegistrarPrestamo.UseVisualStyleBackColor = true;
             // 
-            // buttonVerLibros
+            // buttonRegistrarDevolucion
             // 
-            resources.ApplyResources(this.buttonVerLibros, "buttonVerLibros");
-            this.buttonVerLibros.Name = "buttonVerLibros";
-            this.buttonVerLibros.UseVisualStyleBackColor = true;
-            this.buttonVerLibros.Click += new System.EventHandler(this.button3_Click);
+            resources.ApplyResources(this.buttonRegistrarDevolucion, "buttonRegistrarDevolucion");
+            this.buttonRegistrarDevolucion.Name = "buttonRegistrarDevolucion";
+            this.buttonRegistrarDevolucion.UseVisualStyleBackColor = true;
             // 
             // groupBoxPrestamos
             // 
@@ -173,30 +197,33 @@ namespace Programa
             this.groupBoxPrestamos.TabStop = false;
             this.groupBoxPrestamos.Enter += new System.EventHandler(this.groupBox3_Enter);
             // 
-            // buttonRegistrarDevolucion
+            // buttonVerAdministradores
             // 
-            resources.ApplyResources(this.buttonRegistrarDevolucion, "buttonRegistrarDevolucion");
-            this.buttonRegistrarDevolucion.Name = "buttonRegistrarDevolucion";
-            this.buttonRegistrarDevolucion.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.buttonVerAdministradores, "buttonVerAdministradores");
+            this.buttonVerAdministradores.Name = "buttonVerAdministradores";
+            this.buttonVerAdministradores.UseVisualStyleBackColor = true;
+            this.buttonVerAdministradores.Click += new System.EventHandler(this.buttonVerAdministradores_Click);
             // 
-            // buttonRegistrarPrestamo
+            // buttonBuscarAdministrador
             // 
-            resources.ApplyResources(this.buttonRegistrarPrestamo, "buttonRegistrarPrestamo");
-            this.buttonRegistrarPrestamo.Name = "buttonRegistrarPrestamo";
-            this.buttonRegistrarPrestamo.TabStop = false;
-            this.buttonRegistrarPrestamo.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.buttonBuscarAdministrador, "buttonBuscarAdministrador");
+            this.buttonBuscarAdministrador.Name = "buttonBuscarAdministrador";
+            this.buttonBuscarAdministrador.UseVisualStyleBackColor = true;
+            this.buttonBuscarAdministrador.Click += new System.EventHandler(this.buttonBuscarAdministrador_Click);
             // 
-            // buttonBuscarPrestamo
+            // buttonRegistrarAdministrador
             // 
-            resources.ApplyResources(this.buttonBuscarPrestamo, "buttonBuscarPrestamo");
-            this.buttonBuscarPrestamo.Name = "buttonBuscarPrestamo";
-            this.buttonBuscarPrestamo.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.buttonRegistrarAdministrador, "buttonRegistrarAdministrador");
+            this.buttonRegistrarAdministrador.Name = "buttonRegistrarAdministrador";
+            this.buttonRegistrarAdministrador.TabStop = false;
+            this.buttonRegistrarAdministrador.UseVisualStyleBackColor = true;
+            this.buttonRegistrarAdministrador.Click += new System.EventHandler(this.buttonRegistrarAdministrador_Click);
             // 
-            // buttonVerUsuarios
+            // buttonModificarAdministrador
             // 
-            resources.ApplyResources(this.buttonVerUsuarios, "buttonVerUsuarios");
-            this.buttonVerUsuarios.Name = "buttonVerUsuarios";
-            this.buttonVerUsuarios.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.buttonModificarAdministrador, "buttonModificarAdministrador");
+            this.buttonModificarAdministrador.Name = "buttonModificarAdministrador";
+            this.buttonModificarAdministrador.UseVisualStyleBackColor = true;
             // 
             // groupBoxAdministradores
             // 
@@ -209,33 +236,30 @@ namespace Programa
             this.groupBoxAdministradores.TabStop = false;
             this.groupBoxAdministradores.Enter += new System.EventHandler(this.groupBox4_Enter);
             // 
-            // buttonModificarAdministrador
+            // button4
             // 
-            resources.ApplyResources(this.buttonModificarAdministrador, "buttonModificarAdministrador");
-            this.buttonModificarAdministrador.Name = "buttonModificarAdministrador";
-            this.buttonModificarAdministrador.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.button4, "button4");
+            this.button4.Name = "button4";
+            this.button4.UseVisualStyleBackColor = true;
             // 
-            // buttonRegistrarAdministrador
+            // button3
             // 
-            resources.ApplyResources(this.buttonRegistrarAdministrador, "buttonRegistrarAdministrador");
-            this.buttonRegistrarAdministrador.Name = "buttonRegistrarAdministrador";
-            this.buttonRegistrarAdministrador.TabStop = false;
-            this.buttonRegistrarAdministrador.UseVisualStyleBackColor = true;
-            this.buttonRegistrarAdministrador.Click += new System.EventHandler(this.buttonRegistrarAdministrador_Click);
+            resources.ApplyResources(this.button3, "button3");
+            this.button3.Name = "button3";
+            this.button3.UseVisualStyleBackColor = true;
             // 
-            // buttonBuscarAdministrador
+            // button2
             // 
-            resources.ApplyResources(this.buttonBuscarAdministrador, "buttonBuscarAdministrador");
-            this.buttonBuscarAdministrador.Name = "buttonBuscarAdministrador";
-            this.buttonBuscarAdministrador.UseVisualStyleBackColor = true;
-            this.buttonBuscarAdministrador.Click += new System.EventHandler(this.buttonBuscarAdministrador_Click);
+            resources.ApplyResources(this.button2, "button2");
+            this.button2.Name = "button2";
+            this.button2.TabStop = false;
+            this.button2.UseVisualStyleBackColor = true;
             // 
-            // buttonVerAdministradores
+            // button1
             // 
-            resources.ApplyResources(this.buttonVerAdministradores, "buttonVerAdministradores");
-            this.buttonVerAdministradores.Name = "buttonVerAdministradores";
-            this.buttonVerAdministradores.UseVisualStyleBackColor = true;
-            this.buttonVerAdministradores.Click += new System.EventHandler(this.buttonVerAdministradores_Click);
+            resources.ApplyResources(this.button1, "button1");
+            this.button1.Name = "button1";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // groupBoxEjemplares
             // 
@@ -247,38 +271,31 @@ namespace Programa
             this.groupBoxEjemplares.Name = "groupBoxEjemplares";
             this.groupBoxEjemplares.TabStop = false;
             // 
-            // button1
+            // button8
             // 
-            resources.ApplyResources(this.button1, "button1");
-            this.button1.Name = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.button8, "button8");
+            this.button8.Name = "button8";
+            this.button8.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // button7
             // 
-            resources.ApplyResources(this.button2, "button2");
-            this.button2.Name = "button2";
-            this.button2.TabStop = false;
-            this.button2.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.button7, "button7");
+            this.button7.Name = "button7";
+            this.button7.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // button6
             // 
-            resources.ApplyResources(this.button3, "button3");
-            this.button3.Name = "button3";
-            this.button3.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.button6, "button6");
+            this.button6.Name = "button6";
+            this.button6.TabStop = false;
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
-            // button4
+            // button5
             // 
-            resources.ApplyResources(this.button4, "button4");
-            this.button4.Name = "button4";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // labelNombreUsuario
-            // 
-            this.labelNombreUsuario.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.labelNombreUsuario.ForeColor = System.Drawing.SystemColors.ControlLight;
-            resources.ApplyResources(this.labelNombreUsuario, "labelNombreUsuario");
-            this.labelNombreUsuario.Name = "labelNombreUsuario";
-            this.labelNombreUsuario.Click += new System.EventHandler(this.label1_Click);
+            resources.ApplyResources(this.button5, "button5");
+            this.button5.Name = "button5";
+            this.button5.UseVisualStyleBackColor = true;
             // 
             // groupBox1
             // 
@@ -290,37 +307,11 @@ namespace Programa
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
             // 
-            // button5
-            // 
-            resources.ApplyResources(this.button5, "button5");
-            this.button5.Name = "button5";
-            this.button5.UseVisualStyleBackColor = true;
-            // 
-            // button6
-            // 
-            resources.ApplyResources(this.button6, "button6");
-            this.button6.Name = "button6";
-            this.button6.TabStop = false;
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
-            // 
-            // button7
-            // 
-            resources.ApplyResources(this.button7, "button7");
-            this.button7.Name = "button7";
-            this.button7.UseVisualStyleBackColor = true;
-            // 
-            // button8
-            // 
-            resources.ApplyResources(this.button8, "button8");
-            this.button8.Name = "button8";
-            this.button8.UseVisualStyleBackColor = true;
-            // 
             // MenuPrincipal
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.CancelButton = this.buttonSalir;
+            this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.labelNombreUsuario);
             this.Controls.Add(this.groupBoxEjemplares);
@@ -328,7 +319,6 @@ namespace Programa
             this.Controls.Add(this.groupBoxPrestamos);
             this.Controls.Add(this.groupBoxLibros);
             this.Controls.Add(this.groupBoxUsuarios);
-            this.Controls.Add(this.buttonSalir);
             this.Controls.Add(this.botonVolver);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -346,40 +336,38 @@ namespace Programa
         }
 
         #endregion
-
-        private System.Windows.Forms.Button botonRegistrarUsuario;
-        private System.Windows.Forms.Button botonBuscarUsuario;
         private System.Windows.Forms.Button botonVolver;
-        private System.Windows.Forms.Button botonVerUsuarios;
-        private System.Windows.Forms.Button buttonSalir;
-        private System.Windows.Forms.GroupBox groupBoxUsuarios;
-        private System.Windows.Forms.GroupBox groupBoxLibros;
-        private System.Windows.Forms.Button buttonAñadirLibro;
-        private System.Windows.Forms.Button buttonBuscarLibro;
-        private System.Windows.Forms.Button buttonVerLibros;
-        private System.Windows.Forms.GroupBox groupBoxPrestamos;
-        private System.Windows.Forms.Button buttonRegistrarPrestamo;
-        private System.Windows.Forms.Button buttonBuscarPrestamo;
-        private System.Windows.Forms.Button buttonVerUsuarios;
-        private System.Windows.Forms.GroupBox groupBoxAdministradores;
-        private System.Windows.Forms.Button buttonRegistrarAdministrador;
-        private System.Windows.Forms.Button buttonBuscarAdministrador;
-        private System.Windows.Forms.Button buttonVerAdministradores;
-        private System.Windows.Forms.Button buttonActualizarUsuario;
-        private System.Windows.Forms.Button buttonActualizarLibro;
-        private System.Windows.Forms.Button buttonRegistrarDevolucion;
-        private System.Windows.Forms.Button buttonModificarAdministrador;
-        private System.Windows.Forms.GroupBox groupBoxEjemplares;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label labelNombreUsuario;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button botonVerUsuarios;
+        private System.Windows.Forms.Button botonBuscarUsuario;
+        private System.Windows.Forms.Button botonRegistrarUsuario;
+        private System.Windows.Forms.Button buttonActualizarUsuario;
+        private System.Windows.Forms.GroupBox groupBoxUsuarios;
+        private System.Windows.Forms.Button buttonVerLibros;
+        private System.Windows.Forms.Button buttonBuscarLibro;
+        private System.Windows.Forms.Button buttonAñadirLibro;
+        private System.Windows.Forms.Button buttonActualizarLibro;
+        private System.Windows.Forms.GroupBox groupBoxLibros;
+        private System.Windows.Forms.Button buttonVerUsuarios;
+        private System.Windows.Forms.Button buttonBuscarPrestamo;
+        private System.Windows.Forms.Button buttonRegistrarPrestamo;
+        private System.Windows.Forms.Button buttonRegistrarDevolucion;
+        private System.Windows.Forms.GroupBox groupBoxPrestamos;
+        private System.Windows.Forms.Button buttonVerAdministradores;
+        private System.Windows.Forms.Button buttonBuscarAdministrador;
+        private System.Windows.Forms.Button buttonRegistrarAdministrador;
+        private System.Windows.Forms.Button buttonModificarAdministrador;
+        private System.Windows.Forms.GroupBox groupBoxAdministradores;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.GroupBox groupBoxEjemplares;
         private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }
 

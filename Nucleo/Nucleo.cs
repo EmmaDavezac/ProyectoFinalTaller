@@ -36,7 +36,6 @@ namespace Nucleo
 
         public Nucleo()
         {
-
         }
         public void AñadirUsuario(string nombre, string apellido, DateTime fechaNacimiento, string mail)
         {
@@ -68,6 +67,22 @@ namespace Nucleo
             using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
             {
                 return unitOfWork.RepositorioAdministradores.Get(id);
+            }
+        }
+        public void AñadirLibro(string unISBN, string titulo, string autor, string añoPublicacion)
+        {
+            Libro libro = new Libro(unISBN, titulo,  autor, añoPublicacion);
+            using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
+            {
+                unitOfWork.RepositorioLibros.Add(libro);
+                unitOfWork.Complete();
+            }
+        }
+        public Libro ObtenerLibro(int id)
+        {
+            using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
+            {
+                return unitOfWork.RepositorioLibros.Get(id);
             }
         }
         public bool VerficarContraseña(int id, string contraseña)

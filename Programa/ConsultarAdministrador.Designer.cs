@@ -42,13 +42,12 @@ namespace Programa
             this.textBoxApellido = new System.Windows.Forms.TextBox();
             this.textBoxNombre = new System.Windows.Forms.TextBox();
             this.botonVolver = new System.Windows.Forms.Button();
-            this.buttonSalir = new System.Windows.Forms.Button();
             this.labelNombreUsuario = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // textBoxFecha
             // 
-            this.textBoxFecha.Location = new System.Drawing.Point(265, 175);
+            this.textBoxFecha.Location = new System.Drawing.Point(355, 213);
             this.textBoxFecha.Name = "textBoxFecha";
             this.textBoxFecha.ReadOnly = true;
             this.textBoxFecha.Size = new System.Drawing.Size(200, 20);
@@ -56,7 +55,7 @@ namespace Programa
             // 
             // textBoxId
             // 
-            this.textBoxId.Location = new System.Drawing.Point(265, 97);
+            this.textBoxId.Location = new System.Drawing.Point(355, 135);
             this.textBoxId.Name = "textBoxId";
             this.textBoxId.Size = new System.Drawing.Size(200, 20);
             this.textBoxId.TabIndex = 51;
@@ -65,7 +64,7 @@ namespace Programa
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(155, 100);
+            this.label1.Location = new System.Drawing.Point(245, 138);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(16, 13);
             this.label1.TabIndex = 50;
@@ -75,14 +74,14 @@ namespace Programa
             // 
             this.labelError.AutoSize = true;
             this.labelError.ForeColor = System.Drawing.Color.Red;
-            this.labelError.Location = new System.Drawing.Point(262, 229);
+            this.labelError.Location = new System.Drawing.Point(352, 267);
             this.labelError.Name = "labelError";
             this.labelError.Size = new System.Drawing.Size(0, 13);
             this.labelError.TabIndex = 49;
             // 
             // buttonBuscarAdministrador
             // 
-            this.buttonBuscarAdministrador.Location = new System.Drawing.Point(349, 250);
+            this.buttonBuscarAdministrador.Location = new System.Drawing.Point(439, 288);
             this.buttonBuscarAdministrador.Name = "buttonBuscarAdministrador";
             this.buttonBuscarAdministrador.Size = new System.Drawing.Size(116, 23);
             this.buttonBuscarAdministrador.TabIndex = 48;
@@ -93,7 +92,7 @@ namespace Programa
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(155, 204);
+            this.label4.Location = new System.Drawing.Point(245, 242);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(26, 13);
             this.label4.TabIndex = 47;
@@ -102,7 +101,7 @@ namespace Programa
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(155, 178);
+            this.label3.Location = new System.Drawing.Point(245, 216);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(90, 13);
             this.label3.TabIndex = 46;
@@ -111,7 +110,7 @@ namespace Programa
             // labelApellido
             // 
             this.labelApellido.AutoSize = true;
-            this.labelApellido.Location = new System.Drawing.Point(155, 152);
+            this.labelApellido.Location = new System.Drawing.Point(245, 190);
             this.labelApellido.Name = "labelApellido";
             this.labelApellido.Size = new System.Drawing.Size(44, 13);
             this.labelApellido.TabIndex = 45;
@@ -120,7 +119,7 @@ namespace Programa
             // labelNombre
             // 
             this.labelNombre.AutoSize = true;
-            this.labelNombre.Location = new System.Drawing.Point(155, 126);
+            this.labelNombre.Location = new System.Drawing.Point(245, 164);
             this.labelNombre.Name = "labelNombre";
             this.labelNombre.Size = new System.Drawing.Size(44, 13);
             this.labelNombre.TabIndex = 44;
@@ -128,7 +127,7 @@ namespace Programa
             // 
             // textBoxMail
             // 
-            this.textBoxMail.Location = new System.Drawing.Point(265, 197);
+            this.textBoxMail.Location = new System.Drawing.Point(355, 235);
             this.textBoxMail.Name = "textBoxMail";
             this.textBoxMail.ReadOnly = true;
             this.textBoxMail.Size = new System.Drawing.Size(200, 20);
@@ -136,7 +135,7 @@ namespace Programa
             // 
             // textBoxApellido
             // 
-            this.textBoxApellido.Location = new System.Drawing.Point(265, 149);
+            this.textBoxApellido.Location = new System.Drawing.Point(355, 187);
             this.textBoxApellido.Name = "textBoxApellido";
             this.textBoxApellido.ReadOnly = true;
             this.textBoxApellido.Size = new System.Drawing.Size(200, 20);
@@ -144,7 +143,7 @@ namespace Programa
             // 
             // textBoxNombre
             // 
-            this.textBoxNombre.Location = new System.Drawing.Point(265, 123);
+            this.textBoxNombre.Location = new System.Drawing.Point(355, 161);
             this.textBoxNombre.Name = "textBoxNombre";
             this.textBoxNombre.ReadOnly = true;
             this.textBoxNombre.Size = new System.Drawing.Size(200, 20);
@@ -154,7 +153,7 @@ namespace Programa
             // 
             this.botonVolver.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.botonVolver.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.botonVolver.Location = new System.Drawing.Point(431, 406);
+            this.botonVolver.Location = new System.Drawing.Point(684, 526);
             this.botonVolver.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.botonVolver.Name = "botonVolver";
             this.botonVolver.Size = new System.Drawing.Size(89, 23);
@@ -163,25 +162,12 @@ namespace Programa
             this.botonVolver.UseVisualStyleBackColor = true;
             this.botonVolver.Click += new System.EventHandler(this.botonVolver_Click);
             // 
-            // buttonSalir
-            // 
-            this.buttonSalir.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonSalir.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonSalir.Location = new System.Drawing.Point(524, 406);
-            this.buttonSalir.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.buttonSalir.Name = "buttonSalir";
-            this.buttonSalir.Size = new System.Drawing.Size(89, 23);
-            this.buttonSalir.TabIndex = 39;
-            this.buttonSalir.Text = "Salir";
-            this.buttonSalir.UseVisualStyleBackColor = true;
-            this.buttonSalir.Click += new System.EventHandler(this.buttonSalir_Click);
-            // 
             // labelNombreUsuario
             // 
             this.labelNombreUsuario.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.labelNombreUsuario.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.labelNombreUsuario.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.labelNombreUsuario.Location = new System.Drawing.Point(430, 9);
+            this.labelNombreUsuario.Location = new System.Drawing.Point(590, 9);
             this.labelNombreUsuario.Name = "labelNombreUsuario";
             this.labelNombreUsuario.Size = new System.Drawing.Size(182, 31);
             this.labelNombreUsuario.TabIndex = 53;
@@ -193,7 +179,8 @@ namespace Programa
             this.AcceptButton = this.buttonBuscarAdministrador;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(624, 441);
+            this.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.ClientSize = new System.Drawing.Size(784, 561);
             this.Controls.Add(this.labelNombreUsuario);
             this.Controls.Add(this.textBoxFecha);
             this.Controls.Add(this.textBoxId);
@@ -208,11 +195,10 @@ namespace Programa
             this.Controls.Add(this.textBoxApellido);
             this.Controls.Add(this.textBoxNombre);
             this.Controls.Add(this.botonVolver);
-            this.Controls.Add(this.buttonSalir);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(640, 480);
+            this.MaximumSize = new System.Drawing.Size(800, 600);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(640, 480);
+            this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "ConsultarAdministrador";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ConsultarAdministrador";
@@ -237,7 +223,6 @@ namespace Programa
         private System.Windows.Forms.TextBox textBoxApellido;
         private System.Windows.Forms.TextBox textBoxNombre;
         private System.Windows.Forms.Button botonVolver;
-        private System.Windows.Forms.Button buttonSalir;
         private System.Windows.Forms.Label labelNombreUsuario;
     }
 }

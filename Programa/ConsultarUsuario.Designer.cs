@@ -39,7 +39,6 @@ namespace Programa
             this.textBoxApellido = new System.Windows.Forms.TextBox();
             this.textBoxNombre = new System.Windows.Forms.TextBox();
             this.botonVolver = new System.Windows.Forms.Button();
-            this.buttonSalir = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxId = new System.Windows.Forms.TextBox();
             this.textBoxFecha = new System.Windows.Forms.TextBox();
@@ -52,14 +51,14 @@ namespace Programa
             // 
             this.labelError.AutoSize = true;
             this.labelError.ForeColor = System.Drawing.Color.Red;
-            this.labelError.Location = new System.Drawing.Point(264, 252);
+            this.labelError.Location = new System.Drawing.Point(356, 289);
             this.labelError.Name = "labelError";
             this.labelError.Size = new System.Drawing.Size(0, 13);
             this.labelError.TabIndex = 32;
             // 
             // buttonBuscarUsuario
             // 
-            this.buttonBuscarUsuario.Location = new System.Drawing.Point(378, 265);
+            this.buttonBuscarUsuario.Location = new System.Drawing.Point(470, 302);
             this.buttonBuscarUsuario.Name = "buttonBuscarUsuario";
             this.buttonBuscarUsuario.Size = new System.Drawing.Size(89, 23);
             this.buttonBuscarUsuario.TabIndex = 31;
@@ -70,7 +69,7 @@ namespace Programa
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(157, 204);
+            this.label4.Location = new System.Drawing.Point(249, 241);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(26, 13);
             this.label4.TabIndex = 30;
@@ -79,7 +78,7 @@ namespace Programa
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(157, 178);
+            this.label3.Location = new System.Drawing.Point(249, 215);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(90, 13);
             this.label3.TabIndex = 29;
@@ -88,7 +87,7 @@ namespace Programa
             // labelApellido
             // 
             this.labelApellido.AutoSize = true;
-            this.labelApellido.Location = new System.Drawing.Point(157, 152);
+            this.labelApellido.Location = new System.Drawing.Point(249, 189);
             this.labelApellido.Name = "labelApellido";
             this.labelApellido.Size = new System.Drawing.Size(44, 13);
             this.labelApellido.TabIndex = 28;
@@ -97,7 +96,7 @@ namespace Programa
             // labelNombre
             // 
             this.labelNombre.AutoSize = true;
-            this.labelNombre.Location = new System.Drawing.Point(157, 126);
+            this.labelNombre.Location = new System.Drawing.Point(249, 163);
             this.labelNombre.Name = "labelNombre";
             this.labelNombre.Size = new System.Drawing.Size(44, 13);
             this.labelNombre.TabIndex = 27;
@@ -105,7 +104,7 @@ namespace Programa
             // 
             // textBoxMail
             // 
-            this.textBoxMail.Location = new System.Drawing.Point(267, 197);
+            this.textBoxMail.Location = new System.Drawing.Point(359, 234);
             this.textBoxMail.Name = "textBoxMail";
             this.textBoxMail.ReadOnly = true;
             this.textBoxMail.Size = new System.Drawing.Size(200, 20);
@@ -113,7 +112,7 @@ namespace Programa
             // 
             // textBoxApellido
             // 
-            this.textBoxApellido.Location = new System.Drawing.Point(267, 149);
+            this.textBoxApellido.Location = new System.Drawing.Point(359, 186);
             this.textBoxApellido.Name = "textBoxApellido";
             this.textBoxApellido.ReadOnly = true;
             this.textBoxApellido.Size = new System.Drawing.Size(200, 20);
@@ -121,7 +120,7 @@ namespace Programa
             // 
             // textBoxNombre
             // 
-            this.textBoxNombre.Location = new System.Drawing.Point(267, 123);
+            this.textBoxNombre.Location = new System.Drawing.Point(359, 160);
             this.textBoxNombre.Name = "textBoxNombre";
             this.textBoxNombre.ReadOnly = true;
             this.textBoxNombre.Size = new System.Drawing.Size(200, 20);
@@ -131,7 +130,7 @@ namespace Programa
             // 
             this.botonVolver.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.botonVolver.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.botonVolver.Location = new System.Drawing.Point(433, 406);
+            this.botonVolver.Location = new System.Drawing.Point(684, 526);
             this.botonVolver.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.botonVolver.Name = "botonVolver";
             this.botonVolver.Size = new System.Drawing.Size(89, 23);
@@ -140,23 +139,10 @@ namespace Programa
             this.botonVolver.UseVisualStyleBackColor = true;
             this.botonVolver.Click += new System.EventHandler(this.botonVolver_Click);
             // 
-            // buttonSalir
-            // 
-            this.buttonSalir.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonSalir.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonSalir.Location = new System.Drawing.Point(526, 406);
-            this.buttonSalir.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.buttonSalir.Name = "buttonSalir";
-            this.buttonSalir.Size = new System.Drawing.Size(89, 23);
-            this.buttonSalir.TabIndex = 21;
-            this.buttonSalir.Text = "Salir";
-            this.buttonSalir.UseVisualStyleBackColor = true;
-            this.buttonSalir.Click += new System.EventHandler(this.buttonSalir_Click);
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(157, 100);
+            this.label1.Location = new System.Drawing.Point(249, 137);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(16, 13);
             this.label1.TabIndex = 33;
@@ -165,7 +151,7 @@ namespace Programa
             // 
             // textBoxId
             // 
-            this.textBoxId.Location = new System.Drawing.Point(267, 97);
+            this.textBoxId.Location = new System.Drawing.Point(359, 134);
             this.textBoxId.Name = "textBoxId";
             this.textBoxId.Size = new System.Drawing.Size(200, 20);
             this.textBoxId.TabIndex = 34;
@@ -173,7 +159,7 @@ namespace Programa
             // 
             // textBoxFecha
             // 
-            this.textBoxFecha.Location = new System.Drawing.Point(267, 175);
+            this.textBoxFecha.Location = new System.Drawing.Point(359, 212);
             this.textBoxFecha.Name = "textBoxFecha";
             this.textBoxFecha.ReadOnly = true;
             this.textBoxFecha.Size = new System.Drawing.Size(200, 20);
@@ -182,7 +168,7 @@ namespace Programa
             // labelScoring
             // 
             this.labelScoring.AutoSize = true;
-            this.labelScoring.Location = new System.Drawing.Point(157, 230);
+            this.labelScoring.Location = new System.Drawing.Point(249, 267);
             this.labelScoring.Name = "labelScoring";
             this.labelScoring.Size = new System.Drawing.Size(43, 13);
             this.labelScoring.TabIndex = 38;
@@ -191,7 +177,7 @@ namespace Programa
             // 
             // textBoxScoring
             // 
-            this.textBoxScoring.Location = new System.Drawing.Point(267, 223);
+            this.textBoxScoring.Location = new System.Drawing.Point(359, 260);
             this.textBoxScoring.Name = "textBoxScoring";
             this.textBoxScoring.ReadOnly = true;
             this.textBoxScoring.Size = new System.Drawing.Size(200, 20);
@@ -203,7 +189,7 @@ namespace Programa
             this.labelNombreUsuario.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.labelNombreUsuario.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.labelNombreUsuario.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.labelNombreUsuario.Location = new System.Drawing.Point(431, 9);
+            this.labelNombreUsuario.Location = new System.Drawing.Point(590, 9);
             this.labelNombreUsuario.Name = "labelNombreUsuario";
             this.labelNombreUsuario.Size = new System.Drawing.Size(182, 31);
             this.labelNombreUsuario.TabIndex = 39;
@@ -215,7 +201,8 @@ namespace Programa
             this.AcceptButton = this.buttonBuscarUsuario;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(624, 441);
+            this.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.ClientSize = new System.Drawing.Size(784, 561);
             this.Controls.Add(this.labelNombreUsuario);
             this.Controls.Add(this.labelScoring);
             this.Controls.Add(this.textBoxScoring);
@@ -232,11 +219,10 @@ namespace Programa
             this.Controls.Add(this.textBoxApellido);
             this.Controls.Add(this.textBoxNombre);
             this.Controls.Add(this.botonVolver);
-            this.Controls.Add(this.buttonSalir);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(640, 480);
+            this.MaximumSize = new System.Drawing.Size(800, 600);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(640, 480);
+            this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "ConsultarUsuario";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Consultar Usuario";
@@ -259,7 +245,6 @@ namespace Programa
         private System.Windows.Forms.TextBox textBoxApellido;
         private System.Windows.Forms.TextBox textBoxNombre;
         private System.Windows.Forms.Button botonVolver;
-        private System.Windows.Forms.Button buttonSalir;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBoxId;
         private System.Windows.Forms.TextBox textBoxFecha;

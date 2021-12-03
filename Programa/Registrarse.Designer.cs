@@ -42,7 +42,6 @@ namespace Programa
             this.textBoxApellido = new System.Windows.Forms.TextBox();
             this.textBoxNombre = new System.Windows.Forms.TextBox();
             this.botonVolver = new System.Windows.Forms.Button();
-            this.buttonSalir = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // labelContraseña
@@ -151,7 +150,7 @@ namespace Programa
             // 
             this.botonVolver.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.botonVolver.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.botonVolver.Location = new System.Drawing.Point(431, 406);
+            this.botonVolver.Location = new System.Drawing.Point(684, 526);
             this.botonVolver.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.botonVolver.Name = "botonVolver";
             this.botonVolver.Size = new System.Drawing.Size(89, 23);
@@ -160,25 +159,13 @@ namespace Programa
             this.botonVolver.UseVisualStyleBackColor = true;
             this.botonVolver.Click += new System.EventHandler(this.botonVolver_Click);
             // 
-            // buttonSalir
-            // 
-            this.buttonSalir.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonSalir.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonSalir.Location = new System.Drawing.Point(524, 406);
-            this.buttonSalir.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.buttonSalir.Name = "buttonSalir";
-            this.buttonSalir.Size = new System.Drawing.Size(89, 23);
-            this.buttonSalir.TabIndex = 36;
-            this.buttonSalir.Text = "Salir";
-            this.buttonSalir.UseVisualStyleBackColor = true;
-            this.buttonSalir.Click += new System.EventHandler(this.buttonSalir_Click);
-            // 
             // Registrarse
             // 
             this.AcceptButton = this.buttonRegistrarAdministrador;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(624, 441);
+            this.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.ClientSize = new System.Drawing.Size(784, 561);
             this.Controls.Add(this.labelContraseña);
             this.Controls.Add(this.textBoxContraseña);
             this.Controls.Add(this.labelError);
@@ -192,11 +179,10 @@ namespace Programa
             this.Controls.Add(this.textBoxApellido);
             this.Controls.Add(this.textBoxNombre);
             this.Controls.Add(this.botonVolver);
-            this.Controls.Add(this.buttonSalir);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(640, 480);
+            this.MaximumSize = new System.Drawing.Size(800, 600);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(640, 480);
+            this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "Registrarse";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Registrarse";
@@ -222,6 +208,5 @@ namespace Programa
         private System.Windows.Forms.TextBox textBoxApellido;
         private System.Windows.Forms.TextBox textBoxNombre;
         private System.Windows.Forms.Button botonVolver;
-        private System.Windows.Forms.Button buttonSalir;
     }
 }
