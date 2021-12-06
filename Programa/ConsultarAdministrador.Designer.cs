@@ -47,24 +47,24 @@ namespace Programa
             // 
             // textBoxFecha
             // 
-            this.textBoxFecha.Location = new System.Drawing.Point(355, 213);
+            this.textBoxFecha.Location = new System.Drawing.Point(286, 204);
             this.textBoxFecha.Name = "textBoxFecha";
             this.textBoxFecha.ReadOnly = true;
-            this.textBoxFecha.Size = new System.Drawing.Size(200, 20);
+            this.textBoxFecha.Size = new System.Drawing.Size(300, 20);
             this.textBoxFecha.TabIndex = 52;
             // 
             // textBoxId
             // 
-            this.textBoxId.Location = new System.Drawing.Point(355, 135);
+            this.textBoxId.Location = new System.Drawing.Point(286, 126);
             this.textBoxId.Name = "textBoxId";
-            this.textBoxId.Size = new System.Drawing.Size(200, 20);
+            this.textBoxId.Size = new System.Drawing.Size(300, 20);
             this.textBoxId.TabIndex = 51;
             this.textBoxId.TextChanged += new System.EventHandler(this.textBoxId_TextChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(245, 138);
+            this.label1.Location = new System.Drawing.Point(176, 129);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(16, 13);
             this.label1.TabIndex = 50;
@@ -74,14 +74,14 @@ namespace Programa
             // 
             this.labelError.AutoSize = true;
             this.labelError.ForeColor = System.Drawing.Color.Red;
-            this.labelError.Location = new System.Drawing.Point(352, 267);
+            this.labelError.Location = new System.Drawing.Point(283, 253);
             this.labelError.Name = "labelError";
             this.labelError.Size = new System.Drawing.Size(0, 13);
             this.labelError.TabIndex = 49;
             // 
             // buttonBuscarAdministrador
             // 
-            this.buttonBuscarAdministrador.Location = new System.Drawing.Point(439, 288);
+            this.buttonBuscarAdministrador.Location = new System.Drawing.Point(470, 281);
             this.buttonBuscarAdministrador.Name = "buttonBuscarAdministrador";
             this.buttonBuscarAdministrador.Size = new System.Drawing.Size(116, 23);
             this.buttonBuscarAdministrador.TabIndex = 48;
@@ -92,7 +92,7 @@ namespace Programa
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(245, 242);
+            this.label4.Location = new System.Drawing.Point(176, 233);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(26, 13);
             this.label4.TabIndex = 47;
@@ -101,7 +101,7 @@ namespace Programa
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(245, 216);
+            this.label3.Location = new System.Drawing.Point(176, 207);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(90, 13);
             this.label3.TabIndex = 46;
@@ -110,7 +110,7 @@ namespace Programa
             // labelApellido
             // 
             this.labelApellido.AutoSize = true;
-            this.labelApellido.Location = new System.Drawing.Point(245, 190);
+            this.labelApellido.Location = new System.Drawing.Point(176, 181);
             this.labelApellido.Name = "labelApellido";
             this.labelApellido.Size = new System.Drawing.Size(44, 13);
             this.labelApellido.TabIndex = 45;
@@ -119,7 +119,7 @@ namespace Programa
             // labelNombre
             // 
             this.labelNombre.AutoSize = true;
-            this.labelNombre.Location = new System.Drawing.Point(245, 164);
+            this.labelNombre.Location = new System.Drawing.Point(176, 155);
             this.labelNombre.Name = "labelNombre";
             this.labelNombre.Size = new System.Drawing.Size(44, 13);
             this.labelNombre.TabIndex = 44;
@@ -127,26 +127,26 @@ namespace Programa
             // 
             // textBoxMail
             // 
-            this.textBoxMail.Location = new System.Drawing.Point(355, 235);
+            this.textBoxMail.Location = new System.Drawing.Point(286, 230);
             this.textBoxMail.Name = "textBoxMail";
             this.textBoxMail.ReadOnly = true;
-            this.textBoxMail.Size = new System.Drawing.Size(200, 20);
+            this.textBoxMail.Size = new System.Drawing.Size(300, 20);
             this.textBoxMail.TabIndex = 43;
             // 
             // textBoxApellido
             // 
-            this.textBoxApellido.Location = new System.Drawing.Point(355, 187);
+            this.textBoxApellido.Location = new System.Drawing.Point(286, 178);
             this.textBoxApellido.Name = "textBoxApellido";
             this.textBoxApellido.ReadOnly = true;
-            this.textBoxApellido.Size = new System.Drawing.Size(200, 20);
+            this.textBoxApellido.Size = new System.Drawing.Size(300, 20);
             this.textBoxApellido.TabIndex = 42;
             // 
             // textBoxNombre
             // 
-            this.textBoxNombre.Location = new System.Drawing.Point(355, 161);
+            this.textBoxNombre.Location = new System.Drawing.Point(286, 152);
             this.textBoxNombre.Name = "textBoxNombre";
             this.textBoxNombre.ReadOnly = true;
-            this.textBoxNombre.Size = new System.Drawing.Size(200, 20);
+            this.textBoxNombre.Size = new System.Drawing.Size(300, 20);
             this.textBoxNombre.TabIndex = 41;
             // 
             // botonVolver
@@ -195,6 +195,7 @@ namespace Programa
             this.Controls.Add(this.textBoxApellido);
             this.Controls.Add(this.textBoxNombre);
             this.Controls.Add(this.botonVolver);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(800, 600);
             this.MinimizeBox = false;

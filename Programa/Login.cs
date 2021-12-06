@@ -29,35 +29,40 @@ namespace Programa
 
         }
 
-        private void botonSalir_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
+      
 
 
         private void botonIniciarSesion_Click(object sender, EventArgs e)
         {
-            if (textBoxId.Text != null && (textBoxId.Text).All(char.IsDigit)&&textBoxId.Text != "")
+            if (!string.IsNullOrEmpty(textBoxId.Text))
             {
-                Nucleo.Nucleo fachada = new Nucleo.Nucleo();
-                if (new Nucleo.Nucleo().ObtenerAdministrador(Convert.ToInt32(textBoxId.Text)) != null)
+                if ((textBoxId.Text).All(char.IsDigit) && textBoxId.Text != "")
                 {
-                    if (textBoxContraseña.Text!=null && fachada.VerficarContraseña(fachada.ObtenerAdministrador(Convert.ToInt32(textBoxId.Text)).Id, textBoxContraseña.Text))
+                    if (!string.IsNullOrEmpty(textBoxContraseña.Text))
                     {
-                        this.Hide();
-                        MenuPrincipal ventanaMenu = new MenuPrincipal(fachada.ObtenerAdministrador(Convert.ToInt32(textBoxId.Text)).Nombre + " "+ fachada.ObtenerAdministrador(Convert.ToInt32(textBoxId.Text)).Apellido);
-                        ventanaMenu.Show();
+                        Nucleo.InterfazNucleo fachada = new Nucleo.InterfazNucleo();
+                        if (new Nucleo.InterfazNucleo().ObtenerAdministrador(Convert.ToInt32(textBoxId.Text)) != null)
+                        {
+                            if (textBoxContraseña.Text != null && fachada.VerficarContraseña(fachada.ObtenerAdministrador(Convert.ToInt32(textBoxId.Text)).Id, textBoxContraseña.Text))
+                            {
+                                this.Hide();
+                                MenuPrincipal ventanaMenu = new MenuPrincipal(fachada.ObtenerAdministrador(Convert.ToInt32(textBoxId.Text)).Nombre + " " + fachada.ObtenerAdministrador(Convert.ToInt32(textBoxId.Text)).Apellido);
+                                ventanaMenu.Show();
+                            }
+                            else { labelError.Text = "La contraseña ingresada es incorrecta "; botonIniciarSesion.Enabled = false; textBoxContraseña.Focus(); }
+
+                        }
+                        else { labelError.Text = "El usuario No existe"; botonIniciarSesion.Enabled = false; textBoxId.Focus(); }
                     }
-                    else { labelError.Text = "La contraseña ingresada es incorrecta "; botonIniciarSesion.Enabled = false; textBoxContraseña.Focus(); }
-
+                    else { labelError.Text = "Contraseña no ingresada"; botonIniciarSesion.Enabled = false; textBoxContraseña.Focus(); }
                 }
-                else { labelError.Text = "El usuario No existe"; botonIniciarSesion.Enabled = false; textBoxId.Focus(); }
+                else { labelError.Text = "El Id ingresado tiene un formato incorrecto , los Id son numericos"; botonIniciarSesion.Enabled = false; textBoxId.Focus(); }
             }
-            else { labelError.Text = "El Id ingresado es incorrecto "; botonIniciarSesion.Enabled = false; textBoxId.Focus(); }
+            else { labelError.Text = "No ha ingresado el Id"; botonIniciarSesion.Enabled = false; textBoxId.Focus(); }
 
-            
-           
-            
+
+
+
         }
 
         private void textBoxUsuario_TextChanged(object sender, EventArgs e)
@@ -70,12 +75,7 @@ namespace Programa
             botonIniciarSesion.Enabled = true;
         }
 
-        private void buttonRegistrarse_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            Registrarse ventana = new Registrarse();
-            ventana.Show();
-        }
+     
 
        
 
@@ -100,7 +100,19 @@ namespace Programa
 
         private void Login_Load(object sender, EventArgs e)
         {
+            
+        }
 
+        private void buttonCerrar_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            this.Hide();
+            Registrarse ventana = new Registrarse();
+            ventana.Show();
         }
     }
 }

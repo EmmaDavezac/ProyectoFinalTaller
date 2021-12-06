@@ -16,13 +16,10 @@ namespace Dominio
         {
             
         }
-        public UsuarioAdministrador(string nombre, string apellido, DateTime fechaNacimiento, string mail,string contraseña)
+       
+        public UsuarioAdministrador(string nombre, string apellido, DateTime fechaNacimiento, string mail, string contraseña):base( nombre,  apellido,  fechaNacimiento,mail)
         {
-            Nombre = nombre;
-            Apellido = apellido;
-            FechaNacimiento = fechaNacimiento;
-            Mail = mail;
-            Pass = contraseña;
+            Pass = contraseña;    
         }
     }
 }

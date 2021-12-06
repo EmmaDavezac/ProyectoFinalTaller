@@ -7,6 +7,6 @@ using System.Threading.Tasks;
 namespace Dominio
 {
     public enum EstadoEjemplar
-    {Malo,Regular,Bueno,Excelente
+    {Malo,Bueno
     }
 }

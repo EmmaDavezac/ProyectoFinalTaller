@@ -51,7 +51,7 @@ namespace Programa
             // 
             this.labelError.AutoSize = true;
             this.labelError.ForeColor = System.Drawing.Color.Red;
-            this.labelError.Location = new System.Drawing.Point(356, 289);
+            this.labelError.Location = new System.Drawing.Point(256, 286);
             this.labelError.Name = "labelError";
             this.labelError.Size = new System.Drawing.Size(0, 13);
             this.labelError.TabIndex = 32;
@@ -69,7 +69,7 @@ namespace Programa
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(249, 241);
+            this.label4.Location = new System.Drawing.Point(149, 240);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(26, 13);
             this.label4.TabIndex = 30;
@@ -78,7 +78,7 @@ namespace Programa
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(249, 215);
+            this.label3.Location = new System.Drawing.Point(149, 214);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(90, 13);
             this.label3.TabIndex = 29;
@@ -87,7 +87,7 @@ namespace Programa
             // labelApellido
             // 
             this.labelApellido.AutoSize = true;
-            this.labelApellido.Location = new System.Drawing.Point(249, 189);
+            this.labelApellido.Location = new System.Drawing.Point(149, 188);
             this.labelApellido.Name = "labelApellido";
             this.labelApellido.Size = new System.Drawing.Size(44, 13);
             this.labelApellido.TabIndex = 28;
@@ -96,7 +96,7 @@ namespace Programa
             // labelNombre
             // 
             this.labelNombre.AutoSize = true;
-            this.labelNombre.Location = new System.Drawing.Point(249, 163);
+            this.labelNombre.Location = new System.Drawing.Point(149, 162);
             this.labelNombre.Name = "labelNombre";
             this.labelNombre.Size = new System.Drawing.Size(44, 13);
             this.labelNombre.TabIndex = 27;
@@ -104,26 +104,26 @@ namespace Programa
             // 
             // textBoxMail
             // 
-            this.textBoxMail.Location = new System.Drawing.Point(359, 234);
+            this.textBoxMail.Location = new System.Drawing.Point(259, 237);
             this.textBoxMail.Name = "textBoxMail";
             this.textBoxMail.ReadOnly = true;
-            this.textBoxMail.Size = new System.Drawing.Size(200, 20);
+            this.textBoxMail.Size = new System.Drawing.Size(300, 20);
             this.textBoxMail.TabIndex = 25;
             // 
             // textBoxApellido
             // 
-            this.textBoxApellido.Location = new System.Drawing.Point(359, 186);
+            this.textBoxApellido.Location = new System.Drawing.Point(259, 185);
             this.textBoxApellido.Name = "textBoxApellido";
             this.textBoxApellido.ReadOnly = true;
-            this.textBoxApellido.Size = new System.Drawing.Size(200, 20);
+            this.textBoxApellido.Size = new System.Drawing.Size(300, 20);
             this.textBoxApellido.TabIndex = 24;
             // 
             // textBoxNombre
             // 
-            this.textBoxNombre.Location = new System.Drawing.Point(359, 160);
+            this.textBoxNombre.Location = new System.Drawing.Point(259, 159);
             this.textBoxNombre.Name = "textBoxNombre";
             this.textBoxNombre.ReadOnly = true;
-            this.textBoxNombre.Size = new System.Drawing.Size(200, 20);
+            this.textBoxNombre.Size = new System.Drawing.Size(300, 20);
             this.textBoxNombre.TabIndex = 23;
             // 
             // botonVolver
@@ -142,7 +142,7 @@ namespace Programa
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(249, 137);
+            this.label1.Location = new System.Drawing.Point(149, 136);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(16, 13);
             this.label1.TabIndex = 33;
@@ -151,24 +151,24 @@ namespace Programa
             // 
             // textBoxId
             // 
-            this.textBoxId.Location = new System.Drawing.Point(359, 134);
+            this.textBoxId.Location = new System.Drawing.Point(259, 133);
             this.textBoxId.Name = "textBoxId";
-            this.textBoxId.Size = new System.Drawing.Size(200, 20);
+            this.textBoxId.Size = new System.Drawing.Size(300, 20);
             this.textBoxId.TabIndex = 34;
             this.textBoxId.TextChanged += new System.EventHandler(this.textBoxId_TextChanged);
             // 
             // textBoxFecha
             // 
-            this.textBoxFecha.Location = new System.Drawing.Point(359, 212);
+            this.textBoxFecha.Location = new System.Drawing.Point(259, 211);
             this.textBoxFecha.Name = "textBoxFecha";
             this.textBoxFecha.ReadOnly = true;
-            this.textBoxFecha.Size = new System.Drawing.Size(200, 20);
+            this.textBoxFecha.Size = new System.Drawing.Size(300, 20);
             this.textBoxFecha.TabIndex = 35;
             // 
             // labelScoring
             // 
             this.labelScoring.AutoSize = true;
-            this.labelScoring.Location = new System.Drawing.Point(249, 267);
+            this.labelScoring.Location = new System.Drawing.Point(149, 266);
             this.labelScoring.Name = "labelScoring";
             this.labelScoring.Size = new System.Drawing.Size(43, 13);
             this.labelScoring.TabIndex = 38;
@@ -177,10 +177,10 @@ namespace Programa
             // 
             // textBoxScoring
             // 
-            this.textBoxScoring.Location = new System.Drawing.Point(359, 260);
+            this.textBoxScoring.Location = new System.Drawing.Point(259, 263);
             this.textBoxScoring.Name = "textBoxScoring";
             this.textBoxScoring.ReadOnly = true;
-            this.textBoxScoring.Size = new System.Drawing.Size(200, 20);
+            this.textBoxScoring.Size = new System.Drawing.Size(300, 20);
             this.textBoxScoring.TabIndex = 37;
             this.textBoxScoring.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
@@ -219,6 +219,7 @@ namespace Programa
             this.Controls.Add(this.textBoxApellido);
             this.Controls.Add(this.textBoxNombre);
             this.Controls.Add(this.botonVolver);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(800, 600);
             this.MinimizeBox = false;

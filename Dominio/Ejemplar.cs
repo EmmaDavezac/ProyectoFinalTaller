@@ -9,13 +9,20 @@ namespace Dominio
     public class Ejemplar
     {
         public int Id { get; set; }
+        virtual public Libro Libro { get; set; }
         public bool Disponible { get; set; }
         public EstadoEjemplar Estado { get; set; }
-       virtual public IEnumerable<Prestamo> Prestamos { get; set; }
-        public Ejemplar(EstadoEjemplar estado)
+        public virtual List<Prestamo> Prestamos { get; set; }
+        public Ejemplar()
         {
-            Estado = estado;
+
+        }
+        public Ejemplar(Libro unLibro, string estado)
+        {   if(estado=="Bueno")
+            Estado = EstadoEjemplar.Bueno;
+        else Estado = EstadoEjemplar.Malo;
             Disponible = true;
+            Libro = unLibro;
         }
     }
 }

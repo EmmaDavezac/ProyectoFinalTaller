@@ -63,19 +63,9 @@ namespace Programa.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap _67343_anime_4k {
+        internal static System.Drawing.Bitmap FtrBookshelf {
             get {
-                object obj = ResourceManager.GetObject("67343-anime-4k", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Embargo {
-            get {
-                object obj = ResourceManager.GetObject("Embargo", resourceCulture);
+                object obj = ResourceManager.GetObject("FtrBookshelf", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

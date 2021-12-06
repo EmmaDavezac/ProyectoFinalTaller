@@ -8,7 +8,7 @@ using Dominio;
 
 namespace DAL.EntityFramework
 {
-    class RepositorioEjemplares : Repositorio<Ejemplar, AdministradorDePrestamosDbContext>, IRepositorioEjemplares
+    public class RepositorioEjemplares : Repositorio<Ejemplar, AdministradorDePrestamosDbContext>, IRepositorioEjemplares
     {
         public RepositorioEjemplares(AdministradorDePrestamosDbContext pDbContext) : base(pDbContext)
         {

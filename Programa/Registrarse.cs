@@ -20,9 +20,9 @@ namespace Programa
 
         private void buttonRegistrarAdministrador_Click(object sender, EventArgs e)
         {
-            if (textBoxApellido.Text != null && textBoxNombre.Text != null && textBoxMail.Text != null && dateTimePickerFechaNacimiento.Value.Date != DateTime.Now.Date && textBoxContraseña.Text != null)
+            if (textBoxApellido.Text != null && textBoxNombre.Text != null && textBoxMail.Text != null && dateTimePickerFechaNacimiento.Value.Date != new DateTime(2021, 12, 1) && textBoxContraseña.Text != null)
             {
-                Nucleo.Nucleo fachada = new Nucleo.Nucleo();
+                Nucleo.InterfazNucleo fachada = new Nucleo.InterfazNucleo();
                 fachada.AñadirAdministrador(textBoxNombre.Text, textBoxApellido.Text, dateTimePickerFechaNacimiento.Value, textBoxMail.Text, textBoxContraseña.Text);
                 MessageBox.Show("La cuenta de administrador ha sido creada, su id de accceso es: "+fachada.ObtenerUltimoIdAdministrador(), "Operacion Exitosa", MessageBoxButtons.OK);
                 this.Hide();
@@ -57,6 +57,31 @@ namespace Programa
         private void Registrarse_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void textBoxNombre_TextChanged(object sender, EventArgs e)
+        {
+            buttonRegistrarAdministrador.Enabled = true;
+        }
+
+        private void textBoxApellido_TextChanged(object sender, EventArgs e)
+        {
+            buttonRegistrarAdministrador.Enabled = true;
+        }
+
+        private void dateTimePickerFechaNacimiento_ValueChanged(object sender, EventArgs e)
+        {
+            buttonRegistrarAdministrador.Enabled = true;
+        }
+
+        private void textBoxMail_TextChanged(object sender, EventArgs e)
+        {
+            buttonRegistrarAdministrador.Enabled = true;
+        }
+
+        private void textBoxContraseña_TextChanged(object sender, EventArgs e)
+        {
+            buttonRegistrarAdministrador.Enabled = true;
         }
     }
 }

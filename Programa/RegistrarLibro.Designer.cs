@@ -48,12 +48,9 @@ namespace Programa
             this.labelResultados = new System.Windows.Forms.Label();
             this.textBoxISBN = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.buttonBuscarPorISBN = new System.Windows.Forms.Button();
             this.buttonGuardar = new System.Windows.Forms.Button();
-            this.textBoxBuscarPorISBN = new System.Windows.Forms.TextBox();
-            this.labelIngreseISBN = new System.Windows.Forms.Label();
-            this.lableResultadosISBN = new System.Windows.Forms.Label();
             this.buttonBorrarDatos = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -72,6 +69,7 @@ namespace Programa
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(768, 328);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // Titulo
@@ -103,7 +101,7 @@ namespace Programa
             // 
             // textBoxBuscar
             // 
-            this.textBoxBuscar.Location = new System.Drawing.Point(591, 66);
+            this.textBoxBuscar.Location = new System.Drawing.Point(594, 96);
             this.textBoxBuscar.Name = "textBoxBuscar";
             this.textBoxBuscar.Size = new System.Drawing.Size(100, 20);
             this.textBoxBuscar.TabIndex = 1;
@@ -111,7 +109,7 @@ namespace Programa
             // 
             // buttonBuscar
             // 
-            this.buttonBuscar.Location = new System.Drawing.Point(697, 66);
+            this.buttonBuscar.Location = new System.Drawing.Point(700, 96);
             this.buttonBuscar.Name = "buttonBuscar";
             this.buttonBuscar.Size = new System.Drawing.Size(61, 23);
             this.buttonBuscar.TabIndex = 2;
@@ -122,7 +120,7 @@ namespace Programa
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 18);
+            this.label1.Location = new System.Drawing.Point(12, 21);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(33, 13);
             this.label1.TabIndex = 3;
@@ -131,7 +129,7 @@ namespace Programa
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 53);
+            this.label2.Location = new System.Drawing.Point(12, 47);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(35, 13);
             this.label2.TabIndex = 4;
@@ -172,7 +170,7 @@ namespace Programa
             // labelIngreseTitulo
             // 
             this.labelIngreseTitulo.AutoSize = true;
-            this.labelIngreseTitulo.Location = new System.Drawing.Point(471, 71);
+            this.labelIngreseTitulo.Location = new System.Drawing.Point(474, 101);
             this.labelIngreseTitulo.Name = "labelIngreseTitulo";
             this.labelIngreseTitulo.Size = new System.Drawing.Size(114, 13);
             this.labelIngreseTitulo.TabIndex = 9;
@@ -184,7 +182,7 @@ namespace Programa
             this.labelNombreUsuario.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.labelNombreUsuario.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.labelNombreUsuario.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.labelNombreUsuario.Location = new System.Drawing.Point(590, 9);
+            this.labelNombreUsuario.Location = new System.Drawing.Point(606, 9);
             this.labelNombreUsuario.Name = "labelNombreUsuario";
             this.labelNombreUsuario.Size = new System.Drawing.Size(182, 31);
             this.labelNombreUsuario.TabIndex = 11;
@@ -195,7 +193,7 @@ namespace Programa
             // 
             this.botonVolver.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.botonVolver.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.botonVolver.Location = new System.Drawing.Point(591, 526);
+            this.botonVolver.Location = new System.Drawing.Point(605, 565);
             this.botonVolver.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.botonVolver.Name = "botonVolver";
             this.botonVolver.Size = new System.Drawing.Size(89, 23);
@@ -207,7 +205,7 @@ namespace Programa
             // labelResultados
             // 
             this.labelResultados.AutoSize = true;
-            this.labelResultados.Location = new System.Drawing.Point(588, 93);
+            this.labelResultados.Location = new System.Drawing.Point(591, 123);
             this.labelResultados.Name = "labelResultados";
             this.labelResultados.Size = new System.Drawing.Size(0, 13);
             this.labelResultados.TabIndex = 14;
@@ -230,51 +228,18 @@ namespace Programa
             this.label5.Text = "ISBN";
             this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
-            // buttonBuscarPorISBN
-            // 
-            this.buttonBuscarPorISBN.Location = new System.Drawing.Point(697, 114);
-            this.buttonBuscarPorISBN.Name = "buttonBuscarPorISBN";
-            this.buttonBuscarPorISBN.Size = new System.Drawing.Size(61, 23);
-            this.buttonBuscarPorISBN.TabIndex = 17;
-            this.buttonBuscarPorISBN.Text = "Buscar";
-            this.buttonBuscarPorISBN.UseVisualStyleBackColor = true;
-            // 
             // buttonGuardar
             // 
             this.buttonGuardar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.buttonGuardar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonGuardar.Location = new System.Drawing.Point(684, 526);
+            this.buttonGuardar.Location = new System.Drawing.Point(700, 565);
             this.buttonGuardar.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.buttonGuardar.Name = "buttonGuardar";
             this.buttonGuardar.Size = new System.Drawing.Size(89, 23);
             this.buttonGuardar.TabIndex = 12;
             this.buttonGuardar.Text = "Guardar";
             this.buttonGuardar.UseVisualStyleBackColor = true;
-            this.buttonGuardar.Click += new System.EventHandler(this.buttonSalir_Click);
-            // 
-            // textBoxBuscarPorISBN
-            // 
-            this.textBoxBuscarPorISBN.Location = new System.Drawing.Point(591, 116);
-            this.textBoxBuscarPorISBN.Name = "textBoxBuscarPorISBN";
-            this.textBoxBuscarPorISBN.Size = new System.Drawing.Size(100, 20);
-            this.textBoxBuscarPorISBN.TabIndex = 18;
-            // 
-            // labelIngreseISBN
-            // 
-            this.labelIngreseISBN.AutoSize = true;
-            this.labelIngreseISBN.Location = new System.Drawing.Point(471, 119);
-            this.labelIngreseISBN.Name = "labelIngreseISBN";
-            this.labelIngreseISBN.Size = new System.Drawing.Size(81, 13);
-            this.labelIngreseISBN.TabIndex = 19;
-            this.labelIngreseISBN.Text = "Ingrese el ISBN";
-            // 
-            // lableResultadosISBN
-            // 
-            this.lableResultadosISBN.AutoSize = true;
-            this.lableResultadosISBN.Location = new System.Drawing.Point(591, 149);
-            this.lableResultadosISBN.Name = "lableResultadosISBN";
-            this.lableResultadosISBN.Size = new System.Drawing.Size(0, 13);
-            this.lableResultadosISBN.TabIndex = 20;
+            this.buttonGuardar.Click += new System.EventHandler(this.buttonGuardar_Click);
             // 
             // buttonBorrarDatos
             // 
@@ -286,17 +251,25 @@ namespace Programa
             this.buttonBorrarDatos.UseVisualStyleBackColor = true;
             this.buttonBorrarDatos.Click += new System.EventHandler(this.buttonBorrarDatos_Click);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(567, 73);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(146, 13);
+            this.label4.TabIndex = 22;
+            this.label4.Text = "ConsultarEn Pagina de Libros";
+            this.label4.Click += new System.EventHandler(this.label4_Click_1);
+            // 
             // RegistrarLibro
             // 
+            this.AcceptButton = this.buttonGuardar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(784, 561);
+            this.ClientSize = new System.Drawing.Size(800, 600);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.buttonBorrarDatos);
-            this.Controls.Add(this.lableResultadosISBN);
-            this.Controls.Add(this.labelIngreseISBN);
-            this.Controls.Add(this.textBoxBuscarPorISBN);
-            this.Controls.Add(this.buttonBuscarPorISBN);
             this.Controls.Add(this.textBoxISBN);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.labelResultados);
@@ -313,6 +286,7 @@ namespace Programa
             this.Controls.Add(this.buttonBuscar);
             this.Controls.Add(this.textBoxBuscar);
             this.Controls.Add(this.dataGridView1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(800, 600);
             this.MinimizeBox = false;
@@ -349,11 +323,8 @@ namespace Programa
         private System.Windows.Forms.DataGridViewTextBoxColumn Autor;
         private System.Windows.Forms.DataGridViewTextBoxColumn AñoPublicacion;
         private System.Windows.Forms.DataGridViewTextBoxColumn ISBN;
-        private System.Windows.Forms.Button buttonBuscarPorISBN;
         private System.Windows.Forms.Button buttonGuardar;
-        private System.Windows.Forms.TextBox textBoxBuscarPorISBN;
-        private System.Windows.Forms.Label labelIngreseISBN;
-        private System.Windows.Forms.Label lableResultadosISBN;
         private System.Windows.Forms.Button buttonBorrarDatos;
+        private System.Windows.Forms.Label label4;
     }
 }

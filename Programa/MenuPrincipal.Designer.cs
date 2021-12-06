@@ -54,20 +54,14 @@ namespace Programa
             this.groupBoxAdministradores = new System.Windows.Forms.GroupBox();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.buttonRegistrarEjemplar = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBoxEjemplares = new System.Windows.Forms.GroupBox();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBoxUsuarios.SuspendLayout();
             this.groupBoxLibros.SuspendLayout();
             this.groupBoxPrestamos.SuspendLayout();
             this.groupBoxAdministradores.SuspendLayout();
             this.groupBoxEjemplares.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // botonVolver
@@ -137,6 +131,7 @@ namespace Programa
             resources.ApplyResources(this.buttonBuscarLibro, "buttonBuscarLibro");
             this.buttonBuscarLibro.Name = "buttonBuscarLibro";
             this.buttonBuscarLibro.UseVisualStyleBackColor = true;
+            this.buttonBuscarLibro.Click += new System.EventHandler(this.buttonBuscarLibro_Click);
             // 
             // buttonAñadirLibro
             // 
@@ -144,6 +139,7 @@ namespace Programa
             this.buttonAñadirLibro.Name = "buttonAñadirLibro";
             this.buttonAñadirLibro.TabStop = false;
             this.buttonAñadirLibro.UseVisualStyleBackColor = true;
+            this.buttonAñadirLibro.Click += new System.EventHandler(this.buttonAñadirLibro_Click);
             // 
             // buttonActualizarLibro
             // 
@@ -179,6 +175,7 @@ namespace Programa
             this.buttonRegistrarPrestamo.Name = "buttonRegistrarPrestamo";
             this.buttonRegistrarPrestamo.TabStop = false;
             this.buttonRegistrarPrestamo.UseVisualStyleBackColor = true;
+            this.buttonRegistrarPrestamo.Click += new System.EventHandler(this.buttonRegistrarPrestamo_Click);
             // 
             // buttonRegistrarDevolucion
             // 
@@ -241,19 +238,22 @@ namespace Programa
             resources.ApplyResources(this.button4, "button4");
             this.button4.Name = "button4";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button3
             // 
             resources.ApplyResources(this.button3, "button3");
             this.button3.Name = "button3";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click_1);
             // 
-            // button2
+            // buttonRegistrarEjemplar
             // 
-            resources.ApplyResources(this.button2, "button2");
-            this.button2.Name = "button2";
-            this.button2.TabStop = false;
-            this.button2.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.buttonRegistrarEjemplar, "buttonRegistrarEjemplar");
+            this.buttonRegistrarEjemplar.Name = "buttonRegistrarEjemplar";
+            this.buttonRegistrarEjemplar.TabStop = false;
+            this.buttonRegistrarEjemplar.UseVisualStyleBackColor = true;
+            this.buttonRegistrarEjemplar.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -264,55 +264,18 @@ namespace Programa
             // groupBoxEjemplares
             // 
             this.groupBoxEjemplares.Controls.Add(this.button1);
-            this.groupBoxEjemplares.Controls.Add(this.button2);
+            this.groupBoxEjemplares.Controls.Add(this.buttonRegistrarEjemplar);
             this.groupBoxEjemplares.Controls.Add(this.button3);
             this.groupBoxEjemplares.Controls.Add(this.button4);
             resources.ApplyResources(this.groupBoxEjemplares, "groupBoxEjemplares");
             this.groupBoxEjemplares.Name = "groupBoxEjemplares";
             this.groupBoxEjemplares.TabStop = false;
             // 
-            // button8
-            // 
-            resources.ApplyResources(this.button8, "button8");
-            this.button8.Name = "button8";
-            this.button8.UseVisualStyleBackColor = true;
-            // 
-            // button7
-            // 
-            resources.ApplyResources(this.button7, "button7");
-            this.button7.Name = "button7";
-            this.button7.UseVisualStyleBackColor = true;
-            // 
-            // button6
-            // 
-            resources.ApplyResources(this.button6, "button6");
-            this.button6.Name = "button6";
-            this.button6.TabStop = false;
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
-            // 
-            // button5
-            // 
-            resources.ApplyResources(this.button5, "button5");
-            this.button5.Name = "button5";
-            this.button5.UseVisualStyleBackColor = true;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.button5);
-            this.groupBox1.Controls.Add(this.button6);
-            this.groupBox1.Controls.Add(this.button7);
-            this.groupBox1.Controls.Add(this.button8);
-            resources.ApplyResources(this.groupBox1, "groupBox1");
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.TabStop = false;
-            // 
             // MenuPrincipal
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.labelNombreUsuario);
             this.Controls.Add(this.groupBoxEjemplares);
             this.Controls.Add(this.groupBoxAdministradores);
@@ -320,6 +283,7 @@ namespace Programa
             this.Controls.Add(this.groupBoxLibros);
             this.Controls.Add(this.groupBoxUsuarios);
             this.Controls.Add(this.botonVolver);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "MenuPrincipal";
@@ -330,7 +294,6 @@ namespace Programa
             this.groupBoxPrestamos.ResumeLayout(false);
             this.groupBoxAdministradores.ResumeLayout(false);
             this.groupBoxEjemplares.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -360,14 +323,9 @@ namespace Programa
         private System.Windows.Forms.GroupBox groupBoxAdministradores;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button buttonRegistrarEjemplar;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.GroupBox groupBoxEjemplares;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.GroupBox groupBox1;
     }
 }
 

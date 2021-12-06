@@ -71,7 +71,9 @@ namespace Programa
 
         private void button3_Click(object sender, EventArgs e)
         {
-
+            VerLibros ventana = new VerLibros(NombreUsuario);
+            this.Hide();
+            ventana.Show();
         }
 
         private void groupBox3_Enter(object sender, EventArgs e)
@@ -110,9 +112,45 @@ namespace Programa
             ventana.Show();
         }
 
-        private void button6_Click(object sender, EventArgs e)
+        private void buttonAñadirLibro_Click(object sender, EventArgs e)
         {
             RegistrarLibro ventana = new RegistrarLibro(NombreUsuario);
+            this.Hide();
+            ventana.Show();
+        }
+
+        private void buttonBuscarLibro_Click(object sender, EventArgs e)
+        {
+            ConsultarLibro ventana = new ConsultarLibro(NombreUsuario);
+            this.Hide();
+            ventana.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            RegistrarEjemplar ventana = new RegistrarEjemplar(NombreUsuario);
+            this.Hide();
+            ventana.Show();
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            // ConsultarEjemplar ventana = new ConsultarEjemplar(NombreUsuario);
+            ConsultarEjemplar ventana = new ConsultarEjemplar(NombreUsuario);
+            this.Hide();
+            ventana.Show();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            VerEjemplares ventana = new VerEjemplares(NombreUsuario);
+            this.Hide();
+            ventana.Show();
+        }
+
+        private void buttonRegistrarPrestamo_Click(object sender, EventArgs e)
+        {
+            RegistrarPrestamo ventana = new RegistrarPrestamo(NombreUsuario);
             this.Hide();
             ventana.Show();
         }

@@ -9,7 +9,7 @@ using Dominio;
 using ServiciosAPILibros;
 namespace Nucleo
 {
-    public class Nucleo
+    public class InterfazNucleo
     {
         private const string implementacionBase = "EntityFramework";
         private const string implementacionAPILibros = "OpenLibrary";
@@ -34,7 +34,7 @@ namespace Nucleo
             }
         }
 
-        public Nucleo()
+        public InterfazNucleo()
         {
         }
         public void AñadirUsuario(string nombre, string apellido, DateTime fechaNacimiento, string mail)
@@ -83,6 +83,59 @@ namespace Nucleo
             using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
             {
                 return unitOfWork.RepositorioLibros.Get(id);
+            }
+        }
+       
+
+        public void AñadirEjemplar(int idLibro, string estado)
+        {
+            using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
+            { Ejemplar ejemplar = new Ejemplar ( unitOfWork.RepositorioLibros.Get(idLibro), estado);
+                unitOfWork.RepositorioEjemplares.Add(ejemplar);
+                    unitOfWork.RepositorioLibros.Get(idLibro).Ejemplares.Add(ejemplar);
+                unitOfWork.Complete();
+            }
+        }
+        public Ejemplar ObtenerEjemplar(int id)
+        {
+            using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
+            {
+                return unitOfWork.RepositorioEjemplares.Get(id);
+            }
+
+        }
+        public List<Ejemplar> ObtenerEjemplaresDisponibles(int id)
+        {
+            using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
+            {
+                List<Ejemplar> lista = unitOfWork.RepositorioLibros.Get(id).EjemplaresDisponibles();
+                return lista;
+            }
+        }
+        public Libro ObtenerLibroDeEjemplar(int id)
+        {
+            using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
+            {
+                return unitOfWork.RepositorioEjemplares.Get(id).Libro;
+            }
+        }
+        public void RegistrarPrestamo(int idUsuario,int idEjemplar)
+        {
+            using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
+            {
+                Prestamo prestamo = new Prestamo (unitOfWork.RepositorioUsuarios.Get(idUsuario),unitOfWork.RepositorioEjemplares.Get(idEjemplar));
+
+               unitOfWork.RepositorioEjemplares.Get(idEjemplar).Disponible=false;
+                unitOfWork.RepositorioPrestamos.Add(prestamo);
+                unitOfWork.RepositorioUsuarios.Get(idUsuario).Prestamos.Add(prestamo);
+                unitOfWork.Complete();
+            }
+        }
+        public Prestamo ObtenerPrestamo(int id)
+        {
+            using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
+            {
+                return unitOfWork.RepositorioPrestamos.Get(id);
             }
         }
         public bool VerficarContraseña(int id, string contraseña)

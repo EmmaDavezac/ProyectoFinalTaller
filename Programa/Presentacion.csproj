@@ -56,17 +56,46 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BuscarLibrosAPI.cs">
+    <Compile Include="ConsultarEjemplar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BuscarLibrosAPI.Designer.cs">
-      <DependentUpon>BuscarLibrosAPI.cs</DependentUpon>
+    <Compile Include="ConsultarEjemplar.Designer.cs">
+      <DependentUpon>ConsultarEjemplar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConsultarLibro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConsultarLibro.Designer.cs">
+      <DependentUpon>ConsultarLibro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RegistrarPrestamo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegistrarPrestamo.Designer.cs">
+      <DependentUpon>RegistrarPrestamo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RegistrarEjemplar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegistrarEjemplar.Designer.cs">
+      <DependentUpon>RegistrarEjemplar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RegistrarLibro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegistrarLibro.Designer.cs">
+      <DependentUpon>RegistrarLibro.cs</DependentUpon>
     </Compile>
     <Compile Include="ConsultarAdministrador.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ConsultarAdministrador.Designer.cs">
       <DependentUpon>ConsultarAdministrador.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="RegistrarAdministrador.cs">
       <SubType>Form</SubType>
@@ -112,20 +141,50 @@
     <Compile Include="VerAdministradores.Designer.cs">
       <DependentUpon>VerAdministradores.cs</DependentUpon>
     </Compile>
+    <Compile Include="VerEjemplares.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VerEjemplares.Designer.cs">
+      <DependentUpon>VerEjemplares.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VerLibros.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VerLibros.Designer.cs">
+      <DependentUpon>VerLibros.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VerPrestamos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VerPrestamos.Designer.cs">
+      <DependentUpon>VerPrestamos.cs</DependentUpon>
+    </Compile>
     <Compile Include="VerUsuarios.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="VerUsuarios.Designer.cs">
       <DependentUpon>VerUsuarios.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="BuscarLibrosAPI.resx">
-      <DependentUpon>BuscarLibrosAPI.cs</DependentUpon>
+    <EmbeddedResource Include="ConsultarEjemplar.resx">
+      <DependentUpon>ConsultarEjemplar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConsultarLibro.resx">
+      <DependentUpon>ConsultarLibro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RegistrarEjemplar.resx">
+      <DependentUpon>RegistrarEjemplar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RegistrarLibro.resx">
+      <DependentUpon>RegistrarLibro.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ConsultarAdministrador.resx">
       <DependentUpon>ConsultarAdministrador.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RegistrarAdministrador.resx">
       <DependentUpon>RegistrarAdministrador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RegistrarPrestamo.resx">
+      <DependentUpon>RegistrarPrestamo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Registrarse.resx">
       <DependentUpon>Registrarse.cs</DependentUpon>
@@ -147,16 +206,20 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="VerAdministradores.resx">
       <DependentUpon>VerAdministradores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VerEjemplares.resx">
+      <DependentUpon>VerEjemplares.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VerLibros.resx">
+      <DependentUpon>VerLibros.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VerPrestamos.resx">
+      <DependentUpon>VerPrestamos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VerUsuarios.resx">
       <DependentUpon>VerUsuarios.cs</DependentUpon>
@@ -184,6 +247,9 @@
       <Project>{42580751-3ea3-4055-99f8-a2350fc23d8a}</Project>
       <Name>Nucleo</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FtrBookshelf.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -8,17 +8,15 @@ namespace Dominio
 {
     public class UsuarioSimple:Usuario
     {
+        public virtual List<Prestamo> Prestamos { get; set; }
         public UsuarioSimple()
         {
 
         }
         public int Scoring { get; set; }
-        public UsuarioSimple(string nombre,string apellido,DateTime fechaNacimiento,string mail)
+        public UsuarioSimple(string nombre, string apellido, DateTime fechaNacimiento, string mail) : base(nombre, apellido, fechaNacimiento, mail)
         {
-            Nombre = nombre;
-            Apellido = apellido;
-            FechaNacimiento = fechaNacimiento;
-            Mail = mail;
+            
             Scoring = 0;
         }
     }

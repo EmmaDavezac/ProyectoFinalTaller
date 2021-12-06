@@ -34,14 +34,15 @@ namespace Programa
 
         private void buttonAñadirUsuario_Click(object sender, EventArgs e)
         {
-            if (textBoxApellido.Text != null && textBoxNombre.Text != null && textBoxMail.Text != null && dateTimePickerFechaNacimiento.Value.Date != DateTime.Now.Date&&textBoxContraseña.Text!=null)
+            if (textBoxApellido.Text != null && textBoxNombre.Text != null && textBoxMail.Text != null && dateTimePickerFechaNacimiento.Value.Date != new DateTime(2021, 12, 1) &&textBoxContraseña.Text!=null)
             {
-                Nucleo.Nucleo fachada = new Nucleo.Nucleo();
+                Nucleo.InterfazNucleo fachada = new Nucleo.InterfazNucleo();
                 fachada.AñadirAdministrador(textBoxNombre.Text, textBoxApellido.Text, dateTimePickerFechaNacimiento.Value, textBoxMail.Text,textBoxContraseña.Text);
                 MessageBox.Show("El Administrador ha sido creado, el id de acceso es: " + fachada.ObtenerUltimoIdAdministrador(), "Operacion Exitosa", MessageBoxButtons.OK);
                 this.Hide();
-                Login ventana= new Login();
-                ventana.Show();
+                this.Hide();
+                MenuPrincipal ventanaMenu = new MenuPrincipal(NombreUsuario);
+                ventanaMenu.Show();
             }
             else
             {

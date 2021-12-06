@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,14 +10,15 @@ namespace Dominio
     public class Prestamo
     {
         public int Id { get; set; }
-        public DateTime FechaPrestamo { get; set; }
-        public DateTime FechaLimite { get; set; }
-        public DateTime FechaDevolucion { get; set; }
+        public string FechaPrestamo { get; set; }
+        public string FechaLimite { get; set; }
+        public string FechaDevolucion { get; set; }
         public EstadoEjemplar EstadoInicial { get; set; }
         public EstadoEjemplar EstadoDevolucion { get; set; }
-       virtual public UsuarioSimple Usuario { get; set; }
-        private DateTime CalcularFechaLimite()
-        { int scoring = Usuario.Scoring;
+        virtual public UsuarioSimple Usuario { get; set; }
+        public virtual Ejemplar Ejemplar { get; set; }
+        private DateTime CalcularFechaLimite(UsuarioSimple usuario)
+        { int scoring = usuario.Scoring;
 
             if (scoring >= 0)
             {
@@ -31,15 +33,21 @@ namespace Dominio
         }
         public Prestamo(UsuarioSimple usuario, Ejemplar ejemplar)
         {
-            FechaPrestamo = DateTime.Now;
-            FechaLimite = CalcularFechaLimite();
+            FechaPrestamo = DateTime.Now.ToString();
+            FechaLimite = CalcularFechaLimite(usuario).ToString();
+            Usuario = usuario;
+            Ejemplar = ejemplar;
             EstadoInicial = ejemplar.Estado;
-            ejemplar.Disponible = false;
+
+
+        }
+        public Prestamo()
+        {
 
         }
         public bool Retrasado()
         {
-            if (DateTime.Now > FechaLimite)
+            if (DateTime.Now > Convert.ToDateTime(FechaLimite))
             {
                 return true;
             }
@@ -50,7 +58,7 @@ namespace Dominio
         {
             if (!Retrasado())
             {
-                TimeSpan diferenciaEntreFechas = FechaLimite - DateTime.Now;
+                TimeSpan diferenciaEntreFechas = Convert.ToDateTime(FechaLimite) - DateTime.Now;
                 int dias = diferenciaEntreFechas.Days;
                 if (dias < 3)
                 {
@@ -59,16 +67,16 @@ namespace Dominio
                 else return false;
             }
             else return true; }
-        private int CalcularScoring()
+        private int CalcularScoring(UsuarioSimple usuario)
         { 
-            int scoring = Usuario.Scoring;
+            int scoring = usuario.Scoring;
             if (EstadoDevolucion<EstadoInicial)
             {
                 scoring -= 10;
             }
             if (Retrasado())
             {
-                TimeSpan difFechas = FechaDevolucion - FechaLimite;
+                TimeSpan difFechas = Convert.ToDateTime(FechaDevolucion) - Convert.ToDateTime(FechaLimite);
                 int dias = difFechas.Days;
                 scoring -= 2 * dias;
             }
@@ -78,12 +86,12 @@ namespace Dominio
             }
             return scoring;
         }
-       public void RegistrarDevolucion(EstadoEjemplar estadoDevolucion,Ejemplar ejemplar)
+       public void RegistrarDevolucion(UsuarioSimple usuario,EstadoEjemplar estadoDevolucion,Ejemplar ejemplar)
         {
             EstadoDevolucion = estadoDevolucion;
             ejemplar.Estado = EstadoDevolucion;
-            FechaDevolucion = DateTime.Now;
-            Usuario.Scoring = CalcularScoring();
+            FechaDevolucion = DateTime.Now.ToString();
+            usuario.Scoring = CalcularScoring(usuario);
         }
 
     }

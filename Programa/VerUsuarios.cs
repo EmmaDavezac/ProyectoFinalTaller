@@ -18,7 +18,7 @@ namespace Programa
         {
             
             InitializeComponent();
-            foreach (var item in new Nucleo.Nucleo().ObtenerUsuarios() )
+            foreach (var item in new Nucleo.InterfazNucleo().ObtenerUsuarios() )
             {
                 int n= dgvUsuarios.Rows.Add();
                 dgvUsuarios.Rows[n].Cells[0].Value = item.Id;

@@ -52,9 +52,9 @@ namespace Programa
         private void buttonAñadirUsuario_Click(object sender, EventArgs e)
         {
 
-            if (textBoxApellido.Text != null && textBoxNombre.Text != null && textBoxMail.Text != null && dateTimePickerFechaNacimiento.Value.Date != DateTime.Now.Date)
+            if (textBoxApellido.Text != null && textBoxNombre.Text != null && textBoxMail.Text != null && dateTimePickerFechaNacimiento.Value.Date != new DateTime(2021,12,1))
             {
-                Nucleo.Nucleo fachada = new Nucleo.Nucleo();
+                Nucleo.InterfazNucleo fachada = new Nucleo.InterfazNucleo();
                 fachada.AñadirUsuario(textBoxNombre.Text, textBoxApellido.Text, dateTimePickerFechaNacimiento.Value, textBoxMail.Text);
                 MessageBox.Show("El Usuario ha sido creado, el id  es: " + fachada.ObtenerUltimoIdUsuario(), "Operacion Exitosa", MessageBoxButtons.OK);
                 this.Hide();
@@ -72,22 +72,22 @@ namespace Programa
 
         private void textBoxNombre_TextChanged(object sender, EventArgs e)
         {
-
+            buttonAñadirUsuario.Enabled = true;
         }
 
         private void AgregarUsuario_Load(object sender, EventArgs e)
         {
-
+        
         }
 
         private void textBoxMail_TextChanged(object sender, EventArgs e)
         {
-
+            buttonAñadirUsuario.Enabled = true;
         }
 
         private void label4_Click(object sender, EventArgs e)
         {
-
+          
         }
 
         private void label3_Click(object sender, EventArgs e)
@@ -97,12 +97,12 @@ namespace Programa
 
         private void dateTimePickerFechaNacimiento_ValueChanged(object sender, EventArgs e)
         {
-
+        buttonAñadirUsuario.Enabled = true;
         }
 
         private void textBoxApellido_TextChanged(object sender, EventArgs e)
         {
-
+            buttonAñadirUsuario.Enabled = true;
         }
 
         private void labelApellido_Click(object sender, EventArgs e)

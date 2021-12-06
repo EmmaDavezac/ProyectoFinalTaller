@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Nucleo;
+
 
 
 namespace Programa
@@ -41,7 +43,7 @@ namespace Programa
             {
                 int resultado = 0;
                 dataGridView1.Rows.Clear();
-                foreach (var item in new Nucleo.Nucleo().ListarPorCoincidencia(textBoxBuscar.Text))
+                foreach (var item in new Nucleo.InterfazNucleo().ListarPorCoincidencia(textBoxBuscar.Text))
                 {
                     int n = dataGridView1.Rows.Add();
                     dataGridView1.Rows[n].Cells[0].Value = item.Titulo;
@@ -76,9 +78,23 @@ namespace Programa
 
         }
 
-        private void buttonSalir_Click(object sender, EventArgs e)
+        private void buttonGuardar_Click(object sender, EventArgs e)
         {
-           
+            if (!string.IsNullOrEmpty(textBoxTitulo.Text)&& !string.IsNullOrEmpty(textBoxAutor.Text)&&! string.IsNullOrEmpty(textBoxISBN.Text)&& !string.IsNullOrEmpty(textBoxAñoPublicacion.Text))
+            {
+
+                new InterfazNucleo().AñadirLibro(textBoxISBN.Text, textBoxTitulo.Text, textBoxAutor.Text, textBoxAñoPublicacion.Text);
+                MessageBox.Show("Libro registrado con exito, el Id del libro es: "+new InterfazNucleo().ObtenerUltimoIdLibro());
+                this.Hide();
+                MenuPrincipal ventanaMenu = new MenuPrincipal(NombreUsuario);
+                ventanaMenu.Show();
+
+            }
+            else
+            {
+                MessageBox.Show("Debe completar la informacion");
+                textBoxTitulo.Focus();
+            }
         }
 
         private void botonVolver_Click(object sender, EventArgs e)
@@ -119,6 +135,27 @@ namespace Programa
             textBoxAñoPublicacion.Clear();
             textBoxISBN.Clear();
             textBoxTitulo.Clear();
+            
+        }
+
+        private void labelIngreseISBN_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxBuscarPorISBN_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonBuscarPorISBN_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

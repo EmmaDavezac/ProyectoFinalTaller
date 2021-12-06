@@ -10,9 +10,9 @@ namespace DAL.EntityFramework
 
         public IDbSet<Ejemplar> Ejemplares { get; set; }
 
-        public IDbSet<Prestamo> prestamos { get; set; }
+        public IDbSet<Prestamo> Prestamos { get; set; }
 
         public IDbSet<UsuarioSimple> Usuarios { get; set; }
-        public IDbSet<UsuarioAdministrador> Administradors { get; set; }
+        public IDbSet<UsuarioAdministrador> Administradores { get; set; }
     }
 }
