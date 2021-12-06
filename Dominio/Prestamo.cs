@@ -33,8 +33,8 @@ namespace Dominio
         }
         public Prestamo(UsuarioSimple usuario, Ejemplar ejemplar)
         {
-            FechaPrestamo = DateTime.Now.ToString();
-            FechaLimite = CalcularFechaLimite(usuario).ToString();
+            FechaPrestamo = DateTime.Now.Date.ToString();
+            FechaLimite = CalcularFechaLimite(usuario).Date.ToString();
             Usuario = usuario;
             Ejemplar = ejemplar;
             EstadoInicial = ejemplar.Estado;
@@ -47,7 +47,7 @@ namespace Dominio
         }
         public bool Retrasado()
         {
-            if (DateTime.Now > Convert.ToDateTime(FechaLimite))
+            if (DateTime.Now.Date > Convert.ToDateTime(FechaLimite).Date&&string.IsNullOrEmpty(FechaDevolucion))
             {
                 return true;
             }
@@ -56,7 +56,7 @@ namespace Dominio
         }
         public bool ProximoAVencerse()
         {
-            if (!Retrasado())
+            if (string.IsNullOrEmpty(FechaDevolucion))
             {
                 TimeSpan diferenciaEntreFechas = Convert.ToDateTime(FechaLimite) - DateTime.Now;
                 int dias = diferenciaEntreFechas.Days;
@@ -66,7 +66,7 @@ namespace Dominio
                 }
                 else return false;
             }
-            else return true; }
+            else return false ; }
         private int CalcularScoring(UsuarioSimple usuario)
         { 
             int scoring = usuario.Scoring;
@@ -86,12 +86,13 @@ namespace Dominio
             }
             return scoring;
         }
-       public void RegistrarDevolucion(UsuarioSimple usuario,EstadoEjemplar estadoDevolucion,Ejemplar ejemplar)
+       public void RegistrarDevolucion(EstadoEjemplar estadoDevolucion)
         {
             EstadoDevolucion = estadoDevolucion;
-            ejemplar.Estado = EstadoDevolucion;
-            FechaDevolucion = DateTime.Now.ToString();
-            usuario.Scoring = CalcularScoring(usuario);
+            Ejemplar.Estado = EstadoDevolucion;
+            Ejemplar.Disponible = true;
+            FechaDevolucion = DateTime.Now.Date.ToString();
+            Usuario.Scoring = CalcularScoring(Usuario);
         }
 
     }

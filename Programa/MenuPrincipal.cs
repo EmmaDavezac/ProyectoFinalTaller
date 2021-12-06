@@ -154,5 +154,26 @@ namespace Programa
             this.Hide();
             ventana.Show();
         }
+
+        private void buttonVerPrestamos_Click(object sender, EventArgs e)
+        {
+            VerPrestamos ventana = new VerPrestamos(NombreUsuario);
+            this.Hide();
+            ventana.Show();
+        }
+
+        private void buttonBuscarPrestamo_Click(object sender, EventArgs e)
+        {
+            ConsultarPrestamo ventana = new ConsultarPrestamo(NombreUsuario);
+            this.Hide();
+            ventana.Show();
+        }
+
+        private void buttonRegistrarDevolucion_Click(object sender, EventArgs e)
+        {
+            RegistrarDevolucion ventana = new RegistrarDevolucion(NombreUsuario);
+            this.Hide();
+            ventana.Show();
+        }
     }
 }

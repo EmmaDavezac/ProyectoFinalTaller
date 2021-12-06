@@ -138,6 +138,42 @@ namespace Nucleo
                 return unitOfWork.RepositorioPrestamos.Get(id);
             }
         }
+        public UsuarioSimple ObtenerUsarioDePrestamo(int id)
+        {
+            using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
+            {
+                return unitOfWork.RepositorioPrestamos.Get(id).Usuario;
+            }
+        }
+
+        public void RegistrarDevolucion(int idPrestamo,string estado)
+        {
+            using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
+            {
+                if (estado=="Bueno")
+                {
+                    unitOfWork.RepositorioPrestamos.Get(idPrestamo).RegistrarDevolucion(EstadoEjemplar.Bueno); 
+                  }else unitOfWork.RepositorioPrestamos.Get(idPrestamo).RegistrarDevolucion(EstadoEjemplar.Malo);
+
+               
+                unitOfWork.Complete();
+            }
+        }
+        public Libro ObtenerLibroDePrestamo(int id)
+        {
+            using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
+            {
+                return unitOfWork.RepositorioPrestamos.Get(id).Ejemplar.Libro;
+            }
+        }
+        public Ejemplar ObtenerEjemplarDePrestamo(int id)
+        {
+            using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
+            {
+                return unitOfWork.RepositorioPrestamos.Get(id).Ejemplar;
+            }
+        }
+
         public bool VerficarContraseña(int id, string contraseña)
         {
             return ObtenerAdministrador(id).VerificarContraseña(contraseña);
@@ -152,6 +188,7 @@ namespace Nucleo
         { return GetUnitOfWork(implementacionBase).RepositorioEjemplares.GetAll(); }
         public IEnumerable<Prestamo> ObtenerPrestamos()
         { return GetUnitOfWork(implementacionBase).RepositorioPrestamos.GetAll(); }
+
         public int ObtenerUltimoIdUsuario()
 
         { return ObtenerUsuarios().Last().Id; }

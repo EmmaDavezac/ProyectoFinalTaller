@@ -44,6 +44,8 @@ namespace Programa
             // 
             this.dgvAdministradores.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dgvAdministradores.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvAdministradores.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dgvAdministradores.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dgvAdministradores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAdministradores.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
@@ -51,7 +53,7 @@ namespace Programa
             this.Apellido,
             this.FechaNacimiento,
             this.Email});
-            this.dgvAdministradores.GridColor = System.Drawing.SystemColors.Control;
+            this.dgvAdministradores.GridColor = System.Drawing.SystemColors.ControlLightLight;
             this.dgvAdministradores.Location = new System.Drawing.Point(12, 57);
             this.dgvAdministradores.Name = "dgvAdministradores";
             this.dgvAdministradores.ReadOnly = true;

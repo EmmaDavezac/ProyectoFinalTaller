@@ -58,6 +58,7 @@ namespace Programa
             // 
             // buttonBuscarUsuario
             // 
+            this.buttonBuscarUsuario.Enabled = false;
             this.buttonBuscarUsuario.Location = new System.Drawing.Point(470, 302);
             this.buttonBuscarUsuario.Name = "buttonBuscarUsuario";
             this.buttonBuscarUsuario.Size = new System.Drawing.Size(89, 23);
@@ -202,7 +203,7 @@ namespace Programa
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(784, 561);
+            this.ClientSize = new System.Drawing.Size(800, 600);
             this.Controls.Add(this.labelNombreUsuario);
             this.Controls.Add(this.labelScoring);
             this.Controls.Add(this.textBoxScoring);

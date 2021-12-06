@@ -91,6 +91,7 @@ namespace Programa
             // 
             this.botonIniciarSesion.BackColor = System.Drawing.SystemColors.Highlight;
             this.botonIniciarSesion.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.botonIniciarSesion.Enabled = false;
             this.botonIniciarSesion.FlatAppearance.BorderSize = 0;
             this.botonIniciarSesion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.botonIniciarSesion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

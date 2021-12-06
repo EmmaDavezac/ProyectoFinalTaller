@@ -40,7 +40,6 @@ namespace Programa
                 fachada.AñadirAdministrador(textBoxNombre.Text, textBoxApellido.Text, dateTimePickerFechaNacimiento.Value, textBoxMail.Text,textBoxContraseña.Text);
                 MessageBox.Show("El Administrador ha sido creado, el id de acceso es: " + fachada.ObtenerUltimoIdAdministrador(), "Operacion Exitosa", MessageBoxButtons.OK);
                 this.Hide();
-                this.Hide();
                 MenuPrincipal ventanaMenu = new MenuPrincipal(NombreUsuario);
                 ventanaMenu.Show();
             }

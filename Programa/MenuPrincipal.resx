@@ -220,7 +220,7 @@
     <value>1</value>
   </data>
   <data name="botonBuscarUsuario.Text" xml:space="preserve">
-    <value>Buscar Usuario</value>
+    <value>Consultar  Usuario</value>
   </data>
   <data name="&gt;&gt;botonBuscarUsuario.Name" xml:space="preserve">
     <value>botonBuscarUsuario</value>
@@ -364,7 +364,7 @@
     <value>1</value>
   </data>
   <data name="buttonBuscarLibro.Text" xml:space="preserve">
-    <value>Buscar Libro</value>
+    <value>Consultar Libro</value>
   </data>
   <data name="&gt;&gt;buttonBuscarLibro.Name" xml:space="preserve">
     <value>buttonBuscarLibro</value>
@@ -462,34 +462,34 @@
   <data name="&gt;&gt;groupBoxLibros.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="buttonVerUsuarios.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="buttonVerPrestamos.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="buttonVerUsuarios.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="buttonVerPrestamos.Location" type="System.Drawing.Point, System.Drawing">
     <value>20, 77</value>
   </data>
-  <data name="buttonVerUsuarios.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="buttonVerPrestamos.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 3, 2, 3</value>
   </data>
-  <data name="buttonVerUsuarios.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="buttonVerPrestamos.Size" type="System.Drawing.Size, System.Drawing">
     <value>120, 23</value>
   </data>
-  <data name="buttonVerUsuarios.TabIndex" type="System.Int32, mscorlib">
+  <data name="buttonVerPrestamos.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <data name="buttonVerUsuarios.Text" xml:space="preserve">
+  <data name="buttonVerPrestamos.Text" xml:space="preserve">
     <value>Ver Prestamos</value>
   </data>
-  <data name="&gt;&gt;buttonVerUsuarios.Name" xml:space="preserve">
-    <value>buttonVerUsuarios</value>
+  <data name="&gt;&gt;buttonVerPrestamos.Name" xml:space="preserve">
+    <value>buttonVerPrestamos</value>
   </data>
-  <data name="&gt;&gt;buttonVerUsuarios.Type" xml:space="preserve">
+  <data name="&gt;&gt;buttonVerPrestamos.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;buttonVerUsuarios.Parent" xml:space="preserve">
+  <data name="&gt;&gt;buttonVerPrestamos.Parent" xml:space="preserve">
     <value>groupBoxPrestamos</value>
   </data>
-  <data name="&gt;&gt;buttonVerUsuarios.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;buttonVerPrestamos.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
   <data name="buttonBuscarPrestamo.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
@@ -508,7 +508,7 @@
     <value>1</value>
   </data>
   <data name="buttonBuscarPrestamo.Text" xml:space="preserve">
-    <value>Buscar Prestamos</value>
+    <value>Consultar Prestamo</value>
   </data>
   <data name="&gt;&gt;buttonBuscarPrestamo.Name" xml:space="preserve">
     <value>buttonBuscarPrestamo</value>
@@ -796,7 +796,7 @@
     <value>1</value>
   </data>
   <data name="button3.Text" xml:space="preserve">
-    <value>Buscar Ejemplar</value>
+    <value>Consultar Ejemplar</value>
   </data>
   <data name="&gt;&gt;button3.Name" xml:space="preserve">
     <value>button3</value>

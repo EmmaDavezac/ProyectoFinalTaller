@@ -68,6 +68,18 @@
     <Compile Include="ConsultarLibro.Designer.cs">
       <DependentUpon>ConsultarLibro.cs</DependentUpon>
     </Compile>
+    <Compile Include="ConsultarPrestamo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConsultarPrestamo.Designer.cs">
+      <DependentUpon>ConsultarPrestamo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RegistrarDevolucion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegistrarDevolucion.Designer.cs">
+      <DependentUpon>RegistrarDevolucion.cs</DependentUpon>
+    </Compile>
     <Compile Include="RegistrarPrestamo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -171,6 +183,12 @@
     <EmbeddedResource Include="ConsultarLibro.resx">
       <DependentUpon>ConsultarLibro.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ConsultarPrestamo.resx">
+      <DependentUpon>ConsultarPrestamo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RegistrarDevolucion.resx">
+      <DependentUpon>RegistrarDevolucion.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="RegistrarEjemplar.resx">
       <DependentUpon>RegistrarEjemplar.cs</DependentUpon>
     </EmbeddedResource>
@@ -247,9 +265,6 @@
       <Project>{42580751-3ea3-4055-99f8-a2350fc23d8a}</Project>
       <Name>Nucleo</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\FtrBookshelf.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

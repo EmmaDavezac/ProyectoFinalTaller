@@ -98,7 +98,7 @@ namespace Programa
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            buttonBuscarLibro.Enabled = true;
+            buttonGuardarEjemplar.Enabled = true;
         }
     }
 }

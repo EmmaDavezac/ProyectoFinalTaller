@@ -42,7 +42,7 @@ namespace Programa
             this.buttonAñadirLibro = new System.Windows.Forms.Button();
             this.buttonActualizarLibro = new System.Windows.Forms.Button();
             this.groupBoxLibros = new System.Windows.Forms.GroupBox();
-            this.buttonVerUsuarios = new System.Windows.Forms.Button();
+            this.buttonVerPrestamos = new System.Windows.Forms.Button();
             this.buttonBuscarPrestamo = new System.Windows.Forms.Button();
             this.buttonRegistrarPrestamo = new System.Windows.Forms.Button();
             this.buttonRegistrarDevolucion = new System.Windows.Forms.Button();
@@ -157,17 +157,19 @@ namespace Programa
             this.groupBoxLibros.Name = "groupBoxLibros";
             this.groupBoxLibros.TabStop = false;
             // 
-            // buttonVerUsuarios
+            // buttonVerPrestamos
             // 
-            resources.ApplyResources(this.buttonVerUsuarios, "buttonVerUsuarios");
-            this.buttonVerUsuarios.Name = "buttonVerUsuarios";
-            this.buttonVerUsuarios.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.buttonVerPrestamos, "buttonVerPrestamos");
+            this.buttonVerPrestamos.Name = "buttonVerPrestamos";
+            this.buttonVerPrestamos.UseVisualStyleBackColor = true;
+            this.buttonVerPrestamos.Click += new System.EventHandler(this.buttonVerPrestamos_Click);
             // 
             // buttonBuscarPrestamo
             // 
             resources.ApplyResources(this.buttonBuscarPrestamo, "buttonBuscarPrestamo");
             this.buttonBuscarPrestamo.Name = "buttonBuscarPrestamo";
             this.buttonBuscarPrestamo.UseVisualStyleBackColor = true;
+            this.buttonBuscarPrestamo.Click += new System.EventHandler(this.buttonBuscarPrestamo_Click);
             // 
             // buttonRegistrarPrestamo
             // 
@@ -182,13 +184,14 @@ namespace Programa
             resources.ApplyResources(this.buttonRegistrarDevolucion, "buttonRegistrarDevolucion");
             this.buttonRegistrarDevolucion.Name = "buttonRegistrarDevolucion";
             this.buttonRegistrarDevolucion.UseVisualStyleBackColor = true;
+            this.buttonRegistrarDevolucion.Click += new System.EventHandler(this.buttonRegistrarDevolucion_Click);
             // 
             // groupBoxPrestamos
             // 
             this.groupBoxPrestamos.Controls.Add(this.buttonRegistrarDevolucion);
             this.groupBoxPrestamos.Controls.Add(this.buttonRegistrarPrestamo);
             this.groupBoxPrestamos.Controls.Add(this.buttonBuscarPrestamo);
-            this.groupBoxPrestamos.Controls.Add(this.buttonVerUsuarios);
+            this.groupBoxPrestamos.Controls.Add(this.buttonVerPrestamos);
             resources.ApplyResources(this.groupBoxPrestamos, "groupBoxPrestamos");
             this.groupBoxPrestamos.Name = "groupBoxPrestamos";
             this.groupBoxPrestamos.TabStop = false;
@@ -311,7 +314,7 @@ namespace Programa
         private System.Windows.Forms.Button buttonAñadirLibro;
         private System.Windows.Forms.Button buttonActualizarLibro;
         private System.Windows.Forms.GroupBox groupBoxLibros;
-        private System.Windows.Forms.Button buttonVerUsuarios;
+        private System.Windows.Forms.Button buttonVerPrestamos;
         private System.Windows.Forms.Button buttonBuscarPrestamo;
         private System.Windows.Forms.Button buttonRegistrarPrestamo;
         private System.Windows.Forms.Button buttonRegistrarDevolucion;

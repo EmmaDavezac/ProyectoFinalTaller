@@ -40,6 +40,8 @@ namespace Programa
             this.FechaDevolucion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EstadoInicialEjemplar = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EstadoFinal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProximoAVencerser = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Retrasado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IdUsuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Mail = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,6 +50,7 @@ namespace Programa
             this.ISBN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IDEjemplar = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Disponible = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPrestamos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -56,7 +59,7 @@ namespace Programa
             this.labelNombreUsuario.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.labelNombreUsuario.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.labelNombreUsuario.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.labelNombreUsuario.Location = new System.Drawing.Point(606, 9);
+            this.labelNombreUsuario.Location = new System.Drawing.Point(607, 9);
             this.labelNombreUsuario.Name = "labelNombreUsuario";
             this.labelNombreUsuario.Size = new System.Drawing.Size(182, 31);
             this.labelNombreUsuario.TabIndex = 65;
@@ -79,9 +82,9 @@ namespace Programa
             // dataGridViewPrestamos
             // 
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.ControlLightLight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlLightLight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
             this.dataGridViewPrestamos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewPrestamos.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dataGridViewPrestamos.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -103,6 +106,8 @@ namespace Programa
             this.FechaDevolucion,
             this.EstadoInicialEjemplar,
             this.EstadoFinal,
+            this.ProximoAVencerser,
+            this.Retrasado,
             this.IdUsuario,
             this.Nombre,
             this.Mail,
@@ -110,10 +115,13 @@ namespace Programa
             this.Titulo,
             this.ISBN,
             this.IDEjemplar,
-            this.Estado});
+            this.Estado,
+            this.Disponible});
+            this.dataGridViewPrestamos.GridColor = System.Drawing.SystemColors.ControlLightLight;
             this.dataGridViewPrestamos.Location = new System.Drawing.Point(12, 136);
             this.dataGridViewPrestamos.Name = "dataGridViewPrestamos";
             this.dataGridViewPrestamos.ReadOnly = true;
+            this.dataGridViewPrestamos.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dataGridViewPrestamos.Size = new System.Drawing.Size(776, 403);
             this.dataGridViewPrestamos.TabIndex = 98;
             this.dataGridViewPrestamos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPrestamos_CellContentClick);
@@ -138,7 +146,7 @@ namespace Programa
             // 
             // FechaDevolucion
             // 
-            this.FechaDevolucion.HeaderText = "Column1";
+            this.FechaDevolucion.HeaderText = "FechaDevolucion";
             this.FechaDevolucion.Name = "FechaDevolucion";
             this.FechaDevolucion.ReadOnly = true;
             // 
@@ -154,6 +162,18 @@ namespace Programa
             this.EstadoFinal.Name = "EstadoFinal";
             this.EstadoFinal.ReadOnly = true;
             // 
+            // ProximoAVencerser
+            // 
+            this.ProximoAVencerser.HeaderText = "Proximo a vencer";
+            this.ProximoAVencerser.Name = "ProximoAVencerser";
+            this.ProximoAVencerser.ReadOnly = true;
+            // 
+            // Retrasado
+            // 
+            this.Retrasado.HeaderText = "Retrasado";
+            this.Retrasado.Name = "Retrasado";
+            this.Retrasado.ReadOnly = true;
+            // 
             // IdUsuario
             // 
             this.IdUsuario.HeaderText = "Id Usuario";
@@ -162,45 +182,51 @@ namespace Programa
             // 
             // Nombre
             // 
-            this.Nombre.HeaderText = "Column1";
+            this.Nombre.HeaderText = "Nombre";
             this.Nombre.Name = "Nombre";
             this.Nombre.ReadOnly = true;
             // 
             // Mail
             // 
-            this.Mail.HeaderText = "Column1";
+            this.Mail.HeaderText = "Mail";
             this.Mail.Name = "Mail";
             this.Mail.ReadOnly = true;
             // 
             // IdLibro
             // 
-            this.IdLibro.HeaderText = "Column1";
+            this.IdLibro.HeaderText = "IdLibro";
             this.IdLibro.Name = "IdLibro";
             this.IdLibro.ReadOnly = true;
             // 
             // Titulo
             // 
-            this.Titulo.HeaderText = "Column1";
+            this.Titulo.HeaderText = "Titulo";
             this.Titulo.Name = "Titulo";
             this.Titulo.ReadOnly = true;
             // 
             // ISBN
             // 
-            this.ISBN.HeaderText = "Column1";
+            this.ISBN.HeaderText = "ISBN";
             this.ISBN.Name = "ISBN";
             this.ISBN.ReadOnly = true;
             // 
             // IDEjemplar
             // 
-            this.IDEjemplar.HeaderText = "Column1";
+            this.IDEjemplar.HeaderText = "IDEjemplar";
             this.IDEjemplar.Name = "IDEjemplar";
             this.IDEjemplar.ReadOnly = true;
             // 
             // Estado
             // 
-            this.Estado.HeaderText = "Column1";
+            this.Estado.HeaderText = "Estado";
             this.Estado.Name = "Estado";
             this.Estado.ReadOnly = true;
+            // 
+            // Disponible
+            // 
+            this.Disponible.HeaderText = "Disponible";
+            this.Disponible.Name = "Disponible";
+            this.Disponible.ReadOnly = true;
             // 
             // VerPrestamos
             // 
@@ -217,7 +243,9 @@ namespace Programa
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "VerPrestamos";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "VerPrestamo";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.VerPrestamos_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPrestamos)).EndInit();
             this.ResumeLayout(false);
 
@@ -234,6 +262,8 @@ namespace Programa
         private System.Windows.Forms.DataGridViewTextBoxColumn FechaDevolucion;
         private System.Windows.Forms.DataGridViewTextBoxColumn EstadoInicialEjemplar;
         private System.Windows.Forms.DataGridViewTextBoxColumn EstadoFinal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProximoAVencerser;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Retrasado;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdUsuario;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn Mail;
@@ -242,5 +272,6 @@ namespace Programa
         private System.Windows.Forms.DataGridViewTextBoxColumn ISBN;
         private System.Windows.Forms.DataGridViewTextBoxColumn IDEjemplar;
         private System.Windows.Forms.DataGridViewTextBoxColumn Estado;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Disponible;
     }
 }

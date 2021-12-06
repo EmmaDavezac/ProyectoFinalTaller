@@ -158,6 +158,7 @@ namespace Programa
             // 
             // buttonBuscarLibro
             // 
+            this.buttonBuscarLibro.Enabled = false;
             this.buttonBuscarLibro.Location = new System.Drawing.Point(466, 276);
             this.buttonBuscarLibro.Name = "buttonBuscarLibro";
             this.buttonBuscarLibro.Size = new System.Drawing.Size(89, 23);
@@ -180,7 +181,7 @@ namespace Programa
             this.AcceptButton = this.buttonBuscarLibro;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 561);
+            this.ClientSize = new System.Drawing.Size(800, 600);
             this.Controls.Add(this.labelError);
             this.Controls.Add(this.buttonBuscarLibro);
             this.Controls.Add(this.labelId);

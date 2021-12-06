@@ -81,6 +81,7 @@ namespace Programa
             // 
             // buttonBuscarAdministrador
             // 
+            this.buttonBuscarAdministrador.Enabled = false;
             this.buttonBuscarAdministrador.Location = new System.Drawing.Point(470, 281);
             this.buttonBuscarAdministrador.Name = "buttonBuscarAdministrador";
             this.buttonBuscarAdministrador.Size = new System.Drawing.Size(116, 23);
@@ -180,7 +181,7 @@ namespace Programa
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(784, 561);
+            this.ClientSize = new System.Drawing.Size(800, 600);
             this.Controls.Add(this.labelNombreUsuario);
             this.Controls.Add(this.textBoxFecha);
             this.Controls.Add(this.textBoxId);

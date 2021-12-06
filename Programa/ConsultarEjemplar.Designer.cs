@@ -173,6 +173,7 @@ namespace Programa
             // 
             // buttonBuscar
             // 
+            this.buttonBuscar.Enabled = false;
             this.buttonBuscar.Location = new System.Drawing.Point(512, 338);
             this.buttonBuscar.Name = "buttonBuscar";
             this.buttonBuscar.Size = new System.Drawing.Size(75, 23);
@@ -237,7 +238,7 @@ namespace Programa
             this.AcceptButton = this.buttonBuscar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 561);
+            this.ClientSize = new System.Drawing.Size(800, 600);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxDisponibilidad);
             this.Controls.Add(this.labelNombreUsuario);
