@@ -57,6 +57,10 @@ namespace Programa
             this.buttonRegistrarEjemplar = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBoxEjemplares = new System.Windows.Forms.GroupBox();
+            this.buttonPrestamosRetrasados = new System.Windows.Forms.Button();
+            this.buttonVerProximosAVencer = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             this.groupBoxUsuarios.SuspendLayout();
             this.groupBoxLibros.SuspendLayout();
             this.groupBoxPrestamos.SuspendLayout();
@@ -66,15 +70,18 @@ namespace Programa
             // 
             // botonVolver
             // 
+            this.botonVolver.BackColor = System.Drawing.SystemColors.Highlight;
             this.botonVolver.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.botonVolver.FlatAppearance.BorderSize = 0;
             resources.ApplyResources(this.botonVolver, "botonVolver");
+            this.botonVolver.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.botonVolver.Name = "botonVolver";
-            this.botonVolver.UseVisualStyleBackColor = true;
+            this.botonVolver.UseVisualStyleBackColor = false;
             this.botonVolver.Click += new System.EventHandler(this.botonSalir_Click);
             // 
             // labelNombreUsuario
             // 
-            this.labelNombreUsuario.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.labelNombreUsuario.BackColor = System.Drawing.SystemColors.Highlight;
             this.labelNombreUsuario.ForeColor = System.Drawing.SystemColors.ControlLight;
             resources.ApplyResources(this.labelNombreUsuario, "labelNombreUsuario");
             this.labelNombreUsuario.Name = "labelNombreUsuario";
@@ -82,6 +89,7 @@ namespace Programa
             // 
             // botonVerUsuarios
             // 
+            this.botonVerUsuarios.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
             resources.ApplyResources(this.botonVerUsuarios, "botonVerUsuarios");
             this.botonVerUsuarios.Name = "botonVerUsuarios";
             this.botonVerUsuarios.UseVisualStyleBackColor = true;
@@ -89,6 +97,7 @@ namespace Programa
             // 
             // botonBuscarUsuario
             // 
+            this.botonBuscarUsuario.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
             resources.ApplyResources(this.botonBuscarUsuario, "botonBuscarUsuario");
             this.botonBuscarUsuario.Name = "botonBuscarUsuario";
             this.botonBuscarUsuario.UseVisualStyleBackColor = true;
@@ -96,6 +105,7 @@ namespace Programa
             // 
             // botonRegistrarUsuario
             // 
+            this.botonRegistrarUsuario.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
             resources.ApplyResources(this.botonRegistrarUsuario, "botonRegistrarUsuario");
             this.botonRegistrarUsuario.Name = "botonRegistrarUsuario";
             this.botonRegistrarUsuario.TabStop = false;
@@ -104,9 +114,11 @@ namespace Programa
             // 
             // buttonActualizarUsuario
             // 
+            this.buttonActualizarUsuario.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
             resources.ApplyResources(this.buttonActualizarUsuario, "buttonActualizarUsuario");
             this.buttonActualizarUsuario.Name = "buttonActualizarUsuario";
             this.buttonActualizarUsuario.UseVisualStyleBackColor = true;
+            this.buttonActualizarUsuario.Click += new System.EventHandler(this.buttonActualizarUsuario_Click);
             // 
             // groupBoxUsuarios
             // 
@@ -114,6 +126,7 @@ namespace Programa
             this.groupBoxUsuarios.Controls.Add(this.botonRegistrarUsuario);
             this.groupBoxUsuarios.Controls.Add(this.botonBuscarUsuario);
             this.groupBoxUsuarios.Controls.Add(this.botonVerUsuarios);
+            this.groupBoxUsuarios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             resources.ApplyResources(this.groupBoxUsuarios, "groupBoxUsuarios");
             this.groupBoxUsuarios.Name = "groupBoxUsuarios";
             this.groupBoxUsuarios.TabStop = false;
@@ -121,6 +134,7 @@ namespace Programa
             // 
             // buttonVerLibros
             // 
+            this.buttonVerLibros.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
             resources.ApplyResources(this.buttonVerLibros, "buttonVerLibros");
             this.buttonVerLibros.Name = "buttonVerLibros";
             this.buttonVerLibros.UseVisualStyleBackColor = true;
@@ -128,6 +142,7 @@ namespace Programa
             // 
             // buttonBuscarLibro
             // 
+            this.buttonBuscarLibro.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
             resources.ApplyResources(this.buttonBuscarLibro, "buttonBuscarLibro");
             this.buttonBuscarLibro.Name = "buttonBuscarLibro";
             this.buttonBuscarLibro.UseVisualStyleBackColor = true;
@@ -135,6 +150,7 @@ namespace Programa
             // 
             // buttonAñadirLibro
             // 
+            this.buttonAñadirLibro.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
             resources.ApplyResources(this.buttonAñadirLibro, "buttonAñadirLibro");
             this.buttonAñadirLibro.Name = "buttonAñadirLibro";
             this.buttonAñadirLibro.TabStop = false;
@@ -143,6 +159,7 @@ namespace Programa
             // 
             // buttonActualizarLibro
             // 
+            this.buttonActualizarLibro.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
             resources.ApplyResources(this.buttonActualizarLibro, "buttonActualizarLibro");
             this.buttonActualizarLibro.Name = "buttonActualizarLibro";
             this.buttonActualizarLibro.UseVisualStyleBackColor = true;
@@ -153,12 +170,14 @@ namespace Programa
             this.groupBoxLibros.Controls.Add(this.buttonAñadirLibro);
             this.groupBoxLibros.Controls.Add(this.buttonBuscarLibro);
             this.groupBoxLibros.Controls.Add(this.buttonVerLibros);
+            this.groupBoxLibros.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             resources.ApplyResources(this.groupBoxLibros, "groupBoxLibros");
             this.groupBoxLibros.Name = "groupBoxLibros";
             this.groupBoxLibros.TabStop = false;
             // 
             // buttonVerPrestamos
             // 
+            this.buttonVerPrestamos.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
             resources.ApplyResources(this.buttonVerPrestamos, "buttonVerPrestamos");
             this.buttonVerPrestamos.Name = "buttonVerPrestamos";
             this.buttonVerPrestamos.UseVisualStyleBackColor = true;
@@ -166,6 +185,7 @@ namespace Programa
             // 
             // buttonBuscarPrestamo
             // 
+            this.buttonBuscarPrestamo.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
             resources.ApplyResources(this.buttonBuscarPrestamo, "buttonBuscarPrestamo");
             this.buttonBuscarPrestamo.Name = "buttonBuscarPrestamo";
             this.buttonBuscarPrestamo.UseVisualStyleBackColor = true;
@@ -173,6 +193,7 @@ namespace Programa
             // 
             // buttonRegistrarPrestamo
             // 
+            this.buttonRegistrarPrestamo.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
             resources.ApplyResources(this.buttonRegistrarPrestamo, "buttonRegistrarPrestamo");
             this.buttonRegistrarPrestamo.Name = "buttonRegistrarPrestamo";
             this.buttonRegistrarPrestamo.TabStop = false;
@@ -181,6 +202,7 @@ namespace Programa
             // 
             // buttonRegistrarDevolucion
             // 
+            this.buttonRegistrarDevolucion.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
             resources.ApplyResources(this.buttonRegistrarDevolucion, "buttonRegistrarDevolucion");
             this.buttonRegistrarDevolucion.Name = "buttonRegistrarDevolucion";
             this.buttonRegistrarDevolucion.UseVisualStyleBackColor = true;
@@ -188,10 +210,14 @@ namespace Programa
             // 
             // groupBoxPrestamos
             // 
+            this.groupBoxPrestamos.BackColor = System.Drawing.Color.Transparent;
+            this.groupBoxPrestamos.Controls.Add(this.buttonPrestamosRetrasados);
+            this.groupBoxPrestamos.Controls.Add(this.buttonVerProximosAVencer);
             this.groupBoxPrestamos.Controls.Add(this.buttonRegistrarDevolucion);
             this.groupBoxPrestamos.Controls.Add(this.buttonRegistrarPrestamo);
             this.groupBoxPrestamos.Controls.Add(this.buttonBuscarPrestamo);
             this.groupBoxPrestamos.Controls.Add(this.buttonVerPrestamos);
+            this.groupBoxPrestamos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             resources.ApplyResources(this.groupBoxPrestamos, "groupBoxPrestamos");
             this.groupBoxPrestamos.Name = "groupBoxPrestamos";
             this.groupBoxPrestamos.TabStop = false;
@@ -199,6 +225,7 @@ namespace Programa
             // 
             // buttonVerAdministradores
             // 
+            this.buttonVerAdministradores.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
             resources.ApplyResources(this.buttonVerAdministradores, "buttonVerAdministradores");
             this.buttonVerAdministradores.Name = "buttonVerAdministradores";
             this.buttonVerAdministradores.UseVisualStyleBackColor = true;
@@ -206,6 +233,7 @@ namespace Programa
             // 
             // buttonBuscarAdministrador
             // 
+            this.buttonBuscarAdministrador.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
             resources.ApplyResources(this.buttonBuscarAdministrador, "buttonBuscarAdministrador");
             this.buttonBuscarAdministrador.Name = "buttonBuscarAdministrador";
             this.buttonBuscarAdministrador.UseVisualStyleBackColor = true;
@@ -213,6 +241,7 @@ namespace Programa
             // 
             // buttonRegistrarAdministrador
             // 
+            this.buttonRegistrarAdministrador.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
             resources.ApplyResources(this.buttonRegistrarAdministrador, "buttonRegistrarAdministrador");
             this.buttonRegistrarAdministrador.Name = "buttonRegistrarAdministrador";
             this.buttonRegistrarAdministrador.TabStop = false;
@@ -221,16 +250,21 @@ namespace Programa
             // 
             // buttonModificarAdministrador
             // 
+            this.buttonModificarAdministrador.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
             resources.ApplyResources(this.buttonModificarAdministrador, "buttonModificarAdministrador");
             this.buttonModificarAdministrador.Name = "buttonModificarAdministrador";
             this.buttonModificarAdministrador.UseVisualStyleBackColor = true;
+            this.buttonModificarAdministrador.Click += new System.EventHandler(this.buttonModificarAdministrador_Click);
             // 
             // groupBoxAdministradores
             // 
+            this.groupBoxAdministradores.Controls.Add(this.button2);
+            this.groupBoxAdministradores.Controls.Add(this.button5);
             this.groupBoxAdministradores.Controls.Add(this.buttonModificarAdministrador);
             this.groupBoxAdministradores.Controls.Add(this.buttonRegistrarAdministrador);
             this.groupBoxAdministradores.Controls.Add(this.buttonBuscarAdministrador);
             this.groupBoxAdministradores.Controls.Add(this.buttonVerAdministradores);
+            this.groupBoxAdministradores.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             resources.ApplyResources(this.groupBoxAdministradores, "groupBoxAdministradores");
             this.groupBoxAdministradores.Name = "groupBoxAdministradores";
             this.groupBoxAdministradores.TabStop = false;
@@ -238,6 +272,7 @@ namespace Programa
             // 
             // button4
             // 
+            this.button4.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
             resources.ApplyResources(this.button4, "button4");
             this.button4.Name = "button4";
             this.button4.UseVisualStyleBackColor = true;
@@ -245,6 +280,7 @@ namespace Programa
             // 
             // button3
             // 
+            this.button3.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
             resources.ApplyResources(this.button3, "button3");
             this.button3.Name = "button3";
             this.button3.UseVisualStyleBackColor = true;
@@ -252,6 +288,7 @@ namespace Programa
             // 
             // buttonRegistrarEjemplar
             // 
+            this.buttonRegistrarEjemplar.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
             resources.ApplyResources(this.buttonRegistrarEjemplar, "buttonRegistrarEjemplar");
             this.buttonRegistrarEjemplar.Name = "buttonRegistrarEjemplar";
             this.buttonRegistrarEjemplar.TabStop = false;
@@ -260,19 +297,54 @@ namespace Programa
             // 
             // button1
             // 
+            this.button1.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
             resources.ApplyResources(this.button1, "button1");
             this.button1.Name = "button1";
             this.button1.UseVisualStyleBackColor = true;
             // 
             // groupBoxEjemplares
             // 
+            this.groupBoxEjemplares.BackColor = System.Drawing.Color.Transparent;
             this.groupBoxEjemplares.Controls.Add(this.button1);
             this.groupBoxEjemplares.Controls.Add(this.buttonRegistrarEjemplar);
             this.groupBoxEjemplares.Controls.Add(this.button3);
             this.groupBoxEjemplares.Controls.Add(this.button4);
+            this.groupBoxEjemplares.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             resources.ApplyResources(this.groupBoxEjemplares, "groupBoxEjemplares");
             this.groupBoxEjemplares.Name = "groupBoxEjemplares";
             this.groupBoxEjemplares.TabStop = false;
+            // 
+            // buttonPrestamosRetrasados
+            // 
+            this.buttonPrestamosRetrasados.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
+            resources.ApplyResources(this.buttonPrestamosRetrasados, "buttonPrestamosRetrasados");
+            this.buttonPrestamosRetrasados.Name = "buttonPrestamosRetrasados";
+            this.buttonPrestamosRetrasados.TabStop = false;
+            this.buttonPrestamosRetrasados.UseVisualStyleBackColor = true;
+            this.buttonPrestamosRetrasados.Click += new System.EventHandler(this.buttonPrestamosRetrasados_Click);
+            // 
+            // buttonVerProximosAVencer
+            // 
+            this.buttonVerProximosAVencer.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
+            resources.ApplyResources(this.buttonVerProximosAVencer, "buttonVerProximosAVencer");
+            this.buttonVerProximosAVencer.Name = "buttonVerProximosAVencer";
+            this.buttonVerProximosAVencer.UseVisualStyleBackColor = true;
+            this.buttonVerProximosAVencer.Click += new System.EventHandler(this.buttonVerProximosAVencer_Click);
+            // 
+            // button2
+            // 
+            this.button2.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
+            resources.ApplyResources(this.button2, "button2");
+            this.button2.Name = "button2";
+            this.button2.TabStop = false;
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button5
+            // 
+            this.button5.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
+            resources.ApplyResources(this.button5, "button5");
+            this.button5.Name = "button5";
+            this.button5.UseVisualStyleBackColor = true;
             // 
             // MenuPrincipal
             // 
@@ -329,6 +401,10 @@ namespace Programa
         private System.Windows.Forms.Button buttonRegistrarEjemplar;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.GroupBox groupBoxEjemplares;
+        private System.Windows.Forms.Button buttonPrestamosRetrasados;
+        private System.Windows.Forms.Button buttonVerProximosAVencer;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button5;
     }
 }
 

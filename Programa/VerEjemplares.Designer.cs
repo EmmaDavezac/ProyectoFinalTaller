@@ -29,6 +29,8 @@ namespace Programa
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxDisponibilidad = new System.Windows.Forms.TextBox();
             this.labelNombreUsuario = new System.Windows.Forms.Label();
@@ -79,10 +81,10 @@ namespace Programa
             // 
             // labelNombreUsuario
             // 
-            this.labelNombreUsuario.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.labelNombreUsuario.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.labelNombreUsuario.BackColor = System.Drawing.SystemColors.Highlight;
+            this.labelNombreUsuario.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.labelNombreUsuario.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.labelNombreUsuario.Location = new System.Drawing.Point(606, 9);
+            this.labelNombreUsuario.Location = new System.Drawing.Point(607, 9);
             this.labelNombreUsuario.Name = "labelNombreUsuario";
             this.labelNombreUsuario.Size = new System.Drawing.Size(182, 31);
             this.labelNombreUsuario.TabIndex = 90;
@@ -91,7 +93,11 @@ namespace Programa
             // 
             // botonVolver
             // 
+            this.botonVolver.BackColor = System.Drawing.SystemColors.Highlight;
             this.botonVolver.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.botonVolver.FlatAppearance.BorderSize = 0;
+            this.botonVolver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.botonVolver.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.botonVolver.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.botonVolver.Location = new System.Drawing.Point(700, 565);
             this.botonVolver.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
@@ -99,7 +105,7 @@ namespace Programa
             this.botonVolver.Size = new System.Drawing.Size(89, 23);
             this.botonVolver.TabIndex = 89;
             this.botonVolver.Text = "Volver";
-            this.botonVolver.UseVisualStyleBackColor = true;
+            this.botonVolver.UseVisualStyleBackColor = false;
             this.botonVolver.Click += new System.EventHandler(this.botonVolver_Click);
             // 
             // labelError
@@ -236,6 +242,15 @@ namespace Programa
             // 
             this.dgvEjemplares.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dgvEjemplares.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvEjemplares.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvEjemplares.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvEjemplares.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvEjemplares.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
@@ -246,10 +261,19 @@ namespace Programa
             this.Autor,
             this.AñoPublicacion,
             this.ISBN});
-            this.dgvEjemplares.GridColor = System.Drawing.SystemColors.Control;
-            this.dgvEjemplares.Location = new System.Drawing.Point(15, 233);
+            this.dgvEjemplares.GridColor = System.Drawing.SystemColors.ControlLightLight;
+            this.dgvEjemplares.Location = new System.Drawing.Point(1, 233);
             this.dgvEjemplares.Name = "dgvEjemplares";
-            this.dgvEjemplares.Size = new System.Drawing.Size(773, 291);
+            this.dgvEjemplares.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvEjemplares.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvEjemplares.Size = new System.Drawing.Size(798, 291);
             this.dgvEjemplares.TabIndex = 93;
             this.dgvEjemplares.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLibros_CellContentClick);
             this.dgvEjemplares.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLibros_CellContentClick);

@@ -45,20 +45,24 @@ namespace Programa
             // 
             // botonVolver
             // 
+            this.botonVolver.BackColor = System.Drawing.SystemColors.Highlight;
             this.botonVolver.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.botonVolver.FlatAppearance.BorderSize = 0;
+            this.botonVolver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.botonVolver.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.botonVolver.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.botonVolver.Location = new System.Drawing.Point(700, 565);
+            this.botonVolver.Location = new System.Drawing.Point(605, 565);
             this.botonVolver.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.botonVolver.Name = "botonVolver";
             this.botonVolver.Size = new System.Drawing.Size(89, 23);
             this.botonVolver.TabIndex = 6;
             this.botonVolver.Text = "Volver";
-            this.botonVolver.UseVisualStyleBackColor = true;
+            this.botonVolver.UseVisualStyleBackColor = false;
             this.botonVolver.Click += new System.EventHandler(this.botonVolver_Click);
             // 
             // textBoxNombre
             // 
-            this.textBoxNombre.Location = new System.Drawing.Point(265, 123);
+            this.textBoxNombre.Location = new System.Drawing.Point(348, 189);
             this.textBoxNombre.Name = "textBoxNombre";
             this.textBoxNombre.Size = new System.Drawing.Size(200, 20);
             this.textBoxNombre.TabIndex = 7;
@@ -66,7 +70,7 @@ namespace Programa
             // 
             // textBoxApellido
             // 
-            this.textBoxApellido.Location = new System.Drawing.Point(265, 149);
+            this.textBoxApellido.Location = new System.Drawing.Point(348, 222);
             this.textBoxApellido.Name = "textBoxApellido";
             this.textBoxApellido.Size = new System.Drawing.Size(200, 20);
             this.textBoxApellido.TabIndex = 8;
@@ -74,7 +78,7 @@ namespace Programa
             // 
             // textBoxMail
             // 
-            this.textBoxMail.Location = new System.Drawing.Point(265, 197);
+            this.textBoxMail.Location = new System.Drawing.Point(348, 288);
             this.textBoxMail.Name = "textBoxMail";
             this.textBoxMail.Size = new System.Drawing.Size(200, 20);
             this.textBoxMail.TabIndex = 9;
@@ -82,8 +86,8 @@ namespace Programa
             // 
             // dateTimePickerFechaNacimiento
             // 
-            this.dateTimePickerFechaNacimiento.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePickerFechaNacimiento.Location = new System.Drawing.Point(265, 172);
+            this.dateTimePickerFechaNacimiento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerFechaNacimiento.Location = new System.Drawing.Point(348, 255);
             this.dateTimePickerFechaNacimiento.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             this.dateTimePickerFechaNacimiento.Name = "dateTimePickerFechaNacimiento";
             this.dateTimePickerFechaNacimiento.Size = new System.Drawing.Size(200, 20);
@@ -94,7 +98,7 @@ namespace Programa
             // labelNombre
             // 
             this.labelNombre.AutoSize = true;
-            this.labelNombre.Location = new System.Drawing.Point(155, 126);
+            this.labelNombre.Location = new System.Drawing.Point(238, 192);
             this.labelNombre.Name = "labelNombre";
             this.labelNombre.Size = new System.Drawing.Size(44, 13);
             this.labelNombre.TabIndex = 15;
@@ -104,7 +108,7 @@ namespace Programa
             // labelApellido
             // 
             this.labelApellido.AutoSize = true;
-            this.labelApellido.Location = new System.Drawing.Point(155, 152);
+            this.labelApellido.Location = new System.Drawing.Point(238, 225);
             this.labelApellido.Name = "labelApellido";
             this.labelApellido.Size = new System.Drawing.Size(44, 13);
             this.labelApellido.TabIndex = 16;
@@ -114,7 +118,7 @@ namespace Programa
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(155, 178);
+            this.label3.Location = new System.Drawing.Point(238, 261);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(90, 13);
             this.label3.TabIndex = 17;
@@ -124,7 +128,7 @@ namespace Programa
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(155, 204);
+            this.label4.Location = new System.Drawing.Point(238, 291);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(26, 13);
             this.label4.TabIndex = 18;
@@ -133,19 +137,23 @@ namespace Programa
             // 
             // buttonAñadirUsuario
             // 
-            this.buttonAñadirUsuario.Location = new System.Drawing.Point(376, 251);
+            this.buttonAñadirUsuario.BackColor = System.Drawing.SystemColors.Highlight;
+            this.buttonAñadirUsuario.FlatAppearance.BorderSize = 0;
+            this.buttonAñadirUsuario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonAñadirUsuario.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.buttonAñadirUsuario.Location = new System.Drawing.Point(699, 565);
             this.buttonAñadirUsuario.Name = "buttonAñadirUsuario";
             this.buttonAñadirUsuario.Size = new System.Drawing.Size(89, 23);
             this.buttonAñadirUsuario.TabIndex = 19;
             this.buttonAñadirUsuario.Text = "Añadir Usuario";
-            this.buttonAñadirUsuario.UseVisualStyleBackColor = true;
+            this.buttonAñadirUsuario.UseVisualStyleBackColor = false;
             this.buttonAñadirUsuario.Click += new System.EventHandler(this.buttonAñadirUsuario_Click);
             // 
             // labelError
             // 
             this.labelError.AutoSize = true;
             this.labelError.ForeColor = System.Drawing.Color.Red;
-            this.labelError.Location = new System.Drawing.Point(262, 229);
+            this.labelError.Location = new System.Drawing.Point(345, 321);
             this.labelError.Name = "labelError";
             this.labelError.Size = new System.Drawing.Size(0, 13);
             this.labelError.TabIndex = 20;
@@ -153,8 +161,8 @@ namespace Programa
             // 
             // labelNombreUsuario
             // 
-            this.labelNombreUsuario.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.labelNombreUsuario.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.labelNombreUsuario.BackColor = System.Drawing.SystemColors.Highlight;
+            this.labelNombreUsuario.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.labelNombreUsuario.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.labelNombreUsuario.Location = new System.Drawing.Point(606, 9);
             this.labelNombreUsuario.Name = "labelNombreUsuario";

@@ -173,13 +173,17 @@ namespace Programa
             // 
             // buttonBuscar
             // 
+            this.buttonBuscar.BackColor = System.Drawing.SystemColors.Highlight;
             this.buttonBuscar.Enabled = false;
+            this.buttonBuscar.FlatAppearance.BorderSize = 0;
+            this.buttonBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonBuscar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.buttonBuscar.Location = new System.Drawing.Point(512, 338);
             this.buttonBuscar.Name = "buttonBuscar";
             this.buttonBuscar.Size = new System.Drawing.Size(75, 23);
             this.buttonBuscar.TabIndex = 67;
             this.buttonBuscar.Text = "Buscar";
-            this.buttonBuscar.UseVisualStyleBackColor = true;
+            this.buttonBuscar.UseVisualStyleBackColor = false;
             this.buttonBuscar.Click += new System.EventHandler(this.buttonBuscar_Click);
             // 
             // labelError
@@ -193,23 +197,27 @@ namespace Programa
             // 
             // botonVolver
             // 
+            this.botonVolver.BackColor = System.Drawing.SystemColors.Highlight;
             this.botonVolver.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.botonVolver.FlatAppearance.BorderSize = 0;
+            this.botonVolver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.botonVolver.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.botonVolver.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.botonVolver.Location = new System.Drawing.Point(684, 526);
+            this.botonVolver.Location = new System.Drawing.Point(700, 565);
             this.botonVolver.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.botonVolver.Name = "botonVolver";
             this.botonVolver.Size = new System.Drawing.Size(89, 23);
             this.botonVolver.TabIndex = 69;
             this.botonVolver.Text = "Volver";
-            this.botonVolver.UseVisualStyleBackColor = true;
+            this.botonVolver.UseVisualStyleBackColor = false;
             this.botonVolver.Click += new System.EventHandler(this.botonVolver_Click);
             // 
             // labelNombreUsuario
             // 
-            this.labelNombreUsuario.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.labelNombreUsuario.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.labelNombreUsuario.BackColor = System.Drawing.SystemColors.Highlight;
+            this.labelNombreUsuario.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.labelNombreUsuario.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.labelNombreUsuario.Location = new System.Drawing.Point(590, 9);
+            this.labelNombreUsuario.Location = new System.Drawing.Point(606, 9);
             this.labelNombreUsuario.Name = "labelNombreUsuario";
             this.labelNombreUsuario.Size = new System.Drawing.Size(182, 31);
             this.labelNombreUsuario.TabIndex = 70;

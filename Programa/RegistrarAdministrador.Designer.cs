@@ -56,12 +56,16 @@ namespace Programa
             // 
             // buttonRegistrarAdministrador
             // 
+            this.buttonRegistrarAdministrador.BackColor = System.Drawing.SystemColors.Highlight;
+            this.buttonRegistrarAdministrador.FlatAppearance.BorderSize = 0;
+            this.buttonRegistrarAdministrador.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonRegistrarAdministrador.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.buttonRegistrarAdministrador.Location = new System.Drawing.Point(376, 276);
             this.buttonRegistrarAdministrador.Name = "buttonRegistrarAdministrador";
             this.buttonRegistrarAdministrador.Size = new System.Drawing.Size(89, 23);
             this.buttonRegistrarAdministrador.TabIndex = 31;
             this.buttonRegistrarAdministrador.Text = "Registrar Administrador";
-            this.buttonRegistrarAdministrador.UseVisualStyleBackColor = true;
+            this.buttonRegistrarAdministrador.UseVisualStyleBackColor = false;
             this.buttonRegistrarAdministrador.Click += new System.EventHandler(this.buttonAñadirUsuario_Click);
             // 
             // labelMail
@@ -137,7 +141,11 @@ namespace Programa
             // 
             // botonVolver
             // 
+            this.botonVolver.BackColor = System.Drawing.SystemColors.Highlight;
             this.botonVolver.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.botonVolver.FlatAppearance.BorderSize = 0;
+            this.botonVolver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.botonVolver.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.botonVolver.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.botonVolver.Location = new System.Drawing.Point(700, 565);
             this.botonVolver.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
@@ -145,7 +153,7 @@ namespace Programa
             this.botonVolver.Size = new System.Drawing.Size(89, 23);
             this.botonVolver.TabIndex = 22;
             this.botonVolver.Text = "Volver";
-            this.botonVolver.UseVisualStyleBackColor = true;
+            this.botonVolver.UseVisualStyleBackColor = false;
             this.botonVolver.Click += new System.EventHandler(this.botonVolver_Click);
             // 
             // labelContraseña
@@ -168,8 +176,8 @@ namespace Programa
             // 
             // labelNombreUsuario
             // 
-            this.labelNombreUsuario.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.labelNombreUsuario.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.labelNombreUsuario.BackColor = System.Drawing.SystemColors.Highlight;
+            this.labelNombreUsuario.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.labelNombreUsuario.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.labelNombreUsuario.Location = new System.Drawing.Point(606, 9);
             this.labelNombreUsuario.Name = "labelNombreUsuario";

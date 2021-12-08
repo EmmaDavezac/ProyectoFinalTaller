@@ -33,7 +33,7 @@ namespace Dominio
         }
         public Prestamo(UsuarioSimple usuario, Ejemplar ejemplar)
         {
-            FechaPrestamo = DateTime.Now.Date.ToString();
+            FechaPrestamo = DateTime.Now.ToString();
             FechaLimite = CalcularFechaLimite(usuario).Date.ToString();
             Usuario = usuario;
             Ejemplar = ejemplar;
@@ -47,7 +47,7 @@ namespace Dominio
         }
         public bool Retrasado()
         {
-            if (DateTime.Now.Date > Convert.ToDateTime(FechaLimite).Date&&string.IsNullOrEmpty(FechaDevolucion))
+            if ((DateTime.Now.Date > Convert.ToDateTime(FechaLimite).Date))
             {
                 return true;
             }
@@ -55,12 +55,12 @@ namespace Dominio
 
         }
         public bool ProximoAVencerse()
-        {
+        {   int cantDiasParaConsiderarseProximo = 3;
             if (string.IsNullOrEmpty(FechaDevolucion))
             {
                 TimeSpan diferenciaEntreFechas = Convert.ToDateTime(FechaLimite) - DateTime.Now;
                 int dias = diferenciaEntreFechas.Days;
-                if (dias < 3)
+                if (dias < cantDiasParaConsiderarseProximo)
                 {
                     return true;
                 }

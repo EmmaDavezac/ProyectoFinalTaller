@@ -78,13 +78,17 @@ namespace Programa
             // 
             // buttonBuscar
             // 
+            this.buttonBuscar.BackColor = System.Drawing.SystemColors.Highlight;
             this.buttonBuscar.Enabled = false;
+            this.buttonBuscar.FlatAppearance.BorderSize = 0;
+            this.buttonBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonBuscar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.buttonBuscar.Location = new System.Drawing.Point(312, 152);
             this.buttonBuscar.Name = "buttonBuscar";
             this.buttonBuscar.Size = new System.Drawing.Size(75, 23);
             this.buttonBuscar.TabIndex = 176;
             this.buttonBuscar.Text = "Buscar";
-            this.buttonBuscar.UseVisualStyleBackColor = true;
+            this.buttonBuscar.UseVisualStyleBackColor = false;
             this.buttonBuscar.Click += new System.EventHandler(this.buttonBuscar_Click);
             // 
             // label5
@@ -368,7 +372,11 @@ namespace Programa
             // 
             // botonVolver
             // 
+            this.botonVolver.BackColor = System.Drawing.SystemColors.Highlight;
             this.botonVolver.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.botonVolver.FlatAppearance.BorderSize = 0;
+            this.botonVolver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.botonVolver.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.botonVolver.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.botonVolver.Location = new System.Drawing.Point(606, 565);
             this.botonVolver.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
@@ -376,13 +384,13 @@ namespace Programa
             this.botonVolver.Size = new System.Drawing.Size(89, 23);
             this.botonVolver.TabIndex = 142;
             this.botonVolver.Text = "Volver";
-            this.botonVolver.UseVisualStyleBackColor = true;
+            this.botonVolver.UseVisualStyleBackColor = false;
             this.botonVolver.Click += new System.EventHandler(this.botonVolver_Click);
             // 
             // labelNombreUsuario
             // 
-            this.labelNombreUsuario.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.labelNombreUsuario.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.labelNombreUsuario.BackColor = System.Drawing.SystemColors.Highlight;
+            this.labelNombreUsuario.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.labelNombreUsuario.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.labelNombreUsuario.Location = new System.Drawing.Point(606, 9);
             this.labelNombreUsuario.Name = "labelNombreUsuario";
@@ -393,8 +401,12 @@ namespace Programa
             // 
             // buttonGuardar
             // 
+            this.buttonGuardar.BackColor = System.Drawing.SystemColors.Highlight;
             this.buttonGuardar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.buttonGuardar.Enabled = false;
+            this.buttonGuardar.FlatAppearance.BorderSize = 0;
+            this.buttonGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonGuardar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.buttonGuardar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.buttonGuardar.Location = new System.Drawing.Point(699, 565);
             this.buttonGuardar.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
@@ -402,12 +414,15 @@ namespace Programa
             this.buttonGuardar.Size = new System.Drawing.Size(89, 23);
             this.buttonGuardar.TabIndex = 178;
             this.buttonGuardar.Text = "Guardar";
-            this.buttonGuardar.UseVisualStyleBackColor = true;
+            this.buttonGuardar.UseVisualStyleBackColor = false;
             this.buttonGuardar.Click += new System.EventHandler(this.buttonGuardar_Click);
             // 
             // comboBox1
             // 
+            this.comboBox1.BackColor = System.Drawing.SystemColors.ControlLight;
             this.comboBox1.Enabled = false;
+            this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBox1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
             "Bueno",
@@ -416,6 +431,7 @@ namespace Programa
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(200, 21);
             this.comboBox1.TabIndex = 179;
+            this.comboBox1.Text = "Seleccione el estado";
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // RegistrarDevolucion

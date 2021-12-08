@@ -67,7 +67,7 @@ namespace Programa
             // 
             this.labelIdAdministrador.AutoSize = true;
             this.labelIdAdministrador.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelIdAdministrador.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.labelIdAdministrador.ForeColor = System.Drawing.SystemColors.ControlText;
             this.labelIdAdministrador.Location = new System.Drawing.Point(170, 210);
             this.labelIdAdministrador.Name = "labelIdAdministrador";
             this.labelIdAdministrador.Size = new System.Drawing.Size(105, 16);
@@ -79,7 +79,7 @@ namespace Programa
             // 
             this.labelConstraseña.AutoSize = true;
             this.labelConstraseña.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelConstraseña.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.labelConstraseña.ForeColor = System.Drawing.SystemColors.ControlText;
             this.labelConstraseña.Location = new System.Drawing.Point(170, 276);
             this.labelConstraseña.Name = "labelConstraseña";
             this.labelConstraseña.Size = new System.Drawing.Size(77, 16);
@@ -95,7 +95,7 @@ namespace Programa
             this.botonIniciarSesion.FlatAppearance.BorderSize = 0;
             this.botonIniciarSesion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.botonIniciarSesion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.botonIniciarSesion.ForeColor = System.Drawing.Color.White;
+            this.botonIniciarSesion.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.botonIniciarSesion.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.botonIniciarSesion.Location = new System.Drawing.Point(407, 345);
             this.botonIniciarSesion.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
@@ -122,7 +122,7 @@ namespace Programa
             this.buttonMostrar.FlatAppearance.BorderSize = 0;
             this.buttonMostrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonMostrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonMostrar.ForeColor = System.Drawing.Color.White;
+            this.buttonMostrar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.buttonMostrar.Location = new System.Drawing.Point(523, 276);
             this.buttonMostrar.Name = "buttonMostrar";
             this.buttonMostrar.Size = new System.Drawing.Size(64, 22);
@@ -134,6 +134,7 @@ namespace Programa
             // buttonCerrar
             // 
             this.buttonCerrar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.buttonCerrar.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlLightLight;
             this.buttonCerrar.FlatAppearance.BorderSize = 0;
             this.buttonCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonCerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -155,7 +156,7 @@ namespace Programa
             this.buttonRegistrarse.FlatAppearance.BorderSize = 0;
             this.buttonRegistrarse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonRegistrarse.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonRegistrarse.ForeColor = System.Drawing.Color.White;
+            this.buttonRegistrarse.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.buttonRegistrarse.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.buttonRegistrarse.Location = new System.Drawing.Point(293, 345);
             this.buttonRegistrarse.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
@@ -171,7 +172,7 @@ namespace Programa
             this.AcceptButton = this.botonIniciarSesion;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(800, 600);
             this.Controls.Add(this.buttonRegistrarse);
             this.Controls.Add(this.buttonCerrar);
@@ -182,6 +183,7 @@ namespace Programa
             this.Controls.Add(this.labelIdAdministrador);
             this.Controls.Add(this.textBoxContraseña);
             this.Controls.Add(this.textBoxId);
+            this.ForeColor = System.Drawing.SystemColors.WindowText;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(800, 600);
@@ -189,7 +191,6 @@ namespace Programa
             this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Login";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Login_FormClosed);
             this.Load += new System.EventHandler(this.Login_Load);
             this.ResumeLayout(false);

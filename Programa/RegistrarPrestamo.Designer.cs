@@ -30,6 +30,9 @@ namespace Programa
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.buttonBuscarUsuario = new System.Windows.Forms.Button();
             this.buttonBuscarLibro = new System.Windows.Forms.Button();
             this.textBoxIdUsuario = new System.Windows.Forms.TextBox();
@@ -71,24 +74,32 @@ namespace Programa
             // 
             // buttonBuscarUsuario
             // 
+            this.buttonBuscarUsuario.BackColor = System.Drawing.SystemColors.Highlight;
             this.buttonBuscarUsuario.Enabled = false;
+            this.buttonBuscarUsuario.FlatAppearance.BorderSize = 0;
+            this.buttonBuscarUsuario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonBuscarUsuario.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.buttonBuscarUsuario.Location = new System.Drawing.Point(227, 109);
             this.buttonBuscarUsuario.Name = "buttonBuscarUsuario";
             this.buttonBuscarUsuario.Size = new System.Drawing.Size(75, 20);
             this.buttonBuscarUsuario.TabIndex = 0;
             this.buttonBuscarUsuario.Text = "Buscar";
-            this.buttonBuscarUsuario.UseVisualStyleBackColor = true;
+            this.buttonBuscarUsuario.UseVisualStyleBackColor = false;
             this.buttonBuscarUsuario.Click += new System.EventHandler(this.buttonBuscarUsuario_Click);
             // 
             // buttonBuscarLibro
             // 
+            this.buttonBuscarLibro.BackColor = System.Drawing.SystemColors.Highlight;
             this.buttonBuscarLibro.Enabled = false;
+            this.buttonBuscarLibro.FlatAppearance.BorderSize = 0;
+            this.buttonBuscarLibro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonBuscarLibro.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.buttonBuscarLibro.Location = new System.Drawing.Point(596, 108);
             this.buttonBuscarLibro.Name = "buttonBuscarLibro";
             this.buttonBuscarLibro.Size = new System.Drawing.Size(75, 20);
             this.buttonBuscarLibro.TabIndex = 1;
             this.buttonBuscarLibro.Text = "Buscar";
-            this.buttonBuscarLibro.UseVisualStyleBackColor = true;
+            this.buttonBuscarLibro.UseVisualStyleBackColor = false;
             this.buttonBuscarLibro.Click += new System.EventHandler(this.buttonBuscarLibro_Click);
             // 
             // textBoxIdUsuario
@@ -260,8 +271,8 @@ namespace Programa
             // 
             // labelNombreUsuario
             // 
-            this.labelNombreUsuario.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.labelNombreUsuario.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.labelNombreUsuario.BackColor = System.Drawing.SystemColors.Highlight;
+            this.labelNombreUsuario.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.labelNombreUsuario.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.labelNombreUsuario.Location = new System.Drawing.Point(606, 9);
             this.labelNombreUsuario.Name = "labelNombreUsuario";
@@ -273,26 +284,47 @@ namespace Programa
             // 
             // dgvEjemplares
             // 
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.dgvEjemplares.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvEjemplares.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dgvEjemplares.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgvEjemplares.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvEjemplares.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlLightLight;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvEjemplares.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvEjemplares.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvEjemplares.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
             this.Estado});
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvEjemplares.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvEjemplares.Enabled = false;
             this.dgvEjemplares.GridColor = System.Drawing.SystemColors.ControlLightLight;
             this.dgvEjemplares.Location = new System.Drawing.Point(71, 285);
             this.dgvEjemplares.Name = "dgvEjemplares";
             this.dgvEjemplares.ReadOnly = true;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvEjemplares.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvEjemplares.Size = new System.Drawing.Size(231, 209);
             this.dgvEjemplares.TabIndex = 94;
             this.dgvEjemplares.TabStop = false;
@@ -316,7 +348,11 @@ namespace Programa
             // 
             // botonVolver
             // 
+            this.botonVolver.BackColor = System.Drawing.SystemColors.Highlight;
             this.botonVolver.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.botonVolver.FlatAppearance.BorderSize = 0;
+            this.botonVolver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.botonVolver.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.botonVolver.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.botonVolver.Location = new System.Drawing.Point(607, 565);
             this.botonVolver.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
@@ -324,13 +360,17 @@ namespace Programa
             this.botonVolver.Size = new System.Drawing.Size(89, 23);
             this.botonVolver.TabIndex = 96;
             this.botonVolver.Text = "Volver";
-            this.botonVolver.UseVisualStyleBackColor = true;
+            this.botonVolver.UseVisualStyleBackColor = false;
             this.botonVolver.Click += new System.EventHandler(this.botonVolver_Click);
             // 
             // buttonGuardar
             // 
+            this.buttonGuardar.BackColor = System.Drawing.SystemColors.Highlight;
             this.buttonGuardar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.buttonGuardar.Enabled = false;
+            this.buttonGuardar.FlatAppearance.BorderSize = 0;
+            this.buttonGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonGuardar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.buttonGuardar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.buttonGuardar.Location = new System.Drawing.Point(700, 565);
             this.buttonGuardar.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
@@ -338,7 +378,7 @@ namespace Programa
             this.buttonGuardar.Size = new System.Drawing.Size(89, 23);
             this.buttonGuardar.TabIndex = 95;
             this.buttonGuardar.Text = "Guardar";
-            this.buttonGuardar.UseVisualStyleBackColor = true;
+            this.buttonGuardar.UseVisualStyleBackColor = false;
             this.buttonGuardar.Click += new System.EventHandler(this.buttonGuardar_Click);
             // 
             // label3
@@ -407,35 +447,47 @@ namespace Programa
             // 
             // buttonConfirmarEjemplar
             // 
+            this.buttonConfirmarEjemplar.BackColor = System.Drawing.SystemColors.Highlight;
             this.buttonConfirmarEjemplar.Enabled = false;
+            this.buttonConfirmarEjemplar.FlatAppearance.BorderSize = 0;
+            this.buttonConfirmarEjemplar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonConfirmarEjemplar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.buttonConfirmarEjemplar.Location = new System.Drawing.Point(596, 285);
             this.buttonConfirmarEjemplar.Name = "buttonConfirmarEjemplar";
             this.buttonConfirmarEjemplar.Size = new System.Drawing.Size(75, 20);
             this.buttonConfirmarEjemplar.TabIndex = 104;
             this.buttonConfirmarEjemplar.Text = "Confirmar";
-            this.buttonConfirmarEjemplar.UseVisualStyleBackColor = true;
+            this.buttonConfirmarEjemplar.UseVisualStyleBackColor = false;
             this.buttonConfirmarEjemplar.Click += new System.EventHandler(this.buttonConfirmarEjemplar_Click);
             // 
             // buttonConfirmarUsuario
             // 
+            this.buttonConfirmarUsuario.BackColor = System.Drawing.SystemColors.Highlight;
             this.buttonConfirmarUsuario.Enabled = false;
+            this.buttonConfirmarUsuario.FlatAppearance.BorderSize = 0;
+            this.buttonConfirmarUsuario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonConfirmarUsuario.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.buttonConfirmarUsuario.Location = new System.Drawing.Point(227, 135);
             this.buttonConfirmarUsuario.Name = "buttonConfirmarUsuario";
             this.buttonConfirmarUsuario.Size = new System.Drawing.Size(75, 20);
             this.buttonConfirmarUsuario.TabIndex = 105;
             this.buttonConfirmarUsuario.Text = "Confirmar";
-            this.buttonConfirmarUsuario.UseVisualStyleBackColor = true;
+            this.buttonConfirmarUsuario.UseVisualStyleBackColor = false;
             this.buttonConfirmarUsuario.Click += new System.EventHandler(this.buttonConfirmarUsuario_Click);
             // 
             // buttonConfirmarLibro
             // 
+            this.buttonConfirmarLibro.BackColor = System.Drawing.SystemColors.Highlight;
             this.buttonConfirmarLibro.Enabled = false;
+            this.buttonConfirmarLibro.FlatAppearance.BorderSize = 0;
+            this.buttonConfirmarLibro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonConfirmarLibro.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.buttonConfirmarLibro.Location = new System.Drawing.Point(596, 134);
             this.buttonConfirmarLibro.Name = "buttonConfirmarLibro";
             this.buttonConfirmarLibro.Size = new System.Drawing.Size(75, 20);
             this.buttonConfirmarLibro.TabIndex = 106;
             this.buttonConfirmarLibro.Text = "Confirmar";
-            this.buttonConfirmarLibro.UseVisualStyleBackColor = true;
+            this.buttonConfirmarLibro.UseVisualStyleBackColor = false;
             this.buttonConfirmarLibro.Click += new System.EventHandler(this.buttonConfirmarLibro_Click);
             // 
             // RegistrarPrestamo
@@ -478,6 +530,7 @@ namespace Programa
             this.Controls.Add(this.textBoxNombre);
             this.Controls.Add(this.buttonBuscarLibro);
             this.Controls.Add(this.buttonBuscarUsuario);
+            this.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(800, 600);

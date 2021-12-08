@@ -43,7 +43,7 @@ namespace Programa
             {
                 int resultado = 0;
                 dataGridView1.Rows.Clear();
-                foreach (var item in new Nucleo.InterfazNucleo().ListarPorCoincidencia(textBoxBuscar.Text))
+                foreach (var item in new Nucleo.InterfazNucleo().ListarLibrosDeAPIPorCoincidencia(textBoxBuscar.Text))
                 {
                     int n = dataGridView1.Rows.Add();
                     dataGridView1.Rows[n].Cells[0].Value = item.Titulo;

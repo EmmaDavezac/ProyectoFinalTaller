@@ -65,9 +65,9 @@ namespace Programa
             this.AñoPublicacion,
             this.ISBN});
             this.dataGridView1.GridColor = System.Drawing.SystemColors.Control;
-            this.dataGridView1.Location = new System.Drawing.Point(4, 178);
+            this.dataGridView1.Location = new System.Drawing.Point(0, 178);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(768, 328);
+            this.dataGridView1.Size = new System.Drawing.Size(801, 328);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
@@ -109,12 +109,16 @@ namespace Programa
             // 
             // buttonBuscar
             // 
+            this.buttonBuscar.BackColor = System.Drawing.SystemColors.Highlight;
+            this.buttonBuscar.FlatAppearance.BorderSize = 0;
+            this.buttonBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonBuscar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.buttonBuscar.Location = new System.Drawing.Point(700, 96);
             this.buttonBuscar.Name = "buttonBuscar";
             this.buttonBuscar.Size = new System.Drawing.Size(61, 23);
             this.buttonBuscar.TabIndex = 2;
             this.buttonBuscar.Text = "Buscar";
-            this.buttonBuscar.UseVisualStyleBackColor = true;
+            this.buttonBuscar.UseVisualStyleBackColor = false;
             this.buttonBuscar.Click += new System.EventHandler(this.button1_Click);
             // 
             // label1
@@ -179,8 +183,8 @@ namespace Programa
             // 
             // labelNombreUsuario
             // 
-            this.labelNombreUsuario.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.labelNombreUsuario.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.labelNombreUsuario.BackColor = System.Drawing.SystemColors.Highlight;
+            this.labelNombreUsuario.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.labelNombreUsuario.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.labelNombreUsuario.Location = new System.Drawing.Point(606, 9);
             this.labelNombreUsuario.Name = "labelNombreUsuario";
@@ -191,7 +195,11 @@ namespace Programa
             // 
             // botonVolver
             // 
+            this.botonVolver.BackColor = System.Drawing.SystemColors.Highlight;
             this.botonVolver.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.botonVolver.FlatAppearance.BorderSize = 0;
+            this.botonVolver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.botonVolver.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.botonVolver.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.botonVolver.Location = new System.Drawing.Point(605, 565);
             this.botonVolver.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
@@ -199,7 +207,7 @@ namespace Programa
             this.botonVolver.Size = new System.Drawing.Size(89, 23);
             this.botonVolver.TabIndex = 13;
             this.botonVolver.Text = "Volver";
-            this.botonVolver.UseVisualStyleBackColor = true;
+            this.botonVolver.UseVisualStyleBackColor = false;
             this.botonVolver.Click += new System.EventHandler(this.botonVolver_Click);
             // 
             // labelResultados
@@ -230,7 +238,11 @@ namespace Programa
             // 
             // buttonGuardar
             // 
+            this.buttonGuardar.BackColor = System.Drawing.SystemColors.Highlight;
             this.buttonGuardar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.buttonGuardar.FlatAppearance.BorderSize = 0;
+            this.buttonGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonGuardar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.buttonGuardar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.buttonGuardar.Location = new System.Drawing.Point(700, 565);
             this.buttonGuardar.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
@@ -238,23 +250,27 @@ namespace Programa
             this.buttonGuardar.Size = new System.Drawing.Size(89, 23);
             this.buttonGuardar.TabIndex = 12;
             this.buttonGuardar.Text = "Guardar";
-            this.buttonGuardar.UseVisualStyleBackColor = true;
+            this.buttonGuardar.UseVisualStyleBackColor = false;
             this.buttonGuardar.Click += new System.EventHandler(this.buttonGuardar_Click);
             // 
             // buttonBorrarDatos
             // 
+            this.buttonBorrarDatos.BackColor = System.Drawing.SystemColors.Highlight;
+            this.buttonBorrarDatos.FlatAppearance.BorderSize = 0;
+            this.buttonBorrarDatos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonBorrarDatos.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.buttonBorrarDatos.Location = new System.Drawing.Point(359, 122);
             this.buttonBorrarDatos.Name = "buttonBorrarDatos";
             this.buttonBorrarDatos.Size = new System.Drawing.Size(78, 23);
             this.buttonBorrarDatos.TabIndex = 21;
             this.buttonBorrarDatos.Text = "Borrar datos";
-            this.buttonBorrarDatos.UseVisualStyleBackColor = true;
+            this.buttonBorrarDatos.UseVisualStyleBackColor = false;
             this.buttonBorrarDatos.Click += new System.EventHandler(this.buttonBorrarDatos_Click);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(567, 73);
+            this.label4.Location = new System.Drawing.Point(591, 73);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(146, 13);
             this.label4.TabIndex = 22;

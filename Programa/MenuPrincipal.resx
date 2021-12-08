@@ -117,11 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="botonVolver.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="botonVolver.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="botonVolver.Location" type="System.Drawing.Point, System.Drawing">
     <value>700, 565</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="botonVolver.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 3, 2, 3</value>
   </data>
@@ -174,11 +180,14 @@
   <data name="&gt;&gt;labelNombreUsuario.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="botonVerUsuarios.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
   <data name="botonVerUsuarios.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="botonVerUsuarios.Location" type="System.Drawing.Point, System.Drawing">
-    <value>20, 77</value>
+    <value>20, 106</value>
   </data>
   <data name="botonVerUsuarios.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 3, 2, 3</value>
@@ -204,6 +213,9 @@
   <data name="&gt;&gt;botonVerUsuarios.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="botonBuscarUsuario.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
   <data name="botonBuscarUsuario.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -220,7 +232,7 @@
     <value>1</value>
   </data>
   <data name="botonBuscarUsuario.Text" xml:space="preserve">
-    <value>Consultar  Usuario</value>
+    <value>Consultar</value>
   </data>
   <data name="&gt;&gt;botonBuscarUsuario.Name" xml:space="preserve">
     <value>botonBuscarUsuario</value>
@@ -233,6 +245,9 @@
   </data>
   <data name="&gt;&gt;botonBuscarUsuario.ZOrder" xml:space="preserve">
     <value>2</value>
+  </data>
+  <data name="botonRegistrarUsuario.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
   </data>
   <data name="botonRegistrarUsuario.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -250,7 +265,7 @@
     <value>0</value>
   </data>
   <data name="botonRegistrarUsuario.Text" xml:space="preserve">
-    <value>Registrar Usuario</value>
+    <value>Registrar</value>
   </data>
   <data name="&gt;&gt;botonRegistrarUsuario.Name" xml:space="preserve">
     <value>botonRegistrarUsuario</value>
@@ -264,11 +279,14 @@
   <data name="&gt;&gt;botonRegistrarUsuario.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="buttonActualizarUsuario.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
   <data name="buttonActualizarUsuario.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="buttonActualizarUsuario.Location" type="System.Drawing.Point, System.Drawing">
-    <value>20, 106</value>
+    <value>20, 77</value>
   </data>
   <data name="buttonActualizarUsuario.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 3, 2, 3</value>
@@ -280,7 +298,7 @@
     <value>4</value>
   </data>
   <data name="buttonActualizarUsuario.Text" xml:space="preserve">
-    <value>Actualizar Usuario</value>
+    <value>Actualizar</value>
   </data>
   <data name="&gt;&gt;buttonActualizarUsuario.Name" xml:space="preserve">
     <value>buttonActualizarUsuario</value>
@@ -318,11 +336,14 @@
   <data name="&gt;&gt;groupBoxUsuarios.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
+  <data name="buttonVerLibros.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
   <data name="buttonVerLibros.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="buttonVerLibros.Location" type="System.Drawing.Point, System.Drawing">
-    <value>31, 77</value>
+    <value>31, 106</value>
   </data>
   <data name="buttonVerLibros.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 3, 2, 3</value>
@@ -348,6 +369,9 @@
   <data name="&gt;&gt;buttonVerLibros.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="buttonBuscarLibro.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
   <data name="buttonBuscarLibro.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -364,7 +388,7 @@
     <value>1</value>
   </data>
   <data name="buttonBuscarLibro.Text" xml:space="preserve">
-    <value>Consultar Libro</value>
+    <value>Consultar</value>
   </data>
   <data name="&gt;&gt;buttonBuscarLibro.Name" xml:space="preserve">
     <value>buttonBuscarLibro</value>
@@ -377,6 +401,9 @@
   </data>
   <data name="&gt;&gt;buttonBuscarLibro.ZOrder" xml:space="preserve">
     <value>2</value>
+  </data>
+  <data name="buttonAñadirLibro.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
   </data>
   <data name="buttonAñadirLibro.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -394,7 +421,7 @@
     <value>0</value>
   </data>
   <data name="buttonAñadirLibro.Text" xml:space="preserve">
-    <value>Registrar Libros</value>
+    <value>Registrar</value>
   </data>
   <data name="&gt;&gt;buttonAñadirLibro.Name" xml:space="preserve">
     <value>buttonAñadirLibro</value>
@@ -408,11 +435,14 @@
   <data name="&gt;&gt;buttonAñadirLibro.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="buttonActualizarLibro.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
   <data name="buttonActualizarLibro.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="buttonActualizarLibro.Location" type="System.Drawing.Point, System.Drawing">
-    <value>31, 106</value>
+    <value>31, 77</value>
   </data>
   <data name="buttonActualizarLibro.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 3, 2, 3</value>
@@ -424,7 +454,7 @@
     <value>5</value>
   </data>
   <data name="buttonActualizarLibro.Text" xml:space="preserve">
-    <value>Actualizar Libro</value>
+    <value>Actualizar</value>
   </data>
   <data name="&gt;&gt;buttonActualizarLibro.Name" xml:space="preserve">
     <value>buttonActualizarLibro</value>
@@ -462,11 +492,14 @@
   <data name="&gt;&gt;groupBoxLibros.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
+  <data name="buttonVerPrestamos.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
   <data name="buttonVerPrestamos.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="buttonVerPrestamos.Location" type="System.Drawing.Point, System.Drawing">
-    <value>20, 77</value>
+    <value>20, 106</value>
   </data>
   <data name="buttonVerPrestamos.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 3, 2, 3</value>
@@ -490,7 +523,10 @@
     <value>groupBoxPrestamos</value>
   </data>
   <data name="&gt;&gt;buttonVerPrestamos.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
+  </data>
+  <data name="buttonBuscarPrestamo.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
   </data>
   <data name="buttonBuscarPrestamo.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -508,7 +544,7 @@
     <value>1</value>
   </data>
   <data name="buttonBuscarPrestamo.Text" xml:space="preserve">
-    <value>Consultar Prestamo</value>
+    <value>Consultar</value>
   </data>
   <data name="&gt;&gt;buttonBuscarPrestamo.Name" xml:space="preserve">
     <value>buttonBuscarPrestamo</value>
@@ -520,7 +556,10 @@
     <value>groupBoxPrestamos</value>
   </data>
   <data name="&gt;&gt;buttonBuscarPrestamo.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
+  </data>
+  <data name="buttonRegistrarPrestamo.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
   </data>
   <data name="buttonRegistrarPrestamo.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -538,7 +577,7 @@
     <value>0</value>
   </data>
   <data name="buttonRegistrarPrestamo.Text" xml:space="preserve">
-    <value>Registrar Prestamo</value>
+    <value>Registrar</value>
   </data>
   <data name="&gt;&gt;buttonRegistrarPrestamo.Name" xml:space="preserve">
     <value>buttonRegistrarPrestamo</value>
@@ -550,13 +589,16 @@
     <value>groupBoxPrestamos</value>
   </data>
   <data name="&gt;&gt;buttonRegistrarPrestamo.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
+  </data>
+  <data name="buttonRegistrarDevolucion.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
   </data>
   <data name="buttonRegistrarDevolucion.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="buttonRegistrarDevolucion.Location" type="System.Drawing.Point, System.Drawing">
-    <value>20, 106</value>
+    <value>20, 77</value>
   </data>
   <data name="buttonRegistrarDevolucion.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 3, 2, 3</value>
@@ -580,13 +622,79 @@
     <value>groupBoxPrestamos</value>
   </data>
   <data name="&gt;&gt;buttonRegistrarDevolucion.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="buttonPrestamosRetrasados.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="buttonPrestamosRetrasados.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonPrestamosRetrasados.Location" type="System.Drawing.Point, System.Drawing">
+    <value>219, 19</value>
+  </data>
+  <data name="buttonPrestamosRetrasados.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 3, 2, 3</value>
+  </data>
+  <data name="buttonPrestamosRetrasados.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 23</value>
+  </data>
+  <data name="buttonPrestamosRetrasados.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="buttonPrestamosRetrasados.Text" xml:space="preserve">
+    <value> Retrasados</value>
+  </data>
+  <data name="&gt;&gt;buttonPrestamosRetrasados.Name" xml:space="preserve">
+    <value>buttonPrestamosRetrasados</value>
+  </data>
+  <data name="&gt;&gt;buttonPrestamosRetrasados.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonPrestamosRetrasados.Parent" xml:space="preserve">
+    <value>groupBoxPrestamos</value>
+  </data>
+  <data name="&gt;&gt;buttonPrestamosRetrasados.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="buttonVerProximosAVencer.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="buttonVerProximosAVencer.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonVerProximosAVencer.Location" type="System.Drawing.Point, System.Drawing">
+    <value>219, 48</value>
+  </data>
+  <data name="buttonVerProximosAVencer.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 3, 2, 3</value>
+  </data>
+  <data name="buttonVerProximosAVencer.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 23</value>
+  </data>
+  <data name="buttonVerProximosAVencer.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="buttonVerProximosAVencer.Text" xml:space="preserve">
+    <value>Proximos a vencer</value>
+  </data>
+  <data name="&gt;&gt;buttonVerProximosAVencer.Name" xml:space="preserve">
+    <value>buttonVerProximosAVencer</value>
+  </data>
+  <data name="&gt;&gt;buttonVerProximosAVencer.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonVerProximosAVencer.Parent" xml:space="preserve">
+    <value>groupBoxPrestamos</value>
+  </data>
+  <data name="&gt;&gt;buttonVerProximosAVencer.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="groupBoxPrestamos.Location" type="System.Drawing.Point, System.Drawing">
-    <value>124, 227</value>
+    <value>326, 227</value>
   </data>
   <data name="groupBoxPrestamos.Size" type="System.Drawing.Size, System.Drawing">
-    <value>170, 150</value>
+    <value>369, 150</value>
   </data>
   <data name="groupBoxPrestamos.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -606,11 +714,14 @@
   <data name="&gt;&gt;groupBoxPrestamos.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="buttonVerAdministradores.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
   <data name="buttonVerAdministradores.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="buttonVerAdministradores.Location" type="System.Drawing.Point, System.Drawing">
-    <value>31, 77</value>
+    <value>20, 106</value>
   </data>
   <data name="buttonVerAdministradores.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 3, 2, 3</value>
@@ -634,13 +745,16 @@
     <value>groupBoxAdministradores</value>
   </data>
   <data name="&gt;&gt;buttonVerAdministradores.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
+  </data>
+  <data name="buttonBuscarAdministrador.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
   </data>
   <data name="buttonBuscarAdministrador.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="buttonBuscarAdministrador.Location" type="System.Drawing.Point, System.Drawing">
-    <value>31, 48</value>
+    <value>20, 48</value>
   </data>
   <data name="buttonBuscarAdministrador.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 3, 2, 3</value>
@@ -652,7 +766,7 @@
     <value>1</value>
   </data>
   <data name="buttonBuscarAdministrador.Text" xml:space="preserve">
-    <value>Buscar administrador</value>
+    <value>Consultar</value>
   </data>
   <data name="&gt;&gt;buttonBuscarAdministrador.Name" xml:space="preserve">
     <value>buttonBuscarAdministrador</value>
@@ -664,13 +778,16 @@
     <value>groupBoxAdministradores</value>
   </data>
   <data name="&gt;&gt;buttonBuscarAdministrador.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
+  </data>
+  <data name="buttonRegistrarAdministrador.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
   </data>
   <data name="buttonRegistrarAdministrador.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="buttonRegistrarAdministrador.Location" type="System.Drawing.Point, System.Drawing">
-    <value>31, 19</value>
+    <value>20, 19</value>
   </data>
   <data name="buttonRegistrarAdministrador.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 3, 2, 3</value>
@@ -694,13 +811,16 @@
     <value>groupBoxAdministradores</value>
   </data>
   <data name="&gt;&gt;buttonRegistrarAdministrador.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
+  </data>
+  <data name="buttonModificarAdministrador.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
   </data>
   <data name="buttonModificarAdministrador.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="buttonModificarAdministrador.Location" type="System.Drawing.Point, System.Drawing">
-    <value>31, 106</value>
+    <value>20, 77</value>
   </data>
   <data name="buttonModificarAdministrador.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 3, 2, 3</value>
@@ -712,7 +832,7 @@
     <value>10</value>
   </data>
   <data name="buttonModificarAdministrador.Text" xml:space="preserve">
-    <value>Modificar Administrador</value>
+    <value>Actualizar</value>
   </data>
   <data name="&gt;&gt;buttonModificarAdministrador.Name" xml:space="preserve">
     <value>buttonModificarAdministrador</value>
@@ -724,13 +844,79 @@
     <value>groupBoxAdministradores</value>
   </data>
   <data name="&gt;&gt;buttonModificarAdministrador.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="button2.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="button2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="button2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>219, 19</value>
+  </data>
+  <data name="button2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 3, 2, 3</value>
+  </data>
+  <data name="button2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 23</value>
+  </data>
+  <data name="button2.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="button2.Text" xml:space="preserve">
+    <value>Actualizar Contraseña</value>
+  </data>
+  <data name="&gt;&gt;button2.Name" xml:space="preserve">
+    <value>button2</value>
+  </data>
+  <data name="&gt;&gt;button2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button2.Parent" xml:space="preserve">
+    <value>groupBoxAdministradores</value>
+  </data>
+  <data name="&gt;&gt;button2.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="button5.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="button5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="button5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>219, 48</value>
+  </data>
+  <data name="button5.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 3, 2, 3</value>
+  </data>
+  <data name="button5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 23</value>
+  </data>
+  <data name="button5.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="button5.Text" xml:space="preserve">
+    <value>Recuperar Cuenta</value>
+  </data>
+  <data name="&gt;&gt;button5.Name" xml:space="preserve">
+    <value>button5</value>
+  </data>
+  <data name="&gt;&gt;button5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button5.Parent" xml:space="preserve">
+    <value>groupBoxAdministradores</value>
+  </data>
+  <data name="&gt;&gt;button5.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="groupBoxAdministradores.Location" type="System.Drawing.Point, System.Drawing">
-    <value>325, 227</value>
+    <value>326, 395</value>
   </data>
   <data name="groupBoxAdministradores.Size" type="System.Drawing.Size, System.Drawing">
-    <value>170, 150</value>
+    <value>369, 150</value>
   </data>
   <data name="groupBoxAdministradores.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -750,11 +936,14 @@
   <data name="&gt;&gt;groupBoxAdministradores.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="button4.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
   <data name="button4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="button4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>20, 77</value>
+    <value>20, 106</value>
   </data>
   <data name="button4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 3, 2, 3</value>
@@ -780,6 +969,9 @@
   <data name="&gt;&gt;button4.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="button3.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
   <data name="button3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -796,7 +988,7 @@
     <value>1</value>
   </data>
   <data name="button3.Text" xml:space="preserve">
-    <value>Consultar Ejemplar</value>
+    <value>Consultar</value>
   </data>
   <data name="&gt;&gt;button3.Name" xml:space="preserve">
     <value>button3</value>
@@ -809,6 +1001,9 @@
   </data>
   <data name="&gt;&gt;button3.ZOrder" xml:space="preserve">
     <value>2</value>
+  </data>
+  <data name="buttonRegistrarEjemplar.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
   </data>
   <data name="buttonRegistrarEjemplar.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -826,7 +1021,7 @@
     <value>0</value>
   </data>
   <data name="buttonRegistrarEjemplar.Text" xml:space="preserve">
-    <value>RegistrarEjemplar</value>
+    <value>Registrar</value>
   </data>
   <data name="&gt;&gt;buttonRegistrarEjemplar.Name" xml:space="preserve">
     <value>buttonRegistrarEjemplar</value>
@@ -840,11 +1035,14 @@
   <data name="&gt;&gt;buttonRegistrarEjemplar.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="button1.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
   <data name="button1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>20, 106</value>
+    <value>20, 77</value>
   </data>
   <data name="button1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 3, 2, 3</value>
@@ -856,7 +1054,7 @@
     <value>4</value>
   </data>
   <data name="button1.Text" xml:space="preserve">
-    <value>Actualizar Ejemplar</value>
+    <value>Actualizar</value>
   </data>
   <data name="&gt;&gt;button1.Name" xml:space="preserve">
     <value>button1</value>

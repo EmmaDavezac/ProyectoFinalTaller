@@ -53,6 +53,18 @@ namespace Nucleo
                 return unitOfWork.RepositorioUsuarios.Get(id);
             }
         }
+        public void ActualizarUsuario(string idUsuario,string nombre, string apellido,string mail)
+        {
+            int id = Convert.ToInt32(idUsuario);  
+            using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
+            {
+                unitOfWork.RepositorioUsuarios.Get(id).Nombre = nombre;
+                unitOfWork.RepositorioUsuarios.Get(id).Apellido = apellido;
+                unitOfWork.RepositorioUsuarios.Get(id).Mail = mail;
+                unitOfWork.Complete();
+            }
+        }
+
         public void AñadirAdministrador(string nombre, string apellido, DateTime fechaNacimiento, string mail, string contraseña)
         {
             UsuarioAdministrador usuario = new UsuarioAdministrador(nombre, apellido, fechaNacimiento, mail, contraseña);
@@ -64,11 +76,24 @@ namespace Nucleo
         }
         public UsuarioAdministrador ObtenerAdministrador(int id)
         {
+            
             using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
             {
                 return unitOfWork.RepositorioAdministradores.Get(id);
             }
         }
+        public void ActualizarAdministrador(string idAdministrador, string nombre, string apellido, string mail)
+        {
+            int id = Convert.ToInt32(idAdministrador);
+            using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
+            {
+                unitOfWork.RepositorioAdministradores.Get(id).Nombre = nombre;
+                unitOfWork.RepositorioAdministradores.Get(id).Apellido = apellido;
+                unitOfWork.RepositorioAdministradores.Get(id).Mail = mail;
+                unitOfWork.Complete();
+            }
+        }
+        
         public void AñadirLibro(string unISBN, string titulo, string autor, string añoPublicacion)
         {
             Libro libro = new Libro(unISBN, titulo,  autor, añoPublicacion);
@@ -204,8 +229,35 @@ namespace Nucleo
         public int ObtenerUltimoIdPrestamo()
 
         { return ObtenerPrestamos().Last().Id; }
+        public List<Prestamo> ObtenerListadePrestamosProximosAVencerse()
 
-        public List<Libro> ListarPorCoincidencia(string unaCadena)
+        {
+            List<Prestamo> lista = new List<Prestamo>();
+            foreach (var item in GetUnitOfWork(implementacionBase).RepositorioPrestamos.GetAll())
+            {
+                if (item.ProximoAVencerse())
+                {
+                    lista.Add(item);
+                }
+               
+            }
+            return lista;
+        }
+        public List<Prestamo> ObtenerListadePrestamosRetrasados()
+
+        {
+            List<Prestamo> lista = new List<Prestamo>();
+            foreach (var item in GetUnitOfWork(implementacionBase).RepositorioPrestamos.GetAll())
+            {
+                if (item.Retrasado())
+                {
+                    lista.Add(item);
+                }
+            }
+            return lista;
+        }
+
+        public List<Libro> ListarLibrosDeAPIPorCoincidencia(string unaCadena)
         { return GetIServiciosAPILibros(implementacionAPILibros).ListaPorCoincidecia(unaCadena); }
     }
 

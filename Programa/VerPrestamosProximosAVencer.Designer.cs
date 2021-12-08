@@ -1,7 +1,7 @@
 ﻿
 namespace Programa
 {
-    partial class VerPrestamos
+    partial class VerPrestamosProximosAVencer
     {
         /// <summary>
         /// Required designer variable.
@@ -127,7 +127,7 @@ namespace Programa
             this.dataGridViewPrestamos.Name = "dataGridViewPrestamos";
             this.dataGridViewPrestamos.ReadOnly = true;
             this.dataGridViewPrestamos.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dataGridViewPrestamos.Size = new System.Drawing.Size(797, 403);
+            this.dataGridViewPrestamos.Size = new System.Drawing.Size(794, 403);
             this.dataGridViewPrestamos.TabIndex = 98;
             this.dataGridViewPrestamos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPrestamos_CellContentClick);
             // 
@@ -233,7 +233,7 @@ namespace Programa
             this.Disponible.Name = "Disponible";
             this.Disponible.ReadOnly = true;
             // 
-            // VerPrestamos
+            // VerPrestamosProximosAVencer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -247,9 +247,8 @@ namespace Programa
             this.MaximumSize = new System.Drawing.Size(800, 600);
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(800, 600);
-            this.Name = "VerPrestamos";
+            this.Name = "VerPrestamosProximosAVencer";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "VerPrestamo";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.VerPrestamos_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPrestamos)).EndInit();
             this.ResumeLayout(false);

@@ -58,12 +58,16 @@ namespace Programa
             // 
             // buttonBuscarLibro
             // 
+            this.buttonBuscarLibro.BackColor = System.Drawing.SystemColors.Highlight;
+            this.buttonBuscarLibro.FlatAppearance.BorderSize = 0;
+            this.buttonBuscarLibro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonBuscarLibro.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.buttonBuscarLibro.Location = new System.Drawing.Point(470, 310);
             this.buttonBuscarLibro.Name = "buttonBuscarLibro";
             this.buttonBuscarLibro.Size = new System.Drawing.Size(89, 23);
             this.buttonBuscarLibro.TabIndex = 49;
             this.buttonBuscarLibro.Text = "Buscar Libro";
-            this.buttonBuscarLibro.UseVisualStyleBackColor = true;
+            this.buttonBuscarLibro.UseVisualStyleBackColor = false;
             this.buttonBuscarLibro.Click += new System.EventHandler(this.buttonBuscarLibro_Click);
             // 
             // labelId
@@ -77,8 +81,8 @@ namespace Programa
             // 
             // labelNombreUsuario
             // 
-            this.labelNombreUsuario.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.labelNombreUsuario.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.labelNombreUsuario.BackColor = System.Drawing.SystemColors.Highlight;
+            this.labelNombreUsuario.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.labelNombreUsuario.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.labelNombreUsuario.Location = new System.Drawing.Point(606, 9);
             this.labelNombreUsuario.Name = "labelNombreUsuario";
@@ -165,7 +169,11 @@ namespace Programa
             // 
             // buttonVolver
             // 
+            this.buttonVolver.BackColor = System.Drawing.SystemColors.Highlight;
             this.buttonVolver.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.buttonVolver.FlatAppearance.BorderSize = 0;
+            this.buttonVolver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonVolver.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.buttonVolver.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.buttonVolver.Location = new System.Drawing.Point(605, 565);
             this.buttonVolver.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
@@ -173,21 +181,27 @@ namespace Programa
             this.buttonVolver.Size = new System.Drawing.Size(89, 23);
             this.buttonVolver.TabIndex = 51;
             this.buttonVolver.Text = "Volver";
-            this.buttonVolver.UseVisualStyleBackColor = true;
+            this.buttonVolver.UseVisualStyleBackColor = false;
             this.buttonVolver.Click += new System.EventHandler(this.buttonVolver_Click);
             // 
             // buttonGuardarEjemplar
             // 
+            this.buttonGuardarEjemplar.BackColor = System.Drawing.SystemColors.Highlight;
+            this.buttonGuardarEjemplar.FlatAppearance.BorderSize = 0;
+            this.buttonGuardarEjemplar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonGuardarEjemplar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.buttonGuardarEjemplar.Location = new System.Drawing.Point(699, 565);
             this.buttonGuardarEjemplar.Name = "buttonGuardarEjemplar";
             this.buttonGuardarEjemplar.Size = new System.Drawing.Size(89, 23);
             this.buttonGuardarEjemplar.TabIndex = 52;
             this.buttonGuardarEjemplar.Text = "Guardar";
-            this.buttonGuardarEjemplar.UseVisualStyleBackColor = true;
+            this.buttonGuardarEjemplar.UseVisualStyleBackColor = false;
             this.buttonGuardarEjemplar.Click += new System.EventHandler(this.buttonGuardarEjemplar_Click);
             // 
             // comboBoxEstado
             // 
+            this.comboBoxEstado.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.comboBoxEstado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBoxEstado.FormattingEnabled = true;
             this.comboBoxEstado.Items.AddRange(new object[] {
             "Malo",

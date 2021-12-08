@@ -11,16 +11,16 @@ using Nucleo;
 
 namespace Programa
 {
-    public partial class VerPrestamos : Form
+    public partial class VerPrestamosProximosAVencer : Form
     {
         private static InterfazNucleo interfazNucleo = new InterfazNucleo();
         private string NombreUsuario { get; set; }
-        public VerPrestamos(string nombreUsuario)
+        public VerPrestamosProximosAVencer(string nombreUsuario)
         {
             InitializeComponent();
             NombreUsuario = nombreUsuario;
             labelNombreUsuario.Text = NombreUsuario;
-            foreach (var item in interfazNucleo.ObtenerPrestamos())
+            foreach (var item in interfazNucleo.ObtenerListadePrestamosProximosAVencerse())
             {
                 int n = dataGridViewPrestamos.Rows.Add();
                 dataGridViewPrestamos.Rows[n].Cells[0].Value = item.Id;

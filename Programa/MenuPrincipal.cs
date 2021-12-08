@@ -175,5 +175,34 @@ namespace Programa
             this.Hide();
             ventana.Show();
         }
+
+        private void buttonActualizarUsuario_Click(object sender, EventArgs e)
+        {
+            ActualizarUsuario ventana = new ActualizarUsuario(NombreUsuario);
+            this.Hide();
+            ventana.Show();
+        }
+
+        private void buttonModificarAdministrador_Click(object sender, EventArgs e)
+        {
+            ActualizarAdministrador ventana = new ActualizarAdministrador(NombreUsuario);
+            this.Hide();
+            ventana.Show();
+        }
+
+        private void buttonPrestamosRetrasados_Click(object sender, EventArgs e)
+        {
+            VerPrestamosRetrasados ventana = new VerPrestamosRetrasados(NombreUsuario);
+            this.Hide();
+            ventana.Show();
+        }
+
+        private void buttonVerProximosAVencer_Click(object sender, EventArgs e)
+        {
+            VerPrestamosProximosAVencer ventana = new VerPrestamosProximosAVencer(NombreUsuario);
+            this.Hide();
+            ventana.Show();
+        }
     }
-}
+ }
+
