@@ -1,7 +1,7 @@
 ﻿
 namespace Programa
 {
-    partial class ConsultarEjemplara
+    partial class ActualizarEjemplar
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,6 @@ namespace Programa
         private void InitializeComponent()
         {
             this.textBoxId = new System.Windows.Forms.TextBox();
-            this.textBoxEstado = new System.Windows.Forms.TextBox();
             this.textBoxIdLibro = new System.Windows.Forms.TextBox();
             this.textBoxTitulo = new System.Windows.Forms.TextBox();
             this.textBoxAutor = new System.Windows.Forms.TextBox();
@@ -47,33 +46,24 @@ namespace Programa
             this.labelError = new System.Windows.Forms.Label();
             this.botonVolver = new System.Windows.Forms.Button();
             this.labelNombreUsuario = new System.Windows.Forms.Label();
-            this.textBoxDisponibilidad = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.buttonGuardar = new System.Windows.Forms.Button();
+            this.buttonSeleccionar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBoxId
             // 
-            this.textBoxId.Location = new System.Drawing.Point(287, 108);
+            this.textBoxId.Location = new System.Drawing.Point(275, 156);
             this.textBoxId.Name = "textBoxId";
             this.textBoxId.Size = new System.Drawing.Size(300, 20);
             this.textBoxId.TabIndex = 53;
             this.textBoxId.TextChanged += new System.EventHandler(this.textBoxId_TextChanged);
             // 
-            // textBoxEstado
-            // 
-            this.textBoxEstado.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.textBoxEstado.Enabled = false;
-            this.textBoxEstado.Location = new System.Drawing.Point(287, 134);
-            this.textBoxEstado.Name = "textBoxEstado";
-            this.textBoxEstado.ReadOnly = true;
-            this.textBoxEstado.Size = new System.Drawing.Size(300, 20);
-            this.textBoxEstado.TabIndex = 54;
-            // 
             // textBoxIdLibro
             // 
             this.textBoxIdLibro.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.textBoxIdLibro.Enabled = false;
-            this.textBoxIdLibro.Location = new System.Drawing.Point(287, 186);
+            this.textBoxIdLibro.Location = new System.Drawing.Point(275, 208);
             this.textBoxIdLibro.Name = "textBoxIdLibro";
             this.textBoxIdLibro.ReadOnly = true;
             this.textBoxIdLibro.Size = new System.Drawing.Size(300, 20);
@@ -84,7 +74,7 @@ namespace Programa
             // 
             this.textBoxTitulo.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.textBoxTitulo.Enabled = false;
-            this.textBoxTitulo.Location = new System.Drawing.Point(287, 212);
+            this.textBoxTitulo.Location = new System.Drawing.Point(275, 234);
             this.textBoxTitulo.Name = "textBoxTitulo";
             this.textBoxTitulo.ReadOnly = true;
             this.textBoxTitulo.Size = new System.Drawing.Size(300, 20);
@@ -94,7 +84,7 @@ namespace Programa
             // 
             this.textBoxAutor.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.textBoxAutor.Enabled = false;
-            this.textBoxAutor.Location = new System.Drawing.Point(287, 238);
+            this.textBoxAutor.Location = new System.Drawing.Point(275, 260);
             this.textBoxAutor.Name = "textBoxAutor";
             this.textBoxAutor.ReadOnly = true;
             this.textBoxAutor.Size = new System.Drawing.Size(300, 20);
@@ -104,7 +94,7 @@ namespace Programa
             // 
             this.textBoxAñoPublicacion.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.textBoxAñoPublicacion.Enabled = false;
-            this.textBoxAñoPublicacion.Location = new System.Drawing.Point(287, 264);
+            this.textBoxAñoPublicacion.Location = new System.Drawing.Point(275, 286);
             this.textBoxAñoPublicacion.Name = "textBoxAñoPublicacion";
             this.textBoxAñoPublicacion.ReadOnly = true;
             this.textBoxAñoPublicacion.Size = new System.Drawing.Size(300, 20);
@@ -114,7 +104,7 @@ namespace Programa
             // 
             this.textBoxISBN.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.textBoxISBN.Enabled = false;
-            this.textBoxISBN.Location = new System.Drawing.Point(287, 290);
+            this.textBoxISBN.Location = new System.Drawing.Point(275, 312);
             this.textBoxISBN.Name = "textBoxISBN";
             this.textBoxISBN.ReadOnly = true;
             this.textBoxISBN.Size = new System.Drawing.Size(300, 20);
@@ -123,7 +113,7 @@ namespace Programa
             // labelIDEjemplar
             // 
             this.labelIDEjemplar.AutoSize = true;
-            this.labelIDEjemplar.Location = new System.Drawing.Point(190, 111);
+            this.labelIDEjemplar.Location = new System.Drawing.Point(178, 159);
             this.labelIDEjemplar.Name = "labelIDEjemplar";
             this.labelIDEjemplar.Size = new System.Drawing.Size(59, 13);
             this.labelIDEjemplar.TabIndex = 66;
@@ -132,7 +122,7 @@ namespace Programa
             // labelEstado
             // 
             this.labelEstado.AutoSize = true;
-            this.labelEstado.Location = new System.Drawing.Point(190, 137);
+            this.labelEstado.Location = new System.Drawing.Point(178, 185);
             this.labelEstado.Name = "labelEstado";
             this.labelEstado.Size = new System.Drawing.Size(40, 13);
             this.labelEstado.TabIndex = 65;
@@ -141,7 +131,7 @@ namespace Programa
             // labelIdLibro
             // 
             this.labelIdLibro.AutoSize = true;
-            this.labelIdLibro.Location = new System.Drawing.Point(190, 189);
+            this.labelIdLibro.Location = new System.Drawing.Point(178, 211);
             this.labelIdLibro.Name = "labelIdLibro";
             this.labelIdLibro.Size = new System.Drawing.Size(42, 13);
             this.labelIdLibro.TabIndex = 64;
@@ -150,7 +140,7 @@ namespace Programa
             // labelISBN
             // 
             this.labelISBN.AutoSize = true;
-            this.labelISBN.Location = new System.Drawing.Point(188, 293);
+            this.labelISBN.Location = new System.Drawing.Point(176, 315);
             this.labelISBN.Name = "labelISBN";
             this.labelISBN.Size = new System.Drawing.Size(32, 13);
             this.labelISBN.TabIndex = 63;
@@ -159,7 +149,7 @@ namespace Programa
             // labelAñoPublicacion
             // 
             this.labelAñoPublicacion.AutoSize = true;
-            this.labelAñoPublicacion.Location = new System.Drawing.Point(188, 267);
+            this.labelAñoPublicacion.Location = new System.Drawing.Point(176, 289);
             this.labelAñoPublicacion.Name = "labelAñoPublicacion";
             this.labelAñoPublicacion.Size = new System.Drawing.Size(83, 13);
             this.labelAñoPublicacion.TabIndex = 62;
@@ -168,7 +158,7 @@ namespace Programa
             // labelAutor
             // 
             this.labelAutor.AutoSize = true;
-            this.labelAutor.Location = new System.Drawing.Point(188, 241);
+            this.labelAutor.Location = new System.Drawing.Point(176, 263);
             this.labelAutor.Name = "labelAutor";
             this.labelAutor.Size = new System.Drawing.Size(35, 13);
             this.labelAutor.TabIndex = 61;
@@ -177,7 +167,7 @@ namespace Programa
             // labelTitulo
             // 
             this.labelTitulo.AutoSize = true;
-            this.labelTitulo.Location = new System.Drawing.Point(188, 215);
+            this.labelTitulo.Location = new System.Drawing.Point(176, 237);
             this.labelTitulo.Name = "labelTitulo";
             this.labelTitulo.Size = new System.Drawing.Size(33, 13);
             this.labelTitulo.TabIndex = 60;
@@ -190,9 +180,9 @@ namespace Programa
             this.buttonBuscar.FlatAppearance.BorderSize = 0;
             this.buttonBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonBuscar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonBuscar.Location = new System.Drawing.Point(512, 338);
+            this.buttonBuscar.Location = new System.Drawing.Point(581, 153);
             this.buttonBuscar.Name = "buttonBuscar";
-            this.buttonBuscar.Size = new System.Drawing.Size(75, 23);
+            this.buttonBuscar.Size = new System.Drawing.Size(81, 23);
             this.buttonBuscar.TabIndex = 67;
             this.buttonBuscar.Text = "Buscar";
             this.buttonBuscar.UseVisualStyleBackColor = false;
@@ -202,7 +192,7 @@ namespace Programa
             // 
             this.labelError.AutoSize = true;
             this.labelError.ForeColor = System.Drawing.Color.Red;
-            this.labelError.Location = new System.Drawing.Point(284, 313);
+            this.labelError.Location = new System.Drawing.Point(272, 335);
             this.labelError.Name = "labelError";
             this.labelError.Size = new System.Drawing.Size(0, 13);
             this.labelError.TabIndex = 68;
@@ -215,7 +205,7 @@ namespace Programa
             this.botonVolver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.botonVolver.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.botonVolver.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.botonVolver.Location = new System.Drawing.Point(700, 565);
+            this.botonVolver.Location = new System.Drawing.Point(607, 565);
             this.botonVolver.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.botonVolver.Name = "botonVolver";
             this.botonVolver.Size = new System.Drawing.Size(89, 23);
@@ -237,34 +227,64 @@ namespace Programa
             this.labelNombreUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.labelNombreUsuario.Click += new System.EventHandler(this.labelNombreUsuario_Click);
             // 
-            // textBoxDisponibilidad
+            // comboBox1
             // 
-            this.textBoxDisponibilidad.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.textBoxDisponibilidad.Enabled = false;
-            this.textBoxDisponibilidad.Location = new System.Drawing.Point(287, 160);
-            this.textBoxDisponibilidad.Name = "textBoxDisponibilidad";
-            this.textBoxDisponibilidad.ReadOnly = true;
-            this.textBoxDisponibilidad.Size = new System.Drawing.Size(300, 20);
-            this.textBoxDisponibilidad.TabIndex = 71;
+            this.comboBox1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.Enabled = false;
+            this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Bueno",
+            "Malo"});
+            this.comboBox1.Location = new System.Drawing.Point(275, 181);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(300, 21);
+            this.comboBox1.TabIndex = 71;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
-            // label1
+            // buttonGuardar
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(188, 163);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(72, 13);
-            this.label1.TabIndex = 72;
-            this.label1.Text = "Disponibilidad";
+            this.buttonGuardar.BackColor = System.Drawing.SystemColors.Highlight;
+            this.buttonGuardar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.buttonGuardar.Enabled = false;
+            this.buttonGuardar.FlatAppearance.BorderSize = 0;
+            this.buttonGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonGuardar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.buttonGuardar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.buttonGuardar.Location = new System.Drawing.Point(700, 565);
+            this.buttonGuardar.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.buttonGuardar.Name = "buttonGuardar";
+            this.buttonGuardar.Size = new System.Drawing.Size(89, 23);
+            this.buttonGuardar.TabIndex = 72;
+            this.buttonGuardar.Text = "Guardar";
+            this.buttonGuardar.UseVisualStyleBackColor = false;
             // 
-            // ConsultarEjemplara
+            // buttonSeleccionar
+            // 
+            this.buttonSeleccionar.BackColor = System.Drawing.SystemColors.Highlight;
+            this.buttonSeleccionar.Enabled = false;
+            this.buttonSeleccionar.FlatAppearance.BorderSize = 0;
+            this.buttonSeleccionar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSeleccionar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.buttonSeleccionar.Location = new System.Drawing.Point(581, 181);
+            this.buttonSeleccionar.Name = "buttonSeleccionar";
+            this.buttonSeleccionar.Size = new System.Drawing.Size(81, 23);
+            this.buttonSeleccionar.TabIndex = 73;
+            this.buttonSeleccionar.Text = "Seleccionar";
+            this.buttonSeleccionar.UseVisualStyleBackColor = false;
+            this.buttonSeleccionar.Click += new System.EventHandler(this.buttonSeleccionar_Click);
+            // 
+            // ActualizarEjemplar
             // 
             this.AcceptButton = this.buttonBuscar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(800, 600);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBoxDisponibilidad);
+            this.Controls.Add(this.buttonSeleccionar);
+            this.Controls.Add(this.buttonGuardar);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.labelNombreUsuario);
             this.Controls.Add(this.botonVolver);
             this.Controls.Add(this.labelError);
@@ -281,14 +301,14 @@ namespace Programa
             this.Controls.Add(this.textBoxAutor);
             this.Controls.Add(this.textBoxTitulo);
             this.Controls.Add(this.textBoxIdLibro);
-            this.Controls.Add(this.textBoxEstado);
             this.Controls.Add(this.textBoxId);
+            this.Enabled = false;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(800, 600);
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(800, 600);
-            this.Name = "ConsultarEjemplara";
+            this.Name = "ActualizarEjemplar";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CEjemplar";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CEjemplar_FormClosed);
@@ -300,7 +320,6 @@ namespace Programa
         #endregion
 
         private System.Windows.Forms.TextBox textBoxId;
-        private System.Windows.Forms.TextBox textBoxEstado;
         private System.Windows.Forms.TextBox textBoxIdLibro;
         private System.Windows.Forms.TextBox textBoxTitulo;
         private System.Windows.Forms.TextBox textBoxAutor;
@@ -317,7 +336,8 @@ namespace Programa
         private System.Windows.Forms.Label labelError;
         private System.Windows.Forms.Button botonVolver;
         private System.Windows.Forms.Label labelNombreUsuario;
-        private System.Windows.Forms.TextBox textBoxDisponibilidad;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Button buttonGuardar;
+        private System.Windows.Forms.Button buttonSeleccionar;
     }
 }

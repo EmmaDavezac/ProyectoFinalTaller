@@ -73,6 +73,8 @@ namespace Programa
             // 
             // textBoxDisponibilidad
             // 
+            this.textBoxDisponibilidad.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.textBoxDisponibilidad.Enabled = false;
             this.textBoxDisponibilidad.Location = new System.Drawing.Point(111, 64);
             this.textBoxDisponibilidad.Name = "textBoxDisponibilidad";
             this.textBoxDisponibilidad.ReadOnly = true;
@@ -182,6 +184,8 @@ namespace Programa
             // 
             // textBoxISBN
             // 
+            this.textBoxISBN.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.textBoxISBN.Enabled = false;
             this.textBoxISBN.Location = new System.Drawing.Point(111, 194);
             this.textBoxISBN.Name = "textBoxISBN";
             this.textBoxISBN.ReadOnly = true;
@@ -190,6 +194,8 @@ namespace Programa
             // 
             // textBoxAñoPublicacion
             // 
+            this.textBoxAñoPublicacion.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.textBoxAñoPublicacion.Enabled = false;
             this.textBoxAñoPublicacion.Location = new System.Drawing.Point(111, 168);
             this.textBoxAñoPublicacion.Name = "textBoxAñoPublicacion";
             this.textBoxAñoPublicacion.ReadOnly = true;
@@ -198,6 +204,8 @@ namespace Programa
             // 
             // textBoxAutor
             // 
+            this.textBoxAutor.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.textBoxAutor.Enabled = false;
             this.textBoxAutor.Location = new System.Drawing.Point(111, 142);
             this.textBoxAutor.Name = "textBoxAutor";
             this.textBoxAutor.ReadOnly = true;
@@ -206,6 +214,8 @@ namespace Programa
             // 
             // textBoxTitulo
             // 
+            this.textBoxTitulo.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.textBoxTitulo.Enabled = false;
             this.textBoxTitulo.Location = new System.Drawing.Point(111, 116);
             this.textBoxTitulo.Name = "textBoxTitulo";
             this.textBoxTitulo.ReadOnly = true;
@@ -214,6 +224,8 @@ namespace Programa
             // 
             // textBoxIdLibro
             // 
+            this.textBoxIdLibro.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.textBoxIdLibro.Enabled = false;
             this.textBoxIdLibro.Location = new System.Drawing.Point(111, 90);
             this.textBoxIdLibro.Name = "textBoxIdLibro";
             this.textBoxIdLibro.ReadOnly = true;
@@ -222,6 +234,8 @@ namespace Programa
             // 
             // textBoxEstado
             // 
+            this.textBoxEstado.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.textBoxEstado.Enabled = false;
             this.textBoxEstado.Location = new System.Drawing.Point(111, 38);
             this.textBoxEstado.Name = "textBoxEstado";
             this.textBoxEstado.ReadOnly = true;
@@ -231,6 +245,8 @@ namespace Programa
             // 
             // textBoxId
             // 
+            this.textBoxId.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.textBoxId.Enabled = false;
             this.textBoxId.Location = new System.Drawing.Point(111, 12);
             this.textBoxId.Name = "textBoxId";
             this.textBoxId.ReadOnly = true;

@@ -111,6 +111,7 @@ namespace Programa
             // 
             // TextBoxRetrasado
             // 
+            this.TextBoxRetrasado.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.TextBoxRetrasado.Enabled = false;
             this.TextBoxRetrasado.Location = new System.Drawing.Point(156, 295);
             this.TextBoxRetrasado.Name = "TextBoxRetrasado";
@@ -121,6 +122,7 @@ namespace Programa
             // 
             // textBoxProximoAVencer
             // 
+            this.textBoxProximoAVencer.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.textBoxProximoAVencer.Enabled = false;
             this.textBoxProximoAVencer.Location = new System.Drawing.Point(156, 269);
             this.textBoxProximoAVencer.Name = "textBoxProximoAVencer";
@@ -158,6 +160,7 @@ namespace Programa
             // 
             // textBoxFechaLimite
             // 
+            this.textBoxFechaLimite.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.textBoxFechaLimite.Enabled = false;
             this.textBoxFechaLimite.Location = new System.Drawing.Point(156, 243);
             this.textBoxFechaLimite.Name = "textBoxFechaLimite";
@@ -168,6 +171,7 @@ namespace Programa
             // 
             // textBoxFecha
             // 
+            this.textBoxFecha.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.textBoxFecha.Enabled = false;
             this.textBoxFecha.Location = new System.Drawing.Point(156, 217);
             this.textBoxFecha.Name = "textBoxFecha";
@@ -213,6 +217,7 @@ namespace Programa
             // 
             // textBoxIdEjemplar
             // 
+            this.textBoxIdEjemplar.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.textBoxIdEjemplar.Enabled = false;
             this.textBoxIdEjemplar.Location = new System.Drawing.Point(514, 457);
             this.textBoxIdEjemplar.Name = "textBoxIdEjemplar";
@@ -276,6 +281,7 @@ namespace Programa
             // 
             // textBoxISBN
             // 
+            this.textBoxISBN.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.textBoxISBN.Enabled = false;
             this.textBoxISBN.Location = new System.Drawing.Point(514, 400);
             this.textBoxISBN.Name = "textBoxISBN";
@@ -286,6 +292,7 @@ namespace Programa
             // 
             // textBoxAutor
             // 
+            this.textBoxAutor.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.textBoxAutor.Enabled = false;
             this.textBoxAutor.Location = new System.Drawing.Point(514, 374);
             this.textBoxAutor.Name = "textBoxAutor";
@@ -296,6 +303,7 @@ namespace Programa
             // 
             // textBoxTitulo
             // 
+            this.textBoxTitulo.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.textBoxTitulo.Enabled = false;
             this.textBoxTitulo.Location = new System.Drawing.Point(514, 348);
             this.textBoxTitulo.Name = "textBoxTitulo";
@@ -306,6 +314,7 @@ namespace Programa
             // 
             // textBoxIdLibro
             // 
+            this.textBoxIdLibro.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.textBoxIdLibro.Enabled = false;
             this.textBoxIdLibro.Location = new System.Drawing.Point(514, 323);
             this.textBoxIdLibro.Name = "textBoxIdLibro";
@@ -316,6 +325,7 @@ namespace Programa
             // 
             // textBoxIdUsuario
             // 
+            this.textBoxIdUsuario.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.textBoxIdUsuario.Enabled = false;
             this.textBoxIdUsuario.Location = new System.Drawing.Point(514, 214);
             this.textBoxIdUsuario.Name = "textBoxIdUsuario";
@@ -352,6 +362,7 @@ namespace Programa
             // 
             // textBoxApellido
             // 
+            this.textBoxApellido.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.textBoxApellido.Enabled = false;
             this.textBoxApellido.Location = new System.Drawing.Point(514, 265);
             this.textBoxApellido.Name = "textBoxApellido";
@@ -362,6 +373,7 @@ namespace Programa
             // 
             // textBoxNombre
             // 
+            this.textBoxNombre.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.textBoxNombre.Enabled = false;
             this.textBoxNombre.Location = new System.Drawing.Point(514, 239);
             this.textBoxNombre.Name = "textBoxNombre";
@@ -420,6 +432,7 @@ namespace Programa
             // comboBox1
             // 
             this.comboBox1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.Enabled = false;
             this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBox1.ForeColor = System.Drawing.SystemColors.ControlText;
@@ -431,7 +444,6 @@ namespace Programa
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(200, 21);
             this.comboBox1.TabIndex = 179;
-            this.comboBox1.Text = "Seleccione el estado";
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // RegistrarDevolucion
@@ -476,6 +488,7 @@ namespace Programa
             this.Controls.Add(this.textBoxNombre);
             this.Controls.Add(this.botonVolver);
             this.Controls.Add(this.labelNombreUsuario);
+            this.Enabled = false;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(800, 600);

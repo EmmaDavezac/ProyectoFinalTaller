@@ -47,20 +47,19 @@ namespace Programa
             this.buttonRegistrarPrestamo = new System.Windows.Forms.Button();
             this.buttonRegistrarDevolucion = new System.Windows.Forms.Button();
             this.groupBoxPrestamos = new System.Windows.Forms.GroupBox();
+            this.buttonPrestamosRetrasados = new System.Windows.Forms.Button();
+            this.buttonVerProximosAVencer = new System.Windows.Forms.Button();
             this.buttonVerAdministradores = new System.Windows.Forms.Button();
             this.buttonBuscarAdministrador = new System.Windows.Forms.Button();
             this.buttonRegistrarAdministrador = new System.Windows.Forms.Button();
             this.buttonModificarAdministrador = new System.Windows.Forms.Button();
             this.groupBoxAdministradores = new System.Windows.Forms.GroupBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.buttonRegistrarEjemplar = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBoxEjemplares = new System.Windows.Forms.GroupBox();
-            this.buttonPrestamosRetrasados = new System.Windows.Forms.Button();
-            this.buttonVerProximosAVencer = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
             this.groupBoxUsuarios.SuspendLayout();
             this.groupBoxLibros.SuspendLayout();
             this.groupBoxPrestamos.SuspendLayout();
@@ -163,6 +162,7 @@ namespace Programa
             resources.ApplyResources(this.buttonActualizarLibro, "buttonActualizarLibro");
             this.buttonActualizarLibro.Name = "buttonActualizarLibro";
             this.buttonActualizarLibro.UseVisualStyleBackColor = true;
+            this.buttonActualizarLibro.Click += new System.EventHandler(this.buttonActualizarLibro_Click);
             // 
             // groupBoxLibros
             // 
@@ -223,6 +223,23 @@ namespace Programa
             this.groupBoxPrestamos.TabStop = false;
             this.groupBoxPrestamos.Enter += new System.EventHandler(this.groupBox3_Enter);
             // 
+            // buttonPrestamosRetrasados
+            // 
+            this.buttonPrestamosRetrasados.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
+            resources.ApplyResources(this.buttonPrestamosRetrasados, "buttonPrestamosRetrasados");
+            this.buttonPrestamosRetrasados.Name = "buttonPrestamosRetrasados";
+            this.buttonPrestamosRetrasados.TabStop = false;
+            this.buttonPrestamosRetrasados.UseVisualStyleBackColor = true;
+            this.buttonPrestamosRetrasados.Click += new System.EventHandler(this.buttonPrestamosRetrasados_Click);
+            // 
+            // buttonVerProximosAVencer
+            // 
+            this.buttonVerProximosAVencer.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
+            resources.ApplyResources(this.buttonVerProximosAVencer, "buttonVerProximosAVencer");
+            this.buttonVerProximosAVencer.Name = "buttonVerProximosAVencer";
+            this.buttonVerProximosAVencer.UseVisualStyleBackColor = true;
+            this.buttonVerProximosAVencer.Click += new System.EventHandler(this.buttonVerProximosAVencer_Click);
+            // 
             // buttonVerAdministradores
             // 
             this.buttonVerAdministradores.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
@@ -259,7 +276,6 @@ namespace Programa
             // groupBoxAdministradores
             // 
             this.groupBoxAdministradores.Controls.Add(this.button2);
-            this.groupBoxAdministradores.Controls.Add(this.button5);
             this.groupBoxAdministradores.Controls.Add(this.buttonModificarAdministrador);
             this.groupBoxAdministradores.Controls.Add(this.buttonRegistrarAdministrador);
             this.groupBoxAdministradores.Controls.Add(this.buttonBuscarAdministrador);
@@ -269,6 +285,15 @@ namespace Programa
             this.groupBoxAdministradores.Name = "groupBoxAdministradores";
             this.groupBoxAdministradores.TabStop = false;
             this.groupBoxAdministradores.Enter += new System.EventHandler(this.groupBox4_Enter);
+            // 
+            // button2
+            // 
+            this.button2.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
+            resources.ApplyResources(this.button2, "button2");
+            this.button2.Name = "button2";
+            this.button2.TabStop = false;
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
             // button4
             // 
@@ -301,6 +326,7 @@ namespace Programa
             resources.ApplyResources(this.button1, "button1");
             this.button1.Name = "button1";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // groupBoxEjemplares
             // 
@@ -313,38 +339,6 @@ namespace Programa
             resources.ApplyResources(this.groupBoxEjemplares, "groupBoxEjemplares");
             this.groupBoxEjemplares.Name = "groupBoxEjemplares";
             this.groupBoxEjemplares.TabStop = false;
-            // 
-            // buttonPrestamosRetrasados
-            // 
-            this.buttonPrestamosRetrasados.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
-            resources.ApplyResources(this.buttonPrestamosRetrasados, "buttonPrestamosRetrasados");
-            this.buttonPrestamosRetrasados.Name = "buttonPrestamosRetrasados";
-            this.buttonPrestamosRetrasados.TabStop = false;
-            this.buttonPrestamosRetrasados.UseVisualStyleBackColor = true;
-            this.buttonPrestamosRetrasados.Click += new System.EventHandler(this.buttonPrestamosRetrasados_Click);
-            // 
-            // buttonVerProximosAVencer
-            // 
-            this.buttonVerProximosAVencer.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
-            resources.ApplyResources(this.buttonVerProximosAVencer, "buttonVerProximosAVencer");
-            this.buttonVerProximosAVencer.Name = "buttonVerProximosAVencer";
-            this.buttonVerProximosAVencer.UseVisualStyleBackColor = true;
-            this.buttonVerProximosAVencer.Click += new System.EventHandler(this.buttonVerProximosAVencer_Click);
-            // 
-            // button2
-            // 
-            this.button2.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
-            resources.ApplyResources(this.button2, "button2");
-            this.button2.Name = "button2";
-            this.button2.TabStop = false;
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button5
-            // 
-            this.button5.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
-            resources.ApplyResources(this.button5, "button5");
-            this.button5.Name = "button5";
-            this.button5.UseVisualStyleBackColor = true;
             // 
             // MenuPrincipal
             // 
@@ -404,7 +398,6 @@ namespace Programa
         private System.Windows.Forms.Button buttonPrestamosRetrasados;
         private System.Windows.Forms.Button buttonVerProximosAVencer;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button5;
     }
 }
 

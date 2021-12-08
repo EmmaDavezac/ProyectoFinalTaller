@@ -48,6 +48,7 @@ namespace Programa
                     textBoxAutor.Text = libro.Autor;
                     textBoxAñoPublicacion.Text = libro.AñoPublicacion;
                     textBoxISBN.Text = libro.ISBN;
+                    comboBoxEstado.Enabled = true;
                     buttonBuscarLibro.Enabled = false;
                 }
                 else { labelError.Text = "El Id ingresado no corresponde a un libro registrado "; buttonBuscarLibro.Enabled = false; textBoxId.Clear(); textBoxId.Focus(); }

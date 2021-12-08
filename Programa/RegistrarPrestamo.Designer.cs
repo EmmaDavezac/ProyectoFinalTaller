@@ -148,6 +148,7 @@ namespace Programa
             // 
             // textBoxApellido
             // 
+            this.textBoxApellido.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.textBoxApellido.Enabled = false;
             this.textBoxApellido.Location = new System.Drawing.Point(71, 161);
             this.textBoxApellido.Name = "textBoxApellido";
@@ -158,6 +159,7 @@ namespace Programa
             // 
             // textBoxNombre
             // 
+            this.textBoxNombre.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.textBoxNombre.Enabled = false;
             this.textBoxNombre.Location = new System.Drawing.Point(71, 135);
             this.textBoxNombre.Name = "textBoxNombre";
@@ -177,6 +179,7 @@ namespace Programa
             // 
             // textBoxScoring
             // 
+            this.textBoxScoring.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.textBoxScoring.Enabled = false;
             this.textBoxScoring.Location = new System.Drawing.Point(71, 187);
             this.textBoxScoring.Name = "textBoxScoring";
@@ -232,6 +235,7 @@ namespace Programa
             // 
             // textBoxISBN
             // 
+            this.textBoxISBN.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.textBoxISBN.Enabled = false;
             this.textBoxISBN.Location = new System.Drawing.Point(440, 186);
             this.textBoxISBN.Name = "textBoxISBN";
@@ -242,6 +246,7 @@ namespace Programa
             // 
             // textBoxAutor
             // 
+            this.textBoxAutor.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.textBoxAutor.Enabled = false;
             this.textBoxAutor.Location = new System.Drawing.Point(440, 160);
             this.textBoxAutor.Name = "textBoxAutor";
@@ -252,6 +257,7 @@ namespace Programa
             // 
             // textBoxTitulo
             // 
+            this.textBoxTitulo.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.textBoxTitulo.Enabled = false;
             this.textBoxTitulo.Location = new System.Drawing.Point(440, 134);
             this.textBoxTitulo.Name = "textBoxTitulo";
@@ -307,7 +313,7 @@ namespace Programa
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ControlLightLight;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
@@ -428,6 +434,7 @@ namespace Programa
             // 
             // textBoxEstado
             // 
+            this.textBoxEstado.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.textBoxEstado.Enabled = false;
             this.textBoxEstado.Location = new System.Drawing.Point(440, 311);
             this.textBoxEstado.Name = "textBoxEstado";
@@ -437,6 +444,7 @@ namespace Programa
             // 
             // textBoxIdEjemplar
             // 
+            this.textBoxIdEjemplar.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.textBoxIdEjemplar.Enabled = false;
             this.textBoxIdEjemplar.Location = new System.Drawing.Point(440, 285);
             this.textBoxIdEjemplar.Name = "textBoxIdEjemplar";

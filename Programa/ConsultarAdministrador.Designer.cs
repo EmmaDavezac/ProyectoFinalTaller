@@ -31,22 +31,24 @@ namespace Programa
         {
             this.textBoxFecha = new System.Windows.Forms.TextBox();
             this.textBoxId = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.labelError = new System.Windows.Forms.Label();
             this.buttonBuscarAdministrador = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.labelApellido = new System.Windows.Forms.Label();
-            this.labelNombre = new System.Windows.Forms.Label();
             this.textBoxMail = new System.Windows.Forms.TextBox();
             this.textBoxApellido = new System.Windows.Forms.TextBox();
             this.textBoxNombre = new System.Windows.Forms.TextBox();
             this.botonVolver = new System.Windows.Forms.Button();
             this.labelNombreUsuario = new System.Windows.Forms.Label();
+            this.labelNombre = new System.Windows.Forms.Label();
+            this.labelApellido = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // textBoxFecha
             // 
+            this.textBoxFecha.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.textBoxFecha.Enabled = false;
             this.textBoxFecha.Location = new System.Drawing.Point(286, 204);
             this.textBoxFecha.Name = "textBoxFecha";
             this.textBoxFecha.ReadOnly = true;
@@ -60,15 +62,6 @@ namespace Programa
             this.textBoxId.Size = new System.Drawing.Size(300, 20);
             this.textBoxId.TabIndex = 51;
             this.textBoxId.TextChanged += new System.EventHandler(this.textBoxId_TextChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(176, 129);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(16, 13);
-            this.label1.TabIndex = 50;
-            this.label1.Text = "Id";
             // 
             // labelError
             // 
@@ -94,44 +87,10 @@ namespace Programa
             this.buttonBuscarAdministrador.UseVisualStyleBackColor = false;
             this.buttonBuscarAdministrador.Click += new System.EventHandler(this.buttonBuscarUsuario_Click);
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(176, 233);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(26, 13);
-            this.label4.TabIndex = 47;
-            this.label4.Text = "Mail";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(176, 207);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(90, 13);
-            this.label3.TabIndex = 46;
-            this.label3.Text = "FechaNacimiento";
-            // 
-            // labelApellido
-            // 
-            this.labelApellido.AutoSize = true;
-            this.labelApellido.Location = new System.Drawing.Point(176, 181);
-            this.labelApellido.Name = "labelApellido";
-            this.labelApellido.Size = new System.Drawing.Size(44, 13);
-            this.labelApellido.TabIndex = 45;
-            this.labelApellido.Text = "Apellido";
-            // 
-            // labelNombre
-            // 
-            this.labelNombre.AutoSize = true;
-            this.labelNombre.Location = new System.Drawing.Point(176, 155);
-            this.labelNombre.Name = "labelNombre";
-            this.labelNombre.Size = new System.Drawing.Size(44, 13);
-            this.labelNombre.TabIndex = 44;
-            this.labelNombre.Text = "Nombre";
-            // 
             // textBoxMail
             // 
+            this.textBoxMail.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.textBoxMail.Enabled = false;
             this.textBoxMail.Location = new System.Drawing.Point(286, 230);
             this.textBoxMail.Name = "textBoxMail";
             this.textBoxMail.ReadOnly = true;
@@ -140,6 +99,8 @@ namespace Programa
             // 
             // textBoxApellido
             // 
+            this.textBoxApellido.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.textBoxApellido.Enabled = false;
             this.textBoxApellido.Location = new System.Drawing.Point(286, 178);
             this.textBoxApellido.Name = "textBoxApellido";
             this.textBoxApellido.ReadOnly = true;
@@ -148,6 +109,8 @@ namespace Programa
             // 
             // textBoxNombre
             // 
+            this.textBoxNombre.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.textBoxNombre.Enabled = false;
             this.textBoxNombre.Location = new System.Drawing.Point(286, 152);
             this.textBoxNombre.Name = "textBoxNombre";
             this.textBoxNombre.ReadOnly = true;
@@ -182,6 +145,56 @@ namespace Programa
             this.labelNombreUsuario.TabIndex = 53;
             this.labelNombreUsuario.Text = "Nombre de Usuario";
             this.labelNombreUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // labelNombre
+            // 
+            this.labelNombre.AutoSize = true;
+            this.labelNombre.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.labelNombre.Location = new System.Drawing.Point(176, 155);
+            this.labelNombre.Name = "labelNombre";
+            this.labelNombre.Size = new System.Drawing.Size(44, 13);
+            this.labelNombre.TabIndex = 44;
+            this.labelNombre.Text = "Nombre";
+            // 
+            // labelApellido
+            // 
+            this.labelApellido.AutoSize = true;
+            this.labelApellido.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.labelApellido.Location = new System.Drawing.Point(176, 181);
+            this.labelApellido.Name = "labelApellido";
+            this.labelApellido.Size = new System.Drawing.Size(44, 13);
+            this.labelApellido.TabIndex = 45;
+            this.labelApellido.Text = "Apellido";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.label3.Location = new System.Drawing.Point(176, 207);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(90, 13);
+            this.label3.TabIndex = 46;
+            this.label3.Text = "FechaNacimiento";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.label4.Location = new System.Drawing.Point(176, 233);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(26, 13);
+            this.label4.TabIndex = 47;
+            this.label4.Text = "Mail";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.label1.Location = new System.Drawing.Point(176, 129);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(16, 13);
+            this.label1.TabIndex = 50;
+            this.label1.Text = "Id";
             // 
             // ConsultarAdministrador
             // 
@@ -223,17 +236,17 @@ namespace Programa
 
         private System.Windows.Forms.TextBox textBoxFecha;
         private System.Windows.Forms.TextBox textBoxId;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label labelError;
         private System.Windows.Forms.Button buttonBuscarAdministrador;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label labelApellido;
-        private System.Windows.Forms.Label labelNombre;
         private System.Windows.Forms.TextBox textBoxMail;
         private System.Windows.Forms.TextBox textBoxApellido;
         private System.Windows.Forms.TextBox textBoxNombre;
         private System.Windows.Forms.Button botonVolver;
         private System.Windows.Forms.Label labelNombreUsuario;
+        private System.Windows.Forms.Label labelNombre;
+        private System.Windows.Forms.Label labelApellido;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label1;
     }
 }

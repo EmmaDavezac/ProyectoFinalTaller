@@ -109,6 +109,7 @@ namespace Programa
             // 
             // textBoxMail
             // 
+            this.textBoxMail.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.textBoxMail.Location = new System.Drawing.Point(259, 237);
             this.textBoxMail.Name = "textBoxMail";
             this.textBoxMail.ReadOnly = true;
@@ -117,6 +118,7 @@ namespace Programa
             // 
             // textBoxApellido
             // 
+            this.textBoxApellido.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.textBoxApellido.Location = new System.Drawing.Point(259, 185);
             this.textBoxApellido.Name = "textBoxApellido";
             this.textBoxApellido.ReadOnly = true;
@@ -125,6 +127,7 @@ namespace Programa
             // 
             // textBoxNombre
             // 
+            this.textBoxNombre.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.textBoxNombre.Location = new System.Drawing.Point(259, 159);
             this.textBoxNombre.Name = "textBoxNombre";
             this.textBoxNombre.ReadOnly = true;
@@ -168,6 +171,7 @@ namespace Programa
             // 
             // textBoxFecha
             // 
+            this.textBoxFecha.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.textBoxFecha.Location = new System.Drawing.Point(259, 211);
             this.textBoxFecha.Name = "textBoxFecha";
             this.textBoxFecha.ReadOnly = true;
@@ -186,6 +190,7 @@ namespace Programa
             // 
             // textBoxScoring
             // 
+            this.textBoxScoring.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.textBoxScoring.Location = new System.Drawing.Point(259, 263);
             this.textBoxScoring.Name = "textBoxScoring";
             this.textBoxScoring.ReadOnly = true;

@@ -61,6 +61,7 @@ namespace Programa
             // 
             // textBoxFecha
             // 
+            this.textBoxFecha.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.textBoxFecha.Enabled = false;
             this.textBoxFecha.Location = new System.Drawing.Point(272, 278);
             this.textBoxFecha.Name = "textBoxFecha";

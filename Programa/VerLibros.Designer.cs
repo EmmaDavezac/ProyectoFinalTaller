@@ -52,6 +52,8 @@ namespace Programa
             // 
             // textBoxISBN
             // 
+            this.textBoxISBN.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.textBoxISBN.Enabled = false;
             this.textBoxISBN.Location = new System.Drawing.Point(144, 152);
             this.textBoxISBN.Name = "textBoxISBN";
             this.textBoxISBN.ReadOnly = true;
@@ -98,6 +100,8 @@ namespace Programa
             // 
             // textBoxAñoPublicacion
             // 
+            this.textBoxAñoPublicacion.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.textBoxAñoPublicacion.Enabled = false;
             this.textBoxAñoPublicacion.Location = new System.Drawing.Point(144, 126);
             this.textBoxAñoPublicacion.Name = "textBoxAñoPublicacion";
             this.textBoxAñoPublicacion.ReadOnly = true;
@@ -106,6 +110,8 @@ namespace Programa
             // 
             // textBoxAutor
             // 
+            this.textBoxAutor.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.textBoxAutor.Enabled = false;
             this.textBoxAutor.Location = new System.Drawing.Point(144, 100);
             this.textBoxAutor.Name = "textBoxAutor";
             this.textBoxAutor.ReadOnly = true;
@@ -114,6 +120,8 @@ namespace Programa
             // 
             // textBoxTitulo
             // 
+            this.textBoxTitulo.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.textBoxTitulo.Enabled = false;
             this.textBoxTitulo.Location = new System.Drawing.Point(144, 74);
             this.textBoxTitulo.Name = "textBoxTitulo";
             this.textBoxTitulo.ReadOnly = true;
@@ -204,6 +212,8 @@ namespace Programa
             // 
             // textBoxId
             // 
+            this.textBoxId.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.textBoxId.Enabled = false;
             this.textBoxId.Location = new System.Drawing.Point(144, 48);
             this.textBoxId.Name = "textBoxId";
             this.textBoxId.ReadOnly = true;

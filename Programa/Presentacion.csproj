@@ -62,11 +62,29 @@
     <Compile Include="ActualizarAdministrador.Designer.cs">
       <DependentUpon>ActualizarAdministrador.cs</DependentUpon>
     </Compile>
+    <Compile Include="ActualizarContraseña.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ActualizarContraseña.Designer.cs">
+      <DependentUpon>ActualizarContraseña.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ActualizarLibro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ActualizarLibro.Designer.cs">
+      <DependentUpon>ActualizarLibro.cs</DependentUpon>
+    </Compile>
     <Compile Include="ActualizarUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ActualizarUsuario.Designer.cs">
       <DependentUpon>ActualizarUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ActualizarEjemplar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ActualizarEjemplar.Designer.cs">
+      <DependentUpon>ActualizarEjemplar.cs</DependentUpon>
     </Compile>
     <Compile Include="ConsultarEjemplar.cs">
       <SubType>Form</SubType>
@@ -204,8 +222,17 @@
     <EmbeddedResource Include="ActualizarAdministrador.resx">
       <DependentUpon>ActualizarAdministrador.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ActualizarContraseña.resx">
+      <DependentUpon>ActualizarContraseña.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ActualizarLibro.resx">
+      <DependentUpon>ActualizarLibro.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ActualizarUsuario.resx">
       <DependentUpon>ActualizarUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ActualizarEjemplar.resx">
+      <DependentUpon>ActualizarEjemplar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ConsultarEjemplar.resx">
       <DependentUpon>ConsultarEjemplar.cs</DependentUpon>
@@ -215,9 +242,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ConsultarPrestamo.resx">
       <DependentUpon>ConsultarPrestamo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MenuPrincipal.es-419.resx">
-      <DependentUpon>MenuPrincipal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MenuPrincipal.resx">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>

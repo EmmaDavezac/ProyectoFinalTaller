@@ -136,7 +136,7 @@ namespace Programa
         private void button3_Click_1(object sender, EventArgs e)
         {
             // ConsultarEjemplar ventana = new ConsultarEjemplar(NombreUsuario);
-            ConsultarEjemplar ventana = new ConsultarEjemplar(NombreUsuario);
+            ConsultarEjemplara ventana = new ConsultarEjemplara(NombreUsuario);
             this.Hide();
             ventana.Show();
         }
@@ -200,6 +200,27 @@ namespace Programa
         private void buttonVerProximosAVencer_Click(object sender, EventArgs e)
         {
             VerPrestamosProximosAVencer ventana = new VerPrestamosProximosAVencer(NombreUsuario);
+            this.Hide();
+            ventana.Show();
+        }
+
+        private void buttonActualizarLibro_Click(object sender, EventArgs e)
+        {
+            ActualizarLibro ventana = new ActualizarLibro(NombreUsuario);
+            this.Hide();
+            ventana.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ActualizarEjemplar ventana = new ActualizarEjemplar(NombreUsuario);
+            this.Hide();
+            ventana.Show();
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            ActualizarContraseña ventana = new ActualizarContraseña(NombreUsuario);
             this.Hide();
             ventana.Show();
         }

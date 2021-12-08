@@ -129,6 +129,7 @@ namespace Programa
             // 
             // textBoxISBN
             // 
+            this.textBoxISBN.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.textBoxISBN.Location = new System.Drawing.Point(259, 259);
             this.textBoxISBN.Name = "textBoxISBN";
             this.textBoxISBN.ReadOnly = true;
@@ -137,6 +138,7 @@ namespace Programa
             // 
             // textBoxAñoPublicacion
             // 
+            this.textBoxAñoPublicacion.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.textBoxAñoPublicacion.Location = new System.Drawing.Point(259, 233);
             this.textBoxAñoPublicacion.Name = "textBoxAñoPublicacion";
             this.textBoxAñoPublicacion.ReadOnly = true;
@@ -145,6 +147,7 @@ namespace Programa
             // 
             // textBoxAutor
             // 
+            this.textBoxAutor.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.textBoxAutor.Location = new System.Drawing.Point(259, 207);
             this.textBoxAutor.Name = "textBoxAutor";
             this.textBoxAutor.ReadOnly = true;
@@ -153,6 +156,8 @@ namespace Programa
             // 
             // textBoxTitulo
             // 
+            this.textBoxTitulo.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.textBoxTitulo.Enabled = false;
             this.textBoxTitulo.Location = new System.Drawing.Point(259, 181);
             this.textBoxTitulo.Name = "textBoxTitulo";
             this.textBoxTitulo.ReadOnly = true;
@@ -161,6 +166,7 @@ namespace Programa
             // 
             // textBoxId
             // 
+            this.textBoxId.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.textBoxId.Location = new System.Drawing.Point(259, 128);
             this.textBoxId.Name = "textBoxId";
             this.textBoxId.Size = new System.Drawing.Size(300, 20);
@@ -201,6 +207,8 @@ namespace Programa
             // comboBoxEstado
             // 
             this.comboBoxEstado.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.comboBoxEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxEstado.Enabled = false;
             this.comboBoxEstado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBoxEstado.FormattingEnabled = true;
             this.comboBoxEstado.Items.AddRange(new object[] {

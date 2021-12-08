@@ -47,7 +47,7 @@ namespace Programa
             // 
             // textBoxId
             // 
-            this.textBoxId.Location = new System.Drawing.Point(255, 121);
+            this.textBoxId.Location = new System.Drawing.Point(265, 173);
             this.textBoxId.Name = "textBoxId";
             this.textBoxId.Size = new System.Drawing.Size(300, 20);
             this.textBoxId.TabIndex = 7;
@@ -55,7 +55,9 @@ namespace Programa
             // 
             // textBoxTitulo
             // 
-            this.textBoxTitulo.Location = new System.Drawing.Point(255, 147);
+            this.textBoxTitulo.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.textBoxTitulo.Enabled = false;
+            this.textBoxTitulo.Location = new System.Drawing.Point(265, 199);
             this.textBoxTitulo.Name = "textBoxTitulo";
             this.textBoxTitulo.ReadOnly = true;
             this.textBoxTitulo.Size = new System.Drawing.Size(300, 20);
@@ -64,7 +66,9 @@ namespace Programa
             // 
             // textBoxAutor
             // 
-            this.textBoxAutor.Location = new System.Drawing.Point(255, 173);
+            this.textBoxAutor.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.textBoxAutor.Enabled = false;
+            this.textBoxAutor.Location = new System.Drawing.Point(265, 225);
             this.textBoxAutor.Name = "textBoxAutor";
             this.textBoxAutor.ReadOnly = true;
             this.textBoxAutor.Size = new System.Drawing.Size(300, 20);
@@ -72,7 +76,9 @@ namespace Programa
             // 
             // textBoxAñoPublicacion
             // 
-            this.textBoxAñoPublicacion.Location = new System.Drawing.Point(255, 199);
+            this.textBoxAñoPublicacion.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.textBoxAñoPublicacion.Enabled = false;
+            this.textBoxAñoPublicacion.Location = new System.Drawing.Point(265, 251);
             this.textBoxAñoPublicacion.Name = "textBoxAñoPublicacion";
             this.textBoxAñoPublicacion.ReadOnly = true;
             this.textBoxAñoPublicacion.Size = new System.Drawing.Size(300, 20);
@@ -80,7 +86,9 @@ namespace Programa
             // 
             // textBoxISBN
             // 
-            this.textBoxISBN.Location = new System.Drawing.Point(255, 225);
+            this.textBoxISBN.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.textBoxISBN.Enabled = false;
+            this.textBoxISBN.Location = new System.Drawing.Point(265, 277);
             this.textBoxISBN.Name = "textBoxISBN";
             this.textBoxISBN.ReadOnly = true;
             this.textBoxISBN.Size = new System.Drawing.Size(300, 20);
@@ -89,7 +97,7 @@ namespace Programa
             // labelTitulo
             // 
             this.labelTitulo.AutoSize = true;
-            this.labelTitulo.Location = new System.Drawing.Point(146, 150);
+            this.labelTitulo.Location = new System.Drawing.Point(156, 202);
             this.labelTitulo.Name = "labelTitulo";
             this.labelTitulo.Size = new System.Drawing.Size(33, 13);
             this.labelTitulo.TabIndex = 12;
@@ -98,7 +106,7 @@ namespace Programa
             // labelAutor
             // 
             this.labelAutor.AutoSize = true;
-            this.labelAutor.Location = new System.Drawing.Point(146, 176);
+            this.labelAutor.Location = new System.Drawing.Point(156, 228);
             this.labelAutor.Name = "labelAutor";
             this.labelAutor.Size = new System.Drawing.Size(35, 13);
             this.labelAutor.TabIndex = 13;
@@ -107,7 +115,7 @@ namespace Programa
             // labelAñoPublicacion
             // 
             this.labelAñoPublicacion.AutoSize = true;
-            this.labelAñoPublicacion.Location = new System.Drawing.Point(146, 202);
+            this.labelAñoPublicacion.Location = new System.Drawing.Point(156, 254);
             this.labelAñoPublicacion.Name = "labelAñoPublicacion";
             this.labelAñoPublicacion.Size = new System.Drawing.Size(83, 13);
             this.labelAñoPublicacion.TabIndex = 14;
@@ -116,7 +124,7 @@ namespace Programa
             // labelISBN
             // 
             this.labelISBN.AutoSize = true;
-            this.labelISBN.Location = new System.Drawing.Point(146, 228);
+            this.labelISBN.Location = new System.Drawing.Point(156, 280);
             this.labelISBN.Name = "labelISBN";
             this.labelISBN.Size = new System.Drawing.Size(32, 13);
             this.labelISBN.TabIndex = 16;
@@ -155,7 +163,7 @@ namespace Programa
             // labelId
             // 
             this.labelId.AutoSize = true;
-            this.labelId.Location = new System.Drawing.Point(148, 124);
+            this.labelId.Location = new System.Drawing.Point(158, 176);
             this.labelId.Name = "labelId";
             this.labelId.Size = new System.Drawing.Size(16, 13);
             this.labelId.TabIndex = 34;
@@ -168,7 +176,7 @@ namespace Programa
             this.buttonBuscarLibro.FlatAppearance.BorderSize = 0;
             this.buttonBuscarLibro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonBuscarLibro.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonBuscarLibro.Location = new System.Drawing.Point(466, 276);
+            this.buttonBuscarLibro.Location = new System.Drawing.Point(476, 328);
             this.buttonBuscarLibro.Name = "buttonBuscarLibro";
             this.buttonBuscarLibro.Size = new System.Drawing.Size(89, 23);
             this.buttonBuscarLibro.TabIndex = 35;
@@ -180,7 +188,7 @@ namespace Programa
             // 
             this.labelError.AutoSize = true;
             this.labelError.ForeColor = System.Drawing.Color.Red;
-            this.labelError.Location = new System.Drawing.Point(252, 248);
+            this.labelError.Location = new System.Drawing.Point(262, 300);
             this.labelError.Name = "labelError";
             this.labelError.Size = new System.Drawing.Size(0, 13);
             this.labelError.TabIndex = 36;
@@ -190,6 +198,7 @@ namespace Programa
             this.AcceptButton = this.buttonBuscarLibro;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(800, 600);
             this.Controls.Add(this.labelError);
             this.Controls.Add(this.buttonBuscarLibro);

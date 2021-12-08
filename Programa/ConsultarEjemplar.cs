@@ -12,11 +12,11 @@ using Dominio;
 
 namespace Programa
 {
-    public partial class ConsultarEjemplar : Form
+    public partial class ConsultarEjemplara : Form
     {
         
             private string NombreUsuario { get; set; }
-            public ConsultarEjemplar(string nombreUsuario)
+            public ConsultarEjemplara(string nombreUsuario)
             {
                 InitializeComponent();
                 NombreUsuario = nombreUsuario;
@@ -71,6 +71,11 @@ namespace Programa
         private void CEjemplar_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void labelNombreUsuario_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

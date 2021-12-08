@@ -61,6 +61,7 @@ namespace Programa
             // 
             // textBoxFecha
             // 
+            this.textBoxFecha.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.textBoxFecha.Enabled = false;
             this.textBoxFecha.Location = new System.Drawing.Point(272, 278);
             this.textBoxFecha.Name = "textBoxFecha";
@@ -70,6 +71,7 @@ namespace Programa
             // 
             // textBoxId
             // 
+            this.textBoxId.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.textBoxId.Location = new System.Drawing.Point(272, 163);
             this.textBoxId.Name = "textBoxId";
             this.textBoxId.Size = new System.Drawing.Size(300, 20);
@@ -112,6 +114,7 @@ namespace Programa
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.SystemColors.WindowText;
             this.label4.Location = new System.Drawing.Point(162, 320);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(26, 13);
@@ -121,6 +124,7 @@ namespace Programa
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.SystemColors.WindowText;
             this.label3.Location = new System.Drawing.Point(162, 282);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(90, 13);
@@ -130,6 +134,7 @@ namespace Programa
             // labelApellido
             // 
             this.labelApellido.AutoSize = true;
+            this.labelApellido.ForeColor = System.Drawing.SystemColors.WindowText;
             this.labelApellido.Location = new System.Drawing.Point(162, 244);
             this.labelApellido.Name = "labelApellido";
             this.labelApellido.Size = new System.Drawing.Size(44, 13);
@@ -139,6 +144,7 @@ namespace Programa
             // labelNombre
             // 
             this.labelNombre.AutoSize = true;
+            this.labelNombre.ForeColor = System.Drawing.SystemColors.WindowText;
             this.labelNombre.Location = new System.Drawing.Point(162, 204);
             this.labelNombre.Name = "labelNombre";
             this.labelNombre.Size = new System.Drawing.Size(44, 13);
@@ -147,6 +153,7 @@ namespace Programa
             // 
             // textBoxMail
             // 
+            this.textBoxMail.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.textBoxMail.Enabled = false;
             this.textBoxMail.Location = new System.Drawing.Point(272, 316);
             this.textBoxMail.Name = "textBoxMail";
@@ -155,6 +162,7 @@ namespace Programa
             // 
             // textBoxApellido
             // 
+            this.textBoxApellido.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.textBoxApellido.Enabled = false;
             this.textBoxApellido.Location = new System.Drawing.Point(272, 240);
             this.textBoxApellido.Name = "textBoxApellido";
@@ -163,6 +171,7 @@ namespace Programa
             // 
             // textBoxNombre
             // 
+            this.textBoxNombre.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.textBoxNombre.Enabled = false;
             this.textBoxNombre.Location = new System.Drawing.Point(272, 200);
             this.textBoxNombre.Name = "textBoxNombre";
