@@ -39,6 +39,7 @@ namespace Programa
                     textBoxFecha.Text = Convert.ToString(usuario.FechaNacimiento.Date);
                     textBoxMail.Text = usuario.Mail;
                     textBoxScoring.Text = Convert.ToString(usuario.Scoring);
+                    textBoxTelefono.Text = usuario.Telefono;
                     buttonBuscarUsuario.Enabled = false; 
                 } else { labelError.Text = "El Id ingresado no corresponde a un usuario registrado "; buttonBuscarUsuario.Enabled = false; textBoxId.Focus(); }
             }
@@ -78,6 +79,21 @@ namespace Programa
         }
 
         private void ConsultarUsuario_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxApellido_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged_1(object sender, EventArgs e)
         {
 
         }

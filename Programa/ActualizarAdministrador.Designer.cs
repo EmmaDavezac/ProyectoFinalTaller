@@ -45,6 +45,8 @@ namespace Programa
             this.buttonSeleccionar = new System.Windows.Forms.Button();
             this.buttonGuardar = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBoxTelefono = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // labelNombreUsuario
@@ -71,6 +73,7 @@ namespace Programa
             // 
             // textBoxId
             // 
+            this.textBoxId.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.textBoxId.Location = new System.Drawing.Point(272, 163);
             this.textBoxId.Name = "textBoxId";
             this.textBoxId.Size = new System.Drawing.Size(300, 20);
@@ -90,7 +93,7 @@ namespace Programa
             // 
             this.labelError.AutoSize = true;
             this.labelError.ForeColor = System.Drawing.Color.Red;
-            this.labelError.Location = new System.Drawing.Point(269, 352);
+            this.labelError.Location = new System.Drawing.Point(269, 366);
             this.labelError.Name = "labelError";
             this.labelError.Size = new System.Drawing.Size(0, 13);
             this.labelError.TabIndex = 48;
@@ -113,7 +116,7 @@ namespace Programa
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(162, 320);
+            this.label4.Location = new System.Drawing.Point(162, 334);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(26, 13);
             this.label4.TabIndex = 46;
@@ -148,14 +151,16 @@ namespace Programa
             // 
             // textBoxMail
             // 
+            this.textBoxMail.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.textBoxMail.Enabled = false;
-            this.textBoxMail.Location = new System.Drawing.Point(272, 316);
+            this.textBoxMail.Location = new System.Drawing.Point(272, 330);
             this.textBoxMail.Name = "textBoxMail";
             this.textBoxMail.Size = new System.Drawing.Size(300, 20);
             this.textBoxMail.TabIndex = 6;
             // 
             // textBoxApellido
             // 
+            this.textBoxApellido.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.textBoxApellido.Enabled = false;
             this.textBoxApellido.Location = new System.Drawing.Point(272, 240);
             this.textBoxApellido.Name = "textBoxApellido";
@@ -164,6 +169,7 @@ namespace Programa
             // 
             // textBoxNombre
             // 
+            this.textBoxNombre.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.textBoxNombre.Enabled = false;
             this.textBoxNombre.Location = new System.Drawing.Point(272, 200);
             this.textBoxNombre.Name = "textBoxNombre";
@@ -216,12 +222,34 @@ namespace Programa
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.label2.Location = new System.Drawing.Point(162, 307);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(49, 13);
+            this.label2.TabIndex = 56;
+            this.label2.Text = "Telefono";
+            // 
+            // textBoxTelefono
+            // 
+            this.textBoxTelefono.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.textBoxTelefono.Enabled = false;
+            this.textBoxTelefono.Location = new System.Drawing.Point(272, 304);
+            this.textBoxTelefono.Name = "textBoxTelefono";
+            this.textBoxTelefono.ReadOnly = true;
+            this.textBoxTelefono.Size = new System.Drawing.Size(300, 20);
+            this.textBoxTelefono.TabIndex = 55;
+            // 
             // ActualizarAdministrador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(800, 600);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.textBoxTelefono);
             this.Controls.Add(this.buttonGuardar);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.buttonSeleccionar);
@@ -269,5 +297,7 @@ namespace Programa
         private System.Windows.Forms.Button buttonSeleccionar;
         private System.Windows.Forms.Button buttonGuardar;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textBoxTelefono;
     }
 }

@@ -45,13 +45,15 @@ namespace Programa
             this.labelScoring = new System.Windows.Forms.Label();
             this.textBoxScoring = new System.Windows.Forms.TextBox();
             this.labelNombreUsuario = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBoxTelefono = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // labelError
             // 
             this.labelError.AutoSize = true;
             this.labelError.ForeColor = System.Drawing.Color.Red;
-            this.labelError.Location = new System.Drawing.Point(256, 286);
+            this.labelError.Location = new System.Drawing.Point(256, 312);
             this.labelError.Name = "labelError";
             this.labelError.Size = new System.Drawing.Size(0, 13);
             this.labelError.TabIndex = 32;
@@ -63,7 +65,7 @@ namespace Programa
             this.buttonBuscarUsuario.FlatAppearance.BorderSize = 0;
             this.buttonBuscarUsuario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonBuscarUsuario.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonBuscarUsuario.Location = new System.Drawing.Point(470, 302);
+            this.buttonBuscarUsuario.Location = new System.Drawing.Point(470, 328);
             this.buttonBuscarUsuario.Name = "buttonBuscarUsuario";
             this.buttonBuscarUsuario.Size = new System.Drawing.Size(89, 23);
             this.buttonBuscarUsuario.TabIndex = 31;
@@ -124,6 +126,7 @@ namespace Programa
             this.textBoxApellido.ReadOnly = true;
             this.textBoxApellido.Size = new System.Drawing.Size(300, 20);
             this.textBoxApellido.TabIndex = 24;
+            this.textBoxApellido.TextChanged += new System.EventHandler(this.textBoxApellido_TextChanged);
             // 
             // textBoxNombre
             // 
@@ -181,7 +184,7 @@ namespace Programa
             // labelScoring
             // 
             this.labelScoring.AutoSize = true;
-            this.labelScoring.Location = new System.Drawing.Point(149, 266);
+            this.labelScoring.Location = new System.Drawing.Point(149, 292);
             this.labelScoring.Name = "labelScoring";
             this.labelScoring.Size = new System.Drawing.Size(43, 13);
             this.labelScoring.TabIndex = 38;
@@ -191,7 +194,7 @@ namespace Programa
             // textBoxScoring
             // 
             this.textBoxScoring.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.textBoxScoring.Location = new System.Drawing.Point(259, 263);
+            this.textBoxScoring.Location = new System.Drawing.Point(259, 289);
             this.textBoxScoring.Name = "textBoxScoring";
             this.textBoxScoring.ReadOnly = true;
             this.textBoxScoring.Size = new System.Drawing.Size(300, 20);
@@ -210,6 +213,26 @@ namespace Programa
             this.labelNombreUsuario.Text = "Nombre de Usuario";
             this.labelNombreUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(149, 266);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(49, 13);
+            this.label2.TabIndex = 41;
+            this.label2.Text = "Telefono";
+            this.label2.Click += new System.EventHandler(this.label2_Click_1);
+            // 
+            // textBoxTelefono
+            // 
+            this.textBoxTelefono.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.textBoxTelefono.Location = new System.Drawing.Point(259, 263);
+            this.textBoxTelefono.Name = "textBoxTelefono";
+            this.textBoxTelefono.ReadOnly = true;
+            this.textBoxTelefono.Size = new System.Drawing.Size(300, 20);
+            this.textBoxTelefono.TabIndex = 40;
+            this.textBoxTelefono.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
+            // 
             // ConsultarUsuario
             // 
             this.AcceptButton = this.buttonBuscarUsuario;
@@ -217,6 +240,8 @@ namespace Programa
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(800, 600);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.textBoxTelefono);
             this.Controls.Add(this.labelNombreUsuario);
             this.Controls.Add(this.labelScoring);
             this.Controls.Add(this.textBoxScoring);
@@ -266,5 +291,7 @@ namespace Programa
         private System.Windows.Forms.Label labelScoring;
         private System.Windows.Forms.TextBox textBoxScoring;
         private System.Windows.Forms.Label labelNombreUsuario;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textBoxTelefono;
     }
 }

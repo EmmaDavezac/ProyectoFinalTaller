@@ -176,6 +176,11 @@ namespace Programa
                 textBoxTitulo.Focus();
             }
         }
+
+        private void textBoxBuscar_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
     }
 

@@ -13,7 +13,7 @@ namespace Programa
 {   
     public partial class RegistrarDevolucion : Form
     {
-        private static InterfazNucleo interfazNucleo = new InterfazNucleo();
+        private InterfazNucleo interfazNucleo = new InterfazNucleo();
         private string NombreUsuario { get; set; }
         public RegistrarDevolucion(string nombreUsuario)
         {
@@ -100,6 +100,11 @@ namespace Programa
         private void RegistrarDevolucion_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void labelNombreUsuario_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

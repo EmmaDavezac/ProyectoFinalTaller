@@ -13,7 +13,7 @@ namespace Programa
 {
     public partial class VerPrestamosProximosAVencer : Form
     {
-        private static InterfazNucleo interfazNucleo = new InterfazNucleo();
+        private  InterfazNucleo interfazNucleo = new InterfazNucleo();
         private string NombreUsuario { get; set; }
         public VerPrestamosProximosAVencer(string nombreUsuario)
         {
@@ -50,15 +50,16 @@ namespace Programa
                 dataGridViewPrestamos.Rows[n].Cells[8].Value = interfazNucleo.ObtenerUsarioDePrestamo(item.Id).Id;
                 dataGridViewPrestamos.Rows[n].Cells[9].Value = interfazNucleo.ObtenerUsarioDePrestamo(item.Id).Nombre+"-"+ interfazNucleo.ObtenerUsarioDePrestamo(item.Id).Apellido;
                 dataGridViewPrestamos.Rows[n].Cells[10].Value = interfazNucleo.ObtenerUsarioDePrestamo(item.Id).Mail;
-                dataGridViewPrestamos.Rows[n].Cells[11].Value = interfazNucleo.ObtenerLibroDePrestamo(item.Id).Titulo;
-                dataGridViewPrestamos.Rows[n].Cells[12].Value = interfazNucleo.ObtenerLibroDePrestamo(item.Id).Autor;
-                dataGridViewPrestamos.Rows[n].Cells[13].Value = interfazNucleo.ObtenerLibroDePrestamo(item.Id).ISBN;
-                dataGridViewPrestamos.Rows[n].Cells[14].Value = interfazNucleo.ObtenerEjemplarDePrestamo(item.Id).Id;
-                dataGridViewPrestamos.Rows[n].Cells[15].Value = interfazNucleo.ObtenerEjemplarDePrestamo(item.Id).Estado;
+                dataGridViewPrestamos.Rows[n].Cells[11].Value = interfazNucleo.ObtenerUsarioDePrestamo(item.Id).Telefono;
+                dataGridViewPrestamos.Rows[n].Cells[12].Value = interfazNucleo.ObtenerLibroDePrestamo(item.Id).Titulo;
+                dataGridViewPrestamos.Rows[n].Cells[13].Value = interfazNucleo.ObtenerLibroDePrestamo(item.Id).Autor;
+                dataGridViewPrestamos.Rows[n].Cells[14].Value = interfazNucleo.ObtenerLibroDePrestamo(item.Id).ISBN;
+                dataGridViewPrestamos.Rows[n].Cells[15].Value = interfazNucleo.ObtenerEjemplarDePrestamo(item.Id).Id;
+                dataGridViewPrestamos.Rows[n].Cells[16].Value = interfazNucleo.ObtenerEjemplarDePrestamo(item.Id).Estado;
                 if (interfazNucleo.ObtenerEjemplarDePrestamo(item.Id).Disponible)
                 {
-                    dataGridViewPrestamos.Rows[n].Cells[16].Value = "Si";
-                } else dataGridViewPrestamos.Rows[n].Cells[16].Value = "No";
+                    dataGridViewPrestamos.Rows[n].Cells[17].Value = "Si";
+                } else dataGridViewPrestamos.Rows[n].Cells[17].Value = "No";
 
 
             }
@@ -85,6 +86,11 @@ namespace Programa
         }
 
         private void labelNombreUsuario_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void VerPrestamosProximosAVencer_Load(object sender, EventArgs e)
         {
 
         }

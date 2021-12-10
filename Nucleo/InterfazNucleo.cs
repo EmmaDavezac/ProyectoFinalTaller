@@ -9,11 +9,11 @@ using Dominio;
 using ServiciosAPILibros;
 namespace Nucleo
 {
-    public class InterfazNucleo
+     public class InterfazNucleo
     {
         private const string implementacionBase = "EntityFramework";
         private const string implementacionAPILibros = "OpenLibrary";
-        private IUnitOfWork GetUnitOfWork(string unIUnit)
+         private IUnitOfWork GetUnitOfWork(string unIUnit)
         {
             switch (unIUnit)
             {
@@ -37,9 +37,9 @@ namespace Nucleo
         public InterfazNucleo()
         {
         }
-        public void AñadirUsuario(string nombre, string apellido, DateTime fechaNacimiento, string mail)
+        public void AñadirUsuario(string nombre, string apellido, DateTime fechaNacimiento, string mail,string telefono)
         {
-            UsuarioSimple usuario = new UsuarioSimple(nombre, apellido, fechaNacimiento, mail);
+            UsuarioSimple usuario = new UsuarioSimple(nombre, apellido, fechaNacimiento, mail,telefono);
             using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
             {
                 unitOfWork.RepositorioUsuarios.Add(usuario);
@@ -53,7 +53,7 @@ namespace Nucleo
                 return unitOfWork.RepositorioUsuarios.Get(id);
             }
         }
-        public void ActualizarUsuario(string idUsuario, string nombre, string apellido, string mail)
+        public void ActualizarUsuario(string idUsuario, string nombre, string apellido, string mail,string telefono)
         {
             int id = Convert.ToInt32(idUsuario);
             using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
@@ -61,13 +61,14 @@ namespace Nucleo
                 unitOfWork.RepositorioUsuarios.Get(id).Nombre = nombre;
                 unitOfWork.RepositorioUsuarios.Get(id).Apellido = apellido;
                 unitOfWork.RepositorioUsuarios.Get(id).Mail = mail;
+                unitOfWork.RepositorioUsuarios.Get(id).Telefono = telefono;
                 unitOfWork.Complete();
             }
         }
 
-        public void AñadirAdministrador(string nombre, string apellido, DateTime fechaNacimiento, string mail, string contraseña)
+         public void AñadirAdministrador(string nombre, string apellido, DateTime fechaNacimiento, string mail, string contraseña,string telefono)
         {
-            UsuarioAdministrador usuario = new UsuarioAdministrador(nombre, apellido, fechaNacimiento, mail, contraseña);
+            UsuarioAdministrador usuario = new UsuarioAdministrador(nombre, apellido, fechaNacimiento, mail, contraseña,telefono);
             using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
             {
                 unitOfWork.RepositorioAdministradores.Add(usuario);
@@ -82,7 +83,7 @@ namespace Nucleo
                 return unitOfWork.RepositorioAdministradores.Get(id);
             }
         }
-        public void ActualizarAdministrador(string idAdministrador, string nombre, string apellido, string mail)
+        public void ActualizarAdministrador(string idAdministrador, string nombre, string apellido, string mail,string telefono)
         {
             int id = Convert.ToInt32(idAdministrador);
             using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
@@ -90,6 +91,7 @@ namespace Nucleo
                 unitOfWork.RepositorioAdministradores.Get(id).Nombre = nombre;
                 unitOfWork.RepositorioAdministradores.Get(id).Apellido = apellido;
                 unitOfWork.RepositorioAdministradores.Get(id).Mail = mail;
+                unitOfWork.RepositorioAdministradores.Get(id).Telefono = telefono;
                 unitOfWork.Complete();
             }
         }
@@ -243,7 +245,7 @@ namespace Nucleo
         public int ObtenerUltimoIdUsuario()
 
         { return ObtenerUsuarios().Last().Id; }
-        public int ObtenerUltimoIdAdministrador()
+         public int ObtenerUltimoIdAdministrador()
 
         { return ObtenerAdministradores().Last().Id; }
         public int ObtenerUltimoIdLibro()
@@ -285,7 +287,7 @@ namespace Nucleo
 
         public List<Libro> ListarLibrosDeAPIPorCoincidencia(string unaCadena)
         { return GetIServiciosAPILibros(implementacionAPILibros).ListaPorCoincidecia(unaCadena); }
-        static bool EsUnEmailValido(string email)
+        public bool EsUnEmailValido(string email)
         {
             try
             {
@@ -297,6 +299,7 @@ namespace Nucleo
                 return false;
             }
         }
+
 
     }    
 }

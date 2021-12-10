@@ -41,6 +41,8 @@ namespace Programa
             this.buttonAñadirUsuario = new System.Windows.Forms.Button();
             this.labelError = new System.Windows.Forms.Label();
             this.labelNombreUsuario = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBoxTelefono = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // botonVolver
@@ -78,7 +80,7 @@ namespace Programa
             // 
             // textBoxMail
             // 
-            this.textBoxMail.Location = new System.Drawing.Point(348, 288);
+            this.textBoxMail.Location = new System.Drawing.Point(348, 306);
             this.textBoxMail.Name = "textBoxMail";
             this.textBoxMail.Size = new System.Drawing.Size(200, 20);
             this.textBoxMail.TabIndex = 9;
@@ -128,7 +130,7 @@ namespace Programa
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(238, 291);
+            this.label4.Location = new System.Drawing.Point(238, 309);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(26, 13);
             this.label4.TabIndex = 18;
@@ -153,7 +155,7 @@ namespace Programa
             // 
             this.labelError.AutoSize = true;
             this.labelError.ForeColor = System.Drawing.Color.Red;
-            this.labelError.Location = new System.Drawing.Point(345, 321);
+            this.labelError.Location = new System.Drawing.Point(345, 339);
             this.labelError.Name = "labelError";
             this.labelError.Size = new System.Drawing.Size(0, 13);
             this.labelError.TabIndex = 20;
@@ -170,6 +172,23 @@ namespace Programa
             this.labelNombreUsuario.TabIndex = 21;
             this.labelNombreUsuario.Text = "Nombre de Usuario";
             this.labelNombreUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelNombreUsuario.Click += new System.EventHandler(this.labelNombreUsuario_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(238, 280);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(49, 13);
+            this.label1.TabIndex = 67;
+            this.label1.Text = "Telefono";
+            // 
+            // textBoxTelefono
+            // 
+            this.textBoxTelefono.Location = new System.Drawing.Point(348, 281);
+            this.textBoxTelefono.Name = "textBoxTelefono";
+            this.textBoxTelefono.Size = new System.Drawing.Size(200, 20);
+            this.textBoxTelefono.TabIndex = 66;
             // 
             // RegistrarUsuario
             // 
@@ -178,6 +197,8 @@ namespace Programa
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(800, 600);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.textBoxTelefono);
             this.Controls.Add(this.labelNombreUsuario);
             this.Controls.Add(this.labelError);
             this.Controls.Add(this.buttonAñadirUsuario);
@@ -218,5 +239,7 @@ namespace Programa
         private System.Windows.Forms.Button buttonAñadirUsuario;
         private System.Windows.Forms.Label labelError;
         private System.Windows.Forms.Label labelNombreUsuario;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox textBoxTelefono;
     }
 }

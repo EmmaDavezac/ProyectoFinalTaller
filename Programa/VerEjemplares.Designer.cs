@@ -92,6 +92,7 @@ namespace Programa
             this.labelNombreUsuario.TabIndex = 90;
             this.labelNombreUsuario.Text = "Nombre de Usuario";
             this.labelNombreUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelNombreUsuario.Click += new System.EventHandler(this.labelNombreUsuario_Click);
             // 
             // botonVolver
             // 

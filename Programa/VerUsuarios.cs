@@ -27,6 +27,7 @@ namespace Programa
                 dgvUsuarios.Rows[n].Cells[3].Value = item.FechaNacimiento;
                 dgvUsuarios.Rows[n].Cells[4].Value = item.Mail;
                 dgvUsuarios.Rows[n].Cells[5].Value = item.Scoring;
+                dgvUsuarios.Rows[n].Cells[6].Value = item.Telefono;
             }
             NombreUsuario = nombreUsuario;
             labelNombreUsuario.Text = "Usuario: " + NombreUsuario;
@@ -61,6 +62,11 @@ namespace Programa
         }
 
         private void VerUsuarios_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelNombreUsuario_Click(object sender, EventArgs e)
         {
 
         }

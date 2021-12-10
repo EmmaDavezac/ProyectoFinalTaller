@@ -49,6 +49,8 @@ namespace Programa
             this.textBoxNombre = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.textBoxMail = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.textBoxTelefono = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // buttonGuardar
@@ -114,7 +116,7 @@ namespace Programa
             // 
             this.textBoxContraseñaNueva2.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.textBoxContraseñaNueva2.Enabled = false;
-            this.textBoxContraseñaNueva2.Location = new System.Drawing.Point(218, 381);
+            this.textBoxContraseñaNueva2.Location = new System.Drawing.Point(218, 418);
             this.textBoxContraseñaNueva2.Name = "textBoxContraseñaNueva2";
             this.textBoxContraseñaNueva2.Size = new System.Drawing.Size(300, 20);
             this.textBoxContraseñaNueva2.TabIndex = 65;
@@ -133,7 +135,7 @@ namespace Programa
             // 
             this.labelError.AutoSize = true;
             this.labelError.ForeColor = System.Drawing.Color.Red;
-            this.labelError.Location = new System.Drawing.Point(215, 411);
+            this.labelError.Location = new System.Drawing.Point(215, 448);
             this.labelError.Name = "labelError";
             this.labelError.Size = new System.Drawing.Size(0, 13);
             this.labelError.TabIndex = 64;
@@ -157,7 +159,7 @@ namespace Programa
             // 
             this.textBoxContraseñaNueva1.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.textBoxContraseñaNueva1.Enabled = false;
-            this.textBoxContraseñaNueva1.Location = new System.Drawing.Point(218, 343);
+            this.textBoxContraseñaNueva1.Location = new System.Drawing.Point(218, 380);
             this.textBoxContraseñaNueva1.Name = "textBoxContraseñaNueva1";
             this.textBoxContraseñaNueva1.Size = new System.Drawing.Size(300, 20);
             this.textBoxContraseñaNueva1.TabIndex = 59;
@@ -167,7 +169,7 @@ namespace Programa
             // 
             this.textBoxContraseñaActual.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.textBoxContraseñaActual.Enabled = false;
-            this.textBoxContraseñaActual.Location = new System.Drawing.Point(218, 303);
+            this.textBoxContraseñaActual.Location = new System.Drawing.Point(218, 340);
             this.textBoxContraseñaActual.Name = "textBoxContraseñaActual";
             this.textBoxContraseñaActual.Size = new System.Drawing.Size(300, 20);
             this.textBoxContraseñaActual.TabIndex = 58;
@@ -185,7 +187,7 @@ namespace Programa
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(63, 303);
+            this.label2.Location = new System.Drawing.Point(63, 343);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(93, 13);
             this.label2.TabIndex = 68;
@@ -194,7 +196,7 @@ namespace Programa
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(63, 342);
+            this.label3.Location = new System.Drawing.Point(63, 379);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(94, 13);
             this.label3.TabIndex = 69;
@@ -203,7 +205,7 @@ namespace Programa
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(63, 384);
+            this.label4.Location = new System.Drawing.Point(63, 421);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(138, 13);
             this.label4.TabIndex = 70;
@@ -266,12 +268,33 @@ namespace Programa
             this.textBoxMail.Size = new System.Drawing.Size(300, 20);
             this.textBoxMail.TabIndex = 75;
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(63, 304);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(49, 13);
+            this.label6.TabIndex = 78;
+            this.label6.Text = "Telefono";
+            // 
+            // textBoxTelefono
+            // 
+            this.textBoxTelefono.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.textBoxTelefono.Enabled = false;
+            this.textBoxTelefono.Location = new System.Drawing.Point(218, 304);
+            this.textBoxTelefono.Name = "textBoxTelefono";
+            this.textBoxTelefono.ReadOnly = true;
+            this.textBoxTelefono.Size = new System.Drawing.Size(300, 20);
+            this.textBoxTelefono.TabIndex = 77;
+            // 
             // ActualizarContraseña
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(800, 600);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.textBoxTelefono);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.textBoxMail);
             this.Controls.Add(this.labelApellido);
@@ -328,5 +351,7 @@ namespace Programa
         private System.Windows.Forms.TextBox textBoxNombre;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textBoxMail;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox textBoxTelefono;
     }
 }

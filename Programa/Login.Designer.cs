@@ -29,6 +29,7 @@ namespace Programa
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.textBoxId = new System.Windows.Forms.TextBox();
             this.textBoxContraseña = new System.Windows.Forms.TextBox();
             this.labelIdAdministrador = new System.Windows.Forms.Label();
@@ -38,13 +39,16 @@ namespace Programa
             this.buttonMostrar = new System.Windows.Forms.Button();
             this.buttonCerrar = new System.Windows.Forms.Button();
             this.buttonRegistrarse = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // textBoxId
             // 
             this.textBoxId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxId.Location = new System.Drawing.Point(293, 208);
+            this.textBoxId.Location = new System.Drawing.Point(289, 311);
             this.textBoxId.Name = "textBoxId";
             this.textBoxId.Size = new System.Drawing.Size(224, 22);
             this.textBoxId.TabIndex = 0;
@@ -55,7 +59,7 @@ namespace Programa
             // 
             this.textBoxContraseña.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxContraseña.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxContraseña.Location = new System.Drawing.Point(293, 274);
+            this.textBoxContraseña.Location = new System.Drawing.Point(289, 377);
             this.textBoxContraseña.Name = "textBoxContraseña";
             this.textBoxContraseña.Size = new System.Drawing.Size(224, 22);
             this.textBoxContraseña.TabIndex = 4;
@@ -68,7 +72,7 @@ namespace Programa
             this.labelIdAdministrador.AutoSize = true;
             this.labelIdAdministrador.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelIdAdministrador.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.labelIdAdministrador.Location = new System.Drawing.Point(170, 210);
+            this.labelIdAdministrador.Location = new System.Drawing.Point(286, 292);
             this.labelIdAdministrador.Name = "labelIdAdministrador";
             this.labelIdAdministrador.Size = new System.Drawing.Size(105, 16);
             this.labelIdAdministrador.TabIndex = 5;
@@ -80,7 +84,7 @@ namespace Programa
             this.labelConstraseña.AutoSize = true;
             this.labelConstraseña.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelConstraseña.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.labelConstraseña.Location = new System.Drawing.Point(170, 276);
+            this.labelConstraseña.Location = new System.Drawing.Point(286, 358);
             this.labelConstraseña.Name = "labelConstraseña";
             this.labelConstraseña.Size = new System.Drawing.Size(77, 16);
             this.labelConstraseña.TabIndex = 6;
@@ -97,10 +101,10 @@ namespace Programa
             this.botonIniciarSesion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.botonIniciarSesion.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.botonIniciarSesion.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.botonIniciarSesion.Location = new System.Drawing.Point(407, 345);
+            this.botonIniciarSesion.Location = new System.Drawing.Point(403, 448);
             this.botonIniciarSesion.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.botonIniciarSesion.Name = "botonIniciarSesion";
-            this.botonIniciarSesion.Size = new System.Drawing.Size(110, 25);
+            this.botonIniciarSesion.Size = new System.Drawing.Size(110, 30);
             this.botonIniciarSesion.TabIndex = 7;
             this.botonIniciarSesion.Text = "Iniciar Sesion";
             this.botonIniciarSesion.UseVisualStyleBackColor = false;
@@ -111,7 +115,7 @@ namespace Programa
             this.labelError.AutoSize = true;
             this.labelError.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelError.ForeColor = System.Drawing.Color.Black;
-            this.labelError.Location = new System.Drawing.Point(290, 310);
+            this.labelError.Location = new System.Drawing.Point(286, 413);
             this.labelError.Name = "labelError";
             this.labelError.Size = new System.Drawing.Size(0, 16);
             this.labelError.TabIndex = 33;
@@ -123,7 +127,7 @@ namespace Programa
             this.buttonMostrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonMostrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonMostrar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonMostrar.Location = new System.Drawing.Point(523, 276);
+            this.buttonMostrar.Location = new System.Drawing.Point(519, 377);
             this.buttonMostrar.Name = "buttonMostrar";
             this.buttonMostrar.Size = new System.Drawing.Size(64, 22);
             this.buttonMostrar.TabIndex = 34;
@@ -151,21 +155,37 @@ namespace Programa
             // 
             // buttonRegistrarse
             // 
-            this.buttonRegistrarse.BackColor = System.Drawing.SystemColors.Highlight;
+            this.buttonRegistrarse.BackColor = System.Drawing.SystemColors.ControlLight;
             this.buttonRegistrarse.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.buttonRegistrarse.FlatAppearance.BorderSize = 0;
             this.buttonRegistrarse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonRegistrarse.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonRegistrarse.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.buttonRegistrarse.ForeColor = System.Drawing.SystemColors.WindowText;
             this.buttonRegistrarse.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonRegistrarse.Location = new System.Drawing.Point(293, 345);
+            this.buttonRegistrarse.Location = new System.Drawing.Point(289, 448);
             this.buttonRegistrarse.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.buttonRegistrarse.Name = "buttonRegistrarse";
-            this.buttonRegistrarse.Size = new System.Drawing.Size(110, 25);
+            this.buttonRegistrarse.Size = new System.Drawing.Size(110, 30);
             this.buttonRegistrarse.TabIndex = 36;
             this.buttonRegistrarse.Text = "Registrarse";
             this.buttonRegistrarse.UseVisualStyleBackColor = false;
             this.buttonRegistrarse.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 25;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox1.Image = global::Programa.Properties.Resources.pngegg;
+            this.pictureBox1.Location = new System.Drawing.Point(302, 106);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(188, 172);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 37;
+            this.pictureBox1.TabStop = false;
             // 
             // Login
             // 
@@ -174,6 +194,7 @@ namespace Programa
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(800, 600);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.buttonRegistrarse);
             this.Controls.Add(this.buttonCerrar);
             this.Controls.Add(this.buttonMostrar);
@@ -190,9 +211,11 @@ namespace Programa
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "Login";
+            this.Opacity = 0D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Login_FormClosed);
             this.Load += new System.EventHandler(this.Login_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -209,5 +232,7 @@ namespace Programa
         private System.Windows.Forms.Button buttonMostrar;
         private System.Windows.Forms.Button buttonCerrar;
         private System.Windows.Forms.Button buttonRegistrarse;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

@@ -13,7 +13,7 @@ namespace Programa
 {
     public partial class ConsultarPrestamo : Form
     {
-        private static InterfazNucleo interfazNucleo = new InterfazNucleo();
+        private InterfazNucleo interfazNucleo = new InterfazNucleo();
         private string NombreUsuario { get; set; }
         public ConsultarPrestamo (string nombreUsuario)
         {

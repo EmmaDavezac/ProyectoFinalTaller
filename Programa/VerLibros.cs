@@ -59,5 +59,10 @@ namespace Programa
         {
 
         }
+
+        private void labelNombreUsuario_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

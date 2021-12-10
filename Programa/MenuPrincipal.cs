@@ -23,7 +23,7 @@ namespace Programa
 
         private void Menu_Load(object sender, EventArgs e)
         {
-
+            timer1.Start();
         }
 
         private void botonAñadirUsuario_Click(object sender, EventArgs e)
@@ -223,6 +223,15 @@ namespace Programa
             ActualizarContraseña ventana = new ActualizarContraseña(NombreUsuario);
             this.Hide();
             ventana.Show();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            this.Opacity += .05;
+            if (this.Opacity == 1)
+            {
+                timer1.Stop();
+            }
         }
     }
  }

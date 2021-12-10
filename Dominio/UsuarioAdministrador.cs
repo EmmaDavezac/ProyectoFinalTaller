@@ -8,7 +8,7 @@ namespace Dominio
 {
     public class UsuarioAdministrador:Usuario
     {
-        public string Pass{ private get; set; }
+        public string Pass{  get; set; }
         public bool VerificarContraseña(string contraseña)
         { return contraseña == Pass; }
 
@@ -17,7 +17,7 @@ namespace Dominio
             
         }
        
-        public UsuarioAdministrador(string nombre, string apellido, DateTime fechaNacimiento, string mail, string contraseña):base( nombre,  apellido,  fechaNacimiento,mail)
+        public UsuarioAdministrador(string nombre, string apellido, DateTime fechaNacimiento, string mail, string contraseña,string telefono):base( nombre,  apellido,  fechaNacimiento,mail,telefono)
         {
             Pass = contraseña;    
         }

@@ -52,6 +52,7 @@ namespace Programa
                         textBoxNombre.Text = usuario.Nombre;
                         textBoxApellido.Text = usuario.Apellido;
                         textBoxScoring.Text = Convert.ToString(usuario.Scoring);
+                        textBoxTelefono.Text = usuario.Telefono;
                         buttonBuscarUsuario.Enabled = false;
                         buttonConfirmarUsuario.Enabled = true;
                         buttonBuscarUsuario.Focus();

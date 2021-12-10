@@ -43,6 +43,8 @@ namespace Programa
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBoxTelefono = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // textBoxFecha
@@ -57,6 +59,7 @@ namespace Programa
             // 
             // textBoxId
             // 
+            this.textBoxId.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.textBoxId.Location = new System.Drawing.Point(286, 126);
             this.textBoxId.Name = "textBoxId";
             this.textBoxId.Size = new System.Drawing.Size(300, 20);
@@ -67,7 +70,7 @@ namespace Programa
             // 
             this.labelError.AutoSize = true;
             this.labelError.ForeColor = System.Drawing.Color.Red;
-            this.labelError.Location = new System.Drawing.Point(283, 253);
+            this.labelError.Location = new System.Drawing.Point(283, 279);
             this.labelError.Name = "labelError";
             this.labelError.Size = new System.Drawing.Size(0, 13);
             this.labelError.TabIndex = 49;
@@ -79,7 +82,7 @@ namespace Programa
             this.buttonBuscarAdministrador.FlatAppearance.BorderSize = 0;
             this.buttonBuscarAdministrador.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonBuscarAdministrador.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonBuscarAdministrador.Location = new System.Drawing.Point(470, 281);
+            this.buttonBuscarAdministrador.Location = new System.Drawing.Point(470, 307);
             this.buttonBuscarAdministrador.Name = "buttonBuscarAdministrador";
             this.buttonBuscarAdministrador.Size = new System.Drawing.Size(116, 23);
             this.buttonBuscarAdministrador.TabIndex = 48;
@@ -91,7 +94,7 @@ namespace Programa
             // 
             this.textBoxMail.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.textBoxMail.Enabled = false;
-            this.textBoxMail.Location = new System.Drawing.Point(286, 230);
+            this.textBoxMail.Location = new System.Drawing.Point(286, 256);
             this.textBoxMail.Name = "textBoxMail";
             this.textBoxMail.ReadOnly = true;
             this.textBoxMail.Size = new System.Drawing.Size(300, 20);
@@ -180,7 +183,7 @@ namespace Programa
             // 
             this.label4.AutoSize = true;
             this.label4.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.label4.Location = new System.Drawing.Point(176, 233);
+            this.label4.Location = new System.Drawing.Point(176, 259);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(26, 13);
             this.label4.TabIndex = 47;
@@ -196,6 +199,26 @@ namespace Programa
             this.label1.TabIndex = 50;
             this.label1.Text = "Id";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.label2.Location = new System.Drawing.Point(176, 233);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(49, 13);
+            this.label2.TabIndex = 55;
+            this.label2.Text = "Telefono";
+            // 
+            // textBoxTelefono
+            // 
+            this.textBoxTelefono.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.textBoxTelefono.Enabled = false;
+            this.textBoxTelefono.Location = new System.Drawing.Point(286, 230);
+            this.textBoxTelefono.Name = "textBoxTelefono";
+            this.textBoxTelefono.ReadOnly = true;
+            this.textBoxTelefono.Size = new System.Drawing.Size(300, 20);
+            this.textBoxTelefono.TabIndex = 54;
+            // 
             // ConsultarAdministrador
             // 
             this.AcceptButton = this.buttonBuscarAdministrador;
@@ -203,6 +226,8 @@ namespace Programa
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(800, 600);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.textBoxTelefono);
             this.Controls.Add(this.labelNombreUsuario);
             this.Controls.Add(this.textBoxFecha);
             this.Controls.Add(this.textBoxId);
@@ -248,5 +273,7 @@ namespace Programa
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textBoxTelefono;
     }
 }

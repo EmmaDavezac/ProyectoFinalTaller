@@ -39,6 +39,7 @@ namespace Programa
             this.Apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FechaNacimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAdministradores)).BeginInit();
             this.SuspendLayout();
             // 
@@ -63,9 +64,10 @@ namespace Programa
             this.Nombre,
             this.Apellido,
             this.FechaNacimiento,
-            this.Email});
+            this.Email,
+            this.Telefono});
             this.dgvAdministradores.GridColor = System.Drawing.SystemColors.ControlLightLight;
-            this.dgvAdministradores.Location = new System.Drawing.Point(1, 57);
+            this.dgvAdministradores.Location = new System.Drawing.Point(1, 124);
             this.dgvAdministradores.Name = "dgvAdministradores";
             this.dgvAdministradores.ReadOnly = true;
             this.dgvAdministradores.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -77,7 +79,7 @@ namespace Programa
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvAdministradores.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvAdministradores.Size = new System.Drawing.Size(800, 354);
+            this.dgvAdministradores.Size = new System.Drawing.Size(800, 426);
             this.dgvAdministradores.TabIndex = 11;
             this.dgvAdministradores.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAdministradores_CellContentClick);
             // 
@@ -148,6 +150,12 @@ namespace Programa
             this.Email.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.Email.Width = 180;
             // 
+            // Telefono
+            // 
+            this.Telefono.HeaderText = "Telefono";
+            this.Telefono.Name = "Telefono";
+            this.Telefono.ReadOnly = true;
+            // 
             // VerAdministradores
             // 
             this.AcceptButton = this.botonVolver;
@@ -183,5 +191,6 @@ namespace Programa
         private System.Windows.Forms.DataGridViewTextBoxColumn Apellido;
         private System.Windows.Forms.DataGridViewTextBoxColumn FechaNacimiento;
         private System.Windows.Forms.DataGridViewTextBoxColumn Email;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Telefono;
     }
 }

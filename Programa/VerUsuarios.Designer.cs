@@ -38,6 +38,7 @@ namespace Programa
             this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Scoring = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.labelNombreUsuario = new System.Windows.Forms.Label();
+            this.Telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).BeginInit();
             this.SuspendLayout();
             // 
@@ -71,7 +72,8 @@ namespace Programa
             this.Apellido,
             this.FechaNacimiento,
             this.Email,
-            this.Scoring});
+            this.Scoring,
+            this.Telefono});
             this.dgvUsuarios.GridColor = System.Drawing.SystemColors.ControlLightLight;
             this.dgvUsuarios.Location = new System.Drawing.Point(3, 58);
             this.dgvUsuarios.Name = "dgvUsuarios";
@@ -137,6 +139,13 @@ namespace Programa
             this.labelNombreUsuario.TabIndex = 11;
             this.labelNombreUsuario.Text = "Nombre de Usuario";
             this.labelNombreUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelNombreUsuario.Click += new System.EventHandler(this.labelNombreUsuario_Click);
+            // 
+            // Telefono
+            // 
+            this.Telefono.HeaderText = "Telefono";
+            this.Telefono.Name = "Telefono";
+            this.Telefono.ReadOnly = true;
             // 
             // VerUsuarios
             // 
@@ -173,5 +182,6 @@ namespace Programa
         private System.Windows.Forms.DataGridViewTextBoxColumn Email;
         private System.Windows.Forms.DataGridViewTextBoxColumn Scoring;
         private System.Windows.Forms.Label labelNombreUsuario;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Telefono;
     }
 }

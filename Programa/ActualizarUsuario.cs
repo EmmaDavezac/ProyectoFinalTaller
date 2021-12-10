@@ -15,6 +15,7 @@ namespace Programa
     public partial class ActualizarUsuario : Form
     {
         private string NombreUsuario { get; set; }
+        InterfazNucleo InterfazNucleo = new InterfazNucleo();
         public ActualizarUsuario(string nombreUsuario)
         {
             InitializeComponent();
@@ -33,7 +34,7 @@ namespace Programa
                     textBoxApellido.Text = usuario.Apellido;
                     textBoxFecha.Text = Convert.ToString(usuario.FechaNacimiento.Date);
                     textBoxMail.Text = usuario.Mail;
-               
+                    textBoxTelefono.Text= usuario.Telefono;
                     buttonBuscarUsuario.Enabled = false;
                     buttonSeleccionar.Enabled = true;
                 }
@@ -54,6 +55,7 @@ namespace Programa
             textBoxNombre.Enabled = true;
             textBoxApellido.Enabled = true;
             textBoxMail.Enabled = true;
+            textBoxTelefono.Enabled = true;
             buttonGuardar.Enabled = true;
             buttonSeleccionar.Enabled = false;
             buttonSeleccionar.Text = "Seleccionado";
@@ -68,23 +70,68 @@ namespace Programa
 
         private void buttonGuardar_Click(object sender, EventArgs e)
         {
-            if (textBoxApellido.Text != null && textBoxNombre.Text != null && textBoxMail.Text != null )
+            if (!string.IsNullOrEmpty(textBoxNombre.Text) && textBoxNombre.Text.All(Char.IsLetter))
             {
-                InterfazNucleo InterfazNucleo = new InterfazNucleo();
-                InterfazNucleo.ActualizarUsuario(textBoxId.Text,textBoxNombre.Text, textBoxApellido.Text, textBoxMail.Text);
-                MessageBox.Show("Operacion Exitosa! se ha actualizado el usuario ID:"+textBoxId.Text);
-                this.Hide();
-                MenuPrincipal ventanaMenu = new MenuPrincipal(NombreUsuario);
-                ventanaMenu.Show();
+                if (!string.IsNullOrEmpty(textBoxApellido.Text) && textBoxApellido.Text.All(Char.IsLetter))
+                {
+                   
+                        if (!string.IsNullOrEmpty(textBoxMail.Text) && InterfazNucleo.EsUnEmailValido(textBoxMail.Text))
+                        {
+                            if (!string.IsNullOrEmpty(textBoxTelefono.Text) && textBoxTelefono.Text.All(Char.IsDigit) && textBoxTelefono.Text.Length >= 8 && textBoxTelefono.Text.Length <= 11)
+                            {
+
+
+                            
+                            InterfazNucleo.ActualizarUsuario(textBoxId.Text, textBoxNombre.Text, textBoxApellido.Text, textBoxMail.Text,textBoxTelefono.Text);
+                            MessageBox.Show("Operacion Exitosa! se ha actualizado el usuario ID:" + textBoxId.Text);
+                            this.Hide();
+                            MenuPrincipal ventanaMenu = new MenuPrincipal(NombreUsuario);
+                            ventanaMenu.Show();
+
+
+                        }
+                            else
+                            {
+                                this.labelError.Text = "Error,telefono ingresado invalido.Ingrese el numero sin 0 ni 15";
+                            buttonGuardar.Enabled = false;
+                                textBoxTelefono.Focus(); ;
+                            }
+                        }
+                        else
+                        {
+                            this.labelError.Text = "Error, el mail ingresado no es valido";
+                        buttonGuardar.Enabled = false;
+                            textBoxMail.Focus(); ;
+                        }
+                    
+                 
+
+                }
+                else
+                {
+                    this.labelError.Text = "Error, apellido invalido.No debe contener numeros, espacios ni simbolos";
+                    buttonGuardar.Enabled = false;
+                    textBoxApellido.Focus(); ;
+                }
             }
             else
             {
-                this.labelError.Text = "Error, ingrese todos los datos";
+                this.labelError.Text = "Error, nombre invalido.No debe contener numeros, espacios ni simbolos";
+                buttonGuardar.Enabled = false;
                 textBoxNombre.Focus(); ;
             }
         }
 
+
+
+       
+
         private void ActualizarUsuario_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelNombre_Click(object sender, EventArgs e)
         {
 
         }

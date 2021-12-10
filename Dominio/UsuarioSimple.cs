@@ -14,7 +14,7 @@ namespace Dominio
 
         }
         public int Scoring { get; set; }
-        public UsuarioSimple(string nombre, string apellido, DateTime fechaNacimiento, string mail) : base(nombre, apellido, fechaNacimiento, mail)
+        public UsuarioSimple(string nombre, string apellido, DateTime fechaNacimiento, string mail, string telefono) : base(nombre, apellido, fechaNacimiento, mail,telefono)
         {
             
             Scoring = 0;

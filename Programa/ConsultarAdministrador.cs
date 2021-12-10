@@ -33,6 +33,7 @@ namespace Programa
                     textBoxApellido.Text = usuario.Apellido;
                     textBoxFecha.Text = Convert.ToString(usuario.FechaNacimiento.Date);
                     textBoxMail.Text = usuario.Mail;
+                    textBoxTelefono.Text = usuario.Telefono;
                     buttonBuscarAdministrador.Enabled = false;
                 }
                 else { labelError.Text = "El Id ingresado no corresponde a un usuario registrado "; buttonBuscarAdministrador.Enabled = false;textBoxId.Focus(); }

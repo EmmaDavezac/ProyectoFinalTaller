@@ -33,6 +33,7 @@ namespace Programa
                     textBoxNombre.Text = usuario.Nombre;
                     textBoxApellido.Text = usuario.Apellido;
                     textBoxMail.Text = usuario.Mail;
+                    textBoxTelefono.Text = usuario.Telefono;
                     buttonBuscar.Enabled = false;
                     buttonSeleccionar.Enabled = true;
                     textBoxContraseñaActual.Focus();

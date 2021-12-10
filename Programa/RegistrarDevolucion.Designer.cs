@@ -410,6 +410,7 @@ namespace Programa
             this.labelNombreUsuario.TabIndex = 141;
             this.labelNombreUsuario.Text = "Nombre de Usuario";
             this.labelNombreUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelNombreUsuario.Click += new System.EventHandler(this.labelNombreUsuario_Click);
             // 
             // buttonGuardar
             // 
@@ -488,7 +489,6 @@ namespace Programa
             this.Controls.Add(this.textBoxNombre);
             this.Controls.Add(this.botonVolver);
             this.Controls.Add(this.labelNombreUsuario);
-            this.Enabled = false;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(800, 600);

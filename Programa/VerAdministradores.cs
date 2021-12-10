@@ -12,7 +12,7 @@ using Nucleo;
 namespace Programa
 {
     public partial class VerAdministradores : Form
-    {   private static InterfazNucleo interfaz=new InterfazNucleo();
+    {   private  InterfazNucleo interfaz=new InterfazNucleo();
         private string NombreUsuario { get; set; }
         public VerAdministradores(string nombreUsuario)
         {
@@ -28,6 +28,7 @@ namespace Programa
                 dgvAdministradores.Rows[n].Cells[2].Value = item.Apellido;
                 dgvAdministradores.Rows[n].Cells[3].Value = item.FechaNacimiento;
                 dgvAdministradores.Rows[n].Cells[4].Value = item.Mail;
+                dgvAdministradores.Rows[n].Cells[5].Value = item.Telefono;
             }
         }
 

@@ -29,6 +29,7 @@ namespace Programa
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuPrincipal));
             this.botonVolver = new System.Windows.Forms.Button();
             this.labelNombreUsuario = new System.Windows.Forms.Label();
@@ -60,6 +61,7 @@ namespace Programa
             this.buttonRegistrarEjemplar = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBoxEjemplares = new System.Windows.Forms.GroupBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.groupBoxUsuarios.SuspendLayout();
             this.groupBoxLibros.SuspendLayout();
             this.groupBoxPrestamos.SuspendLayout();
@@ -340,6 +342,11 @@ namespace Programa
             this.groupBoxEjemplares.Name = "groupBoxEjemplares";
             this.groupBoxEjemplares.TabStop = false;
             // 
+            // timer1
+            // 
+            this.timer1.Interval = 25;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // MenuPrincipal
             // 
             resources.ApplyResources(this, "$this");
@@ -356,6 +363,7 @@ namespace Programa
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "MenuPrincipal";
+            this.Opacity = 0D;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MenuPrincipal_FormClosed);
             this.Load += new System.EventHandler(this.Menu_Load);
             this.groupBoxUsuarios.ResumeLayout(false);
@@ -398,6 +406,7 @@ namespace Programa
         private System.Windows.Forms.Button buttonPrestamosRetrasados;
         private System.Windows.Forms.Button buttonVerProximosAVencer;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 

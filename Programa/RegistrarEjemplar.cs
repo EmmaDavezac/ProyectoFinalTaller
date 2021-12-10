@@ -101,5 +101,10 @@ namespace Programa
         {
             buttonGuardarEjemplar.Enabled = true;
         }
+
+        private void labelNombreUsuario_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

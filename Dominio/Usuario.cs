@@ -13,13 +13,14 @@ namespace Dominio
         public string Apellido { get; set; }
         public DateTime FechaNacimiento { get; set; }
         public string Mail { get; set; }
-        public Usuario(string nombre, string apellido, DateTime fechaNacimiento, string mail)
+        public string Telefono { get; set; }
+        public Usuario(string nombre, string apellido, DateTime fechaNacimiento, string mail,string telefono)
         {
             Nombre = nombre;
             Apellido = apellido;
             FechaNacimiento = fechaNacimiento;
             Mail = mail;
-            
+            Telefono = telefono;
         }
         public Usuario()
         {

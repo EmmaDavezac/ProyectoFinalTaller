@@ -69,6 +69,8 @@ namespace Programa
             this.buttonConfirmarEjemplar = new System.Windows.Forms.Button();
             this.buttonConfirmarUsuario = new System.Windows.Forms.Button();
             this.buttonConfirmarLibro = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBoxTelefono = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEjemplares)).BeginInit();
             this.SuspendLayout();
             // 
@@ -79,7 +81,7 @@ namespace Programa
             this.buttonBuscarUsuario.FlatAppearance.BorderSize = 0;
             this.buttonBuscarUsuario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonBuscarUsuario.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonBuscarUsuario.Location = new System.Drawing.Point(227, 109);
+            this.buttonBuscarUsuario.Location = new System.Drawing.Point(238, 105);
             this.buttonBuscarUsuario.Name = "buttonBuscarUsuario";
             this.buttonBuscarUsuario.Size = new System.Drawing.Size(75, 20);
             this.buttonBuscarUsuario.TabIndex = 0;
@@ -104,7 +106,7 @@ namespace Programa
             // 
             // textBoxIdUsuario
             // 
-            this.textBoxIdUsuario.Location = new System.Drawing.Point(71, 109);
+            this.textBoxIdUsuario.Location = new System.Drawing.Point(82, 105);
             this.textBoxIdUsuario.Name = "textBoxIdUsuario";
             this.textBoxIdUsuario.Size = new System.Drawing.Size(150, 20);
             this.textBoxIdUsuario.TabIndex = 38;
@@ -122,8 +124,8 @@ namespace Programa
             // labelErrorUsuario
             // 
             this.labelErrorUsuario.AutoSize = true;
-            this.labelErrorUsuario.ForeColor = System.Drawing.Color.Black;
-            this.labelErrorUsuario.Location = new System.Drawing.Point(68, 221);
+            this.labelErrorUsuario.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.labelErrorUsuario.Location = new System.Drawing.Point(79, 240);
             this.labelErrorUsuario.Name = "labelErrorUsuario";
             this.labelErrorUsuario.Size = new System.Drawing.Size(0, 13);
             this.labelErrorUsuario.TabIndex = 46;
@@ -131,6 +133,7 @@ namespace Programa
             // labelApellido
             // 
             this.labelApellido.AutoSize = true;
+            this.labelApellido.ForeColor = System.Drawing.SystemColors.WindowText;
             this.labelApellido.Location = new System.Drawing.Point(22, 168);
             this.labelApellido.Name = "labelApellido";
             this.labelApellido.Size = new System.Drawing.Size(44, 13);
@@ -140,6 +143,7 @@ namespace Programa
             // labelNombre
             // 
             this.labelNombre.AutoSize = true;
+            this.labelNombre.ForeColor = System.Drawing.SystemColors.WindowText;
             this.labelNombre.Location = new System.Drawing.Point(22, 142);
             this.labelNombre.Name = "labelNombre";
             this.labelNombre.Size = new System.Drawing.Size(44, 13);
@@ -150,7 +154,7 @@ namespace Programa
             // 
             this.textBoxApellido.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.textBoxApellido.Enabled = false;
-            this.textBoxApellido.Location = new System.Drawing.Point(71, 161);
+            this.textBoxApellido.Location = new System.Drawing.Point(82, 157);
             this.textBoxApellido.Name = "textBoxApellido";
             this.textBoxApellido.ReadOnly = true;
             this.textBoxApellido.Size = new System.Drawing.Size(150, 20);
@@ -161,7 +165,7 @@ namespace Programa
             // 
             this.textBoxNombre.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.textBoxNombre.Enabled = false;
-            this.textBoxNombre.Location = new System.Drawing.Point(71, 135);
+            this.textBoxNombre.Location = new System.Drawing.Point(82, 131);
             this.textBoxNombre.Name = "textBoxNombre";
             this.textBoxNombre.ReadOnly = true;
             this.textBoxNombre.Size = new System.Drawing.Size(150, 20);
@@ -171,7 +175,8 @@ namespace Programa
             // labelScoring
             // 
             this.labelScoring.AutoSize = true;
-            this.labelScoring.Location = new System.Drawing.Point(22, 194);
+            this.labelScoring.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.labelScoring.Location = new System.Drawing.Point(22, 221);
             this.labelScoring.Name = "labelScoring";
             this.labelScoring.Size = new System.Drawing.Size(43, 13);
             this.labelScoring.TabIndex = 51;
@@ -181,7 +186,7 @@ namespace Programa
             // 
             this.textBoxScoring.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.textBoxScoring.Enabled = false;
-            this.textBoxScoring.Location = new System.Drawing.Point(71, 187);
+            this.textBoxScoring.Location = new System.Drawing.Point(82, 217);
             this.textBoxScoring.Name = "textBoxScoring";
             this.textBoxScoring.ReadOnly = true;
             this.textBoxScoring.Size = new System.Drawing.Size(150, 20);
@@ -191,7 +196,7 @@ namespace Programa
             // labelErrorLibro
             // 
             this.labelErrorLibro.AutoSize = true;
-            this.labelErrorLibro.ForeColor = System.Drawing.Color.Black;
+            this.labelErrorLibro.ForeColor = System.Drawing.SystemColors.WindowText;
             this.labelErrorLibro.Location = new System.Drawing.Point(437, 221);
             this.labelErrorLibro.Name = "labelErrorLibro";
             this.labelErrorLibro.Size = new System.Drawing.Size(0, 13);
@@ -209,6 +214,7 @@ namespace Programa
             // labelISBN
             // 
             this.labelISBN.AutoSize = true;
+            this.labelISBN.ForeColor = System.Drawing.SystemColors.WindowText;
             this.labelISBN.Location = new System.Drawing.Point(378, 193);
             this.labelISBN.Name = "labelISBN";
             this.labelISBN.Size = new System.Drawing.Size(32, 13);
@@ -218,6 +224,7 @@ namespace Programa
             // labelAutor
             // 
             this.labelAutor.AutoSize = true;
+            this.labelAutor.ForeColor = System.Drawing.SystemColors.WindowText;
             this.labelAutor.Location = new System.Drawing.Point(378, 167);
             this.labelAutor.Name = "labelAutor";
             this.labelAutor.Size = new System.Drawing.Size(35, 13);
@@ -227,6 +234,7 @@ namespace Programa
             // labelTitulo
             // 
             this.labelTitulo.AutoSize = true;
+            this.labelTitulo.ForeColor = System.Drawing.SystemColors.WindowText;
             this.labelTitulo.Location = new System.Drawing.Point(378, 141);
             this.labelTitulo.Name = "labelTitulo";
             this.labelTitulo.Size = new System.Drawing.Size(33, 13);
@@ -320,7 +328,7 @@ namespace Programa
             this.dgvEjemplares.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvEjemplares.Enabled = false;
             this.dgvEjemplares.GridColor = System.Drawing.SystemColors.ControlLightLight;
-            this.dgvEjemplares.Location = new System.Drawing.Point(71, 285);
+            this.dgvEjemplares.Location = new System.Drawing.Point(71, 314);
             this.dgvEjemplares.Name = "dgvEjemplares";
             this.dgvEjemplares.ReadOnly = true;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -390,7 +398,8 @@ namespace Programa
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(68, 84);
+            this.label3.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.label3.Location = new System.Drawing.Point(79, 80);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(112, 13);
             this.label3.TabIndex = 97;
@@ -399,6 +408,7 @@ namespace Programa
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.SystemColors.WindowText;
             this.label4.Location = new System.Drawing.Point(437, 82);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(101, 13);
@@ -408,7 +418,8 @@ namespace Programa
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(68, 256);
+            this.label5.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.label5.Location = new System.Drawing.Point(68, 285);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(164, 13);
             this.label5.TabIndex = 99;
@@ -417,6 +428,7 @@ namespace Programa
             // labelIDEjemplar
             // 
             this.labelIDEjemplar.AutoSize = true;
+            this.labelIDEjemplar.ForeColor = System.Drawing.SystemColors.WindowText;
             this.labelIDEjemplar.Location = new System.Drawing.Point(373, 288);
             this.labelIDEjemplar.Name = "labelIDEjemplar";
             this.labelIDEjemplar.Size = new System.Drawing.Size(59, 13);
@@ -426,6 +438,7 @@ namespace Programa
             // labelEstado
             // 
             this.labelEstado.AutoSize = true;
+            this.labelEstado.ForeColor = System.Drawing.SystemColors.WindowText;
             this.labelEstado.Location = new System.Drawing.Point(373, 314);
             this.labelEstado.Name = "labelEstado";
             this.labelEstado.Size = new System.Drawing.Size(40, 13);
@@ -475,7 +488,7 @@ namespace Programa
             this.buttonConfirmarUsuario.FlatAppearance.BorderSize = 0;
             this.buttonConfirmarUsuario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonConfirmarUsuario.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonConfirmarUsuario.Location = new System.Drawing.Point(227, 135);
+            this.buttonConfirmarUsuario.Location = new System.Drawing.Point(238, 131);
             this.buttonConfirmarUsuario.Name = "buttonConfirmarUsuario";
             this.buttonConfirmarUsuario.Size = new System.Drawing.Size(75, 20);
             this.buttonConfirmarUsuario.TabIndex = 105;
@@ -498,12 +511,35 @@ namespace Programa
             this.buttonConfirmarLibro.UseVisualStyleBackColor = false;
             this.buttonConfirmarLibro.Click += new System.EventHandler(this.buttonConfirmarLibro_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.label2.Location = new System.Drawing.Point(22, 193);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(49, 13);
+            this.label2.TabIndex = 108;
+            this.label2.Text = "Telefono";
+            // 
+            // textBoxTelefono
+            // 
+            this.textBoxTelefono.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.textBoxTelefono.Enabled = false;
+            this.textBoxTelefono.Location = new System.Drawing.Point(82, 186);
+            this.textBoxTelefono.Name = "textBoxTelefono";
+            this.textBoxTelefono.ReadOnly = true;
+            this.textBoxTelefono.Size = new System.Drawing.Size(150, 20);
+            this.textBoxTelefono.TabIndex = 107;
+            this.textBoxTelefono.TabStop = false;
+            // 
             // RegistrarPrestamo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(800, 600);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.textBoxTelefono);
             this.Controls.Add(this.buttonConfirmarLibro);
             this.Controls.Add(this.buttonConfirmarUsuario);
             this.Controls.Add(this.buttonConfirmarEjemplar);
@@ -593,5 +629,7 @@ namespace Programa
         private System.Windows.Forms.DataGridViewTextBoxColumn Estado;
         private System.Windows.Forms.Button buttonConfirmarUsuario;
         private System.Windows.Forms.Button buttonConfirmarLibro;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textBoxTelefono;
     }
 }

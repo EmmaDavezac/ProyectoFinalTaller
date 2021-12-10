@@ -10,13 +10,14 @@ using System.Windows.Forms;
 using Nucleo;
 
 namespace Programa
-{   
+{
     public partial class RegistrarUsuario : Form
     {
         private string NombreUsuario { get; set; }
+        InterfazNucleo interfazNucleo = new InterfazNucleo();
         public RegistrarUsuario(string nombreUsuario)
         {
-            
+
             InitializeComponent();
             NombreUsuario = nombreUsuario;
             labelNombreUsuario.Text = "Usuario: " + NombreUsuario;
@@ -51,24 +52,63 @@ namespace Programa
 
         private void buttonAñadirUsuario_Click(object sender, EventArgs e)
         {
-
-            if (textBoxApellido.Text != null && textBoxNombre.Text != null && textBoxMail.Text != null && dateTimePickerFechaNacimiento.Value.Date != new DateTime(2021,12,1))
+            if (!string.IsNullOrEmpty(textBoxNombre.Text) && textBoxNombre.Text.All(Char.IsLetter))
             {
-                Nucleo.InterfazNucleo fachada = new Nucleo.InterfazNucleo();
-                fachada.AñadirUsuario(textBoxNombre.Text, textBoxApellido.Text, dateTimePickerFechaNacimiento.Value, textBoxMail.Text);
-                MessageBox.Show("El Usuario ha sido creado, el id  es: " + fachada.ObtenerUltimoIdUsuario(), "Operacion Exitosa", MessageBoxButtons.OK);
-                this.Hide();
-                MenuPrincipal ventanaMenu = new MenuPrincipal(NombreUsuario);
-                ventanaMenu.Show();
+                if (!string.IsNullOrEmpty(textBoxApellido.Text) && textBoxApellido.Text.All(Char.IsLetter))
+                {
+                    if (dateTimePickerFechaNacimiento.Value.Date != new DateTime(1900, 1, 1))
+                    {
+                        if (!string.IsNullOrEmpty(textBoxMail.Text) && interfazNucleo.EsUnEmailValido(textBoxMail.Text))
+                        {
+                            if (!string.IsNullOrEmpty(textBoxTelefono.Text) && textBoxTelefono.Text.All(Char.IsDigit) && textBoxTelefono.Text.Length >= 8 && textBoxTelefono.Text.Length <= 11)
+                            {
+                                
+                                    interfazNucleo.AñadirUsuario(textBoxNombre.Text, textBoxApellido.Text, dateTimePickerFechaNacimiento.Value, textBoxMail.Text,  textBoxTelefono.Text);
+                                    MessageBox.Show("Usuario creado,id  es: " + interfazNucleo.ObtenerUltimoIdUsuario(), "Operacion Exitosa", MessageBoxButtons.OK);
+                                    this.Hide();
+                                MenuPrincipal ventana = new MenuPrincipal(NombreUsuario);
+                                    ventana.Show();
+
+                                
+                              
+                            }
+                            else
+                            {
+                                this.labelError.Text = "Error,telefono ingresado invalido.Ingrese el numero sin 0 ni 15";
+                                buttonAñadirUsuario.Enabled = false;
+                                textBoxTelefono.Focus(); ;
+                            }
+                        }
+                        else
+                        {
+                            this.labelError.Text = "Error, el mail ingresado no es valido";
+                            buttonAñadirUsuario.Enabled = false;
+                            textBoxMail.Focus(); ;
+                        }
+                    }
+                    else
+                    {
+                        this.labelError.Text = "Error, no ha ingresado la fecha de nacimiento";
+                        buttonAñadirUsuario.Enabled = false;
+                        dateTimePickerFechaNacimiento.Focus(); ;
+                    }
+
+                }
+                else
+                {
+                    this.labelError.Text = "Error, apellido invalido.No debe contener numeros, espacios ni simbolos";
+                    buttonAñadirUsuario.Enabled = false;
+                    textBoxApellido.Focus(); ;
+                }
             }
             else
             {
-                this.labelError.Text = "Error, ingrese todos los datos";
-                textBoxNombre.Focus();   ;
+                this.labelError.Text = "Error, nombre invalido.No debe contener numeros, espacios ni simbolos";
+                buttonAñadirUsuario.Enabled = false;
+                textBoxNombre.Focus(); ;
             }
-            
-
         }
+
 
         private void textBoxNombre_TextChanged(object sender, EventArgs e)
         {
@@ -111,6 +151,11 @@ namespace Programa
         }
 
         private void labelError_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelNombreUsuario_Click(object sender, EventArgs e)
         {
 
         }

@@ -45,6 +45,7 @@ namespace Programa
             this.IdUsuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Mail = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IdLibro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Titulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ISBN = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -116,6 +117,7 @@ namespace Programa
             this.IdUsuario,
             this.Nombre,
             this.Mail,
+            this.Telefono,
             this.IdLibro,
             this.Titulo,
             this.ISBN,
@@ -197,6 +199,12 @@ namespace Programa
             this.Mail.Name = "Mail";
             this.Mail.ReadOnly = true;
             // 
+            // Telefono
+            // 
+            this.Telefono.HeaderText = "Telefono";
+            this.Telefono.Name = "Telefono";
+            this.Telefono.ReadOnly = true;
+            // 
             // IdLibro
             // 
             this.IdLibro.HeaderText = "IdLibro";
@@ -251,6 +259,7 @@ namespace Programa
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "VerPrestamo";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.VerPrestamos_FormClosed);
+            this.Load += new System.EventHandler(this.VerPrestamos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPrestamos)).EndInit();
             this.ResumeLayout(false);
 
@@ -272,6 +281,7 @@ namespace Programa
         private System.Windows.Forms.DataGridViewTextBoxColumn IdUsuario;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn Mail;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Telefono;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdLibro;
         private System.Windows.Forms.DataGridViewTextBoxColumn Titulo;
         private System.Windows.Forms.DataGridViewTextBoxColumn ISBN;

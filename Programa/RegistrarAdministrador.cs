@@ -14,9 +14,10 @@ namespace Programa
     public partial class RegistrarAdministrador : Form
     {
         private string NombreUsuario { get; set; }
+        InterfazNucleo interfazNucleo = new InterfazNucleo();
         public RegistrarAdministrador(string nombreUsuario)
         {
-            
+
             InitializeComponent();
             NombreUsuario = nombreUsuario;
             labelNombreUsuario.Text = "Usuario: " + NombreUsuario;
@@ -32,30 +33,14 @@ namespace Programa
 
         }
 
-        private void buttonAñadirUsuario_Click(object sender, EventArgs e)
-        {
-            if (textBoxApellido.Text != null && textBoxNombre.Text != null && textBoxMail.Text != null && dateTimePickerFechaNacimiento.Value.Date != new DateTime(2021, 12, 1) &&textBoxContraseña.Text!=null)
-            {
-                Nucleo.InterfazNucleo fachada = new Nucleo.InterfazNucleo();
-                fachada.AñadirAdministrador(textBoxNombre.Text, textBoxApellido.Text, dateTimePickerFechaNacimiento.Value, textBoxMail.Text,textBoxContraseña.Text);
-                MessageBox.Show("El Administrador ha sido creado, el id de acceso es: " + fachada.ObtenerUltimoIdAdministrador(), "Operacion Exitosa", MessageBoxButtons.OK);
-                this.Hide();
-                MenuPrincipal ventanaMenu = new MenuPrincipal(NombreUsuario);
-                ventanaMenu.Show();
-            }
-            else
-            {
-                this.labelError.Text = "Error, ingrese todos los datos";
-                buttonRegistrarAdministrador.Enabled = false;
-                textBoxNombre.Focus(); ;
-            }
-        }
+
 
         private void botonVolver_Click(object sender, EventArgs e)
         {
-            this.Hide();
+           
             MenuPrincipal ventana = new MenuPrincipal(NombreUsuario);
             ventana.Show();
+             this.Hide();
         }
 
         private void buttonSalir_Click(object sender, EventArgs e)
@@ -91,6 +76,109 @@ namespace Programa
         private void textBoxContraseña_TextChanged(object sender, EventArgs e)
         {
             buttonRegistrarAdministrador.Enabled = true;
+        }
+
+        private void buttonRegistrarAdministrador_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(textBoxNombre.Text) && textBoxNombre.Text.All(Char.IsLetter))
+            {
+                if (!string.IsNullOrEmpty(textBoxApellido.Text) && textBoxApellido.Text.All(Char.IsLetter))
+                {
+                    if (dateTimePickerFechaNacimiento.Value.Date != new DateTime(1900, 1, 1))
+                    {
+                        if (!string.IsNullOrEmpty(textBoxMail.Text) && interfazNucleo.EsUnEmailValido(textBoxMail.Text))
+                        {
+                            if (!string.IsNullOrEmpty(textBoxTelefono.Text) && textBoxTelefono.Text.All(Char.IsDigit) && textBoxTelefono.Text.Length >= 8 && textBoxTelefono.Text.Length <= 11)
+                            {
+                                if (!string.IsNullOrEmpty(textBoxContraseña.Text) && textBoxContraseña.Text.Length >= 4)
+                                {
+                                    interfazNucleo.AñadirAdministrador(textBoxNombre.Text, textBoxApellido.Text, dateTimePickerFechaNacimiento.Value, textBoxMail.Text, textBoxContraseña.Text, textBoxTelefono.Text);
+                                    MessageBox.Show("La cuenta de administrador ha sido creada, el id de accceso es: " + interfazNucleo.ObtenerUltimoIdAdministrador(), "Operacion Exitosa", MessageBoxButtons.OK);
+
+                                    MenuPrincipal ventana = new MenuPrincipal(NombreUsuario);
+                                    ventana.Show();
+                                    this.Hide();
+                                }
+                                else
+                                {
+                                    this.labelError.Text = "Error,la contraseña debe tener al menos 4 digitos";
+                                    buttonRegistrarAdministrador.Enabled = false;
+                                    textBoxContraseña.Clear();
+                                    textBoxTelefono.Focus();
+                                    
+                                }
+                            }
+                            else
+                            {
+                                this.labelError.Text = "Error,telefono ingresado invalido.Ingrese el numero sin 0 ni 15";
+                                buttonRegistrarAdministrador.Enabled = false;
+                                textBoxTelefono.Focus(); ;
+                            }
+                        }
+                        else
+                        {
+                            this.labelError.Text = "Error, el mail ingresado no es valido";
+                            buttonRegistrarAdministrador.Enabled = false;
+                            textBoxMail.Focus(); ;
+                        }
+                    }
+                    else
+                    {
+                        this.labelError.Text = "Error, no ha ingresado la fecha de nacimiento";
+                        buttonRegistrarAdministrador.Enabled = false;
+                        dateTimePickerFechaNacimiento.Focus(); ;
+                    }
+
+                }
+                else
+                {
+                    this.labelError.Text = "Error, apellido invalido.No debe contener numeros, espacios ni simbolos";
+                    buttonRegistrarAdministrador.Enabled = false;
+                    textBoxApellido.Focus(); ;
+                }
+            }
+            else
+            {
+                this.labelError.Text = "Error, nombre invalido.No debe contener numeros, espacios ni simbolos";
+                buttonRegistrarAdministrador.Enabled = false;
+                textBoxNombre.Focus(); ;
+            }
+        }
+
+        private void dateTimePickerFechaNacimiento_ValueChanged_1(object sender, EventArgs e)
+        {
+            buttonRegistrarAdministrador.Enabled = true;
+            labelError.Text = "";
+        }
+
+        private void textBoxNombre_TextChanged_1(object sender, EventArgs e)
+        {
+            buttonRegistrarAdministrador.Enabled = true;
+            labelError.Text = "";
+        }
+
+        private void textBoxApellido_TextChanged_1(object sender, EventArgs e)
+        {
+            buttonRegistrarAdministrador.Enabled = true;
+            labelError.Text = "";
+        }
+
+        private void textBoxMail_TextChanged_1(object sender, EventArgs e)
+        {
+            buttonRegistrarAdministrador.Enabled = true;
+            labelError.Text = "";
+        }
+
+        private void textBoxTelefono_TextChanged(object sender, EventArgs e)
+        {
+            buttonRegistrarAdministrador.Enabled = true;
+            labelError.Text = "";
+        }
+
+        private void textBoxContraseña_TextChanged_1(object sender, EventArgs e)
+        {
+            buttonRegistrarAdministrador.Enabled = true;
+            labelError.Text = "";
         }
     }
 }
