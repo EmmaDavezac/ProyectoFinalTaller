@@ -83,9 +83,41 @@ namespace Programa.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _9379950 {
+            get {
+                object obj = ResourceManager.GetObject("9379950", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap cerrar_sesion {
             get {
                 object obj = ResourceManager.GetObject("cerrar-sesion", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap kisspng_lean_manufacturing_industry_microsoft_dynamics_365_oficcial_svg_png_icon_free_download_5_6179_on_5b7c6d7fe55fb3_9004222115348811519395 {
+            get {
+                object obj = ResourceManager.GetObject("kisspng-lean-manufacturing-industry-microsoft-dynamics-365-oficcial-svg-png-icon-" +
+                        "free-download-5-6179-on-5b7c6d7fe55fb3.9004222115348811519395", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap kisspng_lean_manufacturing_industry_microsoft_dynamics_365_oficcial_svg_png_icon_free_download_5_6179_on_5b7c6d7fe55fb3_9004222115348811519395__1_ {
+            get {
+                object obj = ResourceManager.GetObject("kisspng-lean-manufacturing-industry-microsoft-dynamics-365-oficcial-svg-png-icon-" +
+                        "free-download-5-6179-on-5b7c6d7fe55fb3.9004222115348811519395 (1)", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

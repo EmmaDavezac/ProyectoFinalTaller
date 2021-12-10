@@ -356,6 +356,14 @@
   <ItemGroup>
     <None Include="Resources\libro-abierto.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\9379950.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="kisspng-lean-manufacturing-industry-microsoft-dynamics-365-oficcial-svg-png-icon-free-download-5-6179-on-5b7c6d7fe55fb3.9004222115348811519395 %281%29.ico" />
+    <None Include="Resources\kisspng-lean-manufacturing-industry-microsoft-dynamics-365-oficcial-svg-png-icon-free-download-5-6179-on-5b7c6d7fe55fb3.9004222115348811519395 %281%29.ico" />
+    <None Include="Resources\kisspng-lean-manufacturing-industry-microsoft-dynamics-365-oficcial-svg-png-icon-free-download-5-6179-on-5b7c6d7fe55fb3.9004222115348811519395.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
