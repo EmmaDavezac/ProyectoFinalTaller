@@ -66,14 +66,7 @@
     <Compile Include="IRepositorioPrestamos.cs" />
     <Compile Include="IRepositorioUsuarios.cs" />
     <Compile Include="IUnitOfWork.cs" />
-    <Compile Include="local\AdministradorDePrestamosDbContext.cs" />
-    <Compile Include="local\Repositorio.cs" />
-    <Compile Include="local\RepositorioAdministradores.cs" />
-    <Compile Include="local\RepositorioEjemplares.cs" />
-    <Compile Include="local\RepositorioLibros.cs" />
-    <Compile Include="local\RepositorioPrestamos.cs" />
-    <Compile Include="local\RepositorioUsuarios.cs" />
-    <Compile Include="local\UnitOfWork.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

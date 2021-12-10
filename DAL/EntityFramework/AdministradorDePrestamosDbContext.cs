@@ -6,12 +6,21 @@ namespace DAL.EntityFramework
 {
     public class AdministradorDePrestamosDbContext:DbContext
     {
+        public AdministradorDePrestamosDbContext(string pNombreCadenaConexion):base(pNombreCadenaConexion)
+        {
+
+        }
+
+        public AdministradorDePrestamosDbContext():base("ConnectionSQLServerHosting")
+        {
+                
+        }
+
         public IDbSet<Libro> Libros { get; set; }
 
         public IDbSet<Ejemplar> Ejemplares { get; set; }
 
         public IDbSet<Prestamo> Prestamos { get; set; }
-
         public IDbSet<UsuarioSimple> Usuarios { get; set; }
         public IDbSet<UsuarioAdministrador> Administradores { get; set; }
     }
