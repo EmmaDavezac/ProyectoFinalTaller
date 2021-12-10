@@ -11,15 +11,15 @@ namespace Nucleo
 {
      public class InterfazNucleo
     {
-        private const string implementacionBase = "EntityFramework";
+        private const string implementacionBase = "ConnectionSQLServerHosting";
         private const string implementacionAPILibros = "OpenLibrary";
-         private IUnitOfWork GetUnitOfWork(string unIUnit)
+         private IUnitOfWork GetUnitOfWork(string pCadenaConexion)
         {
-            switch (unIUnit)
+            switch (pCadenaConexion)
             {
-                case "EntiryFramework": { return new UnitOfWork(new AdministradorDePrestamosDbContext()); }//implementacion con entityframework
+                case "ConnectionSQLServerHosting": { return new UnitOfWork(new AdministradorDePrestamosDbContext("ConnectionSQLServerHosting")); }//implementacion con entityframework
                 default:
-                    { return new UnitOfWork(new AdministradorDePrestamosDbContext()); }//implementacion por defecto
+                    { return new UnitOfWork(new AdministradorDePrestamosDbContext("ConnectionSQLServerHosting")); }//implementacion por defecto
 
             }
         }
