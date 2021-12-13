@@ -205,7 +205,7 @@ namespace Programa
             this.botonVolver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.botonVolver.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.botonVolver.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.botonVolver.Location = new System.Drawing.Point(607, 565);
+            this.botonVolver.Location = new System.Drawing.Point(591, 526);
             this.botonVolver.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.botonVolver.Name = "botonVolver";
             this.botonVolver.Size = new System.Drawing.Size(89, 23);
@@ -252,7 +252,7 @@ namespace Programa
             this.buttonGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonGuardar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.buttonGuardar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonGuardar.Location = new System.Drawing.Point(700, 565);
+            this.buttonGuardar.Location = new System.Drawing.Point(684, 526);
             this.buttonGuardar.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.buttonGuardar.Name = "buttonGuardar";
             this.buttonGuardar.Size = new System.Drawing.Size(89, 23);
@@ -282,7 +282,7 @@ namespace Programa
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(800, 600);
+            this.ClientSize = new System.Drawing.Size(784, 561);
             this.Controls.Add(this.buttonSeleccionar);
             this.Controls.Add(this.buttonGuardar);
             this.Controls.Add(this.comboBox1);
@@ -304,7 +304,7 @@ namespace Programa
             this.Controls.Add(this.textBoxIdLibro);
             this.Controls.Add(this.textBoxId);
             this.Enabled = false;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(800, 600);
             this.MinimizeBox = false;

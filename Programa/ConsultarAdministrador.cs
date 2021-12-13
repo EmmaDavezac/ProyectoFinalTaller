@@ -63,7 +63,9 @@ namespace Programa
 
         private void ConsultarAdministrador_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Application.Exit();
+            this.Hide();
+            Menu2 ventanaMenu = new Menu2(idUsuario.ToString());
+            ventanaMenu.Show();
         }
 
         private void ConsultarAdministrador_Load(object sender, EventArgs e)

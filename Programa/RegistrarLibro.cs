@@ -108,7 +108,9 @@ namespace Programa
 
         private void BuscarLibrosAPI_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Application.Exit();
+            this.Hide();
+            Menu2 ventanaMenu = new Menu2(idUsuario.ToString());
+            ventanaMenu.Show();
         }
 
         private void label3_Click(object sender, EventArgs e)

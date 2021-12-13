@@ -85,7 +85,9 @@ namespace Programa
 
         private void VerPrestamos_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Application.Exit();
+            this.Hide();
+            Menu2 ventanaMenu = new Menu2(idUsuario.ToString());
+            ventanaMenu.Show();
         }
 
         private void labelNombreUsuario_Click(object sender, EventArgs e)

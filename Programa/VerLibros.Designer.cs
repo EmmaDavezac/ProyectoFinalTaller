@@ -173,7 +173,7 @@ namespace Programa
             this.dgvLibros.Location = new System.Drawing.Point(1, 188);
             this.dgvLibros.Name = "dgvLibros";
             this.dgvLibros.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dgvLibros.Size = new System.Drawing.Size(841, 332);
+            this.dgvLibros.Size = new System.Drawing.Size(841, 371);
             this.dgvLibros.TabIndex = 23;
             this.dgvLibros.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dgvLibros.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
@@ -250,7 +250,7 @@ namespace Programa
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.dgvLibros);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "VerLibros";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

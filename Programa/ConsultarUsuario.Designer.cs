@@ -145,7 +145,7 @@ namespace Programa
             this.botonVolver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.botonVolver.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.botonVolver.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.botonVolver.Location = new System.Drawing.Point(700, 565);
+            this.botonVolver.Location = new System.Drawing.Point(686, 531);
             this.botonVolver.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.botonVolver.Name = "botonVolver";
             this.botonVolver.Size = new System.Drawing.Size(89, 23);
@@ -258,7 +258,7 @@ namespace Programa
             this.Controls.Add(this.textBoxApellido);
             this.Controls.Add(this.textBoxNombre);
             this.Controls.Add(this.botonVolver);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(800, 600);
             this.MinimizeBox = false;

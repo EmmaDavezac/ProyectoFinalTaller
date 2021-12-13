@@ -82,7 +82,7 @@ namespace Programa
             this.buttonRegistrarAdministrador.FlatAppearance.BorderSize = 0;
             this.buttonRegistrarAdministrador.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonRegistrarAdministrador.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonRegistrarAdministrador.Location = new System.Drawing.Point(699, 565);
+            this.buttonRegistrarAdministrador.Location = new System.Drawing.Point(690, 535);
             this.buttonRegistrarAdministrador.Name = "buttonRegistrarAdministrador";
             this.buttonRegistrarAdministrador.Size = new System.Drawing.Size(89, 23);
             this.buttonRegistrarAdministrador.TabIndex = 46;
@@ -174,7 +174,7 @@ namespace Programa
             this.botonVolver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.botonVolver.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.botonVolver.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.botonVolver.Location = new System.Drawing.Point(605, 565);
+            this.botonVolver.Location = new System.Drawing.Point(596, 535);
             this.botonVolver.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.botonVolver.Name = "botonVolver";
             this.botonVolver.Size = new System.Drawing.Size(89, 23);
@@ -228,7 +228,7 @@ namespace Programa
             this.Controls.Add(this.textBoxApellido);
             this.Controls.Add(this.textBoxNombre);
             this.Controls.Add(this.botonVolver);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(800, 600);
             this.MinimizeBox = false;

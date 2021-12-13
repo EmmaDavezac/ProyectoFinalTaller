@@ -61,7 +61,9 @@ namespace Programa
 
         private void ConsultarLibro_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Application.Exit();
+            this.Hide();
+            Menu2 ventanaMenu = new Menu2(idUsuario.ToString());
+            ventanaMenu.Show();
         }
 
         private void textBoxId_TextChanged(object sender, EventArgs e)

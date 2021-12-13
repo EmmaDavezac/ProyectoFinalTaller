@@ -45,7 +45,9 @@ namespace Programa
 
         private void VerEjemplares_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Application.Exit();
+            this.Hide();
+            Menu2 ventanaMenu = new Menu2(idUsuario.ToString());
+            ventanaMenu.Show();
         }
 
         private void dgvLibros_CellContentClick(object sender, DataGridViewCellEventArgs e)

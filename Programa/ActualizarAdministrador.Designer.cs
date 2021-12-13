@@ -54,7 +54,7 @@ namespace Programa
             this.labelNombreUsuario.BackColor = System.Drawing.SystemColors.Highlight;
             this.labelNombreUsuario.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.labelNombreUsuario.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.labelNombreUsuario.Location = new System.Drawing.Point(606, 9);
+            this.labelNombreUsuario.Location = new System.Drawing.Point(602, 9);
             this.labelNombreUsuario.Name = "labelNombreUsuario";
             this.labelNombreUsuario.Size = new System.Drawing.Size(182, 31);
             this.labelNombreUsuario.TabIndex = 54;
@@ -201,7 +201,7 @@ namespace Programa
             this.buttonGuardar.FlatAppearance.BorderSize = 0;
             this.buttonGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonGuardar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonGuardar.Location = new System.Drawing.Point(699, 565);
+            this.buttonGuardar.Location = new System.Drawing.Point(681, 526);
             this.buttonGuardar.Name = "buttonGuardar";
             this.buttonGuardar.Size = new System.Drawing.Size(89, 23);
             this.buttonGuardar.TabIndex = 7;
@@ -217,7 +217,7 @@ namespace Programa
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.button2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.button2.Location = new System.Drawing.Point(605, 565);
+            this.button2.Location = new System.Drawing.Point(587, 526);
             this.button2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(89, 23);
@@ -251,7 +251,7 @@ namespace Programa
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(800, 600);
+            this.ClientSize = new System.Drawing.Size(784, 561);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBoxTelefono);
             this.Controls.Add(this.buttonGuardar);
@@ -270,7 +270,7 @@ namespace Programa
             this.Controls.Add(this.textBoxMail);
             this.Controls.Add(this.textBoxApellido);
             this.Controls.Add(this.textBoxNombre);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(800, 600);
             this.MinimizeBox = false;
@@ -278,6 +278,7 @@ namespace Programa
             this.Name = "ActualizarAdministrador";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ActualizarAdministrador";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ActualizarAdministrador_FormClosed);
             this.Load += new System.EventHandler(this.ActualizarAdministrador_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

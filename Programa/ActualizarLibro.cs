@@ -188,6 +188,23 @@ namespace Programa
         {
 
         }
+
+        private void labelNombreUsuario_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ActualizarLibro_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Hide();
+            Menu2 ventanaMenu = new Menu2(idUsuario.ToString());
+            ventanaMenu.Show();
+        }
     }
     }
 

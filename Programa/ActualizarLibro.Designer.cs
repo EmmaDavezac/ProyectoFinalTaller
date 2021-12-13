@@ -62,16 +62,17 @@ namespace Programa
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(619, 170);
+            this.label4.Location = new System.Drawing.Point(490, 172);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(146, 13);
+            this.label4.Size = new System.Drawing.Size(172, 13);
             this.label4.TabIndex = 40;
-            this.label4.Text = "ConsultarEn Pagina de Libros";
+            this.label4.Text = "Consultar datos en pagina de libros";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // textBoxISBN
             // 
             this.textBoxISBN.Enabled = false;
-            this.textBoxISBN.Location = new System.Drawing.Point(136, 191);
+            this.textBoxISBN.Location = new System.Drawing.Point(136, 164);
             this.textBoxISBN.Name = "textBoxISBN";
             this.textBoxISBN.Size = new System.Drawing.Size(300, 20);
             this.textBoxISBN.TabIndex = 38;
@@ -80,7 +81,7 @@ namespace Programa
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(11, 198);
+            this.label5.Location = new System.Drawing.Point(11, 171);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(32, 13);
             this.label5.TabIndex = 37;
@@ -102,7 +103,7 @@ namespace Programa
             this.botonVolver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.botonVolver.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.botonVolver.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.botonVolver.Location = new System.Drawing.Point(604, 565);
+            this.botonVolver.Location = new System.Drawing.Point(592, 526);
             this.botonVolver.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.botonVolver.Name = "botonVolver";
             this.botonVolver.Size = new System.Drawing.Size(89, 23);
@@ -120,7 +121,7 @@ namespace Programa
             this.buttonGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonGuardar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.buttonGuardar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonGuardar.Location = new System.Drawing.Point(700, 565);
+            this.buttonGuardar.Location = new System.Drawing.Point(688, 526);
             this.buttonGuardar.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.buttonGuardar.Name = "buttonGuardar";
             this.buttonGuardar.Size = new System.Drawing.Size(89, 23);
@@ -140,11 +141,12 @@ namespace Programa
             this.labelNombreUsuario.TabIndex = 33;
             this.labelNombreUsuario.Text = "Nombre de Usuario";
             this.labelNombreUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelNombreUsuario.Click += new System.EventHandler(this.labelNombreUsuario_Click);
             // 
             // labelIngreseTitulo
             // 
             this.labelIngreseTitulo.AutoSize = true;
-            this.labelIngreseTitulo.Location = new System.Drawing.Point(502, 198);
+            this.labelIngreseTitulo.Location = new System.Drawing.Point(490, 198);
             this.labelIngreseTitulo.Name = "labelIngreseTitulo";
             this.labelIngreseTitulo.Size = new System.Drawing.Size(114, 13);
             this.labelIngreseTitulo.TabIndex = 32;
@@ -153,7 +155,7 @@ namespace Programa
             // textBoxAñoPublicacion
             // 
             this.textBoxAñoPublicacion.Enabled = false;
-            this.textBoxAñoPublicacion.Location = new System.Drawing.Point(136, 165);
+            this.textBoxAñoPublicacion.Location = new System.Drawing.Point(136, 138);
             this.textBoxAñoPublicacion.Name = "textBoxAñoPublicacion";
             this.textBoxAñoPublicacion.Size = new System.Drawing.Size(300, 20);
             this.textBoxAñoPublicacion.TabIndex = 31;
@@ -162,7 +164,7 @@ namespace Programa
             // textBoxAutor
             // 
             this.textBoxAutor.Enabled = false;
-            this.textBoxAutor.Location = new System.Drawing.Point(136, 139);
+            this.textBoxAutor.Location = new System.Drawing.Point(136, 112);
             this.textBoxAutor.Name = "textBoxAutor";
             this.textBoxAutor.Size = new System.Drawing.Size(300, 20);
             this.textBoxAutor.TabIndex = 30;
@@ -171,7 +173,7 @@ namespace Programa
             // textBoxTitulo
             // 
             this.textBoxTitulo.Enabled = false;
-            this.textBoxTitulo.Location = new System.Drawing.Point(136, 113);
+            this.textBoxTitulo.Location = new System.Drawing.Point(136, 86);
             this.textBoxTitulo.Name = "textBoxTitulo";
             this.textBoxTitulo.Size = new System.Drawing.Size(300, 20);
             this.textBoxTitulo.TabIndex = 29;
@@ -180,7 +182,7 @@ namespace Programa
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(11, 142);
+            this.label2.Location = new System.Drawing.Point(11, 115);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(35, 13);
             this.label2.TabIndex = 27;
@@ -189,7 +191,7 @@ namespace Programa
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(11, 116);
+            this.label1.Location = new System.Drawing.Point(11, 89);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(33, 13);
             this.label1.TabIndex = 26;
@@ -202,7 +204,7 @@ namespace Programa
             this.buttonBuscarEnPagina.FlatAppearance.BorderSize = 0;
             this.buttonBuscarEnPagina.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonBuscarEnPagina.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonBuscarEnPagina.Location = new System.Drawing.Point(728, 193);
+            this.buttonBuscarEnPagina.Location = new System.Drawing.Point(716, 193);
             this.buttonBuscarEnPagina.Name = "buttonBuscarEnPagina";
             this.buttonBuscarEnPagina.Size = new System.Drawing.Size(61, 23);
             this.buttonBuscarEnPagina.TabIndex = 25;
@@ -213,7 +215,7 @@ namespace Programa
             // textBoxBuscar
             // 
             this.textBoxBuscar.Enabled = false;
-            this.textBoxBuscar.Location = new System.Drawing.Point(622, 193);
+            this.textBoxBuscar.Location = new System.Drawing.Point(610, 193);
             this.textBoxBuscar.Name = "textBoxBuscar";
             this.textBoxBuscar.Size = new System.Drawing.Size(100, 20);
             this.textBoxBuscar.TabIndex = 24;
@@ -249,7 +251,7 @@ namespace Programa
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(11, 172);
+            this.label3.Location = new System.Drawing.Point(11, 145);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(83, 13);
             this.label3.TabIndex = 28;
@@ -267,16 +269,16 @@ namespace Programa
             this.ISBN});
             this.dataGridView1.Enabled = false;
             this.dataGridView1.GridColor = System.Drawing.SystemColors.Control;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 268);
+            this.dataGridView1.Location = new System.Drawing.Point(0, 222);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(801, 282);
+            this.dataGridView1.Size = new System.Drawing.Size(789, 287);
             this.dataGridView1.TabIndex = 23;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // textBoxId
             // 
-            this.textBoxId.Location = new System.Drawing.Point(136, 87);
+            this.textBoxId.Location = new System.Drawing.Point(136, 60);
             this.textBoxId.Name = "textBoxId";
             this.textBoxId.Size = new System.Drawing.Size(300, 20);
             this.textBoxId.TabIndex = 42;
@@ -285,7 +287,7 @@ namespace Programa
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(11, 90);
+            this.label6.Location = new System.Drawing.Point(11, 63);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(16, 13);
             this.label6.TabIndex = 41;
@@ -298,7 +300,7 @@ namespace Programa
             this.buttonBuscar.FlatAppearance.BorderSize = 0;
             this.buttonBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonBuscar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonBuscar.Location = new System.Drawing.Point(442, 87);
+            this.buttonBuscar.Location = new System.Drawing.Point(442, 60);
             this.buttonBuscar.Name = "buttonBuscar";
             this.buttonBuscar.Size = new System.Drawing.Size(84, 23);
             this.buttonBuscar.TabIndex = 43;
@@ -313,7 +315,7 @@ namespace Programa
             this.buttonSeleccionar.FlatAppearance.BorderSize = 0;
             this.buttonSeleccionar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSeleccionar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonSeleccionar.Location = new System.Drawing.Point(442, 113);
+            this.buttonSeleccionar.Location = new System.Drawing.Point(442, 86);
             this.buttonSeleccionar.Name = "buttonSeleccionar";
             this.buttonSeleccionar.Size = new System.Drawing.Size(84, 23);
             this.buttonSeleccionar.TabIndex = 44;
@@ -336,7 +338,7 @@ namespace Programa
             this.buttonDeshacerCambios.FlatAppearance.BorderSize = 0;
             this.buttonDeshacerCambios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonDeshacerCambios.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonDeshacerCambios.Location = new System.Drawing.Point(329, 239);
+            this.buttonDeshacerCambios.Location = new System.Drawing.Point(329, 193);
             this.buttonDeshacerCambios.Name = "buttonDeshacerCambios";
             this.buttonDeshacerCambios.Size = new System.Drawing.Size(107, 23);
             this.buttonDeshacerCambios.TabIndex = 46;
@@ -349,7 +351,7 @@ namespace Programa
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(800, 600);
+            this.ClientSize = new System.Drawing.Size(784, 561);
             this.Controls.Add(this.buttonDeshacerCambios);
             this.Controls.Add(this.labelError);
             this.Controls.Add(this.buttonSeleccionar);
@@ -373,7 +375,7 @@ namespace Programa
             this.Controls.Add(this.textBoxBuscar);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.dataGridView1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(800, 600);
             this.MinimizeBox = false;
@@ -381,6 +383,7 @@ namespace Programa
             this.Name = "ActualizarLibro";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ActualizarLibro";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ActualizarLibro_FormClosed);
             this.Load += new System.EventHandler(this.ActualizarLibro_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);

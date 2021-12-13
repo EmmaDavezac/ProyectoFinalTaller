@@ -103,7 +103,9 @@ namespace Programa
 
         private void ConsultarPrestamo_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Application.Exit();
+            this.Hide();
+            Menu2 ventanaMenu = new Menu2(idUsuario.ToString());
+            ventanaMenu.Show();
         }
 
         private void ConsultarPrestamo_Load(object sender, EventArgs e)

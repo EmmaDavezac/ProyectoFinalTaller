@@ -37,8 +37,8 @@ namespace Programa
             this.FechaNacimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Scoring = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.labelNombreUsuario = new System.Windows.Forms.Label();
             this.Telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.labelNombreUsuario = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).BeginInit();
             this.SuspendLayout();
             // 
@@ -50,7 +50,7 @@ namespace Programa
             this.botonVolver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.botonVolver.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.botonVolver.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.botonVolver.Location = new System.Drawing.Point(700, 565);
+            this.botonVolver.Location = new System.Drawing.Point(690, 533);
             this.botonVolver.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.botonVolver.Name = "botonVolver";
             this.botonVolver.Size = new System.Drawing.Size(89, 23);
@@ -79,7 +79,7 @@ namespace Programa
             this.dgvUsuarios.Name = "dgvUsuarios";
             this.dgvUsuarios.ReadOnly = true;
             this.dgvUsuarios.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dgvUsuarios.Size = new System.Drawing.Size(795, 354);
+            this.dgvUsuarios.Size = new System.Drawing.Size(785, 469);
             this.dgvUsuarios.TabIndex = 8;
             this.dgvUsuarios.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsuarios_CellContentClick);
             // 
@@ -128,6 +128,12 @@ namespace Programa
             this.Scoring.ReadOnly = true;
             this.Scoring.Width = 80;
             // 
+            // Telefono
+            // 
+            this.Telefono.HeaderText = "Telefono";
+            this.Telefono.Name = "Telefono";
+            this.Telefono.ReadOnly = true;
+            // 
             // labelNombreUsuario
             // 
             this.labelNombreUsuario.BackColor = System.Drawing.SystemColors.Highlight;
@@ -141,23 +147,17 @@ namespace Programa
             this.labelNombreUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.labelNombreUsuario.Click += new System.EventHandler(this.labelNombreUsuario_Click);
             // 
-            // Telefono
-            // 
-            this.Telefono.HeaderText = "Telefono";
-            this.Telefono.Name = "Telefono";
-            this.Telefono.ReadOnly = true;
-            // 
             // VerUsuarios
             // 
             this.AcceptButton = this.botonVolver;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(800, 600);
+            this.ClientSize = new System.Drawing.Size(784, 561);
             this.Controls.Add(this.labelNombreUsuario);
             this.Controls.Add(this.dgvUsuarios);
             this.Controls.Add(this.botonVolver);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(800, 600);
             this.MinimizeBox = false;

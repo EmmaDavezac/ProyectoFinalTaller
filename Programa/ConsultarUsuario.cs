@@ -63,7 +63,9 @@ namespace Programa
 
         private void ConsultarUsuario_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Application.Exit();
+            this.Hide();
+            Menu2 ventanaMenu = new Menu2(idUsuario.ToString());
+            ventanaMenu.Show();
         }
 
         private void label2_Click(object sender, EventArgs e)

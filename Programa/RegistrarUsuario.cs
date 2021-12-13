@@ -42,7 +42,9 @@ namespace Programa
 
         private void AgregarCliente_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Application.Exit();
+            this.Hide();
+            Menu2 ventanaMenu = new Menu2(idUsuario.ToString());
+            ventanaMenu.Show();
         }
 
         private void label1_Click(object sender, EventArgs e)

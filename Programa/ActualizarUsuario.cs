@@ -162,5 +162,12 @@ namespace Programa
         {
             buttonGuardar.Enabled = true;
         }
+
+        private void ActualizarUsuario_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Hide();
+            Menu2 ventanaMenu = new Menu2(idUsuario.ToString());
+            ventanaMenu.Show();
+        }
     }
 }

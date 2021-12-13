@@ -289,5 +289,10 @@ namespace Programa
         {
             Application.Exit();
         }
+
+        private void labelId_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

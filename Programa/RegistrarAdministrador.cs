@@ -51,7 +51,9 @@ namespace Programa
 
         private void RegistrarAdministrador_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Application.Exit();
+            this.Hide();
+            Menu2 ventanaMenu = new Menu2(idUsuario.ToString());
+            ventanaMenu.Show();
         }
 
         private void textBoxNombre_TextChanged(object sender, EventArgs e)

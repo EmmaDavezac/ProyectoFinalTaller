@@ -124,11 +124,11 @@ namespace Programa
             this.Estado,
             this.Disponible});
             this.dataGridViewPrestamos.GridColor = System.Drawing.SystemColors.ControlLightLight;
-            this.dataGridViewPrestamos.Location = new System.Drawing.Point(3, 136);
+            this.dataGridViewPrestamos.Location = new System.Drawing.Point(3, 67);
             this.dataGridViewPrestamos.Name = "dataGridViewPrestamos";
             this.dataGridViewPrestamos.ReadOnly = true;
             this.dataGridViewPrestamos.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dataGridViewPrestamos.Size = new System.Drawing.Size(793, 403);
+            this.dataGridViewPrestamos.Size = new System.Drawing.Size(793, 460);
             this.dataGridViewPrestamos.TabIndex = 98;
             this.dataGridViewPrestamos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPrestamos_CellContentClick);
             // 
@@ -248,7 +248,7 @@ namespace Programa
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.button1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.button1.Location = new System.Drawing.Point(700, 565);
+            this.button1.Location = new System.Drawing.Point(691, 533);
             this.button1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(89, 23);
@@ -262,12 +262,12 @@ namespace Programa
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(800, 600);
+            this.ClientSize = new System.Drawing.Size(784, 561);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridViewPrestamos);
             this.Controls.Add(this.botonVolver);
             this.Controls.Add(this.labelNombreUsuario);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(800, 600);
             this.MinimizeBox = false;

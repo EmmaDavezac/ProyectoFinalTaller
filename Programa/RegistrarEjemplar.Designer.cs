@@ -182,7 +182,7 @@ namespace Programa
             this.buttonVolver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonVolver.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.buttonVolver.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonVolver.Location = new System.Drawing.Point(605, 565);
+            this.buttonVolver.Location = new System.Drawing.Point(591, 531);
             this.buttonVolver.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.buttonVolver.Name = "buttonVolver";
             this.buttonVolver.Size = new System.Drawing.Size(89, 23);
@@ -197,7 +197,7 @@ namespace Programa
             this.buttonGuardarEjemplar.FlatAppearance.BorderSize = 0;
             this.buttonGuardarEjemplar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonGuardarEjemplar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonGuardarEjemplar.Location = new System.Drawing.Point(699, 565);
+            this.buttonGuardarEjemplar.Location = new System.Drawing.Point(685, 531);
             this.buttonGuardarEjemplar.Name = "buttonGuardarEjemplar";
             this.buttonGuardarEjemplar.Size = new System.Drawing.Size(89, 23);
             this.buttonGuardarEjemplar.TabIndex = 52;
@@ -243,7 +243,7 @@ namespace Programa
             this.Controls.Add(this.textBoxAutor);
             this.Controls.Add(this.textBoxTitulo);
             this.Controls.Add(this.textBoxId);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(800, 600);
             this.MinimizeBox = false;
