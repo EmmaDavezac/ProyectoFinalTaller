@@ -15,16 +15,19 @@ namespace Programa
     public partial class ActualizarEjemplar : Form
     {
         private InterfazNucleo interfazNucleo = new InterfazNucleo();
-            private string NombreUsuario { get; set; }
-            public ActualizarEjemplar(string nombreUsuario)
-            {
-                InitializeComponent();
-                NombreUsuario = nombreUsuario;
-                labelNombreUsuario.Text = "Usuario: " + NombreUsuario;
-                textBoxId.Focus();
-            }
+         
+        private int idUsuario { get; set; }
+        private string NombreUsuario { get; set; }
+        public ActualizarEjemplar(string iD)
+        {
+            InitializeComponent();
+            idUsuario = Convert.ToInt32(iD);
+            NombreUsuario = interfazNucleo.ObtenerAdministrador(idUsuario).Nombre;
+            labelNombreUsuario.Text = "Usuario: " + NombreUsuario;
+            textBoxId.Focus();
+        }
 
-            private void textBoxId_TextChanged(object sender, EventArgs e)
+        private void textBoxId_TextChanged(object sender, EventArgs e)
         {
             buttonBuscar.Enabled = true;
             buttonSeleccionar.Enabled = false;
@@ -38,7 +41,7 @@ namespace Programa
         private void botonVolver_Click(object sender, EventArgs e)
         {
             this.Hide();
-            MenuPrincipal ventana = new MenuPrincipal(NombreUsuario);
+            Menu2 ventana = new Menu2(idUsuario.ToString());
             ventana.Show();
         }
 
@@ -97,6 +100,17 @@ namespace Programa
             comboBox1.Enabled = true;
             buttonSeleccionar.Enabled = false;
             buttonSeleccionar.Text = "Seleccionado";
+        }
+
+        private void buttonGuardar_Click(object sender, EventArgs e)
+        {
+            interfazNucleo.ActualizarEjemplar(textBoxId.Text, comboBox1.Text);
+            Menu2 ventana = new Menu2(idUsuario.ToString());
+        }
+
+        private void ActualizarEjemplar_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

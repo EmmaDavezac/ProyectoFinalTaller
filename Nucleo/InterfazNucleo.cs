@@ -7,32 +7,47 @@ using DAL;
 using DAL.EntityFramework;//libreria de implementacion de IUnitOfWork con entityFramework
 using Dominio;
 using ServiciosAPILibros;
+using NotificacionAUsuario;
 namespace Nucleo
 {
      public class InterfazNucleo
     {
-        private const string implementacionBase = "ConnectionSQLServerHosting";
-        private const string implementacionAPILibros = "OpenLibrary";
-         private IUnitOfWork GetUnitOfWork(string pCadenaConexion)
+        static string[] implementacionesBase = new string[] { "ConnectionSQLServerLocal", "ConnectionSQLServerHosting" };//cadenas de conexion a bases de datos
+        static private string implementacionBase = implementacionesBase[1];
+        static string[] implementacionesAPILibros = new string[] { "OpenLibrary" };
+        static private string implementacionAPILibros = implementacionesAPILibros[0];
+        static string[] implementacionesNotificar = new string[] { "MailOutlook" };
+        static private string implementacionNotificar= implementacionesBase[0];
+        private IUnitOfWork GetUnitOfWork(string pCadenaConexion)//implementaciones posibles para las base de datos, interactua con la interfaz IUnitOfWork, esta abtraccion nos permite poder trabajar con distintas implementaciones
         {
             switch (pCadenaConexion)
             {
-                case "ConnectionSQLServerHosting": { return new UnitOfWork(new AdministradorDePrestamosDbContext("ConnectionSQLServerHosting")); }//implementacion con entityframework
-                default:
-                    { return new UnitOfWork(new AdministradorDePrestamosDbContext("ConnectionSQLServerHosting")); }//implementacion por defecto
+                case "ConnectionSQLServerHosting": { return new UnitOfWork(new AdministradorDePrestamosDbContext(pCadenaConexion)); }//implementacion en una base de datos relacional de SQLServer con hosting en un servidor proporcionado por  la web https://www.smarterasp.net/
+                case "ConnectionSQLServerLocal": { return new UnitOfWork(new AdministradorDePrestamosDbContext(pCadenaConexion)); }//implementacion en una base de datos relacional de SQLServer en un servidor local de MSQLSERVER
+                default: { return new UnitOfWork(new AdministradorDePrestamosDbContext(implementacionesBase[0])); }//implementacion por defecto,implementacion en una base de datos relacional de SQLServer en un servidor local de MSQLSERVER
 
             }
         }
-        private IServiciosAPILibros GetIServiciosAPILibros(string unIServiciosAPILibros)
+        private IServiciosAPILibros GetIServiciosAPILibros(string unIServiciosAPILibros)///Implementacion posibles para la api que nos brinda informacion sobre libros, interactua con la interfaz IAPIlibros, esta abtraccion nos permite poder trabajar con distintas implementaciones
         {
             switch (unIServiciosAPILibros)
             {
                 case "APIOpenLibrary": { return new APIOpenLibrary(); }//implementacion con OpenLibrary
                 default:
-                    { return new APIOpenLibrary(); }//implementacion por defecto
+                    { return new APIOpenLibrary(); }//implementacion por defecto, implemetacion con OpenLibrery
 
             }
         }
+        private INotificarUsuario GetNotificarUsuario(string unNotificarCliente)
+        {
+            switch (unNotificarCliente)
+            {
+                case "MailOutlook": { return new EnviarMailOutlook(); }
+                default:
+                    { return new EnviarMailOutlook(); }
+
+            }
+        }    
 
         public InterfazNucleo()
         {
@@ -134,6 +149,22 @@ namespace Nucleo
                 unitOfWork.Complete();
             }
         }
+        public void ActualizarEjemplar(string idLibro, string estado)
+        {
+            using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
+            {
+                if (estado=="Bueno")
+                {
+                    unitOfWork.RepositorioEjemplares.Get(Convert.ToInt32(idLibro)).Estado = EstadoEjemplar.Bueno;
+                }
+                else
+                {
+                    unitOfWork.RepositorioEjemplares.Get(Convert.ToInt32(idLibro)).Estado = EstadoEjemplar.Malo;
+                }
+               
+                unitOfWork.Complete();
+            }
+        }
         public Ejemplar ObtenerEjemplar(int id)
         {
             using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
@@ -190,7 +221,7 @@ namespace Nucleo
 
         }
 
-        public UsuarioSimple ObtenerUsarioDePrestamo(int id)
+        public UsuarioSimple ObtenerUsuarioDePrestamo(int id)
         {
             using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
             {
@@ -300,6 +331,18 @@ namespace Nucleo
             }
         }
 
+        public void NotificarUsuario(int idUsuario)
+        { 
+            GetNotificarUsuario(implementacionNotificar).Notificar(ObtenerUsuario(idUsuario));
+
+        }
+        public void NotificarPrestamosProximosAVencer()
+        {
+            foreach (var item in ObtenerListadePrestamosProximosAVencerse())
+            {
+                UsuarioSimple usuario = ObtenerUsuarioDePrestamo(item.Id);
+                NotificarUsuario(usuario.Id);
+            } }
 
     }    
 }

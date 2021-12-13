@@ -15,13 +15,14 @@ namespace Programa
     public partial class RegistrarPrestamo : Form
     {
         private string NombreUsuario { get; set; }
-        public RegistrarPrestamo(string nombreUsuario)
+        private int idUsuario { get; set; }
+        InterfazNucleo interfazNucleo = new InterfazNucleo();
+        public RegistrarPrestamo(string iD)
         {
             InitializeComponent();
-            NombreUsuario = nombreUsuario;
-            labelNombreUsuario.Text = NombreUsuario;
-           
-
+            idUsuario = Convert.ToInt32(iD);
+            NombreUsuario = interfazNucleo.ObtenerAdministrador(idUsuario).Nombre;
+            labelNombreUsuario.Text = "Usuario: " + NombreUsuario;
         }
 
         private void RegistrarPrestamo_Load(object sender, EventArgs e)
@@ -37,7 +38,7 @@ namespace Programa
         private void botonVolver_Click(object sender, EventArgs e)
         {
             this.Hide();
-            MenuPrincipal ventanaMenu = new MenuPrincipal(NombreUsuario);
+            Menu2 ventanaMenu = new Menu2(idUsuario.ToString());
             ventanaMenu.Show();
         }
 
@@ -200,7 +201,7 @@ namespace Programa
                 string FechaLimite = Convert.ToDateTime(new InterfazNucleo().ObtenerPrestamo(id).FechaLimite).Date.ToString();
                 MessageBox.Show("El prestamo ha sido registrado, Id:" + id + "\nFecha limite: " + FechaLimite);
                 this.Hide();
-                MenuPrincipal ventanaMenu = new MenuPrincipal(NombreUsuario);
+                Menu2 ventanaMenu = new Menu2(idUsuario.ToString());
                 ventanaMenu.Show();
             }
             else 
@@ -213,7 +214,7 @@ namespace Programa
                     string FechaLimite = Convert.ToDateTime(new InterfazNucleo().ObtenerPrestamo(id).FechaLimite).Date.ToString();
                     MessageBox.Show("El prestamo ha sido registrado, Id:" + id + "\nFecha limite: " + FechaLimite);
                     this.Hide();
-                    MenuPrincipal ventanaMenu = new MenuPrincipal(NombreUsuario);
+                    MenuPrincipal ventanaMenu = new MenuPrincipal(idUsuario.ToString());
                     ventanaMenu.Show();
                 }
             }

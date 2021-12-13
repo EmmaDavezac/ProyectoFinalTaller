@@ -7,17 +7,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Nucleo;
 
 namespace Programa
 {
     public partial class VerLibros : Form
     {
         private string NombreUsuario { get; set; }
-        public VerLibros(string nombreUsuario)
+        private int idUsuario { get; set; }
+        InterfazNucleo interfazNucleo = new InterfazNucleo();
+        public VerLibros(string iD)
         {
-
             InitializeComponent();
-            foreach (var item in new Nucleo.InterfazNucleo().ObtenerLibros())
+            idUsuario = Convert.ToInt32(iD);
+            NombreUsuario = interfazNucleo.ObtenerAdministrador(idUsuario).Nombre;
+            labelNombreUsuario.Text = "Usuario: " + NombreUsuario;
+            foreach (var item in interfazNucleo.ObtenerLibros())
             {
                 int n = dgvLibros.Rows.Add();
                 dgvLibros.Rows[n].Cells[0].Value = item.Id;
@@ -25,16 +30,17 @@ namespace Programa
                 dgvLibros.Rows[n].Cells[2].Value = item.Autor;
                 dgvLibros.Rows[n].Cells[3].Value = item.AñoPublicacion;
                 dgvLibros.Rows[n].Cells[4].Value = item.ISBN;
-               
+
+
             }
-            NombreUsuario = nombreUsuario;
-            labelNombreUsuario.Text = "Usuario: " + NombreUsuario;
         }
+
+       
 
         private void botonVolver_Click(object sender, EventArgs e)
         {
             this.Hide();
-            MenuPrincipal ventanaMenu = new MenuPrincipal(NombreUsuario);
+            Menu2 ventanaMenu = new Menu2(idUsuario.ToString());
             ventanaMenu.Show();
         }
 

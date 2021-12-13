@@ -13,13 +13,15 @@ namespace Programa
 {   
     public partial class RegistrarDevolucion : Form
     {
-        private InterfazNucleo interfazNucleo = new InterfazNucleo();
         private string NombreUsuario { get; set; }
-        public RegistrarDevolucion(string nombreUsuario)
+        private int idUsuario { get; set; }
+        InterfazNucleo interfazNucleo = new InterfazNucleo();
+        public RegistrarDevolucion(string iD)
         {
             InitializeComponent();
-            NombreUsuario = nombreUsuario;
-            labelNombreUsuario.Text = NombreUsuario;
+            idUsuario = Convert.ToInt32(iD);
+            NombreUsuario = interfazNucleo.ObtenerAdministrador(idUsuario).Nombre;
+            labelNombreUsuario.Text = "Usuario: " + NombreUsuario;
         }
 
         private void textBoxId_TextChanged(object sender, EventArgs e)
@@ -46,9 +48,9 @@ namespace Programa
                         }
                         else TextBoxRetrasado.Text = "No";
 
-                        textBoxIdUsuario.Text = interfazNucleo.ObtenerUsarioDePrestamo(id).Id.ToString();
-                        textBoxNombre.Text = interfazNucleo.ObtenerUsarioDePrestamo(id).Nombre;
-                        textBoxApellido.Text = interfazNucleo.ObtenerUsarioDePrestamo(id).Apellido; ;
+                        textBoxIdUsuario.Text = interfazNucleo.ObtenerUsuarioDePrestamo(id).Id.ToString();
+                        textBoxNombre.Text = interfazNucleo.ObtenerUsuarioDePrestamo(id).Nombre;
+                        textBoxApellido.Text = interfazNucleo.ObtenerUsuarioDePrestamo(id).Apellido; ;
                         textBoxIdLibro.Text = interfazNucleo.ObtenerLibroDePrestamo(id).Id.ToString();
                         textBoxTitulo.Text = interfazNucleo.ObtenerLibroDePrestamo(id).Titulo;
                         textBoxAutor.Text = interfazNucleo.ObtenerLibroDePrestamo(id).Autor;
@@ -74,7 +76,7 @@ namespace Programa
         private void botonVolver_Click(object sender, EventArgs e)
         {
             this.Hide();
-            MenuPrincipal ventanaMenu = new MenuPrincipal(NombreUsuario);
+            Menu2 ventanaMenu = new Menu2(idUsuario.ToString());
             ventanaMenu.Show();
         }
 
@@ -88,7 +90,7 @@ namespace Programa
             interfazNucleo.RegistrarDevolucion(Convert.ToInt32(textBoxId.Text), comboBox1.Text);
             MessageBox.Show("La devolucion se ha registrado con exito");
             this.Hide();
-            MenuPrincipal ventanaMenu = new MenuPrincipal(NombreUsuario);
+            Menu2 ventanaMenu = new Menu2(idUsuario.ToString());
             ventanaMenu.Show();
         }
 
@@ -103,6 +105,11 @@ namespace Programa
         }
 
         private void labelNombreUsuario_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void RegistrarDevolucion_Load(object sender, EventArgs e)
         {
 
         }

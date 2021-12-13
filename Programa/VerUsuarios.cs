@@ -14,13 +14,17 @@ namespace Programa
     public partial class VerUsuarios : Form
     {
         private string NombreUsuario { get; set; }
-        public VerUsuarios(string nombreUsuario)
+        private int idUsuario { get; set; }
+        InterfazNucleo interfazNucleo = new InterfazNucleo();
+        public VerUsuarios(string iD)
         {
-            
             InitializeComponent();
-            foreach (var item in new InterfazNucleo().ObtenerUsuarios() )
+            idUsuario = Convert.ToInt32(iD);
+            NombreUsuario = interfazNucleo.ObtenerAdministrador(idUsuario).Nombre;
+            labelNombreUsuario.Text = "Usuario: " + NombreUsuario;
+            foreach (var item in new InterfazNucleo().ObtenerUsuarios())
             {
-                int n= dgvUsuarios.Rows.Add();
+                int n = dgvUsuarios.Rows.Add();
                 dgvUsuarios.Rows[n].Cells[0].Value = item.Id;
                 dgvUsuarios.Rows[n].Cells[1].Value = item.Nombre;
                 dgvUsuarios.Rows[n].Cells[2].Value = item.Apellido;
@@ -29,10 +33,9 @@ namespace Programa
                 dgvUsuarios.Rows[n].Cells[5].Value = item.Scoring;
                 dgvUsuarios.Rows[n].Cells[6].Value = item.Telefono;
             }
-            NombreUsuario = nombreUsuario;
-            labelNombreUsuario.Text = "Usuario: " + NombreUsuario;
-        }
 
+        }
+       
         private void buttonSalir_Click(object sender, EventArgs e)
         {
             
@@ -42,7 +45,7 @@ namespace Programa
         private void botonVolver_Click(object sender, EventArgs e)
         {
             this.Hide();
-            MenuPrincipal ventanaMenu = new MenuPrincipal(NombreUsuario);
+            Menu2 ventanaMenu = new Menu2(idUsuario.ToString());
             ventanaMenu.Show();
         }
 

@@ -259,6 +259,7 @@ namespace Programa
             this.buttonGuardar.TabIndex = 72;
             this.buttonGuardar.Text = "Guardar";
             this.buttonGuardar.UseVisualStyleBackColor = false;
+            this.buttonGuardar.Click += new System.EventHandler(this.buttonGuardar_Click);
             // 
             // buttonSeleccionar
             // 
@@ -312,6 +313,7 @@ namespace Programa
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CEjemplar";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CEjemplar_FormClosed);
+            this.Load += new System.EventHandler(this.ActualizarEjemplar_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

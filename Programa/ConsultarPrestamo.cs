@@ -13,19 +13,21 @@ namespace Programa
 {
     public partial class ConsultarPrestamo : Form
     {
-        private InterfazNucleo interfazNucleo = new InterfazNucleo();
         private string NombreUsuario { get; set; }
-        public ConsultarPrestamo (string nombreUsuario)
+        private int idUsuario { get; set; }
+        InterfazNucleo interfazNucleo = new InterfazNucleo();
+        public ConsultarPrestamo(string iD)
         {
-
             InitializeComponent();
-            NombreUsuario = nombreUsuario;
+            idUsuario = Convert.ToInt32(iD);
+            NombreUsuario = interfazNucleo.ObtenerAdministrador(idUsuario).Nombre;
+            labelNombreUsuario.Text = "Usuario: " + NombreUsuario;
         }
 
         private void botonVolver_Click(object sender, EventArgs e)
         {
             this.Hide();
-            MenuPrincipal ventanaMenu = new MenuPrincipal(NombreUsuario);
+            Menu2 ventanaMenu = new Menu2(idUsuario.ToString());
             ventanaMenu.Show();
         }
 
@@ -75,9 +77,9 @@ namespace Programa
                     }
                     else TextBoxRetrasado.Text = "No";
 
-                    textBoxIdUsuario.Text = interfazNucleo.ObtenerUsarioDePrestamo(id).Id.ToString();
-                    textBoxNombre.Text = interfazNucleo.ObtenerUsarioDePrestamo(id).Nombre;
-                    textBoxApellido.Text= interfazNucleo.ObtenerUsarioDePrestamo(id).Apellido; ;
+                    textBoxIdUsuario.Text = interfazNucleo.ObtenerUsuarioDePrestamo(id).Id.ToString();
+                    textBoxNombre.Text = interfazNucleo.ObtenerUsuarioDePrestamo(id).Nombre;
+                    textBoxApellido.Text= interfazNucleo.ObtenerUsuarioDePrestamo(id).Apellido; ;
                     textBoxIdLibro.Text = interfazNucleo.ObtenerLibroDePrestamo(id).Id.ToString();
                     textBoxTitulo.Text= interfazNucleo.ObtenerLibroDePrestamo(id).Titulo;
                     textBoxAutor.Text = interfazNucleo.ObtenerLibroDePrestamo(id).Autor;
@@ -102,6 +104,11 @@ namespace Programa
         private void ConsultarPrestamo_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void ConsultarPrestamo_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

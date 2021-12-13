@@ -16,12 +16,14 @@ namespace Programa
     public partial class RegistrarLibro : Form
     {
         private string NombreUsuario { get; set; }
-        public RegistrarLibro(string nombreUsuario)
+        private int idUsuario { get; set; }
+        InterfazNucleo interfazNucleo = new InterfazNucleo();
+        public RegistrarLibro(string iD)
         {
             InitializeComponent();
-            NombreUsuario = nombreUsuario;
-            labelNombreUsuario.Text = NombreUsuario;
-          
+            idUsuario = Convert.ToInt32(iD);
+            NombreUsuario = interfazNucleo.ObtenerAdministrador(idUsuario).Nombre;
+            labelNombreUsuario.Text = "Usuario: " + NombreUsuario;
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -86,7 +88,7 @@ namespace Programa
                 new InterfazNucleo().AñadirLibro(textBoxISBN.Text, textBoxTitulo.Text, textBoxAutor.Text, textBoxAñoPublicacion.Text);
                 MessageBox.Show("Libro registrado con exito, el Id del libro es: "+new InterfazNucleo().ObtenerUltimoIdLibro());
                 this.Hide();
-                MenuPrincipal ventanaMenu = new MenuPrincipal(NombreUsuario);
+                Menu2 ventanaMenu = new Menu2(idUsuario.ToString());
                 ventanaMenu.Show();
 
             }
@@ -100,7 +102,7 @@ namespace Programa
         private void botonVolver_Click(object sender, EventArgs e)
         {
             this.Hide();
-            MenuPrincipal ventanaMenu = new MenuPrincipal(NombreUsuario);
+            Menu2 ventanaMenu = new Menu2(idUsuario.ToString());
             ventanaMenu.Show();
         }
 

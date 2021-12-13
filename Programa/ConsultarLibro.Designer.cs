@@ -223,6 +223,7 @@ namespace Programa
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ConsultarLibro";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ConsultarLibro_FormClosed);
+            this.Load += new System.EventHandler(this.ConsultarLibro_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -14,17 +14,19 @@ namespace Programa
 {
     public partial class ConsultarEjemplara : Form
     {
-        
-            private string NombreUsuario { get; set; }
-            public ConsultarEjemplara(string nombreUsuario)
-            {
-                InitializeComponent();
-                NombreUsuario = nombreUsuario;
-                labelNombreUsuario.Text = "Usuario: " + NombreUsuario;
-                textBoxId.Focus();
-            }
 
-            private void textBoxId_TextChanged(object sender, EventArgs e)
+        private string NombreUsuario { get; set; }
+        private int idUsuario { get; set; }
+        InterfazNucleo interfazNucleo = new InterfazNucleo();
+        public ConsultarEjemplara(string iD)
+        {
+            InitializeComponent();
+            idUsuario = Convert.ToInt32(iD);
+            NombreUsuario = interfazNucleo.ObtenerAdministrador(idUsuario).Nombre;
+            labelNombreUsuario.Text = "Usuario: " + NombreUsuario;
+        }
+
+        private void textBoxId_TextChanged(object sender, EventArgs e)
         {
             buttonBuscar.Enabled = true;
         }
@@ -37,7 +39,7 @@ namespace Programa
         private void botonVolver_Click(object sender, EventArgs e)
         {
             this.Hide();
-            MenuPrincipal ventana = new MenuPrincipal(NombreUsuario);
+            Menu2 ventana = new Menu2(idUsuario.ToString());
             ventana.Show();
         }
 
@@ -74,6 +76,11 @@ namespace Programa
         }
 
         private void labelNombreUsuario_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ConsultarEjemplara_Load(object sender, EventArgs e)
         {
 
         }

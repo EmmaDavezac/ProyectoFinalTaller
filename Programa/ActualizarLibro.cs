@@ -16,14 +16,16 @@ namespace Programa
     {
         InterfazNucleo interfazNucleo = new InterfazNucleo();
         private string NombreUsuario { get; set; }
-        public ActualizarLibro(string nombreUsuario)
+        private int idUsuario { get; set; }
+        public ActualizarLibro(string iD)
         {
             InitializeComponent();
-            NombreUsuario = nombreUsuario;
-            labelNombreUsuario.Text = NombreUsuario;
+            idUsuario = Convert.ToInt32(iD);
+            NombreUsuario = interfazNucleo.ObtenerAdministrador(idUsuario).Nombre;
+            labelNombreUsuario.Text = "Usuario: " + NombreUsuario;
         }
 
-            private void textBox1_TextChanged(object sender, EventArgs e)
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
             buttonBuscar.Enabled = true;
             buttonSeleccionar.Enabled = false;
@@ -116,7 +118,7 @@ namespace Programa
         private void botonVolver_Click(object sender, EventArgs e)
         {
             this.Hide();
-            MenuPrincipal ventanaMenu = new MenuPrincipal(NombreUsuario);
+            Menu2 ventanaMenu = new Menu2(idUsuario.ToString());
             ventanaMenu.Show();
         }
 
@@ -166,7 +168,7 @@ namespace Programa
                 new InterfazNucleo().ActualizarLibro(Convert.ToInt32(textBoxId.Text),textBoxISBN.Text, textBoxTitulo.Text, textBoxAutor.Text, textBoxAñoPublicacion.Text);
                 MessageBox.Show("El libro Id:"+textBoxId.Text+" se ha actualizado exitosamente!");
                 this.Hide();
-                MenuPrincipal ventanaMenu = new MenuPrincipal(NombreUsuario);
+                Menu2 ventanaMenu = new Menu2(idUsuario.ToString());
                 ventanaMenu.Show();
 
             }
@@ -178,6 +180,11 @@ namespace Programa
         }
 
         private void textBoxBuscar_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ActualizarLibro_Load(object sender, EventArgs e)
         {
 
         }

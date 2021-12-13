@@ -46,7 +46,7 @@ namespace Programa
                             if (textBoxContraseña.Text != null && fachada.VerficarContraseña(fachada.ObtenerAdministrador(Convert.ToInt32(textBoxId.Text)).Id, textBoxContraseña.Text))
                             {
                                 
-                                MenuPrincipal ventanaMenu = new MenuPrincipal(fachada.ObtenerAdministrador(Convert.ToInt32(textBoxId.Text)).Nombre + " " + fachada.ObtenerAdministrador(Convert.ToInt32(textBoxId.Text)).Apellido);
+                                Menu2 ventanaMenu = new Menu2(textBoxId.Text);
                                 ventanaMenu.Show();
                                 this.Hide();
                             }

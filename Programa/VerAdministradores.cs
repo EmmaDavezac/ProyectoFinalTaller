@@ -12,15 +12,17 @@ using Nucleo;
 namespace Programa
 {
     public partial class VerAdministradores : Form
-    {   private  InterfazNucleo interfaz=new InterfazNucleo();
+    {
         private string NombreUsuario { get; set; }
-        public VerAdministradores(string nombreUsuario)
+        private int idUsuario { get; set; }
+        InterfazNucleo interfazNucleo = new InterfazNucleo();
+        public VerAdministradores(string iD)
         {
-           
             InitializeComponent();
-            NombreUsuario = nombreUsuario;
+            idUsuario = Convert.ToInt32(iD);
+            NombreUsuario = interfazNucleo.ObtenerAdministrador(idUsuario).Nombre;
             labelNombreUsuario.Text = "Usuario: " + NombreUsuario;
-            foreach (var item in interfaz.ObtenerAdministradores())
+            foreach (var item in interfazNucleo.ObtenerAdministradores())
             {
                 int n = dgvAdministradores.Rows.Add();
                 dgvAdministradores.Rows[n].Cells[0].Value = item.Id;
@@ -31,6 +33,7 @@ namespace Programa
                 dgvAdministradores.Rows[n].Cells[5].Value = item.Telefono;
             }
         }
+        
 
         private void VerAdministradores_Load(object sender, EventArgs e)
         {
@@ -45,7 +48,7 @@ namespace Programa
         private void botonVolver_Click(object sender, EventArgs e)
         {
             this.Hide();
-            MenuPrincipal ventanaMenu = new MenuPrincipal(NombreUsuario);
+            Menu2 ventanaMenu = new Menu2(idUsuario.ToString());
             ventanaMenu.Show();
         }
 

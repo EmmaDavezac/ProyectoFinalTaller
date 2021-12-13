@@ -15,11 +15,13 @@ namespace Programa
     public partial class ActualizarUsuario : Form
     {
         private string NombreUsuario { get; set; }
-        InterfazNucleo InterfazNucleo = new InterfazNucleo();
-        public ActualizarUsuario(string nombreUsuario)
+        InterfazNucleo interfazNucleo = new InterfazNucleo();
+        private int idUsuario { get; set; }
+        public ActualizarUsuario(string iD)
         {
             InitializeComponent();
-            NombreUsuario = nombreUsuario;
+            idUsuario = Convert.ToInt32(iD);
+            NombreUsuario = interfazNucleo.ObtenerAdministrador(idUsuario).Nombre;
             labelNombreUsuario.Text = "Usuario: " + NombreUsuario;
         }
 
@@ -64,7 +66,7 @@ namespace Programa
         private void button2_Click(object sender, EventArgs e)
         {
             this.Hide();
-            MenuPrincipal ventana = new MenuPrincipal(NombreUsuario);
+            Menu2 ventana = new Menu2(idUsuario.ToString());
             ventana.Show();
         }
 
@@ -75,17 +77,17 @@ namespace Programa
                 if (!string.IsNullOrEmpty(textBoxApellido.Text) && textBoxApellido.Text.All(Char.IsLetter))
                 {
                    
-                        if (!string.IsNullOrEmpty(textBoxMail.Text) && InterfazNucleo.EsUnEmailValido(textBoxMail.Text))
+                        if (!string.IsNullOrEmpty(textBoxMail.Text) && interfazNucleo.EsUnEmailValido(textBoxMail.Text))
                         {
                             if (!string.IsNullOrEmpty(textBoxTelefono.Text) && textBoxTelefono.Text.All(Char.IsDigit) && textBoxTelefono.Text.Length >= 8 && textBoxTelefono.Text.Length <= 11)
                             {
 
 
                             
-                            InterfazNucleo.ActualizarUsuario(textBoxId.Text, textBoxNombre.Text, textBoxApellido.Text, textBoxMail.Text,textBoxTelefono.Text);
+                            interfazNucleo.ActualizarUsuario(textBoxId.Text, textBoxNombre.Text, textBoxApellido.Text, textBoxMail.Text,textBoxTelefono.Text);
                             MessageBox.Show("Operacion Exitosa! se ha actualizado el usuario ID:" + textBoxId.Text);
                             this.Hide();
-                            MenuPrincipal ventanaMenu = new MenuPrincipal(NombreUsuario);
+                            Menu2 ventanaMenu = new Menu2(idUsuario.ToString());
                             ventanaMenu.Show();
 
 
@@ -134,6 +136,31 @@ namespace Programa
         private void labelNombre_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void textBoxNombre_TextChanged(object sender, EventArgs e)
+        {
+            buttonGuardar.Enabled = true;
+        }
+
+        private void textBoxApellido_TextChanged(object sender, EventArgs e)
+        {
+            buttonGuardar.Enabled = true;
+        }
+
+        private void textBoxFecha_TextChanged(object sender, EventArgs e)
+        {
+            buttonGuardar.Enabled = true;
+        }
+
+        private void textBoxTelefono_TextChanged(object sender, EventArgs e)
+        {
+            buttonGuardar.Enabled = true;
+        }
+
+        private void textBoxMail_TextChanged(object sender, EventArgs e)
+        {
+            buttonGuardar.Enabled = true;
         }
     }
 }

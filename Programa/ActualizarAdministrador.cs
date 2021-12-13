@@ -16,10 +16,12 @@ namespace Programa
     {
         private string NombreUsuario { get; set; }
         InterfazNucleo interfazNucleo = new InterfazNucleo();
-        public ActualizarAdministrador(string nombreUsuario)
+        private int idUsuario { get; set; }
+        public ActualizarAdministrador(string iD)
         {
             InitializeComponent();
-            NombreUsuario = nombreUsuario;
+            idUsuario = Convert.ToInt32(iD);
+            NombreUsuario = interfazNucleo.ObtenerAdministrador(idUsuario).Nombre;
             labelNombreUsuario.Text = "Usuario: " + NombreUsuario;
         }
 
@@ -64,7 +66,7 @@ namespace Programa
         private void button2_Click(object sender, EventArgs e)
         {
             this.Hide();
-            MenuPrincipal ventana = new MenuPrincipal(NombreUsuario);
+            Menu2 ventana = new Menu2(idUsuario.ToString());
             ventana.Show();
         }
 
@@ -82,7 +84,7 @@ namespace Programa
                             interfazNucleo.ActualizarAdministrador(textBoxId.Text, textBoxNombre.Text, textBoxApellido.Text, textBoxMail.Text,textBoxTelefono.Text);
                             MessageBox.Show("Operacion Exitosa! se ha actualizado el Administrador ID:" + textBoxId.Text);
                             this.Hide();
-                            MenuPrincipal ventanaMenu = new MenuPrincipal(NombreUsuario);
+                            Menu2 ventanaMenu = new Menu2(idUsuario.ToString());
                             ventanaMenu.Show();
                         }
                             else
@@ -116,10 +118,34 @@ namespace Programa
             }
         }
 
+        private void ActualizarAdministrador_Load(object sender, EventArgs e)
+        {
 
+        }
 
+        private void textBoxNombre_TextChanged(object sender, EventArgs e)
+        {
+            buttonGuardar.Enabled = true;
+        }
 
+        private void textBoxApellido_TextChanged(object sender, EventArgs e)
+        {
+            buttonGuardar.Enabled = true;
+        }
 
-       
+        private void textBoxFecha_TextChanged(object sender, EventArgs e)
+        {
+            buttonGuardar.Enabled = true;
+        }
+
+        private void textBoxTelefono_TextChanged(object sender, EventArgs e)
+        {
+            buttonGuardar.Enabled = true;
+        }
+
+        private void textBoxMail_TextChanged(object sender, EventArgs e)
+        {
+            buttonGuardar.Enabled = true;
+        }
     }
 }

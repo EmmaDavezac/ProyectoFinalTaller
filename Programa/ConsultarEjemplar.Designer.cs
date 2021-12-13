@@ -292,6 +292,7 @@ namespace Programa
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CEjemplar";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CEjemplar_FormClosed);
+            this.Load += new System.EventHandler(this.ConsultarEjemplara_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

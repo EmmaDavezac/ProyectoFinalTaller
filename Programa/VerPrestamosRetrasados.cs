@@ -13,13 +13,15 @@ namespace Programa
 {
     public partial class VerPrestamosRetrasados : Form
     {
-        private  InterfazNucleo interfazNucleo = new InterfazNucleo();
         private string NombreUsuario { get; set; }
-        public VerPrestamosRetrasados(string nombreUsuario)
+        private int idUsuario { get; set; }
+        InterfazNucleo interfazNucleo = new InterfazNucleo();
+        public VerPrestamosRetrasados(string iD)
         {
             InitializeComponent();
-            NombreUsuario = nombreUsuario;
-            labelNombreUsuario.Text = NombreUsuario;
+            idUsuario = Convert.ToInt32(iD);
+            NombreUsuario = interfazNucleo.ObtenerAdministrador(idUsuario).Nombre;
+            labelNombreUsuario.Text = "Usuario: " + NombreUsuario;
             foreach (var item in interfazNucleo.ObtenerListadePrestamosRetrasados())
             {
                 int n = dataGridViewPrestamos.Rows.Add();
@@ -31,7 +33,8 @@ namespace Programa
                     dataGridViewPrestamos.Rows[n].Cells[3].Value = "No devuelto";
                     dataGridViewPrestamos.Rows[n].Cells[5].Value = "No devuelto";
                 }
-                else {
+                else
+                {
                     dataGridViewPrestamos.Rows[n].Cells[3].Value = item.FechaDevolucion;
                     dataGridViewPrestamos.Rows[n].Cells[5].Value = item.EstadoDevolucion;
                 }
@@ -47,10 +50,10 @@ namespace Programa
                 }
                 else dataGridViewPrestamos.Rows[n].Cells[7].Value = "No";
 
-                dataGridViewPrestamos.Rows[n].Cells[8].Value = interfazNucleo.ObtenerUsarioDePrestamo(item.Id).Id;
-                dataGridViewPrestamos.Rows[n].Cells[9].Value = interfazNucleo.ObtenerUsarioDePrestamo(item.Id).Nombre+"-"+ interfazNucleo.ObtenerUsarioDePrestamo(item.Id).Apellido;
-                dataGridViewPrestamos.Rows[n].Cells[10].Value = interfazNucleo.ObtenerUsarioDePrestamo(item.Id).Mail;
-                dataGridViewPrestamos.Rows[n].Cells[11].Value = interfazNucleo.ObtenerUsarioDePrestamo(item.Id).Telefono;
+                dataGridViewPrestamos.Rows[n].Cells[8].Value = interfazNucleo.ObtenerUsuarioDePrestamo(item.Id).Id;
+                dataGridViewPrestamos.Rows[n].Cells[9].Value = interfazNucleo.ObtenerUsuarioDePrestamo(item.Id).Nombre + "-" + interfazNucleo.ObtenerUsuarioDePrestamo(item.Id).Apellido;
+                dataGridViewPrestamos.Rows[n].Cells[10].Value = interfazNucleo.ObtenerUsuarioDePrestamo(item.Id).Mail;
+                dataGridViewPrestamos.Rows[n].Cells[11].Value = interfazNucleo.ObtenerUsuarioDePrestamo(item.Id).Telefono;
                 dataGridViewPrestamos.Rows[n].Cells[12].Value = interfazNucleo.ObtenerLibroDePrestamo(item.Id).Titulo;
                 dataGridViewPrestamos.Rows[n].Cells[13].Value = interfazNucleo.ObtenerLibroDePrestamo(item.Id).Autor;
                 dataGridViewPrestamos.Rows[n].Cells[14].Value = interfazNucleo.ObtenerLibroDePrestamo(item.Id).ISBN;
@@ -59,14 +62,13 @@ namespace Programa
                 if (interfazNucleo.ObtenerEjemplarDePrestamo(item.Id).Disponible)
                 {
                     dataGridViewPrestamos.Rows[n].Cells[17].Value = "Si";
-                } else dataGridViewPrestamos.Rows[n].Cells[17].Value = "No";
+                }
+                else dataGridViewPrestamos.Rows[n].Cells[17].Value = "No";
 
 
             }
-
-
-
         }
+        
 
         private void botonVolver_Click(object sender, EventArgs e)
         {
@@ -93,6 +95,13 @@ namespace Programa
         private void VerPrestamosRetrasados_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Menu2 ventana = new Menu2(idUsuario.ToString());
+            this.Hide();
+            ventana.Show();
         }
     }
 }

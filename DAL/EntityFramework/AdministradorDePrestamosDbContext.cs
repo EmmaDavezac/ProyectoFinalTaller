@@ -5,16 +5,14 @@ using Dominio;
 namespace DAL.EntityFramework
 {
     public class AdministradorDePrestamosDbContext:DbContext
+        
     {
-        public AdministradorDePrestamosDbContext(string pNombreCadenaConexion):base(pNombreCadenaConexion)
+        
+        public AdministradorDePrestamosDbContext(string cadena):base(cadena)
         {
 
         }
-
-        public AdministradorDePrestamosDbContext():base("ConnectionSQLServerHosting")
-        {
-                
-        }
+      
 
         public IDbSet<Libro> Libros { get; set; }
 

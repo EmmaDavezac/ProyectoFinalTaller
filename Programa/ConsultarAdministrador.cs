@@ -15,10 +15,13 @@ namespace Programa
     public partial class ConsultarAdministrador : Form
     {
         private string NombreUsuario { get; set; }
-        public ConsultarAdministrador(string nombreUsuario)
+        private int idUsuario { get; set; }
+        InterfazNucleo interfazNucleo = new InterfazNucleo();
+        public ConsultarAdministrador(string iD)
         {
             InitializeComponent();
-            NombreUsuario = nombreUsuario;
+            idUsuario = Convert.ToInt32(iD);
+            NombreUsuario = interfazNucleo.ObtenerAdministrador(idUsuario).Nombre;
             labelNombreUsuario.Text = "Usuario: " + NombreUsuario;
         }
 
@@ -49,7 +52,7 @@ namespace Programa
         private void botonVolver_Click(object sender, EventArgs e)
         {
             this.Hide();
-            MenuPrincipal ventana = new MenuPrincipal(NombreUsuario);
+            Menu2 ventana = new Menu2(idUsuario.ToString());
             ventana.Show();
         }
 
@@ -61,6 +64,11 @@ namespace Programa
         private void ConsultarAdministrador_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void ConsultarAdministrador_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

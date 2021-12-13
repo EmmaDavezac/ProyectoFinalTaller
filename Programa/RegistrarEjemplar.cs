@@ -15,10 +15,13 @@ namespace Programa
     public partial class RegistrarEjemplar : Form
     {
         private string NombreUsuario { get; set; }
-        public RegistrarEjemplar(string nombreUsuario)
+        private int idUsuario { get; set; }
+        InterfazNucleo interfazNucleo = new InterfazNucleo();
+        public RegistrarEjemplar(string iD)
         {
             InitializeComponent();
-            NombreUsuario = nombreUsuario;
+            idUsuario = Convert.ToInt32(iD);
+            NombreUsuario = interfazNucleo.ObtenerAdministrador(idUsuario).Nombre;
             labelNombreUsuario.Text = "Usuario: " + NombreUsuario;
         }
 
@@ -59,7 +62,7 @@ namespace Programa
         private void buttonVolver_Click(object sender, EventArgs e)
         {
             this.Hide();
-            MenuPrincipal ventana = new MenuPrincipal(NombreUsuario);
+            Menu2 ventana = new Menu2(idUsuario.ToString());
             ventana.Show();
         }
 
@@ -73,7 +76,7 @@ namespace Programa
                     new InterfazNucleo().AñadirEjemplar(Convert.ToInt32(textBoxId.Text),comboBoxEstado.Text);
                     MessageBox.Show("Ejemplar registrado con exito, el Id del Ejemplar es: " + new InterfazNucleo().ObtenerUltimoIdEjemplar());
                     this.Hide();
-                    MenuPrincipal ventanaMenu = new MenuPrincipal(NombreUsuario);
+                    Menu2 ventanaMenu = new Menu2(idUsuario.ToString());
                     ventanaMenu.Show();
                 }
                 else

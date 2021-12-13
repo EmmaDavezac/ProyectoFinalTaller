@@ -324,6 +324,7 @@ namespace Programa
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ActualizarContraseña";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ActualizarContraseña_FormClosed);
+            this.Load += new System.EventHandler(this.ActualizarContraseña_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

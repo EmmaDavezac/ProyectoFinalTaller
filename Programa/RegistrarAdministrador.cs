@@ -14,12 +14,13 @@ namespace Programa
     public partial class RegistrarAdministrador : Form
     {
         private string NombreUsuario { get; set; }
+        private int idUsuario { get; set; }
         InterfazNucleo interfazNucleo = new InterfazNucleo();
-        public RegistrarAdministrador(string nombreUsuario)
+        public RegistrarAdministrador(string iD)
         {
-
             InitializeComponent();
-            NombreUsuario = nombreUsuario;
+            idUsuario = Convert.ToInt32(iD);
+            NombreUsuario = interfazNucleo.ObtenerAdministrador(idUsuario).Nombre;
             labelNombreUsuario.Text = "Usuario: " + NombreUsuario;
         }
 
@@ -38,7 +39,7 @@ namespace Programa
         private void botonVolver_Click(object sender, EventArgs e)
         {
            
-            MenuPrincipal ventana = new MenuPrincipal(NombreUsuario);
+            Menu2 ventana = new Menu2(idUsuario.ToString());
             ventana.Show();
              this.Hide();
         }
@@ -95,7 +96,7 @@ namespace Programa
                                     interfazNucleo.AñadirAdministrador(textBoxNombre.Text, textBoxApellido.Text, dateTimePickerFechaNacimiento.Value, textBoxMail.Text, textBoxContraseña.Text, textBoxTelefono.Text);
                                     MessageBox.Show("La cuenta de administrador ha sido creada, el id de accceso es: " + interfazNucleo.ObtenerUltimoIdAdministrador(), "Operacion Exitosa", MessageBoxButtons.OK);
 
-                                    MenuPrincipal ventana = new MenuPrincipal(NombreUsuario);
+                                    Menu2 ventana = new Menu2(idUsuario.ToString());
                                     ventana.Show();
                                     this.Hide();
                                 }

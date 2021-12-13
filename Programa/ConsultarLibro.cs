@@ -8,23 +8,27 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Dominio;
+using Nucleo;
 
 namespace Programa
 {
     public partial class ConsultarLibro : Form
     {
         private string NombreUsuario { get; set; }
-        public ConsultarLibro(string nombreUsuario)
+        private int idUsuario { get; set; }
+        InterfazNucleo interfazNucleo = new InterfazNucleo();
+        public ConsultarLibro(string iD)
         {
             InitializeComponent();
-            NombreUsuario = nombreUsuario;
+            idUsuario = Convert.ToInt32(iD);
+            NombreUsuario = interfazNucleo.ObtenerAdministrador(idUsuario).Nombre;
             labelNombreUsuario.Text = "Usuario: " + NombreUsuario;
         }
 
         private void botonVolver_Click(object sender, EventArgs e)
         {
             this.Hide();
-            MenuPrincipal ventana = new MenuPrincipal(NombreUsuario);
+            Menu2 ventana = new Menu2(idUsuario.ToString());
             ventana.Show();
         }
 
@@ -36,7 +40,7 @@ namespace Programa
             textBoxISBN.Clear();
             if (textBoxId.Text != null && (textBoxId.Text).All(char.IsDigit) && textBoxId.Text != "")
             {
-                Libro libro = new Nucleo.InterfazNucleo().ObtenerLibro(Convert.ToInt32(textBoxId.Text));
+                Libro libro = new InterfazNucleo().ObtenerLibro(Convert.ToInt32(textBoxId.Text));
                 if (libro != null)
                 {
                     textBoxTitulo.Text = libro.Titulo;
@@ -63,6 +67,11 @@ namespace Programa
         private void textBoxId_TextChanged(object sender, EventArgs e)
         {
             buttonBuscarLibro.Enabled = true;
+        }
+
+        private void ConsultarLibro_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -37,7 +37,6 @@ namespace Programa
             this.botonIniciarSesion = new System.Windows.Forms.Button();
             this.labelError = new System.Windows.Forms.Label();
             this.buttonMostrar = new System.Windows.Forms.Button();
-            this.buttonCerrar = new System.Windows.Forms.Button();
             this.buttonRegistrarse = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -135,24 +134,6 @@ namespace Programa
             this.buttonMostrar.UseVisualStyleBackColor = false;
             this.buttonMostrar.Click += new System.EventHandler(this.button1_Click);
             // 
-            // buttonCerrar
-            // 
-            this.buttonCerrar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonCerrar.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonCerrar.FlatAppearance.BorderSize = 0;
-            this.buttonCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonCerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonCerrar.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.buttonCerrar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonCerrar.Location = new System.Drawing.Point(739, 12);
-            this.buttonCerrar.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.buttonCerrar.Name = "buttonCerrar";
-            this.buttonCerrar.Size = new System.Drawing.Size(50, 50);
-            this.buttonCerrar.TabIndex = 35;
-            this.buttonCerrar.Text = "X";
-            this.buttonCerrar.UseVisualStyleBackColor = true;
-            this.buttonCerrar.Click += new System.EventHandler(this.buttonCerrar_Click);
-            // 
             // buttonRegistrarse
             // 
             this.buttonRegistrarse.BackColor = System.Drawing.SystemColors.ControlLight;
@@ -180,7 +161,7 @@ namespace Programa
             // 
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox1.Image = global::Programa.Properties.Resources.pngegg;
-            this.pictureBox1.Location = new System.Drawing.Point(302, 106);
+            this.pictureBox1.Location = new System.Drawing.Point(307, 106);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(188, 172);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -196,7 +177,6 @@ namespace Programa
             this.ClientSize = new System.Drawing.Size(800, 600);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.buttonRegistrarse);
-            this.Controls.Add(this.buttonCerrar);
             this.Controls.Add(this.buttonMostrar);
             this.Controls.Add(this.labelError);
             this.Controls.Add(this.botonIniciarSesion);
@@ -205,7 +185,7 @@ namespace Programa
             this.Controls.Add(this.textBoxContraseña);
             this.Controls.Add(this.textBoxId);
             this.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(800, 600);
             this.MinimizeBox = false;
@@ -230,7 +210,6 @@ namespace Programa
         private System.Windows.Forms.Button botonIniciarSesion;
         private System.Windows.Forms.Label labelError;
         private System.Windows.Forms.Button buttonMostrar;
-        private System.Windows.Forms.Button buttonCerrar;
         private System.Windows.Forms.Button buttonRegistrarse;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.PictureBox pictureBox1;

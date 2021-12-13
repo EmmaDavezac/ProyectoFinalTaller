@@ -498,6 +498,7 @@ namespace Programa
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RegistrarDevolucion";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.RegistrarDevolucion_FormClosed);
+            this.Load += new System.EventHandler(this.RegistrarDevolucion_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

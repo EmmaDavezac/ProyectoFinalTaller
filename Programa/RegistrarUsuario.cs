@@ -14,15 +14,15 @@ namespace Programa
     public partial class RegistrarUsuario : Form
     {
         private string NombreUsuario { get; set; }
+        private int idUsuario { get; set; }
         InterfazNucleo interfazNucleo = new InterfazNucleo();
-        public RegistrarUsuario(string nombreUsuario)
+        public RegistrarUsuario(string iD)
         {
-
             InitializeComponent();
-            NombreUsuario = nombreUsuario;
+            idUsuario = Convert.ToInt32(iD);
+            NombreUsuario = interfazNucleo.ObtenerAdministrador(idUsuario).Nombre;
             labelNombreUsuario.Text = "Usuario: " + NombreUsuario;
         }
-
         private void buttonSalir_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -31,7 +31,7 @@ namespace Programa
         private void botonVolver_Click(object sender, EventArgs e)
         {
             this.Hide();
-            MenuPrincipal ventanaMenu = new MenuPrincipal(NombreUsuario);
+            Menu2 ventanaMenu = new Menu2(idUsuario.ToString());
             ventanaMenu.Show();
         }
 
@@ -66,7 +66,7 @@ namespace Programa
                                     interfazNucleo.AñadirUsuario(textBoxNombre.Text, textBoxApellido.Text, dateTimePickerFechaNacimiento.Value, textBoxMail.Text,  textBoxTelefono.Text);
                                     MessageBox.Show("Usuario creado,id  es: " + interfazNucleo.ObtenerUltimoIdUsuario(), "Operacion Exitosa", MessageBoxButtons.OK);
                                     this.Hide();
-                                MenuPrincipal ventana = new MenuPrincipal(NombreUsuario);
+                                Menu2 ventana = new Menu2(idUsuario.ToString());
                                     ventana.Show();
 
                                 
@@ -158,6 +158,11 @@ namespace Programa
         private void labelNombreUsuario_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void textBoxTelefono_TextChanged(object sender, EventArgs e)
+        {
+            buttonAñadirUsuario.Enabled = true;
         }
     }
 }

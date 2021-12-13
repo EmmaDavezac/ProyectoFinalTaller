@@ -15,11 +15,13 @@ namespace Programa
     public partial class ActualizarContraseña : Form
     {
         InterfazNucleo interfazNucleo = new InterfazNucleo();
+        private int idUsuario { get; set; }
         private string NombreUsuario { get; set; }
-        public ActualizarContraseña(string nombreUsuario)
+        public ActualizarContraseña(string iD)
         {
             InitializeComponent();
-            NombreUsuario = nombreUsuario;
+            idUsuario = Convert.ToInt32(iD);
+            NombreUsuario = interfazNucleo.ObtenerAdministrador(idUsuario).Nombre;
             labelNombreUsuario.Text = "Usuario: " + NombreUsuario;
         }
 
@@ -86,7 +88,7 @@ namespace Programa
                             interfazNucleo.ActualizarContraseñaAdministrador(textBoxId.Text, textBoxContraseñaNueva1.Text);
                             MessageBox.Show("La contraseña del usuario Id:" + textBoxId.Text + " Ha sido actualizada!");
                             this.Hide();
-                            MenuPrincipal ventana = new MenuPrincipal(NombreUsuario);
+                            Menu2 ventana = new Menu2(idUsuario.ToString());
                             ventana.Show();
                         }
                         else { labelError.Text = "Las contraseñas no coinciden"; textBoxContraseñaNueva2.Focus();textBoxContraseñaNueva2.Clear(); buttonGuardar.Enabled = false; }
@@ -102,13 +104,18 @@ namespace Programa
         private void button2_Click(object sender, EventArgs e)
         {
             this.Hide();
-            MenuPrincipal ventana = new MenuPrincipal(NombreUsuario);
+            Menu2 ventana = new Menu2(idUsuario.ToString());
             ventana.Show();
         }
 
         private void ActualizarContraseña_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void ActualizarContraseña_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

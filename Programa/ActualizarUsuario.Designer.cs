@@ -70,6 +70,7 @@ namespace Programa
             this.textBoxFecha.ReadOnly = true;
             this.textBoxFecha.Size = new System.Drawing.Size(300, 20);
             this.textBoxFecha.TabIndex = 51;
+            this.textBoxFecha.TextChanged += new System.EventHandler(this.textBoxFecha_TextChanged);
             // 
             // textBoxId
             // 
@@ -153,6 +154,7 @@ namespace Programa
             this.textBoxMail.Name = "textBoxMail";
             this.textBoxMail.Size = new System.Drawing.Size(300, 20);
             this.textBoxMail.TabIndex = 6;
+            this.textBoxMail.TextChanged += new System.EventHandler(this.textBoxMail_TextChanged);
             // 
             // textBoxApellido
             // 
@@ -162,6 +164,7 @@ namespace Programa
             this.textBoxApellido.Name = "textBoxApellido";
             this.textBoxApellido.Size = new System.Drawing.Size(300, 20);
             this.textBoxApellido.TabIndex = 5;
+            this.textBoxApellido.TextChanged += new System.EventHandler(this.textBoxApellido_TextChanged);
             // 
             // textBoxNombre
             // 
@@ -171,6 +174,7 @@ namespace Programa
             this.textBoxNombre.Name = "textBoxNombre";
             this.textBoxNombre.Size = new System.Drawing.Size(300, 20);
             this.textBoxNombre.TabIndex = 4;
+            this.textBoxNombre.TextChanged += new System.EventHandler(this.textBoxNombre_TextChanged);
             // 
             // buttonSeleccionar
             // 
@@ -236,6 +240,7 @@ namespace Programa
             this.textBoxTelefono.Name = "textBoxTelefono";
             this.textBoxTelefono.Size = new System.Drawing.Size(300, 20);
             this.textBoxTelefono.TabIndex = 55;
+            this.textBoxTelefono.TextChanged += new System.EventHandler(this.textBoxTelefono_TextChanged);
             // 
             // label5
             // 

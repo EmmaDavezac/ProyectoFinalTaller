@@ -494,6 +494,7 @@ namespace Programa
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "1";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ConsultarPrestamo_FormClosed);
+            this.Load += new System.EventHandler(this.ConsultarPrestamo_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

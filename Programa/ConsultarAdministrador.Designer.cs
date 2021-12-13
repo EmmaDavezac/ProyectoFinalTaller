@@ -252,6 +252,7 @@ namespace Programa
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ConsultarAdministrador";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ConsultarAdministrador_FormClosed);
+            this.Load += new System.EventHandler(this.ConsultarAdministrador_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

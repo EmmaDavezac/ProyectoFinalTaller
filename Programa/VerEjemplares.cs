@@ -14,11 +14,15 @@ namespace Programa
     public partial class VerEjemplares : Form
     {
         private string NombreUsuario { get; set; }
-        public VerEjemplares(string nombreUsuario)
+        private int idUsuario { get; set; }
+        InterfazNucleo interfazNucleo = new InterfazNucleo();
+        public VerEjemplares(string iD)
         {
-
             InitializeComponent();
-            foreach (var item in new InterfazNucleo().ObtenerEjemplares())
+            idUsuario = Convert.ToInt32(iD);
+            NombreUsuario = interfazNucleo.ObtenerAdministrador(idUsuario).Nombre;
+            labelNombreUsuario.Text = "Usuario: " + NombreUsuario;
+            foreach (var item in interfazNucleo.ObtenerEjemplares())
             {
                 int n = dgvEjemplares.Rows.Add();
                 dgvEjemplares.Rows[n].Cells[0].Value = item.Id;
@@ -36,9 +40,8 @@ namespace Programa
 
 
             }
-            NombreUsuario = nombreUsuario;
-            labelNombreUsuario.Text = "Usuario: " + NombreUsuario;
         }
+       
 
         private void VerEjemplares_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -68,7 +71,7 @@ namespace Programa
         private void botonVolver_Click(object sender, EventArgs e)
         {
             this.Hide();
-            MenuPrincipal ventanaMenu = new MenuPrincipal(NombreUsuario);
+            Menu2 ventanaMenu = new Menu2(idUsuario.ToString());
             ventanaMenu.Show();
         }
 

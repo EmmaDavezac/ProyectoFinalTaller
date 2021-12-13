@@ -32,14 +32,14 @@ namespace Programa
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvAdministradores = new System.Windows.Forms.DataGridView();
-            this.botonVolver = new System.Windows.Forms.Button();
-            this.labelNombreUsuario = new System.Windows.Forms.Label();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FechaNacimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.botonVolver = new System.Windows.Forms.Button();
+            this.labelNombreUsuario = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAdministradores)).BeginInit();
             this.SuspendLayout();
             // 
@@ -82,32 +82,6 @@ namespace Programa
             this.dgvAdministradores.Size = new System.Drawing.Size(800, 426);
             this.dgvAdministradores.TabIndex = 11;
             this.dgvAdministradores.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAdministradores_CellContentClick);
-            // 
-            // botonVolver
-            // 
-            this.botonVolver.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.botonVolver.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.botonVolver.Location = new System.Drawing.Point(700, 565);
-            this.botonVolver.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.botonVolver.Name = "botonVolver";
-            this.botonVolver.Size = new System.Drawing.Size(89, 23);
-            this.botonVolver.TabIndex = 10;
-            this.botonVolver.Text = "Volver";
-            this.botonVolver.UseVisualStyleBackColor = true;
-            this.botonVolver.Click += new System.EventHandler(this.botonVolver_Click);
-            // 
-            // labelNombreUsuario
-            // 
-            this.labelNombreUsuario.BackColor = System.Drawing.SystemColors.Highlight;
-            this.labelNombreUsuario.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.labelNombreUsuario.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.labelNombreUsuario.Location = new System.Drawing.Point(606, 9);
-            this.labelNombreUsuario.Name = "labelNombreUsuario";
-            this.labelNombreUsuario.Size = new System.Drawing.Size(182, 31);
-            this.labelNombreUsuario.TabIndex = 12;
-            this.labelNombreUsuario.Text = "Nombre de Usuario";
-            this.labelNombreUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.labelNombreUsuario.Click += new System.EventHandler(this.labelNombreUsuario_Click);
             // 
             // Id
             // 
@@ -155,6 +129,36 @@ namespace Programa
             this.Telefono.HeaderText = "Telefono";
             this.Telefono.Name = "Telefono";
             this.Telefono.ReadOnly = true;
+            // 
+            // botonVolver
+            // 
+            this.botonVolver.BackColor = System.Drawing.SystemColors.Highlight;
+            this.botonVolver.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.botonVolver.FlatAppearance.BorderSize = 0;
+            this.botonVolver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.botonVolver.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.botonVolver.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.botonVolver.Location = new System.Drawing.Point(700, 565);
+            this.botonVolver.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.botonVolver.Name = "botonVolver";
+            this.botonVolver.Size = new System.Drawing.Size(89, 23);
+            this.botonVolver.TabIndex = 10;
+            this.botonVolver.Text = "Volver";
+            this.botonVolver.UseVisualStyleBackColor = false;
+            this.botonVolver.Click += new System.EventHandler(this.botonVolver_Click);
+            // 
+            // labelNombreUsuario
+            // 
+            this.labelNombreUsuario.BackColor = System.Drawing.SystemColors.Highlight;
+            this.labelNombreUsuario.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.labelNombreUsuario.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.labelNombreUsuario.Location = new System.Drawing.Point(606, 9);
+            this.labelNombreUsuario.Name = "labelNombreUsuario";
+            this.labelNombreUsuario.Size = new System.Drawing.Size(182, 31);
+            this.labelNombreUsuario.TabIndex = 12;
+            this.labelNombreUsuario.Text = "Nombre de Usuario";
+            this.labelNombreUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelNombreUsuario.Click += new System.EventHandler(this.labelNombreUsuario_Click);
             // 
             // VerAdministradores
             // 

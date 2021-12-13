@@ -381,6 +381,7 @@ namespace Programa
             this.Name = "ActualizarLibro";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ActualizarLibro";
+            this.Load += new System.EventHandler(this.ActualizarLibro_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
