@@ -21,7 +21,7 @@ namespace Programa
         {
             InitializeComponent();
             idUsuario = Convert.ToInt32(iD);
-            NombreUsuario = interfazNucleo.ObtenerAdministrador(idUsuario).Nombre;
+            NombreUsuario = interfazNucleo.ObtenerAdministradorPorId(idUsuario).Nombre;
             labelNombreUsuario.Text = "Usuario: " + NombreUsuario;
         }
 
@@ -47,7 +47,7 @@ namespace Programa
             {
                 if (textBoxIdUsuario.Text != null && (textBoxIdUsuario.Text).All(char.IsDigit) && textBoxIdUsuario.Text != "")
                 {
-                    UsuarioSimple usuario = new Nucleo.InterfazNucleo().ObtenerUsuario(Convert.ToInt32(textBoxIdUsuario.Text));
+                    UsuarioSimple usuario = new Nucleo.InterfazNucleo().ObtenerUsuarioPorId(Convert.ToInt32(textBoxIdUsuario.Text));
                     if (usuario != null)
                     {
                         textBoxNombre.Text = usuario.Nombre;
@@ -67,7 +67,7 @@ namespace Programa
 
         private void buttonBuscarLibro_Click(object sender, EventArgs e)
         {
-            {   
+            {
                 textBoxTitulo.Clear();
                 textBoxAutor.Clear();
                 textBoxISBN.Clear();
@@ -80,14 +80,14 @@ namespace Programa
                         textBoxAutor.Text = libro.Autor;
                         textBoxISBN.Text = libro.ISBN;
                         buttonBuscarLibro.Enabled = false;
-                        
+
                         buttonConfirmarLibro.Enabled = true;
                         buttonConfirmarLibro.Focus();
-                        
+
                     }
-                    else { labelErrorLibro.Text = "El Id ingresado no corresponde a un libro registrado ";  textBoxIdLibro.Clear(); textBoxIdLibro.Focus(); buttonBuscarLibro.Enabled = false; buttonConfirmarLibro.Enabled = false; }
+                    else { labelErrorLibro.Text = "El Id ingresado no corresponde a un libro registrado "; textBoxIdLibro.Clear(); textBoxIdLibro.Focus(); buttonBuscarLibro.Enabled = false; buttonConfirmarLibro.Enabled = false; }
                 }
-                else { labelErrorLibro.Text = "El Id ingresado es incorrecto ";  textBoxIdLibro.Clear(); textBoxIdLibro.Focus(); buttonConfirmarLibro.Enabled = false; buttonBuscarLibro.Enabled = false; }
+                else { labelErrorLibro.Text = "El Id ingresado es incorrecto "; textBoxIdLibro.Clear(); textBoxIdLibro.Focus(); buttonConfirmarLibro.Enabled = false; buttonBuscarLibro.Enabled = false; }
             }
         }
 
@@ -113,19 +113,19 @@ namespace Programa
 
         private void dgvEjemplares_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if ( dgvEjemplares.CurrentRow.Cells[0].Value!=null)
+            if (dgvEjemplares.CurrentRow.Cells[0].Value != null)
             {
                 textBoxIdEjemplar.Text = dgvEjemplares.CurrentRow.Cells[0].Value.ToString();
                 textBoxEstado.Text = dgvEjemplares.CurrentRow.Cells[1].Value.ToString();
                 buttonConfirmarEjemplar.Enabled = true;
                 buttonConfirmarEjemplar.Focus();
             }
-        
+
         }
 
         private void buttonConfirmarUsuario_Click(object sender, EventArgs e)
         {
-            if (buttonConfirmarUsuario.Text=="Confirmar")
+            if (buttonConfirmarUsuario.Text == "Confirmar")
             {
                 textBoxIdUsuario.Enabled = false;
                 buttonConfirmarUsuario.Text = "Modificar";
@@ -133,7 +133,7 @@ namespace Programa
                 textBoxIdLibro.Focus();
             }
             else
-            {   
+            {
                 textBoxIdUsuario.Enabled = true;
                 buttonConfirmarUsuario.Text = "Confirmar";
                 buttonConfirmarLibro.Enabled = false;
@@ -151,7 +151,7 @@ namespace Programa
                 buttonConfirmarLibro.Text = "Modificar";
                 dgvEjemplares.Enabled = true;
                 dgvEjemplares.Rows.Clear();
-                foreach (var item in new InterfazNucleo().ObtenerEjemplaresDisponibles(Convert.ToInt32(textBoxIdLibro.Text))) 
+                foreach (var item in new InterfazNucleo().ObtenerEjemplaresDisponibles(Convert.ToInt32(textBoxIdLibro.Text)))
                 {
                     int n = dgvEjemplares.Rows.Add();
                     dgvEjemplares.Rows[n].Cells[0].Value = item.Id;
@@ -181,7 +181,7 @@ namespace Programa
                 buttonConfirmarLibro.Enabled = false;
                 buttonGuardar.Enabled = true;
 
-                
+
                 buttonGuardar.Focus();
             }
             else
@@ -206,10 +206,10 @@ namespace Programa
                 Menu2 ventanaMenu = new Menu2(idUsuario.ToString());
                 ventanaMenu.Show();
             }
-            else 
+            else
             {
-                DialogResult result = MessageBox.Show("El libro se encuentra en mal estado \n¿Desea continuar la operacion?","Advertencia",  MessageBoxButtons.YesNo);
-                if (result==DialogResult.Yes)
+                DialogResult result = MessageBox.Show("El libro se encuentra en mal estado \n¿Desea continuar la operacion?", "Advertencia", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
                 {
                     new InterfazNucleo().RegistrarPrestamo(Convert.ToInt32(textBoxIdUsuario.Text), Convert.ToInt32(textBoxIdEjemplar.Text));
                     int id = new InterfazNucleo().ObtenerUltimoIdPrestamo();

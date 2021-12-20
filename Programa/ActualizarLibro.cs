@@ -21,7 +21,7 @@ namespace Programa
         {
             InitializeComponent();
             idUsuario = Convert.ToInt32(iD);
-            NombreUsuario = interfazNucleo.ObtenerAdministrador(idUsuario).Nombre;
+            NombreUsuario = interfazNucleo.ObtenerAdministradorPorId(idUsuario).Nombre;
             labelNombreUsuario.Text = "Usuario: " + NombreUsuario;
         }
 
@@ -78,7 +78,7 @@ namespace Programa
             {
                 int resultado = 0;
                 dataGridView1.Rows.Clear();
-                foreach (var item in  interfazNucleo.ListarLibrosDeAPIPorCoincidencia(textBoxBuscar.Text))
+                foreach (var item in interfazNucleo.ListarLibrosDeAPIPorCoincidencia(textBoxBuscar.Text))
                 {
                     int n = dataGridView1.Rows.Add();
                     dataGridView1.Rows[n].Cells[0].Value = item.Titulo;
@@ -125,13 +125,13 @@ namespace Programa
         private void buttonBorrarCambios_Click(object sender, EventArgs e)
         {
             Libro libro = interfazNucleo.ObtenerLibro(Convert.ToInt32(textBoxId.Text));
-           
-                textBoxTitulo.Text = libro.Titulo;
-                textBoxAutor.Text = libro.Autor;
-                textBoxAñoPublicacion.Text = libro.AñoPublicacion;
-                textBoxISBN.Text = libro.ISBN;
-                buttonBuscar.Enabled = false;
-                buttonSeleccionar.Enabled = true;
+
+            textBoxTitulo.Text = libro.Titulo;
+            textBoxAutor.Text = libro.Autor;
+            textBoxAñoPublicacion.Text = libro.AñoPublicacion;
+            textBoxISBN.Text = libro.ISBN;
+            buttonBuscar.Enabled = false;
+            buttonSeleccionar.Enabled = true;
             buttonDeshacerCambios.Enabled = false;
             buttonGuardar.Enabled = false;
         }
@@ -165,8 +165,8 @@ namespace Programa
             if (!string.IsNullOrEmpty(textBoxTitulo.Text) && !string.IsNullOrEmpty(textBoxAutor.Text) && !string.IsNullOrEmpty(textBoxISBN.Text) && !string.IsNullOrEmpty(textBoxAñoPublicacion.Text))
             {
 
-                new InterfazNucleo().ActualizarLibro(Convert.ToInt32(textBoxId.Text),textBoxISBN.Text, textBoxTitulo.Text, textBoxAutor.Text, textBoxAñoPublicacion.Text);
-                MessageBox.Show("El libro Id:"+textBoxId.Text+" se ha actualizado exitosamente!");
+                new InterfazNucleo().ActualizarLibro(Convert.ToInt32(textBoxId.Text), textBoxISBN.Text, textBoxTitulo.Text, textBoxAutor.Text, textBoxAñoPublicacion.Text);
+                MessageBox.Show("El libro Id:" + textBoxId.Text + " se ha actualizado exitosamente!");
                 this.Hide();
                 Menu2 ventanaMenu = new Menu2(idUsuario.ToString());
                 ventanaMenu.Show();
@@ -206,5 +206,5 @@ namespace Programa
             ventanaMenu.Show();
         }
     }
-    }
+}
 

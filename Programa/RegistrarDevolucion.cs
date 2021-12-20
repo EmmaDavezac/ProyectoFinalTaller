@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using Nucleo;
 
 namespace Programa
-{   
+{
     public partial class RegistrarDevolucion : Form
     {
         private string NombreUsuario { get; set; }
@@ -20,7 +20,7 @@ namespace Programa
         {
             InitializeComponent();
             idUsuario = Convert.ToInt32(iD);
-            NombreUsuario = interfazNucleo.ObtenerAdministrador(idUsuario).Nombre;
+            NombreUsuario = interfazNucleo.ObtenerAdministradorPorId(idUsuario).Nombre;
             labelNombreUsuario.Text = "Usuario: " + NombreUsuario;
         }
 

@@ -17,9 +17,9 @@ namespace Programa
         {
             InitializeComponent();
             NombreUsuario = nombreUsuario;
-            labelNombreUsuario.Text = "Usuario: "+NombreUsuario;
+            labelNombreUsuario.Text = "Usuario: " + NombreUsuario;
         }
-        
+
 
         private void Menu_Load(object sender, EventArgs e)
         {
@@ -34,14 +34,15 @@ namespace Programa
         }
 
         private void botonSalir_Click(object sender, EventArgs e)
-        { this.Hide();
+        {
+            this.Hide();
             Login ventanaLogin = new Login();
             ventanaLogin.Show();
         }
 
         private void botonVerUsuarios_Click(object sender, EventArgs e)
         {
-            VerUsuarios ventana=new VerUsuarios(NombreUsuario);
+            VerUsuarios ventana = new VerUsuarios(NombreUsuario);
             this.Hide();
             ventana.Show();
         }
@@ -55,7 +56,7 @@ namespace Programa
 
         private void buttonSalir_Click(object sender, EventArgs e)
         {
-            
+
             Application.Exit();
         }
 
@@ -234,5 +235,5 @@ namespace Programa
             }
         }
     }
- }
+}
 

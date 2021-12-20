@@ -21,7 +21,7 @@ namespace Programa
         {
             InitializeComponent();
             idUsuario = Convert.ToInt32(iD);
-            NombreUsuario = interfazNucleo.ObtenerAdministrador(idUsuario).Nombre;
+            NombreUsuario = interfazNucleo.ObtenerAdministradorPorId(idUsuario).Nombre;
             labelNombreUsuario.Text = "Usuario: " + NombreUsuario;
         }
 
@@ -29,7 +29,7 @@ namespace Programa
         {
             if (textBoxId.Text != null && (textBoxId.Text).All(char.IsDigit) && textBoxId.Text != "")
             {
-                UsuarioAdministrador usuario = interfazNucleo.ObtenerAdministrador(Convert.ToInt32(textBoxId.Text));
+                UsuarioAdministrador usuario = interfazNucleo.ObtenerAdministradorPorId(Convert.ToInt32(textBoxId.Text));
                 if (usuario != null)
                 {
                     textBoxNombre.Text = usuario.Nombre;
@@ -79,7 +79,7 @@ namespace Programa
         {
             if (!string.IsNullOrEmpty(textBoxContraseñaActual.Text))
             {
-                if (interfazNucleo.VerficarContraseña(Convert.ToInt32(textBoxId.Text), textBoxContraseñaActual.Text))
+                if (interfazNucleo.VerficarContraseña(textBoxId.Text, textBoxContraseñaActual.Text))
                 {
                     if (!string.IsNullOrEmpty(textBoxContraseñaNueva1.Text))
                     {
@@ -91,14 +91,14 @@ namespace Programa
                             Menu2 ventana = new Menu2(idUsuario.ToString());
                             ventana.Show();
                         }
-                        else { labelError.Text = "Las contraseñas no coinciden"; textBoxContraseñaNueva2.Focus();textBoxContraseñaNueva2.Clear(); buttonGuardar.Enabled = false; }
+                        else { labelError.Text = "Las contraseñas no coinciden"; textBoxContraseñaNueva2.Focus(); textBoxContraseñaNueva2.Clear(); buttonGuardar.Enabled = false; }
                     }
                     else { labelError.Text = "No ha ingresado la contraseña nueva"; textBoxContraseñaNueva1.Focus(); buttonGuardar.Enabled = false; }
                 }
                 else { labelError.Text = "La contraseña actual ingresada es incorrecta"; textBoxContraseñaActual.Clear(); textBoxContraseñaActual.Focus(); buttonGuardar.Enabled = false; }
 
             }
-            else { labelError.Text = "No ha ingresado la contraseña actual"; textBoxContraseñaActual.Focus();buttonGuardar.Enabled = false; }
+            else { labelError.Text = "No ha ingresado la contraseña actual"; textBoxContraseñaActual.Focus(); buttonGuardar.Enabled = false; }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -121,3 +121,4 @@ namespace Programa
         }
     }
 }
+

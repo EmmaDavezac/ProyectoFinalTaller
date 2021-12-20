@@ -312,6 +312,8 @@
       <DependentUpon>VerUsuarios.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\Dominio.Usuario.datasource" />
+    <None Include="Properties\DataSources\Dominio.UsuarioSimple.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

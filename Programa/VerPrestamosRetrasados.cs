@@ -20,7 +20,7 @@ namespace Programa
         {
             InitializeComponent();
             idUsuario = Convert.ToInt32(iD);
-            NombreUsuario = interfazNucleo.ObtenerAdministrador(idUsuario).Nombre;
+            NombreUsuario = interfazNucleo.ObtenerAdministradorPorId(idUsuario).Nombre;
             labelNombreUsuario.Text = "Usuario: " + NombreUsuario;
             foreach (var item in interfazNucleo.ObtenerListadePrestamosRetrasados())
             {
@@ -68,7 +68,7 @@ namespace Programa
 
             }
         }
-        
+
 
         private void botonVolver_Click(object sender, EventArgs e)
         {

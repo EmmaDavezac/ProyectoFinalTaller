@@ -6,18 +6,18 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    public class UsuarioSimple:Usuario
+    public class UsuarioSimple : Usuario
     {
         public virtual List<Prestamo> Prestamos { get; set; }
+        public int Scoring { get; set; }
+        public UsuarioSimple(string nombre, string apellido, DateTime fechaNacimiento, string mail, string telefono, string pNombreUsuario) : base(nombre, apellido, fechaNacimiento, mail, telefono, pNombreUsuario)
+        {
+            Scoring = 0;
+        }
+
         public UsuarioSimple()
         {
 
-        }
-        public int Scoring { get; set; }
-        public UsuarioSimple(string nombre, string apellido, DateTime fechaNacimiento, string mail, string telefono) : base(nombre, apellido, fechaNacimiento, mail,telefono)
-        {
-            
-            Scoring = 0;
         }
     }
 }

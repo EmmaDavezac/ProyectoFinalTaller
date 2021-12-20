@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,14 +15,20 @@ namespace Dominio
         public DateTime FechaNacimiento { get; set; }
         public string Mail { get; set; }
         public string Telefono { get; set; }
-        public Usuario(string nombre, string apellido, DateTime fechaNacimiento, string mail,string telefono)
+        [Key]
+        public string NombreUsuario { get; set; }
+
+        public Usuario(string nombre, string apellido, DateTime fechaNacimiento, string mail, string telefono, string pNombreUsuario)
         {
+            Id = 3;
             Nombre = nombre;
             Apellido = apellido;
             FechaNacimiento = fechaNacimiento;
             Mail = mail;
             Telefono = telefono;
+            NombreUsuario = pNombreUsuario;
         }
+
         public Usuario()
         {
 

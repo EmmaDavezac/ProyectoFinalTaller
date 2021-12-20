@@ -16,13 +16,13 @@ namespace Programa
     public partial class RegistrarLibro : Form
     {
         private string NombreUsuario { get; set; }
-        private int idUsuario { get; set; }
+        private string idUsuario { get; set; }
         InterfazNucleo interfazNucleo = new InterfazNucleo();
         public RegistrarLibro(string iD)
         {
             InitializeComponent();
-            idUsuario = Convert.ToInt32(iD);
-            NombreUsuario = interfazNucleo.ObtenerAdministrador(idUsuario).Nombre;
+            idUsuario = iD;
+            NombreUsuario = interfazNucleo.ObtenerAdministradorPorNombreOMail(idUsuario).Nombre;
             labelNombreUsuario.Text = "Usuario: " + NombreUsuario;
         }
 
@@ -63,7 +63,8 @@ namespace Programa
                     textBoxBuscar.Focus();
                 }
             }
-            else {
+            else
+            {
                 labelResultados.Text = "No ingreso un termino de busqueda";
                 buttonBuscar.Enabled = false;
                 textBoxBuscar.Focus();
@@ -82,11 +83,11 @@ namespace Programa
 
         private void buttonGuardar_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(textBoxTitulo.Text)&& !string.IsNullOrEmpty(textBoxAutor.Text)&&! string.IsNullOrEmpty(textBoxISBN.Text)&& !string.IsNullOrEmpty(textBoxAñoPublicacion.Text))
+            if (!string.IsNullOrEmpty(textBoxTitulo.Text) && !string.IsNullOrEmpty(textBoxAutor.Text) && !string.IsNullOrEmpty(textBoxISBN.Text) && !string.IsNullOrEmpty(textBoxAñoPublicacion.Text))
             {
 
                 new InterfazNucleo().AñadirLibro(textBoxISBN.Text, textBoxTitulo.Text, textBoxAutor.Text, textBoxAñoPublicacion.Text);
-                MessageBox.Show("Libro registrado con exito, el Id del libro es: "+new InterfazNucleo().ObtenerUltimoIdLibro());
+                MessageBox.Show("Libro registrado con exito, el Id del libro es: " + new InterfazNucleo().ObtenerUltimoIdLibro());
                 this.Hide();
                 Menu2 ventanaMenu = new Menu2(idUsuario.ToString());
                 ventanaMenu.Show();
@@ -139,7 +140,7 @@ namespace Programa
             textBoxAñoPublicacion.Clear();
             textBoxISBN.Clear();
             textBoxTitulo.Clear();
-            
+
         }
 
         private void labelIngreseISBN_Click(object sender, EventArgs e)

@@ -16,57 +16,19 @@ namespace Programa
     {
         private string NombreUsuario { get; set; }
         InterfazNucleo interfazNucleo = new InterfazNucleo();
-        private int idUsuario { get; set; }
+        private string idUsuario { get; set; }
         public ActualizarAdministrador(string iD)
         {
             InitializeComponent();
-            idUsuario = Convert.ToInt32(iD);
-            NombreUsuario = interfazNucleo.ObtenerAdministrador(idUsuario).Nombre;
+            idUsuario = iD;
+            NombreUsuario = interfazNucleo.ObtenerAdministradorPorNombreOMail(idUsuario).Nombre;
             labelNombreUsuario.Text = "Usuario: " + NombreUsuario;
-        }
-
-        private void buttonBuscarUsuario_Click(object sender, EventArgs e)
-        {
-            if (textBoxId.Text != null && (textBoxId.Text).All(char.IsDigit) && textBoxId.Text != "")
-            {
-                UsuarioAdministrador administrador = new InterfazNucleo().ObtenerAdministrador(Convert.ToInt32(textBoxId.Text));
-                if (administrador != null)
-                {
-                    textBoxNombre.Text = administrador.Nombre;
-                    textBoxApellido.Text = administrador.Apellido;
-                    textBoxFecha.Text = Convert.ToString(administrador.FechaNacimiento.Date);
-                    textBoxMail.Text = administrador.Mail;
-                    textBoxTelefono.Text = administrador.Telefono;
-                    buttonBuscarAdministrador.Enabled = false;
-                    buttonSeleccionar.Enabled = true;
-                }
-                else { labelError.Text = "El Id ingresado no corresponde a un Administrador registrado "; buttonBuscarAdministrador.Enabled = false; textBoxId.Focus(); }
-            }
-            else { labelError.Text = "El Id ingresado es incorrecto "; buttonBuscarAdministrador.Enabled = false; textBoxId.Focus(); }
-        }
-
-        private void textBoxId_TextChanged(object sender, EventArgs e)
-        {
-            buttonBuscarAdministrador.Enabled = true;
-            buttonSeleccionar.Enabled = false;
-        }
-
-        private void buttonSeleccionar_Click(object sender, EventArgs e)
-        {
-            textBoxId.Enabled = false;
-            textBoxNombre.Enabled = true;
-            textBoxApellido.Enabled = true;
-            textBoxMail.Enabled = true;
-            textBoxTelefono.Enabled = true;
-            buttonGuardar.Enabled = true;
-            buttonSeleccionar.Enabled = false;
-            buttonSeleccionar.Text = "Seleccionado";
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Menu2 ventana = new Menu2(idUsuario.ToString());
+            ConsultarAdministrador ventana = new ConsultarAdministrador(idUsuario.ToString());
             ventana.Show();
         }
 
@@ -76,17 +38,18 @@ namespace Programa
             {
                 if (!string.IsNullOrEmpty(textBoxApellido.Text) && textBoxApellido.Text.All(Char.IsLetter))
                 {
-                    
+                    if (!string.IsNullOrEmpty(textBoxFecha.Text))
+                    {
                         if (!string.IsNullOrEmpty(textBoxMail.Text) && interfazNucleo.EsUnEmailValido(textBoxMail.Text))
                         {
                             if (!string.IsNullOrEmpty(textBoxTelefono.Text) && textBoxTelefono.Text.All(Char.IsDigit) && textBoxTelefono.Text.Length >= 8 && textBoxTelefono.Text.Length <= 11)
                             {
-                            interfazNucleo.ActualizarAdministrador(textBoxId.Text, textBoxNombre.Text, textBoxApellido.Text, textBoxMail.Text,textBoxTelefono.Text);
-                            MessageBox.Show("Operacion Exitosa! se ha actualizado el Administrador ID:" + textBoxId.Text);
-                            this.Hide();
-                            Menu2 ventanaMenu = new Menu2(idUsuario.ToString());
-                            ventanaMenu.Show();
-                        }
+                                interfazNucleo.ActualizarAdministrador(textBoxNombreUsuario.Text, textBoxNombre.Text, textBoxApellido.Text, textBoxFecha.Text, textBoxMail.Text, textBoxTelefono.Text);
+                                MessageBox.Show("Usuario guardado, el nombre de usuario es: " + textBoxNombreUsuario.Text, "Operacion Exitosa", MessageBoxButtons.OK);
+                                this.Hide();
+                                ConsultarAdministrador ventanaMenu = new ConsultarAdministrador(NombreUsuario);
+                                ventanaMenu.Show();
+                            }
                             else
                             {
                                 this.labelError.Text = "Error,telefono ingresado invalido.Ingrese el numero sin 0 ni 15";
@@ -97,10 +60,16 @@ namespace Programa
                         else
                         {
                             this.labelError.Text = "Error, el mail ingresado no es valido";
-                        buttonGuardar.Enabled = false;
+                            buttonGuardar.Enabled = false;
                             textBoxMail.Focus(); ;
                         }
-                  
+                    }
+                    else
+                    {
+                        this.labelError.Text = "Error, no ha ingresado la fecha de nacimiento";
+                        buttonGuardar.Enabled = false;
+                        textBoxFecha.Focus(); ;
+                    }
 
                 }
                 else
@@ -151,8 +120,40 @@ namespace Programa
         private void ActualizarAdministrador_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.Hide();
-            Menu2 ventanaMenu = new Menu2(idUsuario.ToString());
+            ConsultarAdministrador ventanaMenu = new ConsultarAdministrador(idUsuario.ToString());
             ventanaMenu.Show();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void textBoxId_TextChanged(object sender, EventArgs e)
+        {
+            buttonGuardar.Enabled = true;
+        }
+
+        public void CargarUsuarioExistente(string pNombreUsuario)
+        {
+            var usuario = interfazNucleo.ObtenerAdministradorPorNombreOMail(pNombreUsuario);
+            VaciarCampos();
+            textBoxNombreUsuario.Text = usuario.NombreUsuario;
+            textBoxNombre.Text = usuario.Nombre;
+            textBoxApellido.Text = usuario.Apellido;
+            textBoxFecha.Text = usuario.FechaNacimiento.ToString();
+            textBoxMail.Text = usuario.Mail;
+            textBoxTelefono.Text = usuario.Telefono;
+
+        }
+
+        private void VaciarCampos()
+        {
+            textBoxNombreUsuario.Text = string.Empty;
+            textBoxNombre.Text = string.Empty;
+            textBoxApellido.Text = string.Empty;
+            textBoxFecha.Text = string.Empty;
+            textBoxMail.Text = string.Empty;
+            textBoxTelefono.Text = string.Empty;
         }
     }
 }

@@ -20,7 +20,7 @@ namespace Programa
         {
             InitializeComponent();
             idUsuario = Convert.ToInt32(iD);
-            NombreUsuario = interfazNucleo.ObtenerAdministrador(idUsuario).Nombre;
+            NombreUsuario = interfazNucleo.ObtenerAdministradorPorId(idUsuario).Nombre;
             labelNombreUsuario.Text = "Usuario: " + NombreUsuario;
             foreach (var item in interfazNucleo.ObtenerAdministradores())
             {
@@ -33,7 +33,7 @@ namespace Programa
                 dgvAdministradores.Rows[n].Cells[5].Value = item.Telefono;
             }
         }
-        
+
 
         private void VerAdministradores_Load(object sender, EventArgs e)
         {

@@ -20,7 +20,7 @@ namespace Programa
         {
             InitializeComponent();
             idUsuario = Convert.ToInt32(iD);
-            NombreUsuario = interfazNucleo.ObtenerAdministrador(idUsuario).Nombre;
+            NombreUsuario = interfazNucleo.ObtenerAdministradorPorId(idUsuario).Nombre;
             labelNombreUsuario.Text = "Usuario: " + NombreUsuario;
             foreach (var item in interfazNucleo.ObtenerLibros())
             {
@@ -35,7 +35,7 @@ namespace Programa
             }
         }
 
-       
+
 
         private void botonVolver_Click(object sender, EventArgs e)
         {
@@ -46,13 +46,13 @@ namespace Programa
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvLibros.CurrentRow.Cells[0].Value!=null&& dgvLibros.CurrentRow.Cells[1].Value != null&& dgvLibros.CurrentRow.Cells[2].Value !=null&& dgvLibros.CurrentRow.Cells[3].Value != null&& dgvLibros.CurrentRow.Cells[4].Value != null)
+            if (dgvLibros.CurrentRow.Cells[0].Value != null && dgvLibros.CurrentRow.Cells[1].Value != null && dgvLibros.CurrentRow.Cells[2].Value != null && dgvLibros.CurrentRow.Cells[3].Value != null && dgvLibros.CurrentRow.Cells[4].Value != null)
             {
                 textBoxId.Text = dgvLibros.CurrentRow.Cells[0].Value.ToString();
                 textBoxTitulo.Text = dgvLibros.CurrentRow.Cells[1].Value.ToString();
                 textBoxAutor.Text = dgvLibros.CurrentRow.Cells[2].Value.ToString();
                 textBoxAñoPublicacion.Text = dgvLibros.CurrentRow.Cells[3].Value.ToString();
-                textBoxISBN.Text = dgvLibros.CurrentRow.Cells[4].Value.ToString(); 
+                textBoxISBN.Text = dgvLibros.CurrentRow.Cells[4].Value.ToString();
             }
         }
 

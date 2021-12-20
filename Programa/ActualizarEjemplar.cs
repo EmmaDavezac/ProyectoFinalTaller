@@ -15,14 +15,14 @@ namespace Programa
     public partial class ActualizarEjemplar : Form
     {
         private InterfazNucleo interfazNucleo = new InterfazNucleo();
-         
+
         private int idUsuario { get; set; }
         private string NombreUsuario { get; set; }
         public ActualizarEjemplar(string iD)
         {
             InitializeComponent();
             idUsuario = Convert.ToInt32(iD);
-            NombreUsuario = interfazNucleo.ObtenerAdministrador(idUsuario).Nombre;
+            NombreUsuario = interfazNucleo.ObtenerAdministradorPorId(idUsuario).Nombre;
             labelNombreUsuario.Text = "Usuario: " + NombreUsuario;
             textBoxId.Focus();
         }
@@ -72,7 +72,7 @@ namespace Programa
                 }
                 else { labelError.Text = "El Id ingresado no corresponde a un ejemplar registrado "; textBoxId.Clear(); textBoxId.Focus(); buttonBuscar.Enabled = false; }
             }
-            else { labelError.Text = "El Id ingresado es incorrecto ";  textBoxId.Clear(); textBoxId.Focus(); buttonBuscar.Enabled = false; }
+            else { labelError.Text = "El Id ingresado es incorrecto "; textBoxId.Clear(); textBoxId.Focus(); buttonBuscar.Enabled = false; }
         }
 
         private void CEjemplar_FormClosed(object sender, FormClosedEventArgs e)

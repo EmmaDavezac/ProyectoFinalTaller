@@ -20,7 +20,7 @@ namespace Programa
         {
             InitializeComponent();
             idUsuario = Convert.ToInt32(iD);
-            NombreUsuario = interfazNucleo.ObtenerAdministrador(idUsuario).Nombre;
+            NombreUsuario = interfazNucleo.ObtenerAdministradorPorId(idUsuario).Nombre;
             labelNombreUsuario.Text = "Usuario: " + NombreUsuario;
             foreach (var item in new InterfazNucleo().ObtenerUsuarios())
             {
@@ -35,10 +35,10 @@ namespace Programa
             }
 
         }
-       
+
         private void buttonSalir_Click(object sender, EventArgs e)
         {
-            
+
             Application.Exit();
         }
 

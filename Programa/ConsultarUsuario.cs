@@ -14,15 +14,16 @@ namespace Programa
 {
     public partial class ConsultarUsuario : Form
     {
-        private string NombreUsuario { get; set; }
-        private int idUsuario { get; set; }
-        InterfazNucleo interfazNucleo = new InterfazNucleo();
+        private string pNombreUsuario { get; set; }
+        private string idUsuario { get; set; }
+        private InterfazNucleo interfazNucleo = new InterfazNucleo();
+       
         public ConsultarUsuario(string iD)
         {
             InitializeComponent();
-            idUsuario = Convert.ToInt32(iD);
-            NombreUsuario = interfazNucleo.ObtenerAdministrador(idUsuario).Nombre;
-            labelNombreUsuario.Text = "Usuario: " + NombreUsuario;
+            idUsuario = iD;
+            pNombreUsuario = interfazNucleo.ObtenerAdministradorPorNombreOMail(idUsuario).Nombre;
+            labelNombreUsuario.Text = "Usuario: " + pNombreUsuario;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -32,23 +33,36 @@ namespace Programa
 
         private void buttonBuscarUsuario_Click(object sender, EventArgs e)
         {
-            if (textBoxId.Text!=null&&(textBoxId.Text).All(char.IsDigit)&& textBoxId.Text !="")
+            if (textBoxNombreUsuario.Text != null && textBoxNombreUsuario.Text != "")
             {
-                UsuarioSimple usuario = new Nucleo.InterfazNucleo().ObtenerUsuario(Convert.ToInt32(textBoxId.Text));
-                if (usuario!=null)
+                UsuarioSimple usuarioSimple = interfazNucleo.ObtenerUsuarioPorNombreOMail(textBoxNombreUsuario.Text);
+                if (usuarioSimple != null) 
+                { 
+                buttonBuscarUsuario.Enabled = false; textBoxNombreUsuario.Focus(); 
+                dataGridViewUsuarios.Rows.Clear();
+                dataGridViewUsuarios.Rows.Add();
+                dataGridViewUsuarios.Rows[0].Cells[1].Value = usuarioSimple.NombreUsuario;
+                dataGridViewUsuarios.Rows[0].Cells[2].Value = usuarioSimple.Scoring;
+                dataGridViewUsuarios.Rows[0].Cells[3].Value = usuarioSimple.Nombre;
+                dataGridViewUsuarios.Rows[0].Cells[4].Value = usuarioSimple.Apellido;
+                dataGridViewUsuarios.Rows[0].Cells[5].Value = usuarioSimple.FechaNacimiento;
+                dataGridViewUsuarios.Rows[0].Cells[6].Value = usuarioSimple.Mail;
+                dataGridViewUsuarios.Rows[0].Cells[7].Value = usuarioSimple.Telefono;
+                }
+                else
                 {
-                    textBoxNombre.Text = usuario.Nombre;
-                    textBoxApellido.Text = usuario.Apellido;
-                    textBoxFecha.Text = Convert.ToString(usuario.FechaNacimiento.Date);
-                    textBoxMail.Text = usuario.Mail;
-                    textBoxScoring.Text = Convert.ToString(usuario.Scoring);
-                    textBoxTelefono.Text = usuario.Telefono;
-                    buttonBuscarUsuario.Enabled = false; 
-                } else { labelError.Text = "El Id ingresado no corresponde a un usuario registrado "; buttonBuscarUsuario.Enabled = false; textBoxId.Focus(); }
+                    buttonBuscarUsuario.Enabled = false;
+                    textBoxNombreUsuario.Focus();
+                }
             }
-            else { labelError.Text="El Id ingresado es incorrecto ";buttonBuscarUsuario.Enabled = false; textBoxId.Focus(); }
-        }
+            else
+            {
+                buttonBuscarUsuario.Enabled = false;
+                textBoxNombreUsuario.Focus();
+            }
 
+
+        }
         private void textBoxId_TextChanged(object sender, EventArgs e)
         {
             buttonBuscarUsuario.Enabled = true;
@@ -85,12 +99,12 @@ namespace Programa
 
         private void ConsultarUsuario_Load(object sender, EventArgs e)
         {
-
+            ObtenerUsuarios();
         }
 
         private void textBoxApellido_TextChanged(object sender, EventArgs e)
         {
-
+           
         }
 
         private void label2_Click_1(object sender, EventArgs e)
@@ -101,6 +115,45 @@ namespace Programa
         private void textBox1_TextChanged_1(object sender, EventArgs e)
         {
 
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void ObtenerUsuarios()
+        {
+            IEnumerable<UsuarioSimple> usuarios = interfazNucleo.ObtenerUsuarios();
+            dataGridViewUsuarios.Rows.Clear();
+            foreach (var item in usuarios)
+            {
+                int n = dataGridViewUsuarios.Rows.Add();
+                dataGridViewUsuarios.Rows[n].Cells[1].Value = item.NombreUsuario;
+                dataGridViewUsuarios.Rows[n].Cells[2].Value = item.Scoring;
+                dataGridViewUsuarios.Rows[n].Cells[3].Value = item.Nombre;
+                dataGridViewUsuarios.Rows[n].Cells[4].Value = item.Apellido;
+                dataGridViewUsuarios.Rows[n].Cells[5].Value = item.FechaNacimiento;
+                dataGridViewUsuarios.Rows[n].Cells[6].Value = item.Mail;
+                dataGridViewUsuarios.Rows[n].Cells[7].Value = item.Telefono;
+            }
+        }
+
+        private void dataGridViewUsuarios_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridViewCell cell = (DataGridViewCell)dataGridViewUsuarios.Rows[e.RowIndex].Cells[e.ColumnIndex];
+            if (cell.Value.ToString() == "Edit")
+            {
+                ActualizarUsuario ventana = new ActualizarUsuario(idUsuario);
+                ventana.CargarUsuarioExistente(dataGridViewUsuarios.Rows[e.RowIndex].Cells[1].Value.ToString());
+                this.Hide();
+                ventana.Show();
+            }
+        }
+
+        private void buttonRefrescar_Click(object sender, EventArgs e)
+        {
+            ObtenerUsuarios();
         }
     }
 }

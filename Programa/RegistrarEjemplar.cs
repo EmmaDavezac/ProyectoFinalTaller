@@ -21,7 +21,7 @@ namespace Programa
         {
             InitializeComponent();
             idUsuario = Convert.ToInt32(iD);
-            NombreUsuario = interfazNucleo.ObtenerAdministrador(idUsuario).Nombre;
+            NombreUsuario = interfazNucleo.ObtenerAdministradorPorId(idUsuario).Nombre;
             labelNombreUsuario.Text = "Usuario: " + NombreUsuario;
         }
 
@@ -72,10 +72,10 @@ namespace Programa
         {
             if (!string.IsNullOrEmpty(textBoxId.Text) && !string.IsNullOrEmpty(textBoxTitulo.Text) && !string.IsNullOrEmpty(textBoxAutor.Text) && !string.IsNullOrEmpty(textBoxISBN.Text) && !string.IsNullOrEmpty(textBoxAñoPublicacion.Text) && !string.IsNullOrEmpty(comboBoxEstado.Text))
             {
-                
-                if (new InterfazNucleo().ObtenerLibro(Convert.ToInt32(textBoxId.Text))!=null)
+
+                if (new InterfazNucleo().ObtenerLibro(Convert.ToInt32(textBoxId.Text)) != null)
                 {
-                    new InterfazNucleo().AñadirEjemplar(Convert.ToInt32(textBoxId.Text),comboBoxEstado.Text);
+                    new InterfazNucleo().AñadirEjemplar(Convert.ToInt32(textBoxId.Text), comboBoxEstado.Text);
                     MessageBox.Show("Ejemplar registrado con exito, el Id del Ejemplar es: " + new InterfazNucleo().ObtenerUltimoIdEjemplar());
                     this.Hide();
                     Menu2 ventanaMenu = new Menu2(idUsuario.ToString());

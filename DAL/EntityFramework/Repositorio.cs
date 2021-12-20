@@ -40,6 +40,11 @@ namespace DAL.EntityFramework
             return this.iDbContext.Set<TEntity>().Find(pId);
         }
 
+        public TEntity Get(string pValor)
+        {
+            return this.iDbContext.Set<TEntity>().Find(pValor);
+        }
+
         public IEnumerable<TEntity> GetAll()
         {
             return this.iDbContext.Set<TEntity>();

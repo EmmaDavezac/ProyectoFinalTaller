@@ -73,9 +73,9 @@ namespace Programa
             this.labelIdAdministrador.ForeColor = System.Drawing.SystemColors.ControlText;
             this.labelIdAdministrador.Location = new System.Drawing.Point(286, 292);
             this.labelIdAdministrador.Name = "labelIdAdministrador";
-            this.labelIdAdministrador.Size = new System.Drawing.Size(105, 16);
+            this.labelIdAdministrador.Size = new System.Drawing.Size(165, 16);
             this.labelIdAdministrador.TabIndex = 5;
-            this.labelIdAdministrador.Text = "Id Administrador";
+            this.labelIdAdministrador.Text = "Nombre de Usuario o Mail";
             this.labelIdAdministrador.Click += new System.EventHandler(this.label1_Click);
             // 
             // labelConstraseña
@@ -174,7 +174,7 @@ namespace Programa
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(800, 600);
+            this.ClientSize = new System.Drawing.Size(784, 561);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.buttonRegistrarse);
             this.Controls.Add(this.buttonMostrar);

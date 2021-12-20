@@ -20,7 +20,7 @@ namespace Programa
         {
             InitializeComponent();
             idUsuario = Convert.ToInt32(iD);
-            NombreUsuario = interfazNucleo.ObtenerAdministrador(idUsuario).Nombre;
+            NombreUsuario = interfazNucleo.ObtenerAdministradorPorId(idUsuario).Nombre;
             labelNombreUsuario.Text = "Usuario: " + NombreUsuario;
         }
 
@@ -79,14 +79,14 @@ namespace Programa
 
                     textBoxIdUsuario.Text = interfazNucleo.ObtenerUsuarioDePrestamo(id).Id.ToString();
                     textBoxNombre.Text = interfazNucleo.ObtenerUsuarioDePrestamo(id).Nombre;
-                    textBoxApellido.Text= interfazNucleo.ObtenerUsuarioDePrestamo(id).Apellido; ;
+                    textBoxApellido.Text = interfazNucleo.ObtenerUsuarioDePrestamo(id).Apellido; ;
                     textBoxIdLibro.Text = interfazNucleo.ObtenerLibroDePrestamo(id).Id.ToString();
-                    textBoxTitulo.Text= interfazNucleo.ObtenerLibroDePrestamo(id).Titulo;
+                    textBoxTitulo.Text = interfazNucleo.ObtenerLibroDePrestamo(id).Titulo;
                     textBoxAutor.Text = interfazNucleo.ObtenerLibroDePrestamo(id).Autor;
-                    textBoxISBN.Text= interfazNucleo.ObtenerLibroDePrestamo(id).ISBN;
+                    textBoxISBN.Text = interfazNucleo.ObtenerLibroDePrestamo(id).ISBN;
                     textBoxIdEjemplar.Text = interfazNucleo.ObtenerEjemplarDePrestamo(id).Id.ToString();
                     textBoxEstado.Text = interfazNucleo.ObtenerEjemplarDePrestamo(id).Estado.ToString();
-                    
+
 
 
                     buttonBuscar.Enabled = false;

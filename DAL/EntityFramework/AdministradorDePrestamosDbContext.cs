@@ -1,5 +1,6 @@
 ﻿
 using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 using Dominio;
 
 namespace DAL.EntityFramework
@@ -12,7 +13,11 @@ namespace DAL.EntityFramework
         {
 
         }
-      
+
+        public AdministradorDePrestamosDbContext() : base("ConnectionSQLServerLocal")
+        {
+
+        }
 
         public IDbSet<Libro> Libros { get; set; }
 
@@ -21,5 +26,10 @@ namespace DAL.EntityFramework
         public IDbSet<Prestamo> Prestamos { get; set; }
         public IDbSet<UsuarioSimple> Usuarios { get; set; }
         public IDbSet<UsuarioAdministrador> Administradores { get; set; }
+
+        protected override void OnModelCreating(System.Data.Entity.DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+        }
     }
 }

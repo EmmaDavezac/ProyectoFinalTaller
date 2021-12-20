@@ -14,14 +14,18 @@ namespace Programa
     public partial class Menu2 : Form
     {
         private string NombreUsuario { get; set; }
-        private int idUsuario { get; set; }
+        private string NombreYApellido { get; set; }
+        private string idUsuario { get; set; }
         InterfazNucleo interfazNucleo = new InterfazNucleo();
         public Menu2(string iD)
         {
             InitializeComponent();
-            idUsuario = Convert.ToInt32(iD);
-            NombreUsuario = interfazNucleo.ObtenerAdministrador(idUsuario).Nombre+" "+ interfazNucleo.ObtenerAdministrador(idUsuario).Apellido;
-            labelNombre.Text =  NombreUsuario;
+            idUsuario = iD;
+            NombreYApellido = interfazNucleo.ObtenerAdministradorPorNombreOMail(idUsuario).Nombre + " " + interfazNucleo.ObtenerAdministradorPorNombreOMail(idUsuario).Apellido;
+            NombreUsuario = interfazNucleo.ObtenerAdministradorPorNombreOMail(idUsuario).NombreUsuario;
+            labelNombreUsuario.Text = "Nombre de Usuario: " + NombreUsuario;
+            labelNombreYApellido.Text = "Nombre y Apellido: " + NombreYApellido;
+           
         }
 
         private void Menu2_Load(object sender, EventArgs e)
@@ -29,7 +33,8 @@ namespace Programa
             CustomizeDosing();
         }
         private void CustomizeDosing()
-        { submenuusuario.Visible = false;
+        {
+            submenuusuario.Visible = false;
             submenuadministradores.Visible = false;
             submenuEjemplares.Visible = false;
             submenuLibros.Visible = false;
@@ -37,7 +42,7 @@ namespace Programa
         }
         private void HideSubmenu()
         {
-            if (submenuadministradores.Visible==true)
+            if (submenuadministradores.Visible == true)
             {
                 submenuadministradores.Visible = false;
             }
@@ -49,7 +54,7 @@ namespace Programa
             {
                 submenuEjemplares.Visible = false;
             }
-            if  (submenuLibros.Visible == true)
+            if (submenuLibros.Visible == true)
             {
                 submenuLibros.Visible = false;
             }
@@ -68,14 +73,14 @@ namespace Programa
             else { submenu.Visible = false; }
         }
 
-     
 
-      
 
-       
 
-      
-    
+
+
+
+
+
 
         private void button1_Click_1(object sender, EventArgs e)
         {
@@ -109,7 +114,7 @@ namespace Programa
 
         private void pictureBox4_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void pictureBox3_Click(object sender, EventArgs e)
@@ -133,7 +138,6 @@ namespace Programa
 
         private void button2_Click(object sender, EventArgs e)
         {
-            this.Hide();
             RegistrarUsuario ventanaAgregarCliente = new RegistrarUsuario(idUsuario.ToString());
             ventanaAgregarCliente.Show();
         }

@@ -45,6 +45,8 @@ namespace Programa
             this.textBoxMail = new System.Windows.Forms.TextBox();
             this.textBoxApellido = new System.Windows.Forms.TextBox();
             this.textBoxNombre = new System.Windows.Forms.TextBox();
+            this.textBoxNombreUsuario = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // botonVolver
@@ -55,7 +57,7 @@ namespace Programa
             this.botonVolver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.botonVolver.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.botonVolver.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.botonVolver.Location = new System.Drawing.Point(688, 534);
+            this.botonVolver.Location = new System.Drawing.Point(586, 536);
             this.botonVolver.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.botonVolver.Name = "botonVolver";
             this.botonVolver.Size = new System.Drawing.Size(89, 23);
@@ -125,11 +127,11 @@ namespace Programa
             this.buttonRegistrarAdministrador.FlatAppearance.BorderSize = 0;
             this.buttonRegistrarAdministrador.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonRegistrarAdministrador.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonRegistrarAdministrador.Location = new System.Drawing.Point(439, 325);
+            this.buttonRegistrarAdministrador.Location = new System.Drawing.Point(683, 536);
             this.buttonRegistrarAdministrador.Name = "buttonRegistrarAdministrador";
             this.buttonRegistrarAdministrador.Size = new System.Drawing.Size(89, 23);
             this.buttonRegistrarAdministrador.TabIndex = 60;
-            this.buttonRegistrarAdministrador.Text = "Registrar Administrador";
+            this.buttonRegistrarAdministrador.Text = "Guardar";
             this.buttonRegistrarAdministrador.UseVisualStyleBackColor = false;
             this.buttonRegistrarAdministrador.Click += new System.EventHandler(this.buttonRegistrarAdministrador_Click);
             // 
@@ -205,12 +207,32 @@ namespace Programa
             this.textBoxNombre.TabIndex = 52;
             this.textBoxNombre.TextChanged += new System.EventHandler(this.textBoxNombre_TextChanged_1);
             // 
+            // textBoxNombreUsuario
+            // 
+            this.textBoxNombreUsuario.Location = new System.Drawing.Point(328, 108);
+            this.textBoxNombreUsuario.Name = "textBoxNombreUsuario";
+            this.textBoxNombreUsuario.Size = new System.Drawing.Size(200, 20);
+            this.textBoxNombreUsuario.TabIndex = 66;
+            this.textBoxNombreUsuario.TextChanged += new System.EventHandler(this.textBoxNombreUsuario_TextChanged_1);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(218, 111);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(80, 13);
+            this.label2.TabIndex = 67;
+            this.label2.Text = "NombreUsuario";
+            this.label2.Click += new System.EventHandler(this.label2_Click_1);
+            // 
             // RegistrarAdministrador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(784, 561);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.textBoxNombreUsuario);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxTelefono);
             this.Controls.Add(this.labelContraseña);
@@ -259,5 +281,7 @@ namespace Programa
         private System.Windows.Forms.TextBox textBoxMail;
         private System.Windows.Forms.TextBox textBoxApellido;
         private System.Windows.Forms.TextBox textBoxNombre;
+        private System.Windows.Forms.TextBox textBoxNombreUsuario;
+        private System.Windows.Forms.Label label2;
     }
 }

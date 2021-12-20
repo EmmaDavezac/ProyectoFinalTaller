@@ -45,15 +45,17 @@ namespace Programa
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.labelId = new System.Windows.Forms.Label();
             this.labelNombreUsuario = new System.Windows.Forms.Label();
+            this.textBoxNombreUsuario = new System.Windows.Forms.TextBox();
+            this.label5NombreUsuario = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.SuspendLayout();
             // 
@@ -159,7 +161,7 @@ namespace Programa
             this.buttonAñadirUsuario.Name = "buttonAñadirUsuario";
             this.buttonAñadirUsuario.Size = new System.Drawing.Size(89, 23);
             this.buttonAñadirUsuario.TabIndex = 19;
-            this.buttonAñadirUsuario.Text = "Añadir Usuario";
+            this.buttonAñadirUsuario.Text = "Guardar";
             this.buttonAñadirUsuario.UseVisualStyleBackColor = false;
             this.buttonAñadirUsuario.Click += new System.EventHandler(this.buttonAñadirUsuario_Click);
             // 
@@ -227,17 +229,6 @@ namespace Programa
             this.label2.TabIndex = 5;
             this.label2.Text = "E-Librery";
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::Programa.Properties.Resources.libro_abierto;
-            this.pictureBox2.Location = new System.Drawing.Point(16, 3);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(40, 40);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 5;
-            this.pictureBox2.TabStop = false;
-            // 
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.SystemColors.Highlight;
@@ -249,18 +240,6 @@ namespace Programa
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(207, 60);
             this.panel5.TabIndex = 9;
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox4.Image = global::Programa.Properties.Resources.perfil_del_usuario;
-            this.pictureBox4.Location = new System.Drawing.Point(155, 12);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(40, 40);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox4.TabIndex = 6;
-            this.pictureBox4.TabStop = false;
             // 
             // labelId
             // 
@@ -286,6 +265,45 @@ namespace Programa
             this.labelNombreUsuario.Text = "Nombre Apellido";
             this.labelNombreUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // textBoxNombreUsuario
+            // 
+            this.textBoxNombreUsuario.Location = new System.Drawing.Point(348, 154);
+            this.textBoxNombreUsuario.Name = "textBoxNombreUsuario";
+            this.textBoxNombreUsuario.Size = new System.Drawing.Size(200, 20);
+            this.textBoxNombreUsuario.TabIndex = 70;
+            // 
+            // label5NombreUsuario
+            // 
+            this.label5NombreUsuario.AutoSize = true;
+            this.label5NombreUsuario.Location = new System.Drawing.Point(238, 161);
+            this.label5NombreUsuario.Name = "label5NombreUsuario";
+            this.label5NombreUsuario.Size = new System.Drawing.Size(80, 13);
+            this.label5NombreUsuario.TabIndex = 71;
+            this.label5NombreUsuario.Text = "NombreUsuario";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::Programa.Properties.Resources.libro_abierto;
+            this.pictureBox2.Location = new System.Drawing.Point(16, 3);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(40, 40);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 5;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox4.Image = global::Programa.Properties.Resources.perfil_del_usuario;
+            this.pictureBox4.Location = new System.Drawing.Point(155, 12);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(40, 40);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox4.TabIndex = 6;
+            this.pictureBox4.TabStop = false;
+            // 
             // RegistrarUsuario
             // 
             this.AcceptButton = this.buttonAñadirUsuario;
@@ -293,6 +311,8 @@ namespace Programa
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(784, 561);
+            this.Controls.Add(this.label5NombreUsuario);
+            this.Controls.Add(this.textBoxNombreUsuario);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxTelefono);
@@ -320,9 +340,9 @@ namespace Programa
             this.panel3.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -334,7 +354,6 @@ namespace Programa
         private System.Windows.Forms.TextBox textBoxNombre;
         private System.Windows.Forms.TextBox textBoxApellido;
         private System.Windows.Forms.TextBox textBoxMail;
-        private System.Windows.Forms.DateTimePicker dateTimePickerFechaNacimiento;
         private System.Windows.Forms.Label labelNombre;
         private System.Windows.Forms.Label labelApellido;
         private System.Windows.Forms.Label label3;
@@ -351,5 +370,8 @@ namespace Programa
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Label labelId;
         private System.Windows.Forms.Label labelNombreUsuario;
+        private System.Windows.Forms.TextBox textBoxNombreUsuario;
+        private System.Windows.Forms.Label label5NombreUsuario;
+        private System.Windows.Forms.DateTimePicker dateTimePickerFechaNacimiento;
     }
 }

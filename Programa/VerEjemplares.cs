@@ -20,7 +20,7 @@ namespace Programa
         {
             InitializeComponent();
             idUsuario = Convert.ToInt32(iD);
-            NombreUsuario = interfazNucleo.ObtenerAdministrador(idUsuario).Nombre;
+            NombreUsuario = interfazNucleo.ObtenerAdministradorPorId(idUsuario).Nombre;
             labelNombreUsuario.Text = "Usuario: " + NombreUsuario;
             foreach (var item in interfazNucleo.ObtenerEjemplares())
             {
@@ -41,7 +41,7 @@ namespace Programa
 
             }
         }
-       
+
 
         private void VerEjemplares_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -53,11 +53,11 @@ namespace Programa
         private void dgvLibros_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvEjemplares.CurrentRow.Cells[0].Value != null && dgvEjemplares.CurrentRow.Cells[1].Value != null && dgvEjemplares.CurrentRow.Cells[2].Value != null && dgvEjemplares.CurrentRow.Cells[3].Value != null && dgvEjemplares.CurrentRow.Cells[4].Value != null)
-            {   
+            {
                 textBoxId.Text = dgvEjemplares.CurrentRow.Cells[0].Value.ToString();
                 textBoxEstado.Text = dgvEjemplares.CurrentRow.Cells[1].Value.ToString();
-                textBoxDisponibilidad.Text= dgvEjemplares.CurrentRow.Cells[2].Value.ToString();
-                textBoxIdLibro.Text= dgvEjemplares.CurrentRow.Cells[3].Value.ToString();
+                textBoxDisponibilidad.Text = dgvEjemplares.CurrentRow.Cells[2].Value.ToString();
+                textBoxIdLibro.Text = dgvEjemplares.CurrentRow.Cells[3].Value.ToString();
                 textBoxTitulo.Text = dgvEjemplares.CurrentRow.Cells[4].Value.ToString();
                 textBoxAutor.Text = dgvEjemplares.CurrentRow.Cells[5].Value.ToString();
                 textBoxAñoPublicacion.Text = dgvEjemplares.CurrentRow.Cells[6].Value.ToString();

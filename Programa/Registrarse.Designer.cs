@@ -46,6 +46,8 @@ namespace Programa
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxTelefono = new System.Windows.Forms.TextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.textBoxNombreUsuario = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // labelContraseña
@@ -206,13 +208,31 @@ namespace Programa
             this.timer1.Interval = 25;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // textBoxNombreUsuario
+            // 
+            this.textBoxNombreUsuario.Location = new System.Drawing.Point(339, 153);
+            this.textBoxNombreUsuario.Name = "textBoxNombreUsuario";
+            this.textBoxNombreUsuario.Size = new System.Drawing.Size(200, 20);
+            this.textBoxNombreUsuario.TabIndex = 52;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(229, 160);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(80, 13);
+            this.label2.TabIndex = 53;
+            this.label2.Text = "NombreUsuario";
+            // 
             // Registrarse
             // 
             this.AcceptButton = this.buttonRegistrarAdministrador;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(800, 600);
+            this.ClientSize = new System.Drawing.Size(784, 561);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.textBoxNombreUsuario);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxTelefono);
             this.Controls.Add(this.labelContraseña);
@@ -263,5 +283,7 @@ namespace Programa
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBoxTelefono;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.TextBox textBoxNombreUsuario;
+        private System.Windows.Forms.Label label2;
     }
 }

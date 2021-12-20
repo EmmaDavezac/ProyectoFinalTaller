@@ -14,13 +14,14 @@ namespace Programa
     public partial class RegistrarUsuario : Form
     {
         private string NombreUsuario { get; set; }
-        private int idUsuario { get; set; }
+
+        private string idUsuario { get; set; }
         InterfazNucleo interfazNucleo = new InterfazNucleo();
         public RegistrarUsuario(string iD)
         {
             InitializeComponent();
-            idUsuario = Convert.ToInt32(iD);
-            NombreUsuario = interfazNucleo.ObtenerAdministrador(idUsuario).Nombre;
+            idUsuario = iD;
+            NombreUsuario = interfazNucleo.ObtenerAdministradorPorNombreOMail(idUsuario).Nombre;
             labelNombreUsuario.Text = "Usuario: " + NombreUsuario;
         }
         private void buttonSalir_Click(object sender, EventArgs e)
@@ -30,9 +31,7 @@ namespace Programa
 
         private void botonVolver_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            Menu2 ventanaMenu = new Menu2(idUsuario.ToString());
-            ventanaMenu.Show();
+            this.Close();
         }
 
         private void AgregarCliente_FormClosing(object sender, FormClosingEventArgs e)
@@ -54,60 +53,74 @@ namespace Programa
 
         private void buttonAñadirUsuario_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(textBoxNombre.Text) && textBoxNombre.Text.All(Char.IsLetter))
+            if (!string.IsNullOrEmpty(textBoxNombreUsuario.Text))
             {
-                if (!string.IsNullOrEmpty(textBoxApellido.Text) && textBoxApellido.Text.All(Char.IsLetter))
+                if (!string.IsNullOrEmpty(textBoxNombre.Text) && textBoxNombre.Text.All(Char.IsLetter))
                 {
-                    if (dateTimePickerFechaNacimiento.Value.Date != new DateTime(1900, 1, 1))
+                    if (!string.IsNullOrEmpty(textBoxApellido.Text) && textBoxApellido.Text.All(Char.IsLetter))
                     {
-                        if (!string.IsNullOrEmpty(textBoxMail.Text) && interfazNucleo.EsUnEmailValido(textBoxMail.Text))
+                        if (dateTimePickerFechaNacimiento.Value.Date != new DateTime(1900, 1, 1))
                         {
-                            if (!string.IsNullOrEmpty(textBoxTelefono.Text) && textBoxTelefono.Text.All(Char.IsDigit) && textBoxTelefono.Text.Length >= 8 && textBoxTelefono.Text.Length <= 11)
+                            if (!string.IsNullOrEmpty(textBoxMail.Text) && interfazNucleo.EsUnEmailValido(textBoxMail.Text))
                             {
-                                
-                                    interfazNucleo.AñadirUsuario(textBoxNombre.Text, textBoxApellido.Text, dateTimePickerFechaNacimiento.Value, textBoxMail.Text,  textBoxTelefono.Text);
-                                    MessageBox.Show("Usuario creado,id  es: " + interfazNucleo.ObtenerUltimoIdUsuario(), "Operacion Exitosa", MessageBoxButtons.OK);
-                                    this.Hide();
-                                Menu2 ventana = new Menu2(idUsuario.ToString());
-                                    ventana.Show();
+                                if (!string.IsNullOrEmpty(textBoxTelefono.Text) && textBoxTelefono.Text.All(Char.IsDigit) && textBoxTelefono.Text.Length >= 8 && textBoxTelefono.Text.Length <= 11)
+                                {
+                                    bool resultado = interfazNucleo.AñadirUsuario(textBoxNombreUsuario.Text, textBoxNombre.Text, textBoxApellido.Text, dateTimePickerFechaNacimiento.Value, textBoxMail.Text, textBoxTelefono.Text);
+                                    if (resultado == true)
+                                    {
+                                        MessageBox.Show("Usuario administrador guardado, el nombre de usuario es: " + textBoxNombreUsuario.Text, "Operacion Exitosa", MessageBoxButtons.OK);
 
-                                
-                              
+                                        Menu2 ventana = new Menu2(idUsuario.ToString());
+                                        ventana.Show();
+                                        this.Hide();
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("El usuario: " + textBoxNombreUsuario.Text + " ya se encuentra registrado, pruebe con otro nombre de usuario", "Error", MessageBoxButtons.OK);
+                                    }
+
+                                }
+                                else
+                                {
+                                    this.labelError.Text = "Error,telefono ingresado invalido.Ingrese el numero sin 0 ni 15";
+                                    buttonAñadirUsuario.Enabled = false;
+                                    textBoxTelefono.Focus(); ;
+                                }
                             }
                             else
                             {
-                                this.labelError.Text = "Error,telefono ingresado invalido.Ingrese el numero sin 0 ni 15";
+                                this.labelError.Text = "Error, el mail ingresado no es valido";
                                 buttonAñadirUsuario.Enabled = false;
-                                textBoxTelefono.Focus(); ;
+                                textBoxMail.Focus(); ;
                             }
                         }
                         else
                         {
-                            this.labelError.Text = "Error, el mail ingresado no es valido";
+                            this.labelError.Text = "Error, no ha ingresado la fecha de nacimiento";
                             buttonAñadirUsuario.Enabled = false;
-                            textBoxMail.Focus(); ;
+                            dateTimePickerFechaNacimiento.Focus(); ;
                         }
+
                     }
                     else
                     {
-                        this.labelError.Text = "Error, no ha ingresado la fecha de nacimiento";
+                        this.labelError.Text = "Error, apellido invalido.No debe contener numeros, espacios ni simbolos";
                         buttonAñadirUsuario.Enabled = false;
-                        dateTimePickerFechaNacimiento.Focus(); ;
+                        textBoxApellido.Focus(); ;
                     }
-
                 }
                 else
                 {
-                    this.labelError.Text = "Error, apellido invalido.No debe contener numeros, espacios ni simbolos";
+                    this.labelError.Text = "Error, nombre invalido.No debe contener numeros, espacios ni simbolos";
                     buttonAñadirUsuario.Enabled = false;
-                    textBoxApellido.Focus(); ;
+                    textBoxNombre.Focus(); ;
                 }
             }
             else
             {
-                this.labelError.Text = "Error, nombre invalido.No debe contener numeros, espacios ni simbolos";
+                this.labelError.Text = "Error, nombre de usuario esta vacio";
                 buttonAñadirUsuario.Enabled = false;
-                textBoxNombre.Focus(); ;
+                textBoxNombreUsuario.Focus();
             }
         }
 
@@ -119,7 +132,7 @@ namespace Programa
 
         private void AgregarUsuario_Load(object sender, EventArgs e)
         {
-        
+
         }
 
         private void textBoxMail_TextChanged(object sender, EventArgs e)
@@ -129,7 +142,7 @@ namespace Programa
 
         private void label4_Click(object sender, EventArgs e)
         {
-          
+
         }
 
         private void label3_Click(object sender, EventArgs e)
@@ -139,7 +152,7 @@ namespace Programa
 
         private void dateTimePickerFechaNacimiento_ValueChanged(object sender, EventArgs e)
         {
-        buttonAñadirUsuario.Enabled = true;
+            buttonAñadirUsuario.Enabled = true;
         }
 
         private void textBoxApellido_TextChanged(object sender, EventArgs e)

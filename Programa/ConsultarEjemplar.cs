@@ -22,7 +22,7 @@ namespace Programa
         {
             InitializeComponent();
             idUsuario = Convert.ToInt32(iD);
-            NombreUsuario = interfazNucleo.ObtenerAdministrador(idUsuario).Nombre;
+            NombreUsuario = interfazNucleo.ObtenerAdministradorPorId(idUsuario).Nombre;
             labelNombreUsuario.Text = "Usuario: " + NombreUsuario;
         }
 
@@ -57,7 +57,7 @@ namespace Programa
                 if (new InterfazNucleo().ObtenerEjemplar(id) != null)
                 {
                     textBoxEstado.Text = new InterfazNucleo().ObtenerEjemplar(id).Estado.ToString();
-                    textBoxIdLibro.Text= new InterfazNucleo().ObtenerLibroDeEjemplar(id).Id.ToString();
+                    textBoxIdLibro.Text = new InterfazNucleo().ObtenerLibroDeEjemplar(id).Id.ToString();
                     textBoxTitulo.Text = new InterfazNucleo().ObtenerLibroDeEjemplar(id).Titulo;
                     textBoxAutor.Text = new InterfazNucleo().ObtenerLibroDeEjemplar(id).Autor;
                     textBoxAñoPublicacion.Text = new InterfazNucleo().ObtenerLibroDeEjemplar(id).AñoPublicacion;
