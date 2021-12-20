@@ -32,7 +32,6 @@ namespace Programa
         private void InitializeComponent()
         {
             this.labelNombreUsuario = new System.Windows.Forms.Label();
-            this.textBoxFecha = new System.Windows.Forms.TextBox();
             this.labelError = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -47,6 +46,7 @@ namespace Programa
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxNombreUsuario = new System.Windows.Forms.TextBox();
             this.botonVolver = new System.Windows.Forms.Button();
+            this.dateTimePickerFechaNacimiento = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // labelNombreUsuario
@@ -60,15 +60,6 @@ namespace Programa
             this.labelNombreUsuario.TabIndex = 54;
             this.labelNombreUsuario.Text = "Nombre de Usuario";
             this.labelNombreUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // textBoxFecha
-            // 
-            this.textBoxFecha.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.textBoxFecha.Location = new System.Drawing.Point(272, 252);
-            this.textBoxFecha.Name = "textBoxFecha";
-            this.textBoxFecha.Size = new System.Drawing.Size(300, 20);
-            this.textBoxFecha.TabIndex = 51;
-            this.textBoxFecha.TextChanged += new System.EventHandler(this.textBoxFecha_TextChanged);
             // 
             // labelError
             // 
@@ -213,12 +204,24 @@ namespace Programa
             this.botonVolver.UseVisualStyleBackColor = false;
             this.botonVolver.Click += new System.EventHandler(this.botonVolver_Click_1);
             // 
+            // dateTimePickerFechaNacimiento
+            // 
+            this.dateTimePickerFechaNacimiento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerFechaNacimiento.Location = new System.Drawing.Point(272, 253);
+            this.dateTimePickerFechaNacimiento.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
+            this.dateTimePickerFechaNacimiento.Name = "dateTimePickerFechaNacimiento";
+            this.dateTimePickerFechaNacimiento.Size = new System.Drawing.Size(300, 20);
+            this.dateTimePickerFechaNacimiento.TabIndex = 60;
+            this.dateTimePickerFechaNacimiento.Value = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
+            this.dateTimePickerFechaNacimiento.ValueChanged += new System.EventHandler(this.dateTimePickerFechaNacimiento_ValueChanged);
+            // 
             // ActualizarUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(784, 561);
+            this.Controls.Add(this.dateTimePickerFechaNacimiento);
             this.Controls.Add(this.botonVolver);
             this.Controls.Add(this.textBoxNombreUsuario);
             this.Controls.Add(this.label1);
@@ -226,7 +229,6 @@ namespace Programa
             this.Controls.Add(this.textBoxTelefono);
             this.Controls.Add(this.buttonGuardar);
             this.Controls.Add(this.labelNombreUsuario);
-            this.Controls.Add(this.textBoxFecha);
             this.Controls.Add(this.labelError);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -260,7 +262,6 @@ namespace Programa
         #endregion
 
         private System.Windows.Forms.Label labelNombreUsuario;
-        private System.Windows.Forms.TextBox textBoxFecha;
         private System.Windows.Forms.Label labelError;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
@@ -275,5 +276,6 @@ namespace Programa
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBoxNombreUsuario;
         private System.Windows.Forms.Button botonVolver;
+        private System.Windows.Forms.DateTimePicker dateTimePickerFechaNacimiento;
     }
 }

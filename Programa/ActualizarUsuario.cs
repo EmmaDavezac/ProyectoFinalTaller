@@ -36,13 +36,13 @@ namespace Programa
                 {
                     if (!string.IsNullOrEmpty(textBoxApellido.Text) && textBoxApellido.Text.All(Char.IsLetter))
                     {
-                        if (!string.IsNullOrEmpty(textBoxFecha.Text))
+                        if (dateTimePickerFechaNacimiento.Value != new DateTime(1900, 1, 1))
                         {
                             if (!string.IsNullOrEmpty(textBoxMail.Text) && interfazNucleo.EsUnEmailValido(textBoxMail.Text))
                             {
                                 if (!string.IsNullOrEmpty(textBoxTelefono.Text) && textBoxTelefono.Text.All(Char.IsDigit) && textBoxTelefono.Text.Length >= 8 && textBoxTelefono.Text.Length <= 11)
                                 {
-                                    interfazNucleo.ActualizarUsuario(textBoxNombreUsuario.Text, textBoxNombre.Text, textBoxApellido.Text, textBoxFecha.Text, textBoxMail.Text, textBoxTelefono.Text);
+                                    interfazNucleo.ActualizarUsuario(textBoxNombreUsuario.Text, textBoxNombre.Text, textBoxApellido.Text, dateTimePickerFechaNacimiento.Value.Date.ToString(), textBoxMail.Text, textBoxTelefono.Text);
                                     MessageBox.Show("Usuario guardado, el nombre de usuario es: " + textBoxNombreUsuario.Text, "Operacion Exitosa", MessageBoxButtons.OK);
                                     this.Hide();
                                     ConsultarUsuario ventanaMenu = new ConsultarUsuario(NombreUsuario);
@@ -66,7 +66,7 @@ namespace Programa
                         {
                             this.labelError.Text = "Error, no ha ingresado la fecha de nacimiento";
                             buttonGuardar.Enabled = false;
-                            textBoxFecha.Focus(); ;
+                            dateTimePickerFechaNacimiento.Focus(); ;
                         }
 
                     }
@@ -129,11 +129,11 @@ namespace Programa
         public void CargarUsuarioExistente(string pNombreUsuario)
         {
             var usuario = interfazNucleo.ObtenerUsuarioPorNombreOMail(pNombreUsuario);
-            VaciarCampos();
+            //VaciarCampos();
             textBoxNombreUsuario.Text = usuario.NombreUsuario;
             textBoxNombre.Text = usuario.Nombre;
             textBoxApellido.Text = usuario.Apellido;
-            textBoxFecha.Text = usuario.FechaNacimiento.ToString();
+            dateTimePickerFechaNacimiento.Value = usuario.FechaNacimiento;
             textBoxMail.Text = usuario.Mail;
             textBoxTelefono.Text = usuario.Telefono;
 
@@ -144,7 +144,7 @@ namespace Programa
             textBoxNombreUsuario.Text = string.Empty;
             textBoxNombre.Text = string.Empty;
             textBoxApellido.Text = string.Empty;
-            textBoxFecha.Text = string.Empty;
+            dateTimePickerFechaNacimiento.Value = new DateTime(1900, 1, 1);
             textBoxMail.Text = string.Empty;
             textBoxTelefono.Text = string.Empty;
         }
@@ -159,6 +159,11 @@ namespace Programa
             this.Hide();
             ConsultarUsuario ventanaMenu = new ConsultarUsuario(idUsuario.ToString());
             ventanaMenu.Show();
+        }
+
+        private void dateTimePickerFechaNacimiento_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

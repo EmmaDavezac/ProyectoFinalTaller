@@ -44,7 +44,7 @@ namespace Programa
                     dataGridView1.Rows[0].Cells[1].Value = usuarioSimple.NombreUsuario;
                     dataGridView1.Rows[0].Cells[2].Value = usuarioSimple.Nombre;
                     dataGridView1.Rows[0].Cells[3].Value = usuarioSimple.Apellido;
-                    dataGridView1.Rows[0].Cells[4].Value = usuarioSimple.FechaNacimiento;
+                    dataGridView1.Rows[0].Cells[4].Value = usuarioSimple.FechaNacimiento.ToShortDateString();
                     dataGridView1.Rows[0].Cells[5].Value = usuarioSimple.Mail;
                     dataGridView1.Rows[0].Cells[6].Value = usuarioSimple.Telefono;
                 }
@@ -128,7 +128,7 @@ namespace Programa
                 dataGridView1.Rows[n].Cells[1].Value = item.NombreUsuario;
                 dataGridView1.Rows[n].Cells[2].Value = item.Nombre;
                 dataGridView1.Rows[n].Cells[3].Value = item.Apellido;
-                dataGridView1.Rows[n].Cells[4].Value = item.FechaNacimiento;
+                dataGridView1.Rows[n].Cells[4].Value = item.FechaNacimiento.ToShortDateString();
                 dataGridView1.Rows[n].Cells[5].Value = item.Mail;
                 dataGridView1.Rows[n].Cells[6].Value = item.Telefono;
             }

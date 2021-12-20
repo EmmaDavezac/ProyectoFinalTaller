@@ -15,13 +15,13 @@ namespace Programa
     public partial class RegistrarPrestamo : Form
     {
         private string NombreUsuario { get; set; }
-        private int idUsuario { get; set; }
+        private string idUsuario { get; set; }
         InterfazNucleo interfazNucleo = new InterfazNucleo();
         public RegistrarPrestamo(string iD)
         {
             InitializeComponent();
-            idUsuario = Convert.ToInt32(iD);
-            NombreUsuario = interfazNucleo.ObtenerAdministradorPorId(idUsuario).Nombre;
+            idUsuario =iD;
+            NombreUsuario = interfazNucleo.ObtenerAdministradorPorNombreOMail(idUsuario).Nombre;
             labelNombreUsuario.Text = "Usuario: " + NombreUsuario;
         }
 
@@ -216,7 +216,7 @@ namespace Programa
                     string FechaLimite = Convert.ToDateTime(new InterfazNucleo().ObtenerPrestamo(id).FechaLimite).Date.ToString();
                     MessageBox.Show("El prestamo ha sido registrado, Id:" + id + "\nFecha limite: " + FechaLimite);
                     this.Hide();
-                    MenuPrincipal ventanaMenu = new MenuPrincipal(idUsuario.ToString());
+                    Menu2 ventanaMenu = new Menu2(idUsuario.ToString());
                     ventanaMenu.Show();
                 }
             }

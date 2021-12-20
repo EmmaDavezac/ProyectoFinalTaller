@@ -73,7 +73,7 @@ namespace Programa
         private void botonVolver_Click(object sender, EventArgs e)
         {
             this.Hide();
-            MenuPrincipal ventanaMenu = new MenuPrincipal(NombreUsuario);
+            Menu2 ventanaMenu = new Menu2(NombreUsuario);
             ventanaMenu.Show();
         }
 

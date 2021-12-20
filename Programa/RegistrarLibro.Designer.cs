@@ -101,7 +101,7 @@ namespace Programa
             // 
             // textBoxBuscar
             // 
-            this.textBoxBuscar.Location = new System.Drawing.Point(591, 171);
+            this.textBoxBuscar.Location = new System.Drawing.Point(142, 174);
             this.textBoxBuscar.Name = "textBoxBuscar";
             this.textBoxBuscar.Size = new System.Drawing.Size(100, 20);
             this.textBoxBuscar.TabIndex = 1;
@@ -113,7 +113,7 @@ namespace Programa
             this.buttonBuscar.FlatAppearance.BorderSize = 0;
             this.buttonBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonBuscar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonBuscar.Location = new System.Drawing.Point(697, 171);
+            this.buttonBuscar.Location = new System.Drawing.Point(253, 171);
             this.buttonBuscar.Name = "buttonBuscar";
             this.buttonBuscar.Size = new System.Drawing.Size(61, 23);
             this.buttonBuscar.TabIndex = 2;
@@ -124,16 +124,16 @@ namespace Programa
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(20, 70);
+            this.label1.Location = new System.Drawing.Point(421, 74);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(33, 13);
+            this.label1.Size = new System.Drawing.Size(36, 13);
             this.label1.TabIndex = 3;
-            this.label1.Text = "Titulo";
+            this.label1.Text = "Titulo:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(20, 96);
+            this.label2.Location = new System.Drawing.Point(421, 100);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(35, 13);
             this.label2.TabIndex = 4;
@@ -142,7 +142,7 @@ namespace Programa
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(20, 126);
+            this.label3.Location = new System.Drawing.Point(373, 126);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(83, 13);
             this.label3.TabIndex = 5;
@@ -151,21 +151,21 @@ namespace Programa
             // 
             // textBoxTitulo
             // 
-            this.textBoxTitulo.Location = new System.Drawing.Point(145, 67);
+            this.textBoxTitulo.Location = new System.Drawing.Point(474, 67);
             this.textBoxTitulo.Name = "textBoxTitulo";
             this.textBoxTitulo.Size = new System.Drawing.Size(300, 20);
             this.textBoxTitulo.TabIndex = 6;
             // 
             // textBoxAutor
             // 
-            this.textBoxAutor.Location = new System.Drawing.Point(145, 93);
+            this.textBoxAutor.Location = new System.Drawing.Point(474, 93);
             this.textBoxAutor.Name = "textBoxAutor";
             this.textBoxAutor.Size = new System.Drawing.Size(300, 20);
             this.textBoxAutor.TabIndex = 7;
             // 
             // textBoxAñoPublicacion
             // 
-            this.textBoxAñoPublicacion.Location = new System.Drawing.Point(145, 119);
+            this.textBoxAñoPublicacion.Location = new System.Drawing.Point(474, 119);
             this.textBoxAñoPublicacion.Name = "textBoxAñoPublicacion";
             this.textBoxAñoPublicacion.Size = new System.Drawing.Size(300, 20);
             this.textBoxAñoPublicacion.TabIndex = 8;
@@ -174,7 +174,7 @@ namespace Programa
             // labelIngreseTitulo
             // 
             this.labelIngreseTitulo.AutoSize = true;
-            this.labelIngreseTitulo.Location = new System.Drawing.Point(471, 176);
+            this.labelIngreseTitulo.Location = new System.Drawing.Point(22, 177);
             this.labelIngreseTitulo.Name = "labelIngreseTitulo";
             this.labelIngreseTitulo.Size = new System.Drawing.Size(114, 13);
             this.labelIngreseTitulo.TabIndex = 9;
@@ -220,7 +220,7 @@ namespace Programa
             // 
             // textBoxISBN
             // 
-            this.textBoxISBN.Location = new System.Drawing.Point(145, 145);
+            this.textBoxISBN.Location = new System.Drawing.Point(474, 145);
             this.textBoxISBN.Name = "textBoxISBN";
             this.textBoxISBN.Size = new System.Drawing.Size(300, 20);
             this.textBoxISBN.TabIndex = 16;
@@ -229,7 +229,7 @@ namespace Programa
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(20, 152);
+            this.label5.Location = new System.Drawing.Point(421, 152);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(32, 13);
             this.label5.TabIndex = 15;
@@ -256,11 +256,11 @@ namespace Programa
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(588, 148);
+            this.label4.Location = new System.Drawing.Point(22, 145);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(146, 13);
             this.label4.TabIndex = 22;
-            this.label4.Text = "ConsultarEn Pagina de Libros";
+            this.label4.Text = "Consultar en pagina de libros:";
             this.label4.Click += new System.EventHandler(this.label4_Click_1);
             // 
             // buttonBorrarDatos
@@ -269,7 +269,7 @@ namespace Programa
             this.buttonBorrarDatos.FlatAppearance.BorderSize = 0;
             this.buttonBorrarDatos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonBorrarDatos.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonBorrarDatos.Location = new System.Drawing.Point(367, 171);
+            this.buttonBorrarDatos.Location = new System.Drawing.Point(695, 171);
             this.buttonBorrarDatos.Name = "buttonBorrarDatos";
             this.buttonBorrarDatos.Size = new System.Drawing.Size(78, 23);
             this.buttonBorrarDatos.TabIndex = 21;

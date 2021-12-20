@@ -179,5 +179,10 @@ namespace Programa
         {
             buttonAñadirUsuario.Enabled = true;
         }
+
+        private void textBoxNombreUsuario_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

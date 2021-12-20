@@ -32,7 +32,6 @@ namespace Programa
         private void InitializeComponent()
         {
             this.labelNombreUsuario = new System.Windows.Forms.Label();
-            this.textBoxFecha = new System.Windows.Forms.TextBox();
             this.textBoxNombreUsuario = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.labelError = new System.Windows.Forms.Label();
@@ -47,6 +46,8 @@ namespace Programa
             this.botonVolver = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.textBoxTelefono = new System.Windows.Forms.TextBox();
+            this.buttonModificarContraseña = new System.Windows.Forms.Button();
+            this.dateTimePickerFechaNacimiento = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // labelNombreUsuario
@@ -60,16 +61,6 @@ namespace Programa
             this.labelNombreUsuario.TabIndex = 54;
             this.labelNombreUsuario.Text = "Nombre de Usuario";
             this.labelNombreUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // textBoxFecha
-            // 
-            this.textBoxFecha.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.textBoxFecha.Location = new System.Drawing.Point(272, 241);
-            this.textBoxFecha.Name = "textBoxFecha";
-            this.textBoxFecha.ReadOnly = true;
-            this.textBoxFecha.Size = new System.Drawing.Size(300, 20);
-            this.textBoxFecha.TabIndex = 51;
-            this.textBoxFecha.TextChanged += new System.EventHandler(this.textBoxFecha_TextChanged);
             // 
             // textBoxNombreUsuario
             // 
@@ -213,18 +204,47 @@ namespace Programa
             this.textBoxTelefono.TabIndex = 55;
             this.textBoxTelefono.TextChanged += new System.EventHandler(this.textBoxTelefono_TextChanged);
             // 
+            // buttonModificarContraseña
+            // 
+            this.buttonModificarContraseña.BackColor = System.Drawing.SystemColors.Highlight;
+            this.buttonModificarContraseña.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.buttonModificarContraseña.FlatAppearance.BorderSize = 0;
+            this.buttonModificarContraseña.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonModificarContraseña.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.buttonModificarContraseña.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.buttonModificarContraseña.Location = new System.Drawing.Point(163, 340);
+            this.buttonModificarContraseña.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.buttonModificarContraseña.Name = "buttonModificarContraseña";
+            this.buttonModificarContraseña.Size = new System.Drawing.Size(142, 23);
+            this.buttonModificarContraseña.TabIndex = 57;
+            this.buttonModificarContraseña.Text = "Modificar Contraseña";
+            this.buttonModificarContraseña.UseVisualStyleBackColor = false;
+            this.buttonModificarContraseña.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // dateTimePickerFechaNacimiento
+            // 
+            this.dateTimePickerFechaNacimiento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerFechaNacimiento.Location = new System.Drawing.Point(272, 242);
+            this.dateTimePickerFechaNacimiento.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
+            this.dateTimePickerFechaNacimiento.Name = "dateTimePickerFechaNacimiento";
+            this.dateTimePickerFechaNacimiento.Size = new System.Drawing.Size(300, 20);
+            this.dateTimePickerFechaNacimiento.TabIndex = 58;
+            this.dateTimePickerFechaNacimiento.Value = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
+            this.dateTimePickerFechaNacimiento.ValueChanged += new System.EventHandler(this.dateTimePickerFechaNacimiento_ValueChanged);
+            // 
             // ActualizarAdministrador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(784, 561);
+            this.Controls.Add(this.dateTimePickerFechaNacimiento);
+            this.Controls.Add(this.buttonModificarContraseña);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBoxTelefono);
             this.Controls.Add(this.buttonGuardar);
             this.Controls.Add(this.botonVolver);
             this.Controls.Add(this.labelNombreUsuario);
-            this.Controls.Add(this.textBoxFecha);
             this.Controls.Add(this.textBoxNombreUsuario);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.labelError);
@@ -253,7 +273,6 @@ namespace Programa
         #endregion
 
         private System.Windows.Forms.Label labelNombreUsuario;
-        private System.Windows.Forms.TextBox textBoxFecha;
         private System.Windows.Forms.TextBox textBoxNombreUsuario;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label labelError;
@@ -268,5 +287,7 @@ namespace Programa
         private System.Windows.Forms.Button botonVolver;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBoxTelefono;
+        private System.Windows.Forms.Button buttonModificarContraseña;
+        private System.Windows.Forms.DateTimePicker dateTimePickerFechaNacimiento;
     }
 }

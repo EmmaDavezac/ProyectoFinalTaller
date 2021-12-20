@@ -45,7 +45,7 @@ namespace Programa
                 dataGridViewUsuarios.Rows[0].Cells[2].Value = usuarioSimple.Scoring;
                 dataGridViewUsuarios.Rows[0].Cells[3].Value = usuarioSimple.Nombre;
                 dataGridViewUsuarios.Rows[0].Cells[4].Value = usuarioSimple.Apellido;
-                dataGridViewUsuarios.Rows[0].Cells[5].Value = usuarioSimple.FechaNacimiento;
+                dataGridViewUsuarios.Rows[0].Cells[5].Value = usuarioSimple.FechaNacimiento.ToShortDateString(); 
                 dataGridViewUsuarios.Rows[0].Cells[6].Value = usuarioSimple.Mail;
                 dataGridViewUsuarios.Rows[0].Cells[7].Value = usuarioSimple.Telefono;
                 }
@@ -133,7 +133,7 @@ namespace Programa
                 dataGridViewUsuarios.Rows[n].Cells[2].Value = item.Scoring;
                 dataGridViewUsuarios.Rows[n].Cells[3].Value = item.Nombre;
                 dataGridViewUsuarios.Rows[n].Cells[4].Value = item.Apellido;
-                dataGridViewUsuarios.Rows[n].Cells[5].Value = item.FechaNacimiento;
+                dataGridViewUsuarios.Rows[n].Cells[5].Value = item.FechaNacimiento.ToShortDateString(); 
                 dataGridViewUsuarios.Rows[n].Cells[6].Value = item.Mail;
                 dataGridViewUsuarios.Rows[n].Cells[7].Value = item.Telefono;
             }

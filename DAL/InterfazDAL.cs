@@ -120,12 +120,11 @@ namespace DAL
                 unitOfWork.Complete();
             }
         }
-        public void ActualizarContraseñaAdministrador(string idAdministrador, string contraseña)
+        public void ActualizarContraseñaAdministrador(string pNombreUsuario, string contraseña)
         {
-            int id = Convert.ToInt32(idAdministrador);
             using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
             {
-                unitOfWork.RepositorioAdministradores.Get(id).Pass = contraseña;
+                unitOfWork.RepositorioAdministradores.Get(pNombreUsuario).Pass = contraseña;
 
                 unitOfWork.Complete();
             }

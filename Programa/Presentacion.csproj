@@ -62,12 +62,6 @@
     <Compile Include="ActualizarAdministrador.Designer.cs">
       <DependentUpon>ActualizarAdministrador.cs</DependentUpon>
     </Compile>
-    <Compile Include="ActualizarContraseña.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ActualizarContraseña.Designer.cs">
-      <DependentUpon>ActualizarContraseña.cs</DependentUpon>
-    </Compile>
     <Compile Include="ActualizarLibro.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,11 +104,11 @@
     <Compile Include="Menu2.Designer.cs">
       <DependentUpon>Menu2.cs</DependentUpon>
     </Compile>
-    <Compile Include="MenuPrincipal32.cs">
+    <Compile Include="ModificarContraseña.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MenuPrincipal32.Designer.cs">
-      <DependentUpon>MenuPrincipal32.cs</DependentUpon>
+    <Compile Include="ModificarContraseña.Designer.cs">
+      <DependentUpon>ModificarContraseña.cs</DependentUpon>
     </Compile>
     <Compile Include="RegistrarDevolucion.cs">
       <SubType>Form</SubType>
@@ -228,9 +222,6 @@
     <EmbeddedResource Include="ActualizarAdministrador.resx">
       <DependentUpon>ActualizarAdministrador.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ActualizarContraseña.resx">
-      <DependentUpon>ActualizarContraseña.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="ActualizarLibro.resx">
       <DependentUpon>ActualizarLibro.cs</DependentUpon>
     </EmbeddedResource>
@@ -252,8 +243,8 @@
     <EmbeddedResource Include="Menu2.resx">
       <DependentUpon>Menu2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MenuPrincipal32.resx">
-      <DependentUpon>MenuPrincipal32.cs</DependentUpon>
+    <EmbeddedResource Include="ModificarContraseña.resx">
+      <DependentUpon>ModificarContraseña.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RegistrarDevolucion.resx">
       <DependentUpon>RegistrarDevolucion.cs</DependentUpon>
