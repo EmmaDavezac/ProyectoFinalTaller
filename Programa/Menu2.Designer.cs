@@ -146,17 +146,17 @@ namespace Programa
             this.panel5.Controls.Add(this.labelNombreYApellido);
             this.panel5.Controls.Add(this.labelNombreUsuario);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel5.Location = new System.Drawing.Point(455, 0);
+            this.panel5.Location = new System.Drawing.Point(434, 0);
             this.panel5.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(247, 60);
+            this.panel5.Size = new System.Drawing.Size(268, 60);
             this.panel5.TabIndex = 9;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label2.Location = new System.Drawing.Point(194, 44);
+            this.label2.Location = new System.Drawing.Point(221, 44);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(44, 13);
@@ -167,7 +167,7 @@ namespace Programa
             // 
             this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox4.Image = global::Programa.Properties.Resources.perfil_del_usuario;
-            this.pictureBox4.Location = new System.Drawing.Point(197, 3);
+            this.pictureBox4.Location = new System.Drawing.Point(224, 3);
             this.pictureBox4.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(40, 40);
