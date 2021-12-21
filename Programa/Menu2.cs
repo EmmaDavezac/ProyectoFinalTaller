@@ -138,6 +138,7 @@ namespace Programa
 
         private void button2_Click(object sender, EventArgs e)
         {
+            this.Hide();
             RegistrarUsuario ventanaAgregarCliente = new RegistrarUsuario(idUsuario.ToString());
             ventanaAgregarCliente.Show();
         }

@@ -35,6 +35,7 @@ namespace Programa
             this.textBoxContraseñaNueva = new System.Windows.Forms.TextBox();
             this.buttonVolver = new System.Windows.Forms.Button();
             this.buttonGuardar = new System.Windows.Forms.Button();
+            this.labelErro = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -91,11 +92,21 @@ namespace Programa
             this.buttonGuardar.UseVisualStyleBackColor = true;
             this.buttonGuardar.Click += new System.EventHandler(this.button2_Click);
             // 
+            // labelErro
+            // 
+            this.labelErro.AutoSize = true;
+            this.labelErro.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.labelErro.Location = new System.Drawing.Point(172, 196);
+            this.labelErro.Name = "labelErro";
+            this.labelErro.Size = new System.Drawing.Size(0, 13);
+            this.labelErro.TabIndex = 6;
+            // 
             // ModificarContraseña
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(632, 292);
+            this.Controls.Add(this.labelErro);
             this.Controls.Add(this.buttonGuardar);
             this.Controls.Add(this.buttonVolver);
             this.Controls.Add(this.textBoxContraseñaNueva);
@@ -119,5 +130,6 @@ namespace Programa
         private System.Windows.Forms.TextBox textBoxContraseñaNueva;
         private System.Windows.Forms.Button buttonVolver;
         private System.Windows.Forms.Button buttonGuardar;
+        private System.Windows.Forms.Label labelErro;
     }
 }
