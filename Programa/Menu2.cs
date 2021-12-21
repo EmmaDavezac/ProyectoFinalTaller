@@ -24,7 +24,7 @@ namespace Programa
             NombreYApellido = interfazNucleo.ObtenerAdministradorPorNombreOMail(idUsuario).Nombre + " " + interfazNucleo.ObtenerAdministradorPorNombreOMail(idUsuario).Apellido;
             NombreUsuario = interfazNucleo.ObtenerAdministradorPorNombreOMail(idUsuario).NombreUsuario;
             labelNombreUsuario.Text = "Nombre de Usuario: " + NombreUsuario;
-            labelNombreYApellido.Text = "Nombre y Apellido: " + NombreYApellido;
+            labelNombreYApellido.Text = "Nombre: " + NombreYApellido;
            
         }
 
