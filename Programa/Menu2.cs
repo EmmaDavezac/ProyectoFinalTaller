@@ -13,17 +13,15 @@ namespace Programa
 {
     public partial class Menu2 : Form
     {
-        private string NombreUsuario { get; set; }
         private string NombreYApellido { get; set; }
-        private string idUsuario { get; set; }
+        private string nombreUsuario { get; set; }
         InterfazNucleo interfazNucleo = new InterfazNucleo();
-        public Menu2(string iD)
+        public Menu2(string pNombreUsuario)
         {
             InitializeComponent();
-            idUsuario = iD;
-            NombreYApellido = interfazNucleo.ObtenerAdministradorPorNombreOMail(idUsuario).Nombre + " " + interfazNucleo.ObtenerAdministradorPorNombreOMail(idUsuario).Apellido;
-            NombreUsuario = interfazNucleo.ObtenerAdministradorPorNombreOMail(idUsuario).NombreUsuario;
-            labelNombreUsuario.Text = "Nombre de Usuario: " + NombreUsuario;
+            nombreUsuario = pNombreUsuario;
+            NombreYApellido = interfazNucleo.ObtenerAdministradorPorNombreOMail(nombreUsuario).Nombre + " " + interfazNucleo.ObtenerAdministradorPorNombreOMail(nombreUsuario).Apellido;
+            labelNombreUsuario.Text = "Nombre de Usuario: " + nombreUsuario;
             labelNombreYApellido.Text = "Nombre: " + NombreYApellido;
            
         }
@@ -139,27 +137,27 @@ namespace Programa
         private void button2_Click(object sender, EventArgs e)
         {
             this.Hide();
-            RegistrarUsuario ventanaAgregarCliente = new RegistrarUsuario(idUsuario.ToString());
+            RegistrarUsuario ventanaAgregarCliente = new RegistrarUsuario(nombreUsuario);
             ventanaAgregarCliente.Show();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            ConsultarUsuario ventana = new ConsultarUsuario(idUsuario.ToString());
+            ConsultarUsuario ventana = new ConsultarUsuario(nombreUsuario);
             this.Hide();
             ventana.Show();
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            ActualizarUsuario ventana = new ActualizarUsuario(idUsuario.ToString());
+            ActualizarUsuario ventana = new ActualizarUsuario(nombreUsuario);
             this.Hide();
             ventana.Show();
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            VerUsuarios ventana = new VerUsuarios(idUsuario.ToString());
+            VerUsuarios ventana = new VerUsuarios(nombreUsuario);
             this.Hide();
             ventana.Show();
         }
@@ -167,13 +165,13 @@ namespace Programa
         private void button9_Click(object sender, EventArgs e)
         {
             this.Hide();
-            RegistrarAdministrador ventana = new RegistrarAdministrador(idUsuario.ToString());
+            RegistrarAdministrador ventana = new RegistrarAdministrador(nombreUsuario);
             ventana.Show();
         }
 
         private void button13_Click(object sender, EventArgs e)
         {
-            ConsultarLibro ventana = new ConsultarLibro(idUsuario.ToString());
+            ConsultarLibro ventana = new ConsultarLibro(nombreUsuario);
             this.Hide();
             ventana.Show();
         }
@@ -181,111 +179,111 @@ namespace Programa
         private void button8_Click(object sender, EventArgs e)
         {
             this.Hide();
-            ConsultarAdministrador ventana = new ConsultarAdministrador(idUsuario.ToString());
+            ConsultarAdministrador ventana = new ConsultarAdministrador(nombreUsuario);
             ventana.Show();
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
-            ActualizarAdministrador ventana = new ActualizarAdministrador(idUsuario.ToString());
+            ActualizarAdministrador ventana = new ActualizarAdministrador(nombreUsuario);
             this.Hide();
             ventana.Show();
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
-            VerAdministradores ventana = new VerAdministradores(idUsuario.ToString());
+            VerAdministradores ventana = new VerAdministradores(nombreUsuario);
             this.Hide();
             ventana.Show();
         }
 
         private void button19_Click(object sender, EventArgs e)
         {
-            RegistrarEjemplar ventana = new RegistrarEjemplar(idUsuario.ToString());
+            RegistrarEjemplar ventana = new RegistrarEjemplar(nombreUsuario);
             this.Hide();
             ventana.Show();
         }
 
         private void button14_Click(object sender, EventArgs e)
         {
-            RegistrarLibro ventana = new RegistrarLibro(idUsuario.ToString());
+            RegistrarLibro ventana = new RegistrarLibro(nombreUsuario);
             this.Hide();
             ventana.Show();
         }
 
         private void button11_Click(object sender, EventArgs e)
         {
-            VerLibros ventana = new VerLibros(idUsuario.ToString());
+            VerLibros ventana = new VerLibros(nombreUsuario);
             this.Hide();
             ventana.Show();
         }
 
         private void button12_Click(object sender, EventArgs e)
         {
-            ActualizarLibro ventana = new ActualizarLibro(idUsuario.ToString());
+            ActualizarLibro ventana = new ActualizarLibro(nombreUsuario);
             this.Hide();
             ventana.Show();
         }
 
         private void button18_Click(object sender, EventArgs e)
         {
-            ConsultarEjemplara ventana = new ConsultarEjemplara(idUsuario.ToString());
+            ConsultarEjemplara ventana = new ConsultarEjemplara(nombreUsuario);
             this.Hide();
             ventana.Show();
         }
 
         private void button17_Click(object sender, EventArgs e)
         {
-            ActualizarEjemplar ventana = new ActualizarEjemplar(idUsuario.ToString());
+            ActualizarEjemplar ventana = new ActualizarEjemplar(nombreUsuario);
             this.Hide();
             ventana.Show();
         }
 
         private void button16_Click(object sender, EventArgs e)
         {
-            VerEjemplares ventana = new VerEjemplares(idUsuario.ToString());
+            VerEjemplares ventana = new VerEjemplares(nombreUsuario);
             this.Hide();
             ventana.Show();
         }
 
         private void button24_Click(object sender, EventArgs e)
         {
-            RegistrarPrestamo ventana = new RegistrarPrestamo(idUsuario.ToString());
+            RegistrarPrestamo ventana = new RegistrarPrestamo(nombreUsuario);
             this.Hide();
             ventana.Show();
         }
 
         private void button23_Click(object sender, EventArgs e)
         {
-            ConsultarPrestamo ventana = new ConsultarPrestamo(idUsuario.ToString());
+            ConsultarPrestamo ventana = new ConsultarPrestamo(nombreUsuario);
             this.Hide();
             ventana.Show();
         }
 
         private void button22_Click(object sender, EventArgs e)
         {
-            RegistrarDevolucion ventana = new RegistrarDevolucion(idUsuario.ToString());
+            RegistrarDevolucion ventana = new RegistrarDevolucion(nombreUsuario);
             this.Hide();
             ventana.Show();
         }
 
         private void button21_Click(object sender, EventArgs e)
         {
-            VerPrestamos ventana = new VerPrestamos(idUsuario.ToString());
+            VerPrestamos ventana = new VerPrestamos(nombreUsuario);
             this.Hide();
             ventana.Show();
         }
 
         private void button26_Click(object sender, EventArgs e)
         {
-            VerPrestamosProximosAVencer ventana = new VerPrestamosProximosAVencer(idUsuario.ToString());
+            VerPrestamosProximosAVencer ventana = new VerPrestamosProximosAVencer(nombreUsuario);
             this.Hide();
             ventana.Show();
         }
 
         private void button27_Click(object sender, EventArgs e)
         {
-            VerPrestamosRetrasados ventana = new VerPrestamosRetrasados(idUsuario.ToString());
+            VerPrestamosRetrasados ventana = new VerPrestamosRetrasados(nombreUsuario);
             this.Hide();
             ventana.Show();
         }

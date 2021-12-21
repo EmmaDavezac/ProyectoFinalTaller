@@ -14,15 +14,15 @@ namespace Programa
 {
     public partial class ActualizarUsuario : Form
     {
-        private string NombreUsuario { get; set; }
+        private string nombre { get; set; }
         InterfazNucleo interfazNucleo = new InterfazNucleo();
-        private string idUsuario { get; set; }
-        public ActualizarUsuario(string iD)
+        private string nombreUsuario { get; set; }
+        public ActualizarUsuario(string pNombreUsuario)
         {
             InitializeComponent();
-            idUsuario = iD;
-            NombreUsuario = interfazNucleo.ObtenerAdministradorPorNombreOMail(idUsuario).Nombre;
-            labelNombreUsuario.Text = "Usuario: " + NombreUsuario;
+            nombreUsuario = pNombreUsuario;
+            nombre = interfazNucleo.ObtenerAdministradorPorNombreOMail(nombreUsuario).Nombre;
+            labelNombreUsuario.Text = "Usuario: " + nombre;
         }
 
         private void textBoxId_TextChanged(object sender, EventArgs e)
@@ -45,7 +45,7 @@ namespace Programa
                                     interfazNucleo.ActualizarUsuario(textBoxNombreUsuario.Text, textBoxNombre.Text, textBoxApellido.Text, dateTimePickerFechaNacimiento.Value.Date.ToString(), textBoxMail.Text, textBoxTelefono.Text);
                                     MessageBox.Show("Usuario guardado, el nombre de usuario es: " + textBoxNombreUsuario.Text, "Operacion Exitosa", MessageBoxButtons.OK);
                                     this.Hide();
-                                    ConsultarUsuario ventanaMenu = new ConsultarUsuario(NombreUsuario);
+                                    ConsultarUsuario ventanaMenu = new ConsultarUsuario(nombreUsuario);
                                     ventanaMenu.Show();
                                 }
                                 else
@@ -123,7 +123,7 @@ namespace Programa
         private void ActualizarUsuario_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.Hide();
-            ConsultarUsuario ventanaMenu = new ConsultarUsuario(idUsuario);
+            ConsultarUsuario ventanaMenu = new ConsultarUsuario(nombreUsuario);
             ventanaMenu.Show();
         }
         public void CargarUsuarioExistente(string pNombreUsuario)
@@ -157,7 +157,7 @@ namespace Programa
         private void botonVolver_Click_1(object sender, EventArgs e)
         {
             this.Hide();
-            ConsultarUsuario ventanaMenu = new ConsultarUsuario(idUsuario.ToString());
+            ConsultarUsuario ventanaMenu = new ConsultarUsuario(nombreUsuario);
             ventanaMenu.Show();
         }
 

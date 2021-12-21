@@ -13,15 +13,15 @@ namespace Programa
 {
     public partial class RegistrarAdministrador : Form
     {
-        private string NombreUsuario { get; set; }
-        private string idUsuario { get; set; }
+        private string nombre { get; set; }
+        private string nombreUsuario { get; set; }
         InterfazNucleo interfazNucleo = new InterfazNucleo();
-        public RegistrarAdministrador(string iD)
+        public RegistrarAdministrador(string pNombreUsuario)
         {
             InitializeComponent();
-            idUsuario = iD;
-            NombreUsuario = interfazNucleo.ObtenerAdministradorPorNombreOMail(idUsuario).Nombre;
-            labelNombreUsuario.Text = "Usuario: " + NombreUsuario;
+            nombreUsuario = pNombreUsuario;
+            nombre = interfazNucleo.ObtenerAdministradorPorNombreOMail(nombreUsuario).Nombre;
+            labelNombreUsuario.Text = "Usuario: " + nombre;
         }
 
         private void AgregarAdministrador_Load(object sender, EventArgs e)
@@ -39,7 +39,7 @@ namespace Programa
         private void botonVolver_Click(object sender, EventArgs e)
         {
 
-            Menu2 ventana = new Menu2(idUsuario.ToString());
+            Menu2 ventana = new Menu2(nombreUsuario.ToString());
             ventana.Show();
             this.Hide();
         }
@@ -52,7 +52,7 @@ namespace Programa
         private void RegistrarAdministrador_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.Hide();
-            Menu2 ventanaMenu = new Menu2(idUsuario.ToString());
+            Menu2 ventanaMenu = new Menu2(nombreUsuario.ToString());
             ventanaMenu.Show();
         }
 
@@ -102,7 +102,7 @@ namespace Programa
                                         {
                                             MessageBox.Show("Usuario administrador guardado, el nombre de usuario es: " + textBoxNombreUsuario.Text, "Operacion Exitosa", MessageBoxButtons.OK);
 
-                                            Menu2 ventana = new Menu2(idUsuario.ToString());
+                                            Menu2 ventana = new Menu2(nombreUsuario);
                                             ventana.Show();
                                             this.Hide();
                                         }

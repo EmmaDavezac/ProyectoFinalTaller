@@ -14,6 +14,7 @@ namespace ServiciosAPILibros
 {
     public class APIOpenLibrary:IServiciosAPILibros
     {
+        List<string> listaISBN = new List<string>();
         public string TratarCadenaBusqueda(string ca)
         {
 

@@ -14,22 +14,22 @@ namespace Programa
 {
     public partial class ActualizarAdministrador : Form
     {
-        private string NombreUsuario { get; set; }
+        private string nombre { get; set; }
         InterfazNucleo interfazNucleo = new InterfazNucleo();
         public string contraseñaNueva;
-        private string idUsuario { get; set; }
-        public ActualizarAdministrador(string iD)
+        private string nombreUsuario { get; set; }
+        public ActualizarAdministrador(string pNombreUsuario)
         {
             InitializeComponent();
-            idUsuario = iD;
-            NombreUsuario = interfazNucleo.ObtenerAdministradorPorNombreOMail(idUsuario).Nombre;
-            labelNombreUsuario.Text = "Usuario: " + NombreUsuario;
+            nombreUsuario = pNombreUsuario;
+            nombre = interfazNucleo.ObtenerAdministradorPorNombreOMail(nombreUsuario).Nombre;
+            labelNombreUsuario.Text = "Usuario: " + nombre;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             this.Hide();
-            ConsultarAdministrador ventana = new ConsultarAdministrador(idUsuario.ToString());
+            ConsultarAdministrador ventana = new ConsultarAdministrador(nombreUsuario.ToString());
             ventana.Show();
         }
 
@@ -52,7 +52,7 @@ namespace Programa
                                 }
                                 MessageBox.Show("Usuario guardado, el nombre de usuario es: " + textBoxNombreUsuario.Text, "Operacion Exitosa", MessageBoxButtons.OK);
                                 this.Hide();
-                                ConsultarAdministrador ventanaMenu = new ConsultarAdministrador(NombreUsuario);
+                                ConsultarAdministrador ventanaMenu = new ConsultarAdministrador(nombreUsuario);
                                 ventanaMenu.Show();
                             }
                             else
@@ -125,7 +125,7 @@ namespace Programa
         private void ActualizarAdministrador_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.Hide();
-            ConsultarAdministrador ventanaMenu = new ConsultarAdministrador(idUsuario.ToString());
+            ConsultarAdministrador ventanaMenu = new ConsultarAdministrador(nombreUsuario);
             ventanaMenu.Show();
         }
 

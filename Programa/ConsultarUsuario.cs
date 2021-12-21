@@ -14,16 +14,16 @@ namespace Programa
 {
     public partial class ConsultarUsuario : Form
     {
-        private string pNombreUsuario { get; set; }
-        private string idUsuario { get; set; }
+        private string nombre { get; set; }
+        private string nombreUsuario { get; set; }
         private InterfazNucleo interfazNucleo = new InterfazNucleo();
        
-        public ConsultarUsuario(string iD)
+        public ConsultarUsuario(string pNombreUsuario)
         {
             InitializeComponent();
-            idUsuario = iD;
-            pNombreUsuario = interfazNucleo.ObtenerAdministradorPorNombreOMail(idUsuario).Nombre;
-            labelNombreUsuario.Text = "Usuario: " + pNombreUsuario;
+            nombreUsuario = pNombreUsuario;
+            nombre = interfazNucleo.ObtenerAdministradorPorNombreOMail(nombreUsuario).Nombre;
+            labelNombreUsuario.Text = "Usuario: " + nombre;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -72,14 +72,14 @@ namespace Programa
         private void botonVolver_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Menu2 ventana = new Menu2(idUsuario.ToString());
+            Menu2 ventana = new Menu2(nombreUsuario.ToString());
             ventana.Show();
         }
 
         private void ConsultarUsuario_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.Hide();
-            Menu2 ventanaMenu = new Menu2(idUsuario.ToString());
+            Menu2 ventanaMenu = new Menu2(nombreUsuario);
             ventanaMenu.Show();
         }
 
@@ -145,7 +145,7 @@ namespace Programa
             DataGridViewCell cell = (DataGridViewCell)dataGridViewUsuarios.Rows[e.RowIndex].Cells[e.ColumnIndex];
             if (cell.Value.ToString() == "Edit")
             {
-                ActualizarUsuario ventana = new ActualizarUsuario(idUsuario);
+                ActualizarUsuario ventana = new ActualizarUsuario(nombreUsuario);
                 ventana.CargarUsuarioExistente(dataGridViewUsuarios.Rows[e.RowIndex].Cells[1].Value.ToString());
                 this.Hide();
                 ventana.Show();
