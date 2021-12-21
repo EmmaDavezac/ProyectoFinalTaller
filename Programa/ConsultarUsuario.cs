@@ -51,6 +51,7 @@ namespace Programa
                 }
                 else
                 {
+                    labelErro.Text = "Error, el usuario ingresado no existe";
                     buttonBuscarUsuario.Enabled = false;
                     textBoxNombreUsuario.Focus();
                 }
@@ -154,6 +155,11 @@ namespace Programa
         private void buttonRefrescar_Click(object sender, EventArgs e)
         {
             ObtenerUsuarios();
+        }
+
+        private void labelErro_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

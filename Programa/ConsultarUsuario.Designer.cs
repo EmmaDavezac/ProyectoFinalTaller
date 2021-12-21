@@ -32,7 +32,7 @@ namespace Programa
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelError = new System.Windows.Forms.Label();
             this.buttonBuscarUsuario = new System.Windows.Forms.Button();
             this.botonVolver = new System.Windows.Forms.Button();
@@ -40,8 +40,6 @@ namespace Programa
             this.textBoxNombreUsuario = new System.Windows.Forms.TextBox();
             this.labelNombreUsuario = new System.Windows.Forms.Label();
             this.dataGridViewUsuarios = new System.Windows.Forms.DataGridView();
-            this.usuarioSimpleBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.usuarioBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.Edit = new System.Windows.Forms.DataGridViewLinkColumn();
             this.NombreUsuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Scoring = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,7 +48,10 @@ namespace Programa
             this.FechaNacimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Mail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.usuarioSimpleBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.usuarioBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.buttonRefrescar = new System.Windows.Forms.Button();
+            this.labelErro = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUsuarios)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.usuarioSimpleBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.usuarioBindingSource)).BeginInit();
@@ -129,8 +130,8 @@ namespace Programa
             // 
             // dataGridViewUsuarios
             // 
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            this.dataGridViewUsuarios.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            this.dataGridViewUsuarios.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewUsuarios.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dataGridViewUsuarios.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -143,19 +144,11 @@ namespace Programa
             this.FechaNacimiento,
             this.Mail,
             this.Telefono});
-            this.dataGridViewUsuarios.Location = new System.Drawing.Point(1, 138);
+            this.dataGridViewUsuarios.Location = new System.Drawing.Point(1, 147);
             this.dataGridViewUsuarios.Name = "dataGridViewUsuarios";
-            this.dataGridViewUsuarios.Size = new System.Drawing.Size(787, 387);
+            this.dataGridViewUsuarios.Size = new System.Drawing.Size(787, 378);
             this.dataGridViewUsuarios.TabIndex = 40;
             this.dataGridViewUsuarios.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewUsuarios_CellContentClick);
-            // 
-            // usuarioSimpleBindingSource
-            // 
-            this.usuarioSimpleBindingSource.DataSource = typeof(Dominio.UsuarioSimple);
-            // 
-            // usuarioBindingSource
-            // 
-            this.usuarioBindingSource.DataSource = typeof(Dominio.Usuario);
             // 
             // Edit
             // 
@@ -208,6 +201,14 @@ namespace Programa
             this.Telefono.Name = "Telefono";
             this.Telefono.ReadOnly = true;
             // 
+            // usuarioSimpleBindingSource
+            // 
+            this.usuarioSimpleBindingSource.DataSource = typeof(Dominio.UsuarioSimple);
+            // 
+            // usuarioBindingSource
+            // 
+            this.usuarioBindingSource.DataSource = typeof(Dominio.Usuario);
+            // 
             // buttonRefrescar
             // 
             this.buttonRefrescar.BackColor = System.Drawing.SystemColors.Highlight;
@@ -225,6 +226,16 @@ namespace Programa
             this.buttonRefrescar.UseVisualStyleBackColor = false;
             this.buttonRefrescar.Click += new System.EventHandler(this.buttonRefrescar_Click);
             // 
+            // labelErro
+            // 
+            this.labelErro.AutoSize = true;
+            this.labelErro.ForeColor = System.Drawing.Color.Red;
+            this.labelErro.Location = new System.Drawing.Point(137, 134);
+            this.labelErro.Name = "labelErro";
+            this.labelErro.Size = new System.Drawing.Size(0, 13);
+            this.labelErro.TabIndex = 42;
+            this.labelErro.Click += new System.EventHandler(this.labelErro_Click);
+            // 
             // ConsultarUsuario
             // 
             this.AcceptButton = this.buttonBuscarUsuario;
@@ -232,6 +243,7 @@ namespace Programa
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(784, 561);
+            this.Controls.Add(this.labelErro);
             this.Controls.Add(this.buttonRefrescar);
             this.Controls.Add(this.dataGridViewUsuarios);
             this.Controls.Add(this.labelNombreUsuario);
@@ -278,5 +290,6 @@ namespace Programa
         private System.Windows.Forms.DataGridViewTextBoxColumn Mail;
         private System.Windows.Forms.DataGridViewTextBoxColumn Telefono;
         private System.Windows.Forms.Button buttonRefrescar;
+        private System.Windows.Forms.Label labelErro;
     }
 }

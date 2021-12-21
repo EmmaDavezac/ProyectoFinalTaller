@@ -48,17 +48,23 @@ namespace Programa
                     }
                     else
                     {
-                        MessageBox.Show("La contraseña antigua es incorrecta", "Error", MessageBoxButtons.OK);
+                        this.labelErro.Text = "Error, la contraseña antigua es incorrecta";
+                        buttonGuardar.Enabled = false;
+                        textBoxContraseñaAntigua.Focus(); ;
                     }
                 }
                 else
                 {
-
+                    this.labelErro.Text = "Error, la contraseña nueva es vacia";
+                    buttonGuardar.Enabled = false;
+                    textBoxContraseñaNueva.Focus(); ;
                 }
             }
             else
             {
-                
+                this.labelErro.Text = "Error,la contraseña vieja es vacia";
+                buttonGuardar.Enabled = false;
+                textBoxContraseñaAntigua.Focus(); ;
             }
             
         }
