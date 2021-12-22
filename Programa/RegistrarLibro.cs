@@ -203,15 +203,17 @@ namespace Programa
 
         private void textBoxSeleccionarISBN_TextChanged(object sender, EventArgs e)
         {
-            if (textBoxISBN.Text != null)
+            if (textBoxSeleccionarISBN.Text != null)
             {
-                dataGridViewISBN.Rows.Clear();
                 foreach (DataGridViewRow row in dataGridViewISBN.Rows)
                 {
-                    if (row.Cells[0].Value.ToString().Contains(textBoxISBN.Text) == true)
+                    if (row.Cells[0].Value.ToString().Contains(textBoxSeleccionarISBN.Text.ToString()) == false)
                     {
-                        int n = dataGridViewISBN.Rows.Add();
-                        dataGridViewISBN.Rows[n].Cells[0].Value = row.Cells[0].Value.ToString();
+                        row.Visible = false;
+                    }
+                    else
+                    {
+                        row.Visible = true;
                     }
                 }
             }

@@ -61,9 +61,12 @@ namespace Programa
             this.Autor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Año = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ISBNs = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewCopia = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTituloYAutor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewISBN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAños)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCopia)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridViewTituloYAutor
@@ -381,6 +384,22 @@ namespace Programa
             this.ISBNs.ReadOnly = true;
             this.ISBNs.Visible = false;
             // 
+            // dataGridViewCopia
+            // 
+            this.dataGridViewCopia.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewCopia.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1});
+            this.dataGridViewCopia.Location = new System.Drawing.Point(12, 549);
+            this.dataGridViewCopia.Name = "dataGridViewCopia";
+            this.dataGridViewCopia.Size = new System.Drawing.Size(10, 10);
+            this.dataGridViewCopia.TabIndex = 31;
+            this.dataGridViewCopia.Visible = false;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Column1";
+            this.Column1.Name = "Column1";
+            // 
             // RegistrarLibro
             // 
             this.AcceptButton = this.buttonAñadirLibro;
@@ -388,6 +407,7 @@ namespace Programa
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(784, 561);
+            this.Controls.Add(this.dataGridViewCopia);
             this.Controls.Add(this.labelError);
             this.Controls.Add(this.labelSeleccionarAño);
             this.Controls.Add(this.textBoxSelccionarAño);
@@ -427,6 +447,7 @@ namespace Programa
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTituloYAutor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewISBN)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAños)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCopia)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -466,5 +487,7 @@ namespace Programa
         private System.Windows.Forms.DataGridViewTextBoxColumn Autor;
         private System.Windows.Forms.DataGridViewTextBoxColumn Año;
         private System.Windows.Forms.DataGridViewTextBoxColumn ISBNs;
+        private System.Windows.Forms.DataGridView dataGridViewCopia;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
     }
 }
