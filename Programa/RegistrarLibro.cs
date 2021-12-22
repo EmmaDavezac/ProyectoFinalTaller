@@ -29,10 +29,20 @@ namespace Programa
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            textBoxTitulo.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString();
-            textBoxAutor.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
-            textBoxAñoPublicacion.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
-            textBoxISBN.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
+            textBoxTitulo.Text = dataGridViewTituloYAutor.CurrentRow.Cells[0].Value.ToString();
+            textBoxAutor.Text = dataGridViewTituloYAutor.CurrentRow.Cells[1].Value.ToString();
+            List<string> isbns = interfazNucleo.TransformarISBNsALista(dataGridViewTituloYAutor.CurrentRow.Cells[3].Value.ToString());
+            foreach (var item in isbns)
+            {
+                int n = dataGridViewISBN.Rows.Add();
+                dataGridViewISBN.Rows[n].Cells[0].Value = item;
+            }
+            List<string> años = interfazNucleo.TransformarAñosALista(dataGridViewTituloYAutor.CurrentRow.Cells[2].Value.ToString());
+            foreach (var item in años)
+            {
+                int n = dataGridViewAños.Rows.Add();
+                dataGridViewAños.Rows[n].Cells[0].Value = item;
+            }
             /*List<string> resultados = textBoxISBN.Text.ToList();
             foreach (var item in resultados)
             {
@@ -51,15 +61,15 @@ namespace Programa
             if (textBoxBuscar.Text != null && textBoxBuscar.Text != "")
             {
                 int resultado = 0;
-                dataGridView1.Rows.Clear();
+                dataGridViewTituloYAutor.Rows.Clear();
                 List<Libro> resultados = interfazNucleo.ListarLibrosDeAPIPorCoincidencia(textBoxBuscar.Text);
                 foreach (var item in resultados)
                 {
-                    int n = dataGridView1.Rows.Add();
-                    dataGridView1.Rows[n].Cells[0].Value = item.Titulo;
-                    dataGridView1.Rows[n].Cells[1].Value = item.Autor;
-                    dataGridView1.Rows[n].Cells[2].Value = item.AñoPublicacion;
-                    dataGridView1.Rows[n].Cells[3].Value = item.ISBN;
+                    int n = dataGridViewTituloYAutor.Rows.Add();
+                    dataGridViewTituloYAutor.Rows[n].Cells[0].Value = item.Titulo;
+                    dataGridViewTituloYAutor.Rows[n].Cells[1].Value = interfazNucleo.SacarAutorDeLaLista(item.Autor);
+                    dataGridViewTituloYAutor.Rows[n].Cells[2].Value = item.AñoPublicacion;
+                    dataGridViewTituloYAutor.Rows[n].Cells[3].Value = item.ISBN;
                     resultado += 1;
                 }
 
@@ -177,6 +187,11 @@ namespace Programa
         }
 
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dataGridViewISBN_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

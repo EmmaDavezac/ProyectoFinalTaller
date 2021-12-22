@@ -198,5 +198,68 @@ namespace Nucleo
                 NotificarUsuario(usuario.NombreUsuario);
             }
         }
+
+        public List<string> TransformarISBNsALista(string pLista)
+        {
+            string palabra = "";
+            int contador = 0;
+            List<string> resultadoIntermedio = new List<string>();
+            List<string> resultado = new List<string>();
+            for (int i = 0; i < pLista.Length; i++)
+            {
+                if (pLista.Substring(i, 1) == "[" || pLista.Substring(i, 1) == "," || pLista.Substring(i, 1) == "]")
+                {
+                }
+                if (pLista.Substring(i, 1) == '"'.ToString())
+                {
+                    contador = 1;
+                }
+                if (pLista.Substring(i, 1) == '"'.ToString() && contador == 1)
+                {
+                    contador = 0;
+                    resultadoIntermedio.Add(palabra);
+                    palabra = "";
+                }
+                else
+                {
+                    palabra = palabra + pLista.Substring(i, 1);
+                }
+            }
+            for (int i = 1; i < resultadoIntermedio.Count; i += 2)
+            {
+                resultado.Add(resultadoIntermedio[i]);
+            }
+            return resultado;
+        }
+        public List<string> TransformarAñosALista(string pLista)
+        {
+            string palabra = "";
+            pLista = pLista.Remove(0, 1);
+            List<string> resultado = new List<string>();
+            for (int i = 0; i < pLista.Length; i++)
+            {
+                if (pLista.Substring(i, 1) == ','.ToString() || pLista.Substring(i, 1) == "]")
+                {
+                    resultado.Add(palabra);
+                    palabra = "";
+                }
+                else
+                {
+                    palabra = palabra + pLista.Substring(i, 1);
+                }
+            }
+            return resultado;
+        }
+        public string SacarAutorDeLaLista(string pLista)
+        {
+            if (pLista == "desconocido")
+            {
+                return "Desconocido";
+            }
+            else
+            {
+                return TransformarISBNsALista(pLista).First();
+            }
+        }
     }
 }
