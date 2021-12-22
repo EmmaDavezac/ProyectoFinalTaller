@@ -240,7 +240,7 @@ namespace Nucleo
             {
                 if (pLista.Substring(i, 1) == ','.ToString() || pLista.Substring(i, 1) == "]")
                 {
-                    resultado.Add(palabra);
+                    resultado.Add(palabra.Remove(1, 3));
                     palabra = "";
                 }
                 else
@@ -248,7 +248,7 @@ namespace Nucleo
                     palabra = palabra + pLista.Substring(i, 1);
                 }
             }
-            return resultado;
+            return resultado.OrderBy(x => x).ToList();
         }
         public string SacarAutorDeLaLista(string pLista)
         {

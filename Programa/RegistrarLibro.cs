@@ -193,7 +193,28 @@ namespace Programa
 
         private void dataGridViewISBN_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            textBoxISBN.Text = dataGridViewISBN.CurrentRow.Cells[0].Value.ToString();
+        }
 
+        private void dataGridViewAños_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            textBoxAñoPublicacion.Text = dataGridViewAños.CurrentRow.Cells[0].Value.ToString();
+        }
+
+        private void textBoxSeleccionarISBN_TextChanged(object sender, EventArgs e)
+        {
+            if (textBoxISBN.Text != null)
+            {
+                dataGridViewISBN.Rows.Clear();
+                foreach (DataGridViewRow row in dataGridViewISBN.Rows)
+                {
+                    if (row.Cells[0].Value.ToString().Contains(textBoxISBN.Text) == true)
+                    {
+                        int n = dataGridViewISBN.Rows.Add();
+                        dataGridViewISBN.Rows[n].Cells[0].Value = row.Cells[0].Value.ToString();
+                    }
+                }
+            }
         }
     }
 }

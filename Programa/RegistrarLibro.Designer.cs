@@ -297,6 +297,7 @@ namespace Programa
             this.dataGridViewAños.Name = "dataGridViewAños";
             this.dataGridViewAños.Size = new System.Drawing.Size(204, 232);
             this.dataGridViewAños.TabIndex = 25;
+            this.dataGridViewAños.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewAños_CellContentClick);
             // 
             // ISBN
             // 
@@ -325,6 +326,7 @@ namespace Programa
             this.textBoxSeleccionarISBN.Name = "textBoxSeleccionarISBN";
             this.textBoxSeleccionarISBN.Size = new System.Drawing.Size(100, 20);
             this.textBoxSeleccionarISBN.TabIndex = 26;
+            this.textBoxSeleccionarISBN.TextChanged += new System.EventHandler(this.textBoxSeleccionarISBN_TextChanged);
             // 
             // labelSeleccionarAño
             // 
