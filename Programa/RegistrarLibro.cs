@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Nucleo;
+using Dominio;
 
 
 
@@ -32,11 +33,17 @@ namespace Programa
             textBoxAutor.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
             textBoxAñoPublicacion.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
             textBoxISBN.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
+            /*List<string> resultados = textBoxISBN.Text.ToList();
+            foreach (var item in resultados)
+            {
+                int n = dataGridView1.Rows.Add();
+                dataGridView2.Rows[n].Cells[0].Value = ;
+            }*/
         }
 
         private void BuscarLibrosAPI_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -45,7 +52,8 @@ namespace Programa
             {
                 int resultado = 0;
                 dataGridView1.Rows.Clear();
-                foreach (var item in new Nucleo.InterfazNucleo().ListarLibrosDeAPIPorCoincidencia(textBoxBuscar.Text))
+                List<Libro> resultados = interfazNucleo.ListarLibrosDeAPIPorCoincidencia(textBoxBuscar.Text);
+                foreach (var item in resultados)
                 {
                     int n = dataGridView1.Rows.Add();
                     dataGridView1.Rows[n].Cells[0].Value = item.Titulo;
@@ -140,7 +148,7 @@ namespace Programa
             textBoxAñoPublicacion.Clear();
             textBoxISBN.Clear();
             textBoxTitulo.Clear();
-
+            
         }
 
         private void labelIngreseISBN_Click(object sender, EventArgs e)
@@ -164,6 +172,11 @@ namespace Programa
         }
 
         private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

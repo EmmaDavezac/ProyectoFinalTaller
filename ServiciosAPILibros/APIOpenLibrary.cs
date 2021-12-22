@@ -14,7 +14,6 @@ namespace ServiciosAPILibros
 {
     public class APIOpenLibrary:IServiciosAPILibros
     {
-        List<string> listaISBN = new List<string>();
         public string TratarCadenaBusqueda(string ca)
         {
 
@@ -35,7 +34,6 @@ namespace ServiciosAPILibros
             List<Libro> lista = new List<Libro>();
             // Url de ejemplo
             var mUrl = "http://openlibrary.org/search.json?q=" + TratarCadenaBusqueda(cadena);
-
             // Se crea el request http
             HttpWebRequest mRequest = (HttpWebRequest)WebRequest.Create(mUrl);
 

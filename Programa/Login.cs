@@ -34,32 +34,28 @@ namespace Programa
 
         private void botonIniciarSesion_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(textBoxId.Text))
+            if (!string.IsNullOrEmpty(textBoxNombreUsuario.Text))
             {
-                if (textBoxId.Text != "")
-                {
                     if (!string.IsNullOrEmpty(textBoxContraseña.Text))
                     {
                         Nucleo.InterfazNucleo fachada = new Nucleo.InterfazNucleo();
-                        if (new Nucleo.InterfazNucleo().ObtenerAdministradorPorNombreOMail(textBoxId.Text) != null)
+                        if (new Nucleo.InterfazNucleo().ObtenerAdministradorPorNombreOMail(textBoxNombreUsuario.Text) != null)
                         {
-                            if (textBoxContraseña.Text != null && fachada.VerficarContraseña(textBoxId.Text, textBoxContraseña.Text))
+                            if (textBoxContraseña.Text != null && fachada.VerficarContraseña(textBoxNombreUsuario.Text, textBoxContraseña.Text))
                             {
 
-                                Menu2 ventanaMenu = new Menu2(textBoxId.Text);
+                                Menu2 ventanaMenu = new Menu2(textBoxNombreUsuario.Text);
                                 ventanaMenu.Show();
                                 this.Hide();
                             }
-                            else { labelError.Text = "La contraseña ingresada es incorrecta "; botonIniciarSesion.Enabled = false; textBoxContraseña.Focus(); }
+                            else { labelError.Text = "Error, la contraseña ingresada es incorrecta "; botonIniciarSesion.Enabled = false; textBoxContraseña.Focus(); }
 
                         }
-                        else { labelError.Text = "El usuario No existe"; botonIniciarSesion.Enabled = false; textBoxId.Focus(); }
+                        else { labelError.Text = "Error,el usuario no existe"; botonIniciarSesion.Enabled = false; textBoxNombreUsuario.Focus(); }
                     }
-                    else { labelError.Text = "Contraseña no ingresada"; botonIniciarSesion.Enabled = false; textBoxContraseña.Clear(); textBoxContraseña.Focus(); }
-                }
-                //else { labelError.Text = "El Id ingresado tiene un formato incorrecto , los Id son numericos"; botonIniciarSesion.Enabled = false; textBoxId.Focus(); }
+                    else { labelError.Text = "Error,no ha ingresado contraseña"; botonIniciarSesion.Enabled = false; textBoxContraseña.Clear(); textBoxContraseña.Focus(); }
             }
-            else { labelError.Text = "No ha ingresado el Id"; botonIniciarSesion.Enabled = false; textBoxId.Focus(); }
+            else { labelError.Text = "Error, no ha ingresado el nombre de usuario"; botonIniciarSesion.Enabled = false; textBoxNombreUsuario.Focus(); }
 
 
 

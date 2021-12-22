@@ -30,7 +30,7 @@ namespace Programa
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.textBoxId = new System.Windows.Forms.TextBox();
+            this.textBoxNombreUsuario = new System.Windows.Forms.TextBox();
             this.textBoxContraseña = new System.Windows.Forms.TextBox();
             this.labelIdAdministrador = new System.Windows.Forms.Label();
             this.labelConstraseña = new System.Windows.Forms.Label();
@@ -43,16 +43,16 @@ namespace Programa
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // textBoxId
+            // textBoxNombreUsuario
             // 
-            this.textBoxId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBoxId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxId.Location = new System.Drawing.Point(289, 311);
-            this.textBoxId.Name = "textBoxId";
-            this.textBoxId.Size = new System.Drawing.Size(224, 22);
-            this.textBoxId.TabIndex = 0;
-            this.textBoxId.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBoxId.TextChanged += new System.EventHandler(this.textBoxUsuario_TextChanged);
+            this.textBoxNombreUsuario.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxNombreUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxNombreUsuario.Location = new System.Drawing.Point(289, 311);
+            this.textBoxNombreUsuario.Name = "textBoxNombreUsuario";
+            this.textBoxNombreUsuario.Size = new System.Drawing.Size(224, 22);
+            this.textBoxNombreUsuario.TabIndex = 0;
+            this.textBoxNombreUsuario.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxNombreUsuario.TextChanged += new System.EventHandler(this.textBoxUsuario_TextChanged);
             // 
             // textBoxContraseña
             // 
@@ -73,9 +73,9 @@ namespace Programa
             this.labelIdAdministrador.ForeColor = System.Drawing.SystemColors.ControlText;
             this.labelIdAdministrador.Location = new System.Drawing.Point(286, 292);
             this.labelIdAdministrador.Name = "labelIdAdministrador";
-            this.labelIdAdministrador.Size = new System.Drawing.Size(165, 16);
+            this.labelIdAdministrador.Size = new System.Drawing.Size(126, 16);
             this.labelIdAdministrador.TabIndex = 5;
-            this.labelIdAdministrador.Text = "Nombre de Usuario o Mail";
+            this.labelIdAdministrador.Text = "Nombre de Usuario";
             this.labelIdAdministrador.Click += new System.EventHandler(this.label1_Click);
             // 
             // labelConstraseña
@@ -183,7 +183,7 @@ namespace Programa
             this.Controls.Add(this.labelConstraseña);
             this.Controls.Add(this.labelIdAdministrador);
             this.Controls.Add(this.textBoxContraseña);
-            this.Controls.Add(this.textBoxId);
+            this.Controls.Add(this.textBoxNombreUsuario);
             this.ForeColor = System.Drawing.SystemColors.WindowText;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
@@ -203,7 +203,7 @@ namespace Programa
 
         #endregion
 
-        internal System.Windows.Forms.TextBox textBoxId;
+        internal System.Windows.Forms.TextBox textBoxNombreUsuario;
         internal System.Windows.Forms.TextBox textBoxContraseña;
         private System.Windows.Forms.Label labelIdAdministrador;
         private System.Windows.Forms.Label labelConstraseña;

@@ -9,7 +9,6 @@ namespace ServiciosAPILibros
 {
     public class InterfazAPILibros
     {
-        static string[] implementacionesBase = new string[] { "ConnectionSQLServerLocal", "ConnectionSQLServerHosting" };//cadenas de conexion a bases de datos
         static string[] implementacionesAPILibros = new string[] { "OpenLibrary" };
         static private string implementacionAPILibros = implementacionesAPILibros[0];
         public IServiciosAPILibros GetIServiciosAPILibros(string unIServiciosAPILibros)///Implementacion posibles para la api que nos brinda informacion sobre libros, interactua con la interfaz IAPIlibros, esta abtraccion nos permite poder trabajar con distintas implementaciones
@@ -24,5 +23,6 @@ namespace ServiciosAPILibros
         }
         public List<Libro> ListarLibrosDeAPIPorCoincidencia(string unaCadena)
         { return GetIServiciosAPILibros(implementacionAPILibros).ListaPorCoincidecia(unaCadena); }
+
     }
 }

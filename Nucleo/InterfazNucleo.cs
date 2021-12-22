@@ -14,7 +14,7 @@ namespace Nucleo
     {
         private InterfazDAL interfazDAL = new InterfazDAL();
         private InterfazAPILibros interfazAPILibros = new InterfazAPILibros();
-        private InterfazNotificarUsuario interfazNotificarUsuario = new InterfazNotificarUsuario();
+        private InterfazNotificarUsuario interfazNotificarUsuario = new InterfazNotificarUsuario();       
         private IServiciosAPILibros GetIServiciosAPILibros(string unIServiciosAPILibros)///Implementacion posibles para la api que nos brinda informacion sobre libros, interactua con la interfaz IAPIlibros, esta abtraccion nos permite poder trabajar con distintas implementaciones
         {
             return interfazAPILibros.GetIServiciosAPILibros(unIServiciosAPILibros);
@@ -29,7 +29,7 @@ namespace Nucleo
         }
         public bool AñadirUsuario(string pNombreUsuario, string nombre, string apellido, DateTime fechaNacimiento, string mail, string telefono)
         {
-            return interfazDAL.AñadirUsuario(pNombreUsuario, nombre, apellido, fechaNacimiento, mail, telefono);
+            return interfazDAL.AñadirUsuario(pNombreUsuario, MayusculaPrimeraLetra(nombre), MayusculaPrimeraLetra(apellido), fechaNacimiento, mail, telefono);
         }
         public UsuarioSimple ObtenerUsuarioPorId(int id)
         {
@@ -43,12 +43,12 @@ namespace Nucleo
 
         public void ActualizarUsuario(string pNombreUsuario, string nombre, string apellido, string pFechaNacimiento, string mail, string telefono)
         {
-            interfazDAL.ActualizarUsuario(pNombreUsuario, nombre, apellido, pFechaNacimiento,mail, telefono);
+            interfazDAL.ActualizarUsuario(pNombreUsuario, MayusculaPrimeraLetra(nombre), MayusculaPrimeraLetra(apellido), pFechaNacimiento,mail, telefono);
         }
 
         public bool AñadirAdministrador(string pNombreUsuario, string nombre, string apellido, DateTime fechaNacimiento, string mail, string contraseña, string telefono)
         {
-            return interfazDAL.AñadirAdministrador(pNombreUsuario, nombre, apellido, fechaNacimiento, mail, contraseña, telefono);
+            return interfazDAL.AñadirAdministrador(pNombreUsuario, MayusculaPrimeraLetra(nombre), MayusculaPrimeraLetra(apellido), fechaNacimiento, mail, contraseña, telefono);
         }
         public UsuarioAdministrador ObtenerAdministradorPorId(int id)
         {
@@ -61,7 +61,7 @@ namespace Nucleo
         }
         public void ActualizarAdministrador(string pNombreUsuario, string nombre, string apellido, string pFechaNacimiento, string mail, string telefono)
         {
-            interfazDAL.ActualizarAdministrador(pNombreUsuario, nombre, apellido, pFechaNacimiento, mail, telefono);
+            interfazDAL.ActualizarAdministrador(pNombreUsuario, MayusculaPrimeraLetra(nombre), MayusculaPrimeraLetra(apellido), pFechaNacimiento, mail, telefono);
         }
         public void ActualizarContraseñaAdministrador(string idAdministrador, string contraseña)
         {
@@ -182,6 +182,14 @@ namespace Nucleo
         {
             interfazNotificarUsuario.NotificarUsuario(ObtenerUsuarioPorNombreOMail(pNombreUsuario));
         }
+        public string MayusculaPrimeraLetra(string source)
+        {
+            if (string.IsNullOrEmpty(source))
+                return string.Empty;
+            char[] letters = source.ToCharArray();
+            letters[0] = char.ToUpper(letters[0]);
+            return new string(letters);
+        }
         public void NotificarPrestamosProximosAVencer()
         {
             foreach (var item in ObtenerListadePrestamosProximosAVencerse())
@@ -190,6 +198,5 @@ namespace Nucleo
                 NotificarUsuario(usuario.NombreUsuario);
             }
         }
-
     }
 }

@@ -18,6 +18,14 @@
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method
             //  to avoid creating duplicate seed data.
+
+            context.Administradores.AddOrUpdate(x => x.NombreUsuario, new Dominio.UsuarioAdministrador()
+            {
+                NombreUsuario = "admin",
+                Pass = "admin",
+                Id = 1,
+                FechaNacimiento = new DateTime(1900,1,1),
+            });
         }
     }
 }

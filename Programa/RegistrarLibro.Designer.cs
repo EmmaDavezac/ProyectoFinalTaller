@@ -52,7 +52,10 @@ namespace Programa
             this.label4 = new System.Windows.Forms.Label();
             this.buttonBorrarDatos = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.hola = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -66,9 +69,9 @@ namespace Programa
             this.AñoPublicacion,
             this.ISBN});
             this.dataGridView1.GridColor = System.Drawing.SystemColors.Control;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 90);
+            this.dataGridView1.Location = new System.Drawing.Point(-3, 90);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(787, 263);
+            this.dataGridView1.Size = new System.Drawing.Size(791, 263);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
@@ -288,6 +291,21 @@ namespace Programa
             this.label6.Text = "Cargar datos manualmente:";
             this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
+            // dataGridView2
+            // 
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.hola});
+            this.dataGridView2.Location = new System.Drawing.Point(525, 359);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.Size = new System.Drawing.Size(141, 150);
+            this.dataGridView2.TabIndex = 24;
+            // 
+            // hola
+            // 
+            this.hola.HeaderText = "hola";
+            this.hola.Name = "hola";
+            // 
             // RegistrarLibro
             // 
             this.AcceptButton = this.buttonGuardar;
@@ -295,6 +313,7 @@ namespace Programa
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(784, 561);
+            this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.buttonBorrarDatos);
@@ -325,6 +344,7 @@ namespace Programa
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.BuscarLibrosAPI_FormClosed);
             this.Load += new System.EventHandler(this.BuscarLibrosAPI_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -355,5 +375,7 @@ namespace Programa
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button buttonBorrarDatos;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn hola;
     }
 }

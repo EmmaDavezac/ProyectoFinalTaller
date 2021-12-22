@@ -24,12 +24,12 @@ namespace Programa
 
         private void textBoxContraseñaAntigua_TextChanged(object sender, EventArgs e)
         {
-            buttonGuardar.Enabled = true;
+            buttonAceptar.Enabled = true;
         }
 
         private void textBoxContraseñaNueva_TextChanged(object sender, EventArgs e)
         {
-            buttonGuardar.Enabled = true;
+            buttonAceptar.Enabled = true;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -41,7 +41,7 @@ namespace Programa
                 {
                     if (textBoxContraseñaAntigua.Text == interfazNucleo.ObtenerAdministradorPorNombreOMail(idUsuario).Pass)
                     {
-                        MessageBox.Show("La contraseña a sido modificada correctamente", "Message", MessageBoxButtons.OK);
+                        MessageBox.Show("La contraseña a sido modificada, guarde los cambios de la ventana anterior para que esto tenga efecto", "Message", MessageBoxButtons.OK);
                         contraseñaNueva = textBoxContraseñaNueva.Text;
                         this.Close();
                         ((ActualizarAdministrador)this.Owner).CargarContraseña(contraseñaNueva);
@@ -49,21 +49,21 @@ namespace Programa
                     else
                     {
                         this.labelErro.Text = "Error, la contraseña antigua es incorrecta";
-                        buttonGuardar.Enabled = false;
+                        buttonAceptar.Enabled = false;
                         textBoxContraseñaAntigua.Focus(); ;
                     }
                 }
                 else
                 {
                     this.labelErro.Text = "Error, la contraseña nueva es vacia";
-                    buttonGuardar.Enabled = false;
+                    buttonAceptar.Enabled = false;
                     textBoxContraseñaNueva.Focus(); ;
                 }
             }
             else
             {
                 this.labelErro.Text = "Error,la contraseña vieja es vacia";
-                buttonGuardar.Enabled = false;
+                buttonAceptar.Enabled = false;
                 textBoxContraseñaAntigua.Focus(); ;
             }
             
@@ -77,6 +77,34 @@ namespace Programa
         private void ModificarContraseña_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void buttonMostrarContraseñaVieja_Click(object sender, EventArgs e)
+        {
+            if (textBoxContraseñaAntigua.UseSystemPasswordChar == true)
+            {
+                textBoxContraseñaAntigua.UseSystemPasswordChar = false;
+                buttonMostrarContraseñaVieja.Text = "Ocultar";
+            }
+            else
+            {
+                textBoxContraseñaAntigua.UseSystemPasswordChar = true;
+                buttonMostrarContraseñaVieja.Text = "Mostrar";
+            }
+        }
+
+        private void buttonMostrarContraseñaNueva_Click(object sender, EventArgs e)
+        {
+            if (textBoxContraseñaNueva.UseSystemPasswordChar == true)
+            {
+                textBoxContraseñaNueva.UseSystemPasswordChar = false;
+                buttonMostrarContraseñaNueva.Text = "Ocultar";
+            }
+            else
+            {
+                textBoxContraseñaNueva.UseSystemPasswordChar = true;
+                buttonMostrarContraseñaNueva.Text = "Mostrar";
+            }
         }
     }
 }
