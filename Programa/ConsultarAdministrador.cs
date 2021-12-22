@@ -39,14 +39,14 @@ namespace Programa
                 if (usuarioSimple != null)
                 {
                     buttonBuscarAdministrador.Enabled = false; textBoxNombreUsuario.Focus();
-                    dataGridView1.Rows.Clear();
-                    dataGridView1.Rows.Add();
-                    dataGridView1.Rows[0].Cells[1].Value = usuarioSimple.NombreUsuario;
-                    dataGridView1.Rows[0].Cells[2].Value = usuarioSimple.Nombre;
-                    dataGridView1.Rows[0].Cells[3].Value = usuarioSimple.Apellido;
-                    dataGridView1.Rows[0].Cells[4].Value = usuarioSimple.FechaNacimiento.ToShortDateString();
-                    dataGridView1.Rows[0].Cells[5].Value = usuarioSimple.Mail;
-                    dataGridView1.Rows[0].Cells[6].Value = usuarioSimple.Telefono;
+                    dataGridViewAdministradores.Rows.Clear();
+                    dataGridViewAdministradores.Rows.Add();
+                    dataGridViewAdministradores.Rows[0].Cells[1].Value = usuarioSimple.NombreUsuario;
+                    dataGridViewAdministradores.Rows[0].Cells[2].Value = usuarioSimple.Nombre;
+                    dataGridViewAdministradores.Rows[0].Cells[3].Value = usuarioSimple.Apellido;
+                    dataGridViewAdministradores.Rows[0].Cells[4].Value = usuarioSimple.FechaNacimiento.ToShortDateString();
+                    dataGridViewAdministradores.Rows[0].Cells[5].Value = usuarioSimple.Mail;
+                    dataGridViewAdministradores.Rows[0].Cells[6].Value = usuarioSimple.Telefono;
                 }
                 else
                 {
@@ -65,7 +65,20 @@ namespace Programa
         }
         private void textBoxId_TextChanged(object sender, EventArgs e)
         {
-            buttonBuscarAdministrador.Enabled = true;
+            if (textBoxNombreUsuario.Text != null)
+            {
+                for (int i = 0; i < dataGridViewAdministradores.Rows.Count - 1; i++)
+                {
+                    if (dataGridViewAdministradores.Rows[i].Cells[1].Value.ToString().Contains(textBoxNombreUsuario.Text.ToString()) == false)
+                    {
+                        dataGridViewAdministradores.Rows[i].Visible = false;
+                    }
+                    else
+                    {
+                        dataGridViewAdministradores.Rows[i].Visible = true;
+                    }
+                }
+            }
         }
 
         private void botonVolver_Click(object sender, EventArgs e)
@@ -109,11 +122,11 @@ namespace Programa
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            DataGridViewCell cell = (DataGridViewCell)dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex];
+            DataGridViewCell cell = (DataGridViewCell)dataGridViewAdministradores.Rows[e.RowIndex].Cells[e.ColumnIndex];
             if (cell.Value.ToString() == "Edit")
             {
                 ActualizarAdministrador ventana = new ActualizarAdministrador(nombreUsuario);
-                ventana.CargarUsuarioExistente(dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString());
+                ventana.CargarUsuarioExistente(dataGridViewAdministradores.Rows[e.RowIndex].Cells[1].Value.ToString());
                 this.Hide();
                 ventana.Show();
             }
@@ -122,16 +135,16 @@ namespace Programa
         private void ObtenerAdministradores()
         {
             IEnumerable<UsuarioAdministrador> usuarios = interfazNucleo.ObtenerAdministradores();
-            dataGridView1.Rows.Clear();
+            dataGridViewAdministradores.Rows.Clear();
             foreach (var item in usuarios)
             {
-                int n = dataGridView1.Rows.Add();
-                dataGridView1.Rows[n].Cells[1].Value = item.NombreUsuario;
-                dataGridView1.Rows[n].Cells[2].Value = item.Nombre;
-                dataGridView1.Rows[n].Cells[3].Value = item.Apellido;
-                dataGridView1.Rows[n].Cells[4].Value = item.FechaNacimiento.ToShortDateString();
-                dataGridView1.Rows[n].Cells[5].Value = item.Mail;
-                dataGridView1.Rows[n].Cells[6].Value = item.Telefono;
+                int n = dataGridViewAdministradores.Rows.Add();
+                dataGridViewAdministradores.Rows[n].Cells[1].Value = item.NombreUsuario;
+                dataGridViewAdministradores.Rows[n].Cells[2].Value = item.Nombre;
+                dataGridViewAdministradores.Rows[n].Cells[3].Value = item.Apellido;
+                dataGridViewAdministradores.Rows[n].Cells[4].Value = item.FechaNacimiento.ToShortDateString();
+                dataGridViewAdministradores.Rows[n].Cells[5].Value = item.Mail;
+                dataGridViewAdministradores.Rows[n].Cells[6].Value = item.Telefono;
             }
         }
 

@@ -130,12 +130,17 @@ namespace DAL
             }
         }
 
-        public void AñadirLibro(string unISBN, string titulo, string autor, string añoPublicacion)
+        public void AñadirLibro(string unISBN, string titulo, string autor, string añoPublicacion, int pCantidadEjempalares)
         {
-            Libro libro = new Libro(unISBN, titulo, autor, añoPublicacion);
+            Libro libro = new Libro(unISBN, titulo, autor, añoPublicacion, pCantidadEjempalares);
             using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
             {
                 unitOfWork.RepositorioLibros.Add(libro);
+                for (int i = 0; i < pCantidadEjempalares; i++)
+                {
+                    Ejemplar ejemplarNuevo = new Ejemplar(libro);
+                    unitOfWork.RepositorioEjemplares.Add(ejemplarNuevo);
+                }
                 unitOfWork.Complete();
             }
         }
@@ -148,11 +153,11 @@ namespace DAL
         }
 
 
-        public void AñadirEjemplar(int idLibro, string estado)
+        public void AñadirEjemplar(int idLibro)
         {
             using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
             {
-                Ejemplar ejemplar = new Ejemplar(unitOfWork.RepositorioLibros.Get(idLibro), estado);
+                Ejemplar ejemplar = new Ejemplar(unitOfWork.RepositorioLibros.Get(idLibro));
                 unitOfWork.RepositorioEjemplares.Add(ejemplar);
                 unitOfWork.RepositorioLibros.Get(idLibro).Ejemplares.Add(ejemplar);
                 unitOfWork.Complete();

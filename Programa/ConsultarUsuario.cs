@@ -66,7 +66,20 @@ namespace Programa
         }
         private void textBoxId_TextChanged(object sender, EventArgs e)
         {
-            buttonBuscarUsuario.Enabled = true;
+            if (textBoxNombreUsuario.Text != null)
+            {
+                for (int i = 0; i < dataGridViewUsuarios.Rows.Count - 1; i++)
+                {
+                    if (dataGridViewUsuarios.Rows[i].Cells[1].Value.ToString().Contains(textBoxNombreUsuario.Text.ToString()) == false)
+                    {
+                        dataGridViewUsuarios.Rows[i].Visible = false;
+                    }
+                    else
+                    {
+                        dataGridViewUsuarios.Rows[i].Visible = true;
+                    }
+                }
+            }
         }
 
         private void botonVolver_Click(object sender, EventArgs e)

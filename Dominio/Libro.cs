@@ -15,11 +15,21 @@ namespace Dominio
         public string Autor { get; set; }
         public string AñoPublicacion { get; set; }
         public virtual List<Ejemplar> Ejemplares { get; set; }
+        
+
         public Libro()
         {
 
         }
-        public Libro(string unISBN,string titulo,string autor,string añoPublicacion)
+
+        public Libro(string unISBN, string titulo, string autor, string añoPublicacion)
+        {
+            ISBN = unISBN;
+            Titulo = titulo;
+            Autor = autor;
+            AñoPublicacion = añoPublicacion;
+        }
+        public Libro(string unISBN,string titulo,string autor,string añoPublicacion,int pCantidadEjemplares)
         {
             ISBN = unISBN;
             Titulo = titulo;
@@ -37,7 +47,6 @@ namespace Dominio
                
             }
             return ejemplaresDisponibles;
-        } 
-
+        }
     }
 }

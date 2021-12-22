@@ -14,21 +14,21 @@ namespace Programa
 {
     public partial class ConsultarLibro : Form
     {
-        private string NombreUsuario { get; set; }
-        private int idUsuario { get; set; }
+        private string nombre { get; set; }
+        private string nombreUsuario { get; set; }
         InterfazNucleo interfazNucleo = new InterfazNucleo();
-        public ConsultarLibro(string iD)
+        public ConsultarLibro(string pNombreUsuario)
         {
             InitializeComponent();
-            idUsuario = Convert.ToInt32(iD);
-            NombreUsuario = interfazNucleo.ObtenerAdministradorPorId(idUsuario).Nombre;
-            labelNombreUsuario.Text = "Usuario: " + NombreUsuario;
+            nombreUsuario = pNombreUsuario;
+            nombre = interfazNucleo.ObtenerAdministradorPorNombreOMail(nombreUsuario).Nombre;
+            labelNombreUsuario.Text = "Usuario: " + nombre;
         }
 
         private void botonVolver_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Menu2 ventana = new Menu2(idUsuario.ToString());
+            Menu2 ventana = new Menu2(nombreUsuario.ToString());
             ventana.Show();
         }
 
@@ -62,7 +62,7 @@ namespace Programa
         private void ConsultarLibro_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.Hide();
-            Menu2 ventanaMenu = new Menu2(idUsuario.ToString());
+            Menu2 ventanaMenu = new Menu2(nombreUsuario.ToString());
             ventanaMenu.Show();
         }
 

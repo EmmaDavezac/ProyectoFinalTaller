@@ -68,9 +68,9 @@ namespace Nucleo
             interfazDAL.ActualizarContraseñaAdministrador(idAdministrador, contraseña);
         }
 
-        public void AñadirLibro(string unISBN, string titulo, string autor, string añoPublicacion)
+        public void AñadirLibro(string unISBN, string titulo, string autor, string añoPublicacion,int pCantidadEjempalares)
         {
-            interfazDAL.AñadirLibro(unISBN, titulo, autor, añoPublicacion);
+            interfazDAL.AñadirLibro(unISBN, titulo, autor, añoPublicacion, pCantidadEjempalares);
         }
         public Libro ObtenerLibro(int id)
         {
@@ -78,9 +78,9 @@ namespace Nucleo
         }
 
 
-        public void AñadirEjemplar(int idLibro, string estado)
+        public void AñadirEjemplar(int idLibro)
         {
-            interfazDAL.AñadirEjemplar(idLibro, estado);
+            interfazDAL.AñadirEjemplar(idLibro);
         }
         public void ActualizarEjemplar(string idLibro, string estado)
         {
@@ -229,7 +229,9 @@ namespace Nucleo
             {
                 resultado.Add(resultadoIntermedio[i]);
             }
-            return resultado;
+            HashSet<string> hashWithoutDuplicates = new HashSet<string>(resultado);
+            List<string> listWithoutDuplicates = hashWithoutDuplicates.ToList();
+            return listWithoutDuplicates;
         }
         public List<string> TransformarAñosALista(string pLista)
         {
@@ -248,7 +250,9 @@ namespace Nucleo
                     palabra = palabra + pLista.Substring(i, 1);
                 }
             }
-            return resultado.OrderBy(x => x).ToList();
+            HashSet<string> hashWithoutDuplicates = new HashSet<string>(resultado);
+            List<string> listWithoutDuplicates = hashWithoutDuplicates.ToList();
+            return listWithoutDuplicates.OrderBy(x => x).ToList();
         }
         public string SacarAutorDeLaLista(string pLista)
         {

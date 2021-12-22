@@ -29,6 +29,8 @@ namespace Programa
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            dataGridViewAños.Rows.Clear();
+            dataGridViewISBN.Rows.Clear();
             textBoxTitulo.Text = dataGridViewTituloYAutor.CurrentRow.Cells[0].Value.ToString();
             textBoxAutor.Text = dataGridViewTituloYAutor.CurrentRow.Cells[1].Value.ToString();
             List<string> isbns = interfazNucleo.TransformarISBNsALista(dataGridViewTituloYAutor.CurrentRow.Cells[3].Value.ToString());
@@ -101,15 +103,11 @@ namespace Programa
 
         private void buttonGuardar_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(textBoxTitulo.Text) && !string.IsNullOrEmpty(textBoxAutor.Text) && !string.IsNullOrEmpty(textBoxISBN.Text) && !string.IsNullOrEmpty(textBoxAñoPublicacion.Text))
+            if (!string.IsNullOrEmpty(textBoxTitulo.Text) && !string.IsNullOrEmpty(textBoxAutor.Text) && !string.IsNullOrEmpty(textBoxISBN.Text) && !string.IsNullOrEmpty(textBoxAñoPublicacion.Text) && !string.IsNullOrEmpty(textBoxCantidadEjemplares.Text))
             {
 
-                new InterfazNucleo().AñadirLibro(textBoxISBN.Text, textBoxTitulo.Text, textBoxAutor.Text, textBoxAñoPublicacion.Text);
+                new InterfazNucleo().AñadirLibro(textBoxISBN.Text, textBoxTitulo.Text, textBoxAutor.Text, textBoxAñoPublicacion.Text,Convert.ToInt32(textBoxCantidadEjemplares.Text));
                 MessageBox.Show("Libro registrado con exito, el Id del libro es: " + new InterfazNucleo().ObtenerUltimoIdLibro());
-                this.Hide();
-                Menu2 ventanaMenu = new Menu2(idUsuario.ToString());
-                ventanaMenu.Show();
-
             }
             else
             {
@@ -205,15 +203,33 @@ namespace Programa
         {
             if (textBoxSeleccionarISBN.Text != null)
             {
-                foreach (DataGridViewRow row in dataGridViewISBN.Rows)
+                for (int i = 0; i < dataGridViewISBN.Rows.Count-1; i++)
                 {
-                    if (row.Cells[0].Value.ToString().Contains(textBoxSeleccionarISBN.Text.ToString()) == false)
+                    if (dataGridViewISBN.Rows[i].Cells[0].Value.ToString().Contains(textBoxSeleccionarISBN.Text.ToString()) == false)
                     {
-                        row.Visible = false;
+                        dataGridViewISBN.Rows[i].Visible = false;
                     }
                     else
                     {
-                        row.Visible = true;
+                        dataGridViewISBN.Rows[i].Visible = true;
+                    }
+                }
+            }
+        }
+
+        private void textBoxSelccionarAño_TextChanged(object sender, EventArgs e)
+        {
+            if (textBoxSelccionarAño.Text != null)
+            {
+                for (int i = 0; i < dataGridViewAños.Rows.Count-1; i++)
+                {
+                    if (dataGridViewAños.Rows[i].Cells[0].Value.ToString().Contains(textBoxSelccionarAño.Text.ToString()) == false)
+                    {
+                        dataGridViewAños.Rows[i].Visible = false;
+                    }
+                    else
+                    {
+                        dataGridViewAños.Rows[i].Visible = true;
                     }
                 }
             }
