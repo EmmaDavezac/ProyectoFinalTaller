@@ -57,9 +57,7 @@ namespace Programa
             this.button19 = new System.Windows.Forms.Button();
             this.button20 = new System.Windows.Forms.Button();
             this.submenuLibros = new System.Windows.Forms.Panel();
-            this.button11 = new System.Windows.Forms.Button();
-            this.button12 = new System.Windows.Forms.Button();
-            this.button13 = new System.Windows.Forms.Button();
+            this.buttonGestionarLibros = new System.Windows.Forms.Button();
             this.button14 = new System.Windows.Forms.Button();
             this.button15 = new System.Windows.Forms.Button();
             this.submenuadministradores = new System.Windows.Forms.Panel();
@@ -268,7 +266,7 @@ namespace Programa
             this.submenuPrestamos.Controls.Add(this.button24);
             this.submenuPrestamos.Dock = System.Windows.Forms.DockStyle.Top;
             this.submenuPrestamos.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.submenuPrestamos.Location = new System.Drawing.Point(0, 793);
+            this.submenuPrestamos.Location = new System.Drawing.Point(0, 706);
             this.submenuPrestamos.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.submenuPrestamos.Name = "submenuPrestamos";
             this.submenuPrestamos.Size = new System.Drawing.Size(243, 260);
@@ -391,7 +389,7 @@ namespace Programa
             this.button25.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.HotTrack;
             this.button25.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button25.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button25.Location = new System.Drawing.Point(0, 733);
+            this.button25.Location = new System.Drawing.Point(0, 646);
             this.button25.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.button25.Name = "button25";
             this.button25.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
@@ -411,7 +409,7 @@ namespace Programa
             this.submenuEjemplares.Controls.Add(this.button19);
             this.submenuEjemplares.Dock = System.Windows.Forms.DockStyle.Top;
             this.submenuEjemplares.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.submenuEjemplares.Location = new System.Drawing.Point(0, 565);
+            this.submenuEjemplares.Location = new System.Drawing.Point(0, 478);
             this.submenuEjemplares.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.submenuEjemplares.Name = "submenuEjemplares";
             this.submenuEjemplares.Size = new System.Drawing.Size(243, 168);
@@ -497,7 +495,7 @@ namespace Programa
             this.button20.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.HotTrack;
             this.button20.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button20.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button20.Location = new System.Drawing.Point(0, 505);
+            this.button20.Location = new System.Drawing.Point(0, 418);
             this.button20.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.button20.Name = "button20";
             this.button20.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
@@ -511,71 +509,33 @@ namespace Programa
             // submenuLibros
             // 
             this.submenuLibros.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.submenuLibros.Controls.Add(this.button11);
-            this.submenuLibros.Controls.Add(this.button12);
-            this.submenuLibros.Controls.Add(this.button13);
+            this.submenuLibros.Controls.Add(this.buttonGestionarLibros);
             this.submenuLibros.Controls.Add(this.button14);
             this.submenuLibros.Dock = System.Windows.Forms.DockStyle.Top;
             this.submenuLibros.ForeColor = System.Drawing.SystemColors.Highlight;
             this.submenuLibros.Location = new System.Drawing.Point(0, 337);
             this.submenuLibros.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.submenuLibros.Name = "submenuLibros";
-            this.submenuLibros.Size = new System.Drawing.Size(243, 168);
+            this.submenuLibros.Size = new System.Drawing.Size(243, 81);
             this.submenuLibros.TabIndex = 6;
             // 
-            // button11
+            // buttonGestionarLibros
             // 
-            this.button11.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.button11.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button11.FlatAppearance.BorderSize = 0;
-            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button11.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.button11.Location = new System.Drawing.Point(0, 120);
-            this.button11.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.button11.Name = "button11";
-            this.button11.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.button11.Size = new System.Drawing.Size(243, 40);
-            this.button11.TabIndex = 3;
-            this.button11.Text = "Listado De Libros";
-            this.button11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button11.UseVisualStyleBackColor = false;
-            this.button11.Click += new System.EventHandler(this.button11_Click);
-            // 
-            // button12
-            // 
-            this.button12.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.button12.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button12.FlatAppearance.BorderSize = 0;
-            this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button12.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.button12.Location = new System.Drawing.Point(0, 80);
-            this.button12.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.button12.Name = "button12";
-            this.button12.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.button12.Size = new System.Drawing.Size(243, 40);
-            this.button12.TabIndex = 2;
-            this.button12.Text = "Actualizar Libro";
-            this.button12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button12.UseVisualStyleBackColor = false;
-            this.button12.Click += new System.EventHandler(this.button12_Click);
-            // 
-            // button13
-            // 
-            this.button13.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.button13.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button13.FlatAppearance.BorderSize = 0;
-            this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button13.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.button13.Location = new System.Drawing.Point(0, 40);
-            this.button13.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.button13.Name = "button13";
-            this.button13.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.button13.Size = new System.Drawing.Size(243, 40);
-            this.button13.TabIndex = 1;
-            this.button13.Text = "Consultar Libro";
-            this.button13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button13.UseVisualStyleBackColor = false;
-            this.button13.Click += new System.EventHandler(this.button13_Click);
+            this.buttonGestionarLibros.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.buttonGestionarLibros.Dock = System.Windows.Forms.DockStyle.Top;
+            this.buttonGestionarLibros.FlatAppearance.BorderSize = 0;
+            this.buttonGestionarLibros.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonGestionarLibros.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.buttonGestionarLibros.Location = new System.Drawing.Point(0, 40);
+            this.buttonGestionarLibros.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.buttonGestionarLibros.Name = "buttonGestionarLibros";
+            this.buttonGestionarLibros.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.buttonGestionarLibros.Size = new System.Drawing.Size(243, 40);
+            this.buttonGestionarLibros.TabIndex = 1;
+            this.buttonGestionarLibros.Text = "GestionarLibros";
+            this.buttonGestionarLibros.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonGestionarLibros.UseVisualStyleBackColor = false;
+            this.buttonGestionarLibros.Click += new System.EventHandler(this.button13_Click);
             // 
             // button14
             // 
@@ -849,9 +809,7 @@ namespace Programa
         private System.Windows.Forms.Button button19;
         private System.Windows.Forms.Button button20;
         private System.Windows.Forms.Panel submenuLibros;
-        private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.Button button12;
-        private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.Button buttonGestionarLibros;
         private System.Windows.Forms.Button button14;
         private System.Windows.Forms.Button button15;
         private System.Windows.Forms.Panel submenuadministradores;

@@ -171,7 +171,7 @@ namespace Programa
 
         private void button13_Click(object sender, EventArgs e)
         {
-            ConsultarLibro ventana = new ConsultarLibro(nombreUsuario);
+            GestionarLibros ventana = new GestionarLibros(nombreUsuario);
             this.Hide();
             ventana.Show();
         }

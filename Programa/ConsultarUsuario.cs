@@ -31,39 +31,6 @@ namespace Programa
 
         }
 
-        private void buttonBuscarUsuario_Click(object sender, EventArgs e)
-        {
-            if (textBoxNombreUsuario.Text != null && textBoxNombreUsuario.Text != "")
-            {
-                UsuarioSimple usuarioSimple = interfazNucleo.ObtenerUsuarioPorNombreOMail(textBoxNombreUsuario.Text);
-                if (usuarioSimple != null) 
-                { 
-                
-                dataGridViewUsuarios.Rows.Clear();
-                dataGridViewUsuarios.Rows.Add();
-                dataGridViewUsuarios.Rows[0].Cells[1].Value = usuarioSimple.NombreUsuario;
-                dataGridViewUsuarios.Rows[0].Cells[2].Value = usuarioSimple.Scoring;
-                dataGridViewUsuarios.Rows[0].Cells[3].Value = usuarioSimple.Nombre;
-                dataGridViewUsuarios.Rows[0].Cells[4].Value = usuarioSimple.Apellido;
-                dataGridViewUsuarios.Rows[0].Cells[5].Value = usuarioSimple.FechaNacimiento.ToShortDateString(); 
-                dataGridViewUsuarios.Rows[0].Cells[6].Value = usuarioSimple.Mail;
-                dataGridViewUsuarios.Rows[0].Cells[7].Value = usuarioSimple.Telefono;
-                }
-                else
-                {
-                    labelErro.Text = "Error, el usuario ingresado no existe";
-                   
-                    textBoxNombreUsuario.Focus();
-                }
-            }
-            else
-            {
-               
-                textBoxNombreUsuario.Focus();
-            }
-
-
-        }
         private void textBoxId_TextChanged(object sender, EventArgs e)
         {
             if (textBoxNombreUsuario.Text != null)
@@ -167,11 +134,6 @@ namespace Programa
                     ventana.Show();
                 } 
             }
-        }
-
-        private void buttonRefrescar_Click(object sender, EventArgs e)
-        {
-            ObtenerUsuarios();
         }
 
         private void labelErro_Click(object sender, EventArgs e)

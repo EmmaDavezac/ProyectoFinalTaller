@@ -214,6 +214,7 @@ namespace Programa
             this.textBoxNombreUsuario.Name = "textBoxNombreUsuario";
             this.textBoxNombreUsuario.Size = new System.Drawing.Size(200, 20);
             this.textBoxNombreUsuario.TabIndex = 52;
+            this.textBoxNombreUsuario.TextChanged += new System.EventHandler(this.textBoxNombreUsuario_TextChanged_1);
             // 
             // label2
             // 

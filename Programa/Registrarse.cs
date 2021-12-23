@@ -217,5 +217,10 @@ namespace Programa
         {
 
         }
+
+        private void textBoxNombreUsuario_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

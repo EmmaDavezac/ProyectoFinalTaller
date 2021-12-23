@@ -86,17 +86,17 @@
     <Compile Include="ConsultarEjemplar.Designer.cs">
       <DependentUpon>ConsultarEjemplar.cs</DependentUpon>
     </Compile>
-    <Compile Include="ConsultarLibro.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ConsultarLibro.Designer.cs">
-      <DependentUpon>ConsultarLibro.cs</DependentUpon>
-    </Compile>
     <Compile Include="ConsultarPrestamo.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ConsultarPrestamo.Designer.cs">
       <DependentUpon>ConsultarPrestamo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GestionarLibros.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GestionarLibros.Designer.cs">
+      <DependentUpon>GestionarLibros.cs</DependentUpon>
     </Compile>
     <Compile Include="Menu2.cs">
       <SubType>Form</SubType>
@@ -234,11 +234,11 @@
     <EmbeddedResource Include="ConsultarEjemplar.resx">
       <DependentUpon>ConsultarEjemplar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ConsultarLibro.resx">
-      <DependentUpon>ConsultarLibro.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="ConsultarPrestamo.resx">
       <DependentUpon>ConsultarPrestamo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GestionarLibros.resx">
+      <DependentUpon>GestionarLibros.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Menu2.resx">
       <DependentUpon>Menu2.cs</DependentUpon>
