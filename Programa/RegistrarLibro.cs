@@ -29,28 +29,31 @@ namespace Programa
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            dataGridViewAños.Rows.Clear();
-            dataGridViewISBN.Rows.Clear();
-            textBoxTitulo.Text = dataGridViewTituloYAutor.CurrentRow.Cells[0].Value.ToString();
-            textBoxAutor.Text = dataGridViewTituloYAutor.CurrentRow.Cells[1].Value.ToString();
-            List<string> isbns = interfazNucleo.TransformarISBNsALista(dataGridViewTituloYAutor.CurrentRow.Cells[3].Value.ToString());
-            foreach (var item in isbns)
+            if (e.RowIndex > 0)
             {
-                int n = dataGridViewISBN.Rows.Add();
-                dataGridViewISBN.Rows[n].Cells[0].Value = item;
+                dataGridViewAños.Rows.Clear();
+                dataGridViewISBN.Rows.Clear();
+                textBoxTitulo.Text = dataGridViewTituloYAutor.CurrentRow.Cells[0].Value.ToString();
+                textBoxAutor.Text = dataGridViewTituloYAutor.CurrentRow.Cells[1].Value.ToString();
+                List<string> isbns = interfazNucleo.TransformarISBNsALista(dataGridViewTituloYAutor.CurrentRow.Cells[3].Value.ToString());
+                foreach (var item in isbns)
+                {
+                    int n = dataGridViewISBN.Rows.Add();
+                    dataGridViewISBN.Rows[n].Cells[0].Value = item;
+                }
+                List<string> años = interfazNucleo.TransformarAñosALista(dataGridViewTituloYAutor.CurrentRow.Cells[2].Value.ToString());
+                foreach (var item in años)
+                {
+                    int n = dataGridViewAños.Rows.Add();
+                    dataGridViewAños.Rows[n].Cells[0].Value = item;
+                }
+                /*List<string> resultados = textBoxISBN.Text.ToList();
+                foreach (var item in resultados)
+                {
+                    int n = dataGridView1.Rows.Add();
+                    dataGridView2.Rows[n].Cells[0].Value = ;
+                }*/ 
             }
-            List<string> años = interfazNucleo.TransformarAñosALista(dataGridViewTituloYAutor.CurrentRow.Cells[2].Value.ToString());
-            foreach (var item in años)
-            {
-                int n = dataGridViewAños.Rows.Add();
-                dataGridViewAños.Rows[n].Cells[0].Value = item;
-            }
-            /*List<string> resultados = textBoxISBN.Text.ToList();
-            foreach (var item in resultados)
-            {
-                int n = dataGridView1.Rows.Add();
-                dataGridView2.Rows[n].Cells[0].Value = ;
-            }*/
         }
 
         private void BuscarLibrosAPI_Load(object sender, EventArgs e)
@@ -94,6 +97,7 @@ namespace Programa
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             buttonBuscar.Enabled = true;
+            
         }
 
         private void label4_Click(object sender, EventArgs e)
@@ -191,12 +195,18 @@ namespace Programa
 
         private void dataGridViewISBN_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            textBoxISBN.Text = dataGridViewISBN.CurrentRow.Cells[0].Value.ToString();
+            if (e.RowIndex > 0)
+            {
+                textBoxISBN.Text = dataGridViewISBN.CurrentRow.Cells[0].Value.ToString(); 
+            }
         }
 
         private void dataGridViewAños_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            textBoxAñoPublicacion.Text = dataGridViewAños.CurrentRow.Cells[0].Value.ToString();
+            if (e.RowIndex > 0)
+            {
+                textBoxAñoPublicacion.Text = dataGridViewAños.CurrentRow.Cells[0].Value.ToString();
+            }
         }
 
         private void textBoxSeleccionarISBN_TextChanged(object sender, EventArgs e)

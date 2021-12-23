@@ -23,7 +23,7 @@ namespace Programa
             InitializeComponent();
             nombreUsuario = pNombreUsuario;
             nombre = interfazNucleo.ObtenerAdministradorPorNombreOMail(nombreUsuario).Nombre;
-            labelNombreUsuario.Text = "Usuario: " + nombre;
+            labelNombreUsuario.Text = "Usuario: " + nombreUsuario;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -38,7 +38,7 @@ namespace Programa
                 UsuarioSimple usuarioSimple = interfazNucleo.ObtenerUsuarioPorNombreOMail(textBoxNombreUsuario.Text);
                 if (usuarioSimple != null) 
                 { 
-                buttonBuscarUsuario.Enabled = false; textBoxNombreUsuario.Focus(); 
+                
                 dataGridViewUsuarios.Rows.Clear();
                 dataGridViewUsuarios.Rows.Add();
                 dataGridViewUsuarios.Rows[0].Cells[1].Value = usuarioSimple.NombreUsuario;
@@ -52,13 +52,13 @@ namespace Programa
                 else
                 {
                     labelErro.Text = "Error, el usuario ingresado no existe";
-                    buttonBuscarUsuario.Enabled = false;
+                   
                     textBoxNombreUsuario.Focus();
                 }
             }
             else
             {
-                buttonBuscarUsuario.Enabled = false;
+               
                 textBoxNombreUsuario.Focus();
             }
 
@@ -155,13 +155,17 @@ namespace Programa
 
         private void dataGridViewUsuarios_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            DataGridViewCell cell = (DataGridViewCell)dataGridViewUsuarios.Rows[e.RowIndex].Cells[e.ColumnIndex];
-            if (cell.Value.ToString() == "Edit")
+            if (e.RowIndex>0)
             {
-                ActualizarUsuario ventana = new ActualizarUsuario(nombreUsuario);
-                ventana.CargarUsuarioExistente(dataGridViewUsuarios.Rows[e.RowIndex].Cells[1].Value.ToString());
-                this.Hide();
-                ventana.Show();
+
+                DataGridViewCell cell = (DataGridViewCell)dataGridViewUsuarios.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                if (cell.Value.ToString() == "Edit")
+                {
+                    ActualizarUsuario ventana = new ActualizarUsuario(nombreUsuario);
+                    ventana.CargarUsuarioExistente(dataGridViewUsuarios.Rows[e.RowIndex].Cells[1].Value.ToString());
+                    this.Hide();
+                    ventana.Show();
+                } 
             }
         }
 
@@ -171,6 +175,11 @@ namespace Programa
         }
 
         private void labelErro_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelNombreUsuario_Click(object sender, EventArgs e)
         {
 
         }

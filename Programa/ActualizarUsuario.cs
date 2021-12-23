@@ -22,7 +22,7 @@ namespace Programa
             InitializeComponent();
             nombreUsuario = pNombreUsuario;
             nombre = interfazNucleo.ObtenerAdministradorPorNombreOMail(nombreUsuario).Nombre;
-            labelNombreUsuario.Text = "Usuario: " + nombre;
+            labelNombreUsuario.Text = "Usuario: " + nombreUsuario;
         }
 
         private void textBoxId_TextChanged(object sender, EventArgs e)

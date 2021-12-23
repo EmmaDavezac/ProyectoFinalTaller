@@ -21,7 +21,7 @@ namespace Programa
             InitializeComponent();
             nombreUsuario = pNombreUsuario;
             nombre = interfazNucleo.ObtenerAdministradorPorNombreOMail(nombreUsuario).Nombre;
-            labelNombreUsuario.Text = "Usuario: " + nombre;
+            labelNombreUsuario.Text = "Usuario: " + nombreUsuario;
         }
 
         private void AgregarAdministrador_Load(object sender, EventArgs e)

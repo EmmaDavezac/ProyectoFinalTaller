@@ -23,7 +23,7 @@ namespace Programa
             InitializeComponent();
             nombreUsuario = pNombreUsuario;
             nombre = interfazNucleo.ObtenerAdministradorPorNombreOMail(nombreUsuario).Nombre;
-            labelNombreUsuario.Text = "Usuario: " + nombre;
+            labelNombreUsuario.Text = "Usuario: " + nombreUsuario;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -38,7 +38,7 @@ namespace Programa
                 UsuarioAdministrador usuarioSimple = interfazNucleo.ObtenerAdministradorPorNombreOMail(textBoxNombreUsuario.Text);
                 if (usuarioSimple != null)
                 {
-                    buttonBuscarAdministrador.Enabled = false; textBoxNombreUsuario.Focus();
+                   
                     dataGridViewAdministradores.Rows.Clear();
                     dataGridViewAdministradores.Rows.Add();
                     dataGridViewAdministradores.Rows[0].Cells[1].Value = usuarioSimple.NombreUsuario;
@@ -51,13 +51,13 @@ namespace Programa
                 else
                 {
                     labelErro.Text = "Error, el administrador ingresado no existe, ingrese otro nombre de usuario";
-                    buttonBuscarAdministrador.Enabled = false;
+                   
                     textBoxNombreUsuario.Focus();
                 }
             }
             else
             {
-                buttonBuscarAdministrador.Enabled = false;
+               
                 textBoxNombreUsuario.Focus();
             }
 
@@ -122,13 +122,16 @@ namespace Programa
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            DataGridViewCell cell = (DataGridViewCell)dataGridViewAdministradores.Rows[e.RowIndex].Cells[e.ColumnIndex];
-            if (cell.Value.ToString() == "Edit")
+            if (e.RowIndex > 0)
             {
-                ActualizarAdministrador ventana = new ActualizarAdministrador(nombreUsuario);
-                ventana.CargarUsuarioExistente(dataGridViewAdministradores.Rows[e.RowIndex].Cells[1].Value.ToString());
-                this.Hide();
-                ventana.Show();
+                DataGridViewCell cell = (DataGridViewCell)dataGridViewAdministradores.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                if (cell.Value.ToString() == "Edit")
+                {
+                    ActualizarAdministrador ventana = new ActualizarAdministrador(nombreUsuario);
+                    ventana.CargarUsuarioExistente(dataGridViewAdministradores.Rows[e.RowIndex].Cells[1].Value.ToString());
+                    this.Hide();
+                    ventana.Show();
+                } 
             }
         }
 

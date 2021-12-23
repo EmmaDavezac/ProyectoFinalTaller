@@ -22,7 +22,7 @@ namespace Programa
             InitializeComponent();
             nombreUsuario = pNombreUsuario;
             nombre = interfazNucleo.ObtenerAdministradorPorNombreOMail(nombreUsuario).Nombre;
-            labelNombreUsuario.Text = "Usuario: " + nombre;
+            labelNombreUsuario.Text = "Usuario: " + nombreUsuario;
         }
         private void buttonSalir_Click(object sender, EventArgs e)
         {
@@ -181,6 +181,11 @@ namespace Programa
         }
 
         private void textBoxNombreUsuario_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel5_Paint(object sender, PaintEventArgs e)
         {
 
         }

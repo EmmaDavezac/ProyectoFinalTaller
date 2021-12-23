@@ -32,13 +32,11 @@ namespace Programa
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelError = new System.Windows.Forms.Label();
-            this.buttonBuscarUsuario = new System.Windows.Forms.Button();
             this.botonVolver = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxNombreUsuario = new System.Windows.Forms.TextBox();
-            this.labelNombreUsuario = new System.Windows.Forms.Label();
             this.dataGridViewUsuarios = new System.Windows.Forms.DataGridView();
             this.Edit = new System.Windows.Forms.DataGridViewLinkColumn();
             this.NombreUsuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,11 +48,22 @@ namespace Programa
             this.Telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.usuarioSimpleBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.usuarioBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.buttonRefrescar = new System.Windows.Forms.Button();
             this.labelErro = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.labelNombreUsuario = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUsuarios)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.usuarioSimpleBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.usuarioBindingSource)).BeginInit();
+            this.panel3.SuspendLayout();
+            this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.SuspendLayout();
             // 
             // labelError
@@ -65,21 +74,6 @@ namespace Programa
             this.labelError.Name = "labelError";
             this.labelError.Size = new System.Drawing.Size(0, 13);
             this.labelError.TabIndex = 32;
-            // 
-            // buttonBuscarUsuario
-            // 
-            this.buttonBuscarUsuario.BackColor = System.Drawing.SystemColors.Highlight;
-            this.buttonBuscarUsuario.Enabled = false;
-            this.buttonBuscarUsuario.FlatAppearance.BorderSize = 0;
-            this.buttonBuscarUsuario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonBuscarUsuario.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonBuscarUsuario.Location = new System.Drawing.Point(456, 109);
-            this.buttonBuscarUsuario.Name = "buttonBuscarUsuario";
-            this.buttonBuscarUsuario.Size = new System.Drawing.Size(89, 23);
-            this.buttonBuscarUsuario.TabIndex = 31;
-            this.buttonBuscarUsuario.Text = "Buscar Usuario";
-            this.buttonBuscarUsuario.UseVisualStyleBackColor = false;
-            this.buttonBuscarUsuario.Click += new System.EventHandler(this.buttonBuscarUsuario_Click);
             // 
             // botonVolver
             // 
@@ -116,22 +110,10 @@ namespace Programa
             this.textBoxNombreUsuario.TabIndex = 34;
             this.textBoxNombreUsuario.TextChanged += new System.EventHandler(this.textBoxId_TextChanged);
             // 
-            // labelNombreUsuario
-            // 
-            this.labelNombreUsuario.BackColor = System.Drawing.SystemColors.Highlight;
-            this.labelNombreUsuario.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.labelNombreUsuario.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.labelNombreUsuario.Location = new System.Drawing.Point(606, 9);
-            this.labelNombreUsuario.Name = "labelNombreUsuario";
-            this.labelNombreUsuario.Size = new System.Drawing.Size(182, 31);
-            this.labelNombreUsuario.TabIndex = 39;
-            this.labelNombreUsuario.Text = "Nombre de Usuario";
-            this.labelNombreUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // dataGridViewUsuarios
             // 
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            this.dataGridViewUsuarios.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            this.dataGridViewUsuarios.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewUsuarios.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dataGridViewUsuarios.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -209,23 +191,6 @@ namespace Programa
             // 
             this.usuarioBindingSource.DataSource = typeof(Dominio.Usuario);
             // 
-            // buttonRefrescar
-            // 
-            this.buttonRefrescar.BackColor = System.Drawing.SystemColors.Highlight;
-            this.buttonRefrescar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonRefrescar.FlatAppearance.BorderSize = 0;
-            this.buttonRefrescar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonRefrescar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonRefrescar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonRefrescar.Location = new System.Drawing.Point(561, 109);
-            this.buttonRefrescar.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.buttonRefrescar.Name = "buttonRefrescar";
-            this.buttonRefrescar.Size = new System.Drawing.Size(89, 23);
-            this.buttonRefrescar.TabIndex = 41;
-            this.buttonRefrescar.Text = "Refrescar";
-            this.buttonRefrescar.UseVisualStyleBackColor = false;
-            this.buttonRefrescar.Click += new System.EventHandler(this.buttonRefrescar_Click);
-            // 
             // labelErro
             // 
             this.labelErro.AutoSize = true;
@@ -236,21 +201,101 @@ namespace Programa
             this.labelErro.TabIndex = 42;
             this.labelErro.Click += new System.EventHandler(this.labelErro_Click);
             // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.panel3.Controls.Add(this.panel4);
+            this.panel3.Controls.Add(this.panel5);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel3.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(784, 60);
+            this.panel3.TabIndex = 70;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.label2);
+            this.panel4.Controls.Add(this.pictureBox2);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel4.Location = new System.Drawing.Point(0, 0);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(82, 60);
+            this.panel4.TabIndex = 10;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.label2.Location = new System.Drawing.Point(12, 44);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(49, 15);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "E-Librery";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::Programa.Properties.Resources.libro_abierto;
+            this.pictureBox2.Location = new System.Drawing.Point(16, 3);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(40, 40);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 5;
+            this.pictureBox2.TabStop = false;
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.SystemColors.Highlight;
+            this.panel5.Controls.Add(this.pictureBox4);
+            this.panel5.Controls.Add(this.labelNombreUsuario);
+            this.panel5.Location = new System.Drawing.Point(566, 0);
+            this.panel5.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(207, 60);
+            this.panel5.TabIndex = 9;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox4.Image = global::Programa.Properties.Resources.perfil_del_usuario;
+            this.pictureBox4.Location = new System.Drawing.Point(155, 12);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(40, 40);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox4.TabIndex = 6;
+            this.pictureBox4.TabStop = false;
+            // 
+            // labelNombreUsuario
+            // 
+            this.labelNombreUsuario.AutoSize = true;
+            this.labelNombreUsuario.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.labelNombreUsuario.Location = new System.Drawing.Point(8, 16);
+            this.labelNombreUsuario.Margin = new System.Windows.Forms.Padding(2, 0, 5, 0);
+            this.labelNombreUsuario.Name = "labelNombreUsuario";
+            this.labelNombreUsuario.Size = new System.Drawing.Size(84, 13);
+            this.labelNombreUsuario.TabIndex = 0;
+            this.labelNombreUsuario.Text = "Nombre Apellido";
+            this.labelNombreUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // ConsultarUsuario
             // 
-            this.AcceptButton = this.buttonBuscarUsuario;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(784, 561);
+            this.Controls.Add(this.panel3);
             this.Controls.Add(this.labelErro);
-            this.Controls.Add(this.buttonRefrescar);
             this.Controls.Add(this.dataGridViewUsuarios);
-            this.Controls.Add(this.labelNombreUsuario);
             this.Controls.Add(this.textBoxNombreUsuario);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.labelError);
-            this.Controls.Add(this.buttonBuscarUsuario);
             this.Controls.Add(this.botonVolver);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
@@ -265,6 +310,13 @@ namespace Programa
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUsuarios)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.usuarioSimpleBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.usuarioBindingSource)).EndInit();
+            this.panel3.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -273,11 +325,9 @@ namespace Programa
         #endregion
 
         private System.Windows.Forms.Label labelError;
-        private System.Windows.Forms.Button buttonBuscarUsuario;
         private System.Windows.Forms.Button botonVolver;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBoxNombreUsuario;
-        private System.Windows.Forms.Label labelNombreUsuario;
         private System.Windows.Forms.BindingSource usuarioSimpleBindingSource;
         private System.Windows.Forms.BindingSource usuarioBindingSource;
         private System.Windows.Forms.DataGridView dataGridViewUsuarios;
@@ -289,7 +339,13 @@ namespace Programa
         private System.Windows.Forms.DataGridViewTextBoxColumn FechaNacimiento;
         private System.Windows.Forms.DataGridViewTextBoxColumn Mail;
         private System.Windows.Forms.DataGridViewTextBoxColumn Telefono;
-        private System.Windows.Forms.Button buttonRefrescar;
         private System.Windows.Forms.Label labelErro;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.Label labelNombreUsuario;
     }
 }

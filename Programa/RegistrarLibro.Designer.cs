@@ -43,7 +43,6 @@ namespace Programa
             this.textBoxAutor = new System.Windows.Forms.TextBox();
             this.textBoxAñoPublicacion = new System.Windows.Forms.TextBox();
             this.labelIngreseTitulo = new System.Windows.Forms.Label();
-            this.labelNombreUsuario = new System.Windows.Forms.Label();
             this.botonVolver = new System.Windows.Forms.Button();
             this.labelResultados = new System.Windows.Forms.Label();
             this.textBoxISBN = new System.Windows.Forms.TextBox();
@@ -63,9 +62,21 @@ namespace Programa
             this.labelError = new System.Windows.Forms.Label();
             this.labelCantidadEjemplares = new System.Windows.Forms.Label();
             this.textBoxCantidadEjemplares = new System.Windows.Forms.TextBox();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.labelNombreUsuario = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTituloYAutor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewISBN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAños)).BeginInit();
+            this.panel3.SuspendLayout();
+            this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridViewTituloYAutor
@@ -194,18 +205,6 @@ namespace Programa
             this.labelIngreseTitulo.TabIndex = 9;
             this.labelIngreseTitulo.Text = "Ingrese el titulo o autor";
             this.labelIngreseTitulo.Click += new System.EventHandler(this.label4_Click);
-            // 
-            // labelNombreUsuario
-            // 
-            this.labelNombreUsuario.BackColor = System.Drawing.SystemColors.Highlight;
-            this.labelNombreUsuario.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.labelNombreUsuario.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.labelNombreUsuario.Location = new System.Drawing.Point(606, 9);
-            this.labelNombreUsuario.Name = "labelNombreUsuario";
-            this.labelNombreUsuario.Size = new System.Drawing.Size(182, 31);
-            this.labelNombreUsuario.TabIndex = 11;
-            this.labelNombreUsuario.Text = "Nombre de Usuario";
-            this.labelNombreUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // botonVolver
             // 
@@ -400,6 +399,89 @@ namespace Programa
             this.textBoxCantidadEjemplares.Size = new System.Drawing.Size(79, 20);
             this.textBoxCantidadEjemplares.TabIndex = 33;
             // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.panel3.Controls.Add(this.panel4);
+            this.panel3.Controls.Add(this.panel5);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel3.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(784, 60);
+            this.panel3.TabIndex = 71;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.label7);
+            this.panel4.Controls.Add(this.pictureBox2);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel4.Location = new System.Drawing.Point(0, 0);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(82, 60);
+            this.panel4.TabIndex = 10;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.label7.Location = new System.Drawing.Point(12, 44);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(49, 15);
+            this.label7.TabIndex = 5;
+            this.label7.Text = "E-Librery";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::Programa.Properties.Resources.libro_abierto;
+            this.pictureBox2.Location = new System.Drawing.Point(16, 3);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(40, 40);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 5;
+            this.pictureBox2.TabStop = false;
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.SystemColors.Highlight;
+            this.panel5.Controls.Add(this.pictureBox4);
+            this.panel5.Controls.Add(this.labelNombreUsuario);
+            this.panel5.Location = new System.Drawing.Point(566, 0);
+            this.panel5.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(207, 60);
+            this.panel5.TabIndex = 9;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox4.Image = global::Programa.Properties.Resources.perfil_del_usuario;
+            this.pictureBox4.Location = new System.Drawing.Point(155, 12);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(40, 40);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox4.TabIndex = 6;
+            this.pictureBox4.TabStop = false;
+            // 
+            // labelNombreUsuario
+            // 
+            this.labelNombreUsuario.AutoSize = true;
+            this.labelNombreUsuario.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.labelNombreUsuario.Location = new System.Drawing.Point(8, 16);
+            this.labelNombreUsuario.Margin = new System.Windows.Forms.Padding(2, 0, 5, 0);
+            this.labelNombreUsuario.Name = "labelNombreUsuario";
+            this.labelNombreUsuario.Size = new System.Drawing.Size(84, 13);
+            this.labelNombreUsuario.TabIndex = 0;
+            this.labelNombreUsuario.Text = "Nombre Apellido";
+            this.labelNombreUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // RegistrarLibro
             // 
             this.AcceptButton = this.buttonBuscar;
@@ -407,6 +489,7 @@ namespace Programa
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(784, 561);
+            this.Controls.Add(this.panel3);
             this.Controls.Add(this.textBoxCantidadEjemplares);
             this.Controls.Add(this.labelCantidadEjemplares);
             this.Controls.Add(this.labelError);
@@ -424,7 +507,6 @@ namespace Programa
             this.Controls.Add(this.labelResultados);
             this.Controls.Add(this.botonVolver);
             this.Controls.Add(this.buttonAñadirLibro);
-            this.Controls.Add(this.labelNombreUsuario);
             this.Controls.Add(this.labelIngreseTitulo);
             this.Controls.Add(this.textBoxAñoPublicacion);
             this.Controls.Add(this.textBoxAutor);
@@ -448,6 +530,13 @@ namespace Programa
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTituloYAutor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewISBN)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAños)).EndInit();
+            this.panel3.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -465,7 +554,6 @@ namespace Programa
         private System.Windows.Forms.TextBox textBoxAutor;
         private System.Windows.Forms.TextBox textBoxAñoPublicacion;
         private System.Windows.Forms.Label labelIngreseTitulo;
-        private System.Windows.Forms.Label labelNombreUsuario;
         private System.Windows.Forms.Button botonVolver;
         private System.Windows.Forms.Label labelResultados;
         private System.Windows.Forms.TextBox textBoxISBN;
@@ -489,5 +577,12 @@ namespace Programa
         private System.Windows.Forms.DataGridViewTextBoxColumn ISBNs;
         private System.Windows.Forms.Label labelCantidadEjemplares;
         private System.Windows.Forms.TextBox textBoxCantidadEjemplares;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.Label labelNombreUsuario;
     }
 }
