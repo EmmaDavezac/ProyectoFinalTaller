@@ -29,7 +29,7 @@ namespace Programa
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex > 0)
+            if (e.RowIndex >= 0)
             {
                 dataGridViewAños.Rows.Clear();
                 dataGridViewISBN.Rows.Clear();
@@ -78,7 +78,7 @@ namespace Programa
                     resultado += 1;
                 }
 
-                if (resultado == 0) { labelResultados.Text = "No se encontraron resultados"; buttonBuscar.Enabled = false; textBoxBuscar.Focus(); }
+                if (resultado == 0) { labelResultados.Text = "Error, no se encontraron resultados"; buttonBuscar.Enabled = false; textBoxBuscar.Focus(); }
                 else
                 {
                     labelResultados.Text = "";
@@ -195,7 +195,7 @@ namespace Programa
 
         private void dataGridViewISBN_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex > 0)
+            if (e.RowIndex >= 0)
             {
                 textBoxISBN.Text = dataGridViewISBN.CurrentRow.Cells[0].Value.ToString(); 
             }
@@ -203,7 +203,7 @@ namespace Programa
 
         private void dataGridViewAños_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex > 0)
+            if (e.RowIndex >= 0)
             {
                 textBoxAñoPublicacion.Text = dataGridViewAños.CurrentRow.Cells[0].Value.ToString();
             }
@@ -243,6 +243,11 @@ namespace Programa
                     }
                 }
             }
+        }
+
+        private void buttonGestionarLibros_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

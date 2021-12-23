@@ -93,7 +93,7 @@ namespace Programa
             // 
             // textBoxMail
             // 
-            this.textBoxMail.Location = new System.Drawing.Point(348, 306);
+            this.textBoxMail.Location = new System.Drawing.Point(348, 316);
             this.textBoxMail.Name = "textBoxMail";
             this.textBoxMail.Size = new System.Drawing.Size(200, 20);
             this.textBoxMail.TabIndex = 9;
@@ -113,41 +113,41 @@ namespace Programa
             // labelNombre
             // 
             this.labelNombre.AutoSize = true;
-            this.labelNombre.Location = new System.Drawing.Point(238, 192);
+            this.labelNombre.Location = new System.Drawing.Point(245, 196);
             this.labelNombre.Name = "labelNombre";
-            this.labelNombre.Size = new System.Drawing.Size(44, 13);
+            this.labelNombre.Size = new System.Drawing.Size(47, 13);
             this.labelNombre.TabIndex = 15;
-            this.labelNombre.Text = "Nombre";
+            this.labelNombre.Text = "Nombre:";
             this.labelNombre.Click += new System.EventHandler(this.label1_Click);
             // 
             // labelApellido
             // 
             this.labelApellido.AutoSize = true;
-            this.labelApellido.Location = new System.Drawing.Point(238, 225);
+            this.labelApellido.Location = new System.Drawing.Point(245, 229);
             this.labelApellido.Name = "labelApellido";
-            this.labelApellido.Size = new System.Drawing.Size(44, 13);
+            this.labelApellido.Size = new System.Drawing.Size(47, 13);
             this.labelApellido.TabIndex = 16;
-            this.labelApellido.Text = "Apellido";
+            this.labelApellido.Text = "Apellido:";
             this.labelApellido.Click += new System.EventHandler(this.labelApellido_Click);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(238, 261);
+            this.label3.Location = new System.Drawing.Point(245, 261);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(90, 13);
+            this.label3.Size = new System.Drawing.Size(93, 13);
             this.label3.TabIndex = 17;
-            this.label3.Text = "FechaNacimiento";
+            this.label3.Text = "FechaNacimiento:";
             this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(238, 309);
+            this.label4.Location = new System.Drawing.Point(245, 319);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(26, 13);
+            this.label4.Size = new System.Drawing.Size(29, 13);
             this.label4.TabIndex = 18;
-            this.label4.Text = "Mail";
+            this.label4.Text = "Mail:";
             this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // buttonAñadirUsuario
@@ -177,15 +177,15 @@ namespace Programa
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(238, 280);
+            this.label1.Location = new System.Drawing.Point(245, 291);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(49, 13);
+            this.label1.Size = new System.Drawing.Size(52, 13);
             this.label1.TabIndex = 67;
-            this.label1.Text = "Telefono";
+            this.label1.Text = "Telefono:";
             // 
             // textBoxTelefono
             // 
-            this.textBoxTelefono.Location = new System.Drawing.Point(348, 281);
+            this.textBoxTelefono.Location = new System.Drawing.Point(348, 284);
             this.textBoxTelefono.Name = "textBoxTelefono";
             this.textBoxTelefono.Size = new System.Drawing.Size(200, 20);
             this.textBoxTelefono.TabIndex = 66;
@@ -286,11 +286,11 @@ namespace Programa
             // label5NombreUsuario
             // 
             this.label5NombreUsuario.AutoSize = true;
-            this.label5NombreUsuario.Location = new System.Drawing.Point(238, 161);
+            this.label5NombreUsuario.Location = new System.Drawing.Point(245, 161);
             this.label5NombreUsuario.Name = "label5NombreUsuario";
-            this.label5NombreUsuario.Size = new System.Drawing.Size(80, 13);
+            this.label5NombreUsuario.Size = new System.Drawing.Size(83, 13);
             this.label5NombreUsuario.TabIndex = 71;
-            this.label5NombreUsuario.Text = "NombreUsuario";
+            this.label5NombreUsuario.Text = "NombreUsuario:";
             // 
             // RegistrarUsuario
             // 

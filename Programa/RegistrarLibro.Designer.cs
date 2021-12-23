@@ -69,6 +69,7 @@ namespace Programa
             this.panel5 = new System.Windows.Forms.Panel();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.labelNombreUsuario = new System.Windows.Forms.Label();
+            this.buttonGestionarLibros = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTituloYAutor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewISBN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAños)).BeginInit();
@@ -91,7 +92,7 @@ namespace Programa
             this.dataGridViewTituloYAutor.GridColor = System.Drawing.SystemColors.Control;
             this.dataGridViewTituloYAutor.Location = new System.Drawing.Point(0, 121);
             this.dataGridViewTituloYAutor.Name = "dataGridViewTituloYAutor";
-            this.dataGridViewTituloYAutor.Size = new System.Drawing.Size(363, 232);
+            this.dataGridViewTituloYAutor.Size = new System.Drawing.Size(363, 222);
             this.dataGridViewTituloYAutor.TabIndex = 0;
             this.dataGridViewTituloYAutor.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridViewTituloYAutor.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
@@ -149,7 +150,7 @@ namespace Programa
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(137, 404);
+            this.label1.Location = new System.Drawing.Point(215, 385);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(36, 13);
             this.label1.TabIndex = 3;
@@ -158,7 +159,7 @@ namespace Programa
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(138, 427);
+            this.label2.Location = new System.Drawing.Point(216, 408);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(35, 13);
             this.label2.TabIndex = 4;
@@ -167,7 +168,7 @@ namespace Programa
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(86, 482);
+            this.label3.Location = new System.Drawing.Point(164, 463);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(86, 13);
             this.label3.TabIndex = 5;
@@ -176,21 +177,21 @@ namespace Programa
             // 
             // textBoxTitulo
             // 
-            this.textBoxTitulo.Location = new System.Drawing.Point(182, 401);
+            this.textBoxTitulo.Location = new System.Drawing.Point(260, 382);
             this.textBoxTitulo.Name = "textBoxTitulo";
             this.textBoxTitulo.Size = new System.Drawing.Size(300, 20);
             this.textBoxTitulo.TabIndex = 6;
             // 
             // textBoxAutor
             // 
-            this.textBoxAutor.Location = new System.Drawing.Point(182, 427);
+            this.textBoxAutor.Location = new System.Drawing.Point(260, 408);
             this.textBoxAutor.Name = "textBoxAutor";
             this.textBoxAutor.Size = new System.Drawing.Size(300, 20);
             this.textBoxAutor.TabIndex = 7;
             // 
             // textBoxAñoPublicacion
             // 
-            this.textBoxAñoPublicacion.Location = new System.Drawing.Point(182, 479);
+            this.textBoxAñoPublicacion.Location = new System.Drawing.Point(260, 460);
             this.textBoxAñoPublicacion.Name = "textBoxAñoPublicacion";
             this.textBoxAñoPublicacion.Size = new System.Drawing.Size(300, 20);
             this.textBoxAñoPublicacion.TabIndex = 8;
@@ -226,6 +227,7 @@ namespace Programa
             // labelResultados
             // 
             this.labelResultados.AutoSize = true;
+            this.labelResultados.ForeColor = System.Drawing.Color.Red;
             this.labelResultados.Location = new System.Drawing.Point(139, 79);
             this.labelResultados.Name = "labelResultados";
             this.labelResultados.Size = new System.Drawing.Size(0, 13);
@@ -233,7 +235,7 @@ namespace Programa
             // 
             // textBoxISBN
             // 
-            this.textBoxISBN.Location = new System.Drawing.Point(182, 453);
+            this.textBoxISBN.Location = new System.Drawing.Point(260, 434);
             this.textBoxISBN.Name = "textBoxISBN";
             this.textBoxISBN.Size = new System.Drawing.Size(300, 20);
             this.textBoxISBN.TabIndex = 16;
@@ -242,7 +244,7 @@ namespace Programa
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(137, 456);
+            this.label5.Location = new System.Drawing.Point(215, 437);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(35, 13);
             this.label5.TabIndex = 15;
@@ -257,7 +259,7 @@ namespace Programa
             this.buttonAñadirLibro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAñadirLibro.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.buttonAñadirLibro.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonAñadirLibro.Location = new System.Drawing.Point(260, 509);
+            this.buttonAñadirLibro.Location = new System.Drawing.Point(338, 490);
             this.buttonAñadirLibro.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.buttonAñadirLibro.Name = "buttonAñadirLibro";
             this.buttonAñadirLibro.Size = new System.Drawing.Size(89, 23);
@@ -283,7 +285,7 @@ namespace Programa
             this.buttonBorrarDatos.FlatAppearance.BorderSize = 0;
             this.buttonBorrarDatos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonBorrarDatos.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonBorrarDatos.Location = new System.Drawing.Point(177, 509);
+            this.buttonBorrarDatos.Location = new System.Drawing.Point(255, 490);
             this.buttonBorrarDatos.Name = "buttonBorrarDatos";
             this.buttonBorrarDatos.Size = new System.Drawing.Size(78, 23);
             this.buttonBorrarDatos.TabIndex = 21;
@@ -295,7 +297,7 @@ namespace Programa
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(110, 369);
+            this.label6.Location = new System.Drawing.Point(188, 350);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(161, 13);
             this.label6.TabIndex = 23;
@@ -311,7 +313,7 @@ namespace Programa
             this.dataGridViewISBN.GridColor = System.Drawing.SystemColors.Control;
             this.dataGridViewISBN.Location = new System.Drawing.Point(369, 121);
             this.dataGridViewISBN.Name = "dataGridViewISBN";
-            this.dataGridViewISBN.Size = new System.Drawing.Size(205, 232);
+            this.dataGridViewISBN.Size = new System.Drawing.Size(205, 222);
             this.dataGridViewISBN.TabIndex = 24;
             this.dataGridViewISBN.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewISBN_CellContentClick);
             // 
@@ -330,7 +332,7 @@ namespace Programa
             this.dataGridViewAños.GridColor = System.Drawing.SystemColors.Control;
             this.dataGridViewAños.Location = new System.Drawing.Point(580, 121);
             this.dataGridViewAños.Name = "dataGridViewAños";
-            this.dataGridViewAños.Size = new System.Drawing.Size(204, 232);
+            this.dataGridViewAños.Size = new System.Drawing.Size(204, 222);
             this.dataGridViewAños.TabIndex = 25;
             this.dataGridViewAños.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewAños_CellContentClick);
             // 
@@ -378,7 +380,7 @@ namespace Programa
             // 
             this.labelError.AutoSize = true;
             this.labelError.ForeColor = System.Drawing.Color.Red;
-            this.labelError.Location = new System.Drawing.Point(271, 382);
+            this.labelError.Location = new System.Drawing.Point(257, 366);
             this.labelError.Name = "labelError";
             this.labelError.Size = new System.Drawing.Size(0, 13);
             this.labelError.TabIndex = 30;
@@ -386,7 +388,7 @@ namespace Programa
             // labelCantidadEjemplares
             // 
             this.labelCantidadEjemplares.AutoSize = true;
-            this.labelCantidadEjemplares.Location = new System.Drawing.Point(354, 514);
+            this.labelCantidadEjemplares.Location = new System.Drawing.Point(432, 495);
             this.labelCantidadEjemplares.Name = "labelCantidadEjemplares";
             this.labelCantidadEjemplares.Size = new System.Drawing.Size(52, 13);
             this.labelCantidadEjemplares.TabIndex = 32;
@@ -394,7 +396,7 @@ namespace Programa
             // 
             // textBoxCantidadEjemplares
             // 
-            this.textBoxCantidadEjemplares.Location = new System.Drawing.Point(403, 509);
+            this.textBoxCantidadEjemplares.Location = new System.Drawing.Point(481, 490);
             this.textBoxCantidadEjemplares.Name = "textBoxCantidadEjemplares";
             this.textBoxCantidadEjemplares.Size = new System.Drawing.Size(79, 20);
             this.textBoxCantidadEjemplares.TabIndex = 33;
@@ -482,6 +484,23 @@ namespace Programa
             this.labelNombreUsuario.Text = "Nombre Apellido";
             this.labelNombreUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // buttonGestionarLibros
+            // 
+            this.buttonGestionarLibros.BackColor = System.Drawing.SystemColors.Highlight;
+            this.buttonGestionarLibros.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.buttonGestionarLibros.FlatAppearance.BorderSize = 0;
+            this.buttonGestionarLibros.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonGestionarLibros.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.buttonGestionarLibros.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.buttonGestionarLibros.Location = new System.Drawing.Point(558, 526);
+            this.buttonGestionarLibros.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.buttonGestionarLibros.Name = "buttonGestionarLibros";
+            this.buttonGestionarLibros.Size = new System.Drawing.Size(112, 23);
+            this.buttonGestionarLibros.TabIndex = 72;
+            this.buttonGestionarLibros.Text = "Gestionar Libros";
+            this.buttonGestionarLibros.UseVisualStyleBackColor = false;
+            this.buttonGestionarLibros.Click += new System.EventHandler(this.buttonGestionarLibros_Click);
+            // 
             // RegistrarLibro
             // 
             this.AcceptButton = this.buttonBuscar;
@@ -489,6 +508,7 @@ namespace Programa
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(784, 561);
+            this.Controls.Add(this.buttonGestionarLibros);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.textBoxCantidadEjemplares);
             this.Controls.Add(this.labelCantidadEjemplares);
@@ -584,5 +604,6 @@ namespace Programa
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Label labelNombreUsuario;
+        private System.Windows.Forms.Button buttonGestionarLibros;
     }
 }
