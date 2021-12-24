@@ -76,6 +76,10 @@ namespace Nucleo
         {
             return interfazDAL.ObtenerLibro(id);
         }
+        public int ObtenerCantidadEjemplaresLibro(int id)
+        {
+            return interfazDAL.ObtenerCantEjemplaresLibro(id);
+        }
 
 
         public void AñadirEjemplar(int idLibro)

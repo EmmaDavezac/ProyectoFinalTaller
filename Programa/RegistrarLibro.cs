@@ -29,8 +29,8 @@ namespace Programa
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0)
-            {
+            if (e.RowIndex >= 0&& dataGridViewTituloYAutor.CurrentRow.Cells[0].Value!=null)
+            {   
                 dataGridViewAños.Rows.Clear();
                 dataGridViewISBN.Rows.Clear();
                 textBoxTitulo.Text = dataGridViewTituloYAutor.CurrentRow.Cells[0].Value.ToString();
@@ -112,6 +112,13 @@ namespace Programa
 
                 new InterfazNucleo().AñadirLibro(textBoxISBN.Text, textBoxTitulo.Text, textBoxAutor.Text, textBoxAñoPublicacion.Text,Convert.ToInt32(textBoxCantidadEjemplares.Text));
                 MessageBox.Show("Libro registrado con exito, el Id del libro es: " + new InterfazNucleo().ObtenerUltimoIdLibro());
+                buttonBorrarDatos_Click(sender,e);
+                dataGridViewAños.Rows.Clear();
+                dataGridViewISBN.Rows.Clear();
+                dataGridViewTituloYAutor.Rows.Clear();
+                textBoxCantidadEjemplares.Clear();
+                textBoxBuscar.Clear();
+                
             }
             else
             {
@@ -246,6 +253,13 @@ namespace Programa
         }
 
         private void buttonGestionarLibros_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            GestionarLibros ventana = new GestionarLibros(NombreUsuario);
+            ventana.Show();
+        }
+
+        private void labelSeleccionarAño_Click(object sender, EventArgs e)
         {
 
         }

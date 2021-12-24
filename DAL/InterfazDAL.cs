@@ -151,7 +151,15 @@ namespace DAL
                 return unitOfWork.RepositorioLibros.Get(id);
             }
         }
+        
 
+        public int ObtenerCantEjemplaresLibro (int id)
+        {
+            using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
+            {
+                return unitOfWork.RepositorioLibros.Get(id).Ejemplares.Count();
+            }
+        }
 
         public void AñadirEjemplar(int idLibro)
         {

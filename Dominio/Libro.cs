@@ -15,6 +15,8 @@ namespace Dominio
         public string Autor { get; set; }
         public string AñoPublicacion { get; set; }
         public virtual List<Ejemplar> Ejemplares { get; set; }
+
+        
         
 
         public Libro()

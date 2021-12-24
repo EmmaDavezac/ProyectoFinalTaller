@@ -31,7 +31,7 @@ namespace Programa
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
@@ -154,8 +154,8 @@ namespace Programa
             // 
             // dataGridViewLibros
             // 
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            this.dataGridViewLibros.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            this.dataGridViewLibros.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewLibros.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dataGridViewLibros.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewLibros.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -247,6 +247,7 @@ namespace Programa
             this.botonVolver.TabIndex = 78;
             this.botonVolver.Text = "Volver";
             this.botonVolver.UseVisualStyleBackColor = false;
+            this.botonVolver.Click += new System.EventHandler(this.botonVolver_Click);
             // 
             // GestionarLibros
             // 
@@ -264,6 +265,7 @@ namespace Programa
             this.Name = "GestionarLibros";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "GestionarLibros";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.GestionarLibros_FormClosed);
             this.Load += new System.EventHandler(this.GestionarLibros_Load);
             this.panel3.ResumeLayout(false);
             this.panel4.ResumeLayout(false);

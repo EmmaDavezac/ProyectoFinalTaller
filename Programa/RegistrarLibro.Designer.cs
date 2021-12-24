@@ -30,10 +30,6 @@ namespace Programa
         private void InitializeComponent()
         {
             this.dataGridViewTituloYAutor = new System.Windows.Forms.DataGridView();
-            this.Titulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Autor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Año = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ISBNs = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.textBoxBuscar = new System.Windows.Forms.TextBox();
             this.buttonBuscar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -70,6 +66,10 @@ namespace Programa
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.labelNombreUsuario = new System.Windows.Forms.Label();
             this.buttonGestionarLibros = new System.Windows.Forms.Button();
+            this.Titulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Autor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTituloYAutor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewISBN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAños)).BeginInit();
@@ -87,43 +87,15 @@ namespace Programa
             this.dataGridViewTituloYAutor.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Titulo,
             this.Autor,
-            this.Año,
-            this.ISBNs});
+            this.Column1,
+            this.Column2});
             this.dataGridViewTituloYAutor.GridColor = System.Drawing.SystemColors.Control;
-            this.dataGridViewTituloYAutor.Location = new System.Drawing.Point(0, 121);
+            this.dataGridViewTituloYAutor.Location = new System.Drawing.Point(0, 122);
             this.dataGridViewTituloYAutor.Name = "dataGridViewTituloYAutor";
             this.dataGridViewTituloYAutor.Size = new System.Drawing.Size(363, 222);
             this.dataGridViewTituloYAutor.TabIndex = 0;
             this.dataGridViewTituloYAutor.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridViewTituloYAutor.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // Titulo
-            // 
-            this.Titulo.HeaderText = "Titulo";
-            this.Titulo.Name = "Titulo";
-            this.Titulo.ReadOnly = true;
-            this.Titulo.Width = 160;
-            // 
-            // Autor
-            // 
-            this.Autor.HeaderText = "Autor";
-            this.Autor.Name = "Autor";
-            this.Autor.ReadOnly = true;
-            this.Autor.Width = 160;
-            // 
-            // Año
-            // 
-            this.Año.HeaderText = "Año";
-            this.Año.Name = "Año";
-            this.Año.ReadOnly = true;
-            this.Año.Visible = false;
-            // 
-            // ISBNs
-            // 
-            this.ISBNs.HeaderText = "ISBNs";
-            this.ISBNs.Name = "ISBNs";
-            this.ISBNs.ReadOnly = true;
-            this.ISBNs.Visible = false;
             // 
             // textBoxBuscar
             // 
@@ -313,6 +285,7 @@ namespace Programa
             this.dataGridViewISBN.GridColor = System.Drawing.SystemColors.Control;
             this.dataGridViewISBN.Location = new System.Drawing.Point(369, 121);
             this.dataGridViewISBN.Name = "dataGridViewISBN";
+            this.dataGridViewISBN.ReadOnly = true;
             this.dataGridViewISBN.Size = new System.Drawing.Size(205, 222);
             this.dataGridViewISBN.TabIndex = 24;
             this.dataGridViewISBN.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewISBN_CellContentClick);
@@ -321,6 +294,7 @@ namespace Programa
             // 
             this.ISBN.HeaderText = "ISBN";
             this.ISBN.Name = "ISBN";
+            this.ISBN.ReadOnly = true;
             this.ISBN.Width = 160;
             // 
             // dataGridViewAños
@@ -332,6 +306,7 @@ namespace Programa
             this.dataGridViewAños.GridColor = System.Drawing.SystemColors.Control;
             this.dataGridViewAños.Location = new System.Drawing.Point(580, 121);
             this.dataGridViewAños.Name = "dataGridViewAños";
+            this.dataGridViewAños.ReadOnly = true;
             this.dataGridViewAños.Size = new System.Drawing.Size(204, 222);
             this.dataGridViewAños.TabIndex = 25;
             this.dataGridViewAños.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewAños_CellContentClick);
@@ -340,6 +315,7 @@ namespace Programa
             // 
             this.AñoPublicacion.HeaderText = "AñoPublicacion";
             this.AñoPublicacion.Name = "AñoPublicacion";
+            this.AñoPublicacion.ReadOnly = true;
             this.AñoPublicacion.Width = 160;
             // 
             // labelSelccionarISBN
@@ -367,6 +343,7 @@ namespace Programa
             this.labelSeleccionarAño.Size = new System.Drawing.Size(84, 13);
             this.labelSeleccionarAño.TabIndex = 29;
             this.labelSeleccionarAño.Text = "Seleccione año:";
+            this.labelSeleccionarAño.Click += new System.EventHandler(this.labelSeleccionarAño_Click);
             // 
             // textBoxSelccionarAño
             // 
@@ -501,6 +478,34 @@ namespace Programa
             this.buttonGestionarLibros.UseVisualStyleBackColor = false;
             this.buttonGestionarLibros.Click += new System.EventHandler(this.buttonGestionarLibros_Click);
             // 
+            // Titulo
+            // 
+            this.Titulo.HeaderText = "Titulo";
+            this.Titulo.Name = "Titulo";
+            this.Titulo.ReadOnly = true;
+            this.Titulo.Width = 160;
+            // 
+            // Autor
+            // 
+            this.Autor.HeaderText = "Autor";
+            this.Autor.Name = "Autor";
+            this.Autor.ReadOnly = true;
+            this.Autor.Width = 160;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "añoPublicacion";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Visible = false;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "isbn";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Visible = false;
+            // 
             // RegistrarLibro
             // 
             this.AcceptButton = this.buttonBuscar;
@@ -591,10 +596,6 @@ namespace Programa
         private System.Windows.Forms.Label labelSeleccionarAño;
         private System.Windows.Forms.TextBox textBoxSelccionarAño;
         private System.Windows.Forms.Label labelError;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Titulo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Autor;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Año;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ISBNs;
         private System.Windows.Forms.Label labelCantidadEjemplares;
         private System.Windows.Forms.TextBox textBoxCantidadEjemplares;
         private System.Windows.Forms.Panel panel3;
@@ -605,5 +606,9 @@ namespace Programa
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Label labelNombreUsuario;
         private System.Windows.Forms.Button buttonGestionarLibros;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Titulo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Autor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
     }
 }

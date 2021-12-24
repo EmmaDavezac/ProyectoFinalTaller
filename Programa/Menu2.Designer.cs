@@ -34,7 +34,6 @@ namespace Programa
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.labelNombreYApellido = new System.Windows.Forms.Label();
             this.labelNombreUsuario = new System.Windows.Forms.Label();
@@ -139,7 +138,6 @@ namespace Programa
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.SystemColors.Highlight;
-            this.panel5.Controls.Add(this.label2);
             this.panel5.Controls.Add(this.pictureBox4);
             this.panel5.Controls.Add(this.labelNombreYApellido);
             this.panel5.Controls.Add(this.labelNombreUsuario);
@@ -149,17 +147,6 @@ namespace Programa
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(268, 60);
             this.panel5.TabIndex = 9;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label2.Location = new System.Drawing.Point(221, 44);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(44, 13);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "Mi Perfil";
             // 
             // pictureBox4
             // 
@@ -213,6 +200,7 @@ namespace Programa
             // pictureBox3
             // 
             this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox3.Image = global::Programa.Properties.Resources.cerrar_sesion;
             this.pictureBox3.Location = new System.Drawing.Point(24, 3);
             this.pictureBox3.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
@@ -791,7 +779,6 @@ namespace Programa
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox4;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel submenuPrestamos;

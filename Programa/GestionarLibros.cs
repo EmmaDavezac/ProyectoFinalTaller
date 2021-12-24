@@ -32,17 +32,17 @@ namespace Programa
 
         private void dataGridViewLibros_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            /*if (e.RowIndex >= 0)
+            if (e.RowIndex >= 0)
             {
                 DataGridViewCell cell = (DataGridViewCell)dataGridViewLibros.Rows[e.RowIndex].Cells[e.ColumnIndex];
                 if (cell.Value.ToString() == "Edit")
                 {
-                    ActualizarUsuario ventana = new ActualizarUsuario(nombreUsuario);
-                    ventana.CargarUsuarioExistente(dataGridViewLibros.Rows[e.RowIndex].Cells[1].Value.ToString());
+                    int id = Convert.ToInt32(dataGridViewLibros.Rows[e.RowIndex].Cells[1].Value);
+                    ActualizarLibro ventana = new ActualizarLibro(nombreUsuario, id);
                     this.Hide();
                     ventana.Show();
                 }
-            }*/
+            }
         }
 
         private void textBoxTituloOISBNlibro_TextChanged(object sender, EventArgs e)
@@ -51,9 +51,9 @@ namespace Programa
             {
                 for (int i = 0; i < dataGridViewLibros.Rows.Count - 1; i++)
                 {
-                    if (textBoxTituloOISBNLibro.Text.All(Char.IsDigit) == true && dataGridViewLibros.Rows[i].Cells[2].Value.ToString().Contains(textBoxTituloOISBNLibro.Text.ToString()) == false)
+                    if (textBoxTituloOISBNLibro.Text.All(Char.IsDigit)&&dataGridViewLibros.Rows[i].Cells[2].Value.ToString().Contains(textBoxTituloOISBNLibro.Text.ToString()) )
                     {
-                        dataGridViewLibros.Rows[i].Visible = false;
+                        dataGridViewLibros.Rows[i].Visible = true;
                     }
                     else if (dataGridViewLibros.Rows[i].Cells[3].Value.ToString().ToLower().Contains(textBoxTituloOISBNLibro.Text.ToString().ToLower()) == false)
                     {
@@ -80,6 +80,20 @@ namespace Programa
                 dataGridViewLibros.Rows[n].Cells[4].Value = item.Autor;
                 dataGridViewLibros.Rows[n].Cells[5].Value = item.AñoPublicacion;
             }
+        }
+
+        private void GestionarLibros_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Hide();
+            Menu2 ventanaMenu = new Menu2(nombreUsuario.ToString());
+            ventanaMenu.Show();
+        }
+
+        private void botonVolver_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Menu2 ventanaMenu = new Menu2(nombreUsuario.ToString());
+            ventanaMenu.Show();
         }
     }
 }

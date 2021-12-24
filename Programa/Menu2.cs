@@ -218,12 +218,7 @@ namespace Programa
             ventana.Show();
         }
 
-        private void button12_Click(object sender, EventArgs e)
-        {
-            ActualizarLibro ventana = new ActualizarLibro(nombreUsuario);
-            this.Hide();
-            ventana.Show();
-        }
+       
 
         private void button18_Click(object sender, EventArgs e)
         {
