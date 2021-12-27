@@ -149,6 +149,7 @@ namespace Programa
             interfazNucleo.RegistrarPrestamo(textBoxNomUsuario.Text,idEjemplar);
             string FechaLimite = Convert.ToDateTime(new InterfazNucleo().ObtenerPrestamo(interfazNucleo.ObtenerUltimoIdPrestamo()).FechaLimite).Date.ToString();
             MessageBox.Show("El prestamo ha sido registrado correctamente" + "\nFecha limite: " + FechaLimite);
+            RegistrarPrestamo_Load(sender,e);
         }
 
         private void botonVolver_Click(object sender, EventArgs e)
