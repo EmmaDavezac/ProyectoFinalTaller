@@ -36,7 +36,7 @@ namespace Dominio
         { List<Ejemplar> ejemplaresDisponibles = new List<Ejemplar>();
             foreach (var item in this.Ejemplares)
             {
-                if (item.Disponible)
+                if (item.Disponible && item.Estado == EstadoEjemplar.Bueno)
                 {
                     ejemplaresDisponibles.Add(item);
                 }
@@ -50,7 +50,7 @@ namespace Dominio
             List<Ejemplar> ejemplaresDisponibles = new List<Ejemplar>();
             foreach (var item in this.Ejemplares)
             {
-                if (item.Disponible && item.Estado == EstadoEjemplar.Bueno)
+                if (item.Estado == EstadoEjemplar.Bueno)
                 {
                     ejemplaresDisponibles.Add(item);
                 }

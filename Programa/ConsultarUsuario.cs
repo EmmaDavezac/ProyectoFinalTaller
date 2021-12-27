@@ -145,5 +145,10 @@ namespace Programa
         {
 
         }
+
+        private void usuarioSimpleBindingSource_CurrentChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

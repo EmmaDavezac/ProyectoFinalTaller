@@ -219,15 +219,14 @@ namespace DAL
                 return unitOfWork.RepositorioEjemplares.Get(id).Libro;
             }
         }
-        public void RegistrarPrestamo(int idUsuario, int idEjemplar)
+        public void RegistrarPrestamo(string pNombreUsuario, int idEjemplar)
         {
             using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
             {
-                Prestamo prestamo = new Prestamo(unitOfWork.RepositorioUsuarios.Get(idUsuario), unitOfWork.RepositorioEjemplares.Get(idEjemplar));
+                Prestamo prestamo = new Prestamo(unitOfWork.RepositorioUsuarios.Get(pNombreUsuario), unitOfWork.RepositorioEjemplares.Get(idEjemplar));
 
                 unitOfWork.RepositorioEjemplares.Get(idEjemplar).Disponible = false;
                 unitOfWork.RepositorioPrestamos.Add(prestamo);
-                unitOfWork.RepositorioUsuarios.Get(idUsuario).Prestamos.Add(prestamo);
                 unitOfWork.Complete();
             }
         }

@@ -414,7 +414,7 @@ namespace Programa
             this.button16.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.button16.Name = "button16";
             this.button16.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.button16.Size = new System.Drawing.Size(243, 40);
+            this.button16.Size = new System.Drawing.Size(243, 48);
             this.button16.TabIndex = 3;
             this.button16.Text = "Listado De Ejemplares";
             this.button16.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
