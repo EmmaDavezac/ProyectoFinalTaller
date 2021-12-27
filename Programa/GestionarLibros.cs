@@ -79,21 +79,21 @@ namespace Programa
                 dataGridViewLibros.Rows[n].Cells[3].Value = item.Titulo;
                 dataGridViewLibros.Rows[n].Cells[4].Value = item.Autor;
                 dataGridViewLibros.Rows[n].Cells[5].Value = item.AñoPublicacion;
+                dataGridViewLibros.Rows[n].Cells[6].Value = interfazNucleo.ObtenerEjemplaresDisponibles(item.Id).Count().ToString(); 
+                dataGridViewLibros.Rows[n].Cells[7].Value = interfazNucleo.ObtenerEjemplaresTotales(item.Id).Count().ToString();
             }
         }
 
         private void GestionarLibros_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.Hide();
-            Menu2 ventanaMenu = new Menu2(nombreUsuario.ToString());
-            ventanaMenu.Show();
+            this.Owner.Show();
         }
 
         private void botonVolver_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Menu2 ventanaMenu = new Menu2(nombreUsuario.ToString());
-            ventanaMenu.Show();
+            this.Owner.Show();
         }
     }
 }

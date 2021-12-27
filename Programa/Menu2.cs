@@ -173,7 +173,7 @@ namespace Programa
         {
             GestionarLibros ventana = new GestionarLibros(nombreUsuario);
             this.Hide();
-            ventana.Show();
+            ventana.ShowDialog(this);
         }
 
         private void button8_Click(object sender, EventArgs e)
@@ -243,7 +243,7 @@ namespace Programa
 
         private void button24_Click(object sender, EventArgs e)
         {
-            RegistrarPrestamo ventana = new RegistrarPrestamo(nombreUsuario);
+            RegistrarPrestamos ventana = new RegistrarPrestamos(nombreUsuario);
             this.Hide();
             ventana.Show();
         }

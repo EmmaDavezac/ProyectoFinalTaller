@@ -132,7 +132,7 @@ namespace DAL
 
         public void AñadirLibro(string unISBN, string titulo, string autor, string añoPublicacion, int pCantidadEjempalares)
         {
-            Libro libro = new Libro(unISBN, titulo, autor, añoPublicacion, pCantidadEjempalares);
+            Libro libro = new Libro(unISBN, titulo, autor, añoPublicacion);
             using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
             {
                 unitOfWork.RepositorioLibros.Add(libro);
@@ -200,6 +200,15 @@ namespace DAL
             using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
             {
                 List<Ejemplar> lista = unitOfWork.RepositorioLibros.Get(id).EjemplaresDisponibles();
+                return lista;
+            }
+        }
+
+        public List<Ejemplar> ObtenerEjemplaresTotales(int id)
+        {
+            using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
+            {
+                List<Ejemplar> lista = unitOfWork.RepositorioLibros.Get(id).EjemplaresTotales();
                 return lista;
             }
         }

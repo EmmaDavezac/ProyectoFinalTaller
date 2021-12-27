@@ -16,15 +16,15 @@ namespace Programa
 {
     public partial class RegistrarLibro : Form
     {
+        private string nombre { get; set; }
         private string NombreUsuario { get; set; }
-        private string idUsuario { get; set; }
         InterfazNucleo interfazNucleo = new InterfazNucleo();
-        public RegistrarLibro(string iD)
+        public RegistrarLibro(string pNombreUsuario)
         {
             InitializeComponent();
-            idUsuario = iD;
-            NombreUsuario = interfazNucleo.ObtenerAdministradorPorNombreOMail(idUsuario).Nombre;
-            labelNombreUsuario.Text = "Usuario: " + NombreUsuario;
+            NombreUsuario = pNombreUsuario;
+            nombre = interfazNucleo.ObtenerAdministradorPorNombreOMail(NombreUsuario).Nombre;
+            labelNombreUsuario.Text = "Usuario: " + nombre;
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -112,13 +112,13 @@ namespace Programa
 
                 new InterfazNucleo().AñadirLibro(textBoxISBN.Text, textBoxTitulo.Text, textBoxAutor.Text, textBoxAñoPublicacion.Text,Convert.ToInt32(textBoxCantidadEjemplares.Text));
                 MessageBox.Show("Libro registrado con exito, el Id del libro es: " + new InterfazNucleo().ObtenerUltimoIdLibro());
-                buttonBorrarDatos_Click(sender,e);
-                dataGridViewAños.Rows.Clear();
+                /*buttonBorrarDatos_Click(sender,e);  No es necesario ya que podria querer seguir cargando libros con el mismo titulo, incluso si me equivoque en la cantidad de ejemplares podria agregarlos sin volver a cargar todo.
+                dataGridViewAños.Rows.Clear();         
                 dataGridViewISBN.Rows.Clear();
                 dataGridViewTituloYAutor.Rows.Clear();
                 textBoxCantidadEjemplares.Clear();
-                textBoxBuscar.Clear();
-                
+                textBoxBuscar.Clear();*/
+
             }
             else
             {
@@ -130,14 +130,14 @@ namespace Programa
         private void botonVolver_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Menu2 ventanaMenu = new Menu2(idUsuario.ToString());
+            Menu2 ventanaMenu = new Menu2(NombreUsuario.ToString());
             ventanaMenu.Show();
         }
 
         private void BuscarLibrosAPI_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.Hide();
-            Menu2 ventanaMenu = new Menu2(idUsuario.ToString());
+            Menu2 ventanaMenu = new Menu2(NombreUsuario.ToString());
             ventanaMenu.Show();
         }
 
@@ -256,7 +256,7 @@ namespace Programa
         {
             this.Hide();
             GestionarLibros ventana = new GestionarLibros(NombreUsuario);
-            ventana.Show();
+            ventana.ShowDialog(this);
         }
 
         private void labelSeleccionarAño_Click(object sender, EventArgs e)

@@ -31,22 +31,30 @@ namespace Dominio
             Autor = autor;
             AñoPublicacion = añoPublicacion;
         }
-        public Libro(string unISBN,string titulo,string autor,string añoPublicacion,int pCantidadEjemplares)
-        {
-            ISBN = unISBN;
-            Titulo = titulo;
-            Autor = autor;
-            AñoPublicacion = añoPublicacion;
-        }
+
         public List<Ejemplar> EjemplaresDisponibles()
         { List<Ejemplar> ejemplaresDisponibles = new List<Ejemplar>();
-            foreach (var item in Ejemplares)
+            foreach (var item in this.Ejemplares)
             {
                 if (item.Disponible)
                 {
                     ejemplaresDisponibles.Add(item);
                 }
                
+            }
+            return ejemplaresDisponibles;
+        }
+
+        public List<Ejemplar> EjemplaresTotales()
+        {
+            List<Ejemplar> ejemplaresDisponibles = new List<Ejemplar>();
+            foreach (var item in this.Ejemplares)
+            {
+                if (item.Disponible && item.Estado == EstadoEjemplar.Bueno)
+                {
+                    ejemplaresDisponibles.Add(item);
+                }
+
             }
             return ejemplaresDisponibles;
         }

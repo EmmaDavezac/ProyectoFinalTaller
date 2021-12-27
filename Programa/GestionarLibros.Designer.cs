@@ -31,7 +31,7 @@ namespace Programa
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
@@ -41,15 +41,17 @@ namespace Programa
             this.labelNombreUsuario = new System.Windows.Forms.Label();
             this.labelTitulo = new System.Windows.Forms.Label();
             this.dataGridViewLibros = new System.Windows.Forms.DataGridView();
+            this.textBoxTituloOISBNLibro = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.botonVolver = new System.Windows.Forms.Button();
             this.Edit = new System.Windows.Forms.DataGridViewLinkColumn();
             this.IdLibro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ISBN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Titulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Autor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AñoPublicacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.textBoxTituloOISBNLibro = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.botonVolver = new System.Windows.Forms.Button();
+            this.CantidadDisponible = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -154,8 +156,8 @@ namespace Programa
             // 
             // dataGridViewLibros
             // 
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            this.dataGridViewLibros.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            this.dataGridViewLibros.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewLibros.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dataGridViewLibros.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewLibros.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -165,12 +167,48 @@ namespace Programa
             this.ISBN,
             this.Titulo,
             this.Autor,
-            this.AñoPublicacion});
-            this.dataGridViewLibros.Location = new System.Drawing.Point(15, 121);
+            this.AñoPublicacion,
+            this.CantidadDisponible,
+            this.Cantidad});
+            this.dataGridViewLibros.Location = new System.Drawing.Point(0, 130);
             this.dataGridViewLibros.Name = "dataGridViewLibros";
-            this.dataGridViewLibros.Size = new System.Drawing.Size(759, 399);
+            this.dataGridViewLibros.Size = new System.Drawing.Size(784, 399);
             this.dataGridViewLibros.TabIndex = 76;
             this.dataGridViewLibros.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewLibros_CellContentClick);
+            // 
+            // textBoxTituloOISBNLibro
+            // 
+            this.textBoxTituloOISBNLibro.Location = new System.Drawing.Point(257, 95);
+            this.textBoxTituloOISBNLibro.Name = "textBoxTituloOISBNLibro";
+            this.textBoxTituloOISBNLibro.Size = new System.Drawing.Size(300, 20);
+            this.textBoxTituloOISBNLibro.TabIndex = 75;
+            this.textBoxTituloOISBNLibro.TextChanged += new System.EventHandler(this.textBoxTituloOISBNlibro_TextChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(142, 98);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(112, 13);
+            this.label1.TabIndex = 74;
+            this.label1.Text = "Titulo o ISBN del libro:";
+            // 
+            // botonVolver
+            // 
+            this.botonVolver.BackColor = System.Drawing.SystemColors.Highlight;
+            this.botonVolver.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.botonVolver.FlatAppearance.BorderSize = 0;
+            this.botonVolver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.botonVolver.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.botonVolver.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.botonVolver.Location = new System.Drawing.Point(685, 535);
+            this.botonVolver.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.botonVolver.Name = "botonVolver";
+            this.botonVolver.Size = new System.Drawing.Size(89, 23);
+            this.botonVolver.TabIndex = 78;
+            this.botonVolver.Text = "Volver";
+            this.botonVolver.UseVisualStyleBackColor = false;
+            this.botonVolver.Click += new System.EventHandler(this.botonVolver_Click);
             // 
             // Edit
             // 
@@ -213,41 +251,18 @@ namespace Programa
             this.AñoPublicacion.HeaderText = "Año de publicacion";
             this.AñoPublicacion.Name = "AñoPublicacion";
             this.AñoPublicacion.ReadOnly = true;
-            this.AñoPublicacion.Width = 150;
             // 
-            // textBoxTituloOISBNLibro
+            // CantidadDisponible
             // 
-            this.textBoxTituloOISBNLibro.Location = new System.Drawing.Point(257, 95);
-            this.textBoxTituloOISBNLibro.Name = "textBoxTituloOISBNLibro";
-            this.textBoxTituloOISBNLibro.Size = new System.Drawing.Size(300, 20);
-            this.textBoxTituloOISBNLibro.TabIndex = 75;
-            this.textBoxTituloOISBNLibro.TextChanged += new System.EventHandler(this.textBoxTituloOISBNlibro_TextChanged);
+            this.CantidadDisponible.HeaderText = "Cantidad disponible";
+            this.CantidadDisponible.Name = "CantidadDisponible";
+            this.CantidadDisponible.Width = 60;
             // 
-            // label1
+            // Cantidad
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(142, 98);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(112, 13);
-            this.label1.TabIndex = 74;
-            this.label1.Text = "Titulo o ISBN del libro:";
-            // 
-            // botonVolver
-            // 
-            this.botonVolver.BackColor = System.Drawing.SystemColors.Highlight;
-            this.botonVolver.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.botonVolver.FlatAppearance.BorderSize = 0;
-            this.botonVolver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.botonVolver.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.botonVolver.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.botonVolver.Location = new System.Drawing.Point(685, 535);
-            this.botonVolver.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.botonVolver.Name = "botonVolver";
-            this.botonVolver.Size = new System.Drawing.Size(89, 23);
-            this.botonVolver.TabIndex = 78;
-            this.botonVolver.Text = "Volver";
-            this.botonVolver.UseVisualStyleBackColor = false;
-            this.botonVolver.Click += new System.EventHandler(this.botonVolver_Click);
+            this.Cantidad.HeaderText = "Cantidad total";
+            this.Cantidad.Name = "Cantidad";
+            this.Cantidad.Width = 60;
             // 
             // GestionarLibros
             // 
@@ -290,14 +305,16 @@ namespace Programa
         private System.Windows.Forms.Label labelNombreUsuario;
         private System.Windows.Forms.Label labelTitulo;
         private System.Windows.Forms.DataGridView dataGridViewLibros;
+        private System.Windows.Forms.TextBox textBoxTituloOISBNLibro;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button botonVolver;
         private System.Windows.Forms.DataGridViewLinkColumn Edit;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdLibro;
         private System.Windows.Forms.DataGridViewTextBoxColumn ISBN;
         private System.Windows.Forms.DataGridViewTextBoxColumn Titulo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Autor;
         private System.Windows.Forms.DataGridViewTextBoxColumn AñoPublicacion;
-        private System.Windows.Forms.TextBox textBoxTituloOISBNLibro;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button botonVolver;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CantidadDisponible;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
     }
 }

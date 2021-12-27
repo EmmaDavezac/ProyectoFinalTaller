@@ -99,6 +99,11 @@ namespace Nucleo
         {
             return interfazDAL.ObtenerEjemplaresDisponibles(id);
         }
+
+        public List<Ejemplar> ObtenerEjemplaresTotales(int id)
+        {
+            return interfazDAL.ObtenerEjemplaresTotales(id);
+        }
         public Libro ObtenerLibroDeEjemplar(int id)
         {
             return interfazDAL.ObtenerLibroDeEjemplar(id);
@@ -261,6 +266,10 @@ namespace Nucleo
         public string SacarAutorDeLaLista(string pLista)
         {
             if (pLista == "desconocido")
+            {
+                return "Desconocido";
+            }
+            else if (pLista == "Unknown")
             {
                 return "Desconocido";
             }

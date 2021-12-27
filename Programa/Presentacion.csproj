@@ -45,6 +45,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -121,6 +122,12 @@
     </Compile>
     <Compile Include="RegistrarPrestamo.Designer.cs">
       <DependentUpon>RegistrarPrestamo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RegistrarPrestamos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegistrarPrestamos.Designer.cs">
+      <DependentUpon>RegistrarPrestamos.cs</DependentUpon>
     </Compile>
     <Compile Include="RegistrarEjemplar.cs">
       <SubType>Form</SubType>
@@ -263,6 +270,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RegistrarPrestamo.resx">
       <DependentUpon>RegistrarPrestamo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RegistrarPrestamos.resx">
+      <DependentUpon>RegistrarPrestamos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Registrarse.resx">
       <DependentUpon>Registrarse.cs</DependentUpon>
