@@ -29,10 +29,33 @@ namespace Programa
 
         private void textBoxTituloOISBNLibro_TextChanged(object sender, EventArgs e)
         {
-
+            if (textBoxTituloOISBNLibro.Text != null)
+            {
+                for (int i = 0; i < dataGridViewUsuarios.Rows.Count - 1; i++)
+                {
+                    if (dataGridViewLibros.Rows[i].Cells[1].Value.ToString().Contains(textBoxTituloOISBNLibro.Text.ToString()) == false)
+                    {
+                        dataGridViewLibros.Rows[i].Visible = false;
+                    }
+                    else
+                    {
+                        dataGridViewLibros.Rows[i].Visible = true;
+                    }
+                }
+            }
         }
 
         private void labelTitulo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox7_TextChanged(object sender, EventArgs e)
         {
 
         }
