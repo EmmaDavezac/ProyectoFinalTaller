@@ -4,15 +4,17 @@ using Quartz;
 using Quartz.Impl;
 using Quartz.Logging;
 using System.Windows.Forms;
+using Nucleo;
 
 namespace Programa
 {
     class Presentacion
-    {
+    {   
         public class Trabajo : IJob
         {
             public async Task Execute(IJobExecutionContext context)
             {
+                new InterfazNucleo().NotificarUsuario("facu");
                 MessageBox.Show("Hora:" + DateTime.Now.Hour.ToString() + ":" + DateTime.Now.Minute.ToString() + ":" + DateTime.Now.Second.ToString() + "(esto se repite cada x segundos especificados por el trigger)");
                 await Task.CompletedTask;
             }
