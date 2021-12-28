@@ -45,7 +45,7 @@ namespace Programa
                     .Build();
 
                 //le indica a quartz para programar el trabajo usando el disparador anterior
-                await scheduler.ScheduleJob(job, trigger);//accion periodica
+                //await scheduler.ScheduleJob(job, trigger);//accion periodica
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
                 Application.Run(new Login());

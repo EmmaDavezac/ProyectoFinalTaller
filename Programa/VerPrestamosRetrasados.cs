@@ -14,13 +14,13 @@ namespace Programa
     public partial class VerPrestamosRetrasados : Form
     {
         private string NombreUsuario { get; set; }
-        private int idUsuario { get; set; }
+        
         InterfazNucleo interfazNucleo = new InterfazNucleo();
         public VerPrestamosRetrasados(string iD)
         {
             InitializeComponent();
-            idUsuario = Convert.ToInt32(iD);
-            NombreUsuario = interfazNucleo.ObtenerAdministradorPorId(idUsuario).Nombre;
+            NombreUsuario = iD;
+            NombreUsuario = interfazNucleo.ObtenerAdministradorPorNombreOMail(NombreUsuario).Nombre;
             labelNombreUsuario.Text = "Usuario: " + NombreUsuario;
             foreach (var item in interfazNucleo.ObtenerListadePrestamosRetrasados())
             {
@@ -85,7 +85,7 @@ namespace Programa
         private void VerPrestamos_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.Hide();
-            Menu2 ventanaMenu = new Menu2(idUsuario.ToString());
+            Menu2 ventanaMenu = new Menu2(NombreUsuario.ToString());
             ventanaMenu.Show();
         }
 
@@ -101,7 +101,7 @@ namespace Programa
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Menu2 ventana = new Menu2(idUsuario.ToString());
+            Menu2 ventana = new Menu2(NombreUsuario.ToString());
             this.Hide();
             ventana.Show();
         }
