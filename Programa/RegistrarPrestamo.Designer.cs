@@ -29,8 +29,8 @@ namespace Programa
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
@@ -49,9 +49,9 @@ namespace Programa
             this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.textBoxTituloOISBNLibro = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBoxISBN = new System.Windows.Forms.TextBox();
+            this.textBoxTitulo = new System.Windows.Forms.TextBox();
+            this.textBoxAutor = new System.Windows.Forms.TextBox();
             this.TituloLabel = new System.Windows.Forms.Label();
             this.ISBNLabel = new System.Windows.Forms.Label();
             this.AutorLabel = new System.Windows.Forms.Label();
@@ -59,9 +59,9 @@ namespace Programa
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.textBoxApellido = new System.Windows.Forms.TextBox();
+            this.textBoxNomUsuario = new System.Windows.Forms.TextBox();
+            this.textBoxNombre = new System.Windows.Forms.TextBox();
             this.textBoxNombreUsuario = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.dataGridViewUsuarios = new System.Windows.Forms.DataGridView();
@@ -71,6 +71,10 @@ namespace Programa
             this.FechaNacimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Mail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.botonVolver = new System.Windows.Forms.Button();
+            this.buttonRegistrarPrestamo = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.textBoxIdLibro = new System.Windows.Forms.TextBox();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -177,8 +181,8 @@ namespace Programa
             // 
             // dataGridViewLibros
             // 
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            this.dataGridViewLibros.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
+            this.dataGridViewLibros.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridViewLibros.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dataGridViewLibros.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewLibros.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -189,10 +193,12 @@ namespace Programa
             this.AñoPublicacion,
             this.CantidadDisponible,
             this.Cantidad});
-            this.dataGridViewLibros.Location = new System.Drawing.Point(0, 119);
+            this.dataGridViewLibros.Location = new System.Drawing.Point(-2, 116);
             this.dataGridViewLibros.Name = "dataGridViewLibros";
             this.dataGridViewLibros.Size = new System.Drawing.Size(591, 168);
             this.dataGridViewLibros.TabIndex = 79;
+            this.dataGridViewLibros.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewLibros_CellContentClick);
+            this.dataGridViewLibros.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewLibros_CellContentClick);
             // 
             // IdLibro
             // 
@@ -257,31 +263,31 @@ namespace Programa
             this.label1.Text = "Buscar por titulo o ISBN del libro:";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // textBox1
+            // textBoxISBN
             // 
-            this.textBox1.Location = new System.Drawing.Point(638, 189);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(134, 20);
-            this.textBox1.TabIndex = 82;
+            this.textBoxISBN.Location = new System.Drawing.Point(639, 211);
+            this.textBoxISBN.Name = "textBoxISBN";
+            this.textBoxISBN.Size = new System.Drawing.Size(134, 20);
+            this.textBoxISBN.TabIndex = 82;
             // 
-            // textBox2
+            // textBoxTitulo
             // 
-            this.textBox2.Location = new System.Drawing.Point(638, 151);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(134, 20);
-            this.textBox2.TabIndex = 82;
+            this.textBoxTitulo.Location = new System.Drawing.Point(639, 173);
+            this.textBoxTitulo.Name = "textBoxTitulo";
+            this.textBoxTitulo.Size = new System.Drawing.Size(134, 20);
+            this.textBoxTitulo.TabIndex = 82;
             // 
-            // textBox3
+            // textBoxAutor
             // 
-            this.textBox3.Location = new System.Drawing.Point(638, 229);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(134, 20);
-            this.textBox3.TabIndex = 83;
+            this.textBoxAutor.Location = new System.Drawing.Point(639, 251);
+            this.textBoxAutor.Name = "textBoxAutor";
+            this.textBoxAutor.Size = new System.Drawing.Size(134, 20);
+            this.textBoxAutor.TabIndex = 83;
             // 
             // TituloLabel
             // 
             this.TituloLabel.AutoSize = true;
-            this.TituloLabel.Location = new System.Drawing.Point(597, 154);
+            this.TituloLabel.Location = new System.Drawing.Point(598, 176);
             this.TituloLabel.Name = "TituloLabel";
             this.TituloLabel.Size = new System.Drawing.Size(36, 13);
             this.TituloLabel.TabIndex = 85;
@@ -290,7 +296,7 @@ namespace Programa
             // ISBNLabel
             // 
             this.ISBNLabel.AutoSize = true;
-            this.ISBNLabel.Location = new System.Drawing.Point(597, 192);
+            this.ISBNLabel.Location = new System.Drawing.Point(598, 214);
             this.ISBNLabel.Name = "ISBNLabel";
             this.ISBNLabel.Size = new System.Drawing.Size(35, 13);
             this.ISBNLabel.TabIndex = 86;
@@ -299,7 +305,7 @@ namespace Programa
             // AutorLabel
             // 
             this.AutorLabel.AutoSize = true;
-            this.AutorLabel.Location = new System.Drawing.Point(597, 232);
+            this.AutorLabel.Location = new System.Drawing.Point(598, 254);
             this.AutorLabel.Name = "AutorLabel";
             this.AutorLabel.Size = new System.Drawing.Size(35, 13);
             this.AutorLabel.TabIndex = 87;
@@ -344,26 +350,27 @@ namespace Programa
             this.label6.TabIndex = 93;
             this.label6.Text = "Nombre:";
             // 
-            // textBox4
+            // textBoxApellido
             // 
-            this.textBox4.Location = new System.Drawing.Point(638, 461);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(134, 20);
-            this.textBox4.TabIndex = 92;
+            this.textBoxApellido.Location = new System.Drawing.Point(638, 461);
+            this.textBoxApellido.Name = "textBoxApellido";
+            this.textBoxApellido.Size = new System.Drawing.Size(134, 20);
+            this.textBoxApellido.TabIndex = 92;
             // 
-            // textBox5
+            // textBoxNomUsuario
             // 
-            this.textBox5.Location = new System.Drawing.Point(639, 383);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(134, 20);
-            this.textBox5.TabIndex = 90;
+            this.textBoxNomUsuario.Location = new System.Drawing.Point(639, 383);
+            this.textBoxNomUsuario.Name = "textBoxNomUsuario";
+            this.textBoxNomUsuario.Size = new System.Drawing.Size(134, 20);
+            this.textBoxNomUsuario.TabIndex = 90;
+            this.textBoxNomUsuario.TextChanged += new System.EventHandler(this.textBoxNomUsuario_TextChanged);
             // 
-            // textBox6
+            // textBoxNombre
             // 
-            this.textBox6.Location = new System.Drawing.Point(638, 422);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(134, 20);
-            this.textBox6.TabIndex = 91;
+            this.textBoxNombre.Location = new System.Drawing.Point(638, 422);
+            this.textBoxNombre.Name = "textBoxNombre";
+            this.textBoxNombre.Size = new System.Drawing.Size(134, 20);
+            this.textBoxNombre.TabIndex = 91;
             // 
             // textBoxNombreUsuario
             // 
@@ -384,8 +391,8 @@ namespace Programa
             // 
             // dataGridViewUsuarios
             // 
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            this.dataGridViewUsuarios.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
+            this.dataGridViewUsuarios.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridViewUsuarios.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dataGridViewUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewUsuarios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -395,10 +402,12 @@ namespace Programa
             this.FechaNacimiento,
             this.Mail,
             this.Telefono});
-            this.dataGridViewUsuarios.Location = new System.Drawing.Point(1, 339);
+            this.dataGridViewUsuarios.Location = new System.Drawing.Point(-2, 336);
             this.dataGridViewUsuarios.Name = "dataGridViewUsuarios";
-            this.dataGridViewUsuarios.Size = new System.Drawing.Size(591, 177);
+            this.dataGridViewUsuarios.Size = new System.Drawing.Size(593, 177);
             this.dataGridViewUsuarios.TabIndex = 98;
+            this.dataGridViewUsuarios.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewUsuarios_CellContentClick);
+            this.dataGridViewUsuarios.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewUsuarios_CellContentClick);
             // 
             // NombreUsuario
             // 
@@ -436,28 +445,82 @@ namespace Programa
             this.Telefono.Name = "Telefono";
             this.Telefono.ReadOnly = true;
             // 
+            // botonVolver
+            // 
+            this.botonVolver.BackColor = System.Drawing.SystemColors.Highlight;
+            this.botonVolver.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.botonVolver.FlatAppearance.BorderSize = 0;
+            this.botonVolver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.botonVolver.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.botonVolver.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.botonVolver.Location = new System.Drawing.Point(577, 526);
+            this.botonVolver.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.botonVolver.Name = "botonVolver";
+            this.botonVolver.Size = new System.Drawing.Size(89, 23);
+            this.botonVolver.TabIndex = 99;
+            this.botonVolver.Text = "Volver";
+            this.botonVolver.UseVisualStyleBackColor = false;
+            this.botonVolver.Click += new System.EventHandler(this.botonVolver_Click);
+            // 
+            // buttonRegistrarPrestamo
+            // 
+            this.buttonRegistrarPrestamo.BackColor = System.Drawing.SystemColors.Highlight;
+            this.buttonRegistrarPrestamo.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.buttonRegistrarPrestamo.FlatAppearance.BorderSize = 0;
+            this.buttonRegistrarPrestamo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonRegistrarPrestamo.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.buttonRegistrarPrestamo.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.buttonRegistrarPrestamo.Location = new System.Drawing.Point(670, 526);
+            this.buttonRegistrarPrestamo.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.buttonRegistrarPrestamo.Name = "buttonRegistrarPrestamo";
+            this.buttonRegistrarPrestamo.Size = new System.Drawing.Size(103, 23);
+            this.buttonRegistrarPrestamo.TabIndex = 100;
+            this.buttonRegistrarPrestamo.Text = "RegistrarPrestamo";
+            this.buttonRegistrarPrestamo.UseVisualStyleBackColor = false;
+            this.buttonRegistrarPrestamo.Click += new System.EventHandler(this.buttonRegistrarPrestamo_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(597, 141);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(19, 13);
+            this.label8.TabIndex = 102;
+            this.label8.Text = "Id:";
+            // 
+            // textBoxIdLibro
+            // 
+            this.textBoxIdLibro.Location = new System.Drawing.Point(638, 138);
+            this.textBoxIdLibro.Name = "textBoxIdLibro";
+            this.textBoxIdLibro.Size = new System.Drawing.Size(134, 20);
+            this.textBoxIdLibro.TabIndex = 101;
+            // 
             // RegistrarPrestamo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(784, 561);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.textBoxIdLibro);
+            this.Controls.Add(this.buttonRegistrarPrestamo);
+            this.Controls.Add(this.botonVolver);
             this.Controls.Add(this.dataGridViewUsuarios);
             this.Controls.Add(this.textBoxNombreUsuario);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox6);
+            this.Controls.Add(this.textBoxApellido);
+            this.Controls.Add(this.textBoxNomUsuario);
+            this.Controls.Add(this.textBoxNombre);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.AutorLabel);
             this.Controls.Add(this.ISBNLabel);
             this.Controls.Add(this.TituloLabel);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBoxAutor);
+            this.Controls.Add(this.textBoxTitulo);
+            this.Controls.Add(this.textBoxISBN);
             this.Controls.Add(this.textBoxTituloOISBNLibro);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridViewLibros);
@@ -467,6 +530,7 @@ namespace Programa
             this.Name = "RegistrarPrestamo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RegistrarPrestamo";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.RegistrarPrestamo_FormClosed);
             this.Load += new System.EventHandler(this.RegistrarPrestamo_Load);
             this.panel3.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
@@ -502,9 +566,9 @@ namespace Programa
         private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
         private System.Windows.Forms.TextBox textBoxTituloOISBNLibro;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBoxISBN;
+        private System.Windows.Forms.TextBox textBoxTitulo;
+        private System.Windows.Forms.TextBox textBoxAutor;
         private System.Windows.Forms.Label TituloLabel;
         private System.Windows.Forms.Label ISBNLabel;
         private System.Windows.Forms.Label AutorLabel;
@@ -512,9 +576,9 @@ namespace Programa
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox textBoxApellido;
+        private System.Windows.Forms.TextBox textBoxNomUsuario;
+        private System.Windows.Forms.TextBox textBoxNombre;
         private System.Windows.Forms.TextBox textBoxNombreUsuario;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DataGridView dataGridViewUsuarios;
@@ -524,5 +588,9 @@ namespace Programa
         private System.Windows.Forms.DataGridViewTextBoxColumn FechaNacimiento;
         private System.Windows.Forms.DataGridViewTextBoxColumn Mail;
         private System.Windows.Forms.DataGridViewTextBoxColumn Telefono;
+        private System.Windows.Forms.Button botonVolver;
+        private System.Windows.Forms.Button buttonRegistrarPrestamo;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox textBoxIdLibro;
     }
 }

@@ -4,6 +4,7 @@ using System.Collections;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Dominio
 {
@@ -15,7 +16,11 @@ namespace Dominio
         public string FechaDevolucion { get; set; }
         public EstadoEjemplar EstadoInicial { get; set; }
         public EstadoEjemplar EstadoDevolucion { get; set; }
+        public string nombreUsuario { get; set; }
+        [ForeignKey("nombreUsuario")]
         virtual public UsuarioSimple Usuario { get; set; }
+        public int idEjemplar { get; set; }
+        [ForeignKey("idEjemplar")]
         public virtual Ejemplar Ejemplar { get; set; }
         private DateTime CalcularFechaLimite(UsuarioSimple usuario)
         { int scoring = usuario.Scoring;

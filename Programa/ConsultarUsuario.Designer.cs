@@ -31,8 +31,7 @@ namespace Programa
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelError = new System.Windows.Forms.Label();
             this.botonVolver = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -46,25 +45,21 @@ namespace Programa
             this.FechaNacimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Mail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.usuarioSimpleBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.usuarioBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.labelErro = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel5 = new System.Windows.Forms.Panel();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.labelNombreUsuario = new System.Windows.Forms.Label();
             this.labelTitulo = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.panel4 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUsuarios)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.usuarioSimpleBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.usuarioBindingSource)).BeginInit();
             this.panel3.SuspendLayout();
+            this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelError
@@ -113,8 +108,8 @@ namespace Programa
             // 
             // dataGridViewUsuarios
             // 
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            this.dataGridViewUsuarios.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            this.dataGridViewUsuarios.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewUsuarios.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dataGridViewUsuarios.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -184,14 +179,6 @@ namespace Programa
             this.Telefono.Name = "Telefono";
             this.Telefono.ReadOnly = true;
             // 
-            // usuarioSimpleBindingSource
-            // 
-            this.usuarioSimpleBindingSource.DataSource = typeof(Dominio.UsuarioSimple);
-            // 
-            // usuarioBindingSource
-            // 
-            this.usuarioBindingSource.DataSource = typeof(Dominio.Usuario);
-            // 
             // labelErro
             // 
             this.labelErro.AutoSize = true;
@@ -214,6 +201,41 @@ namespace Programa
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(784, 60);
             this.panel3.TabIndex = 70;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.label2);
+            this.panel4.Controls.Add(this.pictureBox2);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel4.Location = new System.Drawing.Point(0, 0);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(82, 60);
+            this.panel4.TabIndex = 10;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.label2.Location = new System.Drawing.Point(12, 44);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(49, 15);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "E-Librery";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::Programa.Properties.Resources.libro_abierto;
+            this.pictureBox2.Location = new System.Drawing.Point(16, 3);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(40, 40);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 5;
+            this.pictureBox2.TabStop = false;
             // 
             // panel5
             // 
@@ -261,41 +283,6 @@ namespace Programa
             this.labelTitulo.TabIndex = 73;
             this.labelTitulo.Text = "Listar y editar administradores:";
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::Programa.Properties.Resources.libro_abierto;
-            this.pictureBox2.Location = new System.Drawing.Point(16, 3);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(40, 40);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 5;
-            this.pictureBox2.TabStop = false;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.label2.Location = new System.Drawing.Point(12, 44);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(49, 15);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "E-Librery";
-            // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.label2);
-            this.panel4.Controls.Add(this.pictureBox2);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel4.Location = new System.Drawing.Point(0, 0);
-            this.panel4.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(82, 60);
-            this.panel4.TabIndex = 10;
-            // 
             // ConsultarUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -321,15 +308,13 @@ namespace Programa
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ConsultarUsuario_FormClosed);
             this.Load += new System.EventHandler(this.ConsultarUsuario_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUsuarios)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.usuarioSimpleBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.usuarioBindingSource)).EndInit();
             this.panel3.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -341,8 +326,6 @@ namespace Programa
         private System.Windows.Forms.Button botonVolver;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBoxNombreUsuario;
-        private System.Windows.Forms.BindingSource usuarioSimpleBindingSource;
-        private System.Windows.Forms.BindingSource usuarioBindingSource;
         private System.Windows.Forms.DataGridView dataGridViewUsuarios;
         private System.Windows.Forms.DataGridViewLinkColumn Edit;
         private System.Windows.Forms.DataGridViewTextBoxColumn NombreUsuario;

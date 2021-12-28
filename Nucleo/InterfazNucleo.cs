@@ -97,7 +97,7 @@ namespace Nucleo
         }
         public List<Ejemplar> ObtenerEjemplaresDisponibles(int id)
         {
-            return interfazDAL.ObtenerEjemplaresDisponibles(id);
+            return interfazDAL.ObtenerEjemplaresDisponibles(Convert.ToInt32(id));
         }
 
         public List<Ejemplar> ObtenerEjemplaresTotales(int id)
@@ -108,9 +108,9 @@ namespace Nucleo
         {
             return interfazDAL.ObtenerLibroDeEjemplar(id);
         }
-        public void RegistrarPrestamo(int idUsuario, int idEjemplar)
+        public void RegistrarPrestamo(string pNombreUsuario, int idEjemplar)
         {
-            interfazDAL.RegistrarPrestamo(idUsuario, idEjemplar);
+            interfazDAL.RegistrarPrestamo(pNombreUsuario, idEjemplar);
         }
         public Prestamo ObtenerPrestamo(int id)
         {

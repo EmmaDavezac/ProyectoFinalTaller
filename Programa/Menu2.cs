@@ -243,7 +243,7 @@ namespace Programa
 
         private void button24_Click(object sender, EventArgs e)
         {
-            RegistrarPrestamo ventana = new RegistrarPrestamo();
+            RegistrarPrestamo ventana = new RegistrarPrestamo(nombreUsuario);
             this.Hide();
             ventana.Show();
         }
