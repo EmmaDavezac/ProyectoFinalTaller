@@ -187,10 +187,16 @@ namespace Nucleo
             return interfazDAL.EsUnEmailValido(email);
         }
 
-        public void NotificarUsuario(string pNombreUsuario)
+        public void NotificarProximoAVencer(string pNombreUsuario)
         {
-            interfazNotificarUsuario.NotificarUsuario(ObtenerUsuarioPorNombreOMail(pNombreUsuario));
+            interfazNotificarUsuario.NotificarProximoAVencer(ObtenerUsuarioPorNombreOMail(pNombreUsuario));
         }
+        public void NotificarRetraso(string pNombreUsuario)
+        {
+            interfazNotificarUsuario.NotificarRetraso(ObtenerUsuarioPorNombreOMail(pNombreUsuario));
+        }
+
+
         public string MayusculaPrimeraLetra(string source)
         {
             if (string.IsNullOrEmpty(source))
@@ -204,10 +210,18 @@ namespace Nucleo
             foreach (var item in ObtenerListadePrestamosProximosAVencerse())
             {
                 UsuarioSimple usuario = ObtenerUsuarioDePrestamo(item.Id);
-                NotificarUsuario(usuario.NombreUsuario);
+                NotificarProximoAVencer(usuario.NombreUsuario);
             }
         }
 
+        public void NotificarPrestamosRetrasados()
+        {
+            foreach (var item in ObtenerListadePrestamosRetrasados())
+            {
+                UsuarioSimple usuario = ObtenerUsuarioDePrestamo(item.Id);
+                NotificarRetraso(usuario.NombreUsuario);
+            }
+        }
         public List<string> TransformarISBNsALista(string pLista)
         {
             string palabra = "";

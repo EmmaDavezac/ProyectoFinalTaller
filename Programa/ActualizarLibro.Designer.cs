@@ -565,8 +565,7 @@ namespace Programa
         private System.Windows.Forms.TextBox textBoxTitulo;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ISBN;
-        private System.Windows.Forms.DataGridViewTextBoxColumn AñoPublicacion;
+        
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label labelError;
         private System.Windows.Forms.Button buttonDeshacerCambios;

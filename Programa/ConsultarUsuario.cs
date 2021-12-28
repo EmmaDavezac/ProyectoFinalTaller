@@ -14,7 +14,7 @@ namespace Programa
 {
     public partial class ConsultarUsuario : Form
     {
-        private string nombre { get; set; }
+        
         private string nombreUsuario { get; set; }
         private InterfazNucleo interfazNucleo = new InterfazNucleo();
        
@@ -22,7 +22,7 @@ namespace Programa
         {
             InitializeComponent();
             nombreUsuario = pNombreUsuario;
-            nombre = interfazNucleo.ObtenerAdministradorPorNombreOMail(nombreUsuario).Nombre;
+            
             labelNombreUsuario.Text = "Usuario: " + nombreUsuario;
         }
 

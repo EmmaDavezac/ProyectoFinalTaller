@@ -9,19 +9,22 @@ using Nucleo;
 namespace Programa
 {
     class Presentacion
-    {   
+    {
+        
         public class Trabajo : IJob
         {
             public async Task Execute(IJobExecutionContext context)
             {
-                new InterfazNucleo().NotificarUsuario("facu");
-                MessageBox.Show("Hora:" + DateTime.Now.Hour.ToString() + ":" + DateTime.Now.Minute.ToString() + ":" + DateTime.Now.Second.ToString() + "(esto se repite cada x segundos especificados por el trigger)");
+                InterfazNucleo interfaz = new InterfazNucleo();
+                interfaz.NotificarPrestamosProximosAVencer();
+                interfaz.NotificarPrestamosRetrasados();
+                MessageBox.Show("Prestamos Proximos a vencer y retrasados notificados!");
                 await Task.CompletedTask;
             }
             [STAThread]
             private static async Task Main(string[] args)
             {
-                const int segundos = 5;
+                const int tiempo = 60;
 
                 // solicita una instancia de Scheduler de la Factory
                 StdSchedulerFactory factory = new StdSchedulerFactory();
@@ -40,12 +43,12 @@ namespace Programa
                     .WithIdentity("trigger1", "group1")
                     .StartNow()
                     .WithSimpleSchedule(x => x
-                        .WithIntervalInSeconds(segundos)
+                        .WithIntervalInMinutes(tiempo)
                         .RepeatForever())
                     .Build();
 
                 //le indica a quartz para programar el trabajo usando el disparador anterior
-                //await scheduler.ScheduleJob(job, trigger);//accion periodica
+                await scheduler.ScheduleJob(job, trigger);//accion periodica
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
                 Application.Run(new Login());

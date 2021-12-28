@@ -60,7 +60,7 @@ namespace Dominio
 
         }
         public bool ProximoAVencerse()
-        {   int cantDiasParaConsiderarseProximo = 3;
+        {   int cantDiasParaConsiderarseProximo = 5;
             if (string.IsNullOrEmpty(FechaDevolucion))
             {
                 TimeSpan diferenciaEntreFechas = Convert.ToDateTime(FechaLimite) - DateTime.Now;

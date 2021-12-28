@@ -16,11 +16,11 @@ namespace Programa
         private string NombreUsuario { get; set; }
         
         InterfazNucleo interfazNucleo = new InterfazNucleo();
-        public VerPrestamosRetrasados(string iD)
+        public VerPrestamosRetrasados(string pNombreUsuario)
         {
             InitializeComponent();
-            NombreUsuario = iD;
-            NombreUsuario = interfazNucleo.ObtenerAdministradorPorNombreOMail(NombreUsuario).Nombre;
+            NombreUsuario = pNombreUsuario;
+            
             labelNombreUsuario.Text = "Usuario: " + NombreUsuario;
             foreach (var item in interfazNucleo.ObtenerListadePrestamosRetrasados())
             {
