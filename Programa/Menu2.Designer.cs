@@ -49,12 +49,6 @@ namespace Programa
             this.button23 = new System.Windows.Forms.Button();
             this.button24 = new System.Windows.Forms.Button();
             this.button25 = new System.Windows.Forms.Button();
-            this.submenuEjemplares = new System.Windows.Forms.Panel();
-            this.button16 = new System.Windows.Forms.Button();
-            this.button17 = new System.Windows.Forms.Button();
-            this.button18 = new System.Windows.Forms.Button();
-            this.button19 = new System.Windows.Forms.Button();
-            this.button20 = new System.Windows.Forms.Button();
             this.submenuLibros = new System.Windows.Forms.Panel();
             this.buttonGestionarLibros = new System.Windows.Forms.Button();
             this.button14 = new System.Windows.Forms.Button();
@@ -78,7 +72,6 @@ namespace Programa
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.panel1.SuspendLayout();
             this.submenuPrestamos.SuspendLayout();
-            this.submenuEjemplares.SuspendLayout();
             this.submenuLibros.SuspendLayout();
             this.submenuadministradores.SuspendLayout();
             this.submenuusuario.SuspendLayout();
@@ -228,8 +221,6 @@ namespace Programa
             this.panel1.BackColor = System.Drawing.SystemColors.Highlight;
             this.panel1.Controls.Add(this.submenuPrestamos);
             this.panel1.Controls.Add(this.button25);
-            this.panel1.Controls.Add(this.submenuEjemplares);
-            this.panel1.Controls.Add(this.button20);
             this.panel1.Controls.Add(this.submenuLibros);
             this.panel1.Controls.Add(this.button15);
             this.panel1.Controls.Add(this.submenuadministradores);
@@ -254,7 +245,7 @@ namespace Programa
             this.submenuPrestamos.Controls.Add(this.button24);
             this.submenuPrestamos.Dock = System.Windows.Forms.DockStyle.Top;
             this.submenuPrestamos.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.submenuPrestamos.Location = new System.Drawing.Point(0, 706);
+            this.submenuPrestamos.Location = new System.Drawing.Point(0, 478);
             this.submenuPrestamos.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.submenuPrestamos.Name = "submenuPrestamos";
             this.submenuPrestamos.Size = new System.Drawing.Size(243, 260);
@@ -377,7 +368,7 @@ namespace Programa
             this.button25.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.HotTrack;
             this.button25.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button25.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button25.Location = new System.Drawing.Point(0, 646);
+            this.button25.Location = new System.Drawing.Point(0, 418);
             this.button25.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.button25.Name = "button25";
             this.button25.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
@@ -387,112 +378,6 @@ namespace Programa
             this.button25.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button25.UseVisualStyleBackColor = false;
             this.button25.Click += new System.EventHandler(this.button25_Click_1);
-            // 
-            // submenuEjemplares
-            // 
-            this.submenuEjemplares.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.submenuEjemplares.Controls.Add(this.button16);
-            this.submenuEjemplares.Controls.Add(this.button17);
-            this.submenuEjemplares.Controls.Add(this.button18);
-            this.submenuEjemplares.Controls.Add(this.button19);
-            this.submenuEjemplares.Dock = System.Windows.Forms.DockStyle.Top;
-            this.submenuEjemplares.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.submenuEjemplares.Location = new System.Drawing.Point(0, 478);
-            this.submenuEjemplares.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.submenuEjemplares.Name = "submenuEjemplares";
-            this.submenuEjemplares.Size = new System.Drawing.Size(243, 168);
-            this.submenuEjemplares.TabIndex = 8;
-            // 
-            // button16
-            // 
-            this.button16.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.button16.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button16.FlatAppearance.BorderSize = 0;
-            this.button16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button16.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.button16.Location = new System.Drawing.Point(0, 120);
-            this.button16.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.button16.Name = "button16";
-            this.button16.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.button16.Size = new System.Drawing.Size(243, 48);
-            this.button16.TabIndex = 3;
-            this.button16.Text = "Listado De Ejemplares";
-            this.button16.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button16.UseVisualStyleBackColor = false;
-            this.button16.Click += new System.EventHandler(this.button16_Click);
-            // 
-            // button17
-            // 
-            this.button17.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.button17.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button17.FlatAppearance.BorderSize = 0;
-            this.button17.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button17.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.button17.Location = new System.Drawing.Point(0, 80);
-            this.button17.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.button17.Name = "button17";
-            this.button17.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.button17.Size = new System.Drawing.Size(243, 40);
-            this.button17.TabIndex = 2;
-            this.button17.Text = "Actualizar Ejemplar";
-            this.button17.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button17.UseVisualStyleBackColor = false;
-            this.button17.Click += new System.EventHandler(this.button17_Click);
-            // 
-            // button18
-            // 
-            this.button18.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.button18.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button18.FlatAppearance.BorderSize = 0;
-            this.button18.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button18.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.button18.Location = new System.Drawing.Point(0, 40);
-            this.button18.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.button18.Name = "button18";
-            this.button18.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.button18.Size = new System.Drawing.Size(243, 40);
-            this.button18.TabIndex = 1;
-            this.button18.Text = "Consultar Ejemplar";
-            this.button18.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button18.UseVisualStyleBackColor = false;
-            this.button18.Click += new System.EventHandler(this.button18_Click);
-            // 
-            // button19
-            // 
-            this.button19.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.button19.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button19.FlatAppearance.BorderSize = 0;
-            this.button19.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button19.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.button19.Location = new System.Drawing.Point(0, 0);
-            this.button19.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.button19.Name = "button19";
-            this.button19.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.button19.Size = new System.Drawing.Size(243, 40);
-            this.button19.TabIndex = 0;
-            this.button19.Text = "Registrar Ejemplar";
-            this.button19.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button19.UseVisualStyleBackColor = false;
-            this.button19.Click += new System.EventHandler(this.button19_Click);
-            // 
-            // button20
-            // 
-            this.button20.BackColor = System.Drawing.Color.Transparent;
-            this.button20.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button20.FlatAppearance.BorderSize = 0;
-            this.button20.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.HotTrack;
-            this.button20.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button20.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button20.Location = new System.Drawing.Point(0, 418);
-            this.button20.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.button20.Name = "button20";
-            this.button20.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.button20.Size = new System.Drawing.Size(243, 60);
-            this.button20.TabIndex = 7;
-            this.button20.Text = "Ejemplares";
-            this.button20.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button20.UseVisualStyleBackColor = false;
-            this.button20.Click += new System.EventHandler(this.button20_Click);
             // 
             // submenuLibros
             // 
@@ -763,7 +648,6 @@ namespace Programa
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.panel1.ResumeLayout(false);
             this.submenuPrestamos.ResumeLayout(false);
-            this.submenuEjemplares.ResumeLayout(false);
             this.submenuLibros.ResumeLayout(false);
             this.submenuadministradores.ResumeLayout(false);
             this.submenuusuario.ResumeLayout(false);
@@ -789,12 +673,6 @@ namespace Programa
         private System.Windows.Forms.Button button23;
         private System.Windows.Forms.Button button24;
         private System.Windows.Forms.Button button25;
-        private System.Windows.Forms.Panel submenuEjemplares;
-        private System.Windows.Forms.Button button16;
-        private System.Windows.Forms.Button button17;
-        private System.Windows.Forms.Button button18;
-        private System.Windows.Forms.Button button19;
-        private System.Windows.Forms.Button button20;
         private System.Windows.Forms.Panel submenuLibros;
         private System.Windows.Forms.Button buttonGestionarLibros;
         private System.Windows.Forms.Button button14;

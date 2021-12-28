@@ -44,7 +44,7 @@ namespace Programa
             this.textBoxTituloOISBNLibro = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.botonVolver = new System.Windows.Forms.Button();
-            this.Edit = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.Gestionar = new System.Windows.Forms.DataGridViewLinkColumn();
             this.IdLibro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ISBN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Titulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -162,7 +162,7 @@ namespace Programa
             this.dataGridViewLibros.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewLibros.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewLibros.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Edit,
+            this.Gestionar,
             this.IdLibro,
             this.ISBN,
             this.Titulo,
@@ -210,14 +210,14 @@ namespace Programa
             this.botonVolver.UseVisualStyleBackColor = false;
             this.botonVolver.Click += new System.EventHandler(this.botonVolver_Click);
             // 
-            // Edit
+            // Gestionar
             // 
-            this.Edit.HeaderText = "Edit";
-            this.Edit.Name = "Edit";
-            this.Edit.ReadOnly = true;
-            this.Edit.Text = "Edit";
-            this.Edit.UseColumnTextForLinkValue = true;
-            this.Edit.Width = 50;
+            this.Gestionar.HeaderText = "Gestionar";
+            this.Gestionar.Name = "Gestionar";
+            this.Gestionar.ReadOnly = true;
+            this.Gestionar.Text = "Gestionar";
+            this.Gestionar.UseColumnTextForLinkValue = true;
+            this.Gestionar.Width = 60;
             // 
             // IdLibro
             // 
@@ -308,7 +308,7 @@ namespace Programa
         private System.Windows.Forms.TextBox textBoxTituloOISBNLibro;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button botonVolver;
-        private System.Windows.Forms.DataGridViewLinkColumn Edit;
+        private System.Windows.Forms.DataGridViewLinkColumn Gestionar;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdLibro;
         private System.Windows.Forms.DataGridViewTextBoxColumn ISBN;
         private System.Windows.Forms.DataGridViewTextBoxColumn Titulo;

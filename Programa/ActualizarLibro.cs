@@ -36,28 +36,10 @@ namespace Programa
             
         }
 
-       
-
-     
-
-        
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            {
-                textBoxTitulo.Text = dataGridViewTituloYAutor.CurrentRow.Cells[0].Value.ToString();
-                textBoxAutor.Text = dataGridViewTituloYAutor.CurrentRow.Cells[1].Value.ToString();
-                textBoxAñoPublicacion.Text = dataGridViewTituloYAutor.CurrentRow.Cells[2].Value.ToString();
-                textBoxISBN.Text = dataGridViewTituloYAutor.CurrentRow.Cells[3].Value.ToString();
-                buttonDeshacerCambios.Enabled = true;
-            }
-        }
-
         private void botonVolver_Click(object sender, EventArgs e)
         {
             this.Hide();
-            GestionarLibros ventana = new GestionarLibros(NombreUsuario);
-            ventana.Show();
+            this.Owner.Show();
         }
 
         private void buttonBorrarCambios_Click(object sender, EventArgs e)
@@ -104,9 +86,7 @@ namespace Programa
                 new InterfazNucleo().ActualizarLibro(Convert.ToInt32(textBoxId.Text), textBoxISBN.Text, textBoxTitulo.Text, textBoxAutor.Text, textBoxAñoPublicacion.Text);
                 MessageBox.Show("El libro Id:" + textBoxId.Text + " se ha actualizado exitosamente!");
                 this.Hide();
-                GestionarLibros ventana = new GestionarLibros(NombreUsuario);
-                ventana.Show();
-
+                this.Owner.Show();
             }
             else
             {
@@ -138,130 +118,30 @@ namespace Programa
         private void ActualizarLibro_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.Hide();
-            GestionarLibros ventana = new GestionarLibros(NombreUsuario);
-            ventana.Show();
+            this.Owner.Show();
         }
-
-        private void textBoxBuscar_TextChanged_1(object sender, EventArgs e)
-        {
-            buttonBuscar.Enabled = true;
-        }
-
-        private void buttonBuscar_Click(object sender, EventArgs e)
-        {
-            if (textBoxBuscar.Text != null && textBoxBuscar.Text != "")
-            {
-                int resultado = 0;
-                dataGridViewTituloYAutor.Rows.Clear();
-                List<Libro> resultados = interfazNucleo.ListarLibrosDeAPIPorCoincidencia(textBoxBuscar.Text);
-                foreach (var item in resultados)
-                {
-                    int n = dataGridViewTituloYAutor.Rows.Add();
-                    dataGridViewTituloYAutor.Rows[n].Cells[0].Value = item.Titulo;
-                    dataGridViewTituloYAutor.Rows[n].Cells[1].Value = interfazNucleo.SacarAutorDeLaLista(item.Autor);
-                    dataGridViewTituloYAutor.Rows[n].Cells[2].Value = item.AñoPublicacion;
-                    dataGridViewTituloYAutor.Rows[n].Cells[3].Value = item.ISBN;
-                    resultado += 1;
-                }
-
-                if (resultado == 0) { labelResultados.Text = "Error, no se encontraron resultados"; buttonBuscar.Enabled = false; textBoxBuscar.Focus(); }
-                else
-                {
-                    labelResultados.Text = "";
-                    buttonBuscar.Enabled = false;
-                    textBoxBuscar.Focus();
-                }
-            }
-            else
-            {
-                labelResultados.Text = "No ingreso un termino de busqueda";
-                buttonBuscar.Enabled = false;
-                textBoxBuscar.Focus();
-            }
-        }
-
-        private void textBoxSeleccionarISBN_TextChanged(object sender, EventArgs e)
-        {
-            if (textBoxSeleccionarISBN.Text != null)
-            {
-                for (int i = 0; i < dataGridViewISBN.Rows.Count - 1; i++)
-                {
-                    if (dataGridViewISBN.Rows[i].Cells[0].Value.ToString().Contains(textBoxSeleccionarISBN.Text.ToString()) == false)
-                    {
-                        dataGridViewISBN.Rows[i].Visible = false;
-                    }
-                    else
-                    {
-                        dataGridViewISBN.Rows[i].Visible = true;
-                    }
-                }
-            }
-        }
-
-        private void textBoxSelccionarAño_TextChanged(object sender, EventArgs e)
-        {
-            if (textBoxSelccionarAño.Text != null)
-            {
-                for (int i = 0; i < dataGridViewAños.Rows.Count - 1; i++)
-                {
-                    if (dataGridViewAños.Rows[i].Cells[0].Value.ToString().Contains(textBoxSelccionarAño.Text.ToString()) == false)
-                    {
-                        dataGridViewAños.Rows[i].Visible = false;
-                    }
-                    else
-                    {
-                        dataGridViewAños.Rows[i].Visible = true;
-                    }
-                }
-            }
-        }
-
-        private void dataGridViewTituloYAutor_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0 && dataGridViewTituloYAutor.CurrentRow.Cells[0].Value != null)
-            {
-                dataGridViewAños.Rows.Clear();
-                dataGridViewISBN.Rows.Clear();
-                textBoxTitulo.Text = dataGridViewTituloYAutor.CurrentRow.Cells[0].Value.ToString();
-                textBoxAutor.Text = dataGridViewTituloYAutor.CurrentRow.Cells[1].Value.ToString();
-                List<string> isbns = interfazNucleo.TransformarISBNsALista(dataGridViewTituloYAutor.CurrentRow.Cells[3].Value.ToString());
-                foreach (var item in isbns)
-                {
-                    int n = dataGridViewISBN.Rows.Add();
-                    dataGridViewISBN.Rows[n].Cells[0].Value = item;
-                }
-                List<string> años = interfazNucleo.TransformarAñosALista(dataGridViewTituloYAutor.CurrentRow.Cells[2].Value.ToString());
-                foreach (var item in años)
-                {
-                    int n = dataGridViewAños.Rows.Add();
-                    dataGridViewAños.Rows[n].Cells[0].Value = item;
-                }
-                /*List<string> resultados = textBoxISBN.Text.ToList();
-                foreach (var item in resultados)
-                {
-                    int n = dataGridView1.Rows.Add();
-                    dataGridView2.Rows[n].Cells[0].Value = ;
-                }*/
-            }
-        }
-
-        private void dataGridViewISBN_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                textBoxISBN.Text = dataGridViewISBN.CurrentRow.Cells[0].Value.ToString();
-            }
-        }
-
-        private void dataGridViewAños_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                textBoxAñoPublicacion.Text = dataGridViewAños.CurrentRow.Cells[0].Value.ToString();
-            }
-        }
-
         private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void buttonEnAPI_Click(object sender, EventArgs e)
+        {
+            RegistrarLibro ventana = new RegistrarLibro(NombreUsuario);
+            this.Hide();
+            ventana.InicializarLibro(Convert.ToInt32(textBoxId.Text));
+            ventana.ShowDialog(this);
+        }
+
+        public void CargarDatosDeBusquedaAvanzada(string pTitulo, string pAutor, string pAñoPublicacion, string pISBN)
+        {
+            textBoxAutor.Text = pAutor;
+            textBoxAñoPublicacion.Text = pAñoPublicacion;
+            textBoxISBN.Text = pISBN;
+            textBoxTitulo.Text = pTitulo;
+        }
+
+        private void textBoxCantEjemplares_TextChanged(object sender, EventArgs e)
         {
 
         }

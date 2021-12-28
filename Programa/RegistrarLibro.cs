@@ -35,6 +35,7 @@ namespace Programa
                 dataGridViewISBN.Rows.Clear();
                 textBoxTitulo.Text = dataGridViewTituloYAutor.CurrentRow.Cells[0].Value.ToString();
                 textBoxAutor.Text = dataGridViewTituloYAutor.CurrentRow.Cells[1].Value.ToString();
+                buttonBorrarDatos.Enabled = true;
                 List<string> isbns = interfazNucleo.TransformarISBNsALista(dataGridViewTituloYAutor.CurrentRow.Cells[3].Value.ToString());
                 foreach (var item in isbns)
                 {
@@ -58,7 +59,7 @@ namespace Programa
 
         private void BuscarLibrosAPI_Load(object sender, EventArgs e)
         {
-            
+            VerificarVentanaPadre();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -129,16 +130,14 @@ namespace Programa
 
         private void botonVolver_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            Menu2 ventanaMenu = new Menu2(NombreUsuario.ToString());
-            ventanaMenu.Show();
+            this.Close();
+            this.Owner.Show();
         }
 
         private void BuscarLibrosAPI_FormClosed(object sender, FormClosedEventArgs e)
         {
-            this.Hide();
-            Menu2 ventanaMenu = new Menu2(NombreUsuario.ToString());
-            ventanaMenu.Show();
+            this.Close();
+            this.Owner.Show();
         }
 
         private void label3_Click(object sender, EventArgs e)
@@ -167,7 +166,7 @@ namespace Programa
             textBoxAñoPublicacion.Clear();
             textBoxISBN.Clear();
             textBoxTitulo.Clear();
-            
+            buttonBorrarDatos.Enabled = false;
         }
 
         private void labelIngreseISBN_Click(object sender, EventArgs e)
@@ -262,6 +261,105 @@ namespace Programa
         private void labelSeleccionarAño_Click(object sender, EventArgs e)
         {
 
+        }
+
+        public void VerificarVentanaPadre()
+        {
+            if (this.Owner.Name == "Menu2")
+            {
+                buttonAñadirLibro.Visible = true;
+                buttonActualizar.Visible = false;
+            }
+            else if (this.Owner.Name == "ActualizarLibro")
+            {
+                buttonActualizar.Visible = true;
+                buttonAñadirLibro.Visible = false;
+                buttonGestionarLibros.Visible = false;
+                textBoxCantidadEjemplares.Visible = false;
+                labelCantidadEjemplares.Visible = false;
+            }
+        }
+
+        public void InicializarLibro(int idLibro)
+        {
+            var libro = interfazNucleo.ObtenerLibro(idLibro);
+            textBoxAutor.Text = libro.Autor;
+            textBoxAñoPublicacion.Text = libro.AñoPublicacion;
+            textBoxISBN.Text = libro.ISBN;
+            textBoxTitulo.Text = libro.Titulo;
+            textBoxBuscar.Text = libro.Titulo;
+            button1_Click(this, null);
+            /*SeleccionarFilaDeTablaTituloYAutor(libro.Titulo,libro.Autor);
+            SeleccionarFilaDeTablaISBN(libro.ISBN);
+            SeleccionarFilaDeTablaAñoPublicacion(libro.AñoPublicacion);*/
+        }
+
+        private DataGridViewRow SeleccionarFilaDeTablaTituloYAutor(string pTitulo,string pAutor)
+        {
+            DataGridViewRow dataGridViewRow = null;
+            int n = 0;
+            do
+            {
+                if (dataGridViewTituloYAutor.Rows[n].Cells[0].Value.ToString() == pTitulo && dataGridViewTituloYAutor.Rows[n].Cells[1].Value.ToString() == pAutor)
+                {
+                    dataGridViewTituloYAutor.Rows[n].Selected = true;
+                    dataGridViewRow = dataGridViewTituloYAutor.Rows[n];
+                }
+                n = n + 1;
+            } while (dataGridViewRow == null);
+            return dataGridViewRow;
+        }
+
+        private DataGridViewRow SeleccionarFilaDeTablaISBN(string pISBN)
+        {
+            DataGridViewRow dataGridViewRow = null;
+            int n = 0;
+            do
+            {
+                if (dataGridViewISBN.Rows[n].Cells[0].Value.ToString() == pISBN)
+                {
+                    dataGridViewRow = dataGridViewTituloYAutor.Rows[n];
+                }
+                n++;
+            } while (dataGridViewRow == null);
+            return dataGridViewRow;
+        }
+
+        private DataGridViewRow SeleccionarFilaDeTablaAñoPublicacion(string pAñoPublicacion)
+        {
+            DataGridViewRow dataGridViewRow = null;
+            int n = 0;
+            do
+            {
+                if (dataGridViewAños.Rows[n].Cells[0].Value.ToString() == pAñoPublicacion)
+                {
+                    dataGridViewRow = dataGridViewTituloYAutor.Rows[n];
+                }
+                n++;
+            } while (dataGridViewRow == null);
+            return dataGridViewRow;
+        }
+        private void buttonActualizar_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(textBoxTitulo.Text) && !string.IsNullOrEmpty(textBoxAutor.Text) && !string.IsNullOrEmpty(textBoxISBN.Text) && !string.IsNullOrEmpty(textBoxAñoPublicacion.Text))
+            {
+                
+                    ((ActualizarLibro)this.Owner).CargarDatosDeBusquedaAvanzada(textBoxTitulo.Text,textBoxAutor.Text,textBoxAñoPublicacion.Text,textBoxISBN.Text);
+                    MessageBox.Show("Libro registrado con exito, el Id del libro es: " + new InterfazNucleo().ObtenerUltimoIdLibro());
+                this.Hide();
+                this.Owner.Show();
+                    /*buttonBorrarDatos_Click(sender,e);  No es necesario ya que podria querer seguir cargando libros con el mismo titulo, incluso si me equivoque en la cantidad de ejemplares podria agregarlos sin volver a cargar todo.
+                    dataGridViewAños.Rows.Clear();         
+                    dataGridViewISBN.Rows.Clear();
+                    dataGridViewTituloYAutor.Rows.Clear();
+                    textBoxCantidadEjemplares.Clear();
+                    textBoxBuscar.Clear();*/         
+            }
+            else
+            {
+                MessageBox.Show("Debe completar la informacion");
+                textBoxTitulo.Focus();
+            }
         }
     }
 }
