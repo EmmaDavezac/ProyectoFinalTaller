@@ -70,6 +70,7 @@ namespace Programa
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.labelNombreUsuario = new System.Windows.Forms.Label();
             this.buttonGestionarLibros = new System.Windows.Forms.Button();
+            this.buttonActualizar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTituloYAutor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewISBN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAños)).BeginInit();
@@ -506,6 +507,23 @@ namespace Programa
             this.buttonGestionarLibros.UseVisualStyleBackColor = false;
             this.buttonGestionarLibros.Click += new System.EventHandler(this.buttonGestionarLibros_Click);
             // 
+            // buttonActualizar
+            // 
+            this.buttonActualizar.BackColor = System.Drawing.SystemColors.Highlight;
+            this.buttonActualizar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.buttonActualizar.FlatAppearance.BorderSize = 0;
+            this.buttonActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonActualizar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.buttonActualizar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.buttonActualizar.Location = new System.Drawing.Point(338, 519);
+            this.buttonActualizar.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.buttonActualizar.Name = "buttonActualizar";
+            this.buttonActualizar.Size = new System.Drawing.Size(89, 23);
+            this.buttonActualizar.TabIndex = 73;
+            this.buttonActualizar.Text = "Actualizar";
+            this.buttonActualizar.UseVisualStyleBackColor = false;
+            this.buttonActualizar.Click += new System.EventHandler(this.buttonActualizar_Click);
+            // 
             // RegistrarLibro
             // 
             this.AcceptButton = this.buttonBuscar;
@@ -513,6 +531,7 @@ namespace Programa
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(784, 561);
+            this.Controls.Add(this.buttonActualizar);
             this.Controls.Add(this.buttonGestionarLibros);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.textBoxCantidadEjemplares);
@@ -610,5 +629,6 @@ namespace Programa
         private System.Windows.Forms.DataGridViewTextBoxColumn Autor;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.Button buttonActualizar;
     }
 }

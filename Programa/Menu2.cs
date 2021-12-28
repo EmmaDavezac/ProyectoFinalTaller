@@ -34,7 +34,6 @@ namespace Programa
         {
             submenuusuario.Visible = false;
             submenuadministradores.Visible = false;
-            submenuEjemplares.Visible = false;
             submenuLibros.Visible = false;
             submenuPrestamos.Visible = false;
         }
@@ -47,10 +46,6 @@ namespace Programa
             if (submenuusuario.Visible == true)
             {
                 submenuusuario.Visible = false;
-            }
-            if (submenuEjemplares.Visible == true)
-            {
-                submenuEjemplares.Visible = false;
             }
             if (submenuLibros.Visible == true)
             {
@@ -99,12 +94,6 @@ namespace Programa
         {
             ShowSubMenu(submenuPrestamos);
         }
-
-        private void button20_Click(object sender, EventArgs e)
-        {
-            ShowSubMenu(submenuEjemplares);
-        }
-
         private void submenuPrestamos_Paint(object sender, PaintEventArgs e)
         {
 
@@ -208,7 +197,7 @@ namespace Programa
         {
             RegistrarLibro ventana = new RegistrarLibro(nombreUsuario);
             this.Hide();
-            ventana.Show();
+            ventana.ShowDialog(this);
         }
 
         private void button11_Click(object sender, EventArgs e)

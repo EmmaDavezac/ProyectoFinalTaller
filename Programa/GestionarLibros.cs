@@ -35,12 +35,12 @@ namespace Programa
             if (e.RowIndex >= 0)
             {
                 DataGridViewCell cell = (DataGridViewCell)dataGridViewLibros.Rows[e.RowIndex].Cells[e.ColumnIndex];
-                if (cell.Value.ToString() == "Edit")
+                if (cell.Value.ToString() == "Gestionar")
                 {
                     int id = Convert.ToInt32(dataGridViewLibros.Rows[e.RowIndex].Cells[1].Value);
                     ActualizarLibro ventana = new ActualizarLibro(nombreUsuario, id);
                     this.Hide();
-                    ventana.Show();
+                    ventana.ShowDialog(this);
                 }
             }
         }
