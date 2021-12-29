@@ -15,7 +15,7 @@ namespace Programa
     public partial class ActualizarAdministrador : Form
     {
         private string nombre { get; set; }
-        InterfazNucleo interfazNucleo = new InterfazNucleo();
+        FachadaNucleo interfazNucleo = new FachadaNucleo();
         public string contraseñaNueva;
         private string nombreUsuario { get; set; }
         public ActualizarAdministrador(string pNombreUsuario)

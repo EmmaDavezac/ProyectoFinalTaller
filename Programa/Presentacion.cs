@@ -15,7 +15,7 @@ namespace Programa
         {
             public async Task Execute(IJobExecutionContext context)
             {
-                InterfazNucleo interfaz = new InterfazNucleo();
+                FachadaNucleo interfaz = new FachadaNucleo();
                 interfaz.NotificarPrestamosProximosAVencer();
                 interfaz.NotificarPrestamosRetrasados();
                 MessageBox.Show("Prestamos Proximos a vencer y retrasados notificados!");

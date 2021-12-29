@@ -102,53 +102,6 @@ namespace ServiciosAPILibros
             }
             return lista;
         }
-        public void BuscarPorISBN(string isbn)
-        {
-            // Establecimiento del protocolo ssl de transporte
-            System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
-
-            // Url de ejemplo
-            var mUrl = "https://openlibrary.org/isbn/" + isbn + ".json";
-
-            // Se crea el request http
-            HttpWebRequest mRequest = (HttpWebRequest)WebRequest.Create(mUrl);
-
-            try
-            {
-                // Se ejecuta la consulta
-                WebResponse mResponse = mRequest.GetResponse();
-
-                // Se obtiene los datos de respuesta
-                using (Stream responseStream = mResponse.GetResponseStream())
-                {
-                    StreamReader reader = new StreamReader(responseStream, Encoding.UTF8);
-
-                    // Se parsea la respuesta y se serializa a JSON a un objeto dynamic
-                    var json = reader.ReadToEnd();
-                    dynamic mResponseJSON = JsonConvert.DeserializeObject(json);
-
-                    Console.WriteLine("titulo: {0}", mResponseJSON.title);
-
-
-                }
-            }
-            catch (WebException ex)
-            {
-                WebResponse mErrorResponse = ex.Response;
-                using (Stream mResponseStream = mErrorResponse.GetResponseStream())
-                {
-                    StreamReader mReader = new StreamReader(mResponseStream, Encoding.GetEncoding("utf-8"));
-                    String mErrorText = mReader.ReadToEnd();
-
-                    System.Console.WriteLine("Error: {0}", mErrorText);
-                }
-            }
-            catch (Exception ex)
-            {
-                System.Console.WriteLine("Error: {0}", ex.Message);
-            }
-
-
-        }
+       
     }
     }

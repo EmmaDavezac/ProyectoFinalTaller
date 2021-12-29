@@ -41,10 +41,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="InterfazNucleo.cs" />
+    <Compile Include="FachadaNucleo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Bitacora\Bitacora.csproj">
+      <Project>{e8dc15c3-993f-449d-abbe-20dbbb96836c}</Project>
+      <Name>Bitacora</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DAL\DAL.csproj">
       <Project>{93845513-84f1-491d-86ce-d76d88161c6a}</Project>
       <Name>DAL</Name>

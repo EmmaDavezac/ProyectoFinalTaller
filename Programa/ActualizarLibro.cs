@@ -14,7 +14,7 @@ namespace Programa
 {
     public partial class ActualizarLibro : Form
     {
-        InterfazNucleo interfazNucleo = new InterfazNucleo();
+        FachadaNucleo interfazNucleo = new FachadaNucleo();
        
         private string NombreUsuario { get; set; }
         public ActualizarLibro(string nombreUsuario,int id)
@@ -83,7 +83,7 @@ namespace Programa
             if (!string.IsNullOrEmpty(textBoxTitulo.Text) && !string.IsNullOrEmpty(textBoxAutor.Text) && !string.IsNullOrEmpty(textBoxISBN.Text) && !string.IsNullOrEmpty(textBoxAñoPublicacion.Text))
             {
 
-                new InterfazNucleo().ActualizarLibro(Convert.ToInt32(textBoxId.Text), textBoxISBN.Text, textBoxTitulo.Text, textBoxAutor.Text, textBoxAñoPublicacion.Text);
+                new FachadaNucleo().ActualizarLibro(Convert.ToInt32(textBoxId.Text), textBoxISBN.Text, textBoxTitulo.Text, textBoxAutor.Text, textBoxAñoPublicacion.Text);
                 MessageBox.Show("El libro Id:" + textBoxId.Text + " se ha actualizado exitosamente!");
                 this.Hide();
                 this.Owner.Show();

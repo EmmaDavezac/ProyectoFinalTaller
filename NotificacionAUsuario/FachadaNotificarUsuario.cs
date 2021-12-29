@@ -7,7 +7,7 @@ using Dominio;
 
 namespace NotificacionAUsuario
 {
-    public class InterfazNotificarUsuario
+    public class FachadaNotificarUsuario
     {
         static string[] implementacionesNotificar = new string[] { "MailOutlook" };
         static private string implementacionNotificar = implementacionesNotificar[0];
@@ -23,13 +23,13 @@ namespace NotificacionAUsuario
             }
         }
 
-        public void NotificarProximoAVencer(UsuarioSimple pUsuario)
+        public string NotificarProximoAVencer(UsuarioSimple pUsuario)
         {
-            GetNotificarUsuario(implementacionNotificar).NotificarProximoAVencer(pUsuario);
+           return GetNotificarUsuario(implementacionNotificar).NotificarProximoAVencer(pUsuario);
         }
-        public void NotificarRetraso(UsuarioSimple pUsuario)
+        public string NotificarRetraso(UsuarioSimple pUsuario)
         {
-            GetNotificarUsuario(implementacionNotificar).NotificarRetraso(pUsuario);
+            return GetNotificarUsuario(implementacionNotificar).NotificarRetraso(pUsuario);
         }
     }
 }

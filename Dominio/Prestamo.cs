@@ -61,17 +61,22 @@ namespace Dominio
         }
         public bool ProximoAVencerse()
         {   int cantDiasParaConsiderarseProximo = 5;
-            if (string.IsNullOrEmpty(FechaDevolucion))
+            if (!this.Retrasado())
             {
-                TimeSpan diferenciaEntreFechas = Convert.ToDateTime(FechaLimite) - DateTime.Now;
-                int dias = diferenciaEntreFechas.Days;
-                if (dias < cantDiasParaConsiderarseProximo)
+                if (string.IsNullOrEmpty(FechaDevolucion))
                 {
-                    return true;
+                    TimeSpan diferenciaEntreFechas = Convert.ToDateTime(FechaLimite) - DateTime.Now;
+                    int dias = diferenciaEntreFechas.Days;
+                    if (dias < cantDiasParaConsiderarseProximo)
+                    {
+                        return true;
+                    }
+                    else return false;
                 }
                 else return false;
             }
-            else return false ; }
+            else return false;
+        }
         private int CalcularScoring(UsuarioSimple usuario)
         { 
             int scoring = usuario.Scoring;

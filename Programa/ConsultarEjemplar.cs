@@ -17,7 +17,7 @@ namespace Programa
 
         private string NombreUsuario { get; set; }
         private int idUsuario { get; set; }
-        InterfazNucleo interfazNucleo = new InterfazNucleo();
+        FachadaNucleo interfazNucleo = new FachadaNucleo();
         public ConsultarEjemplara(string iD)
         {
             InitializeComponent();
@@ -54,15 +54,15 @@ namespace Programa
             if (textBoxId.Text != null && (textBoxId.Text).All(char.IsDigit) && textBoxId.Text != "")
             {
                 int id = Convert.ToInt32(textBoxId.Text);
-                if (new InterfazNucleo().ObtenerEjemplar(id) != null)
+                if (new FachadaNucleo().ObtenerEjemplar(id) != null)
                 {
-                    textBoxEstado.Text = new InterfazNucleo().ObtenerEjemplar(id).Estado.ToString();
-                    textBoxIdLibro.Text = new InterfazNucleo().ObtenerLibroDeEjemplar(id).Id.ToString();
-                    textBoxTitulo.Text = new InterfazNucleo().ObtenerLibroDeEjemplar(id).Titulo;
-                    textBoxAutor.Text = new InterfazNucleo().ObtenerLibroDeEjemplar(id).Autor;
-                    textBoxAñoPublicacion.Text = new InterfazNucleo().ObtenerLibroDeEjemplar(id).AñoPublicacion;
-                    if (new InterfazNucleo().ObtenerEjemplar(id).Disponible) textBoxDisponibilidad.Text = "Disponible"; else textBoxDisponibilidad.Text = "Prestado";
-                    textBoxISBN.Text = new InterfazNucleo().ObtenerLibroDeEjemplar(id).ISBN;
+                    textBoxEstado.Text = new FachadaNucleo().ObtenerEjemplar(id).Estado.ToString();
+                    textBoxIdLibro.Text = new FachadaNucleo().ObtenerLibroDeEjemplar(id).Id.ToString();
+                    textBoxTitulo.Text = new FachadaNucleo().ObtenerLibroDeEjemplar(id).Titulo;
+                    textBoxAutor.Text = new FachadaNucleo().ObtenerLibroDeEjemplar(id).Autor;
+                    textBoxAñoPublicacion.Text = new FachadaNucleo().ObtenerLibroDeEjemplar(id).AñoPublicacion;
+                    if (new FachadaNucleo().ObtenerEjemplar(id).Disponible) textBoxDisponibilidad.Text = "Disponible"; else textBoxDisponibilidad.Text = "Prestado";
+                    textBoxISBN.Text = new FachadaNucleo().ObtenerLibroDeEjemplar(id).ISBN;
                     buttonBuscar.Enabled = false;
                 }
                 else { labelError.Text = "El Id ingresado no corresponde a un ejemplar registrado "; buttonBuscar.Enabled = false; textBoxId.Clear(); textBoxId.Focus(); }

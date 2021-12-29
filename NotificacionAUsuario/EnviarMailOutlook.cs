@@ -3,6 +3,7 @@ using System.Net.Mail;
 using System.Net;
 using Dominio;
 
+
 namespace NotificacionAUsuario
 {
     public class EnviarMailOutlook:INotificarUsuario//es una clase que nos permite enviar un mail a traves de una cuenta de Outlook
@@ -11,14 +12,15 @@ namespace NotificacionAUsuario
         const string usuario = "proyectofinaltallerdeprogramacion@outlook.com";// usuario de la cuenta de outlook
         const string nombre = "Gestor de prestamos";//nuestro nombre de destinatario
 
-        public void NotificarProximoAVencer(UsuarioSimple to)//metodo que nos permite enviar un mail mediante nuestra cuenta de outlook
+        public string NotificarProximoAVencer(UsuarioSimple to)//metodo que nos permite enviar un mail mediante nuestra cuenta de outlook
         {
             
             const string encabezado = "Aviso de prestamo de material proximo a vencer";
-            string contenido = "Estimado "+to.Nombre+" "+to.Apellido + " , de acuerdo a nuestro registro usted tiene material con el periodo de prestamo proximo a finalizar.\nPor favor devuelva o renueve el prestamo antes de la fecha limite para evitar penalizaciones. \nAtte Gestor de prestamos";
+            string contenido = "Estimado "+to.Nombre+" "+to.Apellido + " , de acuerdo a nuestro registro usted tiene material con el periodo de prestamo proximo a finalizar.<br>Por favor devuelva o renueve el prestamo antes de la fecha limite para evitar penalizaciones. <br>Atte Gestor de prestamos";
             string body = @"<style>
                             h1{color:black;}
                             h2{color:black;}
+                            p{color:black;}
                             </style>
                             <h1>" + encabezado + "</h1></br>\n<h2>" + contenido + "</h2>";
             string asunto = "Informe de prestamo proximo a vencer";
@@ -41,25 +43,26 @@ namespace NotificacionAUsuario
 
 
                 client.Send(mail);//enviamos el mail
-                msge = "¡Correo enviado exitosamente!";//mensaje en el caso de que el envio se realizo correctamente
+                return msge = "¡Correo enviado exitosamente!";//mensaje en el caso de que el envio se realizo correctamente
 
             }
             catch (Exception ex)//captamos la excepcion en el caso de que el codigo entre el bloque try haya lanzado una interrupcion
             {
-                msge = ex.Message + ex.StackTrace;//mensaje en el caso de que falle el envio esto deveria registrarse en log
+                return msge+"-"+ex.Message + ex.StackTrace;//mensaje en el caso de que falle el envio esto deveria registrarse en log
             }
 
            
 
         }
-        public void NotificarRetraso(UsuarioSimple to)//metodo que nos permite enviar un mail mediante nuestra cuenta de outlook
+        public string NotificarRetraso(UsuarioSimple to)//metodo que nos permite enviar un mail mediante nuestra cuenta de outlook
         {
 
             const string encabezado = "Aviso de prestamo de prestamo retrasado";
-            string contenido = "Estimado " + to.Nombre + " " + to.Apellido + " , de acuerdo a nuestro registro usted no ha devuelto a tiempo un material prestado \nPor favor devuelva o renueve el prestamo antes de la fecha limite para evitar penalizaciones. \nAtte Gestor de prestamos";
+            string contenido = "Estimado " + to.Nombre + " " + to.Apellido + " , de acuerdo a nuestro registro usted no ha devuelto a tiempo un material prestado. <br> Por favor devuelva o renueve el prestamo antes de la fecha limite para evitar penalizaciones. <br>Atte Gestor de prestamos";
             string body = @"<style>
                             h1{color:black;}
                             h2{color:black;}
+                            p{color:black;}
                             </style>
                             <h1>" + encabezado + "</h1></br>\n<h2>" + contenido + "</h2>";
             string asunto = "Informe Prestamo Retrasado";
@@ -82,12 +85,12 @@ namespace NotificacionAUsuario
 
 
                 client.Send(mail);//enviamos el mail
-                msge = "¡Correo enviado exitosamente!";//mensaje en el caso de que el envio se realizo correctamente
+                return msge = "¡Correo enviado exitosamente!";//mensaje en el caso de que el envio se realizo correctamente
 
             }
             catch (Exception ex)//captamos la excepcion en el caso de que el codigo entre el bloque try haya lanzado una interrupcion
             {
-                msge = ex.Message + ex.StackTrace;//mensaje en el caso de que falle el envio esto deveria registrarse en log
+                return msge+"-"+ ex.Message + ex.StackTrace;//mensaje en el caso de que falle el envio esto deveria registrarse en log
             }
 
 

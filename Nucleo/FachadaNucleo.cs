@@ -8,23 +8,17 @@ using DAL.EntityFramework;//libreria de implementacion de IUnitOfWork con entity
 using Dominio;
 using ServiciosAPILibros;
 using NotificacionAUsuario;
+using Bitacora;
 namespace Nucleo
 {
-    public class InterfazNucleo
+    public class FachadaNucleo
     {
-        private InterfazDAL interfazDAL = new InterfazDAL();
-        private InterfazAPILibros interfazAPILibros = new InterfazAPILibros();
-        private InterfazNotificarUsuario interfazNotificarUsuario = new InterfazNotificarUsuario();       
-        private IServiciosAPILibros GetIServiciosAPILibros(string unIServiciosAPILibros)///Implementacion posibles para la api que nos brinda informacion sobre libros, interactua con la interfaz IAPIlibros, esta abtraccion nos permite poder trabajar con distintas implementaciones
-        {
-            return interfazAPILibros.GetIServiciosAPILibros(unIServiciosAPILibros);
-        }
-        private INotificarUsuario GetNotificarUsuario(string unNotificarCliente)
-        {
-            return interfazNotificarUsuario.GetNotificarUsuario(unNotificarCliente);
-        }
+        private FachadaDAL interfazDAL = new FachadaDAL();
+        private FachadaAPILibros interfazAPILibros = new FachadaAPILibros();
+        private FachadaNotificarUsuario interfazNotificarUsuario = new FachadaNotificarUsuario();
+        
 
-        public InterfazNucleo()
+        public FachadaNucleo()
         {
         }
         public bool AñadirUsuario(string pNombreUsuario, string nombre, string apellido, DateTime fechaNacimiento, string mail, string telefono)
@@ -43,7 +37,7 @@ namespace Nucleo
 
         public void ActualizarUsuario(string pNombreUsuario, string nombre, string apellido, string pFechaNacimiento, string mail, string telefono)
         {
-            interfazDAL.ActualizarUsuario(pNombreUsuario, MayusculaPrimeraLetra(nombre), MayusculaPrimeraLetra(apellido), pFechaNacimiento,mail, telefono);
+            interfazDAL.ActualizarUsuario(pNombreUsuario, MayusculaPrimeraLetra(nombre), MayusculaPrimeraLetra(apellido), pFechaNacimiento, mail, telefono);
         }
 
         public bool AñadirAdministrador(string pNombreUsuario, string nombre, string apellido, DateTime fechaNacimiento, string mail, string contraseña, string telefono)
@@ -68,7 +62,7 @@ namespace Nucleo
             interfazDAL.ActualizarContraseñaAdministrador(idAdministrador, contraseña);
         }
 
-        public void AñadirLibro(string unISBN, string titulo, string autor, string añoPublicacion,int pCantidadEjempalares)
+        public void AñadirLibro(string unISBN, string titulo, string autor, string añoPublicacion, int pCantidadEjempalares)
         {
             interfazDAL.AñadirLibro(unISBN, titulo, autor, añoPublicacion, pCantidadEjempalares);
         }
@@ -155,6 +149,7 @@ namespace Nucleo
         public IEnumerable<Prestamo> ObtenerPrestamos()
         { return interfazDAL.ObtenerPrestamos(); }
 
+
         public string ObtenerUltimoIdUsuario()
 
         { return ObtenerUsuarios().Last().NombreUsuario; }
@@ -170,6 +165,7 @@ namespace Nucleo
         public int ObtenerUltimoIdPrestamo()
 
         { return ObtenerPrestamos().Last().Id; }
+
         public List<Prestamo> ObtenerListadePrestamosProximosAVencerse()
 
         {
@@ -189,11 +185,11 @@ namespace Nucleo
 
         public void NotificarProximoAVencer(string pNombreUsuario)
         {
-            interfazNotificarUsuario.NotificarProximoAVencer(ObtenerUsuarioPorNombreOMail(pNombreUsuario));
+            RegistrarLog(interfazNotificarUsuario.NotificarProximoAVencer(ObtenerUsuarioPorNombreOMail(pNombreUsuario)));
         }
         public void NotificarRetraso(string pNombreUsuario)
         {
-            interfazNotificarUsuario.NotificarRetraso(ObtenerUsuarioPorNombreOMail(pNombreUsuario));
+            RegistrarLog(interfazNotificarUsuario.NotificarRetraso(ObtenerUsuarioPorNombreOMail(pNombreUsuario)));
         }
 
 
@@ -292,5 +288,15 @@ namespace Nucleo
                 return TransformarISBNsALista(pLista).First();
             }
         }
-    }
+        public void RegistrarLog(string sLog)
+        {
+            
+                ArchivoDeLog oLog = new ArchivoDeLog();
+                oLog.Add(sLog);
+            
+        }
+
+}
+
+    
 }

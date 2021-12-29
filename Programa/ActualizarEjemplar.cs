@@ -14,7 +14,7 @@ namespace Programa
 {
     public partial class ActualizarEjemplar : Form
     {
-        private InterfazNucleo interfazNucleo = new InterfazNucleo();
+        private FachadaNucleo interfazNucleo = new FachadaNucleo();
 
         private int idUsuario { get; set; }
         private string NombreUsuario { get; set; }

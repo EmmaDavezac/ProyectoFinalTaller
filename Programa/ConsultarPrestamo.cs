@@ -15,7 +15,7 @@ namespace Programa
     {
         private string NombreUsuario { get; set; }
         private int idUsuario { get; set; }
-        InterfazNucleo interfazNucleo = new InterfazNucleo();
+        FachadaNucleo interfazNucleo = new FachadaNucleo();
         public ConsultarPrestamo(string iD)
         {
             InitializeComponent();

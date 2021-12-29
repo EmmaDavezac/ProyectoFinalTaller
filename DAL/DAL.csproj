@@ -59,7 +59,7 @@
     <Compile Include="EntityFramework\RepositorioPrestamos.cs" />
     <Compile Include="EntityFramework\RepositorioUsuarios.cs" />
     <Compile Include="EntityFramework\UnitOfWork.cs" />
-    <Compile Include="InterfazDAL.cs" />
+    <Compile Include="FachadaDAL.cs" />
     <Compile Include="IRepositorio.cs" />
     <Compile Include="IRepositorioAdministradores.cs" />
     <Compile Include="IRepositorioEjemplares.cs" />

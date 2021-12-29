@@ -38,8 +38,8 @@ namespace Programa
             {
                     if (!string.IsNullOrEmpty(textBoxContraseña.Text))
                     {
-                        Nucleo.InterfazNucleo fachada = new Nucleo.InterfazNucleo();
-                        if (new Nucleo.InterfazNucleo().ObtenerAdministradorPorNombreOMail(textBoxNombreUsuario.Text) != null)
+                        Nucleo.FachadaNucleo fachada = new Nucleo.FachadaNucleo();
+                        if (new Nucleo.FachadaNucleo().ObtenerAdministradorPorNombreOMail(textBoxNombreUsuario.Text) != null)
                         {
                             if (textBoxContraseña.Text != null && fachada.VerficarContraseña(textBoxNombreUsuario.Text, textBoxContraseña.Text))
                             {
