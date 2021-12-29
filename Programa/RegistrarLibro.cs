@@ -18,12 +18,12 @@ namespace Programa
     {
         private string nombre { get; set; }
         private string NombreUsuario { get; set; }
-        InterfazNucleo interfazNucleo = new InterfazNucleo();
+        FachadaNucleo fachadaNucleo = new FachadaNucleo();
         public RegistrarLibro(string pNombreUsuario)
         {
             InitializeComponent();
             NombreUsuario = pNombreUsuario;
-            nombre = interfazNucleo.ObtenerAdministradorPorNombreOMail(NombreUsuario).Nombre;
+            nombre = fachadaNucleo.ObtenerAdministradorPorNombreOMail(NombreUsuario).Nombre;
             labelNombreUsuario.Text = "Usuario: " + nombre;
         }
 
@@ -36,13 +36,13 @@ namespace Programa
                 textBoxTitulo.Text = dataGridViewTituloYAutor.CurrentRow.Cells[0].Value.ToString();
                 textBoxAutor.Text = dataGridViewTituloYAutor.CurrentRow.Cells[1].Value.ToString();
                 buttonBorrarDatos.Enabled = true;
-                List<string> isbns = interfazNucleo.TransformarISBNsALista(dataGridViewTituloYAutor.CurrentRow.Cells[3].Value.ToString());
+                List<string> isbns = fachadaNucleo.TransformarISBNsALista(dataGridViewTituloYAutor.CurrentRow.Cells[3].Value.ToString());
                 foreach (var item in isbns)
                 {
                     int n = dataGridViewISBN.Rows.Add();
                     dataGridViewISBN.Rows[n].Cells[0].Value = item;
                 }
-                List<string> años = interfazNucleo.TransformarAñosALista(dataGridViewTituloYAutor.CurrentRow.Cells[2].Value.ToString());
+                List<string> años = fachadaNucleo.TransformarAñosALista(dataGridViewTituloYAutor.CurrentRow.Cells[2].Value.ToString());
                 foreach (var item in años)
                 {
                     int n = dataGridViewAños.Rows.Add();
@@ -68,12 +68,12 @@ namespace Programa
             {
                 int resultado = 0;
                 dataGridViewTituloYAutor.Rows.Clear();
-                List<Libro> resultados = interfazNucleo.ListarLibrosDeAPIPorCoincidencia(textBoxBuscar.Text);
+                List<Libro> resultados = fachadaNucleo.ListarLibrosDeAPIPorCoincidencia(textBoxBuscar.Text);
                 foreach (var item in resultados)
                 {
                     int n = dataGridViewTituloYAutor.Rows.Add();
                     dataGridViewTituloYAutor.Rows[n].Cells[0].Value = item.Titulo;
-                    dataGridViewTituloYAutor.Rows[n].Cells[1].Value = interfazNucleo.SacarAutorDeLaLista(item.Autor);
+                    dataGridViewTituloYAutor.Rows[n].Cells[1].Value = fachadaNucleo.SacarAutorDeLaLista(item.Autor);
                     dataGridViewTituloYAutor.Rows[n].Cells[2].Value = item.AñoPublicacion;
                     dataGridViewTituloYAutor.Rows[n].Cells[3].Value = item.ISBN;
                     resultado += 1;
@@ -111,8 +111,8 @@ namespace Programa
             if (!string.IsNullOrEmpty(textBoxTitulo.Text) && !string.IsNullOrEmpty(textBoxAutor.Text) && !string.IsNullOrEmpty(textBoxISBN.Text) && !string.IsNullOrEmpty(textBoxAñoPublicacion.Text) && !string.IsNullOrEmpty(textBoxCantidadEjemplares.Text))
             {
 
-                new InterfazNucleo().AñadirLibro(textBoxISBN.Text, textBoxTitulo.Text, textBoxAutor.Text, textBoxAñoPublicacion.Text,Convert.ToInt32(textBoxCantidadEjemplares.Text));
-                MessageBox.Show("Libro registrado con exito, el Id del libro es: " + new InterfazNucleo().ObtenerUltimoIdLibro());
+                fachadaNucleo.AñadirLibro(textBoxISBN.Text, textBoxTitulo.Text, textBoxAutor.Text, textBoxAñoPublicacion.Text,Convert.ToInt32(textBoxCantidadEjemplares.Text));
+               MessageBox.Show("Libro registrado con exito, el Id del libro es: " + fachadaNucleo.ObtenerUltimoIdLibro());
                 /*buttonBorrarDatos_Click(sender,e);  No es necesario ya que podria querer seguir cargando libros con el mismo titulo, incluso si me equivoque en la cantidad de ejemplares podria agregarlos sin volver a cargar todo.
                 dataGridViewAños.Rows.Clear();         
                 dataGridViewISBN.Rows.Clear();
@@ -123,7 +123,7 @@ namespace Programa
             }
             else
             {
-                MessageBox.Show("Debe completar la informacion");
+               MessageBox.Show("Debe completar la informacion");
                 textBoxTitulo.Focus();
             }
         }
@@ -135,9 +135,8 @@ namespace Programa
         }
 
         private void BuscarLibrosAPI_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            this.Close();
-            this.Owner.Show();
+        {this.Close();
+           this.Owner.Show();
         }
 
         private void label3_Click(object sender, EventArgs e)
@@ -253,9 +252,9 @@ namespace Programa
 
         private void buttonGestionarLibros_Click(object sender, EventArgs e)
         {
-            this.Hide();
+           this.Hide();
             GestionarLibros ventana = new GestionarLibros(NombreUsuario);
-            ventana.ShowDialog(this);
+           ventana.ShowDialog(this);
         }
 
         private void labelSeleccionarAño_Click(object sender, EventArgs e)
@@ -282,7 +281,7 @@ namespace Programa
 
         public void InicializarLibro(int idLibro)
         {
-            var libro = interfazNucleo.ObtenerLibro(idLibro);
+            var libro = fachadaNucleo.ObtenerLibro(idLibro);
             textBoxAutor.Text = libro.Autor;
             textBoxAñoPublicacion.Text = libro.AñoPublicacion;
             textBoxISBN.Text = libro.ISBN;
@@ -345,7 +344,7 @@ namespace Programa
             {
                 
                     ((ActualizarLibro)this.Owner).CargarDatosDeBusquedaAvanzada(textBoxTitulo.Text,textBoxAutor.Text,textBoxAñoPublicacion.Text,textBoxISBN.Text);
-                    MessageBox.Show("Libro registrado con exito, el Id del libro es: " + new InterfazNucleo().ObtenerUltimoIdLibro());
+                   MessageBox.Show("Libro registrado con exito, el Id del libro es: " +fachadaNucleo.ObtenerUltimoIdLibro());
                 this.Hide();
                 this.Owner.Show();
                     /*buttonBorrarDatos_Click(sender,e);  No es necesario ya que podria querer seguir cargando libros con el mismo titulo, incluso si me equivoque en la cantidad de ejemplares podria agregarlos sin volver a cargar todo.
@@ -357,7 +356,7 @@ namespace Programa
             }
             else
             {
-                MessageBox.Show("Debe completar la informacion");
+              MessageBox.Show("Debe completar la informacion");
                 textBoxTitulo.Focus();
             }
         }
