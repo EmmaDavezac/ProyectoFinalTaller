@@ -8,6 +8,8 @@ using DAL.EntityFramework;//libreria de implementacion de IUnitOfWork con entity
 using Dominio;
 using ServiciosAPILibros;
 using NotificacionAUsuario;
+using Bitacora;
+
 namespace Nucleo
 {
     public class InterfazNucleo
@@ -82,10 +84,10 @@ namespace Nucleo
         }
         public List<Ejemplar> ObtenerEjemplaresEnBuenEstadoLibro(int id)
         {
-           return interfazDAL.ObtenerEjemplaresEnBuenEstadoLibro(id);
+            return interfazDAL.ObtenerEjemplaresEnBuenEstadoLibro(id);
         }
 
-        public void AñadirEjemplares(int idLibro,int pCantidad)
+        public void AñadirEjemplares(int idLibro, int pCantidad)
         {
             interfazDAL.AñadirEjemplares(idLibro, pCantidad);
         }
@@ -202,9 +204,13 @@ namespace Nucleo
             return interfazDAL.EsUnEmailValido(email);
         }
 
-        public void NotificarUsuario(string pNombreUsuario)
+        public void NotificarProximoAVencer(string pNombreUsuario)
         {
-            interfazNotificarUsuario.NotificarUsuario(ObtenerUsuarioPorNombreOMail(pNombreUsuario));
+            RegistrarLog(interfazNotificarUsuario.NotificarProximoAVencer(ObtenerUsuarioPorNombreOMail(pNombreUsuario)));
+        }
+        public void NotificarRetraso(string pNombreUsuario)
+        {
+            RegistrarLog(interfazNotificarUsuario.NotificarRetraso(ObtenerUsuarioPorNombreOMail(pNombreUsuario)));
         }
         public string MayusculaPrimeraLetra(string source)
         {
@@ -219,7 +225,16 @@ namespace Nucleo
             foreach (var item in ObtenerListadePrestamosProximosAVencerse())
             {
                 UsuarioSimple usuario = ObtenerUsuarioDePrestamo(item.Id);
-                NotificarUsuario(usuario.NombreUsuario);
+                NotificarProximoAVencer(usuario.NombreUsuario);
+            }
+        }
+
+        public void NotificarPrestamosRetrasados()
+        {
+            foreach (var item in ObtenerListadePrestamosRetrasados())
+            {
+                UsuarioSimple usuario = ObtenerUsuarioDePrestamo(item.Id);
+                NotificarRetraso(usuario.NombreUsuario);
             }
         }
 
@@ -292,6 +307,14 @@ namespace Nucleo
             {
                 return TransformarISBNsALista(pLista).First();
             }
+        }
+
+        public void RegistrarLog(string sLog)
+        {
+
+            ArchivoDeLog oLog = new ArchivoDeLog();
+            oLog.Add(sLog);
+
         }
     }
 }

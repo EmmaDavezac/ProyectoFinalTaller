@@ -78,22 +78,26 @@ namespace Programa
             // 
             // buttonVolver
             // 
+            this.buttonVolver.BackColor = System.Drawing.SystemColors.Highlight;
+            this.buttonVolver.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.buttonVolver.Location = new System.Drawing.Point(404, 257);
             this.buttonVolver.Name = "buttonVolver";
             this.buttonVolver.Size = new System.Drawing.Size(75, 23);
             this.buttonVolver.TabIndex = 4;
             this.buttonVolver.Text = "Volver";
-            this.buttonVolver.UseVisualStyleBackColor = true;
+            this.buttonVolver.UseVisualStyleBackColor = false;
             this.buttonVolver.Click += new System.EventHandler(this.button1_Click);
             // 
             // buttonAceptar
             // 
+            this.buttonAceptar.BackColor = System.Drawing.SystemColors.Highlight;
+            this.buttonAceptar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.buttonAceptar.Location = new System.Drawing.Point(485, 257);
             this.buttonAceptar.Name = "buttonAceptar";
             this.buttonAceptar.Size = new System.Drawing.Size(75, 23);
             this.buttonAceptar.TabIndex = 5;
             this.buttonAceptar.Text = "Aceptar";
-            this.buttonAceptar.UseVisualStyleBackColor = true;
+            this.buttonAceptar.UseVisualStyleBackColor = false;
             this.buttonAceptar.Click += new System.EventHandler(this.button2_Click);
             // 
             // labelErro
@@ -107,29 +111,34 @@ namespace Programa
             // 
             // buttonMostrarContraseñaVieja
             // 
+            this.buttonMostrarContraseñaVieja.BackColor = System.Drawing.SystemColors.Highlight;
+            this.buttonMostrarContraseñaVieja.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.buttonMostrarContraseñaVieja.Location = new System.Drawing.Point(439, 92);
             this.buttonMostrarContraseñaVieja.Name = "buttonMostrarContraseñaVieja";
             this.buttonMostrarContraseñaVieja.Size = new System.Drawing.Size(75, 23);
             this.buttonMostrarContraseñaVieja.TabIndex = 7;
             this.buttonMostrarContraseñaVieja.Text = "Mostrar";
-            this.buttonMostrarContraseñaVieja.UseVisualStyleBackColor = true;
+            this.buttonMostrarContraseñaVieja.UseVisualStyleBackColor = false;
             this.buttonMostrarContraseñaVieja.Click += new System.EventHandler(this.buttonMostrarContraseñaVieja_Click);
             // 
             // buttonMostrarContraseñaNueva
             // 
+            this.buttonMostrarContraseñaNueva.BackColor = System.Drawing.SystemColors.Highlight;
+            this.buttonMostrarContraseñaNueva.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.buttonMostrarContraseñaNueva.Location = new System.Drawing.Point(439, 129);
             this.buttonMostrarContraseñaNueva.Name = "buttonMostrarContraseñaNueva";
             this.buttonMostrarContraseñaNueva.Size = new System.Drawing.Size(75, 23);
             this.buttonMostrarContraseñaNueva.TabIndex = 8;
             this.buttonMostrarContraseñaNueva.Text = "Mostrar";
-            this.buttonMostrarContraseñaNueva.UseVisualStyleBackColor = true;
+            this.buttonMostrarContraseñaNueva.UseVisualStyleBackColor = false;
             this.buttonMostrarContraseñaNueva.Click += new System.EventHandler(this.buttonMostrarContraseñaNueva_Click);
             // 
             // ModificarContraseña
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(632, 292);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(604, 291);
             this.Controls.Add(this.buttonMostrarContraseñaNueva);
             this.Controls.Add(this.buttonMostrarContraseñaVieja);
             this.Controls.Add(this.labelErro);

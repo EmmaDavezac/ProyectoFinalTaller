@@ -9,6 +9,7 @@ namespace NotificacionAUsuario
 {
     public interface INotificarUsuario
     {
-        void Notificar(UsuarioSimple usuario); 
+        string NotificarProximoAVencer(UsuarioSimple usuario);
+        string NotificarRetraso(UsuarioSimple usuario);
     }
 }

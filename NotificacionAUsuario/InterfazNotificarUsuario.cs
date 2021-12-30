@@ -23,9 +23,13 @@ namespace NotificacionAUsuario
             }
         }
 
-        public void NotificarUsuario(UsuarioSimple pUsuario)
+        public string NotificarProximoAVencer(UsuarioSimple pUsuario)
         {
-            GetNotificarUsuario(implementacionNotificar).Notificar(pUsuario);
+            return GetNotificarUsuario(implementacionNotificar).NotificarProximoAVencer(pUsuario);
+        }
+        public string NotificarRetraso(UsuarioSimple pUsuario)
+        {
+            return GetNotificarUsuario(implementacionNotificar).NotificarRetraso(pUsuario);
         }
     }
 }
