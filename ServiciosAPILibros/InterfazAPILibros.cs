@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ServiciosAPILibros
 {
-    public class FachadaAPILibros
+    public class InterfazAPILibros
     {
         static string[] implementacionesAPILibros = new string[] { "OpenLibrary" };
         static private string implementacionAPILibros = implementacionesAPILibros[0];

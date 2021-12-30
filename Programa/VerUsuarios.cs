@@ -15,14 +15,14 @@ namespace Programa
     {
         private string NombreUsuario { get; set; }
         private int idUsuario { get; set; }
-        FachadaNucleo interfazNucleo = new FachadaNucleo();
+        InterfazNucleo interfazNucleo = new InterfazNucleo();
         public VerUsuarios(string iD)
         {
             InitializeComponent();
             idUsuario = Convert.ToInt32(iD);
             NombreUsuario = interfazNucleo.ObtenerAdministradorPorId(idUsuario).Nombre;
             labelNombreUsuario.Text = "Usuario: " + NombreUsuario;
-            foreach (var item in new FachadaNucleo().ObtenerUsuarios())
+            foreach (var item in new InterfazNucleo().ObtenerUsuarios())
             {
                 int n = dgvUsuarios.Rows.Add();
                 dgvUsuarios.Rows[n].Cells[0].Value = item.Id;

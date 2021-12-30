@@ -7,7 +7,7 @@ using Dominio;
 
 namespace NotificacionAUsuario
 {
-    public class FachadaNotificarUsuario
+    public class InterfazNotificarUsuario
     {
         static string[] implementacionesNotificar = new string[] { "MailOutlook" };
         static private string implementacionNotificar = implementacionesNotificar[0];

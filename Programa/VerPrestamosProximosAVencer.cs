@@ -15,7 +15,7 @@ namespace Programa
     {
         private string NombreUsuario { get; set; }
         
-        FachadaNucleo interfazNucleo = new FachadaNucleo();
+        InterfazNucleo interfazNucleo = new InterfazNucleo();
         public VerPrestamosProximosAVencer(string pNombreUsuario)
         {
             InitializeComponent();

@@ -16,7 +16,7 @@ namespace Programa
     {
         private string nombre { get; set; }
         private string nombreUsuario { get; set; }
-        private FachadaNucleo interfazNucleo = new FachadaNucleo();
+        private InterfazNucleo interfazNucleo = new InterfazNucleo();
         public RegistrarPrestamo(string pNombreUsuario)
         {
             InitializeComponent();
@@ -147,7 +147,7 @@ namespace Programa
         {
             int idEjemplar = interfazNucleo.ObtenerEjemplaresDisponibles(Convert.ToInt32(textBoxIdLibro.Text.ToString())).First().Id;
             interfazNucleo.RegistrarPrestamo(textBoxNomUsuario.Text,idEjemplar);
-            string FechaLimite = Convert.ToDateTime(new FachadaNucleo().ObtenerPrestamo(interfazNucleo.ObtenerUltimoIdPrestamo()).FechaLimite).Date.ToString();
+            string FechaLimite = Convert.ToDateTime(new InterfazNucleo().ObtenerPrestamo(interfazNucleo.ObtenerUltimoIdPrestamo()).FechaLimite).Date.ToString();
             MessageBox.Show("El prestamo ha sido registrado correctamente" + "\nFecha limite: " + FechaLimite);
             RegistrarPrestamo_Load(sender,e);
         }

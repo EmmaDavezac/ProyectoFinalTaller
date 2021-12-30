@@ -46,7 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="APIOpenLibrary.cs" />
-    <Compile Include="FachadaAPILibros.cs" />
+    <Compile Include="InterfazAPILibros.cs" />
     <Compile Include="IServiciosAPILibros.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

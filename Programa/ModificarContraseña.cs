@@ -13,7 +13,7 @@ namespace Programa
 {
     public partial class ModificarContraseña : Form
     {
-        private FachadaNucleo interfazNucleo = new FachadaNucleo();
+        private InterfazNucleo interfazNucleo = new InterfazNucleo();
         private string idUsuario;
         string contraseñaNueva;
         public ModificarContraseña(string iD)
