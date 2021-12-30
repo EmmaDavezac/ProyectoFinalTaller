@@ -15,9 +15,8 @@ namespace Dominio
         public string Autor { get; set; }
         public string AñoPublicacion { get; set; }
         public virtual List<Ejemplar> Ejemplares { get; set; }
+        public bool Baja { get; set; }
 
-        
-        
 
         public Libro()
         {
@@ -30,6 +29,7 @@ namespace Dominio
             Titulo = titulo;
             Autor = autor;
             AñoPublicacion = añoPublicacion;
+            Baja = false;
         }
 
         public List<Ejemplar> EjemplaresDisponibles()
@@ -45,18 +45,75 @@ namespace Dominio
             return ejemplaresDisponibles;
         }
 
-        public List<Ejemplar> EjemplaresTotales()
+        public List<Ejemplar> EjemplaresEnBuenEstado()
         {
-            List<Ejemplar> ejemplaresDisponibles = new List<Ejemplar>();
+            List<Ejemplar> ejemplaresEnBuenEstado = new List<Ejemplar>();
             foreach (var item in this.Ejemplares)
             {
                 if (item.Estado == EstadoEjemplar.Bueno)
                 {
-                    ejemplaresDisponibles.Add(item);
+                    ejemplaresEnBuenEstado.Add(item);
                 }
 
             }
-            return ejemplaresDisponibles;
+            return ejemplaresEnBuenEstado;
+        }
+        public List<Ejemplar> EjemplaresTotales()
+        {
+            List<Ejemplar> ejemplaresTotales = new List<Ejemplar>();
+            foreach (var item in this.Ejemplares)
+            {
+                if (item.Estado == EstadoEjemplar.Bueno && item.Baja == false)
+                {
+                    ejemplaresTotales.Add(item);
+                }
+
+            }
+            return ejemplaresTotales;
+        }
+
+        public void EliminarEjemplares(int pCantidad)
+        {
+            int i = 1;
+            foreach (var item in Ejemplares)
+            {
+                if (i > pCantidad)
+                {
+                    break;
+                }
+                else if (item.Disponible == true)
+                {
+                    item.Disponible = false;
+                    item.Estado = EstadoEjemplar.Malo;
+                    i = i + 1;
+                }
+            }
+        }
+
+        public void DarDeBaja()
+        {
+            if (Baja == false)
+            {
+                Baja = true;
+                foreach (var item in Ejemplares)
+                {
+                    item.Disponible = false;
+                    item.Baja = true;
+                }
+            }
+        }
+
+        public void DarDeAlta()
+        {
+            if (Baja == true)
+            {
+                Baja = false;
+                foreach (var item in Ejemplares)
+                {
+                    item.Disponible = true;
+                    item.Baja = false;
+                }
+            }
         }
     }
 }

@@ -100,18 +100,22 @@ namespace Programa
             dataGridViewLibros.Rows.Clear();
             foreach (var item in libros)
             {
-                int n = dataGridViewLibros.Rows.Add();
-                dataGridViewLibros.Rows[n].Cells[0].Value = item.Id;
-                dataGridViewLibros.Rows[n].Cells[1].Value = item.ISBN;
-                dataGridViewLibros.Rows[n].Cells[2].Value = item.Titulo;
-                dataGridViewLibros.Rows[n].Cells[3].Value = item.Autor;
-                dataGridViewLibros.Rows[n].Cells[4].Value = item.AñoPublicacion;
-                dataGridViewLibros.Rows[n].Cells[5].Value = interfazNucleo.ObtenerEjemplaresDisponibles(item.Id).Count().ToString();
-                dataGridViewLibros.Rows[n].Cells[6].Value = interfazNucleo.ObtenerEjemplaresTotales(item.Id).Count().ToString();
-                if (dataGridViewLibros.Rows[n].Cells[5].Value.ToString() == "0")
+                if (item.Baja == false)
                 {
-                    dataGridViewLibros.Rows[n].DefaultCellStyle.BackColor = Color.Red;
+                    int n = dataGridViewLibros.Rows.Add();
+                    dataGridViewLibros.Rows[n].Cells[0].Value = item.Id;
+                    dataGridViewLibros.Rows[n].Cells[1].Value = item.ISBN;
+                    dataGridViewLibros.Rows[n].Cells[2].Value = item.Titulo;
+                    dataGridViewLibros.Rows[n].Cells[3].Value = item.Autor;
+                    dataGridViewLibros.Rows[n].Cells[4].Value = item.AñoPublicacion;
+                    dataGridViewLibros.Rows[n].Cells[5].Value = interfazNucleo.ObtenerEjemplaresDisponibles(item.Id).Count().ToString();
+                    dataGridViewLibros.Rows[n].Cells[6].Value = interfazNucleo.ObtenerEjemplaresTotales(item.Id).Count().ToString();
+                    if (dataGridViewLibros.Rows[n].Cells[5].Value.ToString() == "0")
+                    {
+                        dataGridViewLibros.Rows[n].DefaultCellStyle.BackColor = Color.Yellow;
+                    }
                 }
+                
             }
         }
 

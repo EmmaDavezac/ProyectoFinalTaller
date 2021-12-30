@@ -75,7 +75,7 @@ namespace Programa
 
                 if (new InterfazNucleo().ObtenerLibro(Convert.ToInt32(textBoxId.Text)) != null)
                 {
-                    new InterfazNucleo().AñadirEjemplar(Convert.ToInt32(textBoxId.Text));
+                    new InterfazNucleo().AñadirEjemplares(Convert.ToInt32(textBoxId.Text), 0);
                     MessageBox.Show("Ejemplar registrado con exito, el Id del Ejemplar es: " + new InterfazNucleo().ObtenerUltimoIdEjemplar());
                     this.Hide();
                     Menu2 ventanaMenu = new Menu2(idUsuario.ToString());

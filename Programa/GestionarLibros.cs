@@ -38,9 +38,15 @@ namespace Programa
                 if (cell.Value.ToString() == "Gestionar")
                 {
                     int id = Convert.ToInt32(dataGridViewLibros.Rows[e.RowIndex].Cells[1].Value);
+                    string ISBN = dataGridViewLibros.Rows[e.RowIndex].Cells[2].Value.ToString();
+                    string titulo = dataGridViewLibros.Rows[e.RowIndex].Cells[3].Value.ToString();
+                    string autor = dataGridViewLibros.Rows[e.RowIndex].Cells[4].Value.ToString();
+                    string añoPublicacion = dataGridViewLibros.Rows[e.RowIndex].Cells[5].Value.ToString();
+                    string disponible = dataGridViewLibros.Rows[e.RowIndex].Cells[8].Value.ToString();
                     ActualizarLibro ventana = new ActualizarLibro(nombreUsuario, id);
                     this.Hide();
-                    ventana.ShowDialog(this);
+                    ventana.InicializarLibro(ISBN, titulo, autor, añoPublicacion,disponible);
+                    ventana.Show(this);
                 }
             }
         }
@@ -51,7 +57,7 @@ namespace Programa
             {
                 for (int i = 0; i < dataGridViewLibros.Rows.Count - 1; i++)
                 {
-                    if (textBoxTituloOISBNLibro.Text.All(Char.IsDigit)&&dataGridViewLibros.Rows[i].Cells[2].Value.ToString().Contains(textBoxTituloOISBNLibro.Text.ToString()) )
+                    if (textBoxTituloOISBNLibro.Text.All(Char.IsDigit) && dataGridViewLibros.Rows[i].Cells[2].Value.ToString().Contains(textBoxTituloOISBNLibro.Text.ToString()))
                     {
                         dataGridViewLibros.Rows[i].Visible = true;
                     }
@@ -67,7 +73,7 @@ namespace Programa
             }
         }
 
-        private void ObtenerLibros()
+        public void ObtenerLibros()
         {
             IEnumerable<Libro> libros = interfazNucleo.ObtenerLibros();
             dataGridViewLibros.Rows.Clear();
@@ -79,8 +85,17 @@ namespace Programa
                 dataGridViewLibros.Rows[n].Cells[3].Value = item.Titulo;
                 dataGridViewLibros.Rows[n].Cells[4].Value = item.Autor;
                 dataGridViewLibros.Rows[n].Cells[5].Value = item.AñoPublicacion;
-                dataGridViewLibros.Rows[n].Cells[6].Value = interfazNucleo.ObtenerEjemplaresDisponibles(item.Id).Count().ToString(); 
+                dataGridViewLibros.Rows[n].Cells[6].Value = interfazNucleo.ObtenerEjemplaresDisponibles(item.Id).Count().ToString();
                 dataGridViewLibros.Rows[n].Cells[7].Value = interfazNucleo.ObtenerEjemplaresTotales(item.Id).Count().ToString();
+                dataGridViewLibros.Rows[n].Cells[8].Value = item.Baja.ToString();
+                if (dataGridViewLibros.Rows[n].Cells[8].Value.ToString() == "True")
+                {
+                    dataGridViewLibros.Rows[n].DefaultCellStyle.BackColor = Color.Red;
+                }
+                else if (dataGridViewLibros.Rows[n].Cells[6].Value.ToString() == "0")
+                {
+                    dataGridViewLibros.Rows[n].DefaultCellStyle.BackColor = Color.Yellow;
+                }
             }
         }
 
@@ -94,6 +109,11 @@ namespace Programa
         {
             this.Hide();
             this.Owner.Show();
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

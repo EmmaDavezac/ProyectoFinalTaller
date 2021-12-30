@@ -106,7 +106,7 @@ namespace Programa
 
         }
 
-        private void buttonGuardar_Click(object sender, EventArgs e)
+        private void buttonAñadirLibro_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(textBoxTitulo.Text) && !string.IsNullOrEmpty(textBoxAutor.Text) && !string.IsNullOrEmpty(textBoxISBN.Text) && !string.IsNullOrEmpty(textBoxAñoPublicacion.Text) && !string.IsNullOrEmpty(textBoxCantidadEjemplares.Text))
             {
@@ -130,13 +130,13 @@ namespace Programa
 
         private void botonVolver_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Hide();
             this.Owner.Show();
         }
 
         private void BuscarLibrosAPI_FormClosed(object sender, FormClosedEventArgs e)
         {
-            this.Close();
+            this.Hide();
             this.Owner.Show();
         }
 

@@ -16,6 +16,7 @@ namespace Dominio
         public bool Disponible { get; set; }
         public EstadoEjemplar Estado { get; set; }
         public virtual List<Prestamo> Prestamos { get; set; }
+        public bool Baja { get; set; }
         public Ejemplar()
         {
 
@@ -25,6 +26,7 @@ namespace Dominio
             Estado = EstadoEjemplar.Bueno;
             Disponible = true;
             Libro = unLibro;
+            Baja = false;
         }
     }
 }

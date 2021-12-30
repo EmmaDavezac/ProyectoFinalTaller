@@ -162,7 +162,7 @@ namespace Programa
         {
             GestionarLibros ventana = new GestionarLibros(nombreUsuario);
             this.Hide();
-            ventana.ShowDialog(this);
+            ventana.Show(this);
         }
 
         private void button8_Click(object sender, EventArgs e)
@@ -197,7 +197,7 @@ namespace Programa
         {
             RegistrarLibro ventana = new RegistrarLibro(nombreUsuario);
             this.Hide();
-            ventana.ShowDialog(this);
+            ventana.Show(this);
         }
 
         private void button11_Click(object sender, EventArgs e)
@@ -239,9 +239,9 @@ namespace Programa
 
         private void button23_Click(object sender, EventArgs e)
         {
-            ConsultarPrestamo ventana = new ConsultarPrestamo(nombreUsuario);
+            GestionarPrestamos ventana = new GestionarPrestamos(nombreUsuario);
             this.Hide();
-            ventana.Show();
+            ventana.Show(this);
         }
 
         private void button22_Click(object sender, EventArgs e)

@@ -77,7 +77,7 @@ namespace Programa
             // 
             // textBoxNombre
             // 
-            this.textBoxNombre.Location = new System.Drawing.Point(348, 189);
+            this.textBoxNombre.Location = new System.Drawing.Point(346, 215);
             this.textBoxNombre.Name = "textBoxNombre";
             this.textBoxNombre.Size = new System.Drawing.Size(200, 20);
             this.textBoxNombre.TabIndex = 7;
@@ -85,7 +85,7 @@ namespace Programa
             // 
             // textBoxApellido
             // 
-            this.textBoxApellido.Location = new System.Drawing.Point(348, 222);
+            this.textBoxApellido.Location = new System.Drawing.Point(346, 248);
             this.textBoxApellido.Name = "textBoxApellido";
             this.textBoxApellido.Size = new System.Drawing.Size(200, 20);
             this.textBoxApellido.TabIndex = 8;
@@ -93,7 +93,7 @@ namespace Programa
             // 
             // textBoxMail
             // 
-            this.textBoxMail.Location = new System.Drawing.Point(348, 316);
+            this.textBoxMail.Location = new System.Drawing.Point(346, 342);
             this.textBoxMail.Name = "textBoxMail";
             this.textBoxMail.Size = new System.Drawing.Size(200, 20);
             this.textBoxMail.TabIndex = 9;
@@ -102,7 +102,7 @@ namespace Programa
             // dateTimePickerFechaNacimiento
             // 
             this.dateTimePickerFechaNacimiento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerFechaNacimiento.Location = new System.Drawing.Point(348, 255);
+            this.dateTimePickerFechaNacimiento.Location = new System.Drawing.Point(346, 281);
             this.dateTimePickerFechaNacimiento.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             this.dateTimePickerFechaNacimiento.Name = "dateTimePickerFechaNacimiento";
             this.dateTimePickerFechaNacimiento.Size = new System.Drawing.Size(200, 20);
@@ -113,7 +113,7 @@ namespace Programa
             // labelNombre
             // 
             this.labelNombre.AutoSize = true;
-            this.labelNombre.Location = new System.Drawing.Point(245, 196);
+            this.labelNombre.Location = new System.Drawing.Point(243, 222);
             this.labelNombre.Name = "labelNombre";
             this.labelNombre.Size = new System.Drawing.Size(47, 13);
             this.labelNombre.TabIndex = 15;
@@ -123,7 +123,7 @@ namespace Programa
             // labelApellido
             // 
             this.labelApellido.AutoSize = true;
-            this.labelApellido.Location = new System.Drawing.Point(245, 229);
+            this.labelApellido.Location = new System.Drawing.Point(243, 255);
             this.labelApellido.Name = "labelApellido";
             this.labelApellido.Size = new System.Drawing.Size(47, 13);
             this.labelApellido.TabIndex = 16;
@@ -133,7 +133,7 @@ namespace Programa
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(245, 261);
+            this.label3.Location = new System.Drawing.Point(243, 287);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(93, 13);
             this.label3.TabIndex = 17;
@@ -143,7 +143,7 @@ namespace Programa
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(245, 319);
+            this.label4.Location = new System.Drawing.Point(243, 345);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(29, 13);
             this.label4.TabIndex = 18;
@@ -168,7 +168,7 @@ namespace Programa
             // 
             this.labelError.AutoSize = true;
             this.labelError.ForeColor = System.Drawing.Color.Red;
-            this.labelError.Location = new System.Drawing.Point(345, 339);
+            this.labelError.Location = new System.Drawing.Point(343, 365);
             this.labelError.Name = "labelError";
             this.labelError.Size = new System.Drawing.Size(0, 13);
             this.labelError.TabIndex = 20;
@@ -177,7 +177,7 @@ namespace Programa
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(245, 291);
+            this.label1.Location = new System.Drawing.Point(243, 317);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(52, 13);
             this.label1.TabIndex = 67;
@@ -185,7 +185,7 @@ namespace Programa
             // 
             // textBoxTelefono
             // 
-            this.textBoxTelefono.Location = new System.Drawing.Point(348, 284);
+            this.textBoxTelefono.Location = new System.Drawing.Point(346, 310);
             this.textBoxTelefono.Name = "textBoxTelefono";
             this.textBoxTelefono.Size = new System.Drawing.Size(200, 20);
             this.textBoxTelefono.TabIndex = 66;
@@ -277,7 +277,7 @@ namespace Programa
             // 
             // textBoxNombreUsuario
             // 
-            this.textBoxNombreUsuario.Location = new System.Drawing.Point(348, 154);
+            this.textBoxNombreUsuario.Location = new System.Drawing.Point(346, 180);
             this.textBoxNombreUsuario.Name = "textBoxNombreUsuario";
             this.textBoxNombreUsuario.Size = new System.Drawing.Size(200, 20);
             this.textBoxNombreUsuario.TabIndex = 70;
@@ -286,7 +286,7 @@ namespace Programa
             // label5NombreUsuario
             // 
             this.label5NombreUsuario.AutoSize = true;
-            this.label5NombreUsuario.Location = new System.Drawing.Point(245, 161);
+            this.label5NombreUsuario.Location = new System.Drawing.Point(243, 187);
             this.label5NombreUsuario.Name = "label5NombreUsuario";
             this.label5NombreUsuario.Size = new System.Drawing.Size(83, 13);
             this.label5NombreUsuario.TabIndex = 71;
@@ -297,7 +297,7 @@ namespace Programa
             this.AcceptButton = this.buttonAñadirUsuario;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Control;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(784, 561);
             this.Controls.Add(this.label5NombreUsuario);
             this.Controls.Add(this.textBoxNombreUsuario);

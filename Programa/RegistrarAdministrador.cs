@@ -220,5 +220,34 @@ namespace Programa
         {
 
         }
+
+        private void labelMail_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelContraseña_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelFechaNacimiento_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonMostrar_Click(object sender, EventArgs e)
+        {
+            if (textBoxContraseña.UseSystemPasswordChar == true)
+            {
+                textBoxContraseña.UseSystemPasswordChar = false;
+                buttonMostrar.Text = "Ocultar";
+            }
+            else
+            {
+                textBoxContraseña.UseSystemPasswordChar = true;
+                buttonMostrar.Text = "Mostrar";
+            }
+        }
     }
 }

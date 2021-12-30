@@ -92,6 +92,15 @@ namespace DAL
                 return true;
             }
         }
+
+        public List<Ejemplar> ObtenerEjemplaresEnBuenEstadoLibro(int id)
+        {
+            using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
+            {
+                return unitOfWork.RepositorioLibros.Get(id).EjemplaresEnBuenEstado();
+            }
+        }
+
         public UsuarioAdministrador ObtenerAdministradorPorId(int id)
         {
 
@@ -161,13 +170,47 @@ namespace DAL
             }
         }
 
-        public void AñadirEjemplar(int idLibro)
+        public void AñadirEjemplares(int pIdLibro,int pCantidad)
+        {
+            
+            using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
+            {
+                for (int i = 1; i <= pCantidad; i++)
+                {
+                    Ejemplar ejemplar = new Ejemplar(unitOfWork.RepositorioLibros.Get(pIdLibro));
+                    unitOfWork.RepositorioEjemplares.Add(ejemplar);
+                }
+                unitOfWork.Complete();
+            }
+        }
+
+        public void EliminarEjemplaresDeUnLibro(int pIdLibro, int pCantidad)
         {
             using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
             {
-                Ejemplar ejemplar = new Ejemplar(unitOfWork.RepositorioLibros.Get(idLibro));
-                unitOfWork.RepositorioEjemplares.Add(ejemplar);
-                unitOfWork.RepositorioLibros.Get(idLibro).Ejemplares.Add(ejemplar);
+                for (int i = 1; i <= pCantidad; i++)
+                {
+                    unitOfWork.RepositorioLibros.Get(pIdLibro).EliminarEjemplares(pCantidad);
+                }
+                unitOfWork.Complete();
+            }
+        }
+
+        public void DarDeBajaUnLibro(int pIdLibro)
+        {
+            using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
+            {
+                Libro libro = unitOfWork.RepositorioLibros.Get(pIdLibro);
+                libro.DarDeBaja();
+                unitOfWork.Complete();
+            }
+        }
+
+        public void DarDeAltaUnLibro(int pIdLibro)
+        {
+            using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
+            {
+                unitOfWork.RepositorioLibros.Get(pIdLibro).DarDeAlta();
                 unitOfWork.Complete();
             }
         }

@@ -53,6 +53,7 @@ namespace Programa
             this.panel5 = new System.Windows.Forms.Panel();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.labelNombreUsuario = new System.Windows.Forms.Label();
+            this.buttonMostrar = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -80,7 +81,7 @@ namespace Programa
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(218, 241);
+            this.label1.Location = new System.Drawing.Point(243, 342);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(49, 13);
             this.label1.TabIndex = 65;
@@ -88,7 +89,7 @@ namespace Programa
             // 
             // textBoxTelefono
             // 
-            this.textBoxTelefono.Location = new System.Drawing.Point(328, 242);
+            this.textBoxTelefono.Location = new System.Drawing.Point(353, 339);
             this.textBoxTelefono.Name = "textBoxTelefono";
             this.textBoxTelefono.Size = new System.Drawing.Size(200, 20);
             this.textBoxTelefono.TabIndex = 64;
@@ -97,25 +98,27 @@ namespace Programa
             // labelContraseña
             // 
             this.labelContraseña.AutoSize = true;
-            this.labelContraseña.Location = new System.Drawing.Point(218, 272);
+            this.labelContraseña.Location = new System.Drawing.Point(243, 265);
             this.labelContraseña.Name = "labelContraseña";
             this.labelContraseña.Size = new System.Drawing.Size(61, 13);
             this.labelContraseña.TabIndex = 63;
             this.labelContraseña.Text = "Contraseña";
+            this.labelContraseña.Click += new System.EventHandler(this.labelContraseña_Click);
             // 
             // textBoxContraseña
             // 
-            this.textBoxContraseña.Location = new System.Drawing.Point(328, 269);
+            this.textBoxContraseña.Location = new System.Drawing.Point(353, 258);
             this.textBoxContraseña.Name = "textBoxContraseña";
             this.textBoxContraseña.Size = new System.Drawing.Size(200, 20);
             this.textBoxContraseña.TabIndex = 62;
+            this.textBoxContraseña.UseSystemPasswordChar = true;
             this.textBoxContraseña.TextChanged += new System.EventHandler(this.textBoxContraseña_TextChanged_1);
             // 
             // labelError
             // 
             this.labelError.AutoSize = true;
             this.labelError.ForeColor = System.Drawing.Color.Red;
-            this.labelError.Location = new System.Drawing.Point(325, 295);
+            this.labelError.Location = new System.Drawing.Point(350, 366);
             this.labelError.Name = "labelError";
             this.labelError.Size = new System.Drawing.Size(0, 13);
             this.labelError.TabIndex = 61;
@@ -137,25 +140,27 @@ namespace Programa
             // labelMail
             // 
             this.labelMail.AutoSize = true;
-            this.labelMail.Location = new System.Drawing.Point(218, 215);
+            this.labelMail.Location = new System.Drawing.Point(243, 368);
             this.labelMail.Name = "labelMail";
             this.labelMail.Size = new System.Drawing.Size(26, 13);
             this.labelMail.TabIndex = 59;
             this.labelMail.Text = "Mail";
+            this.labelMail.Click += new System.EventHandler(this.labelMail_Click);
             // 
             // labelFechaNacimiento
             // 
             this.labelFechaNacimiento.AutoSize = true;
-            this.labelFechaNacimiento.Location = new System.Drawing.Point(218, 188);
+            this.labelFechaNacimiento.Location = new System.Drawing.Point(243, 319);
             this.labelFechaNacimiento.Name = "labelFechaNacimiento";
             this.labelFechaNacimiento.Size = new System.Drawing.Size(90, 13);
             this.labelFechaNacimiento.TabIndex = 58;
             this.labelFechaNacimiento.Text = "FechaNacimiento";
+            this.labelFechaNacimiento.Click += new System.EventHandler(this.labelFechaNacimiento_Click);
             // 
             // labelApellido
             // 
             this.labelApellido.AutoSize = true;
-            this.labelApellido.Location = new System.Drawing.Point(218, 163);
+            this.labelApellido.Location = new System.Drawing.Point(243, 239);
             this.labelApellido.Name = "labelApellido";
             this.labelApellido.Size = new System.Drawing.Size(44, 13);
             this.labelApellido.TabIndex = 57;
@@ -164,7 +169,7 @@ namespace Programa
             // labelNombre
             // 
             this.labelNombre.AutoSize = true;
-            this.labelNombre.Location = new System.Drawing.Point(218, 137);
+            this.labelNombre.Location = new System.Drawing.Point(243, 212);
             this.labelNombre.Name = "labelNombre";
             this.labelNombre.Size = new System.Drawing.Size(44, 13);
             this.labelNombre.TabIndex = 56;
@@ -174,7 +179,7 @@ namespace Programa
             // 
             this.dateTimePickerFechaNacimiento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePickerFechaNacimiento.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.dateTimePickerFechaNacimiento.Location = new System.Drawing.Point(328, 188);
+            this.dateTimePickerFechaNacimiento.Location = new System.Drawing.Point(353, 313);
             this.dateTimePickerFechaNacimiento.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             this.dateTimePickerFechaNacimiento.Name = "dateTimePickerFechaNacimiento";
             this.dateTimePickerFechaNacimiento.Size = new System.Drawing.Size(200, 20);
@@ -184,7 +189,7 @@ namespace Programa
             // 
             // textBoxMail
             // 
-            this.textBoxMail.Location = new System.Drawing.Point(328, 215);
+            this.textBoxMail.Location = new System.Drawing.Point(353, 365);
             this.textBoxMail.Name = "textBoxMail";
             this.textBoxMail.Size = new System.Drawing.Size(200, 20);
             this.textBoxMail.TabIndex = 54;
@@ -192,7 +197,7 @@ namespace Programa
             // 
             // textBoxApellido
             // 
-            this.textBoxApellido.Location = new System.Drawing.Point(328, 161);
+            this.textBoxApellido.Location = new System.Drawing.Point(353, 232);
             this.textBoxApellido.Name = "textBoxApellido";
             this.textBoxApellido.Size = new System.Drawing.Size(200, 20);
             this.textBoxApellido.TabIndex = 53;
@@ -200,7 +205,7 @@ namespace Programa
             // 
             // textBoxNombre
             // 
-            this.textBoxNombre.Location = new System.Drawing.Point(328, 134);
+            this.textBoxNombre.Location = new System.Drawing.Point(353, 205);
             this.textBoxNombre.Name = "textBoxNombre";
             this.textBoxNombre.Size = new System.Drawing.Size(200, 20);
             this.textBoxNombre.TabIndex = 52;
@@ -208,7 +213,7 @@ namespace Programa
             // 
             // textBoxNombreUsuario
             // 
-            this.textBoxNombreUsuario.Location = new System.Drawing.Point(328, 108);
+            this.textBoxNombreUsuario.Location = new System.Drawing.Point(353, 179);
             this.textBoxNombreUsuario.Name = "textBoxNombreUsuario";
             this.textBoxNombreUsuario.Size = new System.Drawing.Size(200, 20);
             this.textBoxNombreUsuario.TabIndex = 66;
@@ -217,7 +222,7 @@ namespace Programa
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(218, 111);
+            this.label2.Location = new System.Drawing.Point(243, 186);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(80, 13);
             this.label2.TabIndex = 67;
@@ -307,12 +312,28 @@ namespace Programa
             this.labelNombreUsuario.Text = "Nombre Apellido";
             this.labelNombreUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // buttonMostrar
+            // 
+            this.buttonMostrar.BackColor = System.Drawing.SystemColors.Highlight;
+            this.buttonMostrar.FlatAppearance.BorderSize = 0;
+            this.buttonMostrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonMostrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonMostrar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.buttonMostrar.Location = new System.Drawing.Point(489, 284);
+            this.buttonMostrar.Name = "buttonMostrar";
+            this.buttonMostrar.Size = new System.Drawing.Size(64, 22);
+            this.buttonMostrar.TabIndex = 72;
+            this.buttonMostrar.Text = "Mostrar";
+            this.buttonMostrar.UseVisualStyleBackColor = false;
+            this.buttonMostrar.Click += new System.EventHandler(this.buttonMostrar_Click);
+            // 
             // RegistrarAdministrador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(784, 561);
+            this.Controls.Add(this.buttonMostrar);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBoxNombreUsuario);
@@ -378,5 +399,6 @@ namespace Programa
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Label labelNombreUsuario;
+        private System.Windows.Forms.Button buttonMostrar;
     }
 }

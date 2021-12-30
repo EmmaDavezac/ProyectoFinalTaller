@@ -14,7 +14,7 @@ namespace Nucleo
     {
         private InterfazDAL interfazDAL = new InterfazDAL();
         private InterfazAPILibros interfazAPILibros = new InterfazAPILibros();
-        private InterfazNotificarUsuario interfazNotificarUsuario = new InterfazNotificarUsuario();       
+        private InterfazNotificarUsuario interfazNotificarUsuario = new InterfazNotificarUsuario();
         private IServiciosAPILibros GetIServiciosAPILibros(string unIServiciosAPILibros)///Implementacion posibles para la api que nos brinda informacion sobre libros, interactua con la interfaz IAPIlibros, esta abtraccion nos permite poder trabajar con distintas implementaciones
         {
             return interfazAPILibros.GetIServiciosAPILibros(unIServiciosAPILibros);
@@ -43,7 +43,7 @@ namespace Nucleo
 
         public void ActualizarUsuario(string pNombreUsuario, string nombre, string apellido, string pFechaNacimiento, string mail, string telefono)
         {
-            interfazDAL.ActualizarUsuario(pNombreUsuario, MayusculaPrimeraLetra(nombre), MayusculaPrimeraLetra(apellido), pFechaNacimiento,mail, telefono);
+            interfazDAL.ActualizarUsuario(pNombreUsuario, MayusculaPrimeraLetra(nombre), MayusculaPrimeraLetra(apellido), pFechaNacimiento, mail, telefono);
         }
 
         public bool AñadirAdministrador(string pNombreUsuario, string nombre, string apellido, DateTime fechaNacimiento, string mail, string contraseña, string telefono)
@@ -68,7 +68,7 @@ namespace Nucleo
             interfazDAL.ActualizarContraseñaAdministrador(idAdministrador, contraseña);
         }
 
-        public void AñadirLibro(string unISBN, string titulo, string autor, string añoPublicacion,int pCantidadEjempalares)
+        public void AñadirLibro(string unISBN, string titulo, string autor, string añoPublicacion, int pCantidadEjempalares)
         {
             interfazDAL.AñadirLibro(unISBN, titulo, autor, añoPublicacion, pCantidadEjempalares);
         }
@@ -80,11 +80,26 @@ namespace Nucleo
         {
             return interfazDAL.ObtenerCantEjemplaresLibro(id);
         }
-
-
-        public void AñadirEjemplar(int idLibro)
+        public List<Ejemplar> ObtenerEjemplaresEnBuenEstadoLibro(int id)
         {
-            interfazDAL.AñadirEjemplar(idLibro);
+           return interfazDAL.ObtenerEjemplaresEnBuenEstadoLibro(id);
+        }
+
+        public void AñadirEjemplares(int idLibro,int pCantidad)
+        {
+            interfazDAL.AñadirEjemplares(idLibro, pCantidad);
+        }
+        public void EliminarEjemplaresDeUnLibro(int idLibro, int pCantidad)
+        {
+            interfazDAL.EliminarEjemplaresDeUnLibro(idLibro, pCantidad);
+        }
+        public void DarDeBajaUnLibro(int pIdLibro)
+        {
+            interfazDAL.DarDeBajaUnLibro(pIdLibro);
+        }
+        public void DarDeAltaUnLibro(int pIdLibro)
+        {
+            interfazDAL.DarDeAltaUnLibro(pIdLibro);
         }
         public void ActualizarEjemplar(string idLibro, string estado)
         {

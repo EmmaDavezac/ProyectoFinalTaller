@@ -267,7 +267,7 @@ namespace Programa
             this.buttonAñadirLibro.TabIndex = 12;
             this.buttonAñadirLibro.Text = "AñadirLibro";
             this.buttonAñadirLibro.UseVisualStyleBackColor = false;
-            this.buttonAñadirLibro.Click += new System.EventHandler(this.buttonGuardar_Click);
+            this.buttonAñadirLibro.Click += new System.EventHandler(this.buttonAñadirLibro_Click);
             // 
             // label4
             // 
@@ -515,7 +515,7 @@ namespace Programa
             this.buttonActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonActualizar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.buttonActualizar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonActualizar.Location = new System.Drawing.Point(338, 519);
+            this.buttonActualizar.Location = new System.Drawing.Point(338, 490);
             this.buttonActualizar.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.buttonActualizar.Name = "buttonActualizar";
             this.buttonActualizar.Size = new System.Drawing.Size(89, 23);
