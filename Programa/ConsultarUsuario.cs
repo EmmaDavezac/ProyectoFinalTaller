@@ -112,6 +112,15 @@ namespace Programa
                 int n = dataGridViewUsuarios.Rows.Add();
                 dataGridViewUsuarios.Rows[n].Cells[1].Value = item.NombreUsuario;
                 dataGridViewUsuarios.Rows[n].Cells[2].Value = item.Scoring;
+                dataGridViewUsuarios.Rows[n].Cells[2].Style.Font = new Font(dataGridViewUsuarios.Font, FontStyle.Bold); 
+                if (item.Scoring >= 0)
+                {
+                    dataGridViewUsuarios.Rows[n].Cells[2].Style.ForeColor = Color.GreenYellow;
+                }
+                else
+                {
+                    dataGridViewUsuarios.Rows[n].Cells[2].Style.ForeColor = Color.Red;
+                }
                 dataGridViewUsuarios.Rows[n].Cells[3].Value = item.Nombre;
                 dataGridViewUsuarios.Rows[n].Cells[4].Value = item.Apellido;
                 dataGridViewUsuarios.Rows[n].Cells[5].Value = item.FechaNacimiento.ToShortDateString(); 

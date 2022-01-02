@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EstadoEjemplar.cs" />
+    <Compile Include="EstadoPrestamo.cs" />
     <Compile Include="Libro.cs" />
     <Compile Include="Ejemplar.cs" />
     <Compile Include="Prestamo.cs" />

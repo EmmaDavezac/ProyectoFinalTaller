@@ -91,6 +91,7 @@ namespace Programa
                 if (dataGridViewLibros.Rows[n].Cells[8].Value.ToString() == "True")
                 {
                     dataGridViewLibros.Rows[n].DefaultCellStyle.BackColor = Color.Red;
+                    dataGridViewLibros.Rows[n].DefaultCellStyle.ForeColor = Color.White;
                 }
                 else if (dataGridViewLibros.Rows[n].Cells[6].Value.ToString() == "0")
                 {

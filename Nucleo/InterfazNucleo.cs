@@ -125,9 +125,9 @@ namespace Nucleo
         {
             return interfazDAL.ObtenerLibroDeEjemplar(id);
         }
-        public void RegistrarPrestamo(string pNombreUsuario, int idEjemplar)
+        public void RegistrarPrestamo(string pNombreUsuario, int idEjemplar,int idLibro)
         {
-            interfazDAL.RegistrarPrestamo(pNombreUsuario, idEjemplar);
+            interfazDAL.RegistrarPrestamo(pNombreUsuario, idEjemplar,idLibro);
         }
         public Prestamo ObtenerPrestamo(int id)
         {
@@ -147,6 +147,11 @@ namespace Nucleo
         public void RegistrarDevolucion(int idPrestamo, string estado)
         {
             interfazDAL.RegistrarDevolucion(idPrestamo, estado);
+        }
+
+        public void ModificarFechasPrestamo(int pIdPrestamo, string pFechaPrestamo, string pFechaLimite)
+        {
+            interfazDAL.ModificarFechasPrestamo(pIdPrestamo, pFechaPrestamo, pFechaLimite);
         }
         public Libro ObtenerLibroDePrestamo(int id)
         {

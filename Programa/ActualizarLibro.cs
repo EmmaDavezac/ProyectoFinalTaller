@@ -79,16 +79,24 @@ namespace Programa
         {
             if (interfazNucleo.ObtenerLibro(idLibro).Baja == false && checkBoxBaja.Checked == true)
             {
-                interfazNucleo.DarDeBajaUnLibro(idLibro);
-                MessageBox.Show("El libro Id:" + idLibro + " ha sido dado de baja exitosamente!");
-                
+                if (!string.IsNullOrEmpty(textBoxTitulo.Text) && !string.IsNullOrEmpty(textBoxAutor.Text) && !string.IsNullOrEmpty(textBoxISBN.Text) && !string.IsNullOrEmpty(textBoxAñoPublicacion.Text))
+                {
+                    interfazNucleo.ActualizarLibro(idLibro, textBoxISBN.Text, textBoxTitulo.Text, textBoxAutor.Text, textBoxAñoPublicacion.Text);
+                    interfazNucleo.DarDeBajaUnLibro(idLibro);
+                    MessageBox.Show("El libro Id:" + idLibro + " ha sido dado de baja exitosamente!");
+                }
+                else
+                {
+                    MessageBox.Show("Debe completar la informacion");
+                    textBoxTitulo.Focus();
+                }
             }
             else if (interfazNucleo.ObtenerLibro(idLibro).Baja == true && checkBoxBaja.Checked == false)
             {
                 if (!string.IsNullOrEmpty(textBoxTitulo.Text) && !string.IsNullOrEmpty(textBoxAutor.Text) && !string.IsNullOrEmpty(textBoxISBN.Text) && !string.IsNullOrEmpty(textBoxAñoPublicacion.Text))
                 {
                     interfazNucleo.DarDeAltaUnLibro(idLibro);
-                    new InterfazNucleo().ActualizarLibro(idLibro, textBoxISBN.Text, textBoxTitulo.Text, textBoxAutor.Text, textBoxAñoPublicacion.Text);
+                    interfazNucleo.ActualizarLibro(idLibro, textBoxISBN.Text, textBoxTitulo.Text, textBoxAutor.Text, textBoxAñoPublicacion.Text);
                     if (sumatoriaDeEjemplares < 0)
                     {
                         interfazNucleo.EliminarEjemplaresDeUnLibro(idLibro, sumatoriaDeEjemplares);
@@ -109,7 +117,7 @@ namespace Programa
             {
                 if (!string.IsNullOrEmpty(textBoxTitulo.Text) && !string.IsNullOrEmpty(textBoxAutor.Text) && !string.IsNullOrEmpty(textBoxISBN.Text) && !string.IsNullOrEmpty(textBoxAñoPublicacion.Text))
                 {
-                    new InterfazNucleo().ActualizarLibro(idLibro, textBoxISBN.Text, textBoxTitulo.Text, textBoxAutor.Text, textBoxAñoPublicacion.Text);
+                    interfazNucleo.ActualizarLibro(idLibro, textBoxISBN.Text, textBoxTitulo.Text, textBoxAutor.Text, textBoxAñoPublicacion.Text);
                     if (sumatoriaDeEjemplares < 0)
                     {
                         interfazNucleo.EliminarEjemplaresDeUnLibro(idLibro, sumatoriaDeEjemplares);
@@ -119,6 +127,20 @@ namespace Programa
                         interfazNucleo.AñadirEjemplares(idLibro, sumatoriaDeEjemplares);
                     }
                     MessageBox.Show("El libro Id:" + idLibro + " se ha actualizado exitosamente!");
+                }
+                else
+                {
+                    MessageBox.Show("Debe completar la informacion");
+                    textBoxTitulo.Focus();
+                }
+            }
+            else if (interfazNucleo.ObtenerLibro(idLibro).Baja == true && checkBoxBaja.Checked == true)
+            {
+                if (!string.IsNullOrEmpty(textBoxTitulo.Text) && !string.IsNullOrEmpty(textBoxAutor.Text) && !string.IsNullOrEmpty(textBoxISBN.Text) && !string.IsNullOrEmpty(textBoxAñoPublicacion.Text))
+                {
+                    interfazNucleo.ActualizarLibro(idLibro, textBoxISBN.Text, textBoxTitulo.Text, textBoxAutor.Text, textBoxAñoPublicacion.Text);
+                    interfazNucleo.DarDeBajaUnLibro(idLibro);
+                    MessageBox.Show("El libro Id:" + idLibro + " ha sido dado de baja exitosamente!");
                 }
                 else
                 {

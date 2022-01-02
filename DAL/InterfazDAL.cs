@@ -262,11 +262,11 @@ namespace DAL
                 return unitOfWork.RepositorioEjemplares.Get(id).Libro;
             }
         }
-        public void RegistrarPrestamo(string pNombreUsuario, int idEjemplar)
+        public void RegistrarPrestamo(string pNombreUsuario, int idEjemplar, int idLibro)
         {
             using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
             {
-                Prestamo prestamo = new Prestamo(unitOfWork.RepositorioUsuarios.Get(pNombreUsuario), unitOfWork.RepositorioEjemplares.Get(idEjemplar));
+                Prestamo prestamo = new Prestamo(unitOfWork.RepositorioUsuarios.Get(pNombreUsuario), unitOfWork.RepositorioEjemplares.Get(idEjemplar), unitOfWork.RepositorioLibros.Get(idLibro));
 
                 unitOfWork.RepositorioEjemplares.Get(idEjemplar).Disponible = false;
                 unitOfWork.RepositorioPrestamos.Add(prestamo);
@@ -313,6 +313,16 @@ namespace DAL
                 else unitOfWork.RepositorioPrestamos.Get(idPrestamo).RegistrarDevolucion(EstadoEjemplar.Malo);
 
 
+                unitOfWork.Complete();
+            }
+        }
+
+        public void ModificarFechasPrestamo(int pIdPrestamo,string pFechaPrestamo,string pFechaLimite)
+        {
+            using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
+            {
+                unitOfWork.RepositorioPrestamos.Get(pIdPrestamo).FechaPrestamo = pFechaPrestamo;
+                unitOfWork.RepositorioPrestamos.Get(pIdPrestamo).FechaLimite = pFechaLimite;
                 unitOfWork.Complete();
             }
         }

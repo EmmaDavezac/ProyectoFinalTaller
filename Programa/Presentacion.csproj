@@ -117,6 +117,18 @@
     <Compile Include="ConsultarPrestamo.Designer.cs">
       <DependentUpon>ConsultarPrestamo.cs</DependentUpon>
     </Compile>
+    <Compile Include="DevolucionPrestamo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DevolucionPrestamo.Designer.cs">
+      <DependentUpon>DevolucionPrestamo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditarPrestamo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditarPrestamo.Designer.cs">
+      <DependentUpon>EditarPrestamo.cs</DependentUpon>
+    </Compile>
     <Compile Include="GestionarLibros.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -267,6 +279,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ConsultarPrestamo.resx">
       <DependentUpon>ConsultarPrestamo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DevolucionPrestamo.resx">
+      <DependentUpon>DevolucionPrestamo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditarPrestamo.resx">
+      <DependentUpon>EditarPrestamo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GestionarLibros.resx">
       <DependentUpon>GestionarLibros.cs</DependentUpon>

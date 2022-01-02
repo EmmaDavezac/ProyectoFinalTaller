@@ -16,15 +16,14 @@ namespace Programa
 {
     public partial class RegistrarLibro : Form
     {
-        private string nombre { get; set; }
         private string NombreUsuario { get; set; }
         InterfazNucleo interfazNucleo = new InterfazNucleo();
         public RegistrarLibro(string pNombreUsuario)
         {
             InitializeComponent();
             NombreUsuario = pNombreUsuario;
-            nombre = interfazNucleo.ObtenerAdministradorPorNombreOMail(NombreUsuario).Nombre;
-            labelNombreUsuario.Text = "Usuario: " + nombre;
+           
+            labelNombreUsuario.Text = "Usuario: " + NombreUsuario;
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)

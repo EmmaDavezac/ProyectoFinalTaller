@@ -38,7 +38,7 @@ namespace Programa
                     dataGridViewPrestamos.Rows[n].Cells[3].Value = item.FechaDevolucion;
                     dataGridViewPrestamos.Rows[n].Cells[5].Value = item.EstadoDevolucion;
                 }
-                dataGridViewPrestamos.Rows[n].Cells[4].Value = item.EstadoInicial;
+                dataGridViewPrestamos.Rows[n].Cells[4].Value = item.EstadoDevolucion;
                 if (item.ProximoAVencerse())
                 {
                     dataGridViewPrestamos.Rows[n].Cells[6].Value = "Si";

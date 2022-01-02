@@ -28,5 +28,15 @@ namespace Dominio
             Libro = unLibro;
             Baja = false;
         }
+
+        public string ObtenerTituloLibro()
+        {
+            return Libro.Titulo;
+        }
+
+        public string ObtenerISBNLibro()
+        {
+            return Libro.ISBN;
+        }
     }
 }

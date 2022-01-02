@@ -84,14 +84,15 @@ namespace Programa
 
         private void dataGridViewLibros_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dataGridViewLibros.CurrentRow.Cells[5].Value.ToString() != "0")
             {
-                textBoxIdLibro.Text = dataGridViewLibros.CurrentRow.Cells[0].Value.ToString();
-                textBoxTitulo.Text = dataGridViewLibros.CurrentRow.Cells[1].Value.ToString();
-                textBoxISBN.Text = dataGridViewLibros.CurrentRow.Cells[2].Value.ToString();
-                textBoxAutor.Text = dataGridViewLibros.CurrentRow.Cells[3].Value.ToString();
-            }
-            
+                if (dataGridViewLibros.CurrentRow.Cells[5].Value.ToString() != "0")
+                {
+                    textBoxIdLibro.Text = dataGridViewLibros.CurrentRow.Cells[0].Value.ToString();
+                    textBoxTitulo.Text = dataGridViewLibros.CurrentRow.Cells[1].Value.ToString();
+                    textBoxISBN.Text = dataGridViewLibros.CurrentRow.Cells[2].Value.ToString();
+                    textBoxAutor.Text = dataGridViewLibros.CurrentRow.Cells[3].Value.ToString();
+                }
+            }              
         }
 
         private void ObtenerLibros()
@@ -150,8 +151,8 @@ namespace Programa
         private void buttonRegistrarPrestamo_Click(object sender, EventArgs e)
         {
             int idEjemplar = interfazNucleo.ObtenerEjemplaresDisponibles(Convert.ToInt32(textBoxIdLibro.Text.ToString())).First().Id;
-            interfazNucleo.RegistrarPrestamo(textBoxNomUsuario.Text,idEjemplar);
-            string FechaLimite = Convert.ToDateTime(new InterfazNucleo().ObtenerPrestamo(interfazNucleo.ObtenerUltimoIdPrestamo()).FechaLimite).Date.ToString();
+            interfazNucleo.RegistrarPrestamo(textBoxNomUsuario.Text,idEjemplar, Convert.ToInt32(textBoxIdLibro.Text));
+            string FechaLimite = Convert.ToDateTime(new InterfazNucleo().ObtenerPrestamo(interfazNucleo.ObtenerUltimoIdPrestamo()).FechaLimite).Date.ToShortDateString();
             MessageBox.Show("El prestamo ha sido registrado correctamente" + "\nFecha limite: " + FechaLimite);
             RegistrarPrestamo_Load(sender,e);
         }
