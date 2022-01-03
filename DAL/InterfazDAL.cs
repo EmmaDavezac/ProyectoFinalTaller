@@ -9,7 +9,7 @@ using Dominio;
 
 namespace DAL
 {
-    public class FachadaDAL
+    public class InterfazDAL
     {
         static string[] implementacionesBase = new string[] { "ConnectionSQLServerLocal", "ConnectionSQLServerHosting" };//cadenas de conexion a bases de datos
         static private string implementacionBase = implementacionesBase[0];
@@ -24,7 +24,7 @@ namespace DAL
             }
         }
 
-        public FachadaDAL()
+        public InterfazDAL()
         {
         }
         public bool AñadirUsuario(string pNombreUsuario, string nombre, string apellido, DateTime fechaNacimiento, string mail, string telefono)

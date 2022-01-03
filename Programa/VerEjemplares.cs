@@ -15,7 +15,7 @@ namespace Programa
     {
         private string NombreUsuario { get; set; }
         private int idUsuario { get; set; }
-        FachadaNucleo interfazNucleo = new FachadaNucleo();
+        InterfazNucleo interfazNucleo = new InterfazNucleo();
         public VerEjemplares(string iD)
         {
             InitializeComponent();
@@ -32,11 +32,11 @@ namespace Programa
                     dgvEjemplares.Rows[n].Cells[2].Value = "Si";
                 }
                 else dgvEjemplares.Rows[n].Cells[2].Value = "No";
-                dgvEjemplares.Rows[n].Cells[3].Value = new FachadaNucleo().ObtenerLibroDeEjemplar(Convert.ToInt32(item.Id)).Id;
-                dgvEjemplares.Rows[n].Cells[4].Value = new FachadaNucleo().ObtenerLibroDeEjemplar(Convert.ToInt32(item.Id)).Titulo;
-                dgvEjemplares.Rows[n].Cells[5].Value = new FachadaNucleo().ObtenerLibroDeEjemplar(Convert.ToInt32(item.Id)).Autor;
-                dgvEjemplares.Rows[n].Cells[6].Value = new FachadaNucleo().ObtenerLibroDeEjemplar(Convert.ToInt32(item.Id)).AñoPublicacion;
-                dgvEjemplares.Rows[n].Cells[7].Value = new FachadaNucleo().ObtenerLibroDeEjemplar(Convert.ToInt32(item.Id)).ISBN;
+                dgvEjemplares.Rows[n].Cells[3].Value = new InterfazNucleo().ObtenerLibroDeEjemplar(Convert.ToInt32(item.Id)).Id;
+                dgvEjemplares.Rows[n].Cells[4].Value = new InterfazNucleo().ObtenerLibroDeEjemplar(Convert.ToInt32(item.Id)).Titulo;
+                dgvEjemplares.Rows[n].Cells[5].Value = new InterfazNucleo().ObtenerLibroDeEjemplar(Convert.ToInt32(item.Id)).Autor;
+                dgvEjemplares.Rows[n].Cells[6].Value = new InterfazNucleo().ObtenerLibroDeEjemplar(Convert.ToInt32(item.Id)).AñoPublicacion;
+                dgvEjemplares.Rows[n].Cells[7].Value = new InterfazNucleo().ObtenerLibroDeEjemplar(Convert.ToInt32(item.Id)).ISBN;
 
 
             }

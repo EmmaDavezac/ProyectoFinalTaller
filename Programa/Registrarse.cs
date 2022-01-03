@@ -13,7 +13,7 @@ namespace Programa
 {
     public partial class Registrarse : Form
     {
-        FachadaNucleo InterfazNucleo = new FachadaNucleo();
+        InterfazNucleo InterfazNucleo = new InterfazNucleo();
         public Registrarse()
         {
             InitializeComponent();

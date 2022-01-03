@@ -16,7 +16,7 @@ namespace Programa
     {
         private string NombreUsuario { get; set; }
         private int idUsuario { get; set; }
-        FachadaNucleo interfazNucleo = new FachadaNucleo();
+        InterfazNucleo interfazNucleo = new InterfazNucleo();
         public RegistrarEjemplar(string iD)
         {
             InitializeComponent();
@@ -46,7 +46,7 @@ namespace Programa
             textBoxISBN.Clear();
             if (textBoxId.Text != null && (textBoxId.Text).All(char.IsDigit) && textBoxId.Text != "")
             {
-                Libro libro = new Nucleo.FachadaNucleo().ObtenerLibro(Convert.ToInt32(textBoxId.Text));
+                Libro libro = new Nucleo.InterfazNucleo().ObtenerLibro(Convert.ToInt32(textBoxId.Text));
                 if (libro != null)
                 {
                     textBoxTitulo.Text = libro.Titulo;
@@ -73,10 +73,10 @@ namespace Programa
             if (!string.IsNullOrEmpty(textBoxId.Text) && !string.IsNullOrEmpty(textBoxTitulo.Text) && !string.IsNullOrEmpty(textBoxAutor.Text) && !string.IsNullOrEmpty(textBoxISBN.Text) && !string.IsNullOrEmpty(textBoxAñoPublicacion.Text) && !string.IsNullOrEmpty(comboBoxEstado.Text))
             {
 
-                if (new FachadaNucleo().ObtenerLibro(Convert.ToInt32(textBoxId.Text)) != null)
+                if (new InterfazNucleo().ObtenerLibro(Convert.ToInt32(textBoxId.Text)) != null)
                 {
-                    new FachadaNucleo().AñadirEjemplar(Convert.ToInt32(textBoxId.Text));
-                    MessageBox.Show("Ejemplar registrado con exito, el Id del Ejemplar es: " + new FachadaNucleo().ObtenerUltimoIdEjemplar());
+                    new InterfazNucleo().AñadirEjemplar(Convert.ToInt32(textBoxId.Text));
+                    MessageBox.Show("Ejemplar registrado con exito, el Id del Ejemplar es: " + new InterfazNucleo().ObtenerUltimoIdEjemplar());
                     this.Hide();
                     Menu2 ventanaMenu = new Menu2(idUsuario.ToString());
                     ventanaMenu.Show();

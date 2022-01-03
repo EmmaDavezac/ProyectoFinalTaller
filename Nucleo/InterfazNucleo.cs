@@ -11,14 +11,14 @@ using NotificacionAUsuario;
 using Bitacora;
 namespace Nucleo
 {
-    public class FachadaNucleo
+    public class InterfazNucleo
     {
-        private FachadaDAL interfazDAL = new FachadaDAL();
-        private FachadaAPILibros interfazAPILibros = new FachadaAPILibros();
-        private FachadaNotificarUsuario interfazNotificarUsuario = new FachadaNotificarUsuario();
+        private InterfazDAL interfazDAL = new InterfazDAL();
+        private InterfazAPILibros interfazAPILibros = new InterfazAPILibros();
+        private InterfazNotificarUsuario interfazNotificarUsuario = new InterfazNotificarUsuario();
         
 
-        public FachadaNucleo()
+        public InterfazNucleo()
         {
         }
         public bool AñadirUsuario(string pNombreUsuario, string nombre, string apellido, DateTime fechaNacimiento, string mail, string telefono)
