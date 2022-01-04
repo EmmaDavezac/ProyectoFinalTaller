@@ -81,7 +81,7 @@ namespace Dominio
                 {
                     item.Disponible = false;
                     item.Estado = EstadoEjemplar.Malo;
-                    i = i + 1;
+                    i++;
                 }
             }
         }

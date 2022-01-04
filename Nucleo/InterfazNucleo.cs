@@ -257,7 +257,7 @@ namespace Nucleo
                 }
                 else
                 {
-                    palabra = palabra + pLista.Substring(i, 1);
+                    palabra += pLista.Substring(i, 1);
                 }
             }
             for (int i = 1; i < resultadoIntermedio.Count; i += 2)
@@ -282,7 +282,7 @@ namespace Nucleo
                 }
                 else
                 {
-                    palabra = palabra + pLista.Substring(i, 1);
+                    palabra += pLista.Substring(i, 1);
                 }
             }
             HashSet<string> hashWithoutDuplicates = new HashSet<string>(resultado);
@@ -321,3 +321,4 @@ namespace Nucleo
             }
         }
     }
+}

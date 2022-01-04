@@ -21,7 +21,7 @@ namespace ServiciosAPILibros
             {
                 if (c.Length > 0)
                     c = c + "+" + palabra;
-                else c = c + palabra;
+                else c += palabra;
             }
             return c.ToUpper();
 

@@ -229,7 +229,7 @@ namespace Programa
         {
             if (!string.IsNullOrEmpty(textBoxAñadirEjemplares.Text))
             {
-                sumatoriaDeEjemplares = sumatoriaDeEjemplares + Convert.ToInt32(textBoxAñadirEjemplares.Text);
+                sumatoriaDeEjemplares += Convert.ToInt32(textBoxAñadirEjemplares.Text);
                 labelCantidadActual.Text = "Cantidad Actual: " + Convert.ToString(interfazNucleo.ObtenerEjemplaresEnBuenEstadoLibro(idLibro).Count() + sumatoriaDeEjemplares);
                 textBoxAñadirEjemplares.Text = "";
             }
@@ -244,7 +244,7 @@ namespace Programa
         {
             if (!string.IsNullOrEmpty(textBoxEliminarEjemplares.Text))
             {
-                sumatoriaDeEjemplares = sumatoriaDeEjemplares - Convert.ToInt32(textBoxEliminarEjemplares.Text);
+                sumatoriaDeEjemplares -= Convert.ToInt32(textBoxEliminarEjemplares.Text);
                 labelCantidadActual.Text = "Cantidad Actual: " + Convert.ToString(interfazNucleo.ObtenerEjemplaresEnBuenEstadoLibro(idLibro).Count() + sumatoriaDeEjemplares);
                 textBoxEliminarEjemplares.Text = "";
             }

@@ -119,8 +119,8 @@ namespace Programa
         private void button2_Click(object sender, EventArgs e)
         {
             this.Hide();
-            RegistrarUsuario ventanaAgregarCliente = new RegistrarUsuario(nombreUsuario);
-            ventanaAgregarCliente.Show();
+            RegistrarUsuario ventana = new RegistrarUsuario(nombreUsuario);
+            ventana.Show();
         }
 
         private void button3_Click(object sender, EventArgs e)

@@ -19,7 +19,7 @@ namespace Programa
                 await Task.CompletedTask;
             }
             [STAThread]
-            private static async Task Main(string[] args)
+            private static async Task Main()
             {
                 const int tiempo = 60;
 
