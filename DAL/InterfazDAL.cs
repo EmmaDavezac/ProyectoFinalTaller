@@ -10,7 +10,7 @@ namespace DAL
     public class InterfazDAL
     {
         static string[] implementacionesBase = new string[] { "ConnectionSQLServerLocal", "ConnectionSQLServerHosting" };//cadenas de conexion a bases de datos
-        static private string implementacionBase = implementacionesBase[0];
+        static private string implementacionBase = implementacionesBase[1];
         private IUnitOfWork GetUnitOfWork(string pCadenaConexion)//implementaciones posibles para las base de datos, interactua con la interfaz IUnitOfWork, esta abtraccion nos permite poder trabajar con distintas implementaciones
         {
             switch (pCadenaConexion)

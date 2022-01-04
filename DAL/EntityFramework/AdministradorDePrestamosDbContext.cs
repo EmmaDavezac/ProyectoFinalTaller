@@ -11,10 +11,10 @@ namespace DAL.EntityFramework
 
         public AdministradorDePrestamosDbContext(string cadena) : base(cadena)
         {
-
+        
         }
 
-        public AdministradorDePrestamosDbContext() : base("ConnectionSQLServerLocal")
+        public AdministradorDePrestamosDbContext() : base("ConnectionSQLServerHosting")
         {
 
         }

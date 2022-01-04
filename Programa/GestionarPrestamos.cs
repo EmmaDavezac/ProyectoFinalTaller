@@ -88,7 +88,7 @@ namespace Programa
                     string fechaVencimiento = dataGridViewPrestamos.Rows[e.RowIndex].Cells[6].Value.ToString();
                     string estado = dataGridViewPrestamos.Rows[e.RowIndex].Cells[7].Value.ToString();
                     string scoring = Convert.ToString(usuarioSimple.Scoring);
-                    int idLibro = prestamo.idLibro;
+                   
                     int idPrestamo = Convert.ToInt32(dataGridViewPrestamos.Rows[e.RowIndex].Cells[1].Value.ToString());
                     DevolucionPrestamo ventana = new DevolucionPrestamo();
                     ventana.InicializarDevolucion(usuario, titulo, autor, fechaVencimiento, estado, scoring, idPrestamo);

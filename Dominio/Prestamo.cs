@@ -55,11 +55,11 @@ namespace Dominio
 
         public EstadoPrestamo ActualizarEstado()
         {
-            if (Retrasado() == true)
+            if (Retrasado() )
             {
                 EstadoPrestamo = EstadoPrestamo.Retrasado;
             }
-            else if (ProximoAVencerse() == true)
+            else if (ProximoAVencerse() )
             {
                 EstadoPrestamo = EstadoPrestamo.ProximoAVencer;
             }
@@ -81,7 +81,7 @@ namespace Dominio
         }
         public bool ProximoAVencerse()
         {
-            int cantDiasParaConsiderarseProximo = 5;
+            int cantDiasParaConsiderarseProximo = 3;
             if (!this.Retrasado())
             {
                 if (string.IsNullOrEmpty(FechaDevolucion))
