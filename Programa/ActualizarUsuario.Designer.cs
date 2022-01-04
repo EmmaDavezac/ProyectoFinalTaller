@@ -53,6 +53,9 @@ namespace Programa
             this.panel5 = new System.Windows.Forms.Panel();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.labelNombreUsuario = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.checkBoxBaja = new System.Windows.Forms.CheckBox();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -297,12 +300,49 @@ namespace Programa
             this.labelNombreUsuario.Text = "Nombre Apellido";
             this.labelNombreUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.Black;
+            this.label11.Location = new System.Drawing.Point(58, 400);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(136, 13);
+            this.label11.TabIndex = 97;
+            this.label11.Text = "Dar de baja el usuario:";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.Black;
+            this.label6.Location = new System.Drawing.Point(58, 126);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(164, 13);
+            this.label6.TabIndex = 98;
+            this.label6.Text = "Modificar datos del usuario:";
+            // 
+            // checkBoxBaja
+            // 
+            this.checkBoxBaja.AutoSize = true;
+            this.checkBoxBaja.ForeColor = System.Drawing.Color.Black;
+            this.checkBoxBaja.Location = new System.Drawing.Point(193, 400);
+            this.checkBoxBaja.Name = "checkBoxBaja";
+            this.checkBoxBaja.Size = new System.Drawing.Size(47, 17);
+            this.checkBoxBaja.TabIndex = 99;
+            this.checkBoxBaja.Text = "Baja";
+            this.checkBoxBaja.UseVisualStyleBackColor = true;
+            this.checkBoxBaja.CheckedChanged += new System.EventHandler(this.checkBoxBaja_CheckedChanged);
+            // 
             // ActualizarUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(784, 561);
+            this.Controls.Add(this.checkBoxBaja);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label11);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.dateTimePickerFechaNacimiento);
             this.Controls.Add(this.botonVolver);
@@ -371,5 +411,8 @@ namespace Programa
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Label labelNombreUsuario;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.CheckBox checkBoxBaja;
     }
 }

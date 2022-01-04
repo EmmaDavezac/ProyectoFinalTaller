@@ -112,6 +112,7 @@ namespace Nucleo
             return interfazDAL.ObtenerEjemplar(id);
 
         }
+
         public List<Ejemplar> ObtenerEjemplaresDisponibles(int id)
         {
             return interfazDAL.ObtenerEjemplaresDisponibles(Convert.ToInt32(id));
@@ -320,6 +321,21 @@ namespace Nucleo
             ArchivoDeLog oLog = new ArchivoDeLog();
             oLog.Add(sLog);
 
+        }
+
+        public bool DarDeBajaUsuario(string pNombreUsuario)
+        {
+            return interfazDAL.DarDeBajaUsuario(pNombreUsuario);
+        }
+
+        public void DarDeBajaAdministrador(string pNombreUsuario)
+        {
+            interfazDAL.DarDeBajaAdministrador(pNombreUsuario);
+        }
+
+        public void DarDeAltaUsuario(string pNombreUsuario)
+        {
+            interfazDAL.DarDeAltaUsuario(pNombreUsuario);
         }
     }
 }

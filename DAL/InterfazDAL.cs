@@ -326,6 +326,7 @@ namespace DAL
                 unitOfWork.Complete();
             }
         }
+
         public Libro ObtenerLibroDePrestamo(int id)
         {
             using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
@@ -396,5 +397,46 @@ namespace DAL
             }
         }
 
+        public bool DarDeBajaUsuario(string pNombreUsuario)
+        {
+            bool resultado;
+            using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
+            {
+                resultado = unitOfWork.RepositorioUsuarios.Get(pNombreUsuario).ValidarBaja();
+                if (resultado == true)
+                {
+                    unitOfWork.RepositorioUsuarios.Get(pNombreUsuario).Baja = true;
+                }
+                unitOfWork.Complete();
+                return resultado;
+            }
+        }
+
+        public void DarDeBajaAdministrador(string pNombreUsuario)
+        {
+            using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
+            {
+                unitOfWork.RepositorioAdministradores.Get(pNombreUsuario).Baja = true;
+                unitOfWork.Complete();
+            }
+        }
+
+        public void DarDeAltaUsuario(string pNombreUsuario)
+        {
+            using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
+            {
+                 unitOfWork.RepositorioUsuarios.Get(pNombreUsuario).Baja = false;
+                 unitOfWork.Complete();
+            }
+        }
+
+        public void DarDeAltaAdministrador(string pNombreUsuario)
+        {
+            using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
+            {
+                 unitOfWork.RepositorioAdministradores.Get(pNombreUsuario).Baja = false;
+                 unitOfWork.Complete();
+            }
+        }
     }
 }

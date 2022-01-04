@@ -103,7 +103,7 @@ namespace Programa
 
         }
 
-        private void ObtenerUsuarios()
+        public void ObtenerUsuarios()
         {
             IEnumerable<UsuarioSimple> usuarios = interfazNucleo.ObtenerUsuarios();
             dataGridViewUsuarios.Rows.Clear();
@@ -126,6 +126,12 @@ namespace Programa
                 dataGridViewUsuarios.Rows[n].Cells[5].Value = item.FechaNacimiento.ToShortDateString(); 
                 dataGridViewUsuarios.Rows[n].Cells[6].Value = item.Mail;
                 dataGridViewUsuarios.Rows[n].Cells[7].Value = item.Telefono;
+                dataGridViewUsuarios.Rows[n].Cells[8].Value = item.Baja.ToString();
+                if (item.Baja == true)
+                {
+                    dataGridViewUsuarios.Rows[n].DefaultCellStyle.BackColor = Color.Red;
+                    dataGridViewUsuarios.Rows[n].DefaultCellStyle.ForeColor = Color.White;
+                }
             }
         }
 
@@ -138,9 +144,9 @@ namespace Programa
                 if (cell.Value.ToString() == "Edit")
                 {
                     ActualizarUsuario ventana = new ActualizarUsuario(nombreUsuario);
-                    ventana.CargarUsuarioExistente(dataGridViewUsuarios.Rows[e.RowIndex].Cells[1].Value.ToString());
+                    ventana.CargarUsuarioExistente(dataGridViewUsuarios.Rows[e.RowIndex].Cells[1].Value.ToString(), dataGridViewUsuarios.Rows[e.RowIndex].Cells[8].Value.ToString());
                     this.Hide();
-                    ventana.Show();
+                    ventana.Show(this);
                 } 
             }
         }

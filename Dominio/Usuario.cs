@@ -17,6 +17,7 @@ namespace Dominio
         public string Telefono { get; set; }
         [Key]
         public string NombreUsuario { get; set; }
+        public bool Baja { get; set; }
 
         public Usuario(string nombre, string apellido, DateTime fechaNacimiento, string mail, string telefono, string pNombreUsuario)
         {
@@ -27,6 +28,7 @@ namespace Dominio
             Mail = mail;
             Telefono = telefono;
             NombreUsuario = pNombreUsuario;
+            Baja = false;
         }
 
         public Usuario()

@@ -19,5 +19,25 @@ namespace Dominio
         {
 
         }
+
+        public bool ValidarBaja()
+        {
+            bool resultado = true;
+            if (Prestamos == null)
+            {
+                resultado = true;
+            }
+            else
+            {
+                foreach (var item in Prestamos)
+                {
+                    if (item.FechaDevolucion == null)
+                    {
+                        resultado = false;
+                    }
+                }
+            }
+            return resultado;
+        }
     }
 }
