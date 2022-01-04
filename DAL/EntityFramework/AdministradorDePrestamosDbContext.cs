@@ -1,15 +1,15 @@
 ﻿
+using Dominio;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
-using Dominio;
 
 namespace DAL.EntityFramework
 {
-    public class AdministradorDePrestamosDbContext:DbContext
-        
+    public class AdministradorDePrestamosDbContext : DbContext
+
     {
-        
-        public AdministradorDePrestamosDbContext(string cadena):base(cadena)
+
+        public AdministradorDePrestamosDbContext(string cadena) : base(cadena)
         {
 
         }

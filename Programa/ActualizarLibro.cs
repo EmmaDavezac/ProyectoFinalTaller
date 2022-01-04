@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using Dominio;
 using Nucleo;
-using Dominio;
+using System;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace Programa
 {
@@ -19,7 +13,7 @@ namespace Programa
         private int sumatoriaDeEjemplares { get; set; }
         private int idLibro { get; set; }
         private string NombreUsuario { get; set; }
-        public ActualizarLibro(string nombreUsuario,int pIdLibro)
+        public ActualizarLibro(string nombreUsuario, int pIdLibro)
         {
             InitializeComponent();
             NombreUsuario = nombreUsuario;
@@ -30,7 +24,7 @@ namespace Programa
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void botonVolver_Click(object sender, EventArgs e)
@@ -101,7 +95,7 @@ namespace Programa
                     {
                         interfazNucleo.EliminarEjemplaresDeUnLibro(idLibro, sumatoriaDeEjemplares);
                     }
-                    if(sumatoriaDeEjemplares > 0)
+                    if (sumatoriaDeEjemplares > 0)
                     {
                         interfazNucleo.AñadirEjemplares(idLibro, sumatoriaDeEjemplares);
                     }
@@ -218,7 +212,7 @@ namespace Programa
 
         }
 
-        public void InicializarLibro(string pISBN, string pTitulo, string pAutor, string pAñoPublicacion,string pDisponible)
+        public void InicializarLibro(string pISBN, string pTitulo, string pAutor, string pAñoPublicacion, string pDisponible)
         {
             textBoxTitulo.Text = pTitulo;
             textBoxISBN.Text = pISBN;

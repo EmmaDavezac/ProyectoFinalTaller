@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+﻿using Nucleo;
+using System;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Nucleo;
 
 namespace Programa
 {
@@ -40,7 +34,7 @@ namespace Programa
 
         }
 
-        public void InicializarDevolucion(string pNombreUsuario, string pTitulo, string pAutor, string pFechaVencimiento, string pEstado, string pScoringActual,int pIdPrestamo)
+        public void InicializarDevolucion(string pNombreUsuario, string pTitulo, string pAutor, string pFechaVencimiento, string pEstado, string pScoringActual, int pIdPrestamo)
         {
             labelUsuario.Text = pNombreUsuario;
             labelLibro.Text = pTitulo + " - " + pAutor;
@@ -50,7 +44,7 @@ namespace Programa
                 int dias = difFechas.Days;
                 labelEstado.Text = pEstado;
                 labelEstado.ForeColor = Color.Red;
-                scoringPorFecha = -2*dias;
+                scoringPorFecha = -2 * dias;
             }
             else if (pEstado == "ProximoAVencer")
             {
@@ -102,7 +96,7 @@ namespace Programa
                 scoringDevolucion = scoringActual + scoringPorFecha;
                 labelScoringDevolucion.Text = scoringDevolucion + "(" + scoringPorFecha + ")";
                 labelScoringDevolucion.Visible = true;
-            } 
+            }
             else if (comboBoxEstadoEjemplar.SelectedIndex == 1)
             {
                 scoringDevolucion = scoringActual + scoringPorFecha - 10;
@@ -118,7 +112,7 @@ namespace Programa
             this.Hide();
             this.Owner.Show();
             ((GestionarPrestamos)this.Owner).ObtenerPrestamos();
-            
+
         }
 
         private void botonVolver_Click(object sender, EventArgs e)

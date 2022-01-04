@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
+﻿using Nucleo;
+using System;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Dominio;
-using Nucleo;
 
 namespace Programa
 {
@@ -32,57 +25,57 @@ namespace Programa
 
         private void buttonGuardar_Click(object sender, EventArgs e)
         {
-                if (!string.IsNullOrEmpty(textBoxNombre.Text) && textBoxNombre.Text.All(Char.IsLetter))
+            if (!string.IsNullOrEmpty(textBoxNombre.Text) && textBoxNombre.Text.All(Char.IsLetter))
+            {
+                if (!string.IsNullOrEmpty(textBoxApellido.Text) && textBoxApellido.Text.All(Char.IsLetter))
                 {
-                    if (!string.IsNullOrEmpty(textBoxApellido.Text) && textBoxApellido.Text.All(Char.IsLetter))
+                    if (dateTimePickerFechaNacimiento.Value != new DateTime(1900, 1, 1))
                     {
-                        if (dateTimePickerFechaNacimiento.Value != new DateTime(1900, 1, 1))
+                        if (!string.IsNullOrEmpty(textBoxMail.Text) && interfazNucleo.EsUnEmailValido(textBoxMail.Text))
                         {
-                            if (!string.IsNullOrEmpty(textBoxMail.Text) && interfazNucleo.EsUnEmailValido(textBoxMail.Text))
+                            if (!string.IsNullOrEmpty(textBoxTelefono.Text) && textBoxTelefono.Text.All(Char.IsDigit) && textBoxTelefono.Text.Length >= 8 && textBoxTelefono.Text.Length <= 11)
                             {
-                                if (!string.IsNullOrEmpty(textBoxTelefono.Text) && textBoxTelefono.Text.All(Char.IsDigit) && textBoxTelefono.Text.Length >= 8 && textBoxTelefono.Text.Length <= 11)
-                                {
-                                    interfazNucleo.ActualizarUsuario(textBoxNombreUsuario.Text, textBoxNombre.Text, textBoxApellido.Text, dateTimePickerFechaNacimiento.Value.Date.ToString(), textBoxMail.Text, textBoxTelefono.Text);
-                                    MessageBox.Show("Usuario guardado, el nombre de usuario es: " + textBoxNombreUsuario.Text, "Operacion Exitosa", MessageBoxButtons.OK);
-                                    this.Hide();
-                                    ConsultarUsuario ventanaMenu = new ConsultarUsuario(nombreUsuario);
-                                    ventanaMenu.Show();
-                                }
-                                else
-                                {
-                                    this.labelError.Text = "Error,telefono ingresado invalido.Ingrese el numero sin 0 ni 15";
-                                    buttonGuardar.Enabled = false;
-                                    textBoxTelefono.Focus(); ;
-                                }
+                                interfazNucleo.ActualizarUsuario(textBoxNombreUsuario.Text, textBoxNombre.Text, textBoxApellido.Text, dateTimePickerFechaNacimiento.Value.Date.ToString(), textBoxMail.Text, textBoxTelefono.Text);
+                                MessageBox.Show("Usuario guardado, el nombre de usuario es: " + textBoxNombreUsuario.Text, "Operacion Exitosa", MessageBoxButtons.OK);
+                                this.Hide();
+                                ConsultarUsuario ventanaMenu = new ConsultarUsuario(nombreUsuario);
+                                ventanaMenu.Show();
                             }
                             else
                             {
-                                this.labelError.Text = "Error, el mail ingresado no es valido";
+                                this.labelError.Text = "Error,telefono ingresado invalido.Ingrese el numero sin 0 ni 15";
                                 buttonGuardar.Enabled = false;
-                                textBoxMail.Focus(); ;
+                                textBoxTelefono.Focus(); ;
                             }
                         }
                         else
                         {
-                            this.labelError.Text = "Error, no ha ingresado la fecha de nacimiento";
+                            this.labelError.Text = "Error, el mail ingresado no es valido";
                             buttonGuardar.Enabled = false;
-                            dateTimePickerFechaNacimiento.Focus(); ;
+                            textBoxMail.Focus(); ;
                         }
-
                     }
                     else
                     {
-                        this.labelError.Text = "Error, apellido invalido.No debe contener numeros, espacios ni simbolos";
+                        this.labelError.Text = "Error, no ha ingresado la fecha de nacimiento";
                         buttonGuardar.Enabled = false;
-                        textBoxApellido.Focus(); ;
+                        dateTimePickerFechaNacimiento.Focus(); ;
                     }
+
                 }
                 else
                 {
-                    this.labelError.Text = "Error, nombre invalido.No debe contener numeros, espacios ni simbolos";
+                    this.labelError.Text = "Error, apellido invalido.No debe contener numeros, espacios ni simbolos";
                     buttonGuardar.Enabled = false;
-                    textBoxNombre.Focus(); ;
+                    textBoxApellido.Focus(); ;
                 }
+            }
+            else
+            {
+                this.labelError.Text = "Error, nombre invalido.No debe contener numeros, espacios ni simbolos";
+                buttonGuardar.Enabled = false;
+                textBoxNombre.Focus(); ;
+            }
         }
 
         private void ActualizarUsuario_Load(object sender, EventArgs e)

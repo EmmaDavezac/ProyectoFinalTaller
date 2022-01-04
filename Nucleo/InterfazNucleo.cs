@@ -1,14 +1,11 @@
-﻿using System;
+﻿using Bitacora;
+using DAL;
+using Dominio;
+using NotificacionAUsuario;
+using ServiciosAPILibros;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DAL;
-using DAL.EntityFramework;//libreria de implementacion de IUnitOfWork con entityFramework
-using Dominio;
-using ServiciosAPILibros;
-using NotificacionAUsuario;
-using Bitacora;
 
 namespace Nucleo
 {
@@ -17,14 +14,8 @@ namespace Nucleo
         private InterfazDAL interfazDAL = new InterfazDAL();
         private InterfazAPILibros interfazAPILibros = new InterfazAPILibros();
         private InterfazNotificarUsuario interfazNotificarUsuario = new InterfazNotificarUsuario();
-        private IServiciosAPILibros GetIServiciosAPILibros(string unIServiciosAPILibros)///Implementacion posibles para la api que nos brinda informacion sobre libros, interactua con la interfaz IAPIlibros, esta abtraccion nos permite poder trabajar con distintas implementaciones
-        {
-            return interfazAPILibros.GetIServiciosAPILibros(unIServiciosAPILibros);
-        }
-        private INotificarUsuario GetNotificarUsuario(string unNotificarCliente)
-        {
-            return interfazNotificarUsuario.GetNotificarUsuario(unNotificarCliente);
-        }
+
+
 
         public InterfazNucleo()
         {
@@ -125,9 +116,9 @@ namespace Nucleo
         {
             return interfazDAL.ObtenerLibroDeEjemplar(id);
         }
-        public void RegistrarPrestamo(string pNombreUsuario, int idEjemplar,int idLibro)
+        public void RegistrarPrestamo(string pNombreUsuario, int idEjemplar, int idLibro)
         {
-            interfazDAL.RegistrarPrestamo(pNombreUsuario, idEjemplar,idLibro);
+            interfazDAL.RegistrarPrestamo(pNombreUsuario, idEjemplar, idLibro);
         }
         public Prestamo ObtenerPrestamo(int id)
         {
@@ -209,11 +200,11 @@ namespace Nucleo
             return interfazDAL.EsUnEmailValido(email);
         }
 
-        public void NotificarProximoAVencer(string pNombreUsuario)
+        private void NotificarProximoAVencer(string pNombreUsuario)
         {
             RegistrarLog(interfazNotificarUsuario.NotificarProximoAVencer(ObtenerUsuarioPorNombreOMail(pNombreUsuario)));
         }
-        public void NotificarRetraso(string pNombreUsuario)
+        private void NotificarRetraso(string pNombreUsuario)
         {
             RegistrarLog(interfazNotificarUsuario.NotificarRetraso(ObtenerUsuarioPorNombreOMail(pNombreUsuario)));
         }
@@ -225,7 +216,7 @@ namespace Nucleo
             letters[0] = char.ToUpper(letters[0]);
             return new string(letters);
         }
-        public void NotificarPrestamosProximosAVencer()
+        private void NotificarPrestamosProximosAVencer()
         {
             foreach (var item in ObtenerListadePrestamosProximosAVencerse())
             {
@@ -234,7 +225,7 @@ namespace Nucleo
             }
         }
 
-        public void NotificarPrestamosRetrasados()
+        private void NotificarPrestamosRetrasados()
         {
             foreach (var item in ObtenerListadePrestamosRetrasados())
             {
@@ -317,9 +308,16 @@ namespace Nucleo
         public void RegistrarLog(string sLog)
         {
 
-            ArchivoDeLog oLog = new ArchivoDeLog();
-            oLog.Add(sLog);
+            ArchivoDeLog oLog = new ArchivoDeLog();//abre la bitacora
+            oLog.Add(sLog);//añade un log a la bitacora
 
         }
+        public void NotificarUsuarios()//notifica a todos los usuarios que tengas prestamos retrasados o proximos a vencer
+        {
+            if (DateTime.Now.Hour == 9)//verifica que sean las 9 am
+            {
+                NotificarPrestamosProximosAVencer();//notifica a todos los usuarios que tengan al menos un prestamo proximo a vencer
+                NotificarPrestamosRetrasados();//notifica  a todos los usuarios que tengan al menos un prestamo retrasado
+            }
+        }
     }
-}

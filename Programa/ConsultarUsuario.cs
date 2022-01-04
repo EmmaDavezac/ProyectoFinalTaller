@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Dominio;
+﻿using Dominio;
 using Nucleo;
+using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace Programa
 {
@@ -17,7 +12,7 @@ namespace Programa
         private string nombre { get; set; }
         private string nombreUsuario { get; set; }
         private InterfazNucleo interfazNucleo = new InterfazNucleo();
-       
+
         public ConsultarUsuario(string pNombreUsuario)
         {
             InitializeComponent();
@@ -85,7 +80,7 @@ namespace Programa
 
         private void textBoxApellido_TextChanged(object sender, EventArgs e)
         {
-           
+
         }
 
         private void label2_Click_1(object sender, EventArgs e)
@@ -112,10 +107,10 @@ namespace Programa
                 int n = dataGridViewUsuarios.Rows.Add();
                 dataGridViewUsuarios.Rows[n].Cells[1].Value = item.NombreUsuario;
                 dataGridViewUsuarios.Rows[n].Cells[2].Value = item.Scoring;
-                dataGridViewUsuarios.Rows[n].Cells[2].Style.Font = new Font(dataGridViewUsuarios.Font, FontStyle.Bold); 
+                dataGridViewUsuarios.Rows[n].Cells[2].Style.Font = new Font(dataGridViewUsuarios.Font, FontStyle.Bold);
                 if (item.Scoring >= 0)
                 {
-                    dataGridViewUsuarios.Rows[n].Cells[2].Style.ForeColor = Color.GreenYellow;
+                    dataGridViewUsuarios.Rows[n].Cells[2].Style.ForeColor = Color.Green;
                 }
                 else
                 {
@@ -123,7 +118,7 @@ namespace Programa
                 }
                 dataGridViewUsuarios.Rows[n].Cells[3].Value = item.Nombre;
                 dataGridViewUsuarios.Rows[n].Cells[4].Value = item.Apellido;
-                dataGridViewUsuarios.Rows[n].Cells[5].Value = item.FechaNacimiento.ToShortDateString(); 
+                dataGridViewUsuarios.Rows[n].Cells[5].Value = item.FechaNacimiento.ToShortDateString();
                 dataGridViewUsuarios.Rows[n].Cells[6].Value = item.Mail;
                 dataGridViewUsuarios.Rows[n].Cells[7].Value = item.Telefono;
             }
@@ -131,7 +126,7 @@ namespace Programa
 
         private void dataGridViewUsuarios_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex>=0)
+            if (e.RowIndex >= 0)
             {
 
                 DataGridViewCell cell = (DataGridViewCell)dataGridViewUsuarios.Rows[e.RowIndex].Cells[e.ColumnIndex];
@@ -141,7 +136,7 @@ namespace Programa
                     ventana.CargarUsuarioExistente(dataGridViewUsuarios.Rows[e.RowIndex].Cells[1].Value.ToString());
                     this.Hide();
                     ventana.Show();
-                } 
+                }
             }
         }
 

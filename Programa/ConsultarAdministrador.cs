@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Dominio;
+﻿using Dominio;
 using Nucleo;
+using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace Programa
 {
@@ -38,7 +32,7 @@ namespace Programa
                 UsuarioAdministrador usuarioSimple = interfazNucleo.ObtenerAdministradorPorNombreOMail(textBoxNombreUsuario.Text);
                 if (usuarioSimple != null)
                 {
-                   
+
                     dataGridViewAdministradores.Rows.Clear();
                     dataGridViewAdministradores.Rows.Add();
                     dataGridViewAdministradores.Rows[0].Cells[1].Value = usuarioSimple.NombreUsuario;
@@ -51,13 +45,13 @@ namespace Programa
                 else
                 {
                     labelErro.Text = "Error, el administrador ingresado no existe, ingrese otro nombre de usuario";
-                   
+
                     textBoxNombreUsuario.Focus();
                 }
             }
             else
             {
-               
+
                 textBoxNombreUsuario.Focus();
             }
 
@@ -131,7 +125,7 @@ namespace Programa
                     ventana.CargarUsuarioExistente(dataGridViewAdministradores.Rows[e.RowIndex].Cells[1].Value.ToString());
                     this.Hide();
                     ventana.Show();
-                } 
+                }
             }
         }
 

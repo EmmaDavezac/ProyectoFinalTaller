@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using Dominio;
 using Nucleo;
-using Dominio;
+using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
 
 
 
@@ -22,14 +16,14 @@ namespace Programa
         {
             InitializeComponent();
             NombreUsuario = pNombreUsuario;
-           
+
             labelNombreUsuario.Text = "Usuario: " + NombreUsuario;
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0&& dataGridViewTituloYAutor.CurrentRow.Cells[0].Value!=null)
-            {   
+            if (e.RowIndex >= 0 && dataGridViewTituloYAutor.CurrentRow.Cells[0].Value != null)
+            {
                 dataGridViewAños.Rows.Clear();
                 dataGridViewISBN.Rows.Clear();
                 textBoxTitulo.Text = dataGridViewTituloYAutor.CurrentRow.Cells[0].Value.ToString();
@@ -52,7 +46,7 @@ namespace Programa
                 {
                     int n = dataGridView1.Rows.Add();
                     dataGridView2.Rows[n].Cells[0].Value = ;
-                }*/ 
+                }*/
             }
         }
 
@@ -97,7 +91,7 @@ namespace Programa
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             buttonBuscar.Enabled = true;
-            
+
         }
 
         private void label4_Click(object sender, EventArgs e)
@@ -110,7 +104,7 @@ namespace Programa
             if (!string.IsNullOrEmpty(textBoxTitulo.Text) && !string.IsNullOrEmpty(textBoxAutor.Text) && !string.IsNullOrEmpty(textBoxISBN.Text) && !string.IsNullOrEmpty(textBoxAñoPublicacion.Text) && !string.IsNullOrEmpty(textBoxCantidadEjemplares.Text))
             {
 
-                new InterfazNucleo().AñadirLibro(textBoxISBN.Text, textBoxTitulo.Text, textBoxAutor.Text, textBoxAñoPublicacion.Text,Convert.ToInt32(textBoxCantidadEjemplares.Text));
+                new InterfazNucleo().AñadirLibro(textBoxISBN.Text, textBoxTitulo.Text, textBoxAutor.Text, textBoxAñoPublicacion.Text, Convert.ToInt32(textBoxCantidadEjemplares.Text));
                 MessageBox.Show("Libro registrado con exito, el Id del libro es: " + new InterfazNucleo().ObtenerUltimoIdLibro());
                 /*buttonBorrarDatos_Click(sender,e);  No es necesario ya que podria querer seguir cargando libros con el mismo titulo, incluso si me equivoque en la cantidad de ejemplares podria agregarlos sin volver a cargar todo.
                 dataGridViewAños.Rows.Clear();         
@@ -202,7 +196,7 @@ namespace Programa
         {
             if (e.RowIndex >= 0)
             {
-                textBoxISBN.Text = dataGridViewISBN.CurrentRow.Cells[0].Value.ToString(); 
+                textBoxISBN.Text = dataGridViewISBN.CurrentRow.Cells[0].Value.ToString();
             }
         }
 
@@ -218,7 +212,7 @@ namespace Programa
         {
             if (textBoxSeleccionarISBN.Text != null)
             {
-                for (int i = 0; i < dataGridViewISBN.Rows.Count-1; i++)
+                for (int i = 0; i < dataGridViewISBN.Rows.Count - 1; i++)
                 {
                     if (dataGridViewISBN.Rows[i].Cells[0].Value.ToString().Contains(textBoxSeleccionarISBN.Text.ToString()) == false)
                     {
@@ -236,7 +230,7 @@ namespace Programa
         {
             if (textBoxSelccionarAño.Text != null)
             {
-                for (int i = 0; i < dataGridViewAños.Rows.Count-1; i++)
+                for (int i = 0; i < dataGridViewAños.Rows.Count - 1; i++)
                 {
                     if (dataGridViewAños.Rows[i].Cells[0].Value.ToString().Contains(textBoxSelccionarAño.Text.ToString()) == false)
                     {
@@ -293,7 +287,7 @@ namespace Programa
             SeleccionarFilaDeTablaAñoPublicacion(libro.AñoPublicacion);*/
         }
 
-        private DataGridViewRow SeleccionarFilaDeTablaTituloYAutor(string pTitulo,string pAutor)
+        private DataGridViewRow SeleccionarFilaDeTablaTituloYAutor(string pTitulo, string pAutor)
         {
             DataGridViewRow dataGridViewRow = null;
             int n = 0;
@@ -342,17 +336,17 @@ namespace Programa
         {
             if (!string.IsNullOrEmpty(textBoxTitulo.Text) && !string.IsNullOrEmpty(textBoxAutor.Text) && !string.IsNullOrEmpty(textBoxISBN.Text) && !string.IsNullOrEmpty(textBoxAñoPublicacion.Text))
             {
-                
-                    ((ActualizarLibro)this.Owner).CargarDatosDeBusquedaAvanzada(textBoxTitulo.Text,textBoxAutor.Text,textBoxAñoPublicacion.Text,textBoxISBN.Text);
-                    MessageBox.Show("Libro registrado con exito, el Id del libro es: " + new InterfazNucleo().ObtenerUltimoIdLibro());
+
+                ((ActualizarLibro)this.Owner).CargarDatosDeBusquedaAvanzada(textBoxTitulo.Text, textBoxAutor.Text, textBoxAñoPublicacion.Text, textBoxISBN.Text);
+                MessageBox.Show("Libro registrado con exito, el Id del libro es: " + new InterfazNucleo().ObtenerUltimoIdLibro());
                 this.Hide();
                 this.Owner.Show();
-                    /*buttonBorrarDatos_Click(sender,e);  No es necesario ya que podria querer seguir cargando libros con el mismo titulo, incluso si me equivoque en la cantidad de ejemplares podria agregarlos sin volver a cargar todo.
-                    dataGridViewAños.Rows.Clear();         
-                    dataGridViewISBN.Rows.Clear();
-                    dataGridViewTituloYAutor.Rows.Clear();
-                    textBoxCantidadEjemplares.Clear();
-                    textBoxBuscar.Clear();*/         
+                /*buttonBorrarDatos_Click(sender,e);  No es necesario ya que podria querer seguir cargando libros con el mismo titulo, incluso si me equivoque en la cantidad de ejemplares podria agregarlos sin volver a cargar todo.
+                dataGridViewAños.Rows.Clear();         
+                dataGridViewISBN.Rows.Clear();
+                dataGridViewTituloYAutor.Rows.Clear();
+                textBoxCantidadEjemplares.Clear();
+                textBoxBuscar.Clear();*/
             }
             else
             {

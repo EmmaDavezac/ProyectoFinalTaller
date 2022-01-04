@@ -1,13 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Nucleo;
 namespace Programa
 {
     public partial class Login : Form
@@ -36,24 +28,24 @@ namespace Programa
         {
             if (!string.IsNullOrEmpty(textBoxNombreUsuario.Text))
             {
-                    if (!string.IsNullOrEmpty(textBoxContraseña.Text))
+                if (!string.IsNullOrEmpty(textBoxContraseña.Text))
+                {
+                    Nucleo.InterfazNucleo fachada = new Nucleo.InterfazNucleo();
+                    if (new Nucleo.InterfazNucleo().ObtenerAdministradorPorNombreOMail(textBoxNombreUsuario.Text) != null)
                     {
-                        Nucleo.InterfazNucleo fachada = new Nucleo.InterfazNucleo();
-                        if (new Nucleo.InterfazNucleo().ObtenerAdministradorPorNombreOMail(textBoxNombreUsuario.Text) != null)
+                        if (textBoxContraseña.Text != null && fachada.VerficarContraseña(textBoxNombreUsuario.Text, textBoxContraseña.Text))
                         {
-                            if (textBoxContraseña.Text != null && fachada.VerficarContraseña(textBoxNombreUsuario.Text, textBoxContraseña.Text))
-                            {
 
-                                Menu2 ventanaMenu = new Menu2(textBoxNombreUsuario.Text);
-                                ventanaMenu.Show();
-                                this.Hide();
-                            }
-                            else { labelError.Text = "Error, la contraseña ingresada es incorrecta "; botonIniciarSesion.Enabled = false; textBoxContraseña.Focus(); }
-
+                            Menu2 ventanaMenu = new Menu2(textBoxNombreUsuario.Text);
+                            ventanaMenu.Show();
+                            this.Hide();
                         }
-                        else { labelError.Text = "Error,el usuario no existe"; botonIniciarSesion.Enabled = false; textBoxNombreUsuario.Focus(); }
+                        else { labelError.Text = "Error, la contraseña ingresada es incorrecta "; botonIniciarSesion.Enabled = false; textBoxContraseña.Focus(); }
+
                     }
-                    else { labelError.Text = "Error,no ha ingresado contraseña"; botonIniciarSesion.Enabled = false; textBoxContraseña.Clear(); textBoxContraseña.Focus(); }
+                    else { labelError.Text = "Error,el usuario no existe"; botonIniciarSesion.Enabled = false; textBoxNombreUsuario.Focus(); }
+                }
+                else { labelError.Text = "Error,no ha ingresado contraseña"; botonIniciarSesion.Enabled = false; textBoxContraseña.Clear(); textBoxContraseña.Focus(); }
             }
             else { labelError.Text = "Error, no ha ingresado el nombre de usuario"; botonIniciarSesion.Enabled = false; textBoxNombreUsuario.Focus(); }
 

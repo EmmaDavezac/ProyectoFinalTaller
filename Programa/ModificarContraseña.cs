@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Nucleo;
+using System;
 using System.Windows.Forms;
-using Nucleo;
 
 namespace Programa
 {
@@ -66,7 +59,7 @@ namespace Programa
                 buttonAceptar.Enabled = false;
                 textBoxContraseñaAntigua.Focus(); ;
             }
-            
+
         }
 
         private void button1_Click(object sender, EventArgs e)
