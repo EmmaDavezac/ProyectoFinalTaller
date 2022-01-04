@@ -122,7 +122,7 @@ namespace Programa
         public void CargarUsuarioExistente(string pNombreUsuario)
         {
             var usuario = interfazNucleo.ObtenerUsuarioPorNombreOMail(pNombreUsuario);
-            //VaciarCampos();
+            
             textBoxNombreUsuario.Text = usuario.NombreUsuario;
             textBoxNombre.Text = usuario.Nombre;
             textBoxApellido.Text = usuario.Apellido;
@@ -132,15 +132,7 @@ namespace Programa
 
         }
 
-        private void VaciarCampos()
-        {
-            textBoxNombreUsuario.Text = string.Empty;
-            textBoxNombre.Text = string.Empty;
-            textBoxApellido.Text = string.Empty;
-            dateTimePickerFechaNacimiento.Value = new DateTime(1900, 1, 1);
-            textBoxMail.Text = string.Empty;
-            textBoxTelefono.Text = string.Empty;
-        }
+       
 
         private void label5_Click(object sender, EventArgs e)
         {

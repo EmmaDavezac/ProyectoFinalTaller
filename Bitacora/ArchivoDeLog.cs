@@ -30,9 +30,9 @@ namespace Bitacora
 
         private string GetNameFile()//metodo que devuelve el nombre para un nuevo archivo de la bitacora
         {
-            string nombre = "";
+           
 
-            nombre = "log_" + DateTime.Now.Year + "_" + DateTime.Now.Month + "_" + DateTime.Now.Day + ".txt";//el formato de nombre del archivo es log_año_mes_dia.txt
+            string nombre = "log_" + DateTime.Now.Year + "_" + DateTime.Now.Month + "_" + DateTime.Now.Day + ".txt";//el formato de nombre del archivo es log_año_mes_dia.txt
 
             return nombre;
         }
