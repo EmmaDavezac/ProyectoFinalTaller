@@ -17,14 +17,7 @@ namespace Nucleo
         private InterfazDAL interfazDAL = new InterfazDAL();
         private InterfazAPILibros interfazAPILibros = new InterfazAPILibros();
         private InterfazNotificarUsuario interfazNotificarUsuario = new InterfazNotificarUsuario();
-        private IServiciosAPILibros GetIServiciosAPILibros(string unIServiciosAPILibros)///Implementacion posibles para la api que nos brinda informacion sobre libros, interactua con la interfaz IAPIlibros, esta abtraccion nos permite poder trabajar con distintas implementaciones
-        {
-            return interfazAPILibros.GetIServiciosAPILibros(unIServiciosAPILibros);
-        }
-        private INotificarUsuario GetNotificarUsuario(string unNotificarCliente)
-        {
-            return interfazNotificarUsuario.GetNotificarUsuario(unNotificarCliente);
-        }
+        
 
         public InterfazNucleo()
         {
@@ -312,6 +305,13 @@ namespace Nucleo
             else
             {
                 return TransformarISBNsALista(pLista).First();
+            }
+        }
+
+        public void NotificarUsuarios()
+        { if (DateTime.Now.Hour == 9)
+            { NotificarPrestamosRetrasados();
+                NotificarPrestamosProximosAVencer();
             }
         }
 
