@@ -186,16 +186,21 @@ namespace DAL
         {
             using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
             {
-                for (int i = 0; i < pCantidad; i++)
+                int i = 0;
+                do
                 {
-                    if (ObtenerEjemplaresDisponibles(pIdLibro)[i].Disponible == true)
-                    {
-                        ObtenerEjemplaresDisponibles(pIdLibro)[i].Disponible = false;
-                        ObtenerEjemplaresDisponibles(pIdLibro)[i].Estado = EstadoEjemplar.Malo;
-                        ObtenerEjemplaresDisponibles(pIdLibro)[i].Baja = true;
-                        i++;
-                    }
-                }
+                   
+                        if (ObtenerEjemplaresDisponibles(pIdLibro)[i].Disponible == true)
+                        {
+                            ObtenerEjemplaresDisponibles(pIdLibro)[i].Disponible = false;
+                            ObtenerEjemplaresDisponibles(pIdLibro)[i].Estado = EstadoEjemplar.Malo;
+                            ObtenerEjemplaresDisponibles(pIdLibro)[i].Baja = true;
+                            i++;
+                        }
+                    
+                } while (i < pCantidad && i < ObtenerEjemplaresDisponibles(pIdLibro).Count); 
+                
+                unitOfWork.Complete();
             }
         }
 
