@@ -13,7 +13,7 @@ namespace Dominio
         public bool Baja { get; set; }//Property que nos permite dar una baja logica al libro
 
 
-        public Libro()/Constructor de la clase sin argumentos
+        public Libro()//Constructor de la clase sin argumentos
         {
 
         }
