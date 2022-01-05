@@ -80,8 +80,9 @@ namespace Programa
 
         private void dataGridViewLibros_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dataGridViewLibros.CurrentRow.Cells[5].Value != null)
+            if (e.RowIndex >= 0)
             {
+                if (dataGridViewLibros.CurrentRow.Cells[5].Value != null)
                 {
                     if (dataGridViewLibros.CurrentRow.Cells[5].Value.ToString() != "0")
                     {

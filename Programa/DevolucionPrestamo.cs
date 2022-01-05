@@ -12,10 +12,12 @@ namespace Programa
         private int scoringDevolucion;
         private InterfazNucleo interfazNucleo = new InterfazNucleo();
         private int idPrestamo;
+        private bool modificado;
         public DevolucionPrestamo()
         {
             scoringPorFecha = 0;
             scoringDevolucion = 0;
+            modificado = false;
             InitializeComponent();
         }
 
@@ -91,6 +93,7 @@ namespace Programa
 
         private void comboBoxEstadoEjemplar_SelectedIndexChanged(object sender, EventArgs e)
         {
+            modificado = true;
             if (comboBoxEstadoEjemplar.SelectedIndex == 0)
             {
                 scoringDevolucion = scoringActual + scoringPorFecha;
@@ -107,12 +110,18 @@ namespace Programa
 
         private void botonRegistrarDevolucion_Click(object sender, EventArgs e)
         {
-            interfazNucleo.RegistrarDevolucion(idPrestamo, comboBoxEstadoEjemplar.Text);
-            MessageBox.Show("La devolucion se registro correctamente");
-            this.Hide();
-            this.Owner.Show();
-            ((GestionarPrestamos)this.Owner).ObtenerPrestamos();
-
+            if (modificado == true)
+            {
+                interfazNucleo.RegistrarDevolucion(idPrestamo, comboBoxEstadoEjemplar.Text);
+                MessageBox.Show("La devolucion se registro correctamente");
+                this.Hide();
+                this.Owner.Show();
+                ((GestionarPrestamos)this.Owner).ObtenerPrestamos();
+            }
+            else
+            {
+                MessageBox.Show("No selecciono el estado del ejemplar");
+            }
         }
 
         private void botonVolver_Click(object sender, EventArgs e)

@@ -70,20 +70,15 @@ namespace Dominio
 
         public void EliminarEjemplares(int pCantidad)
         {
-            int i = 1;
-            foreach (var item in Ejemplares)
+            for (int i = 0; i < pCantidad; i++)
             {
-                if (i > pCantidad)
+                if (Ejemplares[i].Disponible == true)
                 {
-                    break;
-                }
-                else if (item.Disponible == true)
-                {
-                    item.Disponible = false;
-                    item.Estado = EstadoEjemplar.Malo;
-                    item.Baja = false;
+                    Ejemplares[i].Disponible = false;
+                    Ejemplares[i].Estado = EstadoEjemplar.Malo;
+                    Ejemplares[i].Baja = true;
                     i++;
-                }
+                }             
             }
         }
 

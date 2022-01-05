@@ -37,7 +37,6 @@ namespace Programa
             this.botonIniciarSesion = new System.Windows.Forms.Button();
             this.labelError = new System.Windows.Forms.Label();
             this.buttonMostrar = new System.Windows.Forms.Button();
-            this.buttonRegistrarse = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -100,7 +99,7 @@ namespace Programa
             this.botonIniciarSesion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.botonIniciarSesion.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.botonIniciarSesion.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.botonIniciarSesion.Location = new System.Drawing.Point(403, 448);
+            this.botonIniciarSesion.Location = new System.Drawing.Point(344, 433);
             this.botonIniciarSesion.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.botonIniciarSesion.Name = "botonIniciarSesion";
             this.botonIniciarSesion.Size = new System.Drawing.Size(110, 30);
@@ -134,24 +133,6 @@ namespace Programa
             this.buttonMostrar.UseVisualStyleBackColor = false;
             this.buttonMostrar.Click += new System.EventHandler(this.button1_Click);
             // 
-            // buttonRegistrarse
-            // 
-            this.buttonRegistrarse.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.buttonRegistrarse.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonRegistrarse.FlatAppearance.BorderSize = 0;
-            this.buttonRegistrarse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonRegistrarse.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonRegistrarse.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.buttonRegistrarse.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonRegistrarse.Location = new System.Drawing.Point(289, 448);
-            this.buttonRegistrarse.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.buttonRegistrarse.Name = "buttonRegistrarse";
-            this.buttonRegistrarse.Size = new System.Drawing.Size(110, 30);
-            this.buttonRegistrarse.TabIndex = 36;
-            this.buttonRegistrarse.Text = "Registrarse";
-            this.buttonRegistrarse.UseVisualStyleBackColor = false;
-            this.buttonRegistrarse.Click += new System.EventHandler(this.button1_Click_1);
-            // 
             // timer1
             // 
             this.timer1.Interval = 25;
@@ -176,7 +157,6 @@ namespace Programa
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(784, 561);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.buttonRegistrarse);
             this.Controls.Add(this.buttonMostrar);
             this.Controls.Add(this.labelError);
             this.Controls.Add(this.botonIniciarSesion);
@@ -210,7 +190,6 @@ namespace Programa
         private System.Windows.Forms.Button botonIniciarSesion;
         private System.Windows.Forms.Label labelError;
         private System.Windows.Forms.Button buttonMostrar;
-        private System.Windows.Forms.Button buttonRegistrarse;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.PictureBox pictureBox1;
     }

@@ -417,6 +417,7 @@ namespace Programa
             this.labelCantidadActual.Size = new System.Drawing.Size(85, 13);
             this.labelCantidadActual.TabIndex = 98;
             this.labelCantidadActual.Text = "Cantidad Actual:";
+            this.labelCantidadActual.Click += new System.EventHandler(this.labelCantidadActual_Click);
             // 
             // labelErrorEliminarEjemplares
             // 

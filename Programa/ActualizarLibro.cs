@@ -93,9 +93,9 @@ namespace Programa
                     interfazNucleo.ActualizarLibro(idLibro, textBoxISBN.Text, textBoxTitulo.Text, textBoxAutor.Text, textBoxAñoPublicacion.Text);
                     if (sumatoriaDeEjemplares < 0)
                     {
-                        interfazNucleo.EliminarEjemplaresDeUnLibro(idLibro, sumatoriaDeEjemplares);
+                        interfazNucleo.EliminarEjemplaresDeUnLibro(idLibro, Math.Abs(sumatoriaDeEjemplares));
                     }
-                    if (sumatoriaDeEjemplares > 0)
+                    if (sumatoriaDeEjemplares >= 0)
                     {
                         interfazNucleo.AñadirEjemplares(idLibro, sumatoriaDeEjemplares);
                     }
@@ -114,9 +114,9 @@ namespace Programa
                     interfazNucleo.ActualizarLibro(idLibro, textBoxISBN.Text, textBoxTitulo.Text, textBoxAutor.Text, textBoxAñoPublicacion.Text);
                     if (sumatoriaDeEjemplares < 0)
                     {
-                        interfazNucleo.EliminarEjemplaresDeUnLibro(idLibro, sumatoriaDeEjemplares);
+                        interfazNucleo.EliminarEjemplaresDeUnLibro(idLibro, Math.Abs(sumatoriaDeEjemplares));
                     }
-                    if (sumatoriaDeEjemplares > 0)
+                    else if (sumatoriaDeEjemplares >= 0)
                     {
                         interfazNucleo.AñadirEjemplares(idLibro, sumatoriaDeEjemplares);
                     }
@@ -218,7 +218,7 @@ namespace Programa
             textBoxISBN.Text = pISBN;
             textBoxAutor.Text = pAutor;
             textBoxAñoPublicacion.Text = pAñoPublicacion;
-            labelCantidadActual.Text = "Cantidad Actual: " + interfazNucleo.ObtenerEjemplaresTotales(idLibro).Count().ToString();
+            labelCantidadActual.Text = "Cantidad Actual: " + interfazNucleo.ObtenerEjemplaresDisponibles(idLibro).Count().ToString();
             if (pDisponible == "True")
             {
                 checkBoxBaja.Checked = true;
@@ -242,11 +242,20 @@ namespace Programa
 
         private void buttonEliminarEjemplares_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(textBoxEliminarEjemplares.Text))
+            if (!string.IsNullOrEmpty(textBoxEliminarEjemplares.Text) )
             {
-                sumatoriaDeEjemplares -= Convert.ToInt32(textBoxEliminarEjemplares.Text);
-                labelCantidadActual.Text = "Cantidad Actual: " + Convert.ToString(interfazNucleo.ObtenerEjemplaresEnBuenEstadoLibro(idLibro).Count() + sumatoriaDeEjemplares);
-                textBoxEliminarEjemplares.Text = "";
+                if (interfazNucleo.ObtenerEjemplaresDisponibles(idLibro).Count >= Convert.ToInt32(textBoxEliminarEjemplares.Text))
+                {
+                    sumatoriaDeEjemplares = sumatoriaDeEjemplares - Convert.ToInt32(textBoxEliminarEjemplares.Text);
+                    labelCantidadActual.Text = "Cantidad Actual: " + Convert.ToString(interfazNucleo.ObtenerEjemplaresDisponibles(idLibro).Count() + sumatoriaDeEjemplares);
+                    textBoxEliminarEjemplares.Text = "";
+                }
+                else
+                {
+                    sumatoriaDeEjemplares = -interfazNucleo.ObtenerEjemplaresDisponibles(idLibro).Count();
+                    labelCantidadActual.Text = "Cantidad Actual: 0";
+                    textBoxEliminarEjemplares.Text = "";
+                }
             }
             else
             {
@@ -295,7 +304,7 @@ namespace Programa
                     buttonDeshacerCambios.Enabled = true;
                     buttonEliminarEjemplares.Enabled = true;
                     buttonBusquedaEnAPI.Enabled = true;
-                    labelCantidadActual.Text = "Cantidad Actual: " + Convert.ToString(interfazNucleo.ObtenerEjemplaresEnBuenEstadoLibro(idLibro).Count());
+                    labelCantidadActual.Text = "Cantidad Actual: " + Convert.ToString(interfazNucleo.ObtenerEjemplaresDisponibles(idLibro).Count());
                 }
             }
         }
@@ -308,6 +317,11 @@ namespace Programa
         private void textBoxAñadirEjemplares_TextChanged(object sender, EventArgs e)
         {
             labelErrorAñadirEjemplares.Visible = false;
+        }
+
+        private void labelCantidadActual_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

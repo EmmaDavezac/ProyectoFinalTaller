@@ -2,6 +2,7 @@
 using Nucleo;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Programa
@@ -109,7 +110,12 @@ namespace Programa
                 dataGridViewAdministradores.Rows[n].Cells[4].Value = item.FechaNacimiento.ToShortDateString();
                 dataGridViewAdministradores.Rows[n].Cells[5].Value = item.Mail;
                 dataGridViewAdministradores.Rows[n].Cells[6].Value = item.Telefono;
-                dataGridViewAdministradores.Rows[0].Cells[7].Value = item.Baja.ToString();
+                dataGridViewAdministradores.Rows[n].Cells[7].Value = item.Baja.ToString();
+                if (item.Baja == true)
+                {
+                    dataGridViewAdministradores.Rows[n].DefaultCellStyle.BackColor = Color.Red;
+                    dataGridViewAdministradores.Rows[n].DefaultCellStyle.ForeColor = Color.White;
+                }
             }
         }
 

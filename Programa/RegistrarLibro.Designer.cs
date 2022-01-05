@@ -317,6 +317,7 @@ namespace Programa
             this.dataGridViewISBN.ReadOnly = true;
             this.dataGridViewISBN.Size = new System.Drawing.Size(205, 222);
             this.dataGridViewISBN.TabIndex = 24;
+            this.dataGridViewISBN.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewISBN_CellContentClick);
             this.dataGridViewISBN.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewISBN_CellContentClick);
             // 
             // ISBN
@@ -338,6 +339,7 @@ namespace Programa
             this.dataGridViewAños.ReadOnly = true;
             this.dataGridViewAños.Size = new System.Drawing.Size(204, 222);
             this.dataGridViewAños.TabIndex = 25;
+            this.dataGridViewAños.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewAños_CellContentClick);
             this.dataGridViewAños.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewAños_CellContentClick);
             // 
             // AñoPublicacion
