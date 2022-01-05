@@ -120,8 +120,18 @@ namespace Dominio
         public void RegistrarDevolucion(EstadoEjemplar estadoDevolucion)
         {
             EstadoDevolucion = estadoDevolucion;
-            Ejemplar.Estado = estadoDevolucion;
-            Ejemplar.Disponible = true;
+            if (estadoDevolucion == EstadoEjemplar.Malo)
+            {
+                Ejemplar.Disponible = false;
+                Ejemplar.Estado = estadoDevolucion;
+                Ejemplar.Baja = true;
+            }
+            else
+            {
+                Ejemplar.Disponible = true;
+                Ejemplar.Estado = estadoDevolucion;
+                Ejemplar.Baja = false;
+            }
             FechaDevolucion = DateTime.Now.Date.ToString();
             Usuario.Scoring = CalcularScoring(Usuario);
         }

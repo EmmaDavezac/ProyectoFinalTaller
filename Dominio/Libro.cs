@@ -32,7 +32,7 @@ namespace Dominio
             List<Ejemplar> ejemplaresDisponibles = new List<Ejemplar>();
             foreach (var item in this.Ejemplares)
             {
-                if (item.Disponible && item.Estado == EstadoEjemplar.Bueno)
+                if (item.Disponible && item.Estado == EstadoEjemplar.Bueno && item.Baja == false)
                 {
                     ejemplaresDisponibles.Add(item);
                 }
@@ -81,6 +81,7 @@ namespace Dominio
                 {
                     item.Disponible = false;
                     item.Estado = EstadoEjemplar.Malo;
+                    item.Baja = false;
                     i++;
                 }
             }
@@ -93,8 +94,11 @@ namespace Dominio
                 Baja = true;
                 foreach (var item in Ejemplares)
                 {
-                    item.Disponible = false;
-                    item.Baja = true;
+                    if (item.Estado != EstadoEjemplar.Malo)
+                    {
+                        item.Disponible = false;
+                        item.Baja = true;
+                    }              
                 }
             }
         }
@@ -106,8 +110,12 @@ namespace Dominio
                 Baja = false;
                 foreach (var item in Ejemplares)
                 {
-                    item.Disponible = true;
-                    item.Baja = false;
+                    if (item.Estado != EstadoEjemplar.Malo)
+                    {
+                        item.Disponible = true;
+                        item.Baja = false;
+                    }
+                    
                 }
             }
         }

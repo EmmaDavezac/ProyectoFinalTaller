@@ -406,6 +406,7 @@ namespace Programa
             this.textBoxCantidadEjemplares.Name = "textBoxCantidadEjemplares";
             this.textBoxCantidadEjemplares.Size = new System.Drawing.Size(79, 20);
             this.textBoxCantidadEjemplares.TabIndex = 33;
+            this.textBoxCantidadEjemplares.TextChanged += new System.EventHandler(this.textBoxCantidadEjemplares_TextChanged);
             // 
             // panel3
             // 

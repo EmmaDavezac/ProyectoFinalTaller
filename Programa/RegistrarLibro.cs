@@ -354,5 +354,10 @@ namespace Programa
                 textBoxTitulo.Focus();
             }
         }
+
+        private void textBoxCantidadEjemplares_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

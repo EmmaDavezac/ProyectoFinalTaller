@@ -24,39 +24,6 @@ namespace Programa
         {
 
         }
-
-        private void buttonBuscarUsuario_Click(object sender, EventArgs e)
-        {
-            if (textBoxNombreUsuario.Text != null && textBoxNombreUsuario.Text != "")
-            {
-                UsuarioAdministrador usuarioSimple = interfazNucleo.ObtenerAdministradorPorNombreOMail(textBoxNombreUsuario.Text);
-                if (usuarioSimple != null)
-                {
-
-                    dataGridViewAdministradores.Rows.Clear();
-                    dataGridViewAdministradores.Rows.Add();
-                    dataGridViewAdministradores.Rows[0].Cells[1].Value = usuarioSimple.NombreUsuario;
-                    dataGridViewAdministradores.Rows[0].Cells[2].Value = usuarioSimple.Nombre;
-                    dataGridViewAdministradores.Rows[0].Cells[3].Value = usuarioSimple.Apellido;
-                    dataGridViewAdministradores.Rows[0].Cells[4].Value = usuarioSimple.FechaNacimiento.ToShortDateString();
-                    dataGridViewAdministradores.Rows[0].Cells[5].Value = usuarioSimple.Mail;
-                    dataGridViewAdministradores.Rows[0].Cells[6].Value = usuarioSimple.Telefono;
-                }
-                else
-                {
-                    labelErro.Text = "Error, el administrador ingresado no existe, ingrese otro nombre de usuario";
-
-                    textBoxNombreUsuario.Focus();
-                }
-            }
-            else
-            {
-
-                textBoxNombreUsuario.Focus();
-            }
-
-
-        }
         private void textBoxId_TextChanged(object sender, EventArgs e)
         {
             if (textBoxNombreUsuario.Text != null)
@@ -114,7 +81,7 @@ namespace Programa
 
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridViewAdministradores_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
@@ -122,18 +89,18 @@ namespace Programa
                 if (cell.Value.ToString() == "Edit")
                 {
                     ActualizarAdministrador ventana = new ActualizarAdministrador(nombreUsuario);
-                    ventana.CargarUsuarioExistente(dataGridViewAdministradores.Rows[e.RowIndex].Cells[1].Value.ToString());
+                    ventana.CargarAdministradorExistente(dataGridViewAdministradores.Rows[e.RowIndex].Cells[1].Value.ToString(), dataGridViewAdministradores.Rows[e.RowIndex].Cells[7].Value.ToString());
                     this.Hide();
-                    ventana.Show();
+                    ventana.Show(this);
                 }
             }
         }
 
-        private void ObtenerAdministradores()
+        public void ObtenerAdministradores()
         {
-            IEnumerable<UsuarioAdministrador> usuarios = interfazNucleo.ObtenerAdministradores();
+            IEnumerable<UsuarioAdministrador> administradores = interfazNucleo.ObtenerAdministradores();
             dataGridViewAdministradores.Rows.Clear();
-            foreach (var item in usuarios)
+            foreach (var item in administradores)
             {
                 int n = dataGridViewAdministradores.Rows.Add();
                 dataGridViewAdministradores.Rows[n].Cells[1].Value = item.NombreUsuario;
@@ -142,6 +109,7 @@ namespace Programa
                 dataGridViewAdministradores.Rows[n].Cells[4].Value = item.FechaNacimiento.ToShortDateString();
                 dataGridViewAdministradores.Rows[n].Cells[5].Value = item.Mail;
                 dataGridViewAdministradores.Rows[n].Cells[6].Value = item.Telefono;
+                dataGridViewAdministradores.Rows[0].Cells[7].Value = item.Baja.ToString();
             }
         }
 

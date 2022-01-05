@@ -328,14 +328,19 @@ namespace Nucleo
             return interfazDAL.DarDeBajaUsuario(pNombreUsuario);
         }
 
-        public void DarDeBajaAdministrador(string pNombreUsuario)
+        public bool DarDeBajaAdministrador(string pNombreUsuario)
         {
-            interfazDAL.DarDeBajaAdministrador(pNombreUsuario);
+            return interfazDAL.DarDeBajaAdministrador(pNombreUsuario);
         }
 
         public void DarDeAltaUsuario(string pNombreUsuario)
         {
             interfazDAL.DarDeAltaUsuario(pNombreUsuario);
+        }
+
+        public void DarDeAltaAdministrador(string pNombreUsuario)
+        {
+            interfazDAL.DarDeAltaAdministrador(pNombreUsuario);
         }
     }
 }

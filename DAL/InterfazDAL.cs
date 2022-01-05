@@ -410,13 +410,22 @@ namespace DAL
             }
         }
 
-        public void DarDeBajaAdministrador(string pNombreUsuario)
+        public bool DarDeBajaAdministrador(string pNombreUsuario)
         {
-            using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
+            if (pNombreUsuario == "admin")
             {
-                unitOfWork.RepositorioAdministradores.Get(pNombreUsuario).Baja = true;
-                unitOfWork.Complete();
+                return false;
             }
+            else 
+            {
+                using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
+                {
+                    unitOfWork.RepositorioAdministradores.Get(pNombreUsuario).Baja = true;
+                    unitOfWork.Complete();
+                }
+                return true;
+            }
+            
         }
 
         public void DarDeAltaUsuario(string pNombreUsuario)
