@@ -12,7 +12,7 @@ using Bitacora;
 
 namespace Nucleo
 {
-    public class InterfazNucleo
+    public class InterfazNucleo//Fachada principal del proxima que nos permite usar las funciones del programa sin dar a conocer como funcionan por dentro
     {
         private InterfazDAL interfazDAL = new InterfazDAL();
         private InterfazAPILibros interfazAPILibros = new InterfazAPILibros();
