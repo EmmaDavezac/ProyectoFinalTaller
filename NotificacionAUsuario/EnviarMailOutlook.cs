@@ -6,7 +6,7 @@ using System.Net.Mail;
 
 namespace NotificacionAUsuario
 {
-    public class EnviarMailOutlook : INotificarUsuario//es una clase que nos permite enviar un mail a traves de una cuenta de Outlook
+    public class EnviarMailOutlook : INotificarUsuario//es una implementacion de INotificarque nos permite enviar un mail a traves de una cuenta de Outlook
     {
         const string pass = "Tallerdeprogramacion2021";// contraseña de la cuenta de outlook
         const string usuario = "proyectofinaltallerdeprogramacion@outlook.com";// usuario de la cuenta de outlook
