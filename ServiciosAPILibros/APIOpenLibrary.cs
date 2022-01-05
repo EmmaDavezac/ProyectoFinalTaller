@@ -1,18 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Dominio;
 using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Net;
+using System.Text;
 using System.Web;
-using Dominio;
 
 
 namespace ServiciosAPILibros
 {
-    public class APIOpenLibrary:IServiciosAPILibros
+    public class APIOpenLibrary : IServiciosAPILibros
     {
         public string TratarCadenaBusqueda(string ca)
         {
@@ -23,7 +21,7 @@ namespace ServiciosAPILibros
             {
                 if (c.Length > 0)
                     c = c + "+" + palabra;
-                else c = c + palabra;
+                else c += palabra;
             }
             return c.ToUpper();
 
@@ -50,7 +48,7 @@ namespace ServiciosAPILibros
                     // Se parsea la respuesta y se serializa a JSON a un objeto dynamic
                     dynamic mResponseJSON = JsonConvert.DeserializeObject(reader.ReadToEnd());
 
-                    
+
 
                     // Se iteran cada uno de los resultados.
                     string titulo;
@@ -60,34 +58,34 @@ namespace ServiciosAPILibros
 
                     foreach (var bResponseItem in mResponseJSON.docs)
                     {
-                        
+
 
 
                         if (bResponseItem.title != null)
                         {
-                             titulo = HttpUtility.HtmlDecode(bResponseItem.title.ToString());
+                            titulo = HttpUtility.HtmlDecode(bResponseItem.title.ToString());
                         }
-                        else {  titulo = "desconocido"; }
-                            if (bResponseItem.author_name != null)
-                            {
-                             autor= HttpUtility.HtmlDecode(bResponseItem.author_name.ToString());
-                            }
-                            else {  autor = "desconocido"; }
+                        else { titulo = "desconocido"; }
+                        if (bResponseItem.author_name != null)
+                        {
+                            autor = HttpUtility.HtmlDecode(bResponseItem.author_name.ToString());
+                        }
+                        else { autor = "desconocido"; }
                         if (bResponseItem.publish_year != null)
-                            {
-                             añoPublicacion = HttpUtility.HtmlDecode(bResponseItem.publish_year.ToString());
-                            }
-                            else { añoPublicacion = "desconocido"; }
+                        {
+                            añoPublicacion = HttpUtility.HtmlDecode(bResponseItem.publish_year.ToString());
+                        }
+                        else { añoPublicacion = "desconocido"; }
 
                         if (bResponseItem.isbn != null)
                         {
                             isbn = HttpUtility.HtmlDecode(bResponseItem.isbn.ToString());
                         }
                         else { isbn = "desconocido"; }
-                        lista.Add(new Libro(isbn,titulo, autor, añoPublicacion));
+                        lista.Add(new Libro(isbn, titulo, autor, añoPublicacion));
                     }
                 }
-                
+
             }
             catch (WebException ex)
             {
@@ -151,4 +149,4 @@ namespace ServiciosAPILibros
 
         }
     }
-    }
+}

@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
+﻿using Nucleo;
+using System;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Dominio;
-using Nucleo;
 
 namespace Programa
 {
@@ -156,7 +149,7 @@ namespace Programa
             textBoxNombreUsuario.Text = string.Empty;
             textBoxNombre.Text = string.Empty;
             textBoxApellido.Text = string.Empty;
-            dateTimePickerFechaNacimiento.Value= new DateTime(1900,1,1);
+            dateTimePickerFechaNacimiento.Value = new DateTime(1900, 1, 1);
             textBoxMail.Text = string.Empty;
             textBoxTelefono.Text = string.Empty;
         }

@@ -1,10 +1,9 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using Nucleo;
 using Quartz;
 using Quartz.Impl;
-using Quartz.Logging;
+using System;
+using System.Threading.Tasks;
 using System.Windows.Forms;
-using Nucleo;
 
 namespace Programa
 {
@@ -16,13 +15,11 @@ namespace Programa
             public async Task Execute(IJobExecutionContext context)
             {
                 InterfazNucleo interfaz = new InterfazNucleo();
-                interfaz.NotificarPrestamosProximosAVencer();
-                interfaz.NotificarPrestamosRetrasados();
-                MessageBox.Show("Prestamos Proximos a vencer y retrasados notificados!");
+                interfaz.NotificarUsuarios();
                 await Task.CompletedTask;
             }
             [STAThread]
-            private static async Task Main(string[] args)
+            private static async Task Main()
             {
                 const int tiempo = 60;
 
@@ -33,7 +30,7 @@ namespace Programa
                 // y la inicia
                 await scheduler.Start();
 
-                // define the job and tie it to our HelloJob class define el job y lo asigna a nuestro job
+                //class define el job y lo asigna a nuestro job
                 IJobDetail job = JobBuilder.Create<Trabajo>()
                     .WithIdentity("job1", "group1")
                     .Build();

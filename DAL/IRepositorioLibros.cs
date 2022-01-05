@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Dominio;
+﻿using Dominio;
 
 
 
 namespace DAL
 {
-    public interface IRepositorioLibros:IRepositorio<Libro>
+    public interface IRepositorioLibros : IRepositorio<Libro>
     {
     }
 }

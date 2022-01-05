@@ -1,9 +1,7 @@
 ﻿namespace DAL.Migrations
 {
     using System;
-    using System.Data.Entity;
     using System.Data.Entity.Migrations;
-    using System.Linq;
 
     internal sealed class Configuration : DbMigrationsConfiguration<DAL.EntityFramework.AdministradorDePrestamosDbContext>
     {
@@ -23,9 +21,11 @@
             {
                 NombreUsuario = "admin",
                 Pass = "admin",
+                Nombre = "admin",
+                Apellido="admin",
                 Id = 1,
-                FechaNacimiento = new DateTime(1900,1,1),
-            });
+                FechaNacimiento = new DateTime(1900, 1, 1),
+            }); ;
         }
     }
 }

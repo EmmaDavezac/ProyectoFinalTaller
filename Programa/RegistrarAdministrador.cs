@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
+﻿using Nucleo;
+using System;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Nucleo;
 
 namespace Programa
 {
@@ -110,7 +104,7 @@ namespace Programa
                                         {
                                             MessageBox.Show("El usuario: " + textBoxNombreUsuario.Text + " ya se encuentra registrado, pruebe con otro nombre de usuario", "Error", MessageBoxButtons.OK);
                                         }
-                                        
+
                                     }
                                     else
                                     {
@@ -161,7 +155,7 @@ namespace Programa
             {
                 this.labelError.Text = "Error, nombre de usuario esta vacio";
                 buttonRegistrarAdministrador.Enabled = false;
-                textBoxNombreUsuario.Focus(); 
+                textBoxNombreUsuario.Focus();
             }
         }
 

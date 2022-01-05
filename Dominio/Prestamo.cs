@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Collections;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Dominio
@@ -26,7 +21,8 @@ namespace Dominio
         public string ISBNLibro { get; set; }
         public int idLibro { get; set; }
         private DateTime CalcularFechaLimite(UsuarioSimple usuario)
-        { int scoring = usuario.Scoring;
+        {
+            int scoring = usuario.Scoring;
 
             if (scoring >= 0)
             {
@@ -59,11 +55,11 @@ namespace Dominio
 
         public EstadoPrestamo ActualizarEstado()
         {
-            if (Retrasado() == true)
+            if (Retrasado() )
             {
                 EstadoPrestamo = EstadoPrestamo.Retrasado;
             }
-            else if (ProximoAVencerse() == true)
+            else if (ProximoAVencerse() )
             {
                 EstadoPrestamo = EstadoPrestamo.ProximoAVencer;
             }
@@ -84,20 +80,26 @@ namespace Dominio
 
         }
         public bool ProximoAVencerse()
-        {   int cantDiasParaConsiderarseProximo = 3;
-            if (string.IsNullOrEmpty(FechaDevolucion))
+        {
+            int cantDiasParaConsiderarseProximo = 3;
+            if (!this.Retrasado())
             {
-                TimeSpan diferenciaEntreFechas = Convert.ToDateTime(FechaLimite) - DateTime.Now;
-                int dias = diferenciaEntreFechas.Days;
-                if (dias < cantDiasParaConsiderarseProximo)
+                if (string.IsNullOrEmpty(FechaDevolucion))
                 {
-                    return true;
+                    TimeSpan diferenciaEntreFechas = Convert.ToDateTime(FechaLimite) - DateTime.Now;
+                    int dias = diferenciaEntreFechas.Days;
+                    if (dias < cantDiasParaConsiderarseProximo)
+                    {
+                        return true;
+                    }
+                    else return false;
                 }
                 else return false;
             }
-            else return false ; }
+            else return false;
+        }
         private int CalcularScoring(UsuarioSimple usuario)
-        { 
+        {
             int scoring = usuario.Scoring;
             if (EstadoDevolucion == EstadoEjemplar.Malo)
             {
@@ -115,7 +117,7 @@ namespace Dominio
             }
             return scoring;
         }
-       public void RegistrarDevolucion(EstadoEjemplar estadoDevolucion)
+        public void RegistrarDevolucion(EstadoEjemplar estadoDevolucion)
         {
             EstadoDevolucion = estadoDevolucion;
             Ejemplar.Estado = estadoDevolucion;

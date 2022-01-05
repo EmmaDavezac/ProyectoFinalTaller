@@ -1,14 +1,10 @@
-﻿using System;
+﻿using Dominio;
+using Nucleo;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Nucleo;
-using Dominio;
 
 namespace Programa
 {
@@ -45,7 +41,7 @@ namespace Programa
                     string disponible = dataGridViewLibros.Rows[e.RowIndex].Cells[8].Value.ToString();
                     ActualizarLibro ventana = new ActualizarLibro(nombreUsuario, id);
                     this.Hide();
-                    ventana.InicializarLibro(ISBN, titulo, autor, añoPublicacion,disponible);
+                    ventana.InicializarLibro(ISBN, titulo, autor, añoPublicacion, disponible);
                     ventana.Show(this);
                 }
             }

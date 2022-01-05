@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Nucleo;
+using System;
 using System.Windows.Forms;
-using Nucleo;
 
 namespace Programa
 {
@@ -23,7 +16,7 @@ namespace Programa
             NombreYApellido = interfazNucleo.ObtenerAdministradorPorNombreOMail(nombreUsuario).Nombre + " " + interfazNucleo.ObtenerAdministradorPorNombreOMail(nombreUsuario).Apellido;
             labelNombreUsuario.Text = "Nombre de Usuario: " + nombreUsuario;
             labelNombreYApellido.Text = "Nombre: " + NombreYApellido;
-           
+
         }
 
         private void Menu2_Load(object sender, EventArgs e)
@@ -126,8 +119,8 @@ namespace Programa
         private void button2_Click(object sender, EventArgs e)
         {
             this.Hide();
-            RegistrarUsuario ventanaAgregarCliente = new RegistrarUsuario(nombreUsuario);
-            ventanaAgregarCliente.Show();
+            RegistrarUsuario ventana = new RegistrarUsuario(nombreUsuario);
+            ventana.Show();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -207,7 +200,7 @@ namespace Programa
             ventana.Show();
         }
 
-       
+
 
         private void button18_Click(object sender, EventArgs e)
         {

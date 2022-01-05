@@ -1,14 +1,10 @@
-﻿using System;
+﻿using Dominio;
+using Nucleo;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Nucleo;
-using Dominio;
 
 namespace Programa
 {
@@ -92,10 +88,10 @@ namespace Programa
                     string fechaVencimiento = dataGridViewPrestamos.Rows[e.RowIndex].Cells[6].Value.ToString();
                     string estado = dataGridViewPrestamos.Rows[e.RowIndex].Cells[7].Value.ToString();
                     string scoring = Convert.ToString(usuarioSimple.Scoring);
-                    int idLibro = prestamo.idLibro;
+                   
                     int idPrestamo = Convert.ToInt32(dataGridViewPrestamos.Rows[e.RowIndex].Cells[1].Value.ToString());
                     DevolucionPrestamo ventana = new DevolucionPrestamo();
-                    ventana.InicializarDevolucion(usuario, titulo, autor, fechaVencimiento, estado, scoring,idPrestamo);
+                    ventana.InicializarDevolucion(usuario, titulo, autor, fechaVencimiento, estado, scoring, idPrestamo);
                     ventana.Show(this);
                 }
                 if (cell.Value.ToString() == "Edit")

@@ -1,14 +1,10 @@
-﻿using System;
+﻿using Dominio;
+using Nucleo;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Nucleo;
-using Dominio;
 
 namespace Programa
 {
@@ -84,15 +80,18 @@ namespace Programa
 
         private void dataGridViewLibros_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (dataGridViewLibros.CurrentRow.Cells[5].Value != null)
             {
-                if (dataGridViewLibros.CurrentRow.Cells[5].Value.ToString() != "0")
                 {
-                    textBoxIdLibro.Text = dataGridViewLibros.CurrentRow.Cells[0].Value.ToString();
-                    textBoxTitulo.Text = dataGridViewLibros.CurrentRow.Cells[1].Value.ToString();
-                    textBoxISBN.Text = dataGridViewLibros.CurrentRow.Cells[2].Value.ToString();
-                    textBoxAutor.Text = dataGridViewLibros.CurrentRow.Cells[3].Value.ToString();
+                    if (dataGridViewLibros.CurrentRow.Cells[5].Value.ToString() != "0")
+                    {
+                        textBoxIdLibro.Text = dataGridViewLibros.CurrentRow.Cells[0].Value.ToString();
+                        textBoxTitulo.Text = dataGridViewLibros.CurrentRow.Cells[1].Value.ToString();
+                        textBoxISBN.Text = dataGridViewLibros.CurrentRow.Cells[2].Value.ToString();
+                        textBoxAutor.Text = dataGridViewLibros.CurrentRow.Cells[3].Value.ToString();
+                    }
                 }
-            }              
+            }
         }
 
         private void ObtenerLibros()
@@ -116,7 +115,7 @@ namespace Programa
                         dataGridViewLibros.Rows[n].DefaultCellStyle.BackColor = Color.Yellow;
                     }
                 }
-                
+
             }
         }
 
@@ -138,9 +137,12 @@ namespace Programa
 
         private void dataGridViewUsuarios_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            textBoxNomUsuario.Text = dataGridViewUsuarios.CurrentRow.Cells[0].Value.ToString();
-            textBoxNombre.Text = dataGridViewUsuarios.CurrentRow.Cells[1].Value.ToString();
-            textBoxApellido.Text = dataGridViewUsuarios.CurrentRow.Cells[2].Value.ToString();
+            if (dataGridViewUsuarios.CurrentRow.Cells[0].Value != null)
+            {
+                textBoxNomUsuario.Text = dataGridViewUsuarios.CurrentRow.Cells[0].Value.ToString();
+                textBoxNombre.Text = dataGridViewUsuarios.CurrentRow.Cells[1].Value.ToString();
+                textBoxApellido.Text = dataGridViewUsuarios.CurrentRow.Cells[2].Value.ToString();
+            }
         }
 
         private void textBoxNomUsuario_TextChanged(object sender, EventArgs e)
@@ -151,10 +153,10 @@ namespace Programa
         private void buttonRegistrarPrestamo_Click(object sender, EventArgs e)
         {
             int idEjemplar = interfazNucleo.ObtenerEjemplaresDisponibles(Convert.ToInt32(textBoxIdLibro.Text.ToString())).First().Id;
-            interfazNucleo.RegistrarPrestamo(textBoxNomUsuario.Text,idEjemplar, Convert.ToInt32(textBoxIdLibro.Text));
+            interfazNucleo.RegistrarPrestamo(textBoxNomUsuario.Text, idEjemplar, Convert.ToInt32(textBoxIdLibro.Text));
             string FechaLimite = Convert.ToDateTime(new InterfazNucleo().ObtenerPrestamo(interfazNucleo.ObtenerUltimoIdPrestamo()).FechaLimite).Date.ToShortDateString();
             MessageBox.Show("El prestamo ha sido registrado correctamente" + "\nFecha limite: " + FechaLimite);
-            RegistrarPrestamo_Load(sender,e);
+            RegistrarPrestamo_Load(sender, e);
         }
 
         private void botonVolver_Click(object sender, EventArgs e)

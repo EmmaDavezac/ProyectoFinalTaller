@@ -1,10 +1,8 @@
 ﻿using DAL.EntityFramework;
+using Dominio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Dominio;
 
 
 namespace DAL
@@ -12,7 +10,7 @@ namespace DAL
     public class InterfazDAL
     {
         static string[] implementacionesBase = new string[] { "ConnectionSQLServerLocal", "ConnectionSQLServerHosting" };//cadenas de conexion a bases de datos
-        static private string implementacionBase = implementacionesBase[0];
+        static private string implementacionBase = implementacionesBase[1];
         private IUnitOfWork GetUnitOfWork(string pCadenaConexion)//implementaciones posibles para las base de datos, interactua con la interfaz IUnitOfWork, esta abtraccion nos permite poder trabajar con distintas implementaciones
         {
             switch (pCadenaConexion)
@@ -61,7 +59,7 @@ namespace DAL
             }
         }
 
-        public void ActualizarUsuario(string pNombreUsuario, string nombre, string apellido, string pFechaNacimiento,string mail, string telefono)
+        public void ActualizarUsuario(string pNombreUsuario, string nombre, string apellido, string pFechaNacimiento, string mail, string telefono)
         {
             using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
             {
@@ -160,9 +158,9 @@ namespace DAL
                 return unitOfWork.RepositorioLibros.Get(id);
             }
         }
-        
 
-        public int ObtenerCantEjemplaresLibro (int id)
+
+        public int ObtenerCantEjemplaresLibro(int id)
         {
             using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
             {
@@ -170,9 +168,9 @@ namespace DAL
             }
         }
 
-        public void AñadirEjemplares(int pIdLibro,int pCantidad)
+        public void AñadirEjemplares(int pIdLibro, int pCantidad)
         {
-            
+
             using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
             {
                 for (int i = 1; i <= pCantidad; i++)
@@ -317,7 +315,7 @@ namespace DAL
             }
         }
 
-        public void ModificarFechasPrestamo(int pIdPrestamo,string pFechaPrestamo,string pFechaLimite)
+        public void ModificarFechasPrestamo(int pIdPrestamo, string pFechaPrestamo, string pFechaLimite)
         {
             using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
             {
