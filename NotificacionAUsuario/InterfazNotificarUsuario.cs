@@ -2,7 +2,7 @@
 
 namespace NotificacionAUsuario
 {
-    public class InterfazNotificarUsuario
+    public class InterfazNotificarUsuario//INterfaz de la libreria
     {
         static string[] implementacionesNotificar = new string[] { "MailOutlook" };
         static private string implementacionNotificar = implementacionesNotificar[0];
