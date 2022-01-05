@@ -39,8 +39,8 @@ namespace Bitacora
         {
             try
             {
-                if (!Directory.Exists(Path)) //si el directorio no existe lo crea
-                    Directory.CreateDirectory(Path);
+                if (!Directory.Exists(Path)) //verifica si existe la ruta de directorio especificada
+                    Directory.CreateDirectory(Path);//si el directorio no existe lo crea
             }
             catch (DirectoryNotFoundException ex) //en el caso de ocurrir un error captura la excepcion
             {
