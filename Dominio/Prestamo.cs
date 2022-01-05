@@ -3,24 +3,24 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Dominio
 {
-    public class Prestamo
+    public class Prestamo//Esta clase tiene como finalidad representar un prestamo de un ejemplar
     {
-        public int Id { get; set; }
-        public string FechaPrestamo { get; set; }
-        public string FechaLimite { get; set; }
-        public string FechaDevolucion { get; set; }
-        public EstadoPrestamo EstadoPrestamo { get; set; }
-        public EstadoEjemplar EstadoDevolucion { get; set; }
-        public string nombreUsuario { get; set; }
+        public int Id { get; set; }//Clave primaria que nos permite diferenciar los prestamos
+        public string FechaPrestamo { get; set; }//Fecha en que se realizo el prestamo
+        public string FechaLimite { get; set; }//Fecha en la que vence el presamo
+        public string FechaDevolucion { get; set; }//Fecha en la que se devolvio el prestamo
+        public EstadoPrestamo EstadoPrestamo { get; set; }//Estado del ejemplar(Normal,Proximo a vencer,Retrasado)
+        public EstadoEjemplar EstadoDevolucion { get; set; }//Estado de devolucion del ejemplar
+        public string nombreUsuario { get; set; }//Clave foranea que permite relacionar el usuario con el prestamo
         [ForeignKey("nombreUsuario")]
-        public virtual UsuarioSimple Usuario { get; set; }
-        public int idEjemplar { get; set; }
+        public virtual UsuarioSimple Usuario { get; set; }//¿Esto va?
+        public int idEjemplar { get; set; }//Clave foranea que nos permite relacionar el prestamo con el ejemplar
         [ForeignKey("idEjemplar")]
-        public virtual Ejemplar Ejemplar { get; set; }
-        public string TituloLibro { get; set; }
-        public string ISBNLibro { get; set; }
-        public int idLibro { get; set; }
-        private DateTime CalcularFechaLimite(UsuarioSimple usuario)
+        public virtual Ejemplar Ejemplar { get; set; }//¿ESTO VA?
+        public string TituloLibro { get; set; }//Titulo del libro
+        public string ISBNLibro { get; set; }//Isbn del libro
+        public int idLibro { get; set; }//id del libro
+        private DateTime CalcularFechaLimite(UsuarioSimple usuario)//Este metodo nos permite calcular la fecha limite para un prestamo en funcion del Scoring del usuario que solicita el prestamo
         {
             int scoring = usuario.Scoring;
 
@@ -35,7 +35,7 @@ namespace Dominio
             }
             else return DateTime.Now.AddDays(5);
         }
-        public Prestamo(UsuarioSimple usuario, Ejemplar ejemplar, Libro libro)
+        public Prestamo(UsuarioSimple usuario, Ejemplar ejemplar, Libro libro)//Constructor de la clase 
         {
             FechaPrestamo = DateTime.Now.ToShortDateString();
             FechaLimite = CalcularFechaLimite(usuario).ToShortDateString();
@@ -48,12 +48,12 @@ namespace Dominio
             ISBNLibro = libro.ISBN;
             idLibro = libro.Id;
         }
-        public Prestamo()
+        public Prestamo()//Constructor de la clase sin parametros
         {
 
         }
 
-        public EstadoPrestamo ActualizarEstado()
+        public EstadoPrestamo ActualizarEstado()//Este metodo nos permite actualizar actualizar el estado actual del prestamo y devolverlo
         {
             if (Retrasado() )
             {
@@ -70,7 +70,7 @@ namespace Dominio
             return EstadoPrestamo;
         }
 
-        public bool Retrasado()
+        public bool Retrasado()//Este metodo nos permite saber si el prestamo se encuenta retrasado
         {
             if ((DateTime.Now.Date > Convert.ToDateTime(FechaLimite).Date))
             {
@@ -79,7 +79,7 @@ namespace Dominio
             else return false;
 
         }
-        public bool ProximoAVencerse()
+        public bool ProximoAVencerse()//Este metodo nos permite saber si un prestamo esta proximo a vencerse
         {
             int cantDiasParaConsiderarseProximo = 3;
             if (!this.Retrasado())
@@ -98,7 +98,7 @@ namespace Dominio
             }
             else return false;
         }
-        private int CalcularScoring(UsuarioSimple usuario)
+        private int CalcularScoring(UsuarioSimple usuario)//Este metodo nos permite actualizar el scoring de un usario luego de devuelto el ejemplar
         {
             int scoring = usuario.Scoring;
             if (EstadoDevolucion == EstadoEjemplar.Malo)
@@ -117,7 +117,7 @@ namespace Dominio
             }
             return scoring;
         }
-        public void RegistrarDevolucion(EstadoEjemplar estadoDevolucion)
+        public void RegistrarDevolucion(EstadoEjemplar estadoDevolucion)//Este metodo nos permite permite registrar la devolucion de un ejemplar
         {
             EstadoDevolucion = estadoDevolucion;
             Ejemplar.Estado = estadoDevolucion;
