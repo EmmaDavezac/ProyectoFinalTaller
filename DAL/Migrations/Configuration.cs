@@ -23,7 +23,6 @@
                 Pass = "admin",
                 Nombre = "admin",
                 Apellido="admin",
-                Id = 1,
                 FechaNacimiento = new DateTime(1900, 1, 1),
             }); 
         }

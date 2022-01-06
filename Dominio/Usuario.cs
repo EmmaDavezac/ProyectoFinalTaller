@@ -5,7 +5,6 @@ namespace Dominio
 {
     public class Usuario //Clase que representa un usuario, a partir de esta heredan las clases UsuarioSimple y UsuarioAdministrador
     {
-        public int Id { get; set; }
         public string Nombre { get; set; }//Nombre o nombres del usuario
         public string Apellido { get; set; }//Apellido o Apellidos del usuario
         public DateTime FechaNacimiento { get; set; }//Fecha de nacimiento del usuario

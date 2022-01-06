@@ -123,11 +123,11 @@
     <Compile Include="GestionarPrestamos.Designer.cs">
       <DependentUpon>GestionarPrestamos.cs</DependentUpon>
     </Compile>
-    <Compile Include="Menu2.cs">
+    <Compile Include="MenuPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Menu2.Designer.cs">
-      <DependentUpon>Menu2.cs</DependentUpon>
+    <Compile Include="MenuPrincipal.Designer.cs">
+      <DependentUpon>MenuPrincipal.cs</DependentUpon>
     </Compile>
     <Compile Include="ModificarContraseña.cs">
       <SubType>Form</SubType>
@@ -141,23 +141,17 @@
     <Compile Include="RegistrarPrestamo.Designer.cs">
       <DependentUpon>RegistrarPrestamo.cs</DependentUpon>
     </Compile>
-    <Compile Include="RegistrarEjemplar.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="RegistrarEjemplar.Designer.cs">
-      <DependentUpon>RegistrarEjemplar.cs</DependentUpon>
-    </Compile>
     <Compile Include="RegistrarLibro.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="RegistrarLibro.Designer.cs">
       <DependentUpon>RegistrarLibro.cs</DependentUpon>
     </Compile>
-    <Compile Include="ConsultarAdministrador.cs">
+    <Compile Include="GestionarAdministradores.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ConsultarAdministrador.Designer.cs">
-      <DependentUpon>ConsultarAdministrador.cs</DependentUpon>
+    <Compile Include="GestionarAdministradores.Designer.cs">
+      <DependentUpon>GestionarAdministradores.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -176,11 +170,11 @@
     <Compile Include="RegistrarUsuario.Designer.cs">
       <DependentUpon>RegistrarUsuario.cs</DependentUpon>
     </Compile>
-    <Compile Include="ConsultarUsuario.cs">
+    <Compile Include="GestionarUsuarios.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ConsultarUsuario.Designer.cs">
-      <DependentUpon>ConsultarUsuario.cs</DependentUpon>
+    <Compile Include="GestionarUsuarios.Designer.cs">
+      <DependentUpon>GestionarUsuarios.cs</DependentUpon>
     </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
@@ -211,20 +205,17 @@
     <EmbeddedResource Include="GestionarPrestamos.resx">
       <DependentUpon>GestionarPrestamos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Menu2.resx">
-      <DependentUpon>Menu2.cs</DependentUpon>
+    <EmbeddedResource Include="MenuPrincipal.resx">
+      <DependentUpon>MenuPrincipal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModificarContraseña.resx">
       <DependentUpon>ModificarContraseña.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="RegistrarEjemplar.resx">
-      <DependentUpon>RegistrarEjemplar.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="RegistrarLibro.resx">
       <DependentUpon>RegistrarLibro.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ConsultarAdministrador.resx">
-      <DependentUpon>ConsultarAdministrador.cs</DependentUpon>
+    <EmbeddedResource Include="GestionarAdministradores.resx">
+      <DependentUpon>GestionarAdministradores.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RegistrarAdministrador.resx">
       <DependentUpon>RegistrarAdministrador.cs</DependentUpon>
@@ -235,8 +226,8 @@
     <EmbeddedResource Include="RegistrarUsuario.resx">
       <DependentUpon>RegistrarUsuario.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ConsultarUsuario.resx">
-      <DependentUpon>ConsultarUsuario.cs</DependentUpon>
+    <EmbeddedResource Include="GestionarUsuarios.resx">
+      <DependentUpon>GestionarUsuarios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>

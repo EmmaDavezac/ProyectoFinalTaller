@@ -13,12 +13,10 @@ namespace Dominio
         public EstadoEjemplar EstadoDevolucion { get; set; }//Estado de devolucion del ejemplar
         public string nombreUsuario { get; set; }//Clave foranea que permite relacionar el usuario con el prestamo
         [ForeignKey("nombreUsuario")]
-        public virtual UsuarioSimple Usuario { get; set; }//¿Esto va?
+        public virtual UsuarioSimple Usuario { get; set; }// Instancia del usuario relacionado al prestamo
         public int idEjemplar { get; set; }//Clave foranea que nos permite relacionar el prestamo con el ejemplar
         [ForeignKey("idEjemplar")]
-        public virtual Ejemplar Ejemplar { get; set; }//¿ESTO VA?
-        public string TituloLibro { get; set; }//Titulo del libro
-        public string ISBNLibro { get; set; }//Isbn del libro
+        public virtual Ejemplar Ejemplar { get; set; }//Instancia del ejemplar relacionado al prestamo
         public int idLibro { get; set; }//id del libro
         private DateTime CalcularFechaLimite(UsuarioSimple usuario)//Este metodo nos permite calcular la fecha limite para un prestamo en funcion del Scoring del usuario que solicita el prestamo
         {
@@ -44,8 +42,6 @@ namespace Dominio
             idEjemplar = ejemplar.Id;
             Ejemplar = ejemplar;
             EstadoPrestamo = EstadoPrestamo.Normal;
-            TituloLibro = libro.Titulo;
-            ISBNLibro = libro.ISBN;
             idLibro = libro.Id;
         }
         public Prestamo()//Constructor de la clase sin parametros

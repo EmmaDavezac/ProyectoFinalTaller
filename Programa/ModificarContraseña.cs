@@ -32,7 +32,7 @@ namespace Programa
             {
                 if (textBoxContraseñaNueva.Text != null)
                 {
-                    if (textBoxContraseñaAntigua.Text == interfazNucleo.ObtenerAdministradorPorNombreOMail(idUsuario).Pass)
+                    if (textBoxContraseñaAntigua.Text == interfazNucleo.ObtenerAdministrador(idUsuario).Pass)
                     {
                         MessageBox.Show("La contraseña a sido modificada, guarde los cambios de la ventana anterior para que esto tenga efecto", "Message", MessageBoxButtons.OK);
                         contraseñaNueva = textBoxContraseñaNueva.Text;

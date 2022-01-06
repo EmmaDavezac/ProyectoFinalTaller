@@ -41,12 +41,6 @@ namespace Programa
                     int n = dataGridViewAños.Rows.Add();
                     dataGridViewAños.Rows[n].Cells[0].Value = item;
                 }
-                /*List<string> resultados = textBoxISBN.Text.ToList();
-                foreach (var item in resultados)
-                {
-                    int n = dataGridView1.Rows.Add();
-                    dataGridView2.Rows[n].Cells[0].Value = ;
-                }*/
             }
         }
 
@@ -106,12 +100,6 @@ namespace Programa
 
                 new InterfazNucleo().AñadirLibro(textBoxISBN.Text, textBoxTitulo.Text, textBoxAutor.Text, textBoxAñoPublicacion.Text, Convert.ToInt32(textBoxCantidadEjemplares.Text));
                 MessageBox.Show("Libro registrado con exito, el Id del libro es: " + new InterfazNucleo().ObtenerUltimoIdLibro());
-                /*buttonBorrarDatos_Click(sender,e);  No es necesario ya que podria querer seguir cargando libros con el mismo titulo, incluso si me equivoque en la cantidad de ejemplares podria agregarlos sin volver a cargar todo.
-                dataGridViewAños.Rows.Clear();         
-                dataGridViewISBN.Rows.Clear();
-                dataGridViewTituloYAutor.Rows.Clear();
-                textBoxCantidadEjemplares.Clear();
-                textBoxBuscar.Clear();*/
 
             }
             else
@@ -282,55 +270,6 @@ namespace Programa
             textBoxTitulo.Text = libro.Titulo;
             textBoxBuscar.Text = libro.Titulo;
             button1_Click(this, null);
-            /*SeleccionarFilaDeTablaTituloYAutor(libro.Titulo,libro.Autor);
-            SeleccionarFilaDeTablaISBN(libro.ISBN);
-            SeleccionarFilaDeTablaAñoPublicacion(libro.AñoPublicacion);*/
-        }
-
-        private DataGridViewRow SeleccionarFilaDeTablaTituloYAutor(string pTitulo, string pAutor)
-        {
-            DataGridViewRow dataGridViewRow = null;
-            int n = 0;
-            do
-            {
-                if (dataGridViewTituloYAutor.Rows[n].Cells[0].Value.ToString() == pTitulo && dataGridViewTituloYAutor.Rows[n].Cells[1].Value.ToString() == pAutor)
-                {
-                    dataGridViewTituloYAutor.Rows[n].Selected = true;
-                    dataGridViewRow = dataGridViewTituloYAutor.Rows[n];
-                }
-                n = n + 1;
-            } while (dataGridViewRow == null);
-            return dataGridViewRow;
-        }
-
-        private DataGridViewRow SeleccionarFilaDeTablaISBN(string pISBN)
-        {
-            DataGridViewRow dataGridViewRow = null;
-            int n = 0;
-            do
-            {
-                if (dataGridViewISBN.Rows[n].Cells[0].Value.ToString() == pISBN)
-                {
-                    dataGridViewRow = dataGridViewTituloYAutor.Rows[n];
-                }
-                n++;
-            } while (dataGridViewRow == null);
-            return dataGridViewRow;
-        }
-
-        private DataGridViewRow SeleccionarFilaDeTablaAñoPublicacion(string pAñoPublicacion)
-        {
-            DataGridViewRow dataGridViewRow = null;
-            int n = 0;
-            do
-            {
-                if (dataGridViewAños.Rows[n].Cells[0].Value.ToString() == pAñoPublicacion)
-                {
-                    dataGridViewRow = dataGridViewTituloYAutor.Rows[n];
-                }
-                n++;
-            } while (dataGridViewRow == null);
-            return dataGridViewRow;
         }
         private void buttonActualizar_Click(object sender, EventArgs e)
         {

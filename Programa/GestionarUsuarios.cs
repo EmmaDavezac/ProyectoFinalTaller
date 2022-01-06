@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Dominio;
 using Nucleo;
@@ -22,7 +17,7 @@ namespace Programa
         {
             InitializeComponent();
             nombreUsuario = pNombreUsuario;
-            nombre = interfazNucleo.ObtenerAdministradorPorNombreOMail(nombreUsuario).Nombre;
+            nombre = interfazNucleo.ObtenerAdministrador(nombreUsuario).Nombre;
             labelNombreUsuario.Text = "Usuario: " + nombreUsuario;
         }
 
@@ -52,15 +47,13 @@ namespace Programa
         private void botonVolver_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Menu2 ventana = new Menu2(nombreUsuario.ToString());
-            ventana.Show();
+            this.Owner.Show();
         }
 
         private void ConsultarUsuario_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.Hide();
-            Menu2 ventanaMenu = new Menu2(nombreUsuario);
-            ventanaMenu.Show();
+            this.Owner.Show();
         }
 
         private void label2_Click(object sender, EventArgs e)

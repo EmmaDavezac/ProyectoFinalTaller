@@ -17,7 +17,7 @@ namespace Programa
         {
             InitializeComponent();
             nombreUsuario = pNombreUsuario;
-            nombre = interfazNucleo.ObtenerAdministradorPorNombreOMail(nombreUsuario).Nombre;
+            nombre = interfazNucleo.ObtenerAdministrador(nombreUsuario).Nombre;
             labelNombreUsuario.Text = "Usuario: " + nombreUsuario;
         }
 
@@ -163,15 +163,13 @@ namespace Programa
         private void botonVolver_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Menu2 ventanaMenu = new Menu2(nombreUsuario);
-            ventanaMenu.Show();
+            this.Owner.Show();
         }
 
         private void RegistrarPrestamo_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.Hide();
-            Menu2 ventanaMenu = new Menu2(nombreUsuario);
-            ventanaMenu.Show();
+            this.Owner.Show();
         }
     }
 }

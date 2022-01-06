@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DAL;
-using DAL.EntityFramework;//libreria de implementacion de IUnitOfWork con entityFramework
 using Dominio;
 using ServiciosAPILibros;
 using NotificacionAUsuario;
@@ -26,14 +23,9 @@ namespace Nucleo
         {
             return interfazDAL.AñadirUsuario(pNombreUsuario, MayusculaPrimeraLetra(nombre), MayusculaPrimeraLetra(apellido), fechaNacimiento, mail, telefono);
         }
-        public UsuarioSimple ObtenerUsuarioPorId(int id)
+        public UsuarioSimple ObtenerUsuario(string pNombreUsuarioOEmail)
         {
-            return interfazDAL.ObtenerUsuarioPorId(id);
-        }
-
-        public UsuarioSimple ObtenerUsuarioPorNombreOMail(string pNombreUsuarioOEmail)
-        {
-            return interfazDAL.ObtenerUsuarioPorNombreOMail(pNombreUsuarioOEmail);
+            return interfazDAL.ObtenerUsuario(pNombreUsuarioOEmail);
         }
 
         public void ActualizarUsuario(string pNombreUsuario, string nombre, string apellido, string pFechaNacimiento, string mail, string telefono)
@@ -45,14 +37,10 @@ namespace Nucleo
         {
             return interfazDAL.AñadirAdministrador(pNombreUsuario, MayusculaPrimeraLetra(nombre), MayusculaPrimeraLetra(apellido), fechaNacimiento, mail, contraseña, telefono);
         }
-        public UsuarioAdministrador ObtenerAdministradorPorId(int id)
-        {
-            return interfazDAL.ObtenerAdministradorPorId(id);
-        }
 
-        public UsuarioAdministrador ObtenerAdministradorPorNombreOMail(string pNombreUsuarioOEmail)
+        public UsuarioAdministrador ObtenerAdministrador(string pNombreUsuarioOEmail)
         {
-            return interfazDAL.ObtenerAdministradorPorNombreOMail(pNombreUsuarioOEmail);
+            return interfazDAL.ObtenerAdministrador(pNombreUsuarioOEmail);
         }
         public void ActualizarAdministrador(string pNombreUsuario, string nombre, string apellido, string pFechaNacimiento, string mail, string telefono)
         {
@@ -100,11 +88,6 @@ namespace Nucleo
         {
             interfazDAL.ActualizarEjemplar(idLibro, estado);
         }
-        public Ejemplar ObtenerEjemplar(int id)
-        {
-            return interfazDAL.ObtenerEjemplar(id);
-
-        }
 
         public List<Ejemplar> ObtenerEjemplaresDisponibles(int id)
         {
@@ -115,10 +98,7 @@ namespace Nucleo
         {
             return interfazDAL.ObtenerEjemplaresTotales(id);
         }
-        public Libro ObtenerLibroDeEjemplar(int id)
-        {
-            return interfazDAL.ObtenerLibroDeEjemplar(id);
-        }
+
         public void RegistrarPrestamo(string pNombreUsuario, int idEjemplar,int idLibro)
         {
             interfazDAL.RegistrarPrestamo(pNombreUsuario, idEjemplar,idLibro);
@@ -147,14 +127,6 @@ namespace Nucleo
         {
             interfazDAL.ModificarFechasPrestamo(pIdPrestamo, pFechaPrestamo, pFechaLimite);
         }
-        public Libro ObtenerLibroDePrestamo(int id)
-        {
-            return interfazDAL.ObtenerLibroDePrestamo(id);
-        }
-        public Ejemplar ObtenerEjemplarDePrestamo(int id)
-        {
-            return interfazDAL.ObtenerEjemplarDePrestamo(id);
-        }
 
         public bool VerficarContraseña(string pNombreUsuario, string contraseña)
         {
@@ -170,19 +142,9 @@ namespace Nucleo
         { return interfazDAL.ObtenerEjemplares(); }
         public IEnumerable<Prestamo> ObtenerPrestamos()
         { return interfazDAL.ObtenerPrestamos(); }
-
-        public string ObtenerUltimoIdUsuario()
-
-        { return ObtenerUsuarios().Last().NombreUsuario; }
-        public string ObtenerUltimoIdAdministrador()
-
-        { return ObtenerAdministradores().Last().NombreUsuario; }
         public int ObtenerUltimoIdLibro()
 
         { return ObtenerLibros().Last().Id; }
-        public int ObtenerUltimoIdEjemplar()
-
-        { return ObtenerEjemplares().Last().Id; }
         public int ObtenerUltimoIdPrestamo()
 
         { return ObtenerPrestamos().Last().Id; }
@@ -205,11 +167,11 @@ namespace Nucleo
 
         public void NotificarProximoAVencer(string pNombreUsuario)
         {
-            RegistrarLog(interfazNotificarUsuario.NotificarProximoAVencer(ObtenerUsuarioPorNombreOMail(pNombreUsuario)));
+            RegistrarLog(interfazNotificarUsuario.NotificarProximoAVencer(ObtenerUsuario(pNombreUsuario)));
         }
         public void NotificarRetraso(string pNombreUsuario)
         {
-            RegistrarLog(interfazNotificarUsuario.NotificarRetraso(ObtenerUsuarioPorNombreOMail(pNombreUsuario)));
+            RegistrarLog(interfazNotificarUsuario.NotificarRetraso(ObtenerUsuario(pNombreUsuario)));
         }
         public string MayusculaPrimeraLetra(string source)
         {

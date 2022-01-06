@@ -69,7 +69,7 @@ namespace Programa
             this.botonVolver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.botonVolver.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.botonVolver.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.botonVolver.Location = new System.Drawing.Point(586, 536);
+            this.botonVolver.Location = new System.Drawing.Point(577, 526);
             this.botonVolver.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.botonVolver.Name = "botonVolver";
             this.botonVolver.Size = new System.Drawing.Size(89, 23);
@@ -129,7 +129,7 @@ namespace Programa
             this.buttonRegistrarAdministrador.FlatAppearance.BorderSize = 0;
             this.buttonRegistrarAdministrador.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonRegistrarAdministrador.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonRegistrarAdministrador.Location = new System.Drawing.Point(683, 536);
+            this.buttonRegistrarAdministrador.Location = new System.Drawing.Point(674, 526);
             this.buttonRegistrarAdministrador.Name = "buttonRegistrarAdministrador";
             this.buttonRegistrarAdministrador.Size = new System.Drawing.Size(89, 23);
             this.buttonRegistrarAdministrador.TabIndex = 60;

@@ -249,20 +249,20 @@ namespace Programa
             this.IdPrestamo.HeaderText = "IdPrestamo";
             this.IdPrestamo.Name = "IdPrestamo";
             this.IdPrestamo.ReadOnly = true;
+            this.IdPrestamo.Width = 75;
             // 
             // NombreUsuario
             // 
             this.NombreUsuario.HeaderText = "NombreUsuario";
             this.NombreUsuario.Name = "NombreUsuario";
             this.NombreUsuario.ReadOnly = true;
-            this.NombreUsuario.Width = 120;
             // 
             // TituloLibro
             // 
             this.TituloLibro.HeaderText = "TituloLibro";
             this.TituloLibro.Name = "TituloLibro";
             this.TituloLibro.ReadOnly = true;
-            this.TituloLibro.Width = 120;
+            this.TituloLibro.Width = 140;
             // 
             // ISBNLibro
             // 
@@ -276,21 +276,18 @@ namespace Programa
             this.FechaRealizacion.HeaderText = "FechaRealizacion";
             this.FechaRealizacion.Name = "FechaRealizacion";
             this.FechaRealizacion.ReadOnly = true;
-            this.FechaRealizacion.Width = 120;
             // 
             // FechaVencimiento
             // 
             this.FechaVencimiento.HeaderText = "FechaVencimiento";
             this.FechaVencimiento.Name = "FechaVencimiento";
             this.FechaVencimiento.ReadOnly = true;
-            this.FechaVencimiento.Width = 120;
             // 
             // EstadoPrestamo
             // 
             this.EstadoPrestamo.HeaderText = "EstadoPrestamo";
             this.EstadoPrestamo.Name = "EstadoPrestamo";
             this.EstadoPrestamo.ReadOnly = true;
-            this.EstadoPrestamo.Width = 120;
             // 
             // Edit
             // 

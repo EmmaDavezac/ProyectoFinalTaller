@@ -31,14 +31,13 @@ namespace Programa
                 if (!string.IsNullOrEmpty(textBoxContraseña.Text))
                 {
                     Nucleo.InterfazNucleo fachada = new Nucleo.InterfazNucleo();
-                    if (new Nucleo.InterfazNucleo().ObtenerAdministradorPorNombreOMail(textBoxNombreUsuario.Text) != null)
+                    if (new Nucleo.InterfazNucleo().ObtenerAdministrador(textBoxNombreUsuario.Text) != null)
                     {
-                        if (fachada.ObtenerAdministradorPorNombreOMail(textBoxNombreUsuario.Text).Baja == false)
+                        if (fachada.ObtenerAdministrador(textBoxNombreUsuario.Text).Baja == false)
                         {
                             if (textBoxContraseña.Text != null && fachada.VerficarContraseña(textBoxNombreUsuario.Text, textBoxContraseña.Text))
                             {
-
-                                Menu2 ventanaMenu = new Menu2(textBoxNombreUsuario.Text);
+                                MenuPrincipal ventanaMenu = new MenuPrincipal(textBoxNombreUsuario.Text);
                                 ventanaMenu.Show();
                                 this.Hide();
                             }

@@ -15,14 +15,14 @@ namespace Programa
         {
             InitializeComponent();
             nombreUsuario = pNombreUsuario;
-            nombre = interfazNucleo.ObtenerAdministradorPorNombreOMail(nombreUsuario).Nombre;
+            nombre = interfazNucleo.ObtenerAdministrador(nombreUsuario).Nombre;
             labelNombreUsuario.Text = "Usuario: " + nombreUsuario;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             this.Hide();
-            ConsultarAdministrador ventana = new ConsultarAdministrador(nombreUsuario.ToString());
+            GestionarAdministradores ventana = new GestionarAdministradores(nombreUsuario.ToString());
             ventana.Show();
         }
 
@@ -40,23 +40,23 @@ namespace Programa
                             {
                                 if (!string.IsNullOrEmpty(textBoxTelefono.Text) && textBoxTelefono.Text.All(Char.IsDigit) && textBoxTelefono.Text.Length >= 8 && textBoxTelefono.Text.Length <= 11)
                                 {
-                                    if (interfazNucleo.ObtenerAdministradorPorNombreOMail(textBoxNombreUsuario.Text).Baja == false && checkBoxBaja.Checked == true)
+                                    if (interfazNucleo.ObtenerAdministrador(textBoxNombreUsuario.Text).Baja == false && checkBoxBaja.Checked == true)
                                     {
                                         interfazNucleo.ActualizarAdministrador(textBoxNombreUsuario.Text, textBoxNombre.Text, textBoxApellido.Text, dateTimePickerFechaNacimiento.Value.Date.ToString(), textBoxMail.Text, textBoxTelefono.Text);
                                         interfazNucleo.DarDeBajaAdministrador(textBoxNombreUsuario.Text);
                                         MessageBox.Show("Administrador ha sido dado de baja, el nombre de usuario es: " + textBoxNombreUsuario.Text, "Operacion Exitosa", MessageBoxButtons.OK);
                                     }
-                                    else if (interfazNucleo.ObtenerAdministradorPorNombreOMail(textBoxNombreUsuario.Text).Baja == true && checkBoxBaja.Checked == true)
+                                    else if (interfazNucleo.ObtenerAdministrador(textBoxNombreUsuario.Text).Baja == true && checkBoxBaja.Checked == true)
                                     {
                                         interfazNucleo.ActualizarAdministrador(textBoxNombreUsuario.Text, textBoxNombre.Text, textBoxApellido.Text, dateTimePickerFechaNacimiento.Value.Date.ToString(), textBoxMail.Text, textBoxTelefono.Text);
                                         MessageBox.Show("Administrador ha sido dado de baja, el nombre de usuario es: " + textBoxNombreUsuario.Text, "Operacion Exitosa", MessageBoxButtons.OK);
                                     }
-                                    else if (interfazNucleo.ObtenerAdministradorPorNombreOMail(textBoxNombreUsuario.Text).Baja == false && checkBoxBaja.Checked == false)
+                                    else if (interfazNucleo.ObtenerAdministrador(textBoxNombreUsuario.Text).Baja == false && checkBoxBaja.Checked == false)
                                     {
                                         interfazNucleo.ActualizarAdministrador(textBoxNombreUsuario.Text, textBoxNombre.Text, textBoxApellido.Text, dateTimePickerFechaNacimiento.Value.Date.ToString(), textBoxMail.Text, textBoxTelefono.Text);
                                         MessageBox.Show("Administrador ha sido guardado correctamente, el nombre de usuario es: " + textBoxNombreUsuario.Text, "Operacion Exitosa", MessageBoxButtons.OK);
                                     }
-                                    else if (interfazNucleo.ObtenerAdministradorPorNombreOMail(textBoxNombreUsuario.Text).Baja == true && checkBoxBaja.Checked == false)
+                                    else if (interfazNucleo.ObtenerAdministrador(textBoxNombreUsuario.Text).Baja == true && checkBoxBaja.Checked == false)
                                     {
                                         interfazNucleo.ActualizarAdministrador(textBoxNombreUsuario.Text, textBoxNombre.Text, textBoxApellido.Text, dateTimePickerFechaNacimiento.Value.Date.ToString(), textBoxMail.Text, textBoxTelefono.Text);
                                         interfazNucleo.DarDeAltaAdministrador(textBoxNombreUsuario.Text);
@@ -67,7 +67,7 @@ namespace Programa
                                         interfazNucleo.ActualizarContraseñaAdministrador(textBoxNombreUsuario.Text, contraseñaNueva);
                                     }
                                     this.Hide();
-                                    ((ConsultarAdministrador)Owner).ObtenerAdministradores();
+                                    ((GestionarAdministradores)Owner).ObtenerAdministradores();
                                     Owner.Show();
                                 }
                                 else
@@ -141,7 +141,7 @@ namespace Programa
         private void ActualizarAdministrador_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.Hide();
-            ConsultarAdministrador ventanaMenu = new ConsultarAdministrador(nombreUsuario);
+            GestionarAdministradores ventanaMenu = new GestionarAdministradores(nombreUsuario);
             ventanaMenu.Show();
         }
 
@@ -156,7 +156,7 @@ namespace Programa
 
         public void CargarAdministradorExistente(string pNombreUsuario,string pBaja)
         {
-            var usuario = interfazNucleo.ObtenerAdministradorPorNombreOMail(pNombreUsuario);
+            var usuario = interfazNucleo.ObtenerAdministrador(pNombreUsuario);
             textBoxNombreUsuario.Text = usuario.NombreUsuario;
             textBoxNombre.Text = usuario.Nombre;
             textBoxApellido.Text = usuario.Apellido;

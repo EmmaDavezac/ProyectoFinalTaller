@@ -43,15 +43,8 @@ namespace DAL
                 return true;
             }
         }
-        public UsuarioSimple ObtenerUsuarioPorId(int id)
-        {
-            using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
-            {
-                return unitOfWork.RepositorioUsuarios.Get(id);
-            }
-        }
 
-        public UsuarioSimple ObtenerUsuarioPorNombreOMail(string pNombreUsuarioOEmail)
+        public UsuarioSimple ObtenerUsuario(string pNombreUsuarioOEmail)
         {
             using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
             {
@@ -99,16 +92,7 @@ namespace DAL
             }
         }
 
-        public UsuarioAdministrador ObtenerAdministradorPorId(int id)
-        {
-
-            using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
-            {
-                return unitOfWork.RepositorioAdministradores.Get(id);
-            }
-        }
-
-        public UsuarioAdministrador ObtenerAdministradorPorNombreOMail(string pNombreUsuarioOEmail)
+        public UsuarioAdministrador ObtenerAdministrador(string pNombreUsuarioOEmail)
         {
             using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
             {
@@ -155,7 +139,9 @@ namespace DAL
         {
             using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
             {
-                return unitOfWork.RepositorioLibros.Get(id);
+                Libro libro = unitOfWork.RepositorioLibros.Get(id);
+                unitOfWork.Complete();
+                return libro;
             }
         }
 
@@ -250,13 +236,7 @@ namespace DAL
                 return lista;
             }
         }
-        public Libro ObtenerLibroDeEjemplar(int id)
-        {
-            using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
-            {
-                return unitOfWork.RepositorioEjemplares.Get(id).Libro;
-            }
-        }
+
         public void RegistrarPrestamo(string pNombreUsuario, int idEjemplar, int idLibro)
         {
             using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
@@ -322,24 +302,9 @@ namespace DAL
             }
         }
 
-        public Libro ObtenerLibroDePrestamo(int id)
-        {
-            using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
-            {
-                return unitOfWork.RepositorioPrestamos.Get(id).Ejemplar.Libro;
-            }
-        }
-        public Ejemplar ObtenerEjemplarDePrestamo(int id)
-        {
-            using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
-            {
-                return unitOfWork.RepositorioPrestamos.Get(id).Ejemplar;
-            }
-        }
-
         public bool VerficarContraseña(string pNombreUsuario, string contraseña)
         {
-            return ObtenerAdministradorPorNombreOMail(pNombreUsuario).VerificarContraseña(contraseña);
+            return ObtenerAdministrador(pNombreUsuario).VerificarContraseña(contraseña);
         }
         public IEnumerable<UsuarioSimple> ObtenerUsuarios()
         { return GetUnitOfWork(implementacionBase).RepositorioUsuarios.GetAll(); }

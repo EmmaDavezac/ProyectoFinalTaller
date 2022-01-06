@@ -14,7 +14,7 @@ namespace Programa
         {
             InitializeComponent();
             nombreUsuario = pNombreUsuario;
-            nombre = interfazNucleo.ObtenerAdministradorPorNombreOMail(nombreUsuario).Nombre;
+            nombre = interfazNucleo.ObtenerAdministrador(nombreUsuario).Nombre;
             labelNombreUsuario.Text = "Usuario: " + nombreUsuario;
         }
 
@@ -33,9 +33,8 @@ namespace Programa
         private void botonVolver_Click(object sender, EventArgs e)
         {
 
-            Menu2 ventana = new Menu2(nombreUsuario.ToString());
-            ventana.Show();
             this.Hide();
+            this.Owner.Show();
         }
 
         private void buttonSalir_Click(object sender, EventArgs e)
@@ -46,8 +45,7 @@ namespace Programa
         private void RegistrarAdministrador_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.Hide();
-            Menu2 ventanaMenu = new Menu2(nombreUsuario.ToString());
-            ventanaMenu.Show();
+            this.Owner.Show();
         }
 
         private void textBoxNombre_TextChanged(object sender, EventArgs e)
@@ -96,9 +94,8 @@ namespace Programa
                                         {
                                             MessageBox.Show("Usuario administrador guardado, el nombre de usuario es: " + textBoxNombreUsuario.Text, "Operacion Exitosa", MessageBoxButtons.OK);
 
-                                            Menu2 ventana = new Menu2(nombreUsuario);
-                                            ventana.Show();
                                             this.Hide();
+                                            this.Owner.Show();
                                         }
                                         else
                                         {
@@ -236,11 +233,13 @@ namespace Programa
             {
                 textBoxContraseña.UseSystemPasswordChar = false;
                 buttonMostrar.Text = "Ocultar";
+                textBoxContraseña.Focus();
             }
             else
             {
                 textBoxContraseña.UseSystemPasswordChar = true;
                 buttonMostrar.Text = "Mostrar";
+                textBoxContraseña.Focus();
             }
         }
     }

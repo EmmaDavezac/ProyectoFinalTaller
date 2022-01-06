@@ -15,7 +15,7 @@ namespace Programa
         {
             InitializeComponent();
             nombreUsuario = pNombreUsuario;
-            nombre = interfazNucleo.ObtenerAdministradorPorNombreOMail(nombreUsuario).Nombre;
+            nombre = interfazNucleo.ObtenerAdministrador(nombreUsuario).Nombre;
             labelNombreUsuario.Text = "Usuario: " + nombreUsuario;
         }
         private void buttonSalir_Click(object sender, EventArgs e)
@@ -25,7 +25,8 @@ namespace Programa
 
         private void botonVolver_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Hide();
+            this.Owner.Show();
         }
 
         private void AgregarCliente_FormClosing(object sender, FormClosingEventArgs e)
@@ -36,8 +37,7 @@ namespace Programa
         private void AgregarCliente_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.Hide();
-            Menu2 ventanaMenu = new Menu2(nombreUsuario.ToString());
-            ventanaMenu.Show();
+            this.Owner.Show();
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -63,10 +63,8 @@ namespace Programa
                                     if (resultado == true)
                                     {
                                         MessageBox.Show("Usuario guardado, el nombre de usuario es: " + textBoxNombreUsuario.Text, "Operacion Exitosa", MessageBoxButtons.OK);
-
-                                        Menu2 ventana = new Menu2(nombreUsuario);
-                                        ventana.Show();
                                         this.Hide();
+                                        this.Owner.Show();
                                     }
                                     else
                                     {
