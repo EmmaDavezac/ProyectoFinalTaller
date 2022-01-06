@@ -253,6 +253,7 @@ namespace Programa
                 else
                 {
                     sumatoriaDeEjemplares = -interfazNucleo.ObtenerEjemplaresDisponibles(idLibro).Count();
+                    MessageBox.Show("El numero ingresado es mayor a la cantidad total actual, se establecera el valor cero por defecto.");
                     labelCantidadActual.Text = "Cantidad Actual: 0";
                     textBoxEliminarEjemplares.Text = "";
                 }

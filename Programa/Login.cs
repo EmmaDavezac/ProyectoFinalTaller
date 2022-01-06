@@ -104,14 +104,6 @@ namespace Programa
             Application.Exit();
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            this.Hide();
-            Registrarse ventana = new Registrarse();
-            ventana.Show();
-
-        }
-
         private void timer1_Tick(object sender, EventArgs e)
         {
             this.Opacity += .05;

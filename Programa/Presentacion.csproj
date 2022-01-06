@@ -99,24 +99,6 @@
     <Compile Include="ActualizarUsuario.Designer.cs">
       <DependentUpon>ActualizarUsuario.cs</DependentUpon>
     </Compile>
-    <Compile Include="ActualizarEjemplar.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ActualizarEjemplar.Designer.cs">
-      <DependentUpon>ActualizarEjemplar.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ConsultarEjemplar.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ConsultarEjemplar.Designer.cs">
-      <DependentUpon>ConsultarEjemplar.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ConsultarPrestamo.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ConsultarPrestamo.Designer.cs">
-      <DependentUpon>ConsultarPrestamo.cs</DependentUpon>
-    </Compile>
     <Compile Include="DevolucionPrestamo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -153,12 +135,6 @@
     <Compile Include="ModificarContraseña.Designer.cs">
       <DependentUpon>ModificarContraseña.cs</DependentUpon>
     </Compile>
-    <Compile Include="RegistrarDevolucion.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="RegistrarDevolucion.Designer.cs">
-      <DependentUpon>RegistrarDevolucion.cs</DependentUpon>
-    </Compile>
     <Compile Include="RegistrarPrestamo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -194,12 +170,6 @@
     <Compile Include="RegistrarAdministrador.Designer.cs">
       <DependentUpon>RegistrarAdministrador.cs</DependentUpon>
     </Compile>
-    <Compile Include="Registrarse.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Registrarse.Designer.cs">
-      <DependentUpon>Registrarse.cs</DependentUpon>
-    </Compile>
     <Compile Include="RegistrarUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -220,48 +190,6 @@
     </Compile>
     <Compile Include="Presentacion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="VerAdministradores.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="VerAdministradores.Designer.cs">
-      <DependentUpon>VerAdministradores.cs</DependentUpon>
-    </Compile>
-    <Compile Include="VerEjemplares.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="VerEjemplares.Designer.cs">
-      <DependentUpon>VerEjemplares.cs</DependentUpon>
-    </Compile>
-    <Compile Include="VerLibros.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="VerLibros.Designer.cs">
-      <DependentUpon>VerLibros.cs</DependentUpon>
-    </Compile>
-    <Compile Include="VerPrestamosProximosAVencer.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="VerPrestamosProximosAVencer.Designer.cs">
-      <DependentUpon>VerPrestamosProximosAVencer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="VerPrestamosRetrasados.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="VerPrestamosRetrasados.Designer.cs">
-      <DependentUpon>VerPrestamosRetrasados.cs</DependentUpon>
-    </Compile>
-    <Compile Include="VerPrestamos.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="VerPrestamos.Designer.cs">
-      <DependentUpon>VerPrestamos.cs</DependentUpon>
-    </Compile>
-    <Compile Include="VerUsuarios.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="VerUsuarios.Designer.cs">
-      <DependentUpon>VerUsuarios.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="ActualizarAdministrador.resx">
       <DependentUpon>ActualizarAdministrador.cs</DependentUpon>
     </EmbeddedResource>
@@ -270,15 +198,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ActualizarUsuario.resx">
       <DependentUpon>ActualizarUsuario.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ActualizarEjemplar.resx">
-      <DependentUpon>ActualizarEjemplar.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ConsultarEjemplar.resx">
-      <DependentUpon>ConsultarEjemplar.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ConsultarPrestamo.resx">
-      <DependentUpon>ConsultarPrestamo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DevolucionPrestamo.resx">
       <DependentUpon>DevolucionPrestamo.cs</DependentUpon>
@@ -298,9 +217,6 @@
     <EmbeddedResource Include="ModificarContraseña.resx">
       <DependentUpon>ModificarContraseña.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="RegistrarDevolucion.resx">
-      <DependentUpon>RegistrarDevolucion.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="RegistrarEjemplar.resx">
       <DependentUpon>RegistrarEjemplar.cs</DependentUpon>
     </EmbeddedResource>
@@ -316,9 +232,6 @@
     <EmbeddedResource Include="RegistrarPrestamo.resx">
       <DependentUpon>RegistrarPrestamo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Registrarse.resx">
-      <DependentUpon>Registrarse.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="RegistrarUsuario.resx">
       <DependentUpon>RegistrarUsuario.cs</DependentUpon>
     </EmbeddedResource>
@@ -332,27 +245,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="VerAdministradores.resx">
-      <DependentUpon>VerAdministradores.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="VerEjemplares.resx">
-      <DependentUpon>VerEjemplares.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="VerLibros.resx">
-      <DependentUpon>VerLibros.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="VerPrestamosProximosAVencer.resx">
-      <DependentUpon>VerPrestamosProximosAVencer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="VerPrestamosRetrasados.resx">
-      <DependentUpon>VerPrestamosRetrasados.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="VerPrestamos.resx">
-      <DependentUpon>VerPrestamos.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="VerUsuarios.resx">
-      <DependentUpon>VerUsuarios.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\Dominio.Usuario.datasource" />

@@ -137,13 +137,6 @@ namespace Programa
             ventana.Show();
         }
 
-        private void button5_Click(object sender, EventArgs e)
-        {
-            VerUsuarios ventana = new VerUsuarios(nombreUsuario);
-            this.Hide();
-            ventana.Show();
-        }
-
         private void button9_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -172,13 +165,6 @@ namespace Programa
             ventana.Show();
         }
 
-        private void button6_Click(object sender, EventArgs e)
-        {
-            VerAdministradores ventana = new VerAdministradores(nombreUsuario);
-            this.Hide();
-            ventana.Show();
-        }
-
         private void button19_Click(object sender, EventArgs e)
         {
             RegistrarEjemplar ventana = new RegistrarEjemplar(nombreUsuario);
@@ -191,36 +177,6 @@ namespace Programa
             RegistrarLibro ventana = new RegistrarLibro(nombreUsuario);
             this.Hide();
             ventana.Show(this);
-        }
-
-        private void button11_Click(object sender, EventArgs e)
-        {
-            VerLibros ventana = new VerLibros(nombreUsuario);
-            this.Hide();
-            ventana.Show();
-        }
-
-
-
-        private void button18_Click(object sender, EventArgs e)
-        {
-            ConsultarEjemplara ventana = new ConsultarEjemplara(nombreUsuario);
-            this.Hide();
-            ventana.Show();
-        }
-
-        private void button17_Click(object sender, EventArgs e)
-        {
-            ActualizarEjemplar ventana = new ActualizarEjemplar(nombreUsuario);
-            this.Hide();
-            ventana.Show();
-        }
-
-        private void button16_Click(object sender, EventArgs e)
-        {
-            VerEjemplares ventana = new VerEjemplares(nombreUsuario);
-            this.Hide();
-            ventana.Show();
         }
 
         private void button24_Click(object sender, EventArgs e)
@@ -236,35 +192,6 @@ namespace Programa
             this.Hide();
             ventana.Show(this);
         }
-
-        private void button22_Click(object sender, EventArgs e)
-        {
-            RegistrarDevolucion ventana = new RegistrarDevolucion(nombreUsuario);
-            this.Hide();
-            ventana.Show();
-        }
-
-        private void button21_Click(object sender, EventArgs e)
-        {
-            VerPrestamos ventana = new VerPrestamos(nombreUsuario);
-            this.Hide();
-            ventana.Show();
-        }
-
-        private void button26_Click(object sender, EventArgs e)
-        {
-            VerPrestamosProximosAVencer ventana = new VerPrestamosProximosAVencer(nombreUsuario);
-            this.Hide();
-            ventana.Show();
-        }
-
-        private void button27_Click(object sender, EventArgs e)
-        {
-            VerPrestamosRetrasados ventana = new VerPrestamosRetrasados(nombreUsuario);
-            this.Hide();
-            ventana.Show();
-        }
-
         private void Menu2_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
