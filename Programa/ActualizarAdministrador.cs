@@ -22,8 +22,7 @@ namespace Programa
         private void button2_Click(object sender, EventArgs e)
         {
             this.Hide();
-            GestionarAdministradores ventana = new GestionarAdministradores(nombreUsuario.ToString());
-            ventana.Show();
+            this.Owner.Show();
         }
 
         private void buttonGuardar_Click(object sender, EventArgs e)
@@ -68,7 +67,7 @@ namespace Programa
                                     }
                                     this.Hide();
                                     ((GestionarAdministradores)Owner).ObtenerAdministradores();
-                                    Owner.Show();
+                                    this.Owner.Show();
                                 }
                                 else
                                 {
@@ -141,8 +140,7 @@ namespace Programa
         private void ActualizarAdministrador_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.Hide();
-            GestionarAdministradores ventanaMenu = new GestionarAdministradores(nombreUsuario);
-            ventanaMenu.Show();
+            this.Owner.Show();
         }
 
         private void label1_Click(object sender, EventArgs e)

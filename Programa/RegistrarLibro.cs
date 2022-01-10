@@ -280,12 +280,6 @@ namespace Programa
                 MessageBox.Show("Libro registrado con exito, el Id del libro es: " + new InterfazNucleo().ObtenerUltimoIdLibro());
                 this.Hide();
                 this.Owner.Show();
-                /*buttonBorrarDatos_Click(sender,e);  No es necesario ya que podria querer seguir cargando libros con el mismo titulo, incluso si me equivoque en la cantidad de ejemplares podria agregarlos sin volver a cargar todo.
-                dataGridViewAños.Rows.Clear();         
-                dataGridViewISBN.Rows.Clear();
-                dataGridViewTituloYAutor.Rows.Clear();
-                textBoxCantidadEjemplares.Clear();
-                textBoxBuscar.Clear();*/
             }
             else
             {

@@ -59,7 +59,7 @@ namespace Programa
                                 }
                                 this.Hide();
                                 ((GestionarUsuarios)Owner).ObtenerUsuarios();
-                                Owner.Show();
+                                this.Owner.Show();
                             }
                                 else
                                 {
@@ -136,8 +136,7 @@ namespace Programa
         private void ActualizarUsuario_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.Hide();
-            GestionarUsuarios ventanaMenu = new GestionarUsuarios(nombreUsuario);
-            ventanaMenu.Show();
+            this.Owner.Show();
         }
         public void CargarUsuarioExistente(string pNombreUsuario,string pBaja)
         {
@@ -163,8 +162,7 @@ namespace Programa
         private void botonVolver_Click_1(object sender, EventArgs e)
         {
             this.Hide();
-            GestionarUsuarios ventanaMenu = new GestionarUsuarios(nombreUsuario);
-            ventanaMenu.Show();
+            this.Owner.Show();
         }
 
         private void dateTimePickerFechaNacimiento_ValueChanged(object sender, EventArgs e)
