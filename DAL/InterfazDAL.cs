@@ -54,30 +54,55 @@ namespace DAL
 
         public UsuarioSimple ObtenerUsuario(string pNombreUsuarioOEmail)
         {
+            
+            ArchivoDeLog oLog = new ArchivoDeLog();
+            string msg;
             try
             {
+                msg = "Usuario " + pNombreUsuarioOEmail + " Obtenido con exito.";
+                oLog.Add(msg);
+                UsuarioSimple usuario;
                 using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
                 {   
-                    return unitOfWork.RepositorioUsuarios.Get(pNombreUsuarioOEmail);
+                    usuario= unitOfWork.RepositorioUsuarios.Get(pNombreUsuarioOEmail);
                 }
+                oLog.Add(msg);
+                return usuario;
+
             }
             catch (Exception ex)
             {
 
-                throw;
+                msg = "Error al obtener el usuario (" +pNombreUsuarioOEmail + ") " + ex.Message+ex.StackTrace;
+                oLog.Add(msg);
+                return null;
             }
         }
 
         public void ActualizarUsuario(string pNombreUsuario, string nombre, string apellido, string pFechaNacimiento, string mail, string telefono)
         {
-            using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
+            ArchivoDeLog oLog = new ArchivoDeLog();
+            string msg;
+            try
             {
-                unitOfWork.RepositorioUsuarios.Get(pNombreUsuario).Nombre = nombre;
-                unitOfWork.RepositorioUsuarios.Get(pNombreUsuario).Apellido = apellido;
-                unitOfWork.RepositorioUsuarios.Get(pNombreUsuario).FechaNacimiento = Convert.ToDateTime(pFechaNacimiento);
-                unitOfWork.RepositorioUsuarios.Get(pNombreUsuario).Mail = mail;
-                unitOfWork.RepositorioUsuarios.Get(pNombreUsuario).Telefono = telefono;
-                unitOfWork.Complete();
+                msg = "Usuario " + pNombreUsuario + " Actualizado con exito.";
+                
+                using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
+                {
+                    unitOfWork.RepositorioUsuarios.Get(pNombreUsuario).Nombre = nombre;
+                    unitOfWork.RepositorioUsuarios.Get(pNombreUsuario).Apellido = apellido;
+                    unitOfWork.RepositorioUsuarios.Get(pNombreUsuario).FechaNacimiento = Convert.ToDateTime(pFechaNacimiento);
+                    unitOfWork.RepositorioUsuarios.Get(pNombreUsuario).Mail = mail;
+                    unitOfWork.RepositorioUsuarios.Get(pNombreUsuario).Telefono = telefono;
+                    unitOfWork.Complete();
+                }
+                oLog.Add(msg);
+            }
+            catch (Exception ex)
+            {
+                msg = "Error al actualizar el usuario (" + pNombreUsuario + ") " + ex.Message + ex.StackTrace;
+                oLog.Add(msg);
+
             }
         }
 
