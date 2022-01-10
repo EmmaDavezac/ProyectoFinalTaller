@@ -60,7 +60,7 @@ namespace DAL
             try
             {
                 msg = "Usuario " + pNombreUsuarioOEmail + " Obtenido con exito.";
-                oLog.Add(msg);
+                
                 UsuarioSimple usuario;
                 using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
                 {   
@@ -108,193 +108,425 @@ namespace DAL
 
         public bool AñadirAdministrador(string pNombreUsuario, string nombre, string apellido, DateTime fechaNacimiento, string mail, string contraseña, string telefono)
         {
+            ArchivoDeLog oLog = new ArchivoDeLog();
+            string msg;
             UsuarioAdministrador usuario = new UsuarioAdministrador(nombre, apellido, fechaNacimiento, mail, contraseña, telefono, pNombreUsuario);
-            using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
+            try
             {
-                try
-                {
-                    unitOfWork.RepositorioAdministradores.Add(usuario);
-                    unitOfWork.Complete();
+                msg = "Administrador " + pNombreUsuario + " registrado con exito.";
+                using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
+                {unitOfWork.RepositorioAdministradores.Add(usuario);
+                unitOfWork.Complete();
                 }
-                catch (Exception)
-                {
-                    return false;
-                    throw;
-                }
+                oLog.Add(msg);
                 return true;
+        }
+                catch (Exception ex)
+            {
+                msg = "Error al Registrar el administrador (" + pNombreUsuario + ") " + ex.Message + ex.StackTrace;
+                oLog.Add(msg);
+                return false;
+
             }
         }
 
         public List<Ejemplar> ObtenerEjemplaresEnBuenEstadoLibro(int id)
         {
-            using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
+            ArchivoDeLog oLog = new ArchivoDeLog();
+            string msg;
+            List<Ejemplar> lista = new List<Ejemplar>(); 
+            try
             {
-                return unitOfWork.RepositorioLibros.Get(id).EjemplaresEnBuenEstado();
+                msg = "lista de ejemplares del libro (id libro: "+id+")en buen estado obtenida con exito.";
+                using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
+                {
+                    lista = unitOfWork.RepositorioLibros.Get(id).EjemplaresEnBuenEstado();
+                }
+                
+
             }
+            catch (Exception ex)
+            {
+                msg = "Error al obtener lista de ejemplares en buen estado del libro (id libro: " + id + ")" + ex.Message + ex.StackTrace;
+                
+            }
+            oLog.Add(msg);
+            return lista;
         }
 
         public UsuarioAdministrador ObtenerAdministrador(string pNombreUsuarioOEmail)
         {
-            using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
+            UsuarioAdministrador administrador = new UsuarioAdministrador();
+            ArchivoDeLog oLog = new ArchivoDeLog();
+            string msg;
+            try
             {
-                return unitOfWork.RepositorioAdministradores.Get(pNombreUsuarioOEmail);
+                msg = "Administrador " + pNombreUsuarioOEmail + " Obtenido con exito.";
+                using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
+                {
+                    administrador= unitOfWork.RepositorioAdministradores.Get(pNombreUsuarioOEmail);
+                }
+
             }
+            catch (Exception ex)
+            {
+                msg = "Error al obtener el administrador (" + pNombreUsuarioOEmail + " ) " + ex.Message + ex.StackTrace;
+               
+            }
+            oLog.Add(msg);
+            return administrador;
         }
         public void ActualizarAdministrador(string pNombreUsuario, string nombre, string apellido, string pFechaNacimiento, string mail, string telefono)
         {
-            using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
+            ArchivoDeLog oLog = new ArchivoDeLog();
+            string msg;
+            try
             {
-                unitOfWork.RepositorioAdministradores.Get(pNombreUsuario).Nombre = nombre;
-                unitOfWork.RepositorioAdministradores.Get(pNombreUsuario).Apellido = apellido;
-                unitOfWork.RepositorioAdministradores.Get(pNombreUsuario).FechaNacimiento = Convert.ToDateTime(pFechaNacimiento);
-                unitOfWork.RepositorioAdministradores.Get(pNombreUsuario).Mail = mail;
-                unitOfWork.RepositorioAdministradores.Get(pNombreUsuario).Telefono = telefono;
-                unitOfWork.Complete();
+                msg = "Administrador " + pNombreUsuario + " actualizado con exito.";
+                using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
+                {
+                    unitOfWork.RepositorioAdministradores.Get(pNombreUsuario).Nombre = nombre;
+                    unitOfWork.RepositorioAdministradores.Get(pNombreUsuario).Apellido = apellido;
+                    unitOfWork.RepositorioAdministradores.Get(pNombreUsuario).FechaNacimiento = Convert.ToDateTime(pFechaNacimiento);
+                    unitOfWork.RepositorioAdministradores.Get(pNombreUsuario).Mail = mail;
+                    unitOfWork.RepositorioAdministradores.Get(pNombreUsuario).Telefono = telefono;
+                    unitOfWork.Complete();
+                }
             }
+            catch (Exception ex)
+            {
+                msg = "Error al actualizar el administrador (" + pNombreUsuario + " ) " + ex.Message + ex.StackTrace;
+
+            }
+            oLog.Add(msg);
+
         }
         public void ActualizarContraseñaAdministrador(string pNombreUsuario, string contraseña)
         {
-            using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
+            ArchivoDeLog oLog = new ArchivoDeLog();
+            string msg;
+            try
             {
-                unitOfWork.RepositorioAdministradores.Get(pNombreUsuario).Pass = contraseña;
-
-                unitOfWork.Complete();
+                msg = "Contraseña del administrador " + pNombreUsuario + " actualizada con exito.";
+                using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
+                {
+                    unitOfWork.RepositorioAdministradores.Get(pNombreUsuario).Pass = contraseña;
+                    unitOfWork.Complete();
+                }
             }
+            catch (Exception ex)
+            {
+                msg = "Error al actualizar la contraseña del administrador (" + pNombreUsuario + " ) " + ex.Message + ex.StackTrace;
+
+            }
+            oLog.Add(msg);
+
+
         }
 
         public void AñadirLibro(string unISBN, string titulo, string autor, string añoPublicacion, int pCantidadEjempalares)
         {
-            Libro libro = new Libro(unISBN, titulo, autor, añoPublicacion);
-            using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
+            ArchivoDeLog oLog = new ArchivoDeLog();
+            string msg;
+            try
             {
-                unitOfWork.RepositorioLibros.Add(libro);
-                for (int i = 0; i < pCantidadEjempalares; i++)
+                msg = "Libro ( Titulo: "+titulo+" Autor: "+autor+" ISBN:" + unISBN + " ) registrado con exito.";
+                Libro libro = new Libro(unISBN, titulo, autor, añoPublicacion);
+                using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
                 {
-                    Ejemplar ejemplarNuevo = new Ejemplar(libro);
-                    unitOfWork.RepositorioEjemplares.Add(ejemplarNuevo);
+                    unitOfWork.RepositorioLibros.Add(libro);
+                    for (int i = 0; i < pCantidadEjempalares; i++)
+                    {
+                        Ejemplar ejemplarNuevo = new Ejemplar(libro);
+                        unitOfWork.RepositorioEjemplares.Add(ejemplarNuevo);
+                    }
+                    unitOfWork.Complete();
                 }
-                unitOfWork.Complete();
             }
+            catch ( Exception ex)
+            {
+
+                msg = "Error al registrar el libro ( Titulo: " + titulo + " Autor: " + autor + " ISBN:" + unISBN + " ) ." + ex.Message + ex.StackTrace;
+            }
+            oLog.Add(msg);
         }
         public Libro ObtenerLibro(int id)
         {
-            using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
+            ArchivoDeLog oLog = new ArchivoDeLog();
+            string msg;
+            Libro libro = new Libro();
+            try
             {
-                Libro libro = unitOfWork.RepositorioLibros.Get(id);
-                unitOfWork.Complete();
-                return libro;
+                msg = "Libro (Id: " + id + " ) Obtenido con exito.";
+                using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
+                {
+                     libro = unitOfWork.RepositorioLibros.Get(id);
+                    unitOfWork.Complete();
+                   
+                }
             }
+            catch (Exception ex )
+            {
+                msg = "Error al obtener el libro (Id: " + id + " ) ." + ex.Message + ex.StackTrace;
+
+            }
+            oLog.Add(msg);
+            return libro;
         }
 
 
         public int ObtenerCantEjemplaresLibro(int id)
         {
-            using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
+            ArchivoDeLog oLog = new ArchivoDeLog();
+            string msg;
+            int cant = 0;
+            try
             {
-                return unitOfWork.RepositorioLibros.Get(id).Ejemplares.Count();
+                msg = "Cantidad de ejemplares del Libro (Id: " + id + " ) Obtenida con exito.";
+                using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
+                {
+                    cant= unitOfWork.RepositorioLibros.Get(id).Ejemplares.Count();
+                }
             }
+            catch (Exception ex)
+            {
+
+                msg = "Error al obtener la cantidad de ejemplares del libro (Id: " + id + " ) ." + ex.Message + ex.StackTrace;
+            }
+            oLog.Add(msg);
+            return cant;
+            
         }
 
         public void AñadirEjemplares(int pIdLibro, int pCantidad)
         {
-
-            using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
+            ArchivoDeLog oLog = new ArchivoDeLog();
+            string msg;
+            try
             {
-                for (int i = 1; i <= pCantidad; i++)
+                msg = ("Ejemplares Añadidos a libro con exito (ID LIbro: " + pIdLibro + " Cantidad: " + pCantidad + ").");
+                using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
                 {
-                    Ejemplar ejemplar = new Ejemplar(unitOfWork.RepositorioLibros.Get(pIdLibro));
-                    unitOfWork.RepositorioEjemplares.Add(ejemplar);
+                    for (int i = 1; i <= pCantidad; i++)
+                    {
+                        Ejemplar ejemplar = new Ejemplar(unitOfWork.RepositorioLibros.Get(pIdLibro));
+                        unitOfWork.RepositorioEjemplares.Add(ejemplar);
+                    }
+                    unitOfWork.Complete();
                 }
-                unitOfWork.Complete();
             }
+
+            catch (Exception ex)
+            {
+                msg = "Error al Añadir ejemplares a libro (ID LIbro: " + pIdLibro + " Cantidad: " + pCantidad + ")." + ex.Message + ex.StackTrace;
+
+
+            }
+            oLog.Add(msg);
+           
         }
 
         public void EliminarEjemplaresDeUnLibro(int pIdLibro, int pCantidad)
-        {
+        {ArchivoDeLog oLog = new ArchivoDeLog();
+            string msg;
+            try
+            {
+                msg = ("Ejemplares del libro eliminados con exito (ID LIbro: " + pIdLibro + " Cantidad: " + pCantidad + ").");
             using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
             {
                 unitOfWork.RepositorioLibros.Get(pIdLibro).EliminarEjemplares(pCantidad);
                 unitOfWork.Complete();
             }
+            }
+
+            catch (Exception ex)
+            {
+                msg = "Error al eliminar ejemplares del libro (ID LIbro: " + pIdLibro + " Cantidad: " + pCantidad + ")." + ex.Message + ex.StackTrace;
+
+
+            }
+            oLog.Add(msg);
         }
 
         public void DarDeBajaUnLibro(int pIdLibro)
         {
-            using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
-            {
-                Libro libro = unitOfWork.RepositorioLibros.Get(pIdLibro);
-                libro.DarDeBaja();
-                unitOfWork.Complete();
+            ArchivoDeLog oLog = new ArchivoDeLog();
+            string msg;
+            try
+            {  msg="Libro Dado de baja con exito (Id: "+pIdLibro+").";
+                using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
+                {
+                    Libro libro = unitOfWork.RepositorioLibros.Get(pIdLibro);
+                    libro.DarDeBaja();
+                    unitOfWork.Complete();
+                }
             }
+            catch (Exception ex)
+            {
+
+                msg = "Error al dar de baja el libro (Id: " + pIdLibro + ")." + ex.Message + ex.StackTrace;
+            }
+            oLog.Add(msg);
         }
 
         public void DarDeAltaUnLibro(int pIdLibro)
         {
-            using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
+            ArchivoDeLog oLog = new ArchivoDeLog();
+            string msg;
+            try
+            {
+                msg = "Libro Dado de alta con exito (Id: " + pIdLibro + ").";
+                using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
             {
                 unitOfWork.RepositorioLibros.Get(pIdLibro).DarDeAlta();
                 unitOfWork.Complete();
             }
+
+            }
+            catch (Exception ex)
+            {
+
+                msg = "Error al dar de alta el libro (Id: " + pIdLibro + ")." + ex.Message + ex.StackTrace;
+            }
+            oLog.Add(msg);
         }
         public void ActualizarEjemplar(string idLibro, string estado)
         {
-            using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
+            ArchivoDeLog oLog = new ArchivoDeLog();
+            string msg;
+            try
             {
-                if (estado == "Bueno")
+                msg = "Ejemplar actualizado con exito (Id libro: " + idLibro + " Estado: " + estado + ")";
+                using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
                 {
-                    unitOfWork.RepositorioEjemplares.Get(Convert.ToInt32(idLibro)).Estado = EstadoEjemplar.Bueno;
-                }
-                else
-                {
-                    unitOfWork.RepositorioEjemplares.Get(Convert.ToInt32(idLibro)).Estado = EstadoEjemplar.Malo;
-                }
+                    if (estado == "Bueno")
+                    {
+                        unitOfWork.RepositorioEjemplares.Get(Convert.ToInt32(idLibro)).Estado = EstadoEjemplar.Bueno;
+                    }
+                    else
+                    {
+                        unitOfWork.RepositorioEjemplares.Get(Convert.ToInt32(idLibro)).Estado = EstadoEjemplar.Malo;
+                    }
 
-                unitOfWork.Complete();
+                    unitOfWork.Complete();
+                }
             }
+            catch (Exception ex)
+            {
+                msg = "Error al actualizar el Ejemplar (Id libro: " + idLibro + " Estado: " + estado + ")" + ex.Message + ex.StackTrace;
+
+            }
+            oLog.Add(msg);
         }
         public Ejemplar ObtenerEjemplar(int id)
         {
-            using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
+            ArchivoDeLog oLog = new ArchivoDeLog();
+            string msg;
+            Ejemplar ejemplar = new Ejemplar();
+            try
             {
-                return unitOfWork.RepositorioEjemplares.Get(id);
+                msg = "Ejemplar (Id: " + id + " ) Obtenido con exito.";
+                using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
+                {
+                    ejemplar= unitOfWork.RepositorioEjemplares.Get(id);
+                }
             }
+            catch (Exception ex )
+            {
+                msg = "Error al obtener el ejemplar (Id: " + id + " ) ." + ex.Message + ex.StackTrace;
+
+            }
+            oLog.Add(msg);
+            return ejemplar;
 
         }
         public List<Ejemplar> ObtenerEjemplaresDisponibles(int id)
         {
-            using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
+            ArchivoDeLog oLog = new ArchivoDeLog();
+            string msg;
+            List<Ejemplar> lista = new List<Ejemplar>();
+            try
             {
-                List<Ejemplar> lista = unitOfWork.RepositorioLibros.Get(id).EjemplaresDisponibles();
-                return lista;
+                msg = "Lista de ejemplares Disponibles del libro (id: " + id + ") obtenida con exito.";
+                using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
+                {
+                    lista = unitOfWork.RepositorioLibros.Get(id).EjemplaresDisponibles();
+                    return lista;
+                }
             }
+            catch (Exception ex)
+            {
+                msg = "Error al obtener la lista de ejemplares Disponibles del libro (id: " + id + ")." + ex.Message + ex.StackTrace;
+            }
+            oLog.Add(msg);
+            return lista;
         }
 
         public List<Ejemplar> ObtenerEjemplaresTotales(int id)
         {
-            using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
+            ArchivoDeLog oLog = new ArchivoDeLog();
+            string msg;
+            List<Ejemplar> lista = new List<Ejemplar>();
+            try
             {
-                List<Ejemplar> lista = unitOfWork.RepositorioLibros.Get(id).EjemplaresTotales();
-                return lista;
+                msg = "Lista de ejemplares total del libro (id: " + id + ") obtenida con exito.";
+                using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
+            {
+                 lista = unitOfWork.RepositorioLibros.Get(id).EjemplaresTotales();
+               
             }
+            }
+            catch (Exception ex)
+            {
+                msg = "Error al obtener la lista total de ejemplares del libro (id: " + id + ")." + ex.Message + ex.StackTrace;
+            }
+            oLog.Add(msg);
+            return lista;
         }
 
         public void RegistrarPrestamo(string pNombreUsuario, int idEjemplar, int idLibro)
         {
-            using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
+            ArchivoDeLog oLog = new ArchivoDeLog();
+            string msg;
+            try
             {
-                Prestamo prestamo = new Prestamo(unitOfWork.RepositorioUsuarios.Get(pNombreUsuario), unitOfWork.RepositorioEjemplares.Get(idEjemplar), unitOfWork.RepositorioLibros.Get(idLibro));
+                msg = "Prestamo registrado con exito (idLibro: " + idLibro + "Id Ejemplar: "+idEjemplar+" Usuario: "+pNombreUsuario+") obtenida con exito.";
+                using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
+                {
+                    Prestamo prestamo = new Prestamo(unitOfWork.RepositorioUsuarios.Get(pNombreUsuario), unitOfWork.RepositorioEjemplares.Get(idEjemplar), unitOfWork.RepositorioLibros.Get(idLibro));
 
-                unitOfWork.RepositorioEjemplares.Get(idEjemplar).Disponible = false;
-                unitOfWork.RepositorioPrestamos.Add(prestamo);
-                unitOfWork.Complete();
+                    unitOfWork.RepositorioEjemplares.Get(idEjemplar).Disponible = false;
+                    unitOfWork.RepositorioPrestamos.Add(prestamo);
+                    unitOfWork.Complete();
+                }
             }
+            catch ( Exception ex)
+            {
+                msg = "Error al registrar el Prestamo  (idLibro: " + idLibro + "Id Ejemplar: " + idEjemplar + " Usuario: " + pNombreUsuario + ") ." + ex.Message + ex.StackTrace;
+
+            }
+            oLog.Add(msg);
         }
         public Prestamo ObtenerPrestamo(int id)
         {
-            using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
+            ArchivoDeLog oLog = new ArchivoDeLog();
+            string msg;
+            Prestamo prestamo = new Prestamo();
+            try
             {
-                return unitOfWork.RepositorioPrestamos.Get(id);
+                using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
+                {
+                    msg = "Prestamo (Id: " + id + ") Obtenido con exito.";
+                    prestamo=unitOfWork.RepositorioPrestamos.Get(id);
+                }
             }
+            catch (Exception ex)
+            {
+
+                msg = "Error al obtener el prestamo (Id: "+ id + ").";
+            }
+            oLog.Add(msg);
+            return prestamo;
         }
 
         public void ActualizarLibro(int id, string unISBN, string titulo, string autor, string añoPublicacion)
