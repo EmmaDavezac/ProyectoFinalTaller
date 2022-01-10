@@ -19,12 +19,13 @@ namespace Programa
             nombreUsuario = pNombreUsuario;
             nombre = interfazNucleo.ObtenerAdministrador(nombreUsuario).Nombre;
             labelNombreUsuario.Text = "Usuario: " + nombreUsuario;
+            ObtenerLibros();
+            ObtenerUsuarios();
         }
 
         private void RegistrarPrestamo_Load(object sender, EventArgs e)
         {
-            ObtenerLibros();
-            ObtenerUsuarios();
+            
         }
 
         private void label1_Click(object sender, EventArgs e)

@@ -19,11 +19,12 @@ namespace Programa
             nombreUsuario = pNombreUsuario;
             nombre = interfazNucleo.ObtenerAdministrador(nombreUsuario).Nombre;
             labelNombreUsuario.Text = "Usuario: " + nombreUsuario;
+            ObtenerLibros();
         }
 
         private void GestionarLibros_Load(object sender, EventArgs e)
         {
-            ObtenerLibros();
+            
         }
 
         private void dataGridViewLibros_CellContentClick(object sender, DataGridViewCellEventArgs e)

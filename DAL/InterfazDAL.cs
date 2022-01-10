@@ -3,6 +3,7 @@ using Dominio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Bitacora;
 
 
 namespace DAL
@@ -30,17 +31,26 @@ namespace DAL
             UsuarioSimple usuario = new UsuarioSimple(nombre, apellido, fechaNacimiento, mail, telefono, pNombreUsuario);
             using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
             {
+                ArchivoDeLog oLog = new ArchivoDeLog();
+                string msg;
                 try
                 {
+                    msg = "Usuario " + pNombreUsuario + " Registrado con exito.";
                     unitOfWork.RepositorioUsuarios.Add(usuario);
                     unitOfWork.Complete();
+                    
+                    oLog.Add(msg);
+                    return true;
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
+                    msg = "Error al registrar usuario (" + nombre + "-" + apellido + ") " + ex;
+                    
+                    oLog.Add(msg);
                     return false;
-                    throw;
+  
                 }
-                return true;
+                
             }
         }
 
