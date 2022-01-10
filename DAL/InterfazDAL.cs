@@ -44,7 +44,7 @@ namespace DAL
                 }
                 catch (Exception ex)
                 {
-                    msg = "Error al registrar usuario (" + nombre + "-" + apellido + ") " + ex;
+                    msg = "Error al registrar usuario (" + nombre + "-" + apellido + ") " + ex.Message;
                     
                     oLog.Add(msg);
                     return false;
@@ -56,9 +56,17 @@ namespace DAL
 
         public UsuarioSimple ObtenerUsuario(string pNombreUsuarioOEmail)
         {
-            using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
+            try
             {
-                return unitOfWork.RepositorioUsuarios.Get(pNombreUsuarioOEmail);
+                using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
+                {   
+                    return unitOfWork.RepositorioUsuarios.Get(pNombreUsuarioOEmail);
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw;
             }
         }
 
