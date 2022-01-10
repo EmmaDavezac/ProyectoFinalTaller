@@ -29,29 +29,27 @@ namespace DAL
         public bool AñadirUsuario(string pNombreUsuario, string nombre, string apellido, DateTime fechaNacimiento, string mail, string telefono)
         {
             UsuarioSimple usuario = new UsuarioSimple(nombre, apellido, fechaNacimiento, mail, telefono, pNombreUsuario);
-            using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
+            string msg;
+            ArchivoDeLog oLog = new ArchivoDeLog();
+            try
             {
-                ArchivoDeLog oLog = new ArchivoDeLog();
-                string msg;
-                try
-                {
-                    msg = "Usuario " + pNombreUsuario + " Registrado con exito.";
-                    unitOfWork.RepositorioUsuarios.Add(usuario);
-                    unitOfWork.Complete();
-                    
-                    oLog.Add(msg);
-                    return true;
+                msg = "Usuario " + pNombreUsuario + " Registrado con exito.";
+                using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
+                {                       
+                        unitOfWork.RepositorioUsuarios.Add(usuario);
+                        unitOfWork.Complete();
                 }
-                catch (Exception ex)
-                {
-                    msg = "Error al registrar usuario (" + nombre + "-" + apellido + ") " + ex.Message;
-                    
-                    oLog.Add(msg);
-                    return false;
-  
-                }
-                
+                oLog.Add(msg);
+                return true;
             }
+            catch (Exception ex)
+            {
+                msg = "Error al registrar usuario (" + nombre + "-" + apellido + ") " + ex.Message + ex.StackTrace;
+                oLog.Add(msg);
+                return false;
+            }
+            
+            
         }
 
         public UsuarioSimple ObtenerUsuario(string pNombreUsuarioOEmail)
