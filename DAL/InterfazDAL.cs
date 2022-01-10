@@ -403,6 +403,7 @@ namespace DAL
         public bool DarDeBajaUsuario(string pNombreUsuario)
         {
             bool resultado;
+
             using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
             {
                 resultado = unitOfWork.RepositorioUsuarios.Get(pNombreUsuario).ValidarBaja();
@@ -413,6 +414,8 @@ namespace DAL
                 unitOfWork.Complete();
                 return resultado;
             }
+
+
         }
 
         public bool DarDeBajaAdministrador(string pNombreUsuario)
