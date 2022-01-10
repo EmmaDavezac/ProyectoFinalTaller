@@ -305,7 +305,7 @@ namespace Programa
                     buttonDeshacerCambios.Enabled = true;
                     buttonEliminarEjemplares.Enabled = true;
                     buttonBusquedaEnAPI.Enabled = true;
-                    labelCantidadActual.Text = "Cantidad Actual: " + Convert.ToString(interfazNucleo.ObtenerEjemplaresDisponibles(idLibro).Count());
+                    labelCantidadActual.Text = "Cantidad Actual: " + Convert.ToString(interfazNucleo.ObtenerEjemplaresEnBuenEstadoLibro(idLibro).Count());
                 }
             }
         }

@@ -115,8 +115,8 @@ namespace Programa
                 interfazNucleo.RegistrarDevolucion(idPrestamo, comboBoxEstadoEjemplar.Text);
                 MessageBox.Show("La devolucion se registro correctamente");
                 this.Hide();
-                this.Owner.Show();
                 ((GestionarPrestamos)this.Owner).ObtenerPrestamos();
+                this.Owner.Show();
             }
             else
             {
