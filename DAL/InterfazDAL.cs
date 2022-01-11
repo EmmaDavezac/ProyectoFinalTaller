@@ -523,7 +523,7 @@ namespace DAL
             catch (Exception ex)
             {
 
-                msg = "Error al obtener el prestamo (Id: "+ id + ").";
+                msg = "Error al obtener el prestamo (Id: "+ id + ")." + ex.Message + ex.StackTrace;
             }
             oLog.Add(msg);
             return prestamo;
@@ -531,38 +531,75 @@ namespace DAL
 
         public void ActualizarLibro(int id, string unISBN, string titulo, string autor, string añoPublicacion)
         {
-            using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
+            ArchivoDeLog oLog = new ArchivoDeLog();
+            string msg;
+            try
             {
-                unitOfWork.RepositorioLibros.Get(id).ISBN = unISBN;
-                unitOfWork.RepositorioLibros.Get(id).Titulo = titulo;
-                unitOfWork.RepositorioLibros.Get(id).Autor = autor;
-                unitOfWork.RepositorioLibros.Get(id).AñoPublicacion = añoPublicacion;
-                unitOfWork.Complete();
+                msg = "Libro actualizado con exito (Id: " + id + ").";
+                using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
+                {
+                    unitOfWork.RepositorioLibros.Get(id).ISBN = unISBN;
+                    unitOfWork.RepositorioLibros.Get(id).Titulo = titulo;
+                    unitOfWork.RepositorioLibros.Get(id).Autor = autor;
+                    unitOfWork.RepositorioLibros.Get(id).AñoPublicacion = añoPublicacion;
+                    unitOfWork.Complete();
+                }
             }
+            catch (Exception ex)
+            {
 
+                msg = "Error al actualizar el libro (Id: " + id + ")." + ex.Message + ex.StackTrace;
+            }
+            oLog.Add(msg);
         }
 
         public UsuarioSimple ObtenerUsuarioDePrestamo(int id)
         {
-            using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
+            ArchivoDeLog oLog = new ArchivoDeLog();
+            string msg;
+            UsuarioSimple usuario = new UsuarioSimple();
+            try
             {
-                return unitOfWork.RepositorioPrestamos.Get(id).Usuario;
+                msg = "Usuario de Prestamo obtenido con exito (Id Prestamo: " + id + ")." ;
+                using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
+                {
+                    usuario=unitOfWork.RepositorioPrestamos.Get(id).Usuario;
+                }
             }
+            catch (Exception ex)
+            {
+
+                msg = "Error al el usuario del prestamo (Id Prestamo: " + id + ")." + ex.Message + ex.StackTrace;
+            }
+            oLog.Add(msg);
+            return usuario;
         }
 
         public void RegistrarDevolucion(int idPrestamo, string estado)
         {
-            using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
+            ArchivoDeLog oLog = new ArchivoDeLog();
+            string msg;
+            try
             {
-                if (estado == "Bueno")
+                msg = "Devolucion de prestamo registrada exitosamente(Id Prestamo: " + idPrestamo + " Estado:" + estado + ")";
+                using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
                 {
-                    unitOfWork.RepositorioPrestamos.Get(idPrestamo).RegistrarDevolucion(EstadoEjemplar.Bueno);
+                    if (estado == "Bueno")
+                    {
+                        unitOfWork.RepositorioPrestamos.Get(idPrestamo).RegistrarDevolucion(EstadoEjemplar.Bueno);
+                    }
+                    else unitOfWork.RepositorioPrestamos.Get(idPrestamo).RegistrarDevolucion(EstadoEjemplar.Malo);
+
+
+                    unitOfWork.Complete();
                 }
-                else unitOfWork.RepositorioPrestamos.Get(idPrestamo).RegistrarDevolucion(EstadoEjemplar.Malo);
-
-
-                unitOfWork.Complete();
             }
+            catch (Exception ex)
+            {
+
+                msg = "Error al registrar la devolucion del prestamo (Id Prestamo: " + idPrestamo + " Estado:" + estado + ")";
+            }
+            oLog.Add(msg);
         }
 
         public void ModificarFechasPrestamo(int pIdPrestamo, string pFechaPrestamo, string pFechaLimite)
