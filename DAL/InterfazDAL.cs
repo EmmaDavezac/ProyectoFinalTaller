@@ -44,7 +44,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                msg = "Error al registrar usuario (" + nombre + "-" + apellido + ") " + ex.Message + ex.StackTrace;
+                msg = "Error al registrar usuario (" + nombre + "-" + apellido + ")" + ex.Message + ex.StackTrace;
                 oLog.Add(msg);
                 return false;
             }
@@ -535,7 +535,7 @@ namespace DAL
             string msg;
             try
             {
-                msg = "Libro actualizado con exito (Id: " + id + ").";
+                msg = "Libro " + titulo + " " + autor + " actualizado con exito (Id: " + id + ").";
                 using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
                 {
                     unitOfWork.RepositorioLibros.Get(id).ISBN = unISBN;
@@ -547,8 +547,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-
-                msg = "Error al actualizar el libro (Id: " + id + ")." + ex.Message + ex.StackTrace;
+                msg = "Error al actualizar el libro (Id: " + id + "titulo: " + titulo + "autor: " + autor + ")." + ex.Message + ex.StackTrace;
             }
             oLog.Add(msg);
         }
@@ -569,7 +568,7 @@ namespace DAL
             catch (Exception ex)
             {
 
-                msg = "Error al el usuario del prestamo (Id Prestamo: " + id + ")." + ex.Message + ex.StackTrace;
+                msg = "Error, el usuario del prestamo (Id Prestamo: " + id + ")." + ex.Message + ex.StackTrace;
             }
             oLog.Add(msg);
             return usuario;
@@ -581,7 +580,7 @@ namespace DAL
             string msg;
             try
             {
-                msg = "Devolucion de prestamo registrada exitosamente(Id Prestamo: " + idPrestamo + " Estado:" + estado + ")";
+                msg = "Devolucion de prestamo registrada exitosamente(Id Prestamo: " + idPrestamo + " Estado:" + estado + ")" ;
                 using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
                 {
                     if (estado == "Bueno")
@@ -597,7 +596,7 @@ namespace DAL
             catch (Exception ex)
             {
 
-                msg = "Error al registrar la devolucion del prestamo (Id Prestamo: " + idPrestamo + " Estado:" + estado + ")";
+                msg = "Error al registrar la devolucion del prestamo (Id Prestamo: " + idPrestamo + " Estado:" + estado + ")" + ex.Message + ex.StackTrace;
             }
             oLog.Add(msg);
         }
@@ -669,20 +668,31 @@ namespace DAL
 
         public bool DarDeBajaUsuario(string pNombreUsuario)
         {
+            ArchivoDeLog oLog = new ArchivoDeLog();
+            string msg;
             bool resultado;
-
-            using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
+            try
             {
-                resultado = unitOfWork.RepositorioUsuarios.Get(pNombreUsuario).ValidarBaja();
-                if (resultado == true)
+                using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
                 {
-                    unitOfWork.RepositorioUsuarios.Get(pNombreUsuario).Baja = true;
+                    resultado = unitOfWork.RepositorioUsuarios.Get(pNombreUsuario).ValidarBaja();
+                    if (resultado == true)
+                    {
+                        unitOfWork.RepositorioUsuarios.Get(pNombreUsuario).Baja = true;
+                    }
+                    unitOfWork.Complete();
+                    msg = "El usuario " + pNombreUsuario + "ha sido dado de baja exitosamente. ";
+                    oLog.Add(msg);
+                    return resultado;
                 }
-                unitOfWork.Complete();
-                return resultado;
             }
-
-
+            catch (Exception ex)
+            {
+                msg = "Error, el usuario " + pNombreUsuario + " no ha podido darse de baja. " + ex.Message + ex.StackTrace;
+                oLog.Add(msg);
+                return false;
+                throw;
+            }
         }
 
         public bool DarDeBajaAdministrador(string pNombreUsuario)
@@ -693,31 +703,71 @@ namespace DAL
             }
             else 
             {
-                using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
+                ArchivoDeLog oLog = new ArchivoDeLog();
+                string msg;
+                try
                 {
-                    unitOfWork.RepositorioAdministradores.Get(pNombreUsuario).Baja = true;
-                    unitOfWork.Complete();
+                    using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
+                    {
+                        unitOfWork.RepositorioAdministradores.Get(pNombreUsuario).Baja = true;
+                        unitOfWork.Complete();
+                    }
+                    msg = "El administrador " + pNombreUsuario + " ha sido dado de baja correctamente. ";
+                    oLog.Add(msg);
+                    return true;
                 }
-                return true;
+                catch (Exception ex)
+                {
+                    msg = "Error, el administrador " + pNombreUsuario + " no ha podido darse de baja. " + ex.Message + ex.StackTrace; 
+                    oLog.Add(msg);
+                    throw;
+                }
             }
             
         }
 
         public void DarDeAltaUsuario(string pNombreUsuario)
         {
-            using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
+            ArchivoDeLog oLog = new ArchivoDeLog();
+            string msg;
+            try
             {
-                 unitOfWork.RepositorioUsuarios.Get(pNombreUsuario).Baja = false;
-                 unitOfWork.Complete();
+                using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
+                {
+                    unitOfWork.RepositorioUsuarios.Get(pNombreUsuario).Baja = false;
+                    unitOfWork.Complete();
+                }
+                msg = "El usuario " + pNombreUsuario + " ha sido dado de alta correctamente";
+                oLog.Add(msg);
             }
+            catch (Exception ex)
+            {
+                msg = "Error, el usuario " + pNombreUsuario + " no ha podido darse de alta. " + ex.Message + ex.StackTrace;
+                oLog.Add(msg);
+                throw;
+            }
+            
         }
 
         public void DarDeAltaAdministrador(string pNombreUsuario)
         {
-            using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
+            ArchivoDeLog oLog = new ArchivoDeLog();
+            string msg;
+            try
             {
-                 unitOfWork.RepositorioAdministradores.Get(pNombreUsuario).Baja = false;
-                 unitOfWork.Complete();
+                using (IUnitOfWork unitOfWork = GetUnitOfWork(implementacionBase))
+                {
+                    unitOfWork.RepositorioAdministradores.Get(pNombreUsuario).Baja = false;
+                    unitOfWork.Complete();
+                }
+                msg = "El administrador" + pNombreUsuario + " ha sido dado de alta correctamente. ";
+                oLog.Add(msg);
+            }
+            catch (Exception ex)
+            {
+                msg = "Error, el administrador" + pNombreUsuario + " no ha podido darse de alta. " + ex.Message + ex.StackTrace;
+                oLog.Add(msg);
+                throw;
             }
         }
     }

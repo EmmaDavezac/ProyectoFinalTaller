@@ -6,6 +6,7 @@ using System.IO;
 using System.Net;
 using System.Text;
 using System.Web;
+using Bitacora;
 
 
 namespace ServiciosAPILibros
@@ -34,9 +35,13 @@ namespace ServiciosAPILibros
             var mUrl = "http://openlibrary.org/search.json?q=" + TratarCadenaBusqueda(cadena);
             // Se crea el request http
             HttpWebRequest mRequest = (HttpWebRequest)WebRequest.Create(mUrl);
+            
+            ArchivoDeLog oLog = new ArchivoDeLog();// Instancia del objeto que maneja los logs.
+            string msg;//Mensaje a guardar en el log.
 
             try
             {
+                
                 // Se ejecuta la consulta
                 WebResponse mResponse = mRequest.GetResponse();
 
@@ -85,7 +90,8 @@ namespace ServiciosAPILibros
                         lista.Add(new Libro(isbn, titulo, autor, añoPublicacion));
                     }
                 }
-
+                msg = "Listado por coincidencia con la api OpenLibrary a funcionado correctemente.";
+                oLog.Add(msg);
             }
             catch (WebException ex)
             {
@@ -97,6 +103,8 @@ namespace ServiciosAPILibros
 
                     System.Console.WriteLine("Error: {0}", mErrorText);
                 }
+                msg = "Error al intentar conectarse con la api OpenLibrary. Se intento traer un listado por coincidencia. " + ex.Response;
+                oLog.Add(msg);
             }
             return lista;
         }
@@ -110,6 +118,9 @@ namespace ServiciosAPILibros
 
             // Se crea el request http
             HttpWebRequest mRequest = (HttpWebRequest)WebRequest.Create(mUrl);
+
+            ArchivoDeLog oLog = new ArchivoDeLog();// Instancia del objeto que maneja los logs.
+            string msg;//Mensaje a guardar en el log.
 
             try
             {
@@ -126,9 +137,9 @@ namespace ServiciosAPILibros
                     dynamic mResponseJSON = JsonConvert.DeserializeObject(json);
 
                     Console.WriteLine("titulo: {0}", mResponseJSON.title);
-
-
                 }
+                msg = "Busqueda por ISBN con la api OpenLibrary a funcionado correctemente.";
+                oLog.Add(msg);
             }
             catch (WebException ex)
             {
@@ -140,6 +151,8 @@ namespace ServiciosAPILibros
 
                     System.Console.WriteLine("Error: {0}", mErrorText);
                 }
+                msg = "Error al realizar busqueda por ISBN con la api OpenLibrary. " + ex.Response;
+                oLog.Add(msg);
             }
             catch (Exception ex)
             {
