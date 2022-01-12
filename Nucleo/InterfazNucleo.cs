@@ -88,11 +88,6 @@ namespace Nucleo
         {
             interfazDAL.DarDeAltaUnLibro(pIdLibro);
         }
-        public void ActualizarEjemplar(string idLibro, string estado)
-        {
-            interfazDAL.ActualizarEjemplar(idLibro, estado);
-        }
-
         public List<Ejemplar> ObtenerEjemplaresDisponibles(int id)
         {
             return interfazDAL.ObtenerEjemplaresDisponibles(Convert.ToInt32(id));
@@ -142,16 +137,14 @@ namespace Nucleo
         { return interfazDAL.ObtenerAdministradores(); }
         public IEnumerable<Libro> ObtenerLibros()
         { return interfazDAL.ObtenerLibros(); }
-        public IEnumerable<Ejemplar> ObtenerEjemplares()
-        { return interfazDAL.ObtenerEjemplares(); }
         public IEnumerable<Prestamo> ObtenerPrestamos()
         { return interfazDAL.ObtenerPrestamos(); }
         public int ObtenerUltimoIdLibro()
 
-        { return ObtenerLibros().Last().Id; }
+        { return ObtenerLibros().Last().Id; }//Llama al metodo obtener libro y con el metodo last obtiene el ultimo id
         public int ObtenerUltimoIdPrestamo()
 
-        { return ObtenerPrestamos().Last().Id; }
+        { return ObtenerPrestamos().Last().Id; }//Llama al metodo obtener prestamos y con el metodo last obtiene el ultimo id
         public List<Prestamo> ObtenerListadePrestamosProximosAVencerse()
 
         {
