@@ -71,14 +71,16 @@ namespace Programa
             {
                 for (int i = 0; i < dataGridViewUsuarios.Rows.Count - 1; i++)
                 {
-                    if (dataGridViewUsuarios.Rows[i].Cells[0].Value.ToString().ToLower().Contains(textBoxNombreUsuario.Text.ToString().ToLower()) == false)
-                    {
-                        dataGridViewUsuarios.Rows[i].Visible = false;
-                    }
-                    else
-                    {
-                        dataGridViewUsuarios.Rows[i].Visible = true;
-                    }
+                    
+                        if (dataGridViewUsuarios.Rows[i].Cells[0].Value.ToString().ToLower().Contains(textBoxNombreUsuario.Text.ToString().ToLower()) == false)
+                        {
+                            dataGridViewUsuarios.Rows[i].Visible = false;
+                        }
+                        else
+                        {
+                            dataGridViewUsuarios.Rows[i].Visible = true;
+                        }
+                    
                 }
             }
         }
