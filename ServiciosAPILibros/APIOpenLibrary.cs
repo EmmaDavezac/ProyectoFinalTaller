@@ -11,30 +11,29 @@ using Bitacora;
 
 namespace ServiciosAPILibros
 {
-    public class APIOpenLibrary : IServiciosAPILibros
+    public class APIOpenLibrary : IServiciosAPILibros//ESta clase es una implementacion de IServiciosAPILibros con la API De busueda de OpenLibrery
     {
-        public string TratarCadenaBusqueda(string ca)
+        public string TratarCadenaBusqueda(string ca)//Este metodo transforma la cadena que queremos buscar en el formato solicitado por la api para hacer una consulta(palabra+palabra+...+palabra)
         {
 
-            string[] separado = ca.Split(new char[] { ' ' });
-            string c = string.Empty;
-            foreach (string palabra in separado)
+            string[] palabrasSeparadas = ca.Split(new char[] { ' ' });//Toma la cadena de entradas,la separa en subcadenas tomando como separador los espacios y las almacena en el array palabrasSeparadas
+            string c = string.Empty;//Creamos una nueva cadena llamada se y le asignamos la cadena vacia
+            foreach (string palabra in palabrasSeparadas) //recorremos todas las palabras del array
             {
                 if (c.Length > 0)
-                    c = c + "+" + palabra;
-                else c += palabra;
+                    c = c + "+" + palabra;//Si la cadena c no esta vacia concatenamos c con el caracter '+' y luego con la palabra
+                else c += palabra;//si la cadena c esta vacia, la concatenamos con la palabra
             }
-            return c.ToUpper();
+            return c.ToUpper();//Convertimos la cadena c a mayusculas y la devolvemos como resultado
 
         }
-        public List<Libro> ListaPorCoincidecia(string cadena)
-        {  // Establecimiento del protocolo ssl de transporte
-            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
-            List<Libro> lista = new List<Libro>();
-            // Url de ejemplo
-            var mUrl = "http://openlibrary.org/search.json?q=" + TratarCadenaBusqueda(cadena);
-            // Se crea el request http
-            HttpWebRequest mRequest = (HttpWebRequest)WebRequest.Create(mUrl);
+        public List<Libro> ListaPorCoincidecia(string cadena)//Este metodo nos permite realizar una busqueda en la API de OPenLibrery y obtener como resultado una lista de libros que conincidan con el termino buscado
+        {  
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12; // Establecimiento del protocolo ssl de transporte
+            List<Libro> lista = new List<Libro>();//Creamos una lista de libro
+            string terminoDeBusqueda=TratarCadenaBusqueda(cadena);//Convertimos la cadena al formato necesario para realizar una busqueda solicitado por la API
+            var mUrl = "http://openlibrary.org/search.json?q=" +terminoDeBusqueda ;
+            HttpWebRequest mRequest = (HttpWebRequest)WebRequest.Create(mUrl);            // Se crea el request http
             
             FachadaBitacora oLog = new FachadaBitacora();// Instancia del objeto que maneja los logs.
             string msg;//Mensaje a guardar en el log.
@@ -61,16 +60,15 @@ namespace ServiciosAPILibros
                     string añoPublicacion;
                     string isbn;
 
-                    foreach (var bResponseItem in mResponseJSON.docs)
+                    foreach (var bResponseItem in mResponseJSON.docs)//Recorremos cada item de la respuesta que nos dio la api
                     {
 
-
-
-                        if (bResponseItem.title != null)
+                        //Convertimos el objeto que obtenemos como respuesta por parte de la api y lo convertimos en una lista de libros
+                        if (bResponseItem.title != null)//si el item posee el atributo title leemos el atributo, lo convertimos en una cadena y lo asignamoa a la variable titulo
                         {
                             titulo = HttpUtility.HtmlDecode(bResponseItem.title.ToString());
                         }
-                        else { titulo = "desconocido"; }
+                        else { titulo = "desconocido"; }//si no posee el atributo le asignamos a la variable titulo "desconocido"
                         if (bResponseItem.author_name != null)
                         {
                             autor = HttpUtility.HtmlDecode(bResponseItem.author_name.ToString());
@@ -87,13 +85,13 @@ namespace ServiciosAPILibros
                             isbn = HttpUtility.HtmlDecode(bResponseItem.isbn.ToString());
                         }
                         else { isbn = "desconocido"; }
-                        lista.Add(new Libro(isbn, titulo, autor, añoPublicacion));
+                        lista.Add(new Libro(isbn, titulo, autor, añoPublicacion));//creamos una instancia de la clase Libro y lo añadimos a la lista de libros
                     }
                 }
                 msg = "Listado por coincidencia con la api OpenLibrary a funcionado correctemente.";
-                oLog.Add(msg);
+                oLog.Add(msg);//Registramos la operacion en la bitacora
             }
-            catch (WebException ex)
+            catch (WebException ex)//Manejamos la excepcion
             {
                 WebResponse mErrorResponse = ex.Response;
                 using (Stream mResponseStream = mErrorResponse.GetResponseStream())
@@ -103,63 +101,11 @@ namespace ServiciosAPILibros
 
                     System.Console.WriteLine("Error: {0}", mErrorText);
                 }
-                msg = "Error al intentar conectarse con la api OpenLibrary. Se intento traer un listado por coincidencia. " + ex.Response;
+                msg = "Error al intentar conectarse con la api OpenLibrary. Se intento traer un listado por coincidencia. (termino de busqueda: "+terminoDeBusqueda+" cadena: "+ca+")" +ex.Message+ex.StackTrace+ ex.Response;
                 oLog.Add(msg);
             }
             return lista;
         }
-        public void BuscarPorISBN(string isbn)
-        {
-            // Establecimiento del protocolo ssl de transporte
-            System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
-
-            // Url de ejemplo
-            var mUrl = "https://openlibrary.org/isbn/" + isbn + ".json";
-
-            // Se crea el request http
-            HttpWebRequest mRequest = (HttpWebRequest)WebRequest.Create(mUrl);
-
-            FachadaBitacora oLog = new FachadaBitacora();// Instancia del objeto que maneja los logs.
-            string msg;//Mensaje a guardar en el log.
-
-            try
-            {
-                // Se ejecuta la consulta
-                WebResponse mResponse = mRequest.GetResponse();
-
-                // Se obtiene los datos de respuesta
-                using (Stream responseStream = mResponse.GetResponseStream())
-                {
-                    StreamReader reader = new StreamReader(responseStream, Encoding.UTF8);
-
-                    // Se parsea la respuesta y se serializa a JSON a un objeto dynamic
-                    var json = reader.ReadToEnd();
-                    dynamic mResponseJSON = JsonConvert.DeserializeObject(json);
-
-                    Console.WriteLine("titulo: {0}", mResponseJSON.title);
-                }
-                msg = "Busqueda por ISBN con la api OpenLibrary a funcionado correctemente.";
-                oLog.Add(msg);
-            }
-            catch (WebException ex)
-            {
-                WebResponse mErrorResponse = ex.Response;
-                using (Stream mResponseStream = mErrorResponse.GetResponseStream())
-                {
-                    StreamReader mReader = new StreamReader(mResponseStream, Encoding.GetEncoding("utf-8"));
-                    String mErrorText = mReader.ReadToEnd();
-
-                    System.Console.WriteLine("Error: {0}", mErrorText);
-                }
-                msg = "Error al realizar busqueda por ISBN con la api OpenLibrary. " + ex.Response;
-                oLog.Add(msg);
-            }
-            catch (Exception ex)
-            {
-                System.Console.WriteLine("Error: {0}", ex.Message);
-            }
-
-
-        }
+        
     }
 }
