@@ -39,19 +39,18 @@ namespace Programa
             {
                 for (int i = 0; i < dataGridViewLibros.Rows.Count - 1; i++)
                 {
-                    if (dataGridViewUsuarios.Rows[i].Cells[1].Value == null) { dataGridViewUsuarios.Rows[i].Visible = false; }
-                 
-                    else
-
-                    { if (dataGridViewLibros.Rows[i].Cells[1].Value.ToString().Contains(textBoxTituloOISBNLibro.Text) == false)
-                        {
-                            dataGridViewLibros.Rows[i].Visible = false;
-                        } 
-                    
+                    if (textBoxTituloOISBNLibro.Text.All(Char.IsDigit) && dataGridViewLibros.Rows[i].Cells[1].Value.ToString().Contains(textBoxTituloOISBNLibro.Text.ToString()))
+                    {
+                        dataGridViewLibros.Rows[i].Visible = true;
+                    }
+                    else if (dataGridViewLibros.Rows[i].Cells[2].Value.ToString().ToLower().Contains(textBoxTituloOISBNLibro.Text.ToString().ToLower()) == false)
+                    {
+                        dataGridViewLibros.Rows[i].Visible = false;
+                    }
                     else
                     {
                         dataGridViewLibros.Rows[i].Visible = true;
-                    }}
+                    }
                 }
             }
         }
@@ -72,16 +71,14 @@ namespace Programa
             {
                 for (int i = 0; i < dataGridViewUsuarios.Rows.Count - 1; i++)
                 {
-                    
-                        if (dataGridViewUsuarios.Rows[i].Cells[1].Value.ToString().Contains(textBoxNombreUsuario.Text.ToString()) == false)
-                        {
-                            dataGridViewUsuarios.Rows[i].Visible = false;
-                        }
-                        else
-                        {
-                            dataGridViewUsuarios.Rows[i].Visible = true;
-                        }
-                    
+                    if (dataGridViewUsuarios.Rows[i].Cells[0].Value.ToString().ToLower().Contains(textBoxNombreUsuario.Text.ToString().ToLower()) == false)
+                    {
+                        dataGridViewUsuarios.Rows[i].Visible = false;
+                    }
+                    else
+                    {
+                        dataGridViewUsuarios.Rows[i].Visible = true;
+                    }
                 }
             }
         }
