@@ -482,7 +482,7 @@ namespace Programa
             this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "ActualizarLibro";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "ActualizarLibro";
+            this.Text = "Actualizar Libro";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ActualizarLibro_FormClosed);
             this.Load += new System.EventHandler(this.ActualizarLibro_Load);
             this.panel3.ResumeLayout(false);

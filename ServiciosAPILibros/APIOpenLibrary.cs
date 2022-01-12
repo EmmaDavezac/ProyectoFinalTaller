@@ -36,7 +36,7 @@ namespace ServiciosAPILibros
             // Se crea el request http
             HttpWebRequest mRequest = (HttpWebRequest)WebRequest.Create(mUrl);
             
-            ArchivoDeLog oLog = new ArchivoDeLog();// Instancia del objeto que maneja los logs.
+            FachadaBitacora oLog = new FachadaBitacora();// Instancia del objeto que maneja los logs.
             string msg;//Mensaje a guardar en el log.
 
             try
@@ -119,7 +119,7 @@ namespace ServiciosAPILibros
             // Se crea el request http
             HttpWebRequest mRequest = (HttpWebRequest)WebRequest.Create(mUrl);
 
-            ArchivoDeLog oLog = new ArchivoDeLog();// Instancia del objeto que maneja los logs.
+            FachadaBitacora oLog = new FachadaBitacora();// Instancia del objeto que maneja los logs.
             string msg;//Mensaje a guardar en el log.
 
             try

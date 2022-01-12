@@ -8,7 +8,7 @@ namespace Programa
 {
     public partial class ActualizarLibro : Form
     {
-        InterfazNucleo interfazNucleo = new InterfazNucleo();
+        FachadaNucleo interfazNucleo = new FachadaNucleo();
 
         private int sumatoriaDeEjemplares { get; set; }
         private int idLibro { get; set; }

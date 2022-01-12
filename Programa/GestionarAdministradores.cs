@@ -11,7 +11,7 @@ namespace Programa
     {
         private string nombre { get; set; }
         private string nombreUsuario { get; set; }
-        private InterfazNucleo interfazNucleo = new InterfazNucleo();
+        private FachadaNucleo interfazNucleo = new FachadaNucleo();
 
         public GestionarAdministradores(string pNombreUsuario)
         {

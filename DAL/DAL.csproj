@@ -51,15 +51,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EntityFramework\AdministradorDePrestamosDbContext.cs" />
-    <Compile Include="EntityFramework\Repositorio.cs" />
-    <Compile Include="EntityFramework\RepositorioAdministradores.cs" />
-    <Compile Include="EntityFramework\RepositorioEjemplares.cs" />
-    <Compile Include="EntityFramework\RepositorioLibros.cs" />
-    <Compile Include="EntityFramework\RepositorioPrestamos.cs" />
-    <Compile Include="EntityFramework\RepositorioUsuarios.cs" />
-    <Compile Include="EntityFramework\UnitOfWork.cs" />
-    <Compile Include="InterfazDAL.cs" />
+    <Compile Include="Imp con MSSQL Y Entity Framework\AdministradorDePrestamosDbContext.cs" />
+    <Compile Include="Imp con MSSQL Y Entity Framework\Repositorio.cs" />
+    <Compile Include="Imp con MSSQL Y Entity Framework\RepositorioAdministradores.cs" />
+    <Compile Include="Imp con MSSQL Y Entity Framework\RepositorioEjemplares.cs" />
+    <Compile Include="Imp con MSSQL Y Entity Framework\RepositorioLibros.cs" />
+    <Compile Include="Imp con MSSQL Y Entity Framework\RepositorioPrestamos.cs" />
+    <Compile Include="Imp con MSSQL Y Entity Framework\RepositorioUsuarios.cs" />
+    <Compile Include="Imp con MSSQL Y Entity Framework\UnitOfWork.cs" />
+    <Compile Include="FachadaDAL.cs" />
     <Compile Include="IRepositorio.cs" />
     <Compile Include="IRepositorioAdministradores.cs" />
     <Compile Include="IRepositorioEjemplares.cs" />

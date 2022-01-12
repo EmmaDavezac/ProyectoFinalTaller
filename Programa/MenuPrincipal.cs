@@ -8,7 +8,7 @@ namespace Programa
     {
         private string NombreYApellido { get; set; }
         private string nombreUsuario { get; set; }
-        InterfazNucleo interfazNucleo = new InterfazNucleo();
+        FachadaNucleo interfazNucleo = new FachadaNucleo();
         public MenuPrincipal(string pNombreUsuario)
         {
             InitializeComponent();

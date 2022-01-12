@@ -7,7 +7,7 @@ namespace Programa
     public partial class EditarPrestamo : Form
     {
         private int idPrestamo;
-        private InterfazNucleo interfazNucleo = new InterfazNucleo();
+        private FachadaNucleo interfazNucleo = new FachadaNucleo();
         public EditarPrestamo()
         {
             idPrestamo = 0;

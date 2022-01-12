@@ -30,8 +30,8 @@ namespace Programa
             {
                 if (!string.IsNullOrEmpty(textBoxContraseña.Text))
                 {
-                    Nucleo.InterfazNucleo fachada = new Nucleo.InterfazNucleo();
-                    if (new Nucleo.InterfazNucleo().ObtenerAdministrador(textBoxNombreUsuario.Text) != null)
+                    Nucleo.FachadaNucleo fachada = new Nucleo.FachadaNucleo();
+                    if (new Nucleo.FachadaNucleo().ObtenerAdministrador(textBoxNombreUsuario.Text) != null)
                     {
                         if (fachada.ObtenerAdministrador(textBoxNombreUsuario.Text).Baja == false)
                         {

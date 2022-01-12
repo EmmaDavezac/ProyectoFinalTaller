@@ -8,7 +8,7 @@ namespace Programa
     public partial class ActualizarUsuario : Form
     {
         private string nombre { get; set; }
-        InterfazNucleo interfazNucleo = new InterfazNucleo();
+        FachadaNucleo interfazNucleo = new FachadaNucleo();
         private string nombreUsuario { get; set; }
         public ActualizarUsuario(string pNombreUsuario)
         {

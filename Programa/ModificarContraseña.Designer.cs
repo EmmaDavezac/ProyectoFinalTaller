@@ -150,7 +150,7 @@ namespace Programa
             this.Controls.Add(this.label1);
             this.Name = "ModificarContraseña";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "ModificarContraseña";
+            this.Text = "Modificar Contraseña";
             this.Load += new System.EventHandler(this.ModificarContraseña_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

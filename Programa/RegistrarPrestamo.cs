@@ -12,7 +12,7 @@ namespace Programa
     {
         private string nombre { get; set; }
         private string nombreUsuario { get; set; }
-        private InterfazNucleo interfazNucleo = new InterfazNucleo();
+        private FachadaNucleo interfazNucleo = new FachadaNucleo();
         public RegistrarPrestamo(string pNombreUsuario)
         {
             InitializeComponent();
@@ -37,16 +37,21 @@ namespace Programa
         {
             if (textBoxTituloOISBNLibro.Text != null)
             {
-                for (int i = 0; i < dataGridViewUsuarios.Rows.Count - 1; i++)
+                for (int i = 0; i < dataGridViewLibros.Rows.Count - 1; i++)
                 {
-                    if (dataGridViewLibros.Rows[i].Cells[1].Value.ToString().Contains(textBoxTituloOISBNLibro.Text.ToString()) == false)
-                    {
-                        dataGridViewLibros.Rows[i].Visible = false;
-                    }
+                    if (dataGridViewUsuarios.Rows[i].Cells[1].Value == null) { dataGridViewUsuarios.Rows[i].Visible = false; }
+                 
+                    else
+
+                    { if (dataGridViewLibros.Rows[i].Cells[1].Value.ToString().Contains(textBoxTituloOISBNLibro.Text) == false)
+                        {
+                            dataGridViewLibros.Rows[i].Visible = false;
+                        } 
+                    
                     else
                     {
                         dataGridViewLibros.Rows[i].Visible = true;
-                    }
+                    }}
                 }
             }
         }
@@ -67,14 +72,16 @@ namespace Programa
             {
                 for (int i = 0; i < dataGridViewUsuarios.Rows.Count - 1; i++)
                 {
-                    if (dataGridViewUsuarios.Rows[i].Cells[1].Value.ToString().Contains(textBoxNombreUsuario.Text.ToString()) == false)
-                    {
-                        dataGridViewUsuarios.Rows[i].Visible = false;
-                    }
-                    else
-                    {
-                        dataGridViewUsuarios.Rows[i].Visible = true;
-                    }
+                    
+                        if (dataGridViewUsuarios.Rows[i].Cells[1].Value.ToString().Contains(textBoxNombreUsuario.Text.ToString()) == false)
+                        {
+                            dataGridViewUsuarios.Rows[i].Visible = false;
+                        }
+                        else
+                        {
+                            dataGridViewUsuarios.Rows[i].Visible = true;
+                        }
+                    
                 }
             }
         }
@@ -156,7 +163,7 @@ namespace Programa
         {
             int idEjemplar = interfazNucleo.ObtenerEjemplaresDisponibles(Convert.ToInt32(textBoxIdLibro.Text.ToString())).First().Id;
             interfazNucleo.RegistrarPrestamo(textBoxNomUsuario.Text, idEjemplar, Convert.ToInt32(textBoxIdLibro.Text));
-            string FechaLimite = Convert.ToDateTime(new InterfazNucleo().ObtenerPrestamo(interfazNucleo.ObtenerUltimoIdPrestamo()).FechaLimite).Date.ToShortDateString();
+            string FechaLimite = Convert.ToDateTime(new FachadaNucleo().ObtenerPrestamo(interfazNucleo.ObtenerUltimoIdPrestamo()).FechaLimite).Date.ToShortDateString();
             MessageBox.Show("El prestamo ha sido registrado correctamente" + "\nFecha limite: " + FechaLimite);
             RegistrarPrestamo_Load(sender, e);
         }

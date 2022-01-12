@@ -6,7 +6,7 @@ namespace Programa
 {
     public partial class ModificarContraseña : Form
     {
-        private InterfazNucleo interfazNucleo = new InterfazNucleo();
+        private FachadaNucleo interfazNucleo = new FachadaNucleo();
         private string idUsuario;
         string contraseñaNueva;
         public ModificarContraseña(string iD)

@@ -10,7 +10,7 @@ namespace Programa
         private int scoringActual;
         private int scoringPorFecha;
         private int scoringDevolucion;
-        private InterfazNucleo interfazNucleo = new InterfazNucleo();
+        private FachadaNucleo interfazNucleo = new FachadaNucleo();
         private int idPrestamo;
         private bool modificado;
         public DevolucionPrestamo()

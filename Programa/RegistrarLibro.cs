@@ -11,7 +11,7 @@ namespace Programa
     public partial class RegistrarLibro : Form
     {
         private string NombreUsuario { get; set; }
-        InterfazNucleo interfazNucleo = new InterfazNucleo();
+        FachadaNucleo interfazNucleo = new FachadaNucleo();
         public RegistrarLibro(string pNombreUsuario)
         {
             InitializeComponent();
@@ -98,8 +98,8 @@ namespace Programa
             if (!string.IsNullOrEmpty(textBoxTitulo.Text) && !string.IsNullOrEmpty(textBoxAutor.Text) && !string.IsNullOrEmpty(textBoxISBN.Text) && !string.IsNullOrEmpty(textBoxAñoPublicacion.Text) && !string.IsNullOrEmpty(textBoxCantidadEjemplares.Text))
             {
 
-                new InterfazNucleo().AñadirLibro(textBoxISBN.Text, textBoxTitulo.Text, textBoxAutor.Text, textBoxAñoPublicacion.Text, Convert.ToInt32(textBoxCantidadEjemplares.Text));
-                MessageBox.Show("Libro registrado con exito, el Id del libro es: " + new InterfazNucleo().ObtenerUltimoIdLibro());
+                new FachadaNucleo().AñadirLibro(textBoxISBN.Text, textBoxTitulo.Text, textBoxAutor.Text, textBoxAñoPublicacion.Text, Convert.ToInt32(textBoxCantidadEjemplares.Text));
+                MessageBox.Show("Libro registrado con exito, el Id del libro es: " + new FachadaNucleo().ObtenerUltimoIdLibro());
 
             }
             else
@@ -184,7 +184,10 @@ namespace Programa
         {
             if (e.RowIndex >= 0)
             {
-                textBoxISBN.Text = dataGridViewISBN.CurrentRow.Cells[0].Value.ToString();
+                if (dataGridViewISBN.CurrentRow.Cells[0].Value!=null)
+                {
+                    textBoxISBN.Text = dataGridViewISBN.CurrentRow.Cells[0].Value.ToString(); 
+                }
             }
         }
 
@@ -192,7 +195,10 @@ namespace Programa
         {
             if (e.RowIndex >= 0)
             {
-                textBoxAñoPublicacion.Text = dataGridViewAños.CurrentRow.Cells[0].Value.ToString();
+                if (dataGridViewISBN.CurrentRow.Cells[0].Value != null)
+                {
+                    textBoxAñoPublicacion.Text = dataGridViewAños.CurrentRow.Cells[0].Value.ToString();
+                }
             }
         }
 
@@ -277,7 +283,7 @@ namespace Programa
             {
 
                 ((ActualizarLibro)this.Owner).CargarDatosDeBusquedaAvanzada(textBoxTitulo.Text, textBoxAutor.Text, textBoxAñoPublicacion.Text, textBoxISBN.Text);
-                MessageBox.Show("Libro registrado con exito, el Id del libro es: " + new InterfazNucleo().ObtenerUltimoIdLibro());
+                MessageBox.Show("Libro registrado con exito, el Id del libro es: " + new FachadaNucleo().ObtenerUltimoIdLibro());
                 this.Hide();
                 this.Owner.Show();
             }

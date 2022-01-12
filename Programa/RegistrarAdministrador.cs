@@ -9,7 +9,7 @@ namespace Programa
     {
         private string nombre { get; set; }
         private string nombreUsuario { get; set; }
-        InterfazNucleo interfazNucleo = new InterfazNucleo();
+        FachadaNucleo interfazNucleo = new FachadaNucleo();
         public RegistrarAdministrador(string pNombreUsuario)
         {
             InitializeComponent();

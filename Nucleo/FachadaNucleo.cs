@@ -9,14 +9,14 @@ using Bitacora;
 
 namespace Nucleo
 {
-    public class InterfazNucleo//Fachada principal del proxima que nos permite usar las funciones del programa sin dar a conocer como funcionan por dentro
+    public class FachadaNucleo//Fachada principal del proxima que nos permite usar las funciones del programa sin dar a conocer como funcionan por dentro
     {
-        private InterfazDAL interfazDAL = new InterfazDAL();
-        private InterfazAPILibros interfazAPILibros = new InterfazAPILibros();
-        private InterfazNotificarUsuario interfazNotificarUsuario = new InterfazNotificarUsuario();
+        private FachadaDAL interfazDAL = new FachadaDAL();
+        private FachadaAPILibros interfazAPILibros = new FachadaAPILibros();
+        private FachadaNotificarUsuario interfazNotificarUsuario = new FachadaNotificarUsuario();
         
 
-        public InterfazNucleo()
+        public FachadaNucleo()
         {
         }
         public bool AñadirUsuario(string pNombreUsuario, string nombre, string apellido, DateTime fechaNacimiento, string mail, string telefono)
@@ -159,7 +159,15 @@ namespace Nucleo
         { return interfazAPILibros.ListarLibrosDeAPIPorCoincidencia(unaCadena); }
         public bool EsUnEmailValido(string email)
         {
-            return interfazDAL.EsUnEmailValido(email);
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == email;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         public void NotificarProximoAVencer(string pNombreUsuario)
@@ -219,7 +227,7 @@ namespace Nucleo
                 }
                 else
                 {
-                    palabra = palabra + pLista.Substring(i, 1);
+                    palabra += pLista.Substring(i, 1);
                 }
             }
             for (int i = 1; i < resultadoIntermedio.Count; i += 2)
@@ -244,7 +252,7 @@ namespace Nucleo
                 }
                 else
                 {
-                    palabra = palabra + pLista.Substring(i, 1);
+                    palabra += pLista.Substring(i, 1);
                 }
             }
             HashSet<string> hashWithoutDuplicates = new HashSet<string>(resultado);
@@ -277,7 +285,7 @@ namespace Nucleo
         public void RegistrarLog(string sLog)
         {
 
-            ArchivoDeLog oLog = new ArchivoDeLog();
+            FachadaBitacora oLog = new FachadaBitacora();
             oLog.Add(sLog);
 
         }

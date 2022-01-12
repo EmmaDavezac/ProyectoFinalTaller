@@ -14,7 +14,7 @@ namespace Programa
         {
             public async Task Execute(IJobExecutionContext context)
             {
-                InterfazNucleo interfaz = new InterfazNucleo();
+                FachadaNucleo interfaz = new FachadaNucleo();
                 interfaz.NotificarUsuarios();
                 await Task.CompletedTask;
             }

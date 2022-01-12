@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace ServiciosAPILibros
 {
-    public class InterfazAPILibros//Fachada de la libreria
+    public class FachadaAPILibros//Fachada de la libreria
     {
         static string[] implementacionesAPILibros = new string[] { "OpenLibrary" };
         static private string implementacionAPILibros = implementacionesAPILibros[0];

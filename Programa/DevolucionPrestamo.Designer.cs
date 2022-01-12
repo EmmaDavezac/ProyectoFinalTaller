@@ -275,7 +275,7 @@ namespace Programa
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "DevolucionPrestamo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "DevolucionPrestamo";
+            this.Text = "Devolucion de Prestamo";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.DevolucionPrestamo_FormClosed);
             this.Load += new System.EventHandler(this.DevolucionPrestamo_Load);
             this.ResumeLayout(false);

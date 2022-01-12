@@ -3,12 +3,12 @@ using System.IO;
 
 namespace Bitacora
 {
-    public class ArchivoDeLog//esta clase nos permite crear y manipular una bitacora del programa donde se registraran las operaciones del programa y los errores que surgan durante la ejecucion del mismo
+    public class FachadaBitacora//esta clase nos permite crear y manipular una bitacora del programa donde se registraran las operaciones del programa y los errores que surgan durante la ejecucion del mismo
     {
         private string Path = "Logs";//establece la direccion relativa del los archivos de la bitacora
 
 
-        public ArchivoDeLog()//contructor de la clase
+        public FachadaBitacora()//contructor de la clase
         {
 
         }
