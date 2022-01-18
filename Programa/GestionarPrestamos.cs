@@ -10,7 +10,6 @@ namespace Programa
 {
     public partial class GestionarPrestamos : Form
     {
-        private string nombre { get; set; }
         private string nombreUsuario { get; set; }
         private FachadaNucleo interfazNucleo = new FachadaNucleo();
         public GestionarPrestamos(string pNombreUsuario)

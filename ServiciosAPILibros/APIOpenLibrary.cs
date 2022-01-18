@@ -101,7 +101,7 @@ namespace ServiciosAPILibros
 
                     System.Console.WriteLine("Error: {0}", mErrorText);
                 }
-                msg = "Error al intentar conectarse con la api OpenLibrary. Se intento traer un listado por coincidencia. (termino de busqueda: "+terminoDeBusqueda+" cadena: "+ca+")" +ex.Message+ex.StackTrace+ ex.Response;
+                msg = "Error al intentar conectarse con la api OpenLibrary. Se intento traer un listado por coincidencia. (termino de busqueda: "+terminoDeBusqueda+" cadena: "+cadena+")" +ex.Message+ex.StackTrace+ ex.Response;
                 oLog.Add(msg);
             }
             return lista;

@@ -9,7 +9,6 @@ namespace Programa
 {
     public partial class GestionarUsuarios : Form
     {
-        private string nombre { get; set; }
         private string nombreUsuario { get; set; }
         private FachadaNucleo interfazNucleo = new FachadaNucleo();
        
