@@ -185,7 +185,7 @@ namespace Programa
             this.botonVolver.TabIndex = 8;
             this.botonVolver.Text = "Volver";
             this.botonVolver.UseVisualStyleBackColor = false;
-            this.botonVolver.Click += new System.EventHandler(this.button2_Click);
+            this.botonVolver.Click += new System.EventHandler(this.botonVolver_Click);
             // 
             // label2
             // 
