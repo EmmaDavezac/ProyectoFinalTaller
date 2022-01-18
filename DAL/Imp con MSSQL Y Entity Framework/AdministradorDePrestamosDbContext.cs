@@ -6,15 +6,16 @@ using System.Data.Entity.ModelConfiguration.Conventions;
 namespace DAL.EntityFramework
 {
     public class AdministradorDePrestamosDbContext : DbContext
-
     {
+        static private string[] implementacionesBase = new string[] { "ConnectionSQLServerLocal", "ConnectionSQLServerHosting" };
+        static private string implementacionBase = implementacionesBase[1];
 
         public AdministradorDePrestamosDbContext(string cadena) : base(cadena)
         {
         
         }
 
-        public AdministradorDePrestamosDbContext() : base("ConnectionSQLServerHosting")
+        public AdministradorDePrestamosDbContext() : base(implementacionBase)
         {
 
         }

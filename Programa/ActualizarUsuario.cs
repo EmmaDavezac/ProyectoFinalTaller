@@ -13,7 +13,6 @@ namespace Programa
         {
             InitializeComponent();
             nombreUsuario = pNombreUsuario;
-            nombre = interfazNucleo.ObtenerAdministrador(nombreUsuario).Nombre;
             labelNombreUsuario.Text = "Usuario: " + nombreUsuario;
         }
 
