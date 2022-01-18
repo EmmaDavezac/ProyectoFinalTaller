@@ -221,7 +221,7 @@ namespace Programa
             this.buttonModificarContraseña.TabIndex = 57;
             this.buttonModificarContraseña.Text = "Modificar Contraseña";
             this.buttonModificarContraseña.UseVisualStyleBackColor = false;
-            this.buttonModificarContraseña.Click += new System.EventHandler(this.button1_Click);
+            this.buttonModificarContraseña.Click += new System.EventHandler(this.buttonModificarContraseña_Click);
             // 
             // dateTimePickerFechaNacimiento
             // 

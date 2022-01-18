@@ -29,15 +29,13 @@ namespace Programa
         private void buttonModificarFechas_Click(object sender, EventArgs e)
         {
             interfazNucleo.ModificarFechasPrestamo(idPrestamo, textBoxFechaPrestamo.Text, textBoxFechaLimite.Text);
-            this.Hide();
-            this.Owner.Show();
             ((GestionarPrestamos)this.Owner).ObtenerPrestamos();
+            this.Close();
         }
 
         private void buttonVolver_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            this.Owner.Show();
+            this.Close();
         }
     }
 }

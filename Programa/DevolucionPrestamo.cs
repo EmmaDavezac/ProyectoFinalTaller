@@ -115,8 +115,7 @@ namespace Programa
                 interfazNucleo.RegistrarDevolucion(idPrestamo, comboBoxEstadoEjemplar.Text);
                 MessageBox.Show("La devolucion se registro correctamente");
                 ((GestionarPrestamos)this.Owner).ObtenerPrestamos();
-                this.Hide();
-                this.Owner.Show();
+                this.Close();
             }
             else
             {
@@ -126,14 +125,12 @@ namespace Programa
 
         private void botonVolver_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            this.Owner.Show();
+            this.Close();
         }
 
         private void DevolucionPrestamo_FormClosed(object sender, FormClosedEventArgs e)
         {
-            this.Hide();
-            this.Owner.Show();
+            this.Close();
         }
 
         private void label8_Click(object sender, EventArgs e)

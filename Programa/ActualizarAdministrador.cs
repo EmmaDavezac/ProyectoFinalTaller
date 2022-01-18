@@ -35,37 +35,37 @@ namespace Programa
                         {
                                 if (!string.IsNullOrEmpty(textBoxTelefono.Text) && textBoxTelefono.Text.All(Char.IsDigit) && textBoxTelefono.Text.Length >= 8 && textBoxTelefono.Text.Length <= 11)//Verifica que el numero de telefono no este vacio, que todos sus valores sean digitos, y que su longitud este entre 8 y 11 digitos.
                                 {
-                                    if (interfazNucleo.ObtenerAdministrador(textBoxNombreUsuario.Text).Baja == false && checkBoxBaja.Checked == true)//Verifica si el usuario esta dado de baja y si el checkbox baja esta checkeado
+                                    if (interfazNucleo.ObtenerAdministrador(textBoxNombreUsuario.Text).Baja == false && checkBoxBaja.Checked == true)//Verifica si el administrador esta dado de baja y si el checkbox baja esta checkeado
                                     {
                                         interfazNucleo.ActualizarAdministrador(textBoxNombreUsuario.Text, textBoxNombre.Text, textBoxApellido.Text, dateTimePickerFechaNacimiento.Value.Date.ToString(), textBoxMail.Text, textBoxTelefono.Text);//De ser asi permite actualizar los camops
                                         interfazNucleo.DarDeBajaAdministrador(textBoxNombreUsuario.Text);// Y da de baja al administrador.
                                         MessageBox.Show("Administrador ha sido dado de baja, el nombre de usuario es: " + textBoxNombreUsuario.Text, "Operacion Exitosa", MessageBoxButtons.OK);//Mensaje informativo al administrador
                                     }
-                                    else if (interfazNucleo.ObtenerAdministrador(textBoxNombreUsuario.Text).Baja == true && checkBoxBaja.Checked == true)//Otra situacion es que usuario esta dado de baja y ademas el checbox este checkeado
+                                    else if (interfazNucleo.ObtenerAdministrador(textBoxNombreUsuario.Text).Baja == true && checkBoxBaja.Checked == true)//Otra situacion es que el administrador esta dado de baja y ademas el checbox este checkeado
                                     {
                                         interfazNucleo.ActualizarAdministrador(textBoxNombreUsuario.Text, textBoxNombre.Text, textBoxApellido.Text, dateTimePickerFechaNacimiento.Value.Date.ToString(), textBoxMail.Text, textBoxTelefono.Text);//En este caso solo actualiza los datos del administrador
                                         MessageBox.Show("Administrador ha sido dado de baja, el nombre de usuario es: " + textBoxNombreUsuario.Text, "Operacion Exitosa", MessageBoxButtons.OK);//Mensaje informativo al administrador
                                 }
                                     else if (interfazNucleo.ObtenerAdministrador(textBoxNombreUsuario.Text).Baja == false && checkBoxBaja.Checked == false)//Otra situacion es que el administrador no este dado de baja y que ademas el checkbox no este checkeado.
                                     {
-                                        interfazNucleo.ActualizarAdministrador(textBoxNombreUsuario.Text, textBoxNombre.Text, textBoxApellido.Text, dateTimePickerFechaNacimiento.Value.Date.ToString(), textBoxMail.Text, textBoxTelefono.Text);
-                                        MessageBox.Show("Administrador ha sido guardado correctamente, el nombre de usuario es: " + textBoxNombreUsuario.Text, "Operacion Exitosa", MessageBoxButtons.OK);
-                                    }
-                                    else if (interfazNucleo.ObtenerAdministrador(textBoxNombreUsuario.Text).Baja == true && checkBoxBaja.Checked == false)
+                                        interfazNucleo.ActualizarAdministrador(textBoxNombreUsuario.Text, textBoxNombre.Text, textBoxApellido.Text, dateTimePickerFechaNacimiento.Value.Date.ToString(), textBoxMail.Text, textBoxTelefono.Text);//En este caso solo actualiza los datos del administrador
+                                        MessageBox.Show("Administrador ha sido guardado correctamente, el nombre de usuario es: " + textBoxNombreUsuario.Text, "Operacion Exitosa", MessageBoxButtons.OK);//Mensaje informativo al administrador
+                                }
+                                    else if (interfazNucleo.ObtenerAdministrador(textBoxNombreUsuario.Text).Baja == true && checkBoxBaja.Checked == false)//Otra situacion es que el administrador este dado de baja y que no este checkeado el checkbox de baja es decir que se de de alta nuevamente.
                                     {
-                                        interfazNucleo.ActualizarAdministrador(textBoxNombreUsuario.Text, textBoxNombre.Text, textBoxApellido.Text, dateTimePickerFechaNacimiento.Value.Date.ToString(), textBoxMail.Text, textBoxTelefono.Text);
-                                        interfazNucleo.DarDeAltaAdministrador(textBoxNombreUsuario.Text);
-                                        MessageBox.Show("Administrador ha sido dado de alta y guardado correctamente, el nombre de usuario es: " + textBoxNombreUsuario.Text, "Operacion Exitosa", MessageBoxButtons.OK);
-                                    }
-                                    if (contraseñaNueva != null)
+                                        interfazNucleo.ActualizarAdministrador(textBoxNombreUsuario.Text, textBoxNombre.Text, textBoxApellido.Text, dateTimePickerFechaNacimiento.Value.Date.ToString(), textBoxMail.Text, textBoxTelefono.Text);//En este caso se actualiza el administrador.
+                                        interfazNucleo.DarDeAltaAdministrador(textBoxNombreUsuario.Text);//Y se da de alta nuevamente al administrador.
+                                        MessageBox.Show("Administrador ha sido dado de alta y guardado correctamente, el nombre de usuario es: " + textBoxNombreUsuario.Text, "Operacion Exitosa", MessageBoxButtons.OK);//Mensaje informativo al administrador
+                                }
+                                    if (contraseñaNueva != null)//Si la contraseña pasada al construtor de la interfaz no es vacio entonces procede a actualizar la contraseña del administrador,
                                     {
                                         interfazNucleo.ActualizarContraseñaAdministrador(textBoxNombreUsuario.Text, contraseñaNueva);
                                     }
-                                    this.Hide();
-                                    ((GestionarAdministradores)Owner).ObtenerAdministradores();
-                                    this.Owner.Show();
+                                    this.Hide();//Oculta la ventana actual
+                                    ((GestionarAdministradores)Owner).ObtenerAdministradores();//Actualiza el listado de administradores de su owner
+                                    this.Owner.Show();//Muestra a su owner(GestionarAdministradores);
                                 }
-                                else
+                                else//A continuacion todos los else con su correspondiente mensaje de error.
                                 {
                                     this.labelError.Text = "Error,telefono ingresado invalido.Ingrese el numero sin 0 ni 15";
                                     buttonGuardar.Enabled = false;
@@ -83,7 +83,7 @@ namespace Programa
                     {
                         this.labelError.Text = "Error, no ha ingresado la fecha de nacimiento";
                         buttonGuardar.Enabled = false;
-                        dateTimePickerFechaNacimiento.Focus(); ;
+                        dateTimePickerFechaNacimiento.Focus();
                     }
 
                 }
@@ -147,22 +147,22 @@ namespace Programa
             buttonGuardar.Enabled = true;
         }
 
-        public void CargarAdministradorExistente(string pNombreUsuario,string pBaja)
+        public void CargarAdministradorExistente(string pNombreUsuario,string pBaja)//Se encarga de inicializar los datos del adminsitrador en la ventana.
         {
-            var usuario = interfazNucleo.ObtenerAdministrador(pNombreUsuario);
-            textBoxNombreUsuario.Text = usuario.NombreUsuario;
+            var usuario = interfazNucleo.ObtenerAdministrador(pNombreUsuario);//Obtiene el administrador.
+            textBoxNombreUsuario.Text = usuario.NombreUsuario;//Carga los textbox con sus datos correspondientes del administrador.
             textBoxNombre.Text = usuario.Nombre;
             textBoxApellido.Text = usuario.Apellido;
             dateTimePickerFechaNacimiento.Value = usuario.FechaNacimiento;
             textBoxMail.Text = usuario.Mail;
             textBoxTelefono.Text = usuario.Telefono;
-            if (pBaja == "True")
+            if (pBaja == "True")//Verifica si el administrador esta dado de baja.
             {
-                checkBoxBaja.Checked = true;
+                checkBoxBaja.Checked = true;//Si es asi checkea el checkbox de baja.
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonModificarContraseña_Click(object sender, EventArgs e)
         {
             ModificarContraseña ventana = new ModificarContraseña(textBoxNombreUsuario.Text);
             ventana.ShowDialog(this);

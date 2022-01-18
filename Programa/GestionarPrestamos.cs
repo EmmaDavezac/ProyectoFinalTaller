@@ -90,16 +90,16 @@ namespace Programa
                     int idPrestamo = Convert.ToInt32(dataGridViewPrestamos.Rows[e.RowIndex].Cells[1].Value.ToString());
                     DevolucionPrestamo ventana = new DevolucionPrestamo();
                     ventana.InicializarDevolucion(usuario, titulo, autor, fechaVencimiento, estado, scoring, idPrestamo);
-                    ventana.Show(this);
+                    ventana.ShowDialog(this);
                 }
-                if (cell.Value.ToString() == "Edit")
+                else if (cell.Value.ToString() == "Edit")
                 {
                     int idPrestamo = Convert.ToInt32(dataGridViewPrestamos.CurrentRow.Cells[1].Value.ToString());
                     string fechaPrestamo = dataGridViewPrestamos.CurrentRow.Cells[5].Value.ToString();
                     string fechaLimite = dataGridViewPrestamos.CurrentRow.Cells[6].Value.ToString();
                     EditarPrestamo ventana = new EditarPrestamo();
                     ventana.InicialiarEditarPrestamo(idPrestamo, fechaPrestamo, fechaLimite);
-                    ventana.Show(this);
+                    ventana.ShowDialog(this);
                 }
             }
         }
