@@ -160,7 +160,7 @@ namespace Programa
             {
                 for (int i = 0; i < dataGridViewPrestamos.Rows.Count - 1; i++)
                 {
-                    if (dataGridViewPrestamos.Text.All(Char.IsDigit) && dataGridViewPrestamos.Rows[i].Cells[2].Value.ToString().ToLower().Contains(textBoxUsuarioOTituloLibro.Text.ToString().ToLower()))
+                    if (dataGridViewPrestamos.Rows[i].Cells[2].Value.ToString().ToLower().Contains(textBoxUsuarioOTituloLibro.Text.ToString().ToLower()))
                     {
                         dataGridViewPrestamos.Rows[i].Visible = true;
                     }
