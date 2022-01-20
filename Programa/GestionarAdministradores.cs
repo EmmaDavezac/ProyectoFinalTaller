@@ -8,11 +8,12 @@ using System.Windows.Forms;
 namespace Programa
 {
     public partial class GestionarAdministradores : Form
+    /*La finalidad de este formulario es permitir ver la informacion de todos los administradores y poder modificarla*/
     {
-        private string nombreUsuario { get; set; }
-        private FachadaNucleo interfazNucleo = new FachadaNucleo();
+        private string nombreUsuario { get; set; }//Aqui se almacena el nombre de usuario del administrador que esta usando el programa
+        private FachadaNucleo interfazNucleo = new FachadaNucleo();//Instancia del nucleo del programa que nos permite acceder a las funciones del mismo
 
-        public GestionarAdministradores(string pNombreUsuario)
+        public GestionarAdministradores(string pNombreUsuario)//Constructor de la clase
         {
             InitializeComponent();
             nombreUsuario = pNombreUsuario;
@@ -23,34 +24,34 @@ namespace Programa
         {
 
         }
-        private void textBoxId_TextChanged(object sender, EventArgs e)
+        private void textBoxId_TextChanged(object sender, EventArgs e)//Este evento se ejecuta cuando se modifica el texto del textbox textBoxId
         {
-            if (textBoxNombreUsuario.Text != null)
+            if (textBoxNombreUsuario.Text != null)//Se verifica que el textbox tenga algun texto para ejecutar la busqueda
             {
-                for (int i = 0; i < dataGridViewAdministradores.Rows.Count - 1; i++)
+                for (int i = 0; i < dataGridViewAdministradores.Rows.Count - 1; i++)//Recorremos todos los elementos de la tabla dataGridViewAdministradores
                 {
                     if (dataGridViewAdministradores.Rows[i].Cells[1].Value.ToString().Contains(textBoxNombreUsuario.Text.ToString()) == false)
                     {
-                        dataGridViewAdministradores.Rows[i].Visible = false;
+                        dataGridViewAdministradores.Rows[i].Visible = false;//Si el termino de busqueda eno es subcadena del nombre de usuario del elemento, se oculta el elemento en la tabla
                     }
                     else
                     {
-                        dataGridViewAdministradores.Rows[i].Visible = true;
+                        dataGridViewAdministradores.Rows[i].Visible = true;//Si el termino de busqueda es subcadena del nombre de usuario del elemento, se muestra el elemento en la tabla
                     }
                 }
             }
         }
 
-        private void botonVolver_Click(object sender, EventArgs e)
+        private void botonVolver_Click(object sender, EventArgs e)//Este evento se ejecuta cuando se presiona el boton botonVolver
         {
-            this.Hide();
-            this.Owner.Show();
+            this.Hide();//Se oculta el formulario 
+            this.Owner.Show();//Se muestra el formulario padre
         }
 
-        private void ConsultarAdministrador_FormClosed(object sender, FormClosedEventArgs e)
+        private void ConsultarAdministrador_FormClosed(object sender, FormClosedEventArgs e)//Este evento se ejecuta cuando se cierra el formulario
         {
-            this.Hide();
-            this.Owner.Show();
+            this.Hide();//Se oculta el formulario 
+            this.Owner.Show();//Se muestra el formulario padre
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -58,10 +59,7 @@ namespace Programa
 
         }
 
-        private void buttonSalir_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
+        
 
         private void ConsultarAdministrador_Load(object sender, EventArgs e)
         {
@@ -93,7 +91,7 @@ namespace Programa
             }
         }
 
-        public void ObtenerAdministradores()
+        public void ObtenerAdministradores()//Este metodo carga la lista de administradores en la tabla dataGridViewAdministradores
         {
             IEnumerable<UsuarioAdministrador> administradores = interfazNucleo.ObtenerAdministradores();
             dataGridViewAdministradores.Rows.Clear();
@@ -115,9 +113,9 @@ namespace Programa
             }
         }
 
-        private void buttonRefrescar_Click(object sender, EventArgs e)
+        private void buttonRefrescar_Click(object sender, EventArgs e)//Este evento se ejecuta cuando se presiona el boton buttonRefrescar
         {
-            ObtenerAdministradores();
+            ObtenerAdministradores();//Se actualiza la tabla deadministradores
         }
 
         private void labelErro_Click(object sender, EventArgs e)
