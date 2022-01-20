@@ -5,37 +5,32 @@ using System.Windows.Forms;
 namespace Programa
 {
     public partial class EditarPrestamo : Form
+    /*Este formulario tiene la finalidad de permitir la edicion de un presamo(estara disponible solo para versiones de prueba, 
+    para demostrar el buen funcionamiento del programa)*/
     {
-        private int idPrestamo;
-        private FachadaNucleo interfazNucleo = new FachadaNucleo();
-        public EditarPrestamo()
+        private int idPrestamo;//Atributo que almacena el id de un prestamo
+        private FachadaNucleo interfazNucleo = new FachadaNucleo();//Instancia del nucleo del programa,  nos permite usar las funciones del mismo
+        public EditarPrestamo()//Constructor de la clase
         {
-            idPrestamo = 0;
+            
             InitializeComponent();
         }
 
-        private void EditarPrestamo_Load(object sender, EventArgs e)
+        private void EditarPrestamo_Load(object sender, EventArgs e)//Este metodo se ejecuta antes de que se abra el formulario
         {
-            this.Hide();
-            this.Owner.Show();
         }
-        public void InicialiarEditarPrestamo(int pIdPrestamo, string pFechaPrestamo, string pFechaLimite)
+        
+
+        private void buttonModificarFechas_Click(object sender, EventArgs e)//Este evento se ejecuta cuando se presiona el boton buttonModificarFechas
         {
-            textBoxFechaPrestamo.Text = pFechaPrestamo;
-            textBoxFechaLimite.Text = pFechaLimite;
-            idPrestamo = pIdPrestamo;
+            interfazNucleo.ModificarFechasPrestamo(idPrestamo, textBoxFechaPrestamo.Text, textBoxFechaLimite.Text);//Se modifican las fechas del prestamo
+            ((GestionarPrestamos)this.Owner).ObtenerPrestamos();//Se actualiza la lista de prestamos en el formulario padre
+            this.Close();//Se cierra este formulario y se vuelve al formulario padre
         }
 
-        private void buttonModificarFechas_Click(object sender, EventArgs e)
+        private void buttonVolver_Click(object sender, EventArgs e)//Este evento se ejecuta cuando se presiona el boton buttonVolver
         {
-            interfazNucleo.ModificarFechasPrestamo(idPrestamo, textBoxFechaPrestamo.Text, textBoxFechaLimite.Text);
-            ((GestionarPrestamos)this.Owner).ObtenerPrestamos();
-            this.Close();
-        }
-
-        private void buttonVolver_Click(object sender, EventArgs e)
-        {
-            this.Close();
+            this.Close();//Se cierra este formulario y se vuelve al formulario padre
         }
     }
 }

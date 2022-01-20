@@ -9,19 +9,22 @@ using System.Windows.Forms;
 namespace Programa
 {
     public partial class GestionarPrestamos : Form
+     /*La finalidad de este formulario es permitir ver la informacion de todos los prestamos y poder modificarla*/
     {
-        private string nombreUsuario { get; set; }
-        private FachadaNucleo interfazNucleo = new FachadaNucleo();
-        public GestionarPrestamos(string pNombreUsuario)
+        private string nombreUsuario { get; set; }//Aqui se almacena el nombre de usuario del administrador que esta usando el programa
+        private FachadaNucleo interfazNucleo = new FachadaNucleo();//Instancia del nucleo del programa que nos permite acceder a las funciones del mismo
+        
+        public GestionarPrestamos(string pNombreUsuario)//Constructor de la clase
         {
             InitializeComponent();
             nombreUsuario = pNombreUsuario;
             labelNombreUsuario.Text = "Usuario: " + nombreUsuario;
+            ObtenerPrestamos();
         }
 
         private void GestionarPrestamos_Load(object sender, EventArgs e)
         {
-            ObtenerPrestamos();
+            
         }
 
         private void panel3_Paint(object sender, PaintEventArgs e)
@@ -29,23 +32,23 @@ namespace Programa
 
         }
 
-        private void GestionarPrestamos_FormClosed(object sender, FormClosedEventArgs e)
+        private void GestionarPrestamos_FormClosed(object sender, FormClosedEventArgs e)//Este metodo se ejecuta cuando se cierra el formulario
         {
             this.Hide();
             this.Owner.Show();
         }
 
-        private void botonVolver_Click(object sender, EventArgs e)
+        private void botonVolver_Click(object sender, EventArgs e)//Este evento se ejecuta cuando se presiona el boton botonVolver
         {
             this.Hide();
             this.Owner.Show();
         }
 
-        public void ObtenerPrestamos()
+        public void ObtenerPrestamos()//Este metodo carga la tabla de libros en la tabla de prestamos
         {
-            IEnumerable<Prestamo> prestamos = interfazNucleo.ObtenerPrestamos();
-            dataGridViewPrestamos.Rows.Clear();
-            foreach (var item in prestamos)
+            IEnumerable<Prestamo> prestamos = interfazNucleo.ObtenerPrestamos();//Obtenemos la lista de prestamos
+            dataGridViewPrestamos.Rows.Clear();//Eliminamos todo el contenido de la tabla
+            foreach (var item in prestamos)//Recorremos lcada elemento de la lista y lo agregamos a la tabla
             {
                 if (item.FechaDevolucion == null)
                 {
@@ -70,12 +73,12 @@ namespace Programa
             }
         }
 
-        private void dataGridViewPrestamos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridViewPrestamos_CellContentClick(object sender, DataGridViewCellEventArgs e)//Este evento se ejecuta si se hace click al contenido de una celda de la tabla
         {
             if (e.RowIndex >= 0)
             {
                 DataGridViewCell cell = (DataGridViewCell)dataGridViewPrestamos.Rows[e.RowIndex].Cells[e.ColumnIndex];
-                if (cell.Value.ToString() == "Devolucion")
+                if (cell.Value.ToString() == "Devolucion")//Si se presiona la celda con el texto Devolucion, se abre una nueva ventana para registrar la devolucion del prestamo
                 {
                     Prestamo prestamo = interfazNucleo.ObtenerPrestamo(Convert.ToInt32(dataGridViewPrestamos.Rows[e.RowIndex].Cells[1].Value.ToString()));
                     Libro libro = interfazNucleo.ObtenerLibro(prestamo.idLibro);
@@ -92,7 +95,7 @@ namespace Programa
                     ventana.InicializarDevolucion(usuario, titulo, autor, fechaVencimiento, estado, scoring, idPrestamo);
                     ventana.ShowDialog(this);
                 }
-                else if (cell.Value.ToString() == "Edit")
+                else if (cell.Value.ToString() == "Edit")//Si se presiona la celda con el texto Devolucion, se abre una nueva ventana para editar las fechas de un libro(solo para probar el programa)
                 {
                     int idPrestamo = Convert.ToInt32(dataGridViewPrestamos.CurrentRow.Cells[1].Value.ToString());
                     string fechaPrestamo = dataGridViewPrestamos.CurrentRow.Cells[5].Value.ToString();
@@ -104,7 +107,7 @@ namespace Programa
             }
         }
 
-        private void checkBoxProximosAVencerse_CheckedChanged(object sender, EventArgs e)
+        private void checkBoxProximosAVencerse_CheckedChanged(object sender, EventArgs e)//Este metodo se ejecuara cuando se marque el checkBox heckBoxProximosAVencerse y permite que la tabla solo muestre los prestamos proximos a vencer
         {
             if (checkBoxProximosAVencerse.Checked == true)
             {
@@ -129,7 +132,7 @@ namespace Programa
             }
         }
 
-        private void checkBoxRestrasados_CheckedChanged(object sender, EventArgs e)
+        private void checkBoxRestrasados_CheckedChanged(object sender, EventArgs e)//Este metodo se ejecuara cuando se marque el checkBox chcheckBoxRestrasados_y permite que la tabla solo muestre los prestamos retrasados
         {
             if (checkBoxRestrasados.Checked == true)
             {
@@ -154,15 +157,15 @@ namespace Programa
             }
         }
 
-        private void textBoxUsuarioOTituloLibro_TextChanged(object sender, EventArgs e)
+        private void textBoxUsuarioOTituloLibro_TextChanged(object sender, EventArgs e)//Se ejecutara cuando se modifique el texto del textbox textBoxUsuarioOTituloLibro
         {
-            if (textBoxUsuarioOTituloLibro.Text != null)
+            if (textBoxUsuarioOTituloLibro.Text != null)//se verifica que el textbox no este vacio
             {
-                for (int i = 0; i < dataGridViewPrestamos.Rows.Count - 1; i++)
+                for (int i = 0; i < dataGridViewPrestamos.Rows.Count - 1; i++)//recorremos las filas de la tabla
                 {
                     if (dataGridViewPrestamos.Rows[i].Cells[2].Value.ToString().ToLower().Contains(textBoxUsuarioOTituloLibro.Text.ToString().ToLower()))
                     {
-                        dataGridViewPrestamos.Rows[i].Visible = true;
+                        dataGridViewPrestamos.Rows[i].Visible = true;//si 
                     }
                     else if (dataGridViewPrestamos.Rows[i].Cells[3].Value.ToString().ToLower().Contains(textBoxUsuarioOTituloLibro.Text.ToString().ToLower()) == false)
                     {
