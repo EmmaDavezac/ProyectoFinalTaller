@@ -10,7 +10,7 @@ namespace Programa
         FachadaNucleo interfazNucleo = new FachadaNucleo();//Instancia de la fachada del nucleo para realizar operaciones dentro del dominio
         public string contraseñaNueva;//Variable para guardar la contraseña nueva
         private string nombreUsuario { get; set; }
-        public ActualizarAdministrador(string pNombreUsuario)//Inicializamos los datos del usuario que se van a mostrar en la interfaz
+        public ActualizarAdministrador(string pNombreUsuario)//Inicializamos los datos del administrador actual que se van a mostrar en la interfaz
         {
             InitializeComponent();
             nombreUsuario = pNombreUsuario;
@@ -178,16 +178,16 @@ namespace Programa
 
         }
 
-        private void checkBoxBaja_CheckedChanged(object sender, EventArgs e)
+        private void checkBoxBaja_CheckedChanged(object sender, EventArgs e)//Checkbox que nos permite dar de baja o alta a un administrador
         {
-            if (checkBoxBaja.Checked == true)
+            if (checkBoxBaja.Checked == true)//Si esta checkeado se fija que el administrador pueda darse de baja
             {
-                if (interfazNucleo.DarDeBajaAdministrador(textBoxNombreUsuario.Text) == false)
+                if (interfazNucleo.DarDeBajaAdministrador(textBoxNombreUsuario.Text) == false)//Si devuelve falso quiere decir que se trata del adminsitrador principal por lo tanto no puede darse de baja.
                 {
                     checkBoxBaja.Checked = false;
                     MessageBox.Show("No puede darse de baja al administrador principal!");
                 }
-                else
+                else//Caso contrario procede bloquear las opciones que brinda la ventana
                 {
                     textBoxNombre.Enabled = false;
                     textBoxApellido.Enabled = false;
@@ -197,7 +197,7 @@ namespace Programa
                 }           
             }
 
-            else if (checkBoxBaja.Checked == false)
+            else if (checkBoxBaja.Checked == false)//En el caso de que no este checekado permite utilizar las opciones de la ventana.
             {
                     textBoxNombre.Enabled = true;
                     textBoxApellido.Enabled = true;

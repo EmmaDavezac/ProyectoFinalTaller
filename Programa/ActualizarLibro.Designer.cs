@@ -49,7 +49,7 @@ namespace Programa
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.labelNombreUsuario = new System.Windows.Forms.Label();
             this.labelResultados = new System.Windows.Forms.Label();
-            this.buttonBusquedaEnAPI = new System.Windows.Forms.Button();
+            this.buttonBusquedaAvanzada = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.buttonAñadirEjemplares = new System.Windows.Forms.Button();
@@ -194,7 +194,7 @@ namespace Programa
             this.buttonDeshacerCambios.TabIndex = 46;
             this.buttonDeshacerCambios.Text = "Deshacer cambios";
             this.buttonDeshacerCambios.UseVisualStyleBackColor = false;
-            this.buttonDeshacerCambios.Click += new System.EventHandler(this.buttonBorrarCambios_Click);
+            this.buttonDeshacerCambios.Click += new System.EventHandler(this.buttonDeshacerCambios_Click);
             // 
             // panel3
             // 
@@ -289,19 +289,19 @@ namespace Programa
             this.labelResultados.Size = new System.Drawing.Size(0, 13);
             this.labelResultados.TabIndex = 84;
             // 
-            // buttonBusquedaEnAPI
+            // buttonBusquedaAvanzada
             // 
-            this.buttonBusquedaEnAPI.BackColor = System.Drawing.SystemColors.Highlight;
-            this.buttonBusquedaEnAPI.FlatAppearance.BorderSize = 0;
-            this.buttonBusquedaEnAPI.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonBusquedaEnAPI.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonBusquedaEnAPI.Location = new System.Drawing.Point(463, 243);
-            this.buttonBusquedaEnAPI.Name = "buttonBusquedaEnAPI";
-            this.buttonBusquedaEnAPI.Size = new System.Drawing.Size(123, 23);
-            this.buttonBusquedaEnAPI.TabIndex = 87;
-            this.buttonBusquedaEnAPI.Text = "Busqueda avanzada";
-            this.buttonBusquedaEnAPI.UseVisualStyleBackColor = false;
-            this.buttonBusquedaEnAPI.Click += new System.EventHandler(this.buttonEnAPI_Click);
+            this.buttonBusquedaAvanzada.BackColor = System.Drawing.SystemColors.Highlight;
+            this.buttonBusquedaAvanzada.FlatAppearance.BorderSize = 0;
+            this.buttonBusquedaAvanzada.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonBusquedaAvanzada.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.buttonBusquedaAvanzada.Location = new System.Drawing.Point(463, 243);
+            this.buttonBusquedaAvanzada.Name = "buttonBusquedaAvanzada";
+            this.buttonBusquedaAvanzada.Size = new System.Drawing.Size(123, 23);
+            this.buttonBusquedaAvanzada.TabIndex = 87;
+            this.buttonBusquedaAvanzada.Text = "Busqueda avanzada";
+            this.buttonBusquedaAvanzada.UseVisualStyleBackColor = false;
+            this.buttonBusquedaAvanzada.Click += new System.EventHandler(this.buttonBusquedaAvanzada_Click);
             // 
             // label4
             // 
@@ -460,7 +460,7 @@ namespace Programa
             this.Controls.Add(this.buttonAñadirEjemplares);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.buttonBusquedaEnAPI);
+            this.Controls.Add(this.buttonBusquedaAvanzada);
             this.Controls.Add(this.labelResultados);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.buttonDeshacerCambios);
@@ -520,7 +520,7 @@ namespace Programa
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Label labelNombreUsuario;
         private System.Windows.Forms.Label labelResultados;
-        private System.Windows.Forms.Button buttonBusquedaEnAPI;
+        private System.Windows.Forms.Button buttonBusquedaAvanzada;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button buttonAñadirEjemplares;

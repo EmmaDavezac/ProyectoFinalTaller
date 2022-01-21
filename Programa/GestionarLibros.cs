@@ -39,10 +39,10 @@ namespace Programa
                     string titulo = dataGridViewLibros.Rows[e.RowIndex].Cells[3].Value.ToString();
                     string autor = dataGridViewLibros.Rows[e.RowIndex].Cells[4].Value.ToString();
                     string añoPublicacion = dataGridViewLibros.Rows[e.RowIndex].Cells[5].Value.ToString();
-                    string disponible = dataGridViewLibros.Rows[e.RowIndex].Cells[8].Value.ToString();
+                    string baja = dataGridViewLibros.Rows[e.RowIndex].Cells[8].Value.ToString();
                     ActualizarLibro ventana = new ActualizarLibro(nombreUsuario, id);//Intanciamos lel formulario ActualizarLibro
                     this.Hide();//Ocultamos esta ventana
-                    ventana.InicializarLibro(ISBN, titulo, autor, añoPublicacion, disponible);//Le pasamos los datos del libro a la nueva ventana
+                    ventana.InicializarLibro(ISBN, titulo, autor, añoPublicacion, baja);//Le pasamos los datos del libro a la nueva ventana
                     ventana.Show(this);//mostramos la ventana nueva
                 }
             }

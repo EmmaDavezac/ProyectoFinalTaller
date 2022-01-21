@@ -8,18 +8,18 @@ namespace Programa
 {
     public partial class ActualizarLibro : Form
     {
-        FachadaNucleo interfazNucleo = new FachadaNucleo();
+        FachadaNucleo interfazNucleo = new FachadaNucleo();//Instancia de la fachada del nucleo para realizar operaciones dentro del dominio
 
-        private int sumatoriaDeEjemplares { get; set; }
+        private int sumatoriaDeEjemplares { get; set; }//Varible que nos permite guardar las sumatoria de ejemplares que se esta agregando o restando.
         private int idLibro { get; set; }
         private string NombreUsuario { get; set; }
-        public ActualizarLibro(string nombreUsuario, int pIdLibro)
+        public ActualizarLibro(string nombreUsuario, int pIdLibro)//Inicializamos los datos del administrador actual que se van a mostrar en la interfaz
         {
             InitializeComponent();
             NombreUsuario = nombreUsuario;
             labelNombreUsuario.Text = "Usuario: " + NombreUsuario;
             idLibro = pIdLibro;
-            sumatoriaDeEjemplares = 0;
+            sumatoriaDeEjemplares = 0;//Inicializamos en 0.
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -33,7 +33,7 @@ namespace Programa
             this.Owner.Show();
         }
 
-        private void buttonBorrarCambios_Click(object sender, EventArgs e)
+        private void buttonDeshacerCambios_Click(object sender, EventArgs e)
         {
             Libro libro = interfazNucleo.ObtenerLibro(Convert.ToInt32(idLibro));
 
@@ -71,78 +71,77 @@ namespace Programa
 
         private void buttonGuardar_Click(object sender, EventArgs e)
         {
-            if (interfazNucleo.ObtenerLibro(idLibro).Baja == false && checkBoxBaja.Checked == true)
+            if (interfazNucleo.ObtenerLibro(idLibro).Baja == false && checkBoxBaja.Checked == true)//En el caso de que el libro no este dado de baja y el checkbox este tildado hace lo siguiente.
             {
-                if (!string.IsNullOrEmpty(textBoxTitulo.Text) && !string.IsNullOrEmpty(textBoxAutor.Text) && !string.IsNullOrEmpty(textBoxISBN.Text) && !string.IsNullOrEmpty(textBoxAñoPublicacion.Text))
+                if (!string.IsNullOrEmpty(textBoxTitulo.Text) && !string.IsNullOrEmpty(textBoxAutor.Text) && !string.IsNullOrEmpty(textBoxISBN.Text) && !string.IsNullOrEmpty(textBoxAñoPublicacion.Text))//Si no hay compos vacios
                 {
-                    interfazNucleo.ActualizarLibro(idLibro, textBoxISBN.Text, textBoxTitulo.Text, textBoxAutor.Text, textBoxAñoPublicacion.Text);
-                    interfazNucleo.DarDeBajaUnLibro(idLibro);
-                    MessageBox.Show("El libro Id:" + idLibro + " ha sido dado de baja exitosamente!");
+                    interfazNucleo.ActualizarLibro(idLibro, textBoxISBN.Text, textBoxTitulo.Text, textBoxAutor.Text, textBoxAñoPublicacion.Text);//Actualiza el libro
+                    interfazNucleo.DarDeBajaUnLibro(idLibro);//Da de baja el libro.
+                    MessageBox.Show("El libro Id:" + idLibro + " ha sido dado de baja exitosamente!");//Mensaje informativo al administrador
                 }
-                else
+                else//En el caso que falte completar algun dato.
                 {
-                    MessageBox.Show("Debe completar la informacion");
+                    MessageBox.Show("Debe completar la informacion");//Mensaje informativo al administrador
                     textBoxTitulo.Focus();
                 }
             }
-            else if (interfazNucleo.ObtenerLibro(idLibro).Baja == true && checkBoxBaja.Checked == false)
+            else if (interfazNucleo.ObtenerLibro(idLibro).Baja == true && checkBoxBaja.Checked == false)//En el caso que este dado de baja pero este deschekeado el textbox hace lo siguiente.
             {
-                if (!string.IsNullOrEmpty(textBoxTitulo.Text) && !string.IsNullOrEmpty(textBoxAutor.Text) && !string.IsNullOrEmpty(textBoxISBN.Text) && !string.IsNullOrEmpty(textBoxAñoPublicacion.Text))
+                if (!string.IsNullOrEmpty(textBoxTitulo.Text) && !string.IsNullOrEmpty(textBoxAutor.Text) && !string.IsNullOrEmpty(textBoxISBN.Text) && !string.IsNullOrEmpty(textBoxAñoPublicacion.Text))//Verifica que ningun campo este vacio.
                 {
-                    interfazNucleo.DarDeAltaUnLibro(idLibro);
-                    interfazNucleo.ActualizarLibro(idLibro, textBoxISBN.Text, textBoxTitulo.Text, textBoxAutor.Text, textBoxAñoPublicacion.Text);
-                    if (sumatoriaDeEjemplares < 0)
+                    interfazNucleo.DarDeAltaUnLibro(idLibro);//Da de alta al libro.
+                    interfazNucleo.ActualizarLibro(idLibro, textBoxISBN.Text, textBoxTitulo.Text, textBoxAutor.Text, textBoxAñoPublicacion.Text);//Actualiza el libro
+                    if (sumatoriaDeEjemplares < 0)//Si el valor de la sumatoria de ejemplares da negativo elimina los ejemplares tomando su valor absoluto.
                     {
                         interfazNucleo.EliminarEjemplaresDeUnLibro(idLibro, Math.Abs(sumatoriaDeEjemplares));
                     }
-                    if (sumatoriaDeEjemplares >= 0)
+                    if (sumatoriaDeEjemplares >= 0)//Si el valor de la sumatoria de ejemplares da positivo agrega los ejemplares.
                     {
                         interfazNucleo.AñadirEjemplares(idLibro, sumatoriaDeEjemplares);
                     }
-                    MessageBox.Show("El libro Id:" + idLibro + " a sido dado de alta y se ha actualizado exitosamente!");
+                    MessageBox.Show("El libro Id:" + idLibro + " a sido dado de alta y se ha actualizado exitosamente!");//Mensaje informativo al administrador
                 }
-                else
+                else//En el caso que falte completar algun dato.
                 {
-                    MessageBox.Show("Debe completar la informacion");
+                    MessageBox.Show("Debe completar la informacion");//Mensaje informativo al administrador
                     textBoxTitulo.Focus();
                 }
             }
-            else if (interfazNucleo.ObtenerLibro(idLibro).Baja == false && checkBoxBaja.Checked == false)
+            else if (interfazNucleo.ObtenerLibro(idLibro).Baja == false && checkBoxBaja.Checked == false)//En el caso en que no este dado de baja y este checkeado hace lo siguiente.
             {
-                if (!string.IsNullOrEmpty(textBoxTitulo.Text) && !string.IsNullOrEmpty(textBoxAutor.Text) && !string.IsNullOrEmpty(textBoxISBN.Text) && !string.IsNullOrEmpty(textBoxAñoPublicacion.Text))
+                if (!string.IsNullOrEmpty(textBoxTitulo.Text) && !string.IsNullOrEmpty(textBoxAutor.Text) && !string.IsNullOrEmpty(textBoxISBN.Text) && !string.IsNullOrEmpty(textBoxAñoPublicacion.Text))//Verifica que ningun campo este vacio.
                 {
-                    interfazNucleo.ActualizarLibro(idLibro, textBoxISBN.Text, textBoxTitulo.Text, textBoxAutor.Text, textBoxAñoPublicacion.Text);
-                    if (sumatoriaDeEjemplares < 0)
+                    interfazNucleo.ActualizarLibro(idLibro, textBoxISBN.Text, textBoxTitulo.Text, textBoxAutor.Text, textBoxAñoPublicacion.Text);//Actualiza el libro
+                    if (sumatoriaDeEjemplares < 0)//Si el valor de la sumatoria de ejemplares da negativo elimina los ejemplares tomando su valor absoluto.
                     {
                         interfazNucleo.EliminarEjemplaresDeUnLibro(idLibro, Math.Abs(sumatoriaDeEjemplares));
                     }
-                    else if (sumatoriaDeEjemplares >= 0)
+                    else if (sumatoriaDeEjemplares >= 0)//Si el valor de la sumatoria de ejemplares da positivo agrega los ejemplares.
                     {
                         interfazNucleo.AñadirEjemplares(idLibro, sumatoriaDeEjemplares);
                     }
-                    MessageBox.Show("El libro Id:" + idLibro + " se ha actualizado exitosamente!");
+                    MessageBox.Show("El libro Id:" + idLibro + " se ha actualizado exitosamente!");//Mensaje informativo al administrador
                 }
-                else
+                else//En el caso que falte completar algun dato.
                 {
-                    MessageBox.Show("Debe completar la informacion");
+                    MessageBox.Show("Debe completar la informacion");//Mensaje informativo al administrador
                     textBoxTitulo.Focus();
                 }
             }
-            else if (interfazNucleo.ObtenerLibro(idLibro).Baja == true && checkBoxBaja.Checked == true)
+            else if (interfazNucleo.ObtenerLibro(idLibro).Baja == true && checkBoxBaja.Checked == true)//Si el liro esta dado de baja el checkbox esta tildado hace lo siguiente.
             {
-                if (!string.IsNullOrEmpty(textBoxTitulo.Text) && !string.IsNullOrEmpty(textBoxAutor.Text) && !string.IsNullOrEmpty(textBoxISBN.Text) && !string.IsNullOrEmpty(textBoxAñoPublicacion.Text))
+                if (!string.IsNullOrEmpty(textBoxTitulo.Text) && !string.IsNullOrEmpty(textBoxAutor.Text) && !string.IsNullOrEmpty(textBoxISBN.Text) && !string.IsNullOrEmpty(textBoxAñoPublicacion.Text))//Verifica que ningun campo este vacio.
                 {
-                    interfazNucleo.ActualizarLibro(idLibro, textBoxISBN.Text, textBoxTitulo.Text, textBoxAutor.Text, textBoxAñoPublicacion.Text);
-                    interfazNucleo.DarDeBajaUnLibro(idLibro);
-                    MessageBox.Show("El libro Id:" + idLibro + " ha sido dado de baja exitosamente!");
+                    interfazNucleo.ActualizarLibro(idLibro, textBoxISBN.Text, textBoxTitulo.Text, textBoxAutor.Text, textBoxAñoPublicacion.Text);//Actualiza el libro
+                    MessageBox.Show("El libro Id:" + idLibro + " ha sido actualizado correctamente!");//Mensaje informativo al administrador
                 }
                 else
                 {
-                    MessageBox.Show("Debe completar la informacion");
+                    MessageBox.Show("Debe completar la informacion");//Mensaje informativo al administrador
                     textBoxTitulo.Focus();
                 }
             }
-            this.Hide();
+            this.Hide();//Esta ventana se oculta y se muestra el owner(GestionarLibros).
             ((GestionarLibros)this.Owner).ObtenerLibros();
             this.Owner.Show();
         }
@@ -176,15 +175,15 @@ namespace Programa
 
         }
 
-        private void buttonEnAPI_Click(object sender, EventArgs e)
+        private void buttonBusquedaAvanzada_Click(object sender, EventArgs e)//Botton que nos permite ir al buscador por medio de la api libros, permitiendonos modificar de manera mas rapida el libro.
         {
             RegistrarLibro ventana = new RegistrarLibro(NombreUsuario);
             this.Hide();
-            ventana.InicializarLibro(idLibro);
+            ventana.InicializarLibro(idLibro);//Carga los datos del libro en la nueva ventana.
             ventana.Show(this);
         }
 
-        public void CargarDatosDeBusquedaAvanzada(string pTitulo, string pAutor, string pAñoPublicacion, string pISBN)
+        public void CargarDatosDeBusquedaAvanzada(string pTitulo, string pAutor, string pAñoPublicacion, string pISBN)//Se encarga traer los datos actualizados de la ventana del metodo anterior.
         {
             textBoxAutor.Text = pAutor;
             textBoxAñoPublicacion.Text = pAñoPublicacion;
@@ -212,14 +211,14 @@ namespace Programa
 
         }
 
-        public void InicializarLibro(string pISBN, string pTitulo, string pAutor, string pAñoPublicacion, string pDisponible)
+        public void InicializarLibro(string pISBN, string pTitulo, string pAutor, string pAñoPublicacion, string pBaja)//Se encarga de cargar los datos del libro en la ventana actual.
         {
             textBoxTitulo.Text = pTitulo;
             textBoxISBN.Text = pISBN;
             textBoxAutor.Text = pAutor;
             textBoxAñoPublicacion.Text = pAñoPublicacion;
-            labelCantidadActual.Text = "Cantidad Actual: " + interfazNucleo.ObtenerEjemplaresDisponibles(idLibro).Count().ToString();
-            if (pDisponible == "True")
+            labelCantidadActual.Text = "Cantidad Actual: " + interfazNucleo.ObtenerEjemplaresDisponibles(idLibro).Count().ToString();//Para mostrar la cantidad actual cuenta la cantidad de ejemplares que estan diponibles.(Aquellos en un prestamo no pueden ser eliminados)
+            if (pBaja == "True")//Si esta dado de baja se tilda el checkbox
             {
                 checkBoxBaja.Checked = true;
             }
@@ -227,54 +226,54 @@ namespace Programa
 
         private void buttonAñadirEjemplares_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(textBoxAñadirEjemplares.Text))
+            if (!string.IsNullOrEmpty(textBoxAñadirEjemplares.Text))//Si el textbox relacionado a añadir ejemplares no esta vacio entonces:
             {
-                sumatoriaDeEjemplares += Convert.ToInt32(textBoxAñadirEjemplares.Text);
-                labelCantidadActual.Text = "Cantidad Actual: " + Convert.ToString(interfazNucleo.ObtenerEjemplaresEnBuenEstadoLibro(idLibro).Count() + sumatoriaDeEjemplares);
+                sumatoriaDeEjemplares += Convert.ToInt32(textBoxAñadirEjemplares.Text);//Agrega a la sumatoria la cantidad cargada.
+                labelCantidadActual.Text = "Cantidad Actual: " + Convert.ToString(interfazNucleo.ObtenerEjemplaresDisponibles(idLibro).Count() + sumatoriaDeEjemplares);//Actualiza la cantidad actual(Explicado en el metodo InicializarLibro)
                 textBoxAñadirEjemplares.Text = "";
             }
             else
             {
-                labelErrorAñadirEjemplares.Text = "Error,campo vacio";
+                labelErrorAñadirEjemplares.Text = "Error,campo vacio";//Label informativo para el administrador.
                 labelErrorAñadirEjemplares.Visible = true;
             }
         }
 
         private void buttonEliminarEjemplares_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(textBoxEliminarEjemplares.Text) )
+            if (!string.IsNullOrEmpty(textBoxEliminarEjemplares.Text))
             {
-                if (interfazNucleo.ObtenerEjemplaresDisponibles(idLibro).Count >= Convert.ToInt32(textBoxEliminarEjemplares.Text))
+                if (interfazNucleo.ObtenerEjemplaresDisponibles(idLibro).Count() + sumatoriaDeEjemplares >= Convert.ToInt32(textBoxEliminarEjemplares.Text))//Si la cantidad de ejemplares a eliminar es menor o igual ala cantidad actual entonces hace lo siguiente:
                 {
-                    sumatoriaDeEjemplares = sumatoriaDeEjemplares - Convert.ToInt32(textBoxEliminarEjemplares.Text);
-                    labelCantidadActual.Text = "Cantidad Actual: " + Convert.ToString(interfazNucleo.ObtenerEjemplaresDisponibles(idLibro).Count() + sumatoriaDeEjemplares);
+                    sumatoriaDeEjemplares = sumatoriaDeEjemplares - Convert.ToInt32(textBoxEliminarEjemplares.Text);//Se resta a la sumatoria la cantidad a eliminar.
+                    labelCantidadActual.Text = "Cantidad Actual: " + Convert.ToString(interfazNucleo.ObtenerEjemplaresDisponibles(idLibro).Count() + sumatoriaDeEjemplares);//Actualiza la cantidad actual(Explicado en el metodo InicializarLibro)
                     textBoxEliminarEjemplares.Text = "";
                 }
                 else
                 {
-                    sumatoriaDeEjemplares = -interfazNucleo.ObtenerEjemplaresDisponibles(idLibro).Count();
-                    MessageBox.Show("El numero ingresado es mayor a la cantidad total actual, se establecera el valor cero por defecto.");
-                    labelCantidadActual.Text = "Cantidad Actual: 0";
+                    sumatoriaDeEjemplares = -interfazNucleo.ObtenerEjemplaresDisponibles(idLibro).Count();//En caso contrario asigna a la sumatoria el valor negativo maximo posible que es la cantidad disponible de ejemplares (No puede ser un numero negativo menor a este).
+                    MessageBox.Show("El valor ingresado es mayor a la cantidad total actual, se establecera el valor cero por defecto.");//Mensaje informativo para el administrador.
+                    labelCantidadActual.Text = "Cantidad Actual: 0";//Se le da el valor 0 a la cantidad actual (Por defecto).
                     textBoxEliminarEjemplares.Text = "";
                 }
             }
             else
             {
-                labelErrorEliminarEjemplares.Text = "Error,campo vacio";
+                labelErrorEliminarEjemplares.Text = "Error,campo vacio";//Label informativo para el administrador.
                 labelErrorEliminarEjemplares.Visible = true;
             }
         }
 
         private void checkBoxBaja_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBoxBaja.Checked == true)
+            if (checkBoxBaja.Checked == true)//Si el checkbox esta tildado entonces hace lo siguiente:
             {
-                if (interfazNucleo.ObtenerEjemplaresDisponibles(idLibro).Count() != interfazNucleo.ObtenerEjemplaresTotales(idLibro).Count() && interfazNucleo.ObtenerEjemplaresDisponibles(idLibro).Count() != 0 && interfazNucleo.ObtenerEjemplaresDisponibles(idLibro).Count() != 0)
+                if (interfazNucleo.ObtenerEjemplaresDisponibles(idLibro).Count() != interfazNucleo.ObtenerEjemplaresTotales(idLibro).Count() && interfazNucleo.ObtenerEjemplaresDisponibles(idLibro).Count() != 0 && interfazNucleo.ObtenerEjemplaresDisponibles(idLibro).Count() != 0)//En el caso en que la cantidad disponible sea menor a la cantidad total, no puede darse de baja ya que esto nos quiere decir que hay un prestamo activo.
                 {
                     checkBoxBaja.Checked = false;
-                    MessageBox.Show("El libro Id:" + idLibro + " no puede darse de baja ya que tiene prestamos pendientes!, intentelo mas tarde");
+                    MessageBox.Show("El libro Id:" + idLibro + " no puede darse de baja ya que tiene prestamos pendientes!, intentelo mas tarde");//Mensaje informativo para el administrador.
                 }
-                else
+                else//En caso contrario descativa todas las opciones de la ventana.
                 {
                     textBoxAutor.Enabled = false;
                     textBoxTitulo.Enabled = false;
@@ -286,12 +285,12 @@ namespace Programa
                     buttonAñadirEjemplares.Enabled = false;
                     buttonDeshacerCambios.Enabled = false;
                     buttonEliminarEjemplares.Enabled = false;
-                    buttonBusquedaEnAPI.Enabled = false;
-                    labelCantidadActual.Text = "Cantidad Actual: 0";
+                    buttonBusquedaAvanzada.Enabled = false;
+                    labelCantidadActual.Text = "Cantidad Actual: 0";//Coloca la cantidad actual en 0.
                 }
             }
 
-            else if (checkBoxBaja.Checked == false)
+            else if (checkBoxBaja.Checked == false)//En caso contrario permite acceder a todas las opciones de la ventana.
             {
                 {
                     textBoxAutor.Enabled = true;
@@ -304,8 +303,8 @@ namespace Programa
                     buttonAñadirEjemplares.Enabled = true;
                     buttonDeshacerCambios.Enabled = true;
                     buttonEliminarEjemplares.Enabled = true;
-                    buttonBusquedaEnAPI.Enabled = true;
-                    labelCantidadActual.Text = "Cantidad Actual: " + Convert.ToString(interfazNucleo.ObtenerEjemplaresEnBuenEstadoLibro(idLibro).Count());
+                    buttonBusquedaAvanzada.Enabled = true;
+                    labelCantidadActual.Text = "Cantidad Actual: " + Convert.ToString(interfazNucleo.ObtenerEjemplaresDisponibles(idLibro).Count());
                 }
             }
         }

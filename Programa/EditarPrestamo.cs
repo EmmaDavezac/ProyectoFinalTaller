@@ -32,5 +32,12 @@ namespace Programa
         {
             this.Close();//Se cierra este formulario y se vuelve al formulario padre
         }
+
+        internal void InicialiarEditarPrestamo(int pIdPrestamo, string pFechaPrestamo, string pFechaLimite)
+        {
+            textBoxFechaPrestamo.Text = pFechaPrestamo;
+            textBoxFechaLimite.Text = pFechaLimite;
+            idPrestamo = pIdPrestamo;
+        }
     }
 }
