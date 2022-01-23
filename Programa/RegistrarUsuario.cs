@@ -6,38 +6,36 @@ using System.Windows.Forms;
 namespace Programa
 {
     public partial class RegistrarUsuario : Form
+    //La finalidad de este formulario es la de permitir registrar un nuevo usuario simple
     {
-        private string nombre { get; set; }
+        
 
-        private string nombreUsuario { get; set; }
-        FachadaNucleo interfazNucleo = new FachadaNucleo();
-        public RegistrarUsuario(string pNombreUsuario)
+        private string nombreUsuario { get; set; }//Aqui se almacena el nombre de usuario del administrador que esta usando el programa
+        private FachadaNucleo interfazNucleo = new FachadaNucleo();//Instancia del nucleo del programa que nos permite acceder a las funciones del mismo
+        public RegistrarUsuario(string pNombreUsuario)//Constructor de la clase 
         {
             InitializeComponent();
             nombreUsuario = pNombreUsuario;
-            nombre = interfazNucleo.ObtenerAdministrador(nombreUsuario).Nombre;
+            
             labelNombreUsuario.Text = "Usuario: " + nombreUsuario;
         }
-        private void buttonSalir_Click(object sender, EventArgs e)
+        
+
+        private void botonVolver_Click(object sender, EventArgs e)//este evento se ejecutara cuando se presione el boton botonVolver
         {
-            Application.Exit();
+            this.Hide();//la ventana se oculta
+            this.Owner.Show();//se muestra la ventana padre
+
+        private void AgregarCliente_FormClosing(object sender, FormClosingEventArgs e)//este evento se ejecutara cuando se cierre el formulario
+        {
+            tthis.Hide();//la ventana se oculta
+            this.Owner.Show();//se muestra la ventana padre
         }
 
-        private void botonVolver_Click(object sender, EventArgs e)
+        private void AgregarCliente_FormClosed(object sender, FormClosedEventArgs e)//este evento se ejecutara cuando se cierre el formulario
         {
-            this.Hide();
-            this.Owner.Show();
-        }
-
-        private void AgregarCliente_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private void AgregarCliente_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            this.Hide();
-            this.Owner.Show();
+            tthis.Hide();//la ventana se oculta
+            this.Owner.Show();//se muestra la ventana padre
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -46,21 +44,22 @@ namespace Programa
         }
 
         private void buttonAñadirUsuario_Click(object sender, EventArgs e)
+        //se ejecutara cuando se presione el boton añadir usuario, en el caso de que toda la informacion necesaria haya sido  ingresada y sea correcta, se registrara el nuevo usuario
         {
-            if (!string.IsNullOrEmpty(textBoxNombreUsuario.Text))
+            if (!string.IsNullOrEmpty(textBoxNombreUsuario.Text))//se verifica que se haya ingresado el nombre de usuario
             {
-                if (!string.IsNullOrEmpty(textBoxNombre.Text) && textBoxNombre.Text.All(Char.IsLetter))
+                if (!string.IsNullOrEmpty(textBoxNombre.Text) && textBoxNombre.Text.All(Char.IsLetter))//se verifica que el nombre se haya ingresado correctamente(formato)
                 {
-                    if (!string.IsNullOrEmpty(textBoxApellido.Text) && textBoxApellido.Text.All(Char.IsLetter))
+                    if (!string.IsNullOrEmpty(textBoxApellido.Text) && textBoxApellido.Text.All(Char.IsLetter))//se verifica que el apellido se haya ingresado correctamente (formato)
                     {
-                        if (dateTimePickerFechaNacimiento.Value.Date != new DateTime(1900, 1, 1))
+                        if (dateTimePickerFechaNacimiento.Value.Date != new DateTime(1900, 1, 1))//se verifica que la fecha de nacimiento se haya ingresado 
                         {
-                            if (!string.IsNullOrEmpty(textBoxMail.Text) && interfazNucleo.EsUnEmailValido(textBoxMail.Text))
+                            if (!string.IsNullOrEmpty(textBoxMail.Text) && interfazNucleo.EsUnEmailValido(textBoxMail.Text))//se verifica que el mail se haya ingresado correctamente (formato)
                             {
-                                if (!string.IsNullOrEmpty(textBoxTelefono.Text) && textBoxTelefono.Text.All(Char.IsDigit) && textBoxTelefono.Text.Length >= 8 && textBoxTelefono.Text.Length <= 11)
+                                if (!string.IsNullOrEmpty(textBoxTelefono.Text) && textBoxTelefono.Text.All(Char.IsDigit) && textBoxTelefono.Text.Length >= 8 && textBoxTelefono.Text.Length <= 11)//se verifica que el telefono se haya ingresado correctamente (formato)
                                 {
-                                    bool resultado = interfazNucleo.AñadirUsuario(textBoxNombreUsuario.Text, textBoxNombre.Text, textBoxApellido.Text, dateTimePickerFechaNacimiento.Value, textBoxMail.Text, textBoxTelefono.Text);
-                                    if (resultado == true)
+                                    bool resultado = interfazNucleo.AñadirUsuario(textBoxNombreUsuario.Text, textBoxNombre.Text, textBoxApellido.Text, dateTimePickerFechaNacimiento.Value, textBoxMail.Text, textBoxTelefono.Text);//se añade el usuario a la base de datos
+                                    if (resultado == true)//verificamos si la operacion fue exitosa y mostramos un mensaje en pantalla
                                     {
                                         MessageBox.Show("Usuario guardado, el nombre de usuario es: " + textBoxNombreUsuario.Text, "Operacion Exitosa", MessageBoxButtons.OK);
                                         this.Hide();
@@ -102,7 +101,7 @@ namespace Programa
                     }
                 }
                 else
-                {
+                {   
                     this.labelError.Text = "Error, nombre invalido.No debe contener numeros, espacios ni simbolos";
                     buttonAñadirUsuario.Enabled = false;
                     textBoxNombre.Focus(); ;
@@ -117,9 +116,9 @@ namespace Programa
         }
 
 
-        private void textBoxNombre_TextChanged(object sender, EventArgs e)
+        private void textBoxNombre_TextChanged(object sender, EventArgs e)// se ejecura cuando se modifique el texto de textBoxNombre
         {
-            buttonAñadirUsuario.Enabled = true;
+            buttonAñadirUsuario.Enabled = true;//se habilita el boton buttonAñadirUsuario
         }
 
         private void AgregarUsuario_Load(object sender, EventArgs e)
@@ -127,9 +126,9 @@ namespace Programa
 
         }
 
-        private void textBoxMail_TextChanged(object sender, EventArgs e)
+        private void textBoxMail_TextChanged(object sender, EventArgs e)// se ejecura cuando se modifique el texto de textBoxMail
         {
-            buttonAñadirUsuario.Enabled = true;
+            buttonAñadirUsuario.Enabled = true;//se habilita el boton buttonAñadirUsuario
         }
 
         private void label4_Click(object sender, EventArgs e)
@@ -142,14 +141,14 @@ namespace Programa
 
         }
 
-        private void dateTimePickerFechaNacimiento_ValueChanged(object sender, EventArgs e)
+        private void dateTimePickerFechaNacimiento_ValueChanged(object sender, EventArgs e)// se ejecura cuando se modifique la fecha de dateTimePickerFechaNacimiento
         {
-            buttonAñadirUsuario.Enabled = true;
+            buttonAñadirUsuario.Enabled = true;//se habilita el boton buttonAñadirUsuario
         }
 
-        private void textBoxApellido_TextChanged(object sender, EventArgs e)
+        private void textBoxApellido_TextChanged(object sender, EventArgs e)// se ejecura cuando se modifique el texto de textBoxApellido
         {
-            buttonAñadirUsuario.Enabled = true;
+            buttonAñadirUsuario.Enabled = true;//se habilita el boton buttonAñadirUsuario
         }
 
         private void labelApellido_Click(object sender, EventArgs e)
@@ -167,9 +166,9 @@ namespace Programa
 
         }
 
-        private void textBoxTelefono_TextChanged(object sender, EventArgs e)
+        private void textBoxTelefono_TextChanged(object sender, EventArgs e)// se ejecura cuando se modifique el texto de textBoxTelefono
         {
-            buttonAñadirUsuario.Enabled = true;
+            buttonAñadirUsuario.Enabled = true;//se habilita el boton buttonAñadirUsuario
         }
 
         private void textBoxNombreUsuario_TextChanged(object sender, EventArgs e)
