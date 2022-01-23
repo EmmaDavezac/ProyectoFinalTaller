@@ -161,19 +161,20 @@ namespace Programa
         {
             if (textBoxUsuarioOTituloLibro.Text != null)//se verifica que el textbox no este vacio
             {
-                for (int i = 0; i < dataGridViewPrestamos.Rows.Count - 1; i++)//recorremos las filas de la tabla
+                for (int i = 0; i < dataGridViewPrestamos.Rows.Count - 1; i++)//recorremos las filas de la tabla 
+                //este metodo nos permite filtrar los prestamos escribiendo el nombre de usuario o el titulo del libro
                 {
                     if (dataGridViewPrestamos.Rows[i].Cells[2].Value.ToString().ToLower().Contains(textBoxUsuarioOTituloLibro.Text.ToString().ToLower()))
                     {
-                        dataGridViewPrestamos.Rows[i].Visible = true;//si 
+                        dataGridViewPrestamos.Rows[i].Visible = true;//si el termino buscado es subcadena del nombre de usuario del prestamo, la fila sera visible
                     }
                     else if (dataGridViewPrestamos.Rows[i].Cells[3].Value.ToString().ToLower().Contains(textBoxUsuarioOTituloLibro.Text.ToString().ToLower()) == false)
                     {
-                        dataGridViewPrestamos.Rows[i].Visible = false;
+                        dataGridViewPrestamos.Rows[i].Visible = false;//si el termino buscado no es subcadena del titulo del libro del prestamo, la fila se ocultara
                     }
                     else
                     {
-                        dataGridViewPrestamos.Rows[i].Visible = true;
+                        dataGridViewPrestamos.Rows[i].Visible = true;//si el termino de busqueda es subcadena del titulo del libro del prestamo, la fila sera visible
                     }
                 }
             }
