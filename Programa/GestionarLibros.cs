@@ -99,14 +99,14 @@ namespace Programa
 
         private void GestionarLibros_FormClosed(object sender, FormClosedEventArgs e)//este evento se ejecutara cuando se cierre el formulario
         {
-            this.Hide();
-            this.Owner.Show();
+            this.Hide();//la ventana se oculta
+            this.Owner.Show();//se muestra la ventana padre
         }
 
         private void botonVolver_Click(object sender, EventArgs e)//este evento se ejecutara cuando se presione el boton botonVolver
         {
-            this.Hide();
-            this.Owner.Show();
+           this.Hide();//la ventana se oculta
+            this.Owner.Show();//se muestra la ventana padre
         }
 
         private void panel3_Paint(object sender, PaintEventArgs e)
