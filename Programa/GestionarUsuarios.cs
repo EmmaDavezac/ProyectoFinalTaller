@@ -8,11 +8,12 @@ using Nucleo;
 namespace Programa
 {
     public partial class GestionarUsuarios : Form
+     /*La finalidad de este formulario es permitir ver la informacion de todos los usuarios simples y poder modificarla*/
     {
-        private string nombreUsuario { get; set; }
-        private FachadaNucleo interfazNucleo = new FachadaNucleo();
+        p private string nombreUsuario { get; set; }//Aqui se almacena el nombre de usuario del administrador que esta usando el programa
+        private FachadaNucleo interfazNucleo = new FachadaNucleo();//Instancia del nucleo del programa que nos permite acceder a las funciones del mismo
        
-        public GestionarUsuarios(string pNombreUsuario)
+        public GestionarUsuarios(string pNombreUsuario)//Constructor de la clase
         {
             InitializeComponent();
             nombreUsuario = pNombreUsuario;
@@ -24,7 +25,7 @@ namespace Programa
 
         }
 
-        private void textBoxId_TextChanged(object sender, EventArgs e)
+        private void textBoxId_TextChanged(object sender, EventArgs e)//este evento se ejecuta cuando se modifica el texto de textBoxId y nos permite buscar un usuario escribiendo su nombre de usuario
         {
             if (textBoxNombreUsuario.Text != null)
             {
@@ -42,16 +43,16 @@ namespace Programa
             }
         }
 
-        private void botonVolver_Click(object sender, EventArgs e)
+        private void botonVolver_Click(object sender, EventArgs e)//este evento se ejecutara cuando se presione el boton botonVolver
         {
-            this.Hide();
-            this.Owner.Show();
+            this.Hide();//la ventana se oculta
+            this.Owner.Show();//se muestra la ventana padre
         }
 
-        private void ConsultarUsuario_FormClosed(object sender, FormClosedEventArgs e)
+        private void ConsultarUsuario_FormClosed(object sender, FormClosedEventArgs e)//este evento se ejecutara cuando se cierre el formulario
         {
-            this.Hide();
-            this.Owner.Show();
+             this.Hide();//la ventana se oculta
+            this.Owner.Show();//se muestra la ventana padre
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -64,10 +65,6 @@ namespace Programa
 
         }
 
-        private void buttonSalir_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
 
         private void ConsultarUsuario_Load(object sender, EventArgs e)
         {
@@ -94,11 +91,11 @@ namespace Programa
 
         }
 
-        public void ObtenerUsuarios()
+        public void ObtenerUsuarios()//Este metodo carga la lista de usuario en la tabla
         {
-            IEnumerable<UsuarioSimple> usuarios = interfazNucleo.ObtenerUsuarios();
-            dataGridViewUsuarios.Rows.Clear();
-            foreach (var item in usuarios)
+            IEnumerable<UsuarioSimple> usuarios = interfazNucleo.ObtenerUsuarios();//se le solicita la lista de usuarios al Nucleo del programa y se la almacena
+            dataGridViewUsuarios.Rows.Clear();//limpiamos el contenido de la tabla
+            foreach (var item in usuarios)//recorremos cada item de la lista y lo agregamos a la tabla
             {
                 int n = dataGridViewUsuarios.Rows.Add();
                 dataGridViewUsuarios.Rows[n].Cells[1].Value = item.NombreUsuario;
@@ -126,13 +123,13 @@ namespace Programa
             }
         }
 
-        private void dataGridViewUsuarios_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridViewUsuarios_CellContentClick(object sender, DataGridViewCellEventArgs e)//este metodo se ejecuta cuando se hace click a una celda de la tabla
         {
             if (e.RowIndex>=0)
             {
 
                 DataGridViewCell cell = (DataGridViewCell)dataGridViewUsuarios.Rows[e.RowIndex].Cells[e.ColumnIndex];
-                if (cell.Value.ToString() == "Edit")
+                if (cell.Value.ToString() == "Edit")//si le presiona la celda de la fila con el texto edit, se abre una ventana para modificar la informacion de ese usuario
                 {
                     ActualizarUsuario ventana = new ActualizarUsuario(nombreUsuario);
                     ventana.CargarUsuarioExistente(dataGridViewUsuarios.Rows[e.RowIndex].Cells[1].Value.ToString(), dataGridViewUsuarios.Rows[e.RowIndex].Cells[8].Value.ToString());
