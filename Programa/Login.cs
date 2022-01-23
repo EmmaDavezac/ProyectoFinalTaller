@@ -3,9 +3,10 @@ using System.Windows.Forms;
 namespace Programa
 {
     public partial class Login : Form
+    //esta ventana tiene la funcion de controlar el inicio de sesion del programa ,validando los datos del usuario que pretende usarlo
     {
 
-        public Login()
+        public Login//constructor de la clase
         {
 
             InitializeComponent();
@@ -24,7 +25,7 @@ namespace Programa
 
 
 
-        private void botonIniciarSesion_Click(object sender, EventArgs e)
+        private void botonIniciarSesion_Click(object sender, EventArgs e)//se ejecuta cuando se presiona el boton iniciar sesion, este metodo valida que los datos ingresados sean correctos
         {
             if (!string.IsNullOrEmpty(textBoxNombreUsuario.Text))
             {
@@ -59,12 +60,12 @@ namespace Programa
 
         }
 
-        private void textBoxUsuario_TextChanged(object sender, EventArgs e)
+        private void textBoxUsuario_TextChanged(object sender, EventArgs e)//Este metodo habilita el boton iniciar sesion , cuando se modifique el texto de textBoxUsuario
         {
             botonIniciarSesion.Enabled = true;
         }
 
-        private void textBoxContraseña_TextChanged(object sender, EventArgs e)
+        private void textBoxContraseña_TextChanged(object sender, EventArgs e)//Este metodo habilita el boton iniciar sesion , cuando se modifique el texto de textBoxContraseña
         {
             botonIniciarSesion.Enabled = true;
 
@@ -74,7 +75,7 @@ namespace Programa
 
 
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)//este metodo se ejecuta cuando se presiona el boton para mostrar u ocultar la contraseña
         {
             if (textBoxContraseña.UseSystemPasswordChar == true)
             {
@@ -88,22 +89,22 @@ namespace Programa
             }
         }
 
-        private void Login_FormClosed(object sender, FormClosedEventArgs e)
+        private void Login_FormClosed(object sender, FormClosedEventArgs e)//se ejecuta cuando se cierra el formulario
         {
-            Application.Exit();
+            Application.Exit();//Cierra el programa
         }
 
-        private void Login_Load(object sender, EventArgs e)
+        private void Login_Load(object sender, EventArgs e)//se ejecuta cuando se inicia el formulario
         {
-            timer1.Start();
+            timer1.Start();//inicia el timer
         }
 
-        private void buttonCerrar_Click(object sender, EventArgs e)
+        private void buttonCerrar_Click(object sender, EventArgs e)//se ejecuta cuando se presiona el boton cerrar
         {
-            Application.Exit();
+            Application.Exit();//cierra el programa
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        private void timer1_Tick(object sender, EventArgs e)//accion que ejecuta el timmer
         {
             this.Opacity += .05;
             if (this.Opacity == 1)
