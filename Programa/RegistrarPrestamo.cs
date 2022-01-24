@@ -9,18 +9,18 @@ using System.Windows.Forms;
 namespace Programa
 {
     public partial class RegistrarPrestamo : Form
+    //La finalidad de este formulario es la de permitir registrar un nuevo prestamo
     {
-        private string nombre { get; set; }
-        private string nombreUsuario { get; set; }
-        private FachadaNucleo interfazNucleo = new FachadaNucleo();
-        public RegistrarPrestamo(string pNombreUsuario)
+        private string nombreUsuario { get; set; }//Aqui se almacena el nombre de usuario del administrador que esta usando el programa
+        private FachadaNucleo interfazNucleo = new FachadaNucleo();//Instancia del nucleo del programa que nos permite acceder a las funciones del mismo
+        public RegistrarPrestamo(string pNombreUsuario)//Constructor de la clase
         {
             InitializeComponent();
             nombreUsuario = pNombreUsuario;
-            nombre = interfazNucleo.ObtenerAdministrador(nombreUsuario).Nombre;
+            
             labelNombreUsuario.Text = "Usuario: " + nombreUsuario;
-            ObtenerLibros();
-            ObtenerUsuarios();
+            ObtenerLibros();//cargamos la lista de libros en la tabla de libros
+            ObtenerUsuarios();//cargamos la lista de usuarios simples en la tabla de usuarios simples
         }
 
         private void RegistrarPrestamo_Load(object sender, EventArgs e)
@@ -33,13 +33,13 @@ namespace Programa
 
         }
 
-        private void textBoxTituloOISBNLibro_TextChanged(object sender, EventArgs e)
+        private void textBoxTituloOISBNLibro_TextChanged(object sender, EventArgs e)//permite buscar un libro por titulo o isbn, se ejecuta cuando se modifica el texto de textBoxTituloOISBNLibro
         {
             if (textBoxTituloOISBNLibro.Text != null)
             {
                 for (int i = 0; i < dataGridViewLibros.Rows.Count - 1; i++)
                 {
-                    if (textBoxTituloOISBNLibro.Text.All(Char.IsDigit) && dataGridViewLibros.Rows[i].Cells[1].Value.ToString().Contains(textBoxTituloOISBNLibro.Text.ToString()))
+                    if (dataGridViewLibros.Rows[i].Cells[1].Value.ToString().Contains(textBoxTituloOISBNLibro.Text.ToString()))
                     {
                         dataGridViewLibros.Rows[i].Visible = true;
                     }
@@ -65,7 +65,7 @@ namespace Programa
 
         }
 
-        private void textBox7_TextChanged(object sender, EventArgs e)
+        private void textBox7_TextChanged(object sender, EventArgs e)//permite buscar un libro por nombreUsuario, se ejecuta cuando se modifica el texto de textBoxTituloOISBNLibro
         {
             if (textBoxNombreUsuario.Text != null)
             {
@@ -85,13 +85,13 @@ namespace Programa
             }
         }
 
-        private void dataGridViewLibros_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridViewLibros_CellContentClick(object sender, DataGridViewCellEventArgs e)//se ejecuta cuando se presiona una celda de la tabla de libros
         {
             if (e.RowIndex >= 0)
             {
                 if (dataGridViewLibros.CurrentRow.Cells[5].Value != null)
                 {
-                    if (dataGridViewLibros.CurrentRow.Cells[5].Value.ToString() != "0")
+                    if (dataGridViewLibros.CurrentRow.Cells[5].Value.ToString() != "0")//si el libro tiene ejemplares disponibles se muestra en pantalla los datos del libro
                     {
                         textBoxIdLibro.Text = dataGridViewLibros.CurrentRow.Cells[0].Value.ToString();
                         textBoxTitulo.Text = dataGridViewLibros.CurrentRow.Cells[1].Value.ToString();
@@ -102,7 +102,7 @@ namespace Programa
             }
         }
 
-        private void ObtenerLibros()
+        private void ObtenerLibros()//carga la lista de libros en la tabla de libros
         {
             IEnumerable<Libro> libros = interfazNucleo.ObtenerLibros();
             dataGridViewLibros.Rows.Clear();
@@ -127,7 +127,7 @@ namespace Programa
             }
         }
 
-        private void ObtenerUsuarios()
+        private void ObtenerUsuarios()//carga la lista de usuarios simples en la tabla de usuarios simples
         {
             IEnumerable<UsuarioSimple> usuarios = interfazNucleo.ObtenerUsuarios();
             dataGridViewUsuarios.Rows.Clear();
@@ -143,7 +143,7 @@ namespace Programa
             }
         }
 
-        private void dataGridViewUsuarios_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridViewUsuarios_CellContentClick(object sender, DataGridViewCellEventArgs e)//se ejecuta cuando se presiona una celda de la tabla de usuarios y se muestran los datos del usuario en pantalla
         {
             if (dataGridViewUsuarios.CurrentRow.Cells[0].Value != null)
             {
@@ -158,7 +158,7 @@ namespace Programa
 
         }
 
-        private void buttonRegistrarPrestamo_Click(object sender, EventArgs e)
+        private void buttonRegistrarPrestamo_Click(object sender, EventArgs e)//se ejecuta cuando se presiona el boton registrar prestamo, registra el prestamo y muestra un mensaje en pantalla
         {
             int idEjemplar = interfazNucleo.ObtenerEjemplaresDisponibles(Convert.ToInt32(textBoxIdLibro.Text.ToString())).First().Id;
             interfazNucleo.RegistrarPrestamo(textBoxNomUsuario.Text, idEjemplar, Convert.ToInt32(textBoxIdLibro.Text));
@@ -167,16 +167,16 @@ namespace Programa
             RegistrarPrestamo_Load(sender, e);
         }
 
-        private void botonVolver_Click(object sender, EventArgs e)
+        private void botonVolver_Click(object sender, EventArgs e)//se ejecuta cuando se presiona el boton volver
         {
-            this.Hide();
-            this.Owner.Show();
+            tthis.Hide();//la ventana se oculta
+            this.Owner.Show();//se muestra la ventana padre
         }
 
-        private void RegistrarPrestamo_FormClosed(object sender, FormClosedEventArgs e)
+        private void RegistrarPrestamo_FormClosed(object sender, FormClosedEventArgs e)//este evento se ejecutara cuando se cierre el formulario
         {
-            this.Hide();
-            this.Owner.Show();
+            tthis.Hide();//la ventana se oculta
+            this.Owner.Show();//se muestra la ventana padre
         }
     }
 }
