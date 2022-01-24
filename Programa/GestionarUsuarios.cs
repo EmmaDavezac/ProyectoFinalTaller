@@ -10,7 +10,7 @@ namespace Programa
     public partial class GestionarUsuarios : Form
      /*La finalidad de este formulario es permitir ver la informacion de todos los usuarios simples y poder modificarla*/
     {
-        p private string nombreUsuario { get; set; }//Aqui se almacena el nombre de usuario del administrador que esta usando el programa
+         private string nombreUsuario { get; set; }//Aqui se almacena el nombre de usuario del administrador que esta usando el programa
         private FachadaNucleo interfazNucleo = new FachadaNucleo();//Instancia del nucleo del programa que nos permite acceder a las funciones del mismo
        
         public GestionarUsuarios(string pNombreUsuario)//Constructor de la clase
