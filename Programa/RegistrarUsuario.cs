@@ -46,7 +46,7 @@ namespace Programa
         private void buttonAñadirUsuario_Click(object sender, EventArgs e)
         //se ejecutara cuando se presione el boton añadir usuario, en el caso de que toda la informacion necesaria haya sido  ingresada y sea correcta, se registrara el nuevo usuario
         {
-            if (!string.IsNullOrEmpty(textBoxNombreUsuario.Text))//se verifica que se haya ingresado el nombre de usuario
+            if (!string.IsNullOrEmpty(textBoxNombreUsuario.Text)&&textBoxNombreUsuario.Text.All(Char.IsLetter)))//se verifica que se haya ingresado el nombre de usuario
             {
                 if (!string.IsNullOrEmpty(textBoxNombre.Text) && textBoxNombre.Text.All(Char.IsLetter))//se verifica que el nombre se haya ingresado correctamente(formato)
                 {
@@ -171,9 +171,9 @@ namespace Programa
             buttonAñadirUsuario.Enabled = true;//se habilita el boton buttonAñadirUsuario
         }
 
-        private void textBoxNombreUsuario_TextChanged(object sender, EventArgs e)
+        private void textBoxNombreUsuario_TextChanged(object sender, EventArgs e)// se ejecura cuando se modifique el texto de textBoxNombreUsuario 
         {
-
+        buttonAñadirUsuario.Enabled = true;//se habilita el boton buttonAñadirUsuario
         }
 
         private void panel5_Paint(object sender, PaintEventArgs e)
