@@ -9,11 +9,11 @@ using System.Windows.Forms;
 namespace Programa
 {
     public partial class GestionarPrestamos : Form
-     /*La finalidad de este formulario es permitir ver la informacion de todos los prestamos y poder modificarla*/
+    /*La finalidad de este formulario es permitir ver la informacion de todos los prestamos y poder modificarla*/
     {
         private string nombreUsuario { get; set; }//Aqui se almacena el nombre de usuario del administrador que esta usando el programa
         private FachadaNucleo interfazNucleo = new FachadaNucleo();//Instancia del nucleo del programa que nos permite acceder a las funciones del mismo
-        
+
         public GestionarPrestamos(string pNombreUsuario)//Constructor de la clase
         {
             InitializeComponent();
@@ -24,7 +24,7 @@ namespace Programa
 
         private void GestionarPrestamos_Load(object sender, EventArgs e)
         {
-            
+
         }
 
         private void panel3_Paint(object sender, PaintEventArgs e)
@@ -68,6 +68,7 @@ namespace Programa
                     else if (dataGridViewPrestamos.Rows[n].Cells[7].Value.ToString() == "ProximoAVencer")
                     {
                         dataGridViewPrestamos.Rows[n].DefaultCellStyle.BackColor = Color.Green;
+                        dataGridViewPrestamos.Rows[n].DefaultCellStyle.ForeColor = Color.White;
                     }
                 }
             }
@@ -89,7 +90,7 @@ namespace Programa
                     string fechaVencimiento = dataGridViewPrestamos.Rows[e.RowIndex].Cells[6].Value.ToString();
                     string estado = dataGridViewPrestamos.Rows[e.RowIndex].Cells[7].Value.ToString();
                     string scoring = Convert.ToString(usuarioSimple.Scoring);
-                   
+
                     int idPrestamo = Convert.ToInt32(dataGridViewPrestamos.Rows[e.RowIndex].Cells[1].Value.ToString());
                     DevolucionPrestamo ventana = new DevolucionPrestamo();
                     ventana.InicializarDevolucion(usuario, titulo, autor, fechaVencimiento, estado, scoring, idPrestamo);
@@ -109,7 +110,7 @@ namespace Programa
 
         private void checkBoxProximosAVencerse_CheckedChanged(object sender, EventArgs e)//Este metodo se ejecuara cuando se marque el checkBox heckBoxProximosAVencerse y permite que la tabla solo muestre los prestamos proximos a vencer
         {
-            if (checkBoxProximosAVencerse.Checked == true)
+            if (checkBoxProximosAVencerse.Checked == true && checkBoxRestrasados.Checked == false)
             {
                 for (int i = 0; i < dataGridViewPrestamos.Rows.Count - 1; i++)
                 {
@@ -123,6 +124,35 @@ namespace Programa
                     }
                 }
             }
+            else if (checkBoxProximosAVencerse.Checked == true && checkBoxRestrasados.Checked == true)
+            {
+                for (int i = 0; i < dataGridViewPrestamos.Rows.Count - 1; i++)
+                {
+                    if (dataGridViewPrestamos.Rows[i].Cells[7].Value.ToString() == "ProximoAVencer" || dataGridViewPrestamos.Rows[i].Cells[7].Value.ToString() == "Retrasado")
+                    {
+                        dataGridViewPrestamos.Rows[i].Visible = true;
+                    }
+                    else
+                    {
+                        dataGridViewPrestamos.Rows[i].Visible = false;
+                    }
+                }
+            }
+            else if(checkBoxRestrasados.Checked == true)
+            {
+                for (int i = 0; i < dataGridViewPrestamos.Rows.Count - 1; i++)
+                {
+                    if (dataGridViewPrestamos.Rows[i].Cells[7].Value.ToString() == "Retrasado")
+                    {
+                        dataGridViewPrestamos.Rows[i].Visible = true;
+                    }
+                    else
+                    {
+                        dataGridViewPrestamos.Rows[i].Visible = false;
+                    }
+                }
+                    
+            } 
             else
             {
                 for (int i = 0; i < dataGridViewPrestamos.Rows.Count - 1; i++)
@@ -134,11 +164,39 @@ namespace Programa
 
         private void checkBoxRestrasados_CheckedChanged(object sender, EventArgs e)//Este metodo se ejecuara cuando se marque el checkBox chcheckBoxRestrasados_y permite que la tabla solo muestre los prestamos retrasados
         {
-            if (checkBoxRestrasados.Checked == true)
+            if (checkBoxRestrasados.Checked == true && checkBoxProximosAVencerse.Checked == false)
             {
                 for (int i = 0; i < dataGridViewPrestamos.Rows.Count - 1; i++)
                 {
                     if (dataGridViewPrestamos.Rows[i].Cells[7].Value.ToString() == "Retrasado")
+                    {
+                        dataGridViewPrestamos.Rows[i].Visible = true;
+                    }
+                    else
+                    {
+                        dataGridViewPrestamos.Rows[i].Visible = false;
+                    }
+                }
+            }
+            else if (checkBoxRestrasados.Checked == true && checkBoxProximosAVencerse.Checked == true)
+            {
+                for (int i = 0; i < dataGridViewPrestamos.Rows.Count - 1; i++)
+                {
+                    if (dataGridViewPrestamos.Rows[i].Cells[7].Value.ToString() == "Retrasado" || dataGridViewPrestamos.Rows[i].Cells[7].Value.ToString() == "ProximoAVencer")
+                    {
+                        dataGridViewPrestamos.Rows[i].Visible = true;
+                    }
+                    else
+                    {
+                        dataGridViewPrestamos.Rows[i].Visible = false;
+                    }
+                }
+            }
+            else if (checkBoxProximosAVencerse.Checked == true)
+            {
+                for (int i = 0; i < dataGridViewPrestamos.Rows.Count - 1; i++)
+                {
+                    if (dataGridViewPrestamos.Rows[i].Cells[7].Value.ToString() == "ProximoAVencer")
                     {
                         dataGridViewPrestamos.Rows[i].Visible = true;
                     }

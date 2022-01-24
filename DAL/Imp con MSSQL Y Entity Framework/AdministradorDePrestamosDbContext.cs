@@ -8,7 +8,7 @@ namespace DAL.EntityFramework
     public class AdministradorDePrestamosDbContext : DbContext
     {
         static private string[] implementacionesBase = new string[] { "ConnectionSQLServerLocal", "ConnectionSQLServerHosting" };
-        static private string implementacionBase = implementacionesBase[1];
+        static private string implementacionBase = implementacionesBase[0];
 
         public AdministradorDePrestamosDbContext(string cadena) : base(cadena)
         {
