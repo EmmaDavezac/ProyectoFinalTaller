@@ -8,35 +8,36 @@ using System.Windows.Forms;
 
 namespace Programa
 {
-    public partial class RegistrarLibro : Form
+    public partial class RegistrarLibro : Form//La finalidad de este formulario es la de permitir registrar un nuevo libro
     {
-        private string NombreUsuario { get; set; }
-        FachadaNucleo interfazNucleo = new FachadaNucleo();
-        public RegistrarLibro(string pNombreUsuario)
+        private string nombreUsuario { get; set; }//Aqui se almacena el nombre de usuario del administrador que esta usando el programa
+        private FachadaNucleo interfazNucleo = new FachadaNucleo();//Instancia del nucleo del programa que nos permite acceder a las funciones del mismo
+        public RegistrarLibro(string pNombreUsuario)//Constructor de la clase
         {
             InitializeComponent();
+            VerificarVentanaPadre();
             NombreUsuario = pNombreUsuario;
 
             labelNombreUsuario.Text = "Usuario: " + NombreUsuario;
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)//se ejecuta cuando se pselecciona un libro  de la tabla de libros
         {
-            if (e.RowIndex >= 0 && dataGridViewTituloYAutor.CurrentRow.Cells[0].Value != null)
+            if (e.RowIndex >= 0 && dataGridViewTituloYAutor.CurrentRow.Cells[0].Value != null)//se verifica que la fila seleccionada no este vacia
             {
-                dataGridViewAños.Rows.Clear();
-                dataGridViewISBN.Rows.Clear();
-                textBoxTitulo.Text = dataGridViewTituloYAutor.CurrentRow.Cells[0].Value.ToString();
-                textBoxAutor.Text = dataGridViewTituloYAutor.CurrentRow.Cells[1].Value.ToString();
-                buttonBorrarDatos.Enabled = true;
+                dataGridViewAños.Rows.Clear();//se eliminan las filas de la tabla de años
+                dataGridViewISBN.Rows.Clear();//se eliminan las filas de la tabla de ISBNs
+                textBoxTitulo.Text = dataGridViewTituloYAutor.CurrentRow.Cells[0].Value.ToString();//se muestra en pantalla el titulo del libro seleccionado
+                textBoxAutor.Text = dataGridViewTituloYAutor.CurrentRow.Cells[1].Value.ToString();//se muestra en pantalla el nombre del autor del libro seleccionado
+                buttonBorrarDatos.Enabled = true;//se activa el boton borrar datos
                 List<string> isbns = interfazNucleo.TransformarISBNsALista(dataGridViewTituloYAutor.CurrentRow.Cells[3].Value.ToString());
-                foreach (var item in isbns)
+                foreach (var item in isbns)//se cargan los isbns del libro seleccionado en la tabla de isbns
                 {
                     int n = dataGridViewISBN.Rows.Add();
                     dataGridViewISBN.Rows[n].Cells[0].Value = item;
                 }
                 List<string> años = interfazNucleo.TransformarAñosALista(dataGridViewTituloYAutor.CurrentRow.Cells[2].Value.ToString());
-                foreach (var item in años)
+                foreach (var item in años)//se cargan los años de publicacion del libro seleccionado en la tabla de años
                 {
                     int n = dataGridViewAños.Rows.Add();
                     dataGridViewAños.Rows[n].Cells[0].Value = item;
@@ -46,17 +47,17 @@ namespace Programa
 
         private void BuscarLibrosAPI_Load(object sender, EventArgs e)
         {
-            VerificarVentanaPadre();
+            
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)//este men todo se ejecutara cuando se presione button1, nos permite hacer una consulta a open library y obtener una lista de libros
         {
-            if (textBoxBuscar.Text != null && textBoxBuscar.Text != "")
+            if (textBoxBuscar.Text != null && textBoxBuscar.Text != "")//se verifica que el cuadro de busqueda no este vacio
             {
                 int resultado = 0;
-                dataGridViewTituloYAutor.Rows.Clear();
-                List<Libro> resultados = interfazNucleo.ListarLibrosDeAPIPorCoincidencia(textBoxBuscar.Text);
-                foreach (var item in resultados)
+                dataGridViewTituloYAutor.Rows.Clear();//se limpia la tabla de libros
+                List<Libro> resultados = interfazNucleo.ListarLibrosDeAPIPorCoincidencia(textBoxBuscar.Text);//se realiza la consulta a Open Library y se almacena la lista de libros
+                foreach (var item in resultados)//se carga cada uno de los resultados en la tabla de libros
                 {
                     int n = dataGridViewTituloYAutor.Rows.Add();
                     dataGridViewTituloYAutor.Rows[n].Cells[0].Value = item.Titulo;
@@ -66,23 +67,21 @@ namespace Programa
                     resultado += 1;
                 }
 
-                if (resultado == 0) { labelResultados.Text = "Error, no se encontraron resultados"; buttonBuscar.Enabled = false; textBoxBuscar.Focus(); }
+                if (resultado == 0) { labelResultados.Text = "Error, no se encontraron resultados"; }//en el caso de no encontrarse resultados , se muestra un mensaje en pantalla y se desabilita en boton buscar
                 else
                 {
                     labelResultados.Text = "";
-                    buttonBuscar.Enabled = false;
-                    textBoxBuscar.Focus();
-                }
+                }  
             }
             else
             {
                 labelResultados.Text = "No ingreso un termino de busqueda";
-                buttonBuscar.Enabled = false;
-                textBoxBuscar.Focus();
             }
+            textBoxBuscar.Focus(); //enfocamos el cuadro de busqueda
+            buttonBuscar.Enabled = false; //se desabilita el boton buscar
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void textBox1_TextChanged(object sender, EventArgs e)//activa el boton buscar cuando se modifica el texto de textBox1
         {
             buttonBuscar.Enabled = true;
 
@@ -94,31 +93,34 @@ namespace Programa
         }
 
         private void buttonAñadirLibro_Click(object sender, EventArgs e)
+            //se ejecuta cuando se presiona el boton añadir libro, registra el libro en el caso de que se haya ingresado toda la informacion del libro y posea el formato correcto
         {
             if (!string.IsNullOrEmpty(textBoxTitulo.Text) && !string.IsNullOrEmpty(textBoxAutor.Text) && !string.IsNullOrEmpty(textBoxISBN.Text) && !string.IsNullOrEmpty(textBoxAñoPublicacion.Text) && !string.IsNullOrEmpty(textBoxCantidadEjemplares.Text))
+           //se verifica que se haya ingresado toda la informacion necesaria
             {
-
                 new FachadaNucleo().AñadirLibro(textBoxISBN.Text, textBoxTitulo.Text, textBoxAutor.Text, textBoxAñoPublicacion.Text, Convert.ToInt32(textBoxCantidadEjemplares.Text));
-                MessageBox.Show("Libro registrado con exito, el Id del libro es: " + new FachadaNucleo().ObtenerUltimoIdLibro());
+                //se registra el libro en la base de datos
+                MessageBox.Show("Libro registrado con exito, el Id del libro es: " + new FachadaNucleo().ObtenerUltimoIdLibro());//se muestra el mensaje en pantalla
 
             }
             else
             {
-                MessageBox.Show("Debe completar la informacion");
+                MessageBox.Show("Debe completar la informacion");//se muestra el mensaje en pantalla
                 textBoxTitulo.Focus();
+                //se  enfoca el cuadro de texto del titulo
             }
         }
 
-        private void botonVolver_Click(object sender, EventArgs e)
+        private void botonVolver_Click(object sender, EventArgs e)//se ejecuta cuando se presiona el boton volver
         {
-            this.Hide();
-            this.Owner.Show();
+            this.Hide();//la ventana se oculta
+            this.Owner.Show();//se muestra la ventana padre
         }
 
-        private void BuscarLibrosAPI_FormClosed(object sender, FormClosedEventArgs e)
+        private void BuscarLibrosAPI_FormClosed(object sender, FormClosedEventArgs e)//se ejecuta cuando se cierra la ventana
         {
-            this.Hide();
-            this.Owner.Show();
+            this.Hide();//la ventana se oculta
+            this.Owner.Show();//se muestra la ventana padre
         }
 
         private void label3_Click(object sender, EventArgs e)
@@ -142,12 +144,14 @@ namespace Programa
         }
 
         private void buttonBorrarDatos_Click(object sender, EventArgs e)
+            //borra el contenido de los textbox con la informacion del libro a registrar cuando se presiona el boton  borrar datos
         {
             textBoxAutor.Clear();
             textBoxAñoPublicacion.Clear();
             textBoxISBN.Clear();
             textBoxTitulo.Clear();
-            buttonBorrarDatos.Enabled = false;
+            //borra los datos de los textbox
+            
         }
 
         private void labelIngreseISBN_Click(object sender, EventArgs e)
@@ -181,10 +185,11 @@ namespace Programa
         }
 
         private void dataGridViewISBN_CellContentClick(object sender, DataGridViewCellEventArgs e)
+            //se ejecuta cuando se presiona una fila de la lista de ISBNs del libro, carga el ISBN  seleccionado en el textboxISBN
         {
             if (e.RowIndex >= 0)
             {
-                if (dataGridViewISBN.CurrentRow.Cells[0].Value!=null)
+                if (dataGridViewISBN.CurrentRow.Cells[0].Value!=null)//Se verifica que la fila seleccionada no este vacia
                 {
                     textBoxISBN.Text = dataGridViewISBN.CurrentRow.Cells[0].Value.ToString(); 
                 }
@@ -192,17 +197,18 @@ namespace Programa
         }
 
         private void dataGridViewAños_CellContentClick(object sender, DataGridViewCellEventArgs e)
+            //se ejecuta cuando se presiona una fila de la lista de años de publicacion del libro, carga el año seleccionado en el textboxAñoPublicacion
         {
             if (e.RowIndex >= 0)
             {
                 if (dataGridViewISBN.CurrentRow.Cells[0].Value != null)
                 {
-                    textBoxAñoPublicacion.Text = dataGridViewAños.CurrentRow.Cells[0].Value.ToString();
+                    textBoxAñoPublicacion.Text = dataGridViewAños.CurrentRow.Cells[0].Value.ToString();//Se verifica que la fila seleccionada no este vacia
                 }
             }
         }
 
-        private void textBoxSeleccionarISBN_TextChanged(object sender, EventArgs e)
+        private void textBoxSeleccionarISBN_TextChanged(object sender, EventArgs e)//nos permite buscar un isbn en la tabla de isbns del libro
         {
             if (textBoxSeleccionarISBN.Text != null)
             {
@@ -220,7 +226,7 @@ namespace Programa
             }
         }
 
-        private void textBoxSelccionarAño_TextChanged(object sender, EventArgs e)
+        private void textBoxSelccionarAño_TextChanged(object sender, EventArgs e)//nos permite buscar un año en la tabla de años de publicacion
         {
             if (textBoxSelccionarAño.Text != null)
             {
@@ -238,11 +244,11 @@ namespace Programa
             }
         }
 
-        private void buttonGestionarLibros_Click(object sender, EventArgs e)
+        private void buttonGestionarLibros_Click(object sender, EventArgs e)//se abre la ventana gestionar libros cuando se presiona el boton gestionarLibros
         {
-            this.Hide();
-            GestionarLibros ventana = new GestionarLibros(NombreUsuario);
-            ventana.ShowDialog(this);
+            this.Hide();//se oculta esta ventana
+            GestionarLibros ventana = new GestionarLibros(NombreUsuario);//se crea una instancia del formulario gestionar libros
+            ventana.ShowDialog(this);//se muestra la nueva ventana
         }
 
         private void labelSeleccionarAño_Click(object sender, EventArgs e)
@@ -250,7 +256,7 @@ namespace Programa
 
         }
 
-        public void VerificarVentanaPadre()
+        public void VerificarVentanaPadre()//este metodo identifica la ventana padre y a partir de esto muestra u oculta funciones 
         {
             if (this.Owner.Name == "Menu2")
             {
@@ -267,7 +273,7 @@ namespace Programa
             }
         }
 
-        public void InicializarLibro(int idLibro)
+        public void InicializarLibro(int idLibro)//carga los textbox con los datos del libro pasado como parametro
         {
             var libro = interfazNucleo.ObtenerLibro(idLibro);
             textBoxAutor.Text = libro.Autor;
@@ -278,6 +284,7 @@ namespace Programa
             button1_Click(this, null);
         }
         private void buttonActualizar_Click(object sender, EventArgs e)
+            //se ejecuta cunado se presiona el boton actualizar
         {
             if (!string.IsNullOrEmpty(textBoxTitulo.Text) && !string.IsNullOrEmpty(textBoxAutor.Text) && !string.IsNullOrEmpty(textBoxISBN.Text) && !string.IsNullOrEmpty(textBoxAñoPublicacion.Text))
             {
