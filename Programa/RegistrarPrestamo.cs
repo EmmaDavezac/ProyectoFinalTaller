@@ -169,13 +169,13 @@ namespace Programa
 
         private void botonVolver_Click(object sender, EventArgs e)//se ejecuta cuando se presiona el boton volver
         {
-            tthis.Hide();//la ventana se oculta
+            this.Hide();//la ventana se oculta
             this.Owner.Show();//se muestra la ventana padre
         }
 
         private void RegistrarPrestamo_FormClosed(object sender, FormClosedEventArgs e)//este evento se ejecutara cuando se cierre el formulario
         {
-            tthis.Hide();//la ventana se oculta
+           this.Hide();//la ventana se oculta
             this.Owner.Show();//se muestra la ventana padre
         }
     }
