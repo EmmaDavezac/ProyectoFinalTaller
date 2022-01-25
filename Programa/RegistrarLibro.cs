@@ -15,9 +15,7 @@ namespace Programa
         public RegistrarLibro(string pNombreUsuario)//Constructor de la clase
         {
             InitializeComponent();
-            VerificarVentanaPadre();
             NombreUsuario = pNombreUsuario;
-
             labelNombreUsuario.Text = "Usuario: " + NombreUsuario;
         }
 
@@ -47,7 +45,7 @@ namespace Programa
 
         private void BuscarLibrosAPI_Load(object sender, EventArgs e)
         {
-            
+            VerificarVentanaPadre();
         }
 
         private void button1_Click(object sender, EventArgs e)//este men todo se ejecutara cuando se presione button1, nos permite hacer una consulta a open library y obtener una lista de libros

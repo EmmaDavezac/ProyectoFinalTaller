@@ -32,12 +32,18 @@ namespace Programa
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.labelNombreYApellido = new System.Windows.Forms.Label();
             this.labelNombreUsuario = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.submenuPrestamos = new System.Windows.Forms.Panel();
+            this.button23 = new System.Windows.Forms.Button();
+            this.button24 = new System.Windows.Forms.Button();
             this.button25 = new System.Windows.Forms.Button();
             this.submenuLibros = new System.Windows.Forms.Panel();
             this.buttonGestionarLibros = new System.Windows.Forms.Button();
@@ -53,25 +59,19 @@ namespace Programa
             this.button1 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.button24 = new System.Windows.Forms.Button();
-            this.button23 = new System.Windows.Forms.Button();
-            this.submenuPrestamos = new System.Windows.Forms.Panel();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.panel1.SuspendLayout();
+            this.submenuPrestamos.SuspendLayout();
             this.submenuLibros.SuspendLayout();
             this.submenuadministradores.SuspendLayout();
             this.submenuusuario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            this.submenuPrestamos.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel3
@@ -113,6 +113,17 @@ namespace Programa
             this.label3.TabIndex = 5;
             this.label3.Text = "E-Librery";
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::Programa.Properties.Resources.libro_abierto;
+            this.pictureBox2.Location = new System.Drawing.Point(16, 3);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(40, 40);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 5;
+            this.pictureBox2.TabStop = false;
+            // 
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.SystemColors.Highlight;
@@ -125,6 +136,19 @@ namespace Programa
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(268, 60);
             this.panel5.TabIndex = 9;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox4.Image = global::Programa.Properties.Resources.perfil_del_usuario;
+            this.pictureBox4.Location = new System.Drawing.Point(224, 3);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(40, 40);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox4.TabIndex = 6;
+            this.pictureBox4.TabStop = false;
+            this.pictureBox4.Click += new System.EventHandler(this.pictureBox4_Click);
             // 
             // labelNombreYApellido
             // 
@@ -162,6 +186,20 @@ namespace Programa
             this.panel2.Size = new System.Drawing.Size(82, 60);
             this.panel2.TabIndex = 8;
             // 
+            // pictureBox3
+            // 
+            this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox3.Image = global::Programa.Properties.Resources.cerrar_sesion;
+            this.pictureBox3.Location = new System.Drawing.Point(24, 3);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(40, 40);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 4;
+            this.pictureBox3.TabStop = false;
+            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -191,6 +229,56 @@ namespace Programa
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(260, 501);
             this.panel1.TabIndex = 2;
+            // 
+            // submenuPrestamos
+            // 
+            this.submenuPrestamos.BackColor = System.Drawing.Color.Transparent;
+            this.submenuPrestamos.Controls.Add(this.button23);
+            this.submenuPrestamos.Controls.Add(this.button24);
+            this.submenuPrestamos.Dock = System.Windows.Forms.DockStyle.Top;
+            this.submenuPrestamos.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.submenuPrestamos.Location = new System.Drawing.Point(0, 478);
+            this.submenuPrestamos.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.submenuPrestamos.Name = "submenuPrestamos";
+            this.submenuPrestamos.Size = new System.Drawing.Size(243, 80);
+            this.submenuPrestamos.TabIndex = 10;
+            this.submenuPrestamos.Paint += new System.Windows.Forms.PaintEventHandler(this.submenuPrestamos_Paint);
+            // 
+            // button23
+            // 
+            this.button23.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.button23.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button23.FlatAppearance.BorderSize = 0;
+            this.button23.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button23.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.button23.Location = new System.Drawing.Point(0, 40);
+            this.button23.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.button23.Name = "button23";
+            this.button23.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.button23.Size = new System.Drawing.Size(243, 40);
+            this.button23.TabIndex = 1;
+            this.button23.Text = "Gestionar Prestamos";
+            this.button23.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button23.UseVisualStyleBackColor = false;
+            this.button23.Click += new System.EventHandler(this.button23_Click);
+            // 
+            // button24
+            // 
+            this.button24.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.button24.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button24.FlatAppearance.BorderSize = 0;
+            this.button24.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button24.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.button24.Location = new System.Drawing.Point(0, 0);
+            this.button24.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.button24.Name = "button24";
+            this.button24.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.button24.Size = new System.Drawing.Size(243, 40);
+            this.button24.TabIndex = 0;
+            this.button24.Text = "Registrar Prestamo";
+            this.button24.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button24.UseVisualStyleBackColor = false;
+            this.button24.Click += new System.EventHandler(this.button24_Click);
             // 
             // button25
             // 
@@ -446,95 +534,7 @@ namespace Programa
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::Programa.Properties.Resources.libro_abierto;
-            this.pictureBox2.Location = new System.Drawing.Point(16, 3);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(40, 40);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 5;
-            this.pictureBox2.TabStop = false;
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox4.Image = global::Programa.Properties.Resources.perfil_del_usuario;
-            this.pictureBox4.Location = new System.Drawing.Point(224, 3);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(40, 40);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox4.TabIndex = 6;
-            this.pictureBox4.TabStop = false;
-            this.pictureBox4.Click += new System.EventHandler(this.pictureBox4_Click);
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox3.Image = global::Programa.Properties.Resources.cerrar_sesion;
-            this.pictureBox3.Location = new System.Drawing.Point(24, 3);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(40, 40);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox3.TabIndex = 4;
-            this.pictureBox3.TabStop = false;
-            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
-            // 
-            // button24
-            // 
-            this.button24.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.button24.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button24.FlatAppearance.BorderSize = 0;
-            this.button24.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button24.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.button24.Location = new System.Drawing.Point(0, 0);
-            this.button24.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.button24.Name = "button24";
-            this.button24.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.button24.Size = new System.Drawing.Size(243, 40);
-            this.button24.TabIndex = 0;
-            this.button24.Text = "Registrar Prestamo";
-            this.button24.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button24.UseVisualStyleBackColor = false;
-            this.button24.Click += new System.EventHandler(this.button24_Click);
-            // 
-            // button23
-            // 
-            this.button23.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.button23.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button23.FlatAppearance.BorderSize = 0;
-            this.button23.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button23.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.button23.Location = new System.Drawing.Point(0, 40);
-            this.button23.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.button23.Name = "button23";
-            this.button23.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.button23.Size = new System.Drawing.Size(243, 40);
-            this.button23.TabIndex = 1;
-            this.button23.Text = "Gestionar Prestamos";
-            this.button23.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button23.UseVisualStyleBackColor = false;
-            this.button23.Click += new System.EventHandler(this.button23_Click);
-            // 
-            // submenuPrestamos
-            // 
-            this.submenuPrestamos.BackColor = System.Drawing.Color.Transparent;
-            this.submenuPrestamos.Controls.Add(this.button23);
-            this.submenuPrestamos.Controls.Add(this.button24);
-            this.submenuPrestamos.Dock = System.Windows.Forms.DockStyle.Top;
-            this.submenuPrestamos.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.submenuPrestamos.Location = new System.Drawing.Point(0, 478);
-            this.submenuPrestamos.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.submenuPrestamos.Name = "submenuPrestamos";
-            this.submenuPrestamos.Size = new System.Drawing.Size(243, 80);
-            this.submenuPrestamos.TabIndex = 10;
-            this.submenuPrestamos.Paint += new System.Windows.Forms.PaintEventHandler(this.submenuPrestamos_Paint);
-            // 
-            // Menu2
+            // MenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -552,26 +552,26 @@ namespace Programa
             this.MaximumSize = new System.Drawing.Size(800, 600);
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(800, 600);
-            this.Name = "Menu2";
+            this.Name = "MenuPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Menu2_FormClosed);
             this.Load += new System.EventHandler(this.Menu2_Load);
             this.panel3.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.panel1.ResumeLayout(false);
+            this.submenuPrestamos.ResumeLayout(false);
             this.submenuLibros.ResumeLayout(false);
             this.submenuadministradores.ResumeLayout(false);
             this.submenuusuario.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            this.submenuPrestamos.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
