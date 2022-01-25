@@ -29,7 +29,7 @@ namespace Programa
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
@@ -52,7 +52,7 @@ namespace Programa
             this.FechaRealizacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FechaVencimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EstadoPrestamo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Edit = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.Editar = new System.Windows.Forms.DataGridViewLinkColumn();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -147,8 +147,8 @@ namespace Programa
             // 
             // dataGridViewPrestamos
             // 
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            this.dataGridViewPrestamos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            this.dataGridViewPrestamos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewPrestamos.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dataGridViewPrestamos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewPrestamos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -161,7 +161,7 @@ namespace Programa
             this.FechaRealizacion,
             this.FechaVencimiento,
             this.EstadoPrestamo,
-            this.Edit});
+            this.Editar});
             this.dataGridViewPrestamos.Location = new System.Drawing.Point(0, 132);
             this.dataGridViewPrestamos.Name = "dataGridViewPrestamos";
             this.dataGridViewPrestamos.Size = new System.Drawing.Size(784, 386);
@@ -190,11 +190,11 @@ namespace Programa
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(133, 97);
+            this.label1.Location = new System.Drawing.Point(77, 98);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(123, 13);
+            this.label1.Size = new System.Drawing.Size(176, 13);
             this.label1.TabIndex = 78;
-            this.label1.Text = "Usuario o Titulo del libro:";
+            this.label1.Text = "Nombre de usuario o Titulo del libro:";
             // 
             // botonVolver
             // 
@@ -216,12 +216,14 @@ namespace Programa
             // checkBoxProximosAVencerse
             // 
             this.checkBoxProximosAVencerse.AutoSize = true;
+            this.checkBoxProximosAVencerse.BackColor = System.Drawing.Color.Transparent;
+            this.checkBoxProximosAVencerse.ForeColor = System.Drawing.SystemColors.ControlText;
             this.checkBoxProximosAVencerse.Location = new System.Drawing.Point(577, 97);
             this.checkBoxProximosAVencerse.Name = "checkBoxProximosAVencerse";
             this.checkBoxProximosAVencerse.Size = new System.Drawing.Size(80, 17);
             this.checkBoxProximosAVencerse.TabIndex = 82;
             this.checkBoxProximosAVencerse.Text = "A vencerse";
-            this.checkBoxProximosAVencerse.UseVisualStyleBackColor = true;
+            this.checkBoxProximosAVencerse.UseVisualStyleBackColor = false;
             this.checkBoxProximosAVencerse.CheckedChanged += new System.EventHandler(this.checkBoxProximosAVencerse_CheckedChanged);
             // 
             // checkBoxRestrasados
@@ -289,12 +291,12 @@ namespace Programa
             this.EstadoPrestamo.Name = "EstadoPrestamo";
             this.EstadoPrestamo.ReadOnly = true;
             // 
-            // Edit
+            // Editar
             // 
-            this.Edit.HeaderText = "Edit";
-            this.Edit.Name = "Edit";
-            this.Edit.Text = "Edit";
-            this.Edit.UseColumnTextForLinkValue = true;
+            this.Editar.HeaderText = "Editar";
+            this.Editar.Name = "Editar";
+            this.Editar.Text = "Editar";
+            this.Editar.UseColumnTextForLinkValue = true;
             // 
             // GestionarPrestamos
             // 
@@ -353,6 +355,6 @@ namespace Programa
         private System.Windows.Forms.DataGridViewTextBoxColumn FechaRealizacion;
         private System.Windows.Forms.DataGridViewTextBoxColumn FechaVencimiento;
         private System.Windows.Forms.DataGridViewTextBoxColumn EstadoPrestamo;
-        private System.Windows.Forms.DataGridViewLinkColumn Edit;
+        private System.Windows.Forms.DataGridViewLinkColumn Editar;
     }
 }

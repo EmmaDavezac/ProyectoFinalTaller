@@ -103,7 +103,7 @@ namespace Programa
                 dataGridViewUsuarios.Rows[n].Cells[2].Style.Font = new Font(dataGridViewUsuarios.Font, FontStyle.Bold); 
                 if (item.Scoring >= 0)
                 {
-                    dataGridViewUsuarios.Rows[n].Cells[2].Style.ForeColor = Color.GreenYellow;
+                    dataGridViewUsuarios.Rows[n].Cells[2].Style.ForeColor = Color.Black;
                 }
                 else
                 {
@@ -117,7 +117,7 @@ namespace Programa
                 dataGridViewUsuarios.Rows[n].Cells[8].Value = item.Baja.ToString();
                 if (item.Baja == true)
                 {
-                    dataGridViewUsuarios.Rows[n].DefaultCellStyle.BackColor = Color.Red;
+                    dataGridViewUsuarios.Rows[n].DefaultCellStyle.BackColor = Color.Firebrick;
                     dataGridViewUsuarios.Rows[n].DefaultCellStyle.ForeColor = Color.White;
                 }
             }
@@ -150,6 +150,11 @@ namespace Programa
         }
 
         private void usuarioSimpleBindingSource_CurrentChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelTitulo_Click(object sender, EventArgs e)
         {
 
         }

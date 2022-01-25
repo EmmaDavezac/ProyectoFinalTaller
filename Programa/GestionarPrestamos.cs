@@ -62,13 +62,13 @@ namespace Programa
                     dataGridViewPrestamos.Rows[n].Cells[7].Value = item.ActualizarEstado().ToString();
                     if (dataGridViewPrestamos.Rows[n].Cells[7].Value.ToString() == "Retrasado")
                     {
-                        dataGridViewPrestamos.Rows[n].DefaultCellStyle.BackColor = Color.Red;
+                        dataGridViewPrestamos.Rows[n].DefaultCellStyle.BackColor = Color.Firebrick;
                         dataGridViewPrestamos.Rows[n].DefaultCellStyle.ForeColor = Color.White;
                     }
                     else if (dataGridViewPrestamos.Rows[n].Cells[7].Value.ToString() == "ProximoAVencer")
                     {
-                        dataGridViewPrestamos.Rows[n].DefaultCellStyle.BackColor = Color.Green;
-                        dataGridViewPrestamos.Rows[n].DefaultCellStyle.ForeColor = Color.White;
+                        dataGridViewPrestamos.Rows[n].DefaultCellStyle.BackColor = Color.Yellow;
+                        dataGridViewPrestamos.Rows[n].DefaultCellStyle.ForeColor = Color.Black;
                     }
                 }
             }
@@ -138,7 +138,7 @@ namespace Programa
                     }
                 }
             }
-            else if(checkBoxRestrasados.Checked == true)
+            else if (checkBoxRestrasados.Checked == true)
             {
                 for (int i = 0; i < dataGridViewPrestamos.Rows.Count - 1; i++)
                 {
@@ -151,8 +151,8 @@ namespace Programa
                         dataGridViewPrestamos.Rows[i].Visible = false;
                     }
                 }
-                    
-            } 
+
+            }
             else
             {
                 for (int i = 0; i < dataGridViewPrestamos.Rows.Count - 1; i++)
@@ -219,20 +219,19 @@ namespace Programa
         {
             if (textBoxUsuarioOTituloLibro.Text != null)//se verifica que el textbox no este vacio
             {
-                for (int i = 0; i < dataGridViewPrestamos.Rows.Count - 1; i++)//recorremos las filas de la tabla 
-                //este metodo nos permite filtrar los prestamos escribiendo el nombre de usuario o el titulo del libro
+                for (int i = 0; i < dataGridViewPrestamos.Rows.Count - 1; i++)//recorremos las filas de la tabla
                 {
                     if (dataGridViewPrestamos.Rows[i].Cells[2].Value.ToString().ToLower().Contains(textBoxUsuarioOTituloLibro.Text.ToString().ToLower()))
                     {
-                        dataGridViewPrestamos.Rows[i].Visible = true;//si el termino buscado es subcadena del nombre de usuario del prestamo, la fila sera visible
+                        dataGridViewPrestamos.Rows[i].Visible = true;//si 
                     }
                     else if (dataGridViewPrestamos.Rows[i].Cells[3].Value.ToString().ToLower().Contains(textBoxUsuarioOTituloLibro.Text.ToString().ToLower()) == false)
                     {
-                        dataGridViewPrestamos.Rows[i].Visible = false;//si el termino buscado no es subcadena del titulo del libro del prestamo, la fila se ocultara
+                        dataGridViewPrestamos.Rows[i].Visible = false;
                     }
                     else
                     {
-                        dataGridViewPrestamos.Rows[i].Visible = true;//si el termino de busqueda es subcadena del titulo del libro del prestamo, la fila sera visible
+                        dataGridViewPrestamos.Rows[i].Visible = true;
                     }
                 }
             }

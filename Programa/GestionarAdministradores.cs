@@ -107,7 +107,7 @@ namespace Programa
                 dataGridViewAdministradores.Rows[n].Cells[7].Value = item.Baja.ToString();
                 if (item.Baja == true)
                 {
-                    dataGridViewAdministradores.Rows[n].DefaultCellStyle.BackColor = Color.Red;
+                    dataGridViewAdministradores.Rows[n].DefaultCellStyle.BackColor = Color.Firebrick;
                     dataGridViewAdministradores.Rows[n].DefaultCellStyle.ForeColor = Color.White;
                 }
             }

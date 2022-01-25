@@ -258,7 +258,7 @@ namespace Programa
 
         public void VerificarVentanaPadre()//este metodo identifica la ventana padre y a partir de esto muestra u oculta funciones 
         {
-            if (this.Owner.Name == "Menu2")
+            if (this.Owner.Name == "MenuPrincipal")
             {
                 buttonAñadirLibro.Visible = true;
                 buttonActualizar.Visible = false;
