@@ -19,22 +19,22 @@ namespace Programa
             
             labelNombreUsuario.Text = "Usuario: " + nombreUsuario;
         }
-        
+
 
         private void botonVolver_Click(object sender, EventArgs e)//este evento se ejecutara cuando se presione el boton botonVolver
         {
             this.Hide();//la ventana se oculta
             this.Owner.Show();//se muestra la ventana padre
-
+        }
         private void AgregarCliente_FormClosing(object sender, FormClosingEventArgs e)//este evento se ejecutara cuando se cierre el formulario
         {
-            tthis.Hide();//la ventana se oculta
+            this.Hide();//la ventana se oculta
             this.Owner.Show();//se muestra la ventana padre
         }
 
         private void AgregarCliente_FormClosed(object sender, FormClosedEventArgs e)//este evento se ejecutara cuando se cierre el formulario
         {
-            tthis.Hide();//la ventana se oculta
+            this.Hide();//la ventana se oculta
             this.Owner.Show();//se muestra la ventana padre
         }
 
@@ -46,7 +46,7 @@ namespace Programa
         private void buttonAñadirUsuario_Click(object sender, EventArgs e)
         //se ejecutara cuando se presione el boton añadir usuario, en el caso de que toda la informacion necesaria haya sido  ingresada y sea correcta, se registrara el nuevo usuario
         {
-            if (!string.IsNullOrEmpty(textBoxNombreUsuario.Text)&&textBoxNombreUsuario.Text.All(Char.IsLetter)))//se verifica que se haya ingresado el nombre de usuario
+            if (!string.IsNullOrEmpty(textBoxNombreUsuario.Text)&&(textBoxNombreUsuario.Text.All(Char.IsLetter)))//se verifica que se haya ingresado el nombre de usuario
             {
                 if (!string.IsNullOrEmpty(textBoxNombre.Text) && textBoxNombre.Text.All(Char.IsLetter))//se verifica que el nombre se haya ingresado correctamente(formato)
                 {

@@ -6,7 +6,7 @@ namespace Programa
     //esta ventana tiene la funcion de controlar el inicio de sesion del programa ,validando los datos del usuario que pretende usarlo
     {
 
-        public Login//constructor de la clase
+        public Login()//constructor de la clase
         {
 
             InitializeComponent();

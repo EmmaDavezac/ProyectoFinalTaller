@@ -14,7 +14,7 @@ namespace Programa
         {
             InitializeComponent();
             nombreUsuario = pNombreUsuario;
-            n
+
             labelNombreUsuario.Text = "Usuario: " + nombreUsuario;
         }
 
@@ -73,7 +73,7 @@ namespace Programa
         private void buttonRegistrarAdministrador_Click(object sender, EventArgs e)
         //se activara cuando se presiona el boton registrar administrador y en el caso de que todos los datos requeridos esten ingresados y sean correctos, se registrara el nuevo administrador
         {
-            if (!string.IsNullOrEmpty(textBoxNombreUsuario.Text)&&textBoxNombreUsuario.Text.All(Char.IsLetter)))//se verifica que se haya ingresado el nombre de usuario y tenga el formato correcto
+            if (!string.IsNullOrEmpty(textBoxNombreUsuario.Text)&&(textBoxNombreUsuario.Text.All(Char.IsLetter))) //se verifica que se haya ingresado el nombre de usuario y tenga el formato correcto
             {
                 if (!string.IsNullOrEmpty(textBoxNombre.Text) && textBoxNombre.Text.All(Char.IsLetter))//se verifica que se haya ingresado el nombre y tenga el formato correcto
                 {

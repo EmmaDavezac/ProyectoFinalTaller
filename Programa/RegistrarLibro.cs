@@ -10,7 +10,7 @@ namespace Programa
 {
     public partial class RegistrarLibro : Form//La finalidad de este formulario es la de permitir registrar un nuevo libro
     {
-        private string nombreUsuario { get; set; }//Aqui se almacena el nombre de usuario del administrador que esta usando el programa
+        private string NombreUsuario { get; set; }//Aqui se almacena el nombre de usuario del administrador que esta usando el programa
         private FachadaNucleo interfazNucleo = new FachadaNucleo();//Instancia del nucleo del programa que nos permite acceder a las funciones del mismo
         public RegistrarLibro(string pNombreUsuario)//Constructor de la clase
         {

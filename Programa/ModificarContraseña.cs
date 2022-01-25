@@ -35,7 +35,7 @@ namespace Programa
                 if (textBoxContraseñaNueva.Text != null&&textBoxContraseñaNueva.Text.Length>=4)
                 // se verifica que se haya ingresado la contraseña nueva y que cumpla con la longitud minima
                 {
-                    if (interfazNucleo.VerficarContraseña(nombreusuario,textBoxContraseñaAntigua.Text))//se verifica que la contraseña antigua sea correcta
+                    if (interfazNucleo.VerficarContraseña(nombreUsuario, textBoxContraseñaAntigua.Text))//se verifica que la contraseña antigua sea correcta
                     {
                         MessageBox.Show("La contraseña a sido modificada, guarde los cambios de la ventana anterior para que esto tenga efecto", "Message", MessageBoxButtons.OK);
                         contraseñaNueva = textBoxContraseñaNueva.Text;
