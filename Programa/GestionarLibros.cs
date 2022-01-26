@@ -32,7 +32,7 @@ namespace Programa
             if (e.RowIndex >= 0)
             {
                 DataGridViewCell cell = (DataGridViewCell)dataGridViewLibros.Rows[e.RowIndex].Cells[e.ColumnIndex];
-                if (cell.Value.ToString() == "Gestionar")//Si se presiona la celda con el texto Gestionar, se abre una nueva ventana para actuaizar la informacion del libro
+                if (cell.Value.ToString() == "Edit")//Si se presiona la celda con el texto Edit, se abre una nueva ventana para actuaizar la informacion del libro
                 {
                     int id = Convert.ToInt32(dataGridViewLibros.Rows[e.RowIndex].Cells[1].Value);
                     string ISBN = dataGridViewLibros.Rows[e.RowIndex].Cells[2].Value.ToString();

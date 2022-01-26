@@ -219,7 +219,7 @@ namespace Programa
             this.Editar.LinkColor = System.Drawing.Color.Blue;
             this.Editar.Name = "Editar";
             this.Editar.ReadOnly = true;
-            this.Editar.Text = "Editar";
+            this.Editar.Text = "Edit";
             this.Editar.UseColumnTextForLinkValue = true;
             this.Editar.Width = 60;
             // 
