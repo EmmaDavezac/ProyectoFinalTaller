@@ -118,7 +118,7 @@ namespace Programa
             // 
             this.labelError.AutoSize = true;
             this.labelError.ForeColor = System.Drawing.Color.Red;
-            this.labelError.Location = new System.Drawing.Point(350, 366);
+            this.labelError.Location = new System.Drawing.Point(350, 399);
             this.labelError.Name = "labelError";
             this.labelError.Size = new System.Drawing.Size(0, 13);
             this.labelError.TabIndex = 61;

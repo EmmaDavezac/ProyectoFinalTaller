@@ -54,36 +54,46 @@ namespace Programa
                     {
                         if (dateTimePickerFechaNacimiento.Value.Date != new DateTime(1900, 1, 1))//se verifica que la fecha de nacimiento se haya ingresado 
                         {
-                            if (!string.IsNullOrEmpty(textBoxMail.Text) && interfazNucleo.EsUnEmailValido(textBoxMail.Text))//se verifica que el mail se haya ingresado correctamente (formato)
+                            if (DateTime.Now.Year - dateTimePickerFechaNacimiento.Value.Date.Year >= 12 && DateTime.Now.Year - dateTimePickerFechaNacimiento.Value.Date.Year <= 120)//Verifica que la edad del usuario este entre los 12 y 120 años
                             {
-                                if (!string.IsNullOrEmpty(textBoxTelefono.Text) && textBoxTelefono.Text.All(Char.IsDigit) && textBoxTelefono.Text.Length >= 8 && textBoxTelefono.Text.Length <= 11)//se verifica que el telefono se haya ingresado correctamente (formato)
+                                if (!string.IsNullOrEmpty(textBoxMail.Text) && interfazNucleo.EsUnEmailValido(textBoxMail.Text))//se verifica que el mail se haya ingresado correctamente (formato)
                                 {
-                                    bool resultado = interfazNucleo.AñadirUsuario(textBoxNombreUsuario.Text, textBoxNombre.Text, textBoxApellido.Text, dateTimePickerFechaNacimiento.Value, textBoxMail.Text, textBoxTelefono.Text);//se añade el usuario a la base de datos
-                                    if (resultado == true)//verificamos si la operacion fue exitosa y mostramos un mensaje en pantalla
+                                    if (!string.IsNullOrEmpty(textBoxTelefono.Text) && textBoxTelefono.Text.All(Char.IsDigit) && textBoxTelefono.Text.Length >= 8 && textBoxTelefono.Text.Length <= 11)//se verifica que el telefono se haya ingresado correctamente (formato)
                                     {
-                                        MessageBox.Show("Usuario guardado, el nombre de usuario es: " + textBoxNombreUsuario.Text, "Operacion Exitosa", MessageBoxButtons.OK);
-                                        this.Hide();
-                                        this.Owner.Show();
+                                        bool resultado = interfazNucleo.AñadirUsuario(textBoxNombreUsuario.Text, textBoxNombre.Text, textBoxApellido.Text, dateTimePickerFechaNacimiento.Value, textBoxMail.Text, textBoxTelefono.Text);//se añade el usuario a la base de datos
+                                        if (resultado == true)//verificamos si la operacion fue exitosa y mostramos un mensaje en pantalla
+                                        {
+                                            MessageBox.Show("Usuario guardado, el nombre de usuario es: " + textBoxNombreUsuario.Text, "Operacion Exitosa", MessageBoxButtons.OK);
+                                            this.Hide();
+                                            this.Owner.Show();
+                                        }
+                                        else
+                                        {
+                                            MessageBox.Show("El usuario: " + textBoxNombreUsuario.Text + " ya se encuentra registrado, pruebe con otro nombre de usuario", "Error", MessageBoxButtons.OK);
+                                        }
+
                                     }
                                     else
                                     {
-                                        MessageBox.Show("El usuario: " + textBoxNombreUsuario.Text + " ya se encuentra registrado, pruebe con otro nombre de usuario", "Error", MessageBoxButtons.OK);
+                                        this.labelError.Text = "Error,telefono ingresado invalido.Ingrese el numero sin 0 ni 15";
+                                        buttonAñadirUsuario.Enabled = false;
+                                        textBoxTelefono.Focus(); ;
                                     }
-
                                 }
                                 else
                                 {
-                                    this.labelError.Text = "Error,telefono ingresado invalido.Ingrese el numero sin 0 ni 15";
+                                    this.labelError.Text = "Error, el mail ingresado no es valido";
                                     buttonAñadirUsuario.Enabled = false;
-                                    textBoxTelefono.Focus(); ;
+                                    textBoxMail.Focus(); ;
                                 }
                             }
-                            else
+                            else 
                             {
-                                this.labelError.Text = "Error, el mail ingresado no es valido";
+                                this.labelError.Text = "Error, la fecha de nacimiento no es coherente";
                                 buttonAñadirUsuario.Enabled = false;
-                                textBoxMail.Focus(); ;
+                                textBoxMail.Focus();
                             }
+                               
                         }
                         else
                         {
