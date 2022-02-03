@@ -325,7 +325,7 @@ namespace Programa
             this.buttonGestionarLibros.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
             this.buttonGestionarLibros.Size = new System.Drawing.Size(243, 41);
             this.buttonGestionarLibros.TabIndex = 1;
-            this.buttonGestionarLibros.Text = "GestionarLibros";
+            this.buttonGestionarLibros.Text = "Gestionar Libros";
             this.buttonGestionarLibros.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonGestionarLibros.UseVisualStyleBackColor = false;
             this.buttonGestionarLibros.Click += new System.EventHandler(this.button13_Click);

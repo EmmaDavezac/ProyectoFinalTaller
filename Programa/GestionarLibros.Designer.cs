@@ -41,9 +41,6 @@ namespace Programa
             this.labelNombreUsuario = new System.Windows.Forms.Label();
             this.labelTitulo = new System.Windows.Forms.Label();
             this.dataGridViewLibros = new System.Windows.Forms.DataGridView();
-            this.textBoxTituloOISBNLibro = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.botonVolver = new System.Windows.Forms.Button();
             this.Editar = new System.Windows.Forms.DataGridViewLinkColumn();
             this.IdLibro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ISBN = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -53,6 +50,9 @@ namespace Programa
             this.CantidadDisponible = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Baja = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.textBoxTituloOISBNLibro = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.botonVolver = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -179,40 +179,6 @@ namespace Programa
             this.dataGridViewLibros.TabIndex = 76;
             this.dataGridViewLibros.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewLibros_CellContentClick);
             // 
-            // textBoxTituloOISBNLibro
-            // 
-            this.textBoxTituloOISBNLibro.Location = new System.Drawing.Point(257, 95);
-            this.textBoxTituloOISBNLibro.Name = "textBoxTituloOISBNLibro";
-            this.textBoxTituloOISBNLibro.Size = new System.Drawing.Size(300, 20);
-            this.textBoxTituloOISBNLibro.TabIndex = 75;
-            this.textBoxTituloOISBNLibro.TextChanged += new System.EventHandler(this.textBoxTituloOISBNlibro_TextChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(142, 98);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(112, 13);
-            this.label1.TabIndex = 74;
-            this.label1.Text = "Titulo o ISBN del libro:";
-            // 
-            // botonVolver
-            // 
-            this.botonVolver.BackColor = System.Drawing.SystemColors.Highlight;
-            this.botonVolver.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.botonVolver.FlatAppearance.BorderSize = 0;
-            this.botonVolver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.botonVolver.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.botonVolver.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.botonVolver.Location = new System.Drawing.Point(685, 535);
-            this.botonVolver.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.botonVolver.Name = "botonVolver";
-            this.botonVolver.Size = new System.Drawing.Size(89, 23);
-            this.botonVolver.TabIndex = 78;
-            this.botonVolver.Text = "Volver";
-            this.botonVolver.UseVisualStyleBackColor = false;
-            this.botonVolver.Click += new System.EventHandler(this.botonVolver_Click);
-            // 
             // Editar
             // 
             this.Editar.HeaderText = "Editar";
@@ -273,6 +239,40 @@ namespace Programa
             this.Baja.HeaderText = "Baja";
             this.Baja.Name = "Baja";
             // 
+            // textBoxTituloOISBNLibro
+            // 
+            this.textBoxTituloOISBNLibro.Location = new System.Drawing.Point(257, 95);
+            this.textBoxTituloOISBNLibro.Name = "textBoxTituloOISBNLibro";
+            this.textBoxTituloOISBNLibro.Size = new System.Drawing.Size(300, 20);
+            this.textBoxTituloOISBNLibro.TabIndex = 75;
+            this.textBoxTituloOISBNLibro.TextChanged += new System.EventHandler(this.textBoxTituloOISBNlibro_TextChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(142, 98);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(112, 13);
+            this.label1.TabIndex = 74;
+            this.label1.Text = "Titulo o ISBN del libro:";
+            // 
+            // botonVolver
+            // 
+            this.botonVolver.BackColor = System.Drawing.SystemColors.Highlight;
+            this.botonVolver.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.botonVolver.FlatAppearance.BorderSize = 0;
+            this.botonVolver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.botonVolver.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.botonVolver.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.botonVolver.Location = new System.Drawing.Point(685, 535);
+            this.botonVolver.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.botonVolver.Name = "botonVolver";
+            this.botonVolver.Size = new System.Drawing.Size(89, 23);
+            this.botonVolver.TabIndex = 78;
+            this.botonVolver.Text = "Volver";
+            this.botonVolver.UseVisualStyleBackColor = false;
+            this.botonVolver.Click += new System.EventHandler(this.botonVolver_Click);
+            // 
             // GestionarLibros
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -288,7 +288,7 @@ namespace Programa
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "GestionarLibros";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "GestionarLibros";
+            this.Text = "Gestionar Libros";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.GestionarLibros_FormClosed);
             this.Load += new System.EventHandler(this.GestionarLibros_Load);
             this.panel3.ResumeLayout(false);
