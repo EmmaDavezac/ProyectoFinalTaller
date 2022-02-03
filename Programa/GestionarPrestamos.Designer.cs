@@ -29,7 +29,7 @@ namespace Programa
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
@@ -147,8 +147,8 @@ namespace Programa
             // 
             // dataGridViewPrestamos
             // 
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            this.dataGridViewPrestamos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            this.dataGridViewPrestamos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewPrestamos.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dataGridViewPrestamos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewPrestamos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -315,7 +315,7 @@ namespace Programa
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "GestionarPrestamos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "GestionarPrestamos";
+            this.Text = "Gestionar Prestamos";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.GestionarPrestamos_FormClosed);
             this.Load += new System.EventHandler(this.GestionarPrestamos_Load);
             this.panel3.ResumeLayout(false);
