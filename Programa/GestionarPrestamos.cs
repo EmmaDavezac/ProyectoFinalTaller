@@ -19,12 +19,11 @@ namespace Programa
             InitializeComponent();
             nombreUsuario = pNombreUsuario;
             labelNombreUsuario.Text = "Usuario: " + nombreUsuario;
-            ObtenerPrestamos();
         }
 
         private void GestionarPrestamos_Load(object sender, EventArgs e)
         {
-
+            ObtenerPrestamos();
         }
 
         private void panel3_Paint(object sender, PaintEventArgs e)

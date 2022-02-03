@@ -19,13 +19,12 @@ namespace Programa
             nombreUsuario = pNombreUsuario;
             
             labelNombreUsuario.Text = "Usuario: " + nombreUsuario;
-            ObtenerLibros();//cargamos la lista de libros en la tabla de libros
-            ObtenerUsuarios();//cargamos la lista de usuarios simples en la tabla de usuarios simples
         }
 
         private void RegistrarPrestamo_Load(object sender, EventArgs e)
         {
-            
+            ObtenerLibros();//cargamos la lista de libros en la tabla de libros
+            ObtenerUsuarios();//cargamos la lista de usuarios simples en la tabla de usuarios simples
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -163,8 +162,8 @@ namespace Programa
             int idEjemplar = interfazNucleo.ObtenerEjemplaresDisponibles(Convert.ToInt32(textBoxIdLibro.Text.ToString())).First().Id;
             interfazNucleo.RegistrarPrestamo(textBoxNomUsuario.Text, idEjemplar, Convert.ToInt32(textBoxIdLibro.Text));
             string FechaLimite = Convert.ToDateTime(new FachadaNucleo().ObtenerPrestamo(interfazNucleo.ObtenerUltimoIdPrestamo()).FechaLimite).Date.ToShortDateString();
+            ObtenerLibros();//cargamos la lista de libros en la tabla de libros nuevamente para que se actualice
             MessageBox.Show("El prestamo ha sido registrado correctamente" + "\nFecha limite: " + FechaLimite);
-            RegistrarPrestamo_Load(sender, e);
         }
 
         private void botonVolver_Click(object sender, EventArgs e)//se ejecuta cuando se presiona el boton volver

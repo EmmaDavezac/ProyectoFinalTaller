@@ -19,12 +19,11 @@ namespace Programa
             InitializeComponent();
             nombreUsuario = pNombreUsuario;
             labelNombreUsuario.Text = "Usuario: " + nombreUsuario;
-            ObtenerLibros();
         }
 
         private void GestionarLibros_Load(object sender, EventArgs e)
         {
-            
+            ObtenerLibros();
         }
 
         private void dataGridViewLibros_CellContentClick(object sender, DataGridViewCellEventArgs e)//Este evento se ejecuta si se hace click al contenido de una celda
