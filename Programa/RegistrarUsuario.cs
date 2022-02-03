@@ -46,7 +46,7 @@ namespace Programa
         private void buttonAñadirUsuario_Click(object sender, EventArgs e)
         //se ejecutara cuando se presione el boton añadir usuario, en el caso de que toda la informacion necesaria haya sido  ingresada y sea correcta, se registrara el nuevo usuario
         {
-            if (!string.IsNullOrEmpty(textBoxNombreUsuario.Text)&&(textBoxNombreUsuario.Text.All(Char.IsLetter)))//se verifica que se haya ingresado el nombre de usuario
+            if (!string.IsNullOrEmpty(textBoxNombreUsuario.Text))//se verifica que se haya ingresado el nombre de usuario
             {
                 if (!string.IsNullOrEmpty(textBoxNombre.Text) && textBoxNombre.Text.All(Char.IsLetter))//se verifica que el nombre se haya ingresado correctamente(formato)
                 {
@@ -87,9 +87,16 @@ namespace Programa
                                     textBoxMail.Focus(); ;
                                 }
                             }
-                            else 
+                            else
                             {
-                                this.labelError.Text = "Error, la fecha de nacimiento no es coherente";
+                                if (DateTime.Now.Year - dateTimePickerFechaNacimiento.Value.Date.Year < 12)
+                                {
+                                    this.labelError.Text = "Error, el usuario debe ser mayor de 12 años";
+                                }
+                                else 
+                                {
+                                    this.labelError.Text = "Error, el usuario debe ser menor de 120 años";
+                                }
                                 buttonAñadirUsuario.Enabled = false;
                                 textBoxMail.Focus();
                             }
@@ -114,7 +121,7 @@ namespace Programa
                 {   
                     this.labelError.Text = "Error, nombre invalido.No debe contener numeros, espacios ni simbolos";
                     buttonAñadirUsuario.Enabled = false;
-                    textBoxNombre.Focus(); ;
+                    textBoxNombre.Focus(); 
                 }
             }
             else

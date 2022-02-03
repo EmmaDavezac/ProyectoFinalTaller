@@ -29,36 +29,38 @@ namespace Programa
                     {
                         if (dateTimePickerFechaNacimiento.Value != new DateTime(1900, 1, 1))
                         {
+                        if (DateTime.Now.Year - dateTimePickerFechaNacimiento.Value.Date.Year >= 12 && DateTime.Now.Year - dateTimePickerFechaNacimiento.Value.Date.Year <= 120)
+                        {
                             if (!string.IsNullOrEmpty(textBoxMail.Text) && interfazNucleo.EsUnEmailValido(textBoxMail.Text))
                             {
                                 if (!string.IsNullOrEmpty(textBoxTelefono.Text) && textBoxTelefono.Text.All(Char.IsDigit) && textBoxTelefono.Text.Length >= 8 && textBoxTelefono.Text.Length <= 11)
                                 {
-                                if (interfazNucleo.ObtenerUsuario(textBoxNombreUsuario.Text).Baja == false && checkBoxBaja.Checked == true)
-                                {
-                                    interfazNucleo.ActualizarUsuario(textBoxNombreUsuario.Text, textBoxNombre.Text, textBoxApellido.Text, dateTimePickerFechaNacimiento.Value.Date.ToString(), textBoxMail.Text, textBoxTelefono.Text);
-                                    interfazNucleo.DarDeBajaUsuario(textBoxNombreUsuario.Text);
-                                    MessageBox.Show("Usuario ha sido dado de baja, el nombre de usuario es: " + textBoxNombreUsuario.Text, "Operacion Exitosa", MessageBoxButtons.OK);
+                                    if (interfazNucleo.ObtenerUsuario(textBoxNombreUsuario.Text).Baja == false && checkBoxBaja.Checked == true)
+                                    {
+                                        interfazNucleo.ActualizarUsuario(textBoxNombreUsuario.Text, textBoxNombre.Text, textBoxApellido.Text, dateTimePickerFechaNacimiento.Value.Date.ToString(), textBoxMail.Text, textBoxTelefono.Text);
+                                        interfazNucleo.DarDeBajaUsuario(textBoxNombreUsuario.Text);
+                                        MessageBox.Show("Usuario ha sido dado de baja, el nombre de usuario es: " + textBoxNombreUsuario.Text, "Operacion Exitosa", MessageBoxButtons.OK);
+                                    }
+                                    else if (interfazNucleo.ObtenerUsuario(textBoxNombreUsuario.Text).Baja == true && checkBoxBaja.Checked == true)
+                                    {
+                                        interfazNucleo.ActualizarUsuario(textBoxNombreUsuario.Text, textBoxNombre.Text, textBoxApellido.Text, dateTimePickerFechaNacimiento.Value.Date.ToString(), textBoxMail.Text, textBoxTelefono.Text);
+                                        MessageBox.Show("Usuario ha sido dado de baja, el nombre de usuario es: " + textBoxNombreUsuario.Text, "Operacion Exitosa", MessageBoxButtons.OK);
+                                    }
+                                    else if (interfazNucleo.ObtenerUsuario(textBoxNombreUsuario.Text).Baja == false && checkBoxBaja.Checked == false)
+                                    {
+                                        interfazNucleo.ActualizarUsuario(textBoxNombreUsuario.Text, textBoxNombre.Text, textBoxApellido.Text, dateTimePickerFechaNacimiento.Value.Date.ToString(), textBoxMail.Text, textBoxTelefono.Text);
+                                        MessageBox.Show("Usuario ha sido guardado correctamente, el nombre de usuario es: " + textBoxNombreUsuario.Text, "Operacion Exitosa", MessageBoxButtons.OK);
+                                    }
+                                    else if (interfazNucleo.ObtenerUsuario(textBoxNombreUsuario.Text).Baja == true && checkBoxBaja.Checked == false)
+                                    {
+                                        interfazNucleo.ActualizarUsuario(textBoxNombreUsuario.Text, textBoxNombre.Text, textBoxApellido.Text, dateTimePickerFechaNacimiento.Value.Date.ToString(), textBoxMail.Text, textBoxTelefono.Text);
+                                        interfazNucleo.DarDeAltaUsuario(textBoxNombreUsuario.Text);
+                                        MessageBox.Show("Usuario ha sido dado de alta y guardado correctamente, el nombre de usuario es: " + textBoxNombreUsuario.Text, "Operacion Exitosa", MessageBoxButtons.OK);
+                                    }
+                                    this.Hide();
+                                    ((GestionarUsuarios)Owner).ObtenerUsuarios();
+                                    this.Owner.Show();
                                 }
-                                else if (interfazNucleo.ObtenerUsuario(textBoxNombreUsuario.Text).Baja == true && checkBoxBaja.Checked == true)
-                                {
-                                    interfazNucleo.ActualizarUsuario(textBoxNombreUsuario.Text, textBoxNombre.Text, textBoxApellido.Text, dateTimePickerFechaNacimiento.Value.Date.ToString(), textBoxMail.Text, textBoxTelefono.Text);
-                                    MessageBox.Show("Usuario ha sido dado de baja, el nombre de usuario es: " + textBoxNombreUsuario.Text, "Operacion Exitosa", MessageBoxButtons.OK);
-                                }
-                                else if (interfazNucleo.ObtenerUsuario(textBoxNombreUsuario.Text).Baja == false && checkBoxBaja.Checked == false)
-                                {
-                                    interfazNucleo.ActualizarUsuario(textBoxNombreUsuario.Text, textBoxNombre.Text, textBoxApellido.Text, dateTimePickerFechaNacimiento.Value.Date.ToString(), textBoxMail.Text, textBoxTelefono.Text);
-                                    MessageBox.Show("Usuario ha sido guardado correctamente, el nombre de usuario es: " + textBoxNombreUsuario.Text, "Operacion Exitosa", MessageBoxButtons.OK);
-                                }
-                                else if (interfazNucleo.ObtenerUsuario(textBoxNombreUsuario.Text).Baja == true && checkBoxBaja.Checked == false)
-                                {
-                                    interfazNucleo.ActualizarUsuario(textBoxNombreUsuario.Text, textBoxNombre.Text, textBoxApellido.Text, dateTimePickerFechaNacimiento.Value.Date.ToString(), textBoxMail.Text, textBoxTelefono.Text);
-                                    interfazNucleo.DarDeAltaUsuario(textBoxNombreUsuario.Text);
-                                    MessageBox.Show("Usuario ha sido dado de alta y guardado correctamente, el nombre de usuario es: " + textBoxNombreUsuario.Text, "Operacion Exitosa", MessageBoxButtons.OK);
-                                }
-                                this.Hide();
-                                ((GestionarUsuarios)Owner).ObtenerUsuarios();
-                                this.Owner.Show();
-                            }
                                 else
                                 {
                                     this.labelError.Text = "Error,telefono ingresado invalido.Ingrese el numero sin 0 ni 15";
@@ -72,6 +74,20 @@ namespace Programa
                                 buttonGuardar.Enabled = false;
                                 textBoxMail.Focus(); ;
                             }
+                        }
+                        else
+                        {
+                            if (DateTime.Now.Year - dateTimePickerFechaNacimiento.Value.Date.Year < 12)
+                            {
+                                this.labelError.Text = "Error, el usuario debe ser mayor de 12 años";
+                            }
+                            else
+                            {
+                                this.labelError.Text = "Error, el usuario debe ser menor de 120 años";
+                            }
+                            buttonGuardar.Enabled = false;
+                            textBoxMail.Focus();
+                        }
                         }
                         else
                         {
@@ -165,7 +181,7 @@ namespace Programa
 
         private void dateTimePickerFechaNacimiento_ValueChanged(object sender, EventArgs e)
         {
-
+            buttonGuardar.Enabled = true;
         }
 
         private void checkBoxBaja_CheckedChanged(object sender, EventArgs e)

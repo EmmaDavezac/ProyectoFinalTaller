@@ -69,7 +69,6 @@ namespace Programa
             this.panel5 = new System.Windows.Forms.Panel();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.labelNombreUsuario = new System.Windows.Forms.Label();
-            this.buttonGestionarLibros = new System.Windows.Forms.Button();
             this.buttonActualizar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTituloYAutor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewISBN)).BeginInit();
@@ -493,23 +492,6 @@ namespace Programa
             this.labelNombreUsuario.Text = "Nombre Apellido";
             this.labelNombreUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // buttonGestionarLibros
-            // 
-            this.buttonGestionarLibros.BackColor = System.Drawing.SystemColors.Highlight;
-            this.buttonGestionarLibros.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonGestionarLibros.FlatAppearance.BorderSize = 0;
-            this.buttonGestionarLibros.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonGestionarLibros.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonGestionarLibros.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonGestionarLibros.Location = new System.Drawing.Point(566, 526);
-            this.buttonGestionarLibros.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.buttonGestionarLibros.Name = "buttonGestionarLibros";
-            this.buttonGestionarLibros.Size = new System.Drawing.Size(112, 23);
-            this.buttonGestionarLibros.TabIndex = 72;
-            this.buttonGestionarLibros.Text = "Gestionar Libros";
-            this.buttonGestionarLibros.UseVisualStyleBackColor = false;
-            this.buttonGestionarLibros.Click += new System.EventHandler(this.buttonGestionarLibros_Click);
-            // 
             // buttonActualizar
             // 
             this.buttonActualizar.BackColor = System.Drawing.SystemColors.Highlight;
@@ -535,7 +517,6 @@ namespace Programa
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(784, 561);
             this.Controls.Add(this.buttonActualizar);
-            this.Controls.Add(this.buttonGestionarLibros);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.textBoxCantidadEjemplares);
             this.Controls.Add(this.labelCantidadEjemplares);
@@ -627,7 +608,6 @@ namespace Programa
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Label labelNombreUsuario;
-        private System.Windows.Forms.Button buttonGestionarLibros;
         private System.Windows.Forms.DataGridViewTextBoxColumn Titulo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Autor;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;

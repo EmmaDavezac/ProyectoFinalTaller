@@ -242,13 +242,6 @@ namespace Programa
             }
         }
 
-        private void buttonGestionarLibros_Click(object sender, EventArgs e)//se abre la ventana gestionar libros cuando se presiona el boton gestionarLibros
-        {
-            this.Hide();//se oculta esta ventana
-            GestionarLibros ventana = new GestionarLibros(NombreUsuario);//se crea una instancia del formulario gestionar libros
-            ventana.ShowDialog(this);//se muestra la nueva ventana
-        }
-
         private void labelSeleccionarAño_Click(object sender, EventArgs e)
         {
 
@@ -265,7 +258,6 @@ namespace Programa
             {
                 buttonActualizar.Visible = true;
                 buttonAñadirLibro.Visible = false;
-                buttonGestionarLibros.Visible = false;
                 textBoxCantidadEjemplares.Visible = false;
                 labelCantidadEjemplares.Visible = false;
             }

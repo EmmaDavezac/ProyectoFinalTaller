@@ -132,13 +132,16 @@ namespace Programa
             dataGridViewUsuarios.Rows.Clear();
             foreach (var item in usuarios)
             {
-                int n = dataGridViewUsuarios.Rows.Add();
-                dataGridViewUsuarios.Rows[n].Cells[0].Value = item.NombreUsuario;
-                dataGridViewUsuarios.Rows[n].Cells[1].Value = item.Nombre;
-                dataGridViewUsuarios.Rows[n].Cells[2].Value = item.Apellido;
-                dataGridViewUsuarios.Rows[n].Cells[3].Value = item.FechaNacimiento.ToShortDateString();
-                dataGridViewUsuarios.Rows[n].Cells[4].Value = item.Mail;
-                dataGridViewUsuarios.Rows[n].Cells[5].Value = item.Telefono;
+                if (item.Baja == false)
+                {
+                    int n = dataGridViewUsuarios.Rows.Add();
+                    dataGridViewUsuarios.Rows[n].Cells[0].Value = item.NombreUsuario;
+                    dataGridViewUsuarios.Rows[n].Cells[1].Value = item.Nombre;
+                    dataGridViewUsuarios.Rows[n].Cells[2].Value = item.Apellido;
+                    dataGridViewUsuarios.Rows[n].Cells[3].Value = item.FechaNacimiento.ToShortDateString();
+                    dataGridViewUsuarios.Rows[n].Cells[4].Value = item.Mail;
+                    dataGridViewUsuarios.Rows[n].Cells[5].Value = item.Telefono;
+                }      
             }
         }
 

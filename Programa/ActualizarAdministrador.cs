@@ -31,8 +31,10 @@ namespace Programa
                 {
                     if (dateTimePickerFechaNacimiento.Value != new DateTime(1900, 1, 1))//Verifica que la fecha sea distinta de 1900/1/1.
                     {
-                        if (!string.IsNullOrEmpty(textBoxMail.Text) && interfazNucleo.EsUnEmailValido(textBoxMail.Text))//Verifica que el mail no este vacio y que sea un mail en un formato valido.
+                        if (DateTime.Now.Year - dateTimePickerFechaNacimiento.Value.Date.Year >= 18 && DateTime.Now.Year - dateTimePickerFechaNacimiento.Value.Date.Year <= 120)//Verifica que la edad del administrador este entre los 18 y 120 años
                         {
+                            if (!string.IsNullOrEmpty(textBoxMail.Text) && interfazNucleo.EsUnEmailValido(textBoxMail.Text))//Verifica que el mail no este vacio y que sea un mail en un formato valido.
+                            {
                                 if (!string.IsNullOrEmpty(textBoxTelefono.Text) && textBoxTelefono.Text.All(Char.IsDigit) && textBoxTelefono.Text.Length >= 8 && textBoxTelefono.Text.Length <= 11)//Verifica que el numero de telefono no este vacio, que todos sus valores sean digitos, y que su longitud este entre 8 y 11 digitos.
                                 {
                                     if (interfazNucleo.ObtenerAdministrador(textBoxNombreUsuario.Text).Baja == false && checkBoxBaja.Checked == true)//Verifica si el administrador esta dado de baja y si el checkbox baja esta checkeado
@@ -45,18 +47,18 @@ namespace Programa
                                     {
                                         interfazNucleo.ActualizarAdministrador(textBoxNombreUsuario.Text, textBoxNombre.Text, textBoxApellido.Text, dateTimePickerFechaNacimiento.Value.Date.ToString(), textBoxMail.Text, textBoxTelefono.Text);//En este caso solo actualiza los datos del administrador
                                         MessageBox.Show("Administrador ha sido dado de baja, el nombre de usuario es: " + textBoxNombreUsuario.Text, "Operacion Exitosa", MessageBoxButtons.OK);//Mensaje informativo al administrador
-                                }
+                                    }
                                     else if (interfazNucleo.ObtenerAdministrador(textBoxNombreUsuario.Text).Baja == false && checkBoxBaja.Checked == false)//Otra situacion es que el administrador no este dado de baja y que ademas el checkbox no este checkeado.
                                     {
                                         interfazNucleo.ActualizarAdministrador(textBoxNombreUsuario.Text, textBoxNombre.Text, textBoxApellido.Text, dateTimePickerFechaNacimiento.Value.Date.ToString(), textBoxMail.Text, textBoxTelefono.Text);//En este caso solo actualiza los datos del administrador
                                         MessageBox.Show("Administrador ha sido guardado correctamente, el nombre de usuario es: " + textBoxNombreUsuario.Text, "Operacion Exitosa", MessageBoxButtons.OK);//Mensaje informativo al administrador
-                                }
+                                    }
                                     else if (interfazNucleo.ObtenerAdministrador(textBoxNombreUsuario.Text).Baja == true && checkBoxBaja.Checked == false)//Otra situacion es que el administrador este dado de baja y que no este checkeado el checkbox de baja es decir que se de de alta nuevamente.
                                     {
                                         interfazNucleo.ActualizarAdministrador(textBoxNombreUsuario.Text, textBoxNombre.Text, textBoxApellido.Text, dateTimePickerFechaNacimiento.Value.Date.ToString(), textBoxMail.Text, textBoxTelefono.Text);//En este caso se actualiza el administrador.
                                         interfazNucleo.DarDeAltaAdministrador(textBoxNombreUsuario.Text);//Y se da de alta nuevamente al administrador.
                                         MessageBox.Show("Administrador ha sido dado de alta y guardado correctamente, el nombre de usuario es: " + textBoxNombreUsuario.Text, "Operacion Exitosa", MessageBoxButtons.OK);//Mensaje informativo al administrador
-                                }
+                                    }
                                     if (contraseñaNueva != null)//Si la contraseña pasada al construtor de la interfaz no es vacio entonces procede a actualizar la contraseña del administrador,
                                     {
                                         interfazNucleo.ActualizarContraseñaAdministrador(textBoxNombreUsuario.Text, contraseñaNueva);
@@ -71,12 +73,26 @@ namespace Programa
                                     buttonGuardar.Enabled = false;
                                     textBoxTelefono.Focus(); ;
                                 }
+                            }
+                            else
+                            {
+                                this.labelError.Text = "Error, el mail ingresado no es valido";
+                                buttonGuardar.Enabled = false;
+                                textBoxMail.Focus(); ;
+                            }
                         }
-                        else
+                        else 
                         {
-                            this.labelError.Text = "Error, el mail ingresado no es valido";
+                            if (DateTime.Now.Year - dateTimePickerFechaNacimiento.Value.Date.Year < 18)
+                            {
+                                this.labelError.Text = "Error, el usuario debe ser mayor de 18 años";
+                            }
+                            else
+                            {
+                                this.labelError.Text = "Error, el usuario debe ser menor de 120 años";
+                            }
                             buttonGuardar.Enabled = false;
-                            textBoxMail.Focus(); ;
+                            textBoxMail.Focus();
                         }
                     }
                     else
@@ -175,7 +191,7 @@ namespace Programa
 
         private void dateTimePickerFechaNacimiento_ValueChanged(object sender, EventArgs e)
         {
-
+            buttonGuardar.Enabled = true;
         }
 
         private void checkBoxBaja_CheckedChanged(object sender, EventArgs e)//Checkbox que nos permite dar de baja o alta a un administrador
