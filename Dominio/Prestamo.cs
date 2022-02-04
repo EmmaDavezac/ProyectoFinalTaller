@@ -68,10 +68,13 @@ namespace Dominio
 
         public bool Retrasado()//Este metodo nos permite saber si el prestamo se encuenta retrasado
         {
+
             if ((DateTime.Now.Date > Convert.ToDateTime(FechaLimite).Date))
             {
-                return true;
-            }
+                if (string.IsNullOrEmpty(FechaDevolucion))
+                { return true; }
+                else return false;
+                }
             else return false;
 
         }

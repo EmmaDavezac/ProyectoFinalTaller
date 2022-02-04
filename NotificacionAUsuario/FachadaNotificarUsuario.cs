@@ -18,13 +18,13 @@ namespace NotificacionAUsuario
             }
         }
 
-        public string NotificarProximoAVencer(UsuarioSimple pUsuario)//Metodo que nos permite notificar a un usuario que su prestamo esta proximo a vencer
+        public string NotificarProximoAVencer(UsuarioSimple usuario, string titulo, string fechaLimite)//Metodo que nos permite notificar a un usuario que su prestamo esta proximo a vencer
         {
-            return GetNotificarUsuario().NotificarProximoAVencer(pUsuario);
+            return GetNotificarUsuario().NotificarProximoAVencer(usuario, titulo, fechaLimite);
         }
-        public string NotificarRetraso(UsuarioSimple pUsuario)//Metodo que nos permite notificar a un usuario que su prestamo esta retrasado
+        public string NotificarRetraso(UsuarioSimple usuario,string titulo,string fechaLimite)//Metodo que nos permite notificar a un usuario que su prestamo esta retrasado
         {
-            return GetNotificarUsuario().NotificarRetraso(pUsuario);
+            return GetNotificarUsuario().NotificarRetraso(usuario, titulo,  fechaLimite);
         }
     }
 }

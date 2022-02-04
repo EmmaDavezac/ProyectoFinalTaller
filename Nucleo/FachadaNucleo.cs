@@ -221,13 +221,13 @@ namespace Nucleo
             }
         }
 
-        private void NotificarProximoAVencer(string pNombreUsuario)//notifica a un usuario que su prestamo esta proximo a vencer
+        private void NotificarProximoAVencer(string pNombreUsuario,string titulo,string fechaLimite)//notifica a un usuario que su prestamo esta proximo a vencer
     {
-        RegistrarLog(interfazNotificarUsuario.NotificarProximoAVencer(ObtenerUsuario(pNombreUsuario)));
+        RegistrarLog(interfazNotificarUsuario.NotificarProximoAVencer(ObtenerUsuario(pNombreUsuario), titulo, fechaLimite));
     }
-    private void NotificarRetraso(string pNombreUsuario)//notifica a un usuario que su prestamo esta retrasado
+    private void NotificarRetraso(string pNombreUsuario,string titulo,string fechaLimite)//notifica a un usuario que su prestamo esta retrasado
     {
-        RegistrarLog(interfazNotificarUsuario.NotificarRetraso(ObtenerUsuario(pNombreUsuario)));
+        RegistrarLog(interfazNotificarUsuario.NotificarRetraso(ObtenerUsuario(pNombreUsuario), titulo, fechaLimite));
     }
     public string MayusculaPrimeraLetra(string source)//transforma en mayuscula la primer letra de la cadena
     {
@@ -245,7 +245,8 @@ namespace Nucleo
         foreach (var item in ObtenerListadePrestamosProximosAVencerse())
         {
             UsuarioSimple usuario = ObtenerUsuarioDePrestamo(item.Id);
-            NotificarProximoAVencer(usuario.NombreUsuario);
+            Libro libro = ObtenerLibro(item.idLibro);
+            NotificarProximoAVencer(usuario.NombreUsuario,libro.Titulo,item.FechaLimite);
         }
     }
 
@@ -254,7 +255,8 @@ namespace Nucleo
         foreach (var item in ObtenerListadePrestamosRetrasados())
         {
             UsuarioSimple usuario = ObtenerUsuarioDePrestamo(item.Id);
-            NotificarRetraso(usuario.NombreUsuario);
+                Libro libro = ObtenerLibro(item.idLibro);
+                NotificarRetraso(usuario.NombreUsuario, libro.Titulo, item.FechaLimite);
         }
     }
 
@@ -330,7 +332,7 @@ namespace Nucleo
     public void NotificarUsuarios()
     //notifica a todos los usuarios con prestamos retrasados o proximos a vencer en el caso de que la hora este entre las 9 y 10 am
     {
-        if (DateTime.Now.Hour == 9)
+        if (DateTime.Now.Hour ==9)
         {
             NotificarPrestamosRetrasados();
             NotificarPrestamosProximosAVencer();

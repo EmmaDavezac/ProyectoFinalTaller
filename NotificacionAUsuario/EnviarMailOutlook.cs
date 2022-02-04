@@ -12,7 +12,7 @@ namespace NotificacionAUsuario
         const string usuario = "proyectofinaltallerdeprogramacion@outlook.com";// usuario de la cuenta de outlook
         const string nombre = "Gestor de prestamos";//nuestro nombre de destinatario
 
-        public string NotificarProximoAVencer(UsuarioSimple to)//metodo que nos permite enviar un mail mediante nuestra cuenta de outlook
+        public string NotificarProximoAVencer(UsuarioSimple to, string titulo, string fechaLimite)//metodo que nos permite enviar un mail mediante nuestra cuenta de outlook
         {
 
             const string encabezado = "Aviso de prestamo de material proximo a vencer";
@@ -22,7 +22,7 @@ namespace NotificacionAUsuario
                             
                             p{color: black;}
                             </style>
-                            <h1>" + encabezado + "</h1>  <p>Estimado " + to.Nombre + " " + to.Apellido + " , de acuerdo a nuestro registro usted tiene material con el periodo de prestamo proximo a finalizar.<br>Por favor devuelva o renueve el prestamo antes de la fecha limite para evitar penalizaciones. <br>Atte Gestor de prestamos</p>";
+                            <h1>" + encabezado + "</h1>  <h2>Estimado " + to.Nombre + " " + to.Apellido + " , de acuerdo a nuestro registro usted tiene material con el periodo de prestamo proximo a finalizar.<br>Por favor devuelva el libro "+titulo+"  renueve el prestamo antes del "+fechaLimite+ " para evitar penalizaciones.</h2> <br><p>Atte Gestor de prestamos</p>";
             string asunto = "Informe de prestamo proximo a vencer";
             string msge = "Error al enviar este correo. Por favor verifique los datos o intente más tarde (Usuario: " + to.NombreUsuario + ").";//mensaje en el caso de que falle el envio
 
@@ -58,7 +58,7 @@ namespace NotificacionAUsuario
 
 
         }
-        public string NotificarRetraso(UsuarioSimple to)//metodo que nos permite enviar un mail mediante nuestra cuenta de outlook
+        public string NotificarRetraso(UsuarioSimple to,string titulo,string fechaLimite)//metodo que nos permite enviar un mail mediante nuestra cuenta de outlook
         {
 
             const string encabezado = "Aviso de prestamo de prestamo retrasado";
@@ -68,7 +68,7 @@ namespace NotificacionAUsuario
                             h2{color: #0000;}
                             p{color: #0000;}
                             </style>
-                            <h1>" + encabezado + "</h1> <h2>Estimado " + to.Nombre + " " + to.Apellido + " , de acuerdo a nuestro registro usted no ha devuelto a tiempo un material prestado. <br> Por favor devuelva o renueve el prestamo antes de la fecha limite para evitar penalizaciones. <br> Atte Gestor de prestamos</h2>";
+                            <h1>" + encabezado + "</h1> <h2>Estimado " + to.Nombre + " " + to.Apellido + " , de acuerdo a nuestro registro usted no ha devuelto a tiempo un material prestado, el prestamo a vencido el " + fechaLimite + " . <br>Por favor devuelva el libro " + titulo + " para evitar penalizaciones.</h2> <br> <p>Atte Gestor de prestamos</p>";
             string asunto = "Informe Prestamo Retrasado";
             string msge = "Error al enviar este correo. Por favor verifique los datos o intente más tarde (Usuario: " + to.NombreUsuario + ").";//mensaje en el caso de que falle el envio
 
