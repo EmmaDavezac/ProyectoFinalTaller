@@ -29,7 +29,7 @@ namespace Programa
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
@@ -44,6 +44,7 @@ namespace Programa
             this.botonVolver = new System.Windows.Forms.Button();
             this.checkBoxProximosAVencerse = new System.Windows.Forms.CheckBox();
             this.checkBoxRestrasados = new System.Windows.Forms.CheckBox();
+            this.checkDevueltos = new System.Windows.Forms.CheckBox();
             this.RegistrarDevolucion = new System.Windows.Forms.DataGridViewLinkColumn();
             this.IdPrestamo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NombreUsuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -147,8 +148,8 @@ namespace Programa
             // 
             // dataGridViewPrestamos
             // 
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            this.dataGridViewPrestamos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            this.dataGridViewPrestamos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewPrestamos.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dataGridViewPrestamos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewPrestamos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -162,9 +163,9 @@ namespace Programa
             this.FechaVencimiento,
             this.EstadoPrestamo,
             this.Editar});
-            this.dataGridViewPrestamos.Location = new System.Drawing.Point(0, 132);
+            this.dataGridViewPrestamos.Location = new System.Drawing.Point(0, 148);
             this.dataGridViewPrestamos.Name = "dataGridViewPrestamos";
-            this.dataGridViewPrestamos.Size = new System.Drawing.Size(784, 386);
+            this.dataGridViewPrestamos.Size = new System.Drawing.Size(784, 370);
             this.dataGridViewPrestamos.TabIndex = 77;
             this.dataGridViewPrestamos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPrestamos_CellContentClick);
             // 
@@ -181,7 +182,7 @@ namespace Programa
             // 
             // textBoxUsuarioOTituloLibro
             // 
-            this.textBoxUsuarioOTituloLibro.Location = new System.Drawing.Point(259, 94);
+            this.textBoxUsuarioOTituloLibro.Location = new System.Drawing.Point(209, 95);
             this.textBoxUsuarioOTituloLibro.Name = "textBoxUsuarioOTituloLibro";
             this.textBoxUsuarioOTituloLibro.Size = new System.Drawing.Size(300, 20);
             this.textBoxUsuarioOTituloLibro.TabIndex = 79;
@@ -190,7 +191,7 @@ namespace Programa
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(77, 98);
+            this.label1.Location = new System.Drawing.Point(27, 99);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(176, 13);
             this.label1.TabIndex = 78;
@@ -218,7 +219,7 @@ namespace Programa
             this.checkBoxProximosAVencerse.AutoSize = true;
             this.checkBoxProximosAVencerse.BackColor = System.Drawing.Color.Transparent;
             this.checkBoxProximosAVencerse.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.checkBoxProximosAVencerse.Location = new System.Drawing.Point(577, 97);
+            this.checkBoxProximosAVencerse.Location = new System.Drawing.Point(527, 98);
             this.checkBoxProximosAVencerse.Name = "checkBoxProximosAVencerse";
             this.checkBoxProximosAVencerse.Size = new System.Drawing.Size(80, 17);
             this.checkBoxProximosAVencerse.TabIndex = 82;
@@ -229,7 +230,7 @@ namespace Programa
             // checkBoxRestrasados
             // 
             this.checkBoxRestrasados.AutoSize = true;
-            this.checkBoxRestrasados.Location = new System.Drawing.Point(663, 97);
+            this.checkBoxRestrasados.Location = new System.Drawing.Point(613, 98);
             this.checkBoxRestrasados.Name = "checkBoxRestrasados";
             this.checkBoxRestrasados.Size = new System.Drawing.Size(80, 17);
             this.checkBoxRestrasados.TabIndex = 83;
@@ -237,13 +238,28 @@ namespace Programa
             this.checkBoxRestrasados.UseVisualStyleBackColor = true;
             this.checkBoxRestrasados.CheckedChanged += new System.EventHandler(this.checkBoxRestrasados_CheckedChanged);
             // 
+            // checkDevueltos
+            // 
+            this.checkDevueltos.AutoSize = true;
+            this.checkDevueltos.Location = new System.Drawing.Point(527, 121);
+            this.checkDevueltos.Name = "checkDevueltos";
+            this.checkDevueltos.Size = new System.Drawing.Size(74, 17);
+            this.checkDevueltos.TabIndex = 84;
+            this.checkDevueltos.Text = "Devueltos";
+            this.checkDevueltos.UseVisualStyleBackColor = true;
+            this.checkDevueltos.CheckedChanged += new System.EventHandler(this.checkDevueltos_CheckedChanged);
+            // 
             // RegistrarDevolucion
             // 
+            this.RegistrarDevolucion.ActiveLinkColor = System.Drawing.SystemColors.ControlText;
             this.RegistrarDevolucion.HeaderText = "RegistrarDevolucion";
+            this.RegistrarDevolucion.LinkColor = System.Drawing.Color.DodgerBlue;
             this.RegistrarDevolucion.Name = "RegistrarDevolucion";
             this.RegistrarDevolucion.ReadOnly = true;
             this.RegistrarDevolucion.Text = "Devolucion";
+            this.RegistrarDevolucion.TrackVisitedState = false;
             this.RegistrarDevolucion.UseColumnTextForLinkValue = true;
+            this.RegistrarDevolucion.VisitedLinkColor = System.Drawing.Color.DodgerBlue;
             this.RegistrarDevolucion.Width = 110;
             // 
             // IdPrestamo
@@ -293,10 +309,14 @@ namespace Programa
             // 
             // Editar
             // 
+            this.Editar.ActiveLinkColor = System.Drawing.SystemColors.WindowText;
             this.Editar.HeaderText = "Editar";
+            this.Editar.LinkColor = System.Drawing.SystemColors.WindowText;
             this.Editar.Name = "Editar";
             this.Editar.Text = "Edit";
             this.Editar.UseColumnTextForLinkValue = true;
+            this.Editar.Visible = false;
+            this.Editar.VisitedLinkColor = System.Drawing.SystemColors.WindowText;
             // 
             // GestionarPrestamos
             // 
@@ -304,6 +324,7 @@ namespace Programa
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(784, 561);
+            this.Controls.Add(this.checkDevueltos);
             this.Controls.Add(this.checkBoxRestrasados);
             this.Controls.Add(this.checkBoxProximosAVencerse);
             this.Controls.Add(this.botonVolver);
@@ -347,6 +368,7 @@ namespace Programa
         private System.Windows.Forms.Button botonVolver;
         private System.Windows.Forms.CheckBox checkBoxProximosAVencerse;
         private System.Windows.Forms.CheckBox checkBoxRestrasados;
+        private System.Windows.Forms.CheckBox checkDevueltos;
         private System.Windows.Forms.DataGridViewLinkColumn RegistrarDevolucion;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdPrestamo;
         private System.Windows.Forms.DataGridViewTextBoxColumn NombreUsuario;

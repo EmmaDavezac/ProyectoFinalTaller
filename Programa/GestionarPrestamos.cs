@@ -49,8 +49,7 @@ namespace Programa
             dataGridViewPrestamos.Rows.Clear();//Eliminamos todo el contenido de la tabla
             foreach (var item in prestamos)//Recorremos lcada elemento de la lista y lo agregamos a la tabla
             {
-                if (item.FechaDevolucion == null)
-                {
+                
                     int n = dataGridViewPrestamos.Rows.Add();
                     dataGridViewPrestamos.Rows[n].Cells[1].Value = item.Id;
                     dataGridViewPrestamos.Rows[n].Cells[2].Value = item.nombreUsuario;
@@ -58,6 +57,8 @@ namespace Programa
                     dataGridViewPrestamos.Rows[n].Cells[4].Value = interfazNucleo.ObtenerLibro(item.idLibro).ISBN;
                     dataGridViewPrestamos.Rows[n].Cells[5].Value = item.FechaPrestamo;
                     dataGridViewPrestamos.Rows[n].Cells[6].Value = item.FechaLimite;
+                if (item.FechaDevolucion==null)
+                {
                     dataGridViewPrestamos.Rows[n].Cells[7].Value = item.ActualizarEstado().ToString();
                     if (dataGridViewPrestamos.Rows[n].Cells[7].Value.ToString() == "Retrasado")
                     {
@@ -69,7 +70,23 @@ namespace Programa
                         dataGridViewPrestamos.Rows[n].DefaultCellStyle.BackColor = Color.Yellow;
                         dataGridViewPrestamos.Rows[n].DefaultCellStyle.ForeColor = Color.Black;
                     }
+                    else
+                    {
+                        dataGridViewPrestamos.Rows[n].DefaultCellStyle.BackColor = Color.YellowGreen;
+                        dataGridViewPrestamos.Rows[n].DefaultCellStyle.ForeColor = Color.Black;
+                    }
                 }
+                else
+                {
+                   
+                    dataGridViewPrestamos.Rows[n].Cells[7].Value = "Devuelto";
+                  
+ dataGridViewPrestamos.Rows[n].Visible = false;
+                    
+
+
+                }
+                
             }
         }
 
@@ -78,7 +95,9 @@ namespace Programa
             if (e.RowIndex >= 0)
             {
                 DataGridViewCell cell = (DataGridViewCell)dataGridViewPrestamos.Rows[e.RowIndex].Cells[e.ColumnIndex];
-                if (cell.Value.ToString() == "Devolucion")//Si se presiona la celda con el texto Devolucion, se abre una nueva ventana para registrar la devolucion del prestamo
+                
+                string estadoPrestamo = ((DataGridViewCell)dataGridViewPrestamos.Rows[e.RowIndex].Cells[7]).Value.ToString();
+                if (cell.Value.ToString() == "Devolucion"&& estadoPrestamo!="Devuelto")//Si se presiona la celda con el texto Devolucion, se verifica que el prestamo no se haya devuelto y luego se abre una nueva ventana para registrar la devolucion del prestamo
                 {
                     Prestamo prestamo = interfazNucleo.ObtenerPrestamo(Convert.ToInt32(dataGridViewPrestamos.Rows[e.RowIndex].Cells[1].Value.ToString()));
                     Libro libro = interfazNucleo.ObtenerLibro(prestamo.idLibro);
@@ -156,7 +175,10 @@ namespace Programa
             {
                 for (int i = 0; i < dataGridViewPrestamos.Rows.Count - 1; i++)
                 {
-                    dataGridViewPrestamos.Rows[i].Visible = true;
+                    if (dataGridViewPrestamos.Rows[i].Cells[7].Value.ToString() != "Devuelto")
+                    {
+                        dataGridViewPrestamos.Rows[i].Visible = true; 
+                    }
                 }
             }
         }
@@ -177,7 +199,7 @@ namespace Programa
                     }
                 }
             }
-            else if (checkBoxRestrasados.Checked == true && checkBoxProximosAVencerse.Checked == true)
+            else if (checkBoxRestrasados.Checked == true && checkBoxProximosAVencerse.Checked == true )
             {
                 for (int i = 0; i < dataGridViewPrestamos.Rows.Count - 1; i++)
                 {
@@ -209,7 +231,10 @@ namespace Programa
             {
                 for (int i = 0; i < dataGridViewPrestamos.Rows.Count - 1; i++)
                 {
-                    dataGridViewPrestamos.Rows[i].Visible = true;
+                    if (dataGridViewPrestamos.Rows[i].Cells[7].Value.ToString() != "Devuelto")
+                    {
+                        dataGridViewPrestamos.Rows[i].Visible = true; 
+                    }
                 }
             }
         }
@@ -233,6 +258,48 @@ namespace Programa
                         dataGridViewPrestamos.Rows[i].Visible = true;
                     }
                 }
+            }
+        }
+
+        private void checkDevueltos_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkDevueltos.Checked == true)
+            {
+                checkBoxProximosAVencerse.Checked = false;
+                checkBoxRestrasados.Checked = false;
+                checkBoxProximosAVencerse.Enabled = false;
+                checkBoxRestrasados.Enabled = false;
+                dataGridViewPrestamos.Columns[0].Visible = false;
+                for (int i = 0; i < dataGridViewPrestamos.Rows.Count - 1; i++)
+                {
+                    if (dataGridViewPrestamos.Rows[i].Cells[7].Value.ToString() == "Devuelto")
+                    {
+                        dataGridViewPrestamos.Rows[i].Visible = true;
+                    }
+                    else
+                    {
+                        dataGridViewPrestamos.Rows[i].Visible = false;
+                    }
+                }
+
+            }
+            else {
+                checkBoxProximosAVencerse.Enabled = true;
+                checkBoxRestrasados.Enabled = true;
+                dataGridViewPrestamos.Columns[0].Visible = true;
+                for (int i = 0; i < dataGridViewPrestamos.Rows.Count - 1; i++)
+                {
+                    if (dataGridViewPrestamos.Rows[i].Cells[7].Value.ToString() != "Devuelto")
+                    {
+                        dataGridViewPrestamos.Rows[i].Visible = true;
+                    }
+                    else
+                    {
+                        dataGridViewPrestamos.Rows[i].Visible = false;
+                    }
+                }
+
+
             }
         }
     }

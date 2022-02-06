@@ -59,13 +59,13 @@ namespace DAL
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             try
             {
-                msg = "Usuario " + pNombreUsuarioOEmail + " Obtenido con exito.";
+                
                 UsuarioSimple usuario;//Creamos una variable de tipo usuario que sera devuelta por el metodo
                 using (IUnitOfWork unitOfWork = GetUnitOfWork())//Definimos el ambito donde se va a usar el objet unitOfWork
                 {
                     usuario = unitOfWork.RepositorioUsuarios.Get(pNombreUsuarioOEmail);//Asignamos al usuario el valor obtenido por el get a la base de datos
                 }
-                oLog.Add(msg);//Añadimos el mensaje al log
+               
                 return usuario;//Devolvemos el usuario
 
             }
@@ -137,7 +137,7 @@ namespace DAL
             List<Ejemplar> lista = new List<Ejemplar>(); //Creamos un listado que contenga objetos del tipo Ejemplar para ser devuelto por el metodo
             try
             {
-                msg = "lista de ejemplares del libro (id libro: " + id + ") en buen estado obtenida con exito.";
+               
                 using (IUnitOfWork unitOfWork = GetUnitOfWork())//Definimos el ambito donde se va a usar el objet unitOfWork
                 {
                     lista = unitOfWork.RepositorioLibros.Get(id).EjemplaresEnBuenEstado();//Asignamos a la lista creada, la lista que nos devuelve el metodo que EjemplaresEnBuenEstado que posee el libro, cuya id es id.
@@ -148,9 +148,10 @@ namespace DAL
             catch (Exception ex)
             {
                 msg = "Error al obtener lista de ejemplares en buen estado del libro (id libro: " + id + ")" + ex.Message + ex.StackTrace;
+                oLog.Add(msg);//Añadimos el mensaje al log
 
             }
-            oLog.Add(msg);//Añadimos el mensaje al log
+           
             return lista;//Devolvemos la lista
         }
 
@@ -161,7 +162,7 @@ namespace DAL
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             try
             {
-                msg = "Administrador " + pNombreUsuario + " Obtenido con exito.";
+                
                 using (IUnitOfWork unitOfWork = GetUnitOfWork())//Definimos el ambito donde se va a usar el objet unitOfWork
                 {
                     administrador = unitOfWork.RepositorioAdministradores.Get(pNombreUsuario);//Asignamos a la variable administrado instanciada el valor que nos devuelve el get.
@@ -171,9 +172,10 @@ namespace DAL
             catch (Exception ex)
             {
                 msg = "Error al obtener el administrador (" + pNombreUsuario + " ) " + ex.Message + ex.StackTrace;
+                oLog.Add(msg);//Añadimos el mensaje al log
 
             }
-            oLog.Add(msg);//Añadimos el mensaje al log
+           
             return administrador;//Devolvemos el administrador
         }
         public void ActualizarAdministrador(string pNombreUsuario, string nombre, string apellido, string pFechaNacimiento, string mail, string telefono)//Metodo que nos permite modificar un usuario administrador alojado en la base de datos
@@ -257,7 +259,7 @@ namespace DAL
             Libro libro = new Libro();//Instanciamos un libro que sera devuelto por el metodo
             try
             {
-                msg = "Libro (Id: " + id + " ) Obtenido con exito.";
+               
                 using (IUnitOfWork unitOfWork = GetUnitOfWork())//Definimos el ambito donde se va a usar el objet unitOfWork
                 {
                     libro = unitOfWork.RepositorioLibros.Get(id);//Obtenemos el libro a travez del metodo get con la id pasada por parametro y se lo asignamos a la variable creada.
@@ -267,9 +269,10 @@ namespace DAL
             catch (Exception ex)
             {
                 msg = "Error al obtener el libro (Id: " + id + " ) ." + ex.Message + ex.StackTrace;
+                oLog.Add(msg);//Añadimos el mensaje al log
 
             }
-            oLog.Add(msg);//Añadimos el mensaje al log
+           
             return libro;//Devolvemos el libro
         }
 
@@ -281,7 +284,7 @@ namespace DAL
             int cant = 0;//Entero que nos permitira almacenar la cantidad de ejemplares
             try
             {
-                msg = "Cantidad de ejemplares del Libro (Id: " + id + " ) Obtenida con exito.";
+                
                 using (IUnitOfWork unitOfWork = GetUnitOfWork())//Definimos el ambito donde se va a usar el objet unitOfWork
                 {
                     cant = unitOfWork.RepositorioLibros.Get(id).Ejemplares.Count();//Le asignamos a la variable cant lo que devuele el metodo count sobre la lista de ejemplares del libro.
@@ -291,8 +294,9 @@ namespace DAL
             {
 
                 msg = "Error al obtener la cantidad de ejemplares del libro (Id: " + id + " ) ." + ex.Message + ex.StackTrace;
+                oLog.Add(msg);//Añadimos el mensaje al log
             }
-            oLog.Add(msg);//Añadimos el mensaje al log
+            
             return cant;//Devolvemos la cantidad
 
         }
@@ -396,7 +400,7 @@ namespace DAL
             List<Ejemplar> lista = new List<Ejemplar>();//Instanciamos una lista de ejemplares que sera devuelta por el metodo
             try
             {
-                msg = "Lista de ejemplares Disponibles del libro (id: " + id + ") obtenida con exito.";
+               
                 using (IUnitOfWork unitOfWork = GetUnitOfWork())//Definimos el ambito donde se va a usar el objet unitOfWork
                 {
                     lista = unitOfWork.RepositorioLibros.Get(id).EjemplaresDisponibles();//Asignamos a la lista, los valores que devuelve la lista del metodo EjemplaresDisponible del libro
@@ -406,8 +410,9 @@ namespace DAL
             catch (Exception ex)
             {
                 msg = "Error al obtener la lista de ejemplares Disponibles del libro (id: " + id + ")." + ex.Message + ex.StackTrace;
+                oLog.Add(msg);//Añadimos el mensaje al log
             }
-            oLog.Add(msg);//Añadimos el mensaje al log
+            
             return lista;
         }
 
@@ -418,7 +423,7 @@ namespace DAL
             List<Ejemplar> lista = new List<Ejemplar>();//Instanciamos una lista de ejemplares que sera devuelta por el metodo
             try
             {
-                msg = "Lista de ejemplares total del libro (id: " + id + ") obtenida con exito.";
+               
                 using (IUnitOfWork unitOfWork = GetUnitOfWork())//Definimos el ambito donde se va a usar el objet unitOfWork
                 {
                     lista = unitOfWork.RepositorioLibros.Get(id).EjemplaresTotales();//Asignamos a la lista, los valores que devuelve la lista del metodo EjemplaresTotales del libro
@@ -428,8 +433,9 @@ namespace DAL
             catch (Exception ex)
             {
                 msg = "Error al obtener la lista total de ejemplares del libro (id: " + id + ")." + ex.Message + ex.StackTrace;
+                oLog.Add(msg);//Añadimos el mensaje al log
             }
-            oLog.Add(msg);//Añadimos el mensaje al log
+            
             return lista;//Devolvemos la lista
         }
 
@@ -464,7 +470,7 @@ namespace DAL
             {
                 using (IUnitOfWork unitOfWork = GetUnitOfWork())//Definimos el ambito donde se va a usar el objet unitOfWork
                 {
-                    msg = "Prestamo (Id: " + id + ") Obtenido con exito.";
+                    
                     prestamo = unitOfWork.RepositorioPrestamos.Get(id);//Obtenemos el prestamo y lo asignamos a la variable prestamo creada
                 }
             }
@@ -472,8 +478,9 @@ namespace DAL
             {
 
                 msg = "Error al obtener el prestamo (Id: " + id + ")." + ex.Message + ex.StackTrace;
+                oLog.Add(msg);//Añadimos el mensaje al log
             }
-            oLog.Add(msg);//Añadimos el mensaje al log
+           
             return prestamo;//Devolvemos el prestamo
         }
 
@@ -483,7 +490,7 @@ namespace DAL
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             try
             {
-                msg = "Libro " + titulo + " " + autor + " actualizado con exito (Id: " + id + ").";
+                
                 using (IUnitOfWork unitOfWork = GetUnitOfWork())//Definimos el ambito donde se va a usar el objet unitOfWork
                 {
                     unitOfWork.RepositorioLibros.Get(id).ISBN = unISBN;//Modificamos uno por uno los atributos del libro por los parametros pasados.
@@ -496,8 +503,9 @@ namespace DAL
             catch (Exception ex)
             {
                 msg = "Error al actualizar el libro (Id: " + id + "titulo: " + titulo + "autor: " + autor + ")." + ex.Message + ex.StackTrace;
+                oLog.Add(msg);//Añadimos el mensaje al log
             }
-            oLog.Add(msg);//Añadimos el mensaje al log
+            
         }
 
         public UsuarioSimple ObtenerUsuarioDePrestamo(int id)
@@ -507,7 +515,7 @@ namespace DAL
             UsuarioSimple usuario = new UsuarioSimple();//Instanciamos un objeto del tipo UsuariosSimple que luego sera devuelto por el metodo
             try
             {
-                msg = "Usuario de Prestamo obtenido con exito (Id Prestamo: " + id + ").";
+               
                 using (IUnitOfWork unitOfWork = GetUnitOfWork())//Definimos el ambito donde se va a usar el objet unitOfWork
                 {
                     usuario = unitOfWork.RepositorioPrestamos.Get(id).Usuario;//Obtenemos el usuario y se lo asignamos a la variable creada anteriormente
@@ -517,18 +525,19 @@ namespace DAL
             {
 
                 msg = "Error, el usuario del prestamo (Id Prestamo: " + id + ")." + ex.Message + ex.StackTrace;
+                oLog.Add(msg);//Añadimos el mensaje al log
             }
-            oLog.Add(msg);//Añadimos el mensaje al log
+            
             return usuario;//Devolvemos el usuario
         }
 
-        public void RegistrarDevolucion(int idPrestamo, string estado)
+        public void RegistrarDevolucion(int idPrestamo, string estado)//permite registrar la devolucion de un prestamo
         {
             FachadaBitacora oLog = new FachadaBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             try
             {
-                msg = "Devolucion de prestamo registrada exitosamente(Id Prestamo: " + idPrestamo + " Estado:" + estado + ")";
+                msg = " Prestamo devuelto (Id Prestamo: " + idPrestamo + " Estado:" + estado + ")" ;
                 using (IUnitOfWork unitOfWork = GetUnitOfWork())//Definimos el ambito donde se va a usar el objet unitOfWork
                 {
                     if (estado == "Bueno")
@@ -545,17 +554,18 @@ namespace DAL
             {
 
                 msg = "Error al registrar la devolucion del prestamo (Id Prestamo: " + idPrestamo + " Estado:" + estado + ")" + ex.Message + ex.StackTrace;
+                oLog.Add(msg);//Añadimos el mensaje al log
             }
-            oLog.Add(msg);//Añadimos el mensaje al log
+            
         }
 
-        public void ModificarFechasPrestamo(int pIdPrestamo, string pFechaPrestamo, string pFechaLimite)
+        public void ModificarFechasPrestamo(int pIdPrestamo, string pFechaPrestamo, string pFechaLimite)//permite modificar las fechas de realizacion y limite de un metodo(solo para pruebas)
         {
             FachadaBitacora oLog = new FachadaBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             try
             {
-                msg = "Fechas de prestamo modificada correctamente(Id Prestamo: " + pIdPrestamo + " Fecha prestamo: " + pFechaPrestamo + " Fecha Limite: " + pFechaLimite + ")";
+                
                 using (IUnitOfWork unitOfWork = GetUnitOfWork())
                 {
                     unitOfWork.RepositorioPrestamos.Get(pIdPrestamo).FechaPrestamo = pFechaPrestamo;
@@ -566,9 +576,9 @@ namespace DAL
             catch (Exception ex)
             {
                 msg = "Error al modificar las fechas  del prestamo (Id Prestamo: " + pIdPrestamo + " Fecha prestamo: " + pFechaPrestamo + " Fecha Limite: " + pFechaLimite + ")." + ex.Message + ex.StackTrace;
-
+                oLog.Add(msg);//Añadimos el mensaje al log
             }
-            oLog.Add(msg);//Añadimos el mensaje al log
+           
         }
 
         public bool VerficarContraseña(string pNombreUsuario, string contraseña)
@@ -582,13 +592,16 @@ namespace DAL
             IEnumerable<UsuarioSimple> lista;
             try
             {
-                msg = "Lista de usuarios obtenida exitosamente";
+                
                 lista= GetUnitOfWork().RepositorioUsuarios.GetAll(); }//Obtiene todos los usuarios simples con el metodo getall del repositorio
             catch (Exception ex)
             {
                 msg = "Error al obtener la lista de usuarios." + ex.Message + ex.StackTrace; ;
-                lista = null; }
-            oLog.Add(msg);//Añadimos el mensaje al log
+                lista = null;
+                oLog.Add(msg);//Añadimos el mensaje al log
+            }
+
+            
             return lista;
         }
         public IEnumerable<UsuarioAdministrador> ObtenerAdministradores()
@@ -598,15 +611,16 @@ namespace DAL
             IEnumerable<UsuarioAdministrador> lista;
             try
             {
-                msg = "Lista de administradores obtenida exitosamente";
+               
                 lista=GetUnitOfWork().RepositorioAdministradores.GetAll();//Obtiene todos los usuarios administradores con el metodo getall del repositorio
             }
             catch (Exception ex)
             {
                 msg = "Error al obtener la lista de administradores." + ex.Message + ex.StackTrace; ;
                 lista = null;
+                oLog.Add(msg);//Añadimos el mensaje al log
             }
-            oLog.Add(msg);//Añadimos el mensaje al log
+            
             return lista;
         }
        
@@ -617,15 +631,16 @@ namespace DAL
             IEnumerable<Libro> lista;
             try
             {
-                msg = "Lista de libros obtenida exitosamente";
+                
                 lista = GetUnitOfWork().RepositorioLibros.GetAll();//Obtiene todos los usuarios administradores con el metodo getall del repositorio
             }
             catch (Exception ex)
             {
                 msg = "Error al obtener la lista de libros." + ex.Message + ex.StackTrace; ;
                 lista = null;
+                oLog.Add(msg);//Añadimos el mensaje al log
             }
-            oLog.Add(msg);//Añadimos el mensaje al log
+            
             return lista;
         }
         public IEnumerable<Prestamo> ObtenerPrestamos()
@@ -635,15 +650,16 @@ namespace DAL
             IEnumerable<Prestamo> lista;
             try
             {
-                msg = "Lista de Prestamos obtenida exitosamente";
+                
                 lista = GetUnitOfWork().RepositorioPrestamos.GetAll();//Obtiene todos los usuarios administradores con el metodo getall del repositorio
             }
             catch (Exception ex)
             {
                 msg = "Error al obtener la lista de prestamos." + ex.Message + ex.StackTrace; ;
                 lista = null;
+                oLog.Add(msg);//Añadimos el mensaje al log
             }
-            oLog.Add(msg);//Añadimos el mensaje al log
+            
             return lista;
         }
         public List<Prestamo> ObtenerListadePrestamosProximosAVencerse()
