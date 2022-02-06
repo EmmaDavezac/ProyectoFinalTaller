@@ -54,6 +54,8 @@ namespace Programa
             this.FechaVencimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EstadoPrestamo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Editar = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.labelNombreLista = new System.Windows.Forms.Label();
+            this.labelFiltrar = new System.Windows.Forms.Label();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -219,7 +221,7 @@ namespace Programa
             this.checkBoxProximosAVencerse.AutoSize = true;
             this.checkBoxProximosAVencerse.BackColor = System.Drawing.Color.Transparent;
             this.checkBoxProximosAVencerse.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.checkBoxProximosAVencerse.Location = new System.Drawing.Point(527, 98);
+            this.checkBoxProximosAVencerse.Location = new System.Drawing.Point(528, 122);
             this.checkBoxProximosAVencerse.Name = "checkBoxProximosAVencerse";
             this.checkBoxProximosAVencerse.Size = new System.Drawing.Size(80, 17);
             this.checkBoxProximosAVencerse.TabIndex = 82;
@@ -230,7 +232,7 @@ namespace Programa
             // checkBoxRestrasados
             // 
             this.checkBoxRestrasados.AutoSize = true;
-            this.checkBoxRestrasados.Location = new System.Drawing.Point(613, 98);
+            this.checkBoxRestrasados.Location = new System.Drawing.Point(614, 122);
             this.checkBoxRestrasados.Name = "checkBoxRestrasados";
             this.checkBoxRestrasados.Size = new System.Drawing.Size(80, 17);
             this.checkBoxRestrasados.TabIndex = 83;
@@ -241,11 +243,11 @@ namespace Programa
             // checkDevueltos
             // 
             this.checkDevueltos.AutoSize = true;
-            this.checkDevueltos.Location = new System.Drawing.Point(527, 121);
+            this.checkDevueltos.Location = new System.Drawing.Point(209, 125);
             this.checkDevueltos.Name = "checkDevueltos";
-            this.checkDevueltos.Size = new System.Drawing.Size(74, 17);
+            this.checkDevueltos.Size = new System.Drawing.Size(178, 17);
             this.checkDevueltos.TabIndex = 84;
-            this.checkDevueltos.Text = "Devueltos";
+            this.checkDevueltos.Text = "Ver lista de prestamos devueltos";
             this.checkDevueltos.UseVisualStyleBackColor = true;
             this.checkDevueltos.CheckedChanged += new System.EventHandler(this.checkDevueltos_CheckedChanged);
             // 
@@ -318,12 +320,36 @@ namespace Programa
             this.Editar.Visible = false;
             this.Editar.VisitedLinkColor = System.Drawing.SystemColors.WindowText;
             // 
+            // labelNombreLista
+            // 
+            this.labelNombreLista.AutoSize = true;
+            this.labelNombreLista.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelNombreLista.ForeColor = System.Drawing.Color.Black;
+            this.labelNombreLista.Location = new System.Drawing.Point(24, 126);
+            this.labelNombreLista.Name = "labelNombreLista";
+            this.labelNombreLista.Size = new System.Drawing.Size(158, 13);
+            this.labelNombreLista.TabIndex = 85;
+            this.labelNombreLista.Text = "Lista de prestamos activos";
+            // 
+            // labelFiltrar
+            // 
+            this.labelFiltrar.AutoSize = true;
+            this.labelFiltrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelFiltrar.ForeColor = System.Drawing.Color.Black;
+            this.labelFiltrar.Location = new System.Drawing.Point(525, 99);
+            this.labelFiltrar.Name = "labelFiltrar";
+            this.labelFiltrar.Size = new System.Drawing.Size(122, 13);
+            this.labelFiltrar.TabIndex = 86;
+            this.labelFiltrar.Text = "Filtrar prestamos por";
+            // 
             // GestionarPrestamos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(784, 561);
+            this.Controls.Add(this.labelFiltrar);
+            this.Controls.Add(this.labelNombreLista);
             this.Controls.Add(this.checkDevueltos);
             this.Controls.Add(this.checkBoxRestrasados);
             this.Controls.Add(this.checkBoxProximosAVencerse);
@@ -378,5 +404,7 @@ namespace Programa
         private System.Windows.Forms.DataGridViewTextBoxColumn FechaVencimiento;
         private System.Windows.Forms.DataGridViewTextBoxColumn EstadoPrestamo;
         private System.Windows.Forms.DataGridViewLinkColumn Editar;
+        private System.Windows.Forms.Label labelNombreLista;
+        private System.Windows.Forms.Label labelFiltrar;
     }
 }

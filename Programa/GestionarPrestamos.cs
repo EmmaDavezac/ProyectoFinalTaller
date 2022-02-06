@@ -267,8 +267,9 @@ namespace Programa
             {
                 checkBoxProximosAVencerse.Checked = false;
                 checkBoxRestrasados.Checked = false;
-                checkBoxProximosAVencerse.Enabled = false;
-                checkBoxRestrasados.Enabled = false;
+                checkBoxProximosAVencerse.Visible = false;
+                checkBoxRestrasados.Visible = false;
+                labelFiltrar.Visible = false;
                 dataGridViewPrestamos.Columns[0].Visible = false;
                 for (int i = 0; i < dataGridViewPrestamos.Rows.Count - 1; i++)
                 {
@@ -281,12 +282,16 @@ namespace Programa
                         dataGridViewPrestamos.Rows[i].Visible = false;
                     }
                 }
-
+                labelNombreLista.Text = "Lista de prestamos devueltos";
+                checkDevueltos.Text = "Ver lista de prestamos activos";
             }
             else {
-                checkBoxProximosAVencerse.Enabled = true;
-                checkBoxRestrasados.Enabled = true;
+
+                checkBoxProximosAVencerse.Visible = true;
+                checkBoxRestrasados.Visible = true;
                 dataGridViewPrestamos.Columns[0].Visible = true;
+                labelFiltrar.Visible = true;
+                labelNombreLista.Text = "Lista de prestamos activos";
                 for (int i = 0; i < dataGridViewPrestamos.Rows.Count - 1; i++)
                 {
                     if (dataGridViewPrestamos.Rows[i].Cells[7].Value.ToString() != "Devuelto")
@@ -297,8 +302,9 @@ namespace Programa
                     {
                         dataGridViewPrestamos.Rows[i].Visible = false;
                     }
+                    
                 }
-
+                checkDevueltos.Text = "Ver lista de prestamos devueltos";
 
             }
         }

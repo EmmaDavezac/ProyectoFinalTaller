@@ -554,9 +554,10 @@ namespace DAL
             {
 
                 msg = "Error al registrar la devolucion del prestamo (Id Prestamo: " + idPrestamo + " Estado:" + estado + ")" + ex.Message + ex.StackTrace;
-                oLog.Add(msg);//Añadimos el mensaje al log
+                
             }
-            
+            oLog.Add(msg);//Añadimos el mensaje al log
+
         }
 
         public void ModificarFechasPrestamo(int pIdPrestamo, string pFechaPrestamo, string pFechaLimite)//permite modificar las fechas de realizacion y limite de un metodo(solo para pruebas)
