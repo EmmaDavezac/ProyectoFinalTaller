@@ -11,7 +11,7 @@ namespace Programa
     public partial class RegistrarLibro : Form//La finalidad de este formulario es la de permitir registrar un nuevo libro
     {
         private string NombreUsuario { get; set; }//Aqui se almacena el nombre de usuario del administrador que esta usando el programa
-        private FachadaNucleo interfazNucleo = new FachadaNucleo();//Instancia del nucleo del programa que nos permite acceder a las funciones del mismo
+        private FachadaNucleo fachadaNucleo = new FachadaNucleo();//Instancia del nucleo del programa que nos permite acceder a las funciones del mismo
         public RegistrarLibro(string pNombreUsuario)//Constructor de la clase
         {
             InitializeComponent();
@@ -28,13 +28,13 @@ namespace Programa
                 textBoxTitulo.Text = dataGridViewTituloYAutor.CurrentRow.Cells[0].Value.ToString();//se muestra en pantalla el titulo del libro seleccionado
                 textBoxAutor.Text = dataGridViewTituloYAutor.CurrentRow.Cells[1].Value.ToString();//se muestra en pantalla el nombre del autor del libro seleccionado
                 buttonBorrarDatos.Enabled = true;//se activa el boton borrar datos
-                List<string> isbns = interfazNucleo.TransformarISBNsALista(dataGridViewTituloYAutor.CurrentRow.Cells[3].Value.ToString());
+                List<string> isbns = fachadaNucleo.TransformarISBNsALista(dataGridViewTituloYAutor.CurrentRow.Cells[3].Value.ToString());
                 foreach (var item in isbns)//se cargan los isbns del libro seleccionado en la tabla de isbns
                 {
                     int n = dataGridViewISBN.Rows.Add();
                     dataGridViewISBN.Rows[n].Cells[0].Value = item;
                 }
-                List<string> años = interfazNucleo.TransformarAñosALista(dataGridViewTituloYAutor.CurrentRow.Cells[2].Value.ToString());
+                List<string> años = fachadaNucleo.TransformarAñosALista(dataGridViewTituloYAutor.CurrentRow.Cells[2].Value.ToString());
                 foreach (var item in años)//se cargan los años de publicacion del libro seleccionado en la tabla de años
                 {
                     int n = dataGridViewAños.Rows.Add();
@@ -54,12 +54,12 @@ namespace Programa
             {
                 int resultado = 0;
                 dataGridViewTituloYAutor.Rows.Clear();//se limpia la tabla de libros
-                List<Libro> resultados = interfazNucleo.ListarLibrosDeAPIPorCoincidencia(textBoxBuscar.Text);//se realiza la consulta a Open Library y se almacena la lista de libros
+                List<Libro> resultados = fachadaNucleo.ListarLibrosDeAPIPorCoincidencia(textBoxBuscar.Text);//se realiza la consulta a Open Library y se almacena la lista de libros
                 foreach (var item in resultados)//se carga cada uno de los resultados en la tabla de libros
                 {
                     int n = dataGridViewTituloYAutor.Rows.Add();
                     dataGridViewTituloYAutor.Rows[n].Cells[0].Value = item.Titulo;
-                    dataGridViewTituloYAutor.Rows[n].Cells[1].Value = interfazNucleo.SacarAutorDeLaLista(item.Autor);
+                    dataGridViewTituloYAutor.Rows[n].Cells[1].Value = fachadaNucleo.SacarAutorDeLaLista(item.Autor);
                     dataGridViewTituloYAutor.Rows[n].Cells[2].Value = item.AñoPublicacion;
                     dataGridViewTituloYAutor.Rows[n].Cells[3].Value = item.ISBN;
                     resultado += 1;
@@ -93,12 +93,20 @@ namespace Programa
         private void buttonAñadirLibro_Click(object sender, EventArgs e)
             //se ejecuta cuando se presiona el boton añadir libro, registra el libro en el caso de que se haya ingresado toda la informacion del libro y posea el formato correcto
         {
+            bool resultado;
             if (!string.IsNullOrEmpty(textBoxTitulo.Text) && !string.IsNullOrEmpty(textBoxAutor.Text) && !string.IsNullOrEmpty(textBoxISBN.Text) && !string.IsNullOrEmpty(textBoxAñoPublicacion.Text) && !string.IsNullOrEmpty(textBoxCantidadEjemplares.Text))
-           //se verifica que se haya ingresado toda la informacion necesaria
+            //se verifica que se haya ingresado toda la informacion necesaria
             {
-                new FachadaNucleo().AñadirLibro(textBoxISBN.Text, textBoxTitulo.Text, textBoxAutor.Text, textBoxAñoPublicacion.Text, Convert.ToInt32(textBoxCantidadEjemplares.Text));
+                resultado = fachadaNucleo.AñadirLibro(textBoxISBN.Text, textBoxTitulo.Text, textBoxAutor.Text, textBoxAñoPublicacion.Text, Convert.ToInt32(textBoxCantidadEjemplares.Text));
                 //se registra el libro en la base de datos
-                MessageBox.Show("Libro registrado con exito, el Id del libro es: " + new FachadaNucleo().ObtenerUltimoIdLibro());//se muestra el mensaje en pantalla
+                if (resultado == true)
+                {
+                    MessageBox.Show("Libro registrado con exito, el Id del libro es: " + new FachadaNucleo().ObtenerUltimoIdLibro());//se muestra el mensaje en pantalla
+                }
+                else 
+                {
+                    MessageBox.Show("El libro: " + textBoxTitulo.Text + " .ISBN: " + textBoxISBN.Text + " ya esta registrado");//se muestra el mensaje en pantalla
+                }
 
             }
             else
@@ -199,7 +207,7 @@ namespace Programa
         {
             if (e.RowIndex >= 0)
             {
-                if (dataGridViewISBN.CurrentRow.Cells[0].Value != null)
+                if (dataGridViewAños.CurrentRow.Cells[0].Value != null)
                 {
                     textBoxAñoPublicacion.Text = dataGridViewAños.CurrentRow.Cells[0].Value.ToString();//Se verifica que la fila seleccionada no este vacia
                 }
@@ -265,7 +273,7 @@ namespace Programa
 
         public void InicializarLibro(int idLibro)//carga los textbox con los datos del libro pasado como parametro
         {
-            var libro = interfazNucleo.ObtenerLibro(idLibro);
+            var libro = fachadaNucleo.ObtenerLibro(idLibro);
             textBoxAutor.Text = libro.Autor;
             textBoxAñoPublicacion.Text = libro.AñoPublicacion;
             textBoxISBN.Text = libro.ISBN;

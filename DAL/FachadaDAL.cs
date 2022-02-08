@@ -226,24 +226,48 @@ namespace DAL
 
         }
 
-        public void AñadirLibro(string unISBN, string titulo, string autor, string añoPublicacion, int pCantidadEjempalares)//Metodo que nos permite añadir un libro a la base de datos
+        public bool AñadirLibro(string unISBN, string titulo, string autor, string añoPublicacion, int pCantidadEjempalares)//Metodo que nos permite añadir un libro a la base de datos
         {
             FachadaBitacora oLog = new FachadaBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
+            bool resultado = true;
             try
             {
                 msg = "Libro ( Titulo: " + titulo + " Autor: " + autor + " ISBN:" + unISBN + " ) registrado con exito.";
                 Libro libro = new Libro(unISBN, titulo, autor, añoPublicacion);//Instanciamos un libro con los parametros pasados al metodo.
                 using (IUnitOfWork unitOfWork = GetUnitOfWork())//Definimos el ambito donde se va a usar el objet unitOfWork
                 {
-                    unitOfWork.RepositorioLibros.Add(libro);//Añadimos el libro a la base de datos
-                    for (int i = 0; i < pCantidadEjempalares; i++)//Añadimos la cantidad de ejemplares pasado como parametro al libro con un ciclo for.
+                    foreach (var item in unitOfWork.RepositorioLibros.GetAllISBN())
                     {
-                        Ejemplar ejemplarNuevo = new Ejemplar(libro);//Instanciamos el nuevo ejemplar y le pasamos el objeto libro como parametro.
-                        unitOfWork.RepositorioEjemplares.Add(ejemplarNuevo);//Añadimos el ejemplar a la base de datos.
+                        if (item == unISBN)
+                        {
+                            resultado = false;
+                            break;
+                        }
                     }
-                    unitOfWork.Complete();//Guardamos los cambios
+                    if (resultado == true)
+                    {
+                        foreach (var item in unitOfWork.RepositorioLibros.GetAllTitulo())
+                        {
+                            if (item == titulo)
+                            {
+                                resultado = false;
+                                break;
+                            }
+                        }
+                    }
+                    if (resultado == true)
+                    {
+                        unitOfWork.RepositorioLibros.Add(libro);//Añadimos el libro a la base de datos
+                        for (int i = 0; i < pCantidadEjempalares; i++)//Añadimos la cantidad de ejemplares pasado como parametro al libro con un ciclo for.
+                        {
+                            Ejemplar ejemplarNuevo = new Ejemplar(libro);//Instanciamos el nuevo ejemplar y le pasamos el objeto libro como parametro.
+                            unitOfWork.RepositorioEjemplares.Add(ejemplarNuevo);//Añadimos el ejemplar a la base de datos.
+                        }
+                        unitOfWork.Complete();//Guardamos los cambios
+                    }
                 }
+                
             }
             catch (Exception ex)
             {
@@ -251,6 +275,7 @@ namespace DAL
                 msg = "Error al registrar el libro ( Titulo: " + titulo + " Autor: " + autor + " ISBN:" + unISBN + " ) ." + ex.Message + ex.StackTrace;
             }
             oLog.Add(msg);//Añadimos el mensaje al log
+            return resultado;
         }
         public Libro ObtenerLibro(int id)//Metodo que nos permite obtener un libro almacenado en la base de datos
         {

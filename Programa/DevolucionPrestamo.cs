@@ -51,20 +51,20 @@ namespace Programa
             else if (pEstado == "ProximoAVencer")
             {
                 labelEstado.Text = pEstado;
-                labelEstado.ForeColor = Color.Green;
+                labelEstado.ForeColor = Color.Orange;
                 scoringPorFecha = 5;
             }
             else
             {
                 labelEstado.Text = pEstado;
-                labelEstado.ForeColor = Color.Yellow;
+                labelEstado.ForeColor = Color.Green;
                 scoringPorFecha = 5;
             }
             labelFechaVencimiento.Text = pFechaVencimiento;
             if (Convert.ToInt32(pScoringActual) >= 0)
             {
                 labelScoring.Text = pScoringActual;
-                labelScoring.ForeColor = Color.Yellow;
+                labelScoring.ForeColor = Color.Green;
             }
             else
             {

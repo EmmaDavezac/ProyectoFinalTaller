@@ -66,10 +66,10 @@ namespace Nucleo
         interfazDAL.ActualizarContraseñaAdministrador(nombreUsuario, contraseña);
     }
 
-    public void AñadirLibro(string unISBN, string titulo, string autor, string añoPublicacion, int pCantidadEjempalares)
+    public bool AñadirLibro(string unISBN, string titulo, string autor, string añoPublicacion, int pCantidadEjempalares)
     //Permite registrar un nuevo libro
     {
-        interfazDAL.AñadirLibro(unISBN, titulo, autor, añoPublicacion, pCantidadEjempalares);
+        return interfazDAL.AñadirLibro(unISBN, titulo, autor, añoPublicacion, pCantidadEjempalares);
     }
     public Libro ObtenerLibro(int id)
     //Permite obtener un libro de la base de datos a partir del id del mismo 

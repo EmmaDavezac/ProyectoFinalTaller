@@ -162,11 +162,61 @@ namespace Programa
 
         private void buttonRegistrarPrestamo_Click(object sender, EventArgs e)//se ejecuta cuando se presiona el boton registrar prestamo, registra el prestamo y muestra un mensaje en pantalla
         {
-            int idEjemplar = interfazNucleo.ObtenerEjemplaresDisponibles(Convert.ToInt32(textBoxIdLibro.Text.ToString())).First().Id;
-            interfazNucleo.RegistrarPrestamo(textBoxNomUsuario.Text, idEjemplar, Convert.ToInt32(textBoxIdLibro.Text));
-            string FechaLimite = Convert.ToDateTime(new FachadaNucleo().ObtenerPrestamo(interfazNucleo.ObtenerUltimoIdPrestamo()).FechaLimite).Date.ToShortDateString();
-            ObtenerLibros();//cargamos la lista de libros en la tabla de libros nuevamente para que se actualice
-            MessageBox.Show("El prestamo ha sido registrado correctamente" + "\nFecha limite: " + FechaLimite);
+            if (!string.IsNullOrEmpty(textBoxNomUsuario.Text))//Los primeros tres if verifican que el usuario este seleccionado
+            {
+                if (!string.IsNullOrEmpty(textBoxNombre.Text))
+                {
+                    if (!string.IsNullOrEmpty(textBoxApellido.Text))
+                    {
+                        if (!string.IsNullOrEmpty(textBoxIdLibro.Text))//Los ultimos if verifican que el libro este seleccionado
+                        {
+                            if (!string.IsNullOrEmpty(textBoxAutor.Text))
+                            {
+                                if (!string.IsNullOrEmpty(textBoxTitulo.Text))
+                                {
+                                    if (!string.IsNullOrEmpty(textBoxISBN.Text))
+                                    {
+                                        int idEjemplar = interfazNucleo.ObtenerEjemplaresDisponibles(Convert.ToInt32(textBoxIdLibro.Text.ToString())).First().Id;
+                                        interfazNucleo.RegistrarPrestamo(textBoxNomUsuario.Text, idEjemplar, Convert.ToInt32(textBoxIdLibro.Text));
+                                        string FechaLimite = Convert.ToDateTime(new FachadaNucleo().ObtenerPrestamo(interfazNucleo.ObtenerUltimoIdPrestamo()).FechaLimite).Date.ToShortDateString();
+                                        ObtenerLibros();//cargamos la lista de libros en la tabla de libros nuevamente para que se actualice
+                                        MessageBox.Show("El prestamo ha sido registrado correctamente" + "\nFecha limite: " + FechaLimite);
+
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("Seleccione un libro!");
+                                    }
+                                }
+                                else 
+                                {
+                                    MessageBox.Show("Seleccione un libro!");
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("Seleccione un libro!");
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Seleccione un libro!");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Seleccione un usuario!");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Seleccione un usuario!");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Seleccione un usuario!");
+            }
         }
 
         private void botonVolver_Click(object sender, EventArgs e)//se ejecuta cuando se presiona el boton volver
