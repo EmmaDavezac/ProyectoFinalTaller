@@ -1,4 +1,4 @@
-﻿using Nucleo;
+using Nucleo;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -13,7 +13,7 @@ namespace Programa
         private FachadaNucleo interfazNucleo = new FachadaNucleo();
         private int idPrestamo;
         private bool modificado;
-        public DevolucionPrestamo()
+        public DevolucionPrestamo()//contructor de la clase
         {
             scoringPorFecha = 0;
             scoringDevolucion = 0;
@@ -37,8 +37,11 @@ namespace Programa
         }
 
         public void InicializarDevolucion(string pNombreUsuario, string pTitulo, string pAutor, string pFechaVencimiento, string pEstado, string pScoringActual, int pIdPrestamo)
+        //Incializa los datos  del formulario
         {
-            labelUsuario.Text = pNombreUsuario;
+           try
+           {
+                labelUsuario.Text = pNombreUsuario;
             labelLibro.Text = pTitulo + " - " + pAutor;
             if (pEstado == "Retrasado")
             {
@@ -74,6 +77,13 @@ namespace Programa
             scoringActual = Convert.ToInt32(pScoringActual);
             dateTimePickerFechaDevolucion.Value = DateTime.Now;
             idPrestamo = pIdPrestamo;
+           }
+           catch (Exception ex)
+            {
+                string texto= "Error InicializarDevolucion: "+ ex.Message + ex.StackTrace;
+                interfazNucleo.RegistrarLog(texto,"Ha ocurrido un error");
+                MessageBox.Show();
+            }
         }
 
         private void labelFechaVencimiento_Click(object sender, EventArgs e)
@@ -92,8 +102,11 @@ namespace Programa
         }
 
         private void comboBoxEstadoEjemplar_SelectedIndexChanged(object sender, EventArgs e)
+        //se ejecuta si se cambia el valor del combobox estado ejemplar
         {
-            modificado = true;
+            try
+            {
+                modificado = true;
             if (comboBoxEstadoEjemplar.SelectedIndex == 0)
             {
                 scoringDevolucion = scoringActual + scoringPorFecha;
@@ -106,11 +119,21 @@ namespace Programa
                 labelScoringDevolucion.Text = scoringDevolucion + "(" + (scoringPorFecha - 10) + ")";
                 labelScoringDevolucion.Visible = true;
             }
+            }
+            catch (Exception ex)
+            {
+                string texto= "Error comboBoxEstadoEjemplar_SelectedIndexChanged: "+ ex.Message + ex.StackTrace;
+                interfazNucleo.RegistrarLog(texto,"Ha ocurrido un error");
+                MessageBox.Show();
+            }
         }
 
         private void botonRegistrarDevolucion_Click(object sender, EventArgs e)
+        //metodo que se ejecuta cuando se presiona el boton registrar devolucion
         {
-            if (modificado == true)
+            try
+            {
+                if (modificado == true)
             {
                 interfazNucleo.RegistrarDevolucion(idPrestamo, comboBoxEstadoEjemplar.Text);
                 MessageBox.Show("La devolucion se registro correctamente");
@@ -121,14 +144,23 @@ namespace Programa
             {
                 MessageBox.Show("No selecciono el estado del ejemplar");
             }
+            }
+            catch (Exception ex)
+            {
+                string texto= "Error botonRegistrarDevolucion_Click: "+ ex.Message + ex.StackTrace;
+                interfazNucleo.RegistrarLog(texto,"Ha ocurrido un error");
+                MessageBox.Show();
+            }
         }
 
         private void botonVolver_Click(object sender, EventArgs e)
+        //Metodo para volver a la ventana anterior
         {
             this.Close();
         }
 
         private void DevolucionPrestamo_FormClosed(object sender, FormClosedEventArgs e)
+        //se ejecuta cuando se cierra la ventana
         {
             this.Close();
         }
