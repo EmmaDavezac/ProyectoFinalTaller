@@ -1,4 +1,4 @@
-﻿using Nucleo;
+using Nucleo;
 using System;
 using System.Linq;
 using System.Windows.Forms;
@@ -73,7 +73,9 @@ namespace Programa
         private void buttonRegistrarAdministrador_Click(object sender, EventArgs e)
         //se activara cuando se presiona el boton registrar administrador y en el caso de que todos los datos requeridos esten ingresados y sean correctos, se registrara el nuevo administrador
         {
-            if (!string.IsNullOrEmpty(textBoxNombreUsuario.Text)) //se verifica que se haya ingresado el nombre de usuario y tenga el formato correcto
+            try
+            {
+                if (!string.IsNullOrEmpty(textBoxNombreUsuario.Text)) //se verifica que se haya ingresado el nombre de usuario y tenga el formato correcto
             {
                 if (!string.IsNullOrEmpty(textBoxNombre.Text) && textBoxNombre.Text.All(Char.IsLetter))//se verifica que se haya ingresado el nombre y tenga el formato correcto
                 {
@@ -170,6 +172,13 @@ namespace Programa
                 this.labelError.Text = "Error, nombre de usuario esta vacio";
                 buttonRegistrarAdministrador.Enabled = false;
                 textBoxNombreUsuario.Focus();
+            }
+            }
+            catch (Exception ex)
+            {
+                string texto= "Error buttonRegistrarAdministrador_Click: "+ ex.Message + ex.StackTrace;
+                interfazNucleo.RegistrarLog(texto,"Ha ocurrido un error");
+                MessageBox.Show();
             }
         }
 
