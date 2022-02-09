@@ -1,4 +1,4 @@
-﻿using Dominio;
+using Dominio;
 using Nucleo;
 using System;
 using System.Collections.Generic;
@@ -21,14 +21,25 @@ namespace Programa
             labelNombreUsuario.Text = "Usuario: " + nombreUsuario;
         }
 
-        private void GestionarLibros_Load(object sender, EventArgs e)
+        private void GestionarLibros_Load(object sender, EventArgs e)//carga la tabla de libros cuando se crea el formulario
         {
-            ObtenerLibros();
+            try
+            {
+                ObtenerLibros();
+            }
+            catch (Exception ex)
+            {
+                string texto= "Error GestionarLibros_Load: "+ ex.Message + ex.StackTrace;
+                interfazNucleo.RegistrarLog(texto,"Ha ocurrido un error");
+                MessageBox.Show();
+            }
         }
 
         private void dataGridViewLibros_CellContentClick(object sender, DataGridViewCellEventArgs e)//Este evento se ejecuta si se hace click al contenido de una celda
         {
-            if (e.RowIndex >= 0)
+            try
+            {
+                if (e.RowIndex >= 0)
             {
                 DataGridViewCell cell = (DataGridViewCell)dataGridViewLibros.Rows[e.RowIndex].Cells[e.ColumnIndex];
                 if (cell.Value.ToString() == "Edit")//Si se presiona la celda con el texto Edit, se abre una nueva ventana para actuaizar la informacion del libro
@@ -45,11 +56,20 @@ namespace Programa
                     ventana.Show(this);//mostramos la ventana nueva
                 }
             }
+            }
+            catch (Exception ex)
+            {
+                string texto= "Error dataGridViewLibros_CellContentClick: "+ ex.Message + ex.StackTrace;
+                interfazNucleo.RegistrarLog(texto,"Ha ocurrido un error");
+                MessageBox.Show();
+            }
         }
 
         private void textBoxTituloOISBNlibro_TextChanged(object sender, EventArgs e)//Este evento se ejecuta cuando se modifica el texto dentro del textBoxTituloOISBNlibro
         {
-            if (textBoxTituloOISBNLibro.Text != null)//Se verifica qu haya texto en el textbox
+            try
+            {
+                if (textBoxTituloOISBNLibro.Text != null)//Se verifica qu haya texto en el textbox
             {
                 for (int i = 0; i < dataGridViewLibros.Rows.Count - 1; i++)//Recorremos los elementos de la tabla de libros
                 {
@@ -67,11 +87,20 @@ namespace Programa
                     }
                 }
             }
+            }
+            catch (Exception ex)
+            {
+                string texto= "Error textBoxTituloOISBNlibro_TextChanged: "+ ex.Message + ex.StackTrace;
+                interfazNucleo.RegistrarLog(texto,"Ha ocurrido un error");
+                MessageBox.Show();
+            }
         }
 
         public void ObtenerLibros()//Este metodo carga la tabla de libros en la tabla de libros
         {
-            IEnumerable<Libro> libros = interfazNucleo.ObtenerLibros();//Obtenemos la lista de libros
+            try
+            {
+                IEnumerable<Libro> libros = interfazNucleo.ObtenerLibros();//Obtenemos la lista de libros
             dataGridViewLibros.Rows.Clear();//Eliminamos todo el contenido de la tabla
             foreach (var item in libros)//Recorremos lcada elemento de la lista de libros y lo agregamos a la tabla
             {
@@ -93,6 +122,13 @@ namespace Programa
                 {
                     dataGridViewLibros.Rows[n].DefaultCellStyle.BackColor = Color.Yellow;
                 }
+            }
+            }
+            catch (Exception ex)
+            {
+                string texto= "Error ObtenerLibros: "+ ex.Message + ex.StackTrace;
+                interfazNucleo.RegistrarLog(texto,"Ha ocurrido un error");
+                MessageBox.Show();
             }
         }
 
