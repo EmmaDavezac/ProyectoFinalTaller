@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Windows.Forms;
 using Nucleo;
@@ -23,7 +23,9 @@ namespace Programa
 
         private void buttonGuardar_Click(object sender, EventArgs e)
         {
-                if (!string.IsNullOrEmpty(textBoxNombre.Text) && textBoxNombre.Text.All(Char.IsLetter))
+            try
+            {
+                    if (!string.IsNullOrEmpty(textBoxNombre.Text) && textBoxNombre.Text.All(Char.IsLetter))
                 {
                     if (!string.IsNullOrEmpty(textBoxApellido.Text) && textBoxApellido.Text.All(Char.IsLetter))
                     {
@@ -110,6 +112,13 @@ namespace Programa
                     buttonGuardar.Enabled = false;
                     textBoxNombre.Focus(); ;
                 }
+            }
+            catch (Exception ex)
+                {
+                string texto= "Error buttonGuardar_Click: "+ ex.Message + ex.StackTrace;
+                interfazNucleo.RegistrarLog(texto,"Ha ocurrido un error");
+                MessageBox.Show();
+                }
         }
 
         private void ActualizarUsuario_Load(object sender, EventArgs e)
@@ -154,6 +163,8 @@ namespace Programa
         }
         public void CargarUsuarioExistente(string pNombreUsuario,string pBaja)
         {
+            try
+            {
             var usuario = interfazNucleo.ObtenerUsuario(pNombreUsuario);
             //VaciarCampos();
             textBoxNombreUsuario.Text = usuario.NombreUsuario;
@@ -166,6 +177,13 @@ namespace Programa
             {
                 checkBoxBaja.Checked = true;
             }
+            }
+            catch (Exception ex)
+                {
+                string texto= "Error CargarUsuarioExistente: "+ ex.Message + ex.StackTrace;
+                interfazNucleo.RegistrarLog(texto,"Ha ocurrido un error");
+                MessageBox.Show();
+                }
         }
 
         private void label5_Click(object sender, EventArgs e)
@@ -186,7 +204,9 @@ namespace Programa
 
         private void checkBoxBaja_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBoxBaja.Checked == true)
+            try
+            {
+                if (checkBoxBaja.Checked == true)
             {
                 if (interfazNucleo.DarDeBajaUsuario(textBoxNombreUsuario.Text) == false)
                 {
@@ -213,6 +233,13 @@ namespace Programa
                     textBoxMail.Enabled = true;
                 }
             }
+            }
+            catch (Exception ex)
+                {
+                string texto= "Error checkBoxBaja_CheckedChanged: "+ ex.Message + ex.StackTrace;
+                interfazNucleo.RegistrarLog(texto,"Ha ocurrido un error");
+                MessageBox.Show();
+                }
         }
     }
 }
