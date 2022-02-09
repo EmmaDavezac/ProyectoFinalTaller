@@ -1,4 +1,4 @@
-﻿using Nucleo;
+using Nucleo;
 using System;
 using System.Linq;
 using System.Windows.Forms;
@@ -24,6 +24,7 @@ namespace Programa
         }
 
         private void buttonGuardar_Click(object sender, EventArgs e)
+        {try
         {
             if (!string.IsNullOrEmpty(textBoxNombre.Text) && textBoxNombre.Text.All(Char.IsLetter))//Verifica si el nombre de usuario no es nulo y que solo contenga letras.
             {
@@ -117,10 +118,17 @@ namespace Programa
                 textBoxNombre.Focus(); ;
             }
         }
+        catch (Exception ex)
+        {
+        string texto= "Error al actualizar el usuario: "+ ex.Message + ex.StackTrace;
+        interfazNucleo.RegistrarLog(texto,"Ha ocurrido un error");
+        MessageBox.Show();
+         
+        }
+        }
 
         private void ActualizarAdministrador_Load(object sender, EventArgs e)
-        {
-
+        
         }
 
         private void textBoxNombre_TextChanged(object sender, EventArgs e)
@@ -165,6 +173,8 @@ namespace Programa
 
         public void CargarAdministradorExistente(string pNombreUsuario,string pBaja)//Se encarga de inicializar los datos del adminsitrador en la ventana.
         {
+            try
+            {
             var usuario = interfazNucleo.ObtenerAdministrador(pNombreUsuario);//Obtiene el administrador.
             textBoxNombreUsuario.Text = usuario.NombreUsuario;//Carga los textbox con sus datos correspondientes del administrador.
             textBoxNombre.Text = usuario.Nombre;
@@ -176,12 +186,28 @@ namespace Programa
             {
                 checkBoxBaja.Checked = true;//Si es asi checkea el checkbox de baja.
             }
+            }
+            catch (Exception ex)
+                {
+                string texto= "Error al Cargar Administrador Existente: "+ ex.Message + ex.StackTrace;
+                interfazNucleo.RegistrarLog(texto,"Ha ocurrido un error");
+                MessageBox.Show();
+                }
         }
 
         private void buttonModificarContraseña_Click(object sender, EventArgs e)
         {
-            ModificarContraseña ventana = new ModificarContraseña(textBoxNombreUsuario.Text);
+            try
+            {
+                ModificarContraseña ventana = new ModificarContraseña(textBoxNombreUsuario.Text);
             ventana.ShowDialog(this);
+            }
+            catch (Exception ex)
+                {
+                string texto= "Error button Modificar Contraseña(: "+ ex.Message + ex.StackTrace;
+                interfazNucleo.RegistrarLog(texto,"Ha ocurrido un error");
+                MessageBox.Show();
+                }
         }
 
         public void CargarContraseña(string contraseña)
@@ -196,7 +222,9 @@ namespace Programa
 
         private void checkBoxBaja_CheckedChanged(object sender, EventArgs e)//Checkbox que nos permite dar de baja o alta a un administrador
         {
-            if (checkBoxBaja.Checked == true)//Si esta checkeado se fija que el administrador pueda darse de baja
+            try
+            {
+                if (checkBoxBaja.Checked == true)//Si esta checkeado se fija que el administrador pueda darse de baja
             {
                 if (interfazNucleo.DarDeBajaAdministrador(textBoxNombreUsuario.Text) == false)//Si devuelve falso quiere decir que se trata del adminsitrador principal por lo tanto no puede darse de baja.
                 {
@@ -220,6 +248,14 @@ namespace Programa
                     dateTimePickerFechaNacimiento.Enabled = true;
                     textBoxTelefono.Enabled = true;
                     textBoxMail.Enabled = true;
+            }
+            }
+            catch (Exception ex)
+            
+             {
+                string texto= "Error checkBoxBaja_CheckedChanged: "+ ex.Message + ex.StackTrace;
+                interfazNucleo.RegistrarLog(texto,"Ha ocurrido un error");
+                MessageBox.Show();
             }
         }
 
