@@ -1,4 +1,4 @@
-﻿using Nucleo;
+using Nucleo;
 using System;
 using System.Linq;
 using System.Windows.Forms;
@@ -46,7 +46,9 @@ namespace Programa
         private void buttonAñadirUsuario_Click(object sender, EventArgs e)
         //se ejecutara cuando se presione el boton añadir usuario, en el caso de que toda la informacion necesaria haya sido  ingresada y sea correcta, se registrara el nuevo usuario
         {
-            if (!string.IsNullOrEmpty(textBoxNombreUsuario.Text))//se verifica que se haya ingresado el nombre de usuario
+            try
+            {
+                if (!string.IsNullOrEmpty(textBoxNombreUsuario.Text))//se verifica que se haya ingresado el nombre de usuario
             {
                 if (!string.IsNullOrEmpty(textBoxNombre.Text) && textBoxNombre.Text.All(Char.IsLetter))//se verifica que el nombre se haya ingresado correctamente(formato)
                 {
@@ -129,6 +131,13 @@ namespace Programa
                 this.labelError.Text = "Error, nombre de usuario esta vacio";
                 buttonAñadirUsuario.Enabled = false;
                 textBoxNombreUsuario.Focus();
+            }
+            }
+            catch (Exception ex)
+            {
+                string texto= "Error buttonAñadirUsuario_Click: "+ ex.Message + ex.StackTrace;
+                interfazNucleo.RegistrarLog(texto,"Ha ocurrido un error");
+                MessageBox.Show();
             }
         }
 
