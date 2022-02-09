@@ -1,4 +1,4 @@
-﻿using Dominio;
+using Dominio;
 using Nucleo;
 using System;
 using System.Collections.Generic;
@@ -93,7 +93,9 @@ namespace Programa
         private void buttonAñadirLibro_Click(object sender, EventArgs e)
             //se ejecuta cuando se presiona el boton añadir libro, registra el libro en el caso de que se haya ingresado toda la informacion del libro y posea el formato correcto
         {
-            bool resultado;
+           try
+           {
+                bool resultado;
             if (!string.IsNullOrEmpty(textBoxTitulo.Text) && !string.IsNullOrEmpty(textBoxAutor.Text) && !string.IsNullOrEmpty(textBoxISBN.Text) && !string.IsNullOrEmpty(textBoxAñoPublicacion.Text) && !string.IsNullOrEmpty(textBoxCantidadEjemplares.Text))
             //se verifica que se haya ingresado toda la informacion necesaria
             {
@@ -114,6 +116,13 @@ namespace Programa
                 MessageBox.Show("Debe completar la informacion");//se muestra el mensaje en pantalla
                 textBoxTitulo.Focus();
                 //se  enfoca el cuadro de texto del titulo
+            }
+           }
+           catch (Exception ex)
+            {
+                string texto= "Error buttonAñadirLibro_Click: "+ ex.Message + ex.StackTrace;
+                interfazNucleo.RegistrarLog(texto,"Ha ocurrido un error");
+                MessageBox.Show();
             }
         }
 
@@ -156,7 +165,7 @@ namespace Programa
             textBoxAñoPublicacion.Clear();
             textBoxISBN.Clear();
             textBoxTitulo.Clear();
-            //borra los datos de los textbox
+            //borra los datos de los textboxs
             
         }
 
@@ -193,30 +202,50 @@ namespace Programa
         private void dataGridViewISBN_CellContentClick(object sender, DataGridViewCellEventArgs e)
             //se ejecuta cuando se presiona una fila de la lista de ISBNs del libro, carga el ISBN  seleccionado en el textboxISBN
         {
-            if (e.RowIndex >= 0)
+            try
+            {
+                if (e.RowIndex >= 0)
             {
                 if (dataGridViewISBN.CurrentRow.Cells[0].Value!=null)//Se verifica que la fila seleccionada no este vacia
                 {
                     textBoxISBN.Text = dataGridViewISBN.CurrentRow.Cells[0].Value.ToString(); 
                 }
             }
+            }
+            catch (Exception ex)
+            {
+                string texto= "Error dataGridViewISBN_CellContentClick: "+ ex.Message + ex.StackTrace;
+                interfazNucleo.RegistrarLog(texto,"Ha ocurrido un error");
+                MessageBox.Show();
+            }
         }
 
         private void dataGridViewAños_CellContentClick(object sender, DataGridViewCellEventArgs e)
             //se ejecuta cuando se presiona una fila de la lista de años de publicacion del libro, carga el año seleccionado en el textboxAñoPublicacion
         {
-            if (e.RowIndex >= 0)
+            try
+            {
+                if (e.RowIndex >= 0)
             {
                 if (dataGridViewAños.CurrentRow.Cells[0].Value != null)
                 {
                     textBoxAñoPublicacion.Text = dataGridViewAños.CurrentRow.Cells[0].Value.ToString();//Se verifica que la fila seleccionada no este vacia
                 }
             }
+            }
+            catch (Exception ex)
+            {
+                string texto= "Error dataGridViewAños_CellContentClick: "+ ex.Message + ex.StackTrace;
+                interfazNucleo.RegistrarLog(texto,"Ha ocurrido un error");
+                MessageBox.Show();
+            }
         }
 
         private void textBoxSeleccionarISBN_TextChanged(object sender, EventArgs e)//nos permite buscar un isbn en la tabla de isbns del libro
         {
-            if (textBoxSeleccionarISBN.Text != null)
+            try
+            {
+                if (textBoxSeleccionarISBN.Text != null)
             {
                 for (int i = 0; i < dataGridViewISBN.Rows.Count - 1; i++)
                 {
@@ -230,11 +259,20 @@ namespace Programa
                     }
                 }
             }
+            }
+            catch (Exception ex)
+            {
+                string texto= "Error textBoxSeleccionarISBN_TextChanged: "+ ex.Message + ex.StackTrace;
+                interfazNucleo.RegistrarLog(texto,"Ha ocurrido un error");
+                MessageBox.Show();
+            }
         }
 
         private void textBoxSelccionarAño_TextChanged(object sender, EventArgs e)//nos permite buscar un año en la tabla de años de publicacion
         {
-            if (textBoxSelccionarAño.Text != null)
+            try
+            {
+                if (textBoxSelccionarAño.Text != null)
             {
                 for (int i = 0; i < dataGridViewAños.Rows.Count - 1; i++)
                 {
@@ -248,6 +286,13 @@ namespace Programa
                     }
                 }
             }
+            }
+            catch (Exception ex)
+            {
+                string texto= "Error textBoxSelccionarAño_TextChanged: "+ ex.Message + ex.StackTrace;
+                interfazNucleo.RegistrarLog(texto,"Ha ocurrido un error");
+                MessageBox.Show();
+            }
         }
 
         private void labelSeleccionarAño_Click(object sender, EventArgs e)
@@ -257,7 +302,9 @@ namespace Programa
 
         public void VerificarVentanaPadre()//este metodo identifica la ventana padre y a partir de esto muestra u oculta funciones 
         {
-            if (this.Owner.Name == "MenuPrincipal")
+            try
+            {
+                if (this.Owner.Name == "MenuPrincipal")
             {
                 buttonAñadirLibro.Visible = true;
                 buttonActualizar.Visible = false;
@@ -269,10 +316,19 @@ namespace Programa
                 textBoxCantidadEjemplares.Visible = false;
                 labelCantidadEjemplares.Visible = false;
             }
+            }
+            catch (Exception ex)
+            {
+                string texto= "Error VerificarVentanaPadre: "+ ex.Message + ex.StackTrace;
+                interfazNucleo.RegistrarLog(texto,"Ha ocurrido un error");
+                MessageBox.Show();
+            }
         }
 
         public void InicializarLibro(int idLibro)//carga los textbox con los datos del libro pasado como parametro
         {
+           try
+           {
             var libro = fachadaNucleo.ObtenerLibro(idLibro);
             textBoxAutor.Text = libro.Autor;
             textBoxAñoPublicacion.Text = libro.AñoPublicacion;
@@ -280,22 +336,38 @@ namespace Programa
             textBoxTitulo.Text = libro.Titulo;
             textBoxBuscar.Text = libro.Titulo;
             button1_Click(this, null);
+           }
+           catch (Exception ex)
+            {
+                string texto= "Error InicializarLibro: "+ ex.Message + ex.StackTrace;
+                interfazNucleo.RegistrarLog(texto,"Ha ocurrido un error");
+                MessageBox.Show();
+            }
         }
         private void buttonActualizar_Click(object sender, EventArgs e)
-            //se ejecuta cunado se presiona el boton actualizar
+            //se ejecuta cuando se presiona el boton actualizar
         {
-            if (!string.IsNullOrEmpty(textBoxTitulo.Text) && !string.IsNullOrEmpty(textBoxAutor.Text) && !string.IsNullOrEmpty(textBoxISBN.Text) && !string.IsNullOrEmpty(textBoxAñoPublicacion.Text))
-            {
+            try
+                {
+                    if (!string.IsNullOrEmpty(textBoxTitulo.Text) && !string.IsNullOrEmpty(textBoxAutor.Text) && !string.IsNullOrEmpty(textBoxISBN.Text) && !string.IsNullOrEmpty(textBoxAñoPublicacion.Text))
+                    {
 
-                ((ActualizarLibro)this.Owner).CargarDatosDeBusquedaAvanzada(textBoxTitulo.Text, textBoxAutor.Text, textBoxAñoPublicacion.Text, textBoxISBN.Text);
-                MessageBox.Show("Libro registrado con exito, el Id del libro es: " + new FachadaNucleo().ObtenerUltimoIdLibro());
-                this.Hide();
-                this.Owner.Show();
-            }
-            else
+                        ((ActualizarLibro)this.Owner).CargarDatosDeBusquedaAvanzada(textBoxTitulo.Text, textBoxAutor.Text, textBoxAñoPublicacion.Text, textBoxISBN.Text);
+                        MessageBox.Show("Libro registrado con exito, el Id del libro es: " + new FachadaNucleo().ObtenerUltimoIdLibro());
+                        this.Hide();
+                        this.Owner.Show();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Debe completar la informacion");
+                        textBoxTitulo.Focus();
+                    }
+                }
+            catch (Exception ex)
             {
-                MessageBox.Show("Debe completar la informacion");
-                textBoxTitulo.Focus();
+                string texto= "Error buttonActualizar_Click: "+ ex.Message + ex.StackTrace;
+                interfazNucleo.RegistrarLog(texto,"Ha ocurrido un error");
+                MessageBox.Show();
             }
         }
 
