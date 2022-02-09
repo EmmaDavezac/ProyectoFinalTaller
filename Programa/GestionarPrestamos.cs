@@ -1,4 +1,4 @@
-﻿using Dominio;
+using Dominio;
 using Nucleo;
 using System;
 using System.Collections.Generic;
@@ -8,305 +8,145 @@ using System.Windows.Forms;
 
 namespace Programa
 {
-    public partial class GestionarPrestamos : Form
-    /*La finalidad de este formulario es permitir ver la informacion de todos los prestamos y poder modificarla*/
+    public partial class GestionarLibros : Form
+    /*La finalidad de este formulario es permitir ver la informacion de todos los alibros y poder modificarla*/
     {
         private string nombreUsuario { get; set; }//Aqui se almacena el nombre de usuario del administrador que esta usando el programa
         private FachadaNucleo interfazNucleo = new FachadaNucleo();//Instancia del nucleo del programa que nos permite acceder a las funciones del mismo
-
-        public GestionarPrestamos(string pNombreUsuario)//Constructor de la clase
+        
+        public GestionarLibros(string pNombreUsuario)//Constructor de la clase
         {
             InitializeComponent();
             nombreUsuario = pNombreUsuario;
             labelNombreUsuario.Text = "Usuario: " + nombreUsuario;
         }
 
-        private void GestionarPrestamos_Load(object sender, EventArgs e)
+        private void GestionarLibros_Load(object sender, EventArgs e)//carga la tabla de libros cuando se crea el formulario
         {
-            ObtenerPrestamos();
+            try
+            {
+                ObtenerLibros();
+            }
+            catch (Exception ex)
+            {
+                string texto= "Error GestionarLibros_Load: "+ ex.Message + ex.StackTrace;
+                interfazNucleo.RegistrarLog(texto,"Ha ocurrido un error");
+                MessageBox.Show();
+            }
+        }
+
+        private void dataGridViewLibros_CellContentClick(object sender, DataGridViewCellEventArgs e)//Este evento se ejecuta si se hace click al contenido de una celda
+        {
+            try
+            {
+                if (e.RowIndex >= 0)
+            {
+                DataGridViewCell cell = (DataGridViewCell)dataGridViewLibros.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                if (cell.Value.ToString() == "Edit")//Si se presiona la celda con el texto Edit, se abre una nueva ventana para actuaizar la informacion del libro
+                {
+                    int id = Convert.ToInt32(dataGridViewLibros.Rows[e.RowIndex].Cells[1].Value);
+                    string ISBN = dataGridViewLibros.Rows[e.RowIndex].Cells[2].Value.ToString();
+                    string titulo = dataGridViewLibros.Rows[e.RowIndex].Cells[3].Value.ToString();
+                    string autor = dataGridViewLibros.Rows[e.RowIndex].Cells[4].Value.ToString();
+                    string añoPublicacion = dataGridViewLibros.Rows[e.RowIndex].Cells[5].Value.ToString();
+                    string baja = dataGridViewLibros.Rows[e.RowIndex].Cells[8].Value.ToString();
+                    ActualizarLibro ventana = new ActualizarLibro(nombreUsuario, id);//Intanciamos lel formulario ActualizarLibro
+                    this.Hide();//Ocultamos esta ventana
+                    ventana.InicializarLibro(ISBN, titulo, autor, añoPublicacion, baja);//Le pasamos los datos del libro a la nueva ventana
+                    ventana.Show(this);//mostramos la ventana nueva
+                }
+            }
+            }
+            catch (Exception ex)
+            {
+                string texto= "Error dataGridViewLibros_CellContentClick: "+ ex.Message + ex.StackTrace;
+                interfazNucleo.RegistrarLog(texto,"Ha ocurrido un error");
+                MessageBox.Show();
+            }
+        }
+
+        private void textBoxTituloOISBNlibro_TextChanged(object sender, EventArgs e)//Este evento se ejecuta cuando se modifica el texto dentro del textBoxTituloOISBNlibro
+        {
+            try
+            {
+                if (textBoxTituloOISBNLibro.Text != null)//Se verifica qu haya texto en el textbox
+            {
+                for (int i = 0; i < dataGridViewLibros.Rows.Count - 1; i++)//Recorremos los elementos de la tabla de libros
+                {
+                    if (textBoxTituloOISBNLibro.Text.All(Char.IsDigit) && dataGridViewLibros.Rows[i].Cells[2].Value.ToString().Contains(textBoxTituloOISBNLibro.Text.ToString()))
+                    {
+                        dataGridViewLibros.Rows[i].Visible = true;//Si el termino buscado es un numero y es subcadena del isbn del libro, el elemento sera visible
+                    }
+                    else if (dataGridViewLibros.Rows[i].Cells[3].Value.ToString().ToLower().Contains(textBoxTituloOISBNLibro.Text.ToString().ToLower()) == false)
+                    {
+                        dataGridViewLibros.Rows[i].Visible = false;//Si el termino buscado es subcadena del titulo del libro, el elemento estara oculto
+                    }
+                    else
+                    {
+                        dataGridViewLibros.Rows[i].Visible = true;//Si el termino buscado es subcadena del titulo del libro, el elemento sera visible
+                    }
+                }
+            }
+            }
+            catch (Exception ex)
+            {
+                string texto= "Error textBoxTituloOISBNlibro_TextChanged: "+ ex.Message + ex.StackTrace;
+                interfazNucleo.RegistrarLog(texto,"Ha ocurrido un error");
+                MessageBox.Show();
+            }
+        }
+
+        public void ObtenerLibros()//Este metodo carga la tabla de libros en la tabla de libros
+        {
+            try
+            {
+                IEnumerable<Libro> libros = interfazNucleo.ObtenerLibros();//Obtenemos la lista de libros
+            dataGridViewLibros.Rows.Clear();//Eliminamos todo el contenido de la tabla
+            foreach (var item in libros)//Recorremos lcada elemento de la lista de libros y lo agregamos a la tabla
+            {
+                int n = dataGridViewLibros.Rows.Add();
+                dataGridViewLibros.Rows[n].Cells[1].Value = item.Id;
+                dataGridViewLibros.Rows[n].Cells[2].Value = item.ISBN;
+                dataGridViewLibros.Rows[n].Cells[3].Value = item.Titulo;
+                dataGridViewLibros.Rows[n].Cells[4].Value = item.Autor;
+                dataGridViewLibros.Rows[n].Cells[5].Value = item.AñoPublicacion;
+                dataGridViewLibros.Rows[n].Cells[6].Value = interfazNucleo.ObtenerEjemplaresDisponibles(item.Id).Count().ToString();
+                dataGridViewLibros.Rows[n].Cells[7].Value = interfazNucleo.ObtenerEjemplaresTotales(item.Id).Count().ToString();
+                dataGridViewLibros.Rows[n].Cells[8].Value = item.Baja.ToString();
+                if (dataGridViewLibros.Rows[n].Cells[8].Value.ToString() == "True")
+                {
+                    dataGridViewLibros.Rows[n].DefaultCellStyle.BackColor = Color.Red;
+                    dataGridViewLibros.Rows[n].DefaultCellStyle.ForeColor = Color.White;
+                }
+                else if (dataGridViewLibros.Rows[n].Cells[6].Value.ToString() == "0")
+                {
+                    dataGridViewLibros.Rows[n].DefaultCellStyle.BackColor = Color.Yellow;
+                }
+            }
+            }
+            catch (Exception ex)
+            {
+                string texto= "Error ObtenerLibros: "+ ex.Message + ex.StackTrace;
+                interfazNucleo.RegistrarLog(texto,"Ha ocurrido un error");
+                MessageBox.Show();
+            }
+        }
+
+        private void GestionarLibros_FormClosed(object sender, FormClosedEventArgs e)//este evento se ejecutara cuando se cierre el formulario
+        {
+            this.Hide();//la ventana se oculta
+            this.Owner.Show();//se muestra la ventana padre
+        }
+
+        private void botonVolver_Click(object sender, EventArgs e)//este evento se ejecutara cuando se presione el boton botonVolver
+        {
+           this.Hide();//la ventana se oculta
+            this.Owner.Show();//se muestra la ventana padre
         }
 
         private void panel3_Paint(object sender, PaintEventArgs e)
         {
 
-        }
-
-        private void GestionarPrestamos_FormClosed(object sender, FormClosedEventArgs e)//Este metodo se ejecuta cuando se cierra el formulario
-        {
-            this.Hide();
-            this.Owner.Show();
-        }
-
-        private void botonVolver_Click(object sender, EventArgs e)//Este evento se ejecuta cuando se presiona el boton botonVolver
-        {
-            this.Hide();
-            this.Owner.Show();
-        }
-
-        public void ObtenerPrestamos()//Este metodo carga la tabla de libros en la tabla de prestamos
-        {
-            IEnumerable<Prestamo> prestamos = interfazNucleo.ObtenerPrestamos();//Obtenemos la lista de prestamos
-            dataGridViewPrestamos.Rows.Clear();//Eliminamos todo el contenido de la tabla
-            foreach (var item in prestamos)//Recorremos lcada elemento de la lista y lo agregamos a la tabla
-            {
-                
-                    int n = dataGridViewPrestamos.Rows.Add();
-                    dataGridViewPrestamos.Rows[n].Cells[1].Value = item.Id;
-                    dataGridViewPrestamos.Rows[n].Cells[2].Value = item.nombreUsuario;
-                    dataGridViewPrestamos.Rows[n].Cells[3].Value = interfazNucleo.ObtenerLibro(item.idLibro).Titulo;
-                    dataGridViewPrestamos.Rows[n].Cells[4].Value = interfazNucleo.ObtenerLibro(item.idLibro).ISBN;
-                    dataGridViewPrestamos.Rows[n].Cells[5].Value = item.FechaPrestamo;
-                    dataGridViewPrestamos.Rows[n].Cells[6].Value = item.FechaLimite;
-                if (item.FechaDevolucion==null)
-                {
-                    dataGridViewPrestamos.Rows[n].Cells[7].Value = item.ActualizarEstado().ToString();
-                    if (dataGridViewPrestamos.Rows[n].Cells[7].Value.ToString() == "Retrasado")
-                    {
-                        dataGridViewPrestamos.Rows[n].DefaultCellStyle.BackColor = Color.Firebrick;
-                        dataGridViewPrestamos.Rows[n].DefaultCellStyle.ForeColor = Color.White;
-                    }
-                    else if (dataGridViewPrestamos.Rows[n].Cells[7].Value.ToString() == "ProximoAVencer")
-                    {
-                        dataGridViewPrestamos.Rows[n].DefaultCellStyle.BackColor = Color.Yellow;
-                        dataGridViewPrestamos.Rows[n].DefaultCellStyle.ForeColor = Color.Black;
-                    }
-                    else
-                    {
-                        dataGridViewPrestamos.Rows[n].DefaultCellStyle.BackColor = Color.YellowGreen;
-                        dataGridViewPrestamos.Rows[n].DefaultCellStyle.ForeColor = Color.Black;
-                    }
-                }
-                else
-                {
-                   
-                    dataGridViewPrestamos.Rows[n].Cells[7].Value = "Devuelto";
-                  
- dataGridViewPrestamos.Rows[n].Visible = false;
-                    
-
-
-                }
-                
-            }
-        }
-
-        private void dataGridViewPrestamos_CellContentClick(object sender, DataGridViewCellEventArgs e)//Este evento se ejecuta si se hace click al contenido de una celda de la tabla
-        {
-            if (e.RowIndex >= 0)
-            {
-                DataGridViewCell cell = (DataGridViewCell)dataGridViewPrestamos.Rows[e.RowIndex].Cells[e.ColumnIndex];
-                
-                string estadoPrestamo = ((DataGridViewCell)dataGridViewPrestamos.Rows[e.RowIndex].Cells[7]).Value.ToString();
-                if (cell.Value.ToString() == "Devolucion"&& estadoPrestamo!="Devuelto")//Si se presiona la celda con el texto Devolucion, se verifica que el prestamo no se haya devuelto y luego se abre una nueva ventana para registrar la devolucion del prestamo
-                {
-                    Prestamo prestamo = interfazNucleo.ObtenerPrestamo(Convert.ToInt32(dataGridViewPrestamos.Rows[e.RowIndex].Cells[1].Value.ToString()));
-                    Libro libro = interfazNucleo.ObtenerLibro(prestamo.idLibro);
-                    string usuario = dataGridViewPrestamos.Rows[e.RowIndex].Cells[2].Value.ToString();
-                    UsuarioSimple usuarioSimple = interfazNucleo.ObtenerUsuario(usuario);
-                    string titulo = libro.Titulo;
-                    string autor = libro.Autor;
-                    string fechaVencimiento = dataGridViewPrestamos.Rows[e.RowIndex].Cells[6].Value.ToString();
-                    string estado = dataGridViewPrestamos.Rows[e.RowIndex].Cells[7].Value.ToString();
-                    string scoring = Convert.ToString(usuarioSimple.Scoring);
-
-                    int idPrestamo = Convert.ToInt32(dataGridViewPrestamos.Rows[e.RowIndex].Cells[1].Value.ToString());
-                    DevolucionPrestamo ventana = new DevolucionPrestamo();
-                    ventana.InicializarDevolucion(usuario, titulo, autor, fechaVencimiento, estado, scoring, idPrestamo);
-                    ventana.ShowDialog(this);
-                }
-                else if (cell.Value.ToString() == "Edit")//Si se presiona la celda con el texto Devolucion, se abre una nueva ventana para editar las fechas de un libro(solo para probar el programa)
-                {
-                    int idPrestamo = Convert.ToInt32(dataGridViewPrestamos.CurrentRow.Cells[1].Value.ToString());
-                    string fechaPrestamo = dataGridViewPrestamos.CurrentRow.Cells[5].Value.ToString();
-                    string fechaLimite = dataGridViewPrestamos.CurrentRow.Cells[6].Value.ToString();
-                    EditarPrestamo ventana = new EditarPrestamo();
-                    ventana.InicialiarEditarPrestamo(idPrestamo, fechaPrestamo, fechaLimite);
-                    ventana.ShowDialog(this);
-                }
-            }
-        }
-
-        private void checkBoxProximosAVencerse_CheckedChanged(object sender, EventArgs e)//Este metodo se ejecuara cuando se marque el checkBox heckBoxProximosAVencerse y permite que la tabla solo muestre los prestamos proximos a vencer
-        {
-            if (checkBoxProximosAVencerse.Checked == true && checkBoxRestrasados.Checked == false)
-            {
-                for (int i = 0; i < dataGridViewPrestamos.Rows.Count - 1; i++)
-                {
-                    if (dataGridViewPrestamos.Rows[i].Cells[7].Value.ToString() == "ProximoAVencer")
-                    {
-                        dataGridViewPrestamos.Rows[i].Visible = true;
-                    }
-                    else
-                    {
-                        dataGridViewPrestamos.Rows[i].Visible = false;
-                    }
-                }
-            }
-            else if (checkBoxProximosAVencerse.Checked == true && checkBoxRestrasados.Checked == true)
-            {
-                for (int i = 0; i < dataGridViewPrestamos.Rows.Count - 1; i++)
-                {
-                    if (dataGridViewPrestamos.Rows[i].Cells[7].Value.ToString() == "ProximoAVencer" || dataGridViewPrestamos.Rows[i].Cells[7].Value.ToString() == "Retrasado")
-                    {
-                        dataGridViewPrestamos.Rows[i].Visible = true;
-                    }
-                    else
-                    {
-                        dataGridViewPrestamos.Rows[i].Visible = false;
-                    }
-                }
-            }
-            else if (checkBoxRestrasados.Checked == true)
-            {
-                for (int i = 0; i < dataGridViewPrestamos.Rows.Count - 1; i++)
-                {
-                    if (dataGridViewPrestamos.Rows[i].Cells[7].Value.ToString() == "Retrasado")
-                    {
-                        dataGridViewPrestamos.Rows[i].Visible = true;
-                    }
-                    else
-                    {
-                        dataGridViewPrestamos.Rows[i].Visible = false;
-                    }
-                }
-
-            }
-            else
-            {
-                for (int i = 0; i < dataGridViewPrestamos.Rows.Count - 1; i++)
-                {
-                    if (dataGridViewPrestamos.Rows[i].Cells[7].Value.ToString() != "Devuelto")
-                    {
-                        dataGridViewPrestamos.Rows[i].Visible = true; 
-                    }
-                }
-            }
-        }
-
-        private void checkBoxRestrasados_CheckedChanged(object sender, EventArgs e)//Este metodo se ejecuara cuando se marque el checkBox chcheckBoxRestrasados_y permite que la tabla solo muestre los prestamos retrasados
-        {
-            if (checkBoxRestrasados.Checked == true && checkBoxProximosAVencerse.Checked == false)
-            {
-                for (int i = 0; i < dataGridViewPrestamos.Rows.Count - 1; i++)
-                {
-                    if (dataGridViewPrestamos.Rows[i].Cells[7].Value.ToString() == "Retrasado")
-                    {
-                        dataGridViewPrestamos.Rows[i].Visible = true;
-                    }
-                    else
-                    {
-                        dataGridViewPrestamos.Rows[i].Visible = false;
-                    }
-                }
-            }
-            else if (checkBoxRestrasados.Checked == true && checkBoxProximosAVencerse.Checked == true )
-            {
-                for (int i = 0; i < dataGridViewPrestamos.Rows.Count - 1; i++)
-                {
-                    if (dataGridViewPrestamos.Rows[i].Cells[7].Value.ToString() == "Retrasado" || dataGridViewPrestamos.Rows[i].Cells[7].Value.ToString() == "ProximoAVencer")
-                    {
-                        dataGridViewPrestamos.Rows[i].Visible = true;
-                    }
-                    else
-                    {
-                        dataGridViewPrestamos.Rows[i].Visible = false;
-                    }
-                }
-            }
-            else if (checkBoxProximosAVencerse.Checked == true)
-            {
-                for (int i = 0; i < dataGridViewPrestamos.Rows.Count - 1; i++)
-                {
-                    if (dataGridViewPrestamos.Rows[i].Cells[7].Value.ToString() == "ProximoAVencer")
-                    {
-                        dataGridViewPrestamos.Rows[i].Visible = true;
-                    }
-                    else
-                    {
-                        dataGridViewPrestamos.Rows[i].Visible = false;
-                    }
-                }
-            }
-            else
-            {
-                for (int i = 0; i < dataGridViewPrestamos.Rows.Count - 1; i++)
-                {
-                    if (dataGridViewPrestamos.Rows[i].Cells[7].Value.ToString() != "Devuelto")
-                    {
-                        dataGridViewPrestamos.Rows[i].Visible = true; 
-                    }
-                }
-            }
-        }
-
-        private void textBoxUsuarioOTituloLibro_TextChanged(object sender, EventArgs e)//Se ejecutara cuando se modifique el texto del textbox textBoxUsuarioOTituloLibro
-        {
-            if (textBoxUsuarioOTituloLibro.Text != null)//se verifica que el textbox no este vacio
-            {
-                for (int i = 0; i < dataGridViewPrestamos.Rows.Count - 1; i++)//recorremos las filas de la tabla
-                {
-                    if (dataGridViewPrestamos.Rows[i].Cells[2].Value.ToString().ToLower().Contains(textBoxUsuarioOTituloLibro.Text.ToString().ToLower()))
-                    {
-                        dataGridViewPrestamos.Rows[i].Visible = true;//si 
-                    }
-                    else if (dataGridViewPrestamos.Rows[i].Cells[3].Value.ToString().ToLower().Contains(textBoxUsuarioOTituloLibro.Text.ToString().ToLower()) == false)
-                    {
-                        dataGridViewPrestamos.Rows[i].Visible = false;
-                    }
-                    else
-                    {
-                        dataGridViewPrestamos.Rows[i].Visible = true;
-                    }
-                }
-            }
-        }
-
-        private void checkDevueltos_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkDevueltos.Checked == true)
-            {
-                checkBoxProximosAVencerse.Checked = false;
-                checkBoxRestrasados.Checked = false;
-                checkBoxProximosAVencerse.Visible = false;
-                checkBoxRestrasados.Visible = false;
-                labelFiltrar.Visible = false;
-                dataGridViewPrestamos.Columns[0].Visible = false;
-                for (int i = 0; i < dataGridViewPrestamos.Rows.Count - 1; i++)
-                {
-                    if (dataGridViewPrestamos.Rows[i].Cells[7].Value.ToString() == "Devuelto")
-                    {
-                        dataGridViewPrestamos.Rows[i].Visible = true;
-                    }
-                    else
-                    {
-                        dataGridViewPrestamos.Rows[i].Visible = false;
-                    }
-                }
-                labelNombreLista.Text = "Lista de prestamos devueltos";
-                checkDevueltos.Text = "Ver lista de prestamos activos";
-            }
-            else {
-
-                checkBoxProximosAVencerse.Visible = true;
-                checkBoxRestrasados.Visible = true;
-                dataGridViewPrestamos.Columns[0].Visible = true;
-                labelFiltrar.Visible = true;
-                labelNombreLista.Text = "Lista de prestamos activos";
-                for (int i = 0; i < dataGridViewPrestamos.Rows.Count - 1; i++)
-                {
-                    if (dataGridViewPrestamos.Rows[i].Cells[7].Value.ToString() != "Devuelto")
-                    {
-                        dataGridViewPrestamos.Rows[i].Visible = true;
-                    }
-                    else
-                    {
-                        dataGridViewPrestamos.Rows[i].Visible = false;
-                    }
-                    
-                }
-                checkDevueltos.Text = "Ver lista de prestamos devueltos";
-
-            }
         }
     }
 }
