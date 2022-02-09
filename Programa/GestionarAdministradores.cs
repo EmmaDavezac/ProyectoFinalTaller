@@ -1,4 +1,4 @@
-﻿using Dominio;
+using Dominio;
 using Nucleo;
 using System;
 using System.Collections.Generic;
@@ -26,7 +26,9 @@ namespace Programa
         }
         private void textBoxId_TextChanged(object sender, EventArgs e)//Este evento se ejecuta cuando se modifica el texto del textbox textBoxId
         {
-            if (textBoxNombreUsuario.Text != null)//Se verifica que el textbox tenga algun texto para ejecutar la busqueda
+            try
+            {
+                if (textBoxNombreUsuario.Text != null)//Se verifica que el textbox tenga algun texto para ejecutar la busqueda
             {
                 for (int i = 0; i < dataGridViewAdministradores.Rows.Count - 1; i++)//Recorremos todos los elementos de la tabla dataGridViewAdministradores
                 {
@@ -39,6 +41,13 @@ namespace Programa
                         dataGridViewAdministradores.Rows[i].Visible = true;//Si el termino de busqueda es subcadena del nombre de usuario del elemento, se muestra el elemento en la tabla
                     }
                 }
+            }
+            }
+            catch (Exception ex)
+            {
+                string texto= "Error textBoxId_TextChanged: "+ ex.Message + ex.StackTrace;
+                interfazNucleo.RegistrarLog(texto,"Ha ocurrido un error");
+                MessageBox.Show();
             }
         }
 
@@ -78,7 +87,9 @@ namespace Programa
 
         private void dataGridViewAdministradores_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0)
+            try
+            {
+                if (e.RowIndex >= 0)
             {
                 DataGridViewCell cell = (DataGridViewCell)dataGridViewAdministradores.Rows[e.RowIndex].Cells[e.ColumnIndex];
                 if (cell.Value.ToString() == "Edit")
@@ -89,11 +100,20 @@ namespace Programa
                     ventana.Show(this);
                 }
             }
+            }
+            catch (Exception ex)
+            {
+                string texto= "Error dataGridViewAdministradores_CellContentClick: "+ ex.Message + ex.StackTrace;
+                interfazNucleo.RegistrarLog(texto,"Ha ocurrido un error");
+                MessageBox.Show();
+            }
         }
 
         public void ObtenerAdministradores()//Este metodo carga la lista de administradores en la tabla dataGridViewAdministradores
         {
-            IEnumerable<UsuarioAdministrador> administradores = interfazNucleo.ObtenerAdministradores();
+            try
+            {
+                IEnumerable<UsuarioAdministrador> administradores = interfazNucleo.ObtenerAdministradores();
             dataGridViewAdministradores.Rows.Clear();
             foreach (var item in administradores)
             {
@@ -111,11 +131,26 @@ namespace Programa
                     dataGridViewAdministradores.Rows[n].DefaultCellStyle.ForeColor = Color.White;
                 }
             }
+            }
+            catch (Exception ex)
+            {
+                string texto= "Error ObtenerAdministradores: "+ ex.Message + ex.StackTrace;
+                interfazNucleo.RegistrarLog(texto,"Ha ocurrido un error");
+                MessageBox.Show();
+            }
         }
 
         private void buttonRefrescar_Click(object sender, EventArgs e)//Este evento se ejecuta cuando se presiona el boton buttonRefrescar
-        {
-            ObtenerAdministradores();//Se actualiza la tabla deadministradores
+        {   try
+                {
+                ObtenerAdministradores();//Se actualiza la tabla deadministradores 
+                }
+            catch (Exception ex)
+                {
+                    string texto= "Error buttonRefrescar_Click: "+ ex.Message + ex.StackTrace;
+                    interfazNucleo.RegistrarLog(texto,"Ha ocurrido un error");
+                    MessageBox.Show();
+                } 
         }
 
         private void labelErro_Click(object sender, EventArgs e)
