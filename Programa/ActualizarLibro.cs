@@ -1,4 +1,4 @@
-﻿using Dominio;
+using Dominio;
 using Nucleo;
 using System;
 using System.Linq;
@@ -35,14 +35,22 @@ namespace Programa
 
         private void buttonDeshacerCambios_Click(object sender, EventArgs e)
         {
+            try
+            {
             Libro libro = interfazNucleo.ObtenerLibro(Convert.ToInt32(idLibro));
-
             textBoxTitulo.Text = libro.Titulo;
             textBoxAutor.Text = libro.Autor;
             textBoxAñoPublicacion.Text = libro.AñoPublicacion;
             textBoxISBN.Text = libro.ISBN;
             buttonDeshacerCambios.Enabled = false;
             buttonGuardar.Enabled = false;
+            }
+            catch (Exception ex)
+            {
+                string texto= "Error buttonDeshacerCambios_Click: "+ ex.Message + ex.StackTrace;
+                interfazNucleo.RegistrarLog(texto,"Ha ocurrido un error");
+                MessageBox.Show();
+            }
         }
 
         private void textBoxAutor_TextChanged(object sender, EventArgs e)
@@ -71,7 +79,9 @@ namespace Programa
 
         private void buttonGuardar_Click(object sender, EventArgs e)
         {
-            if (interfazNucleo.ObtenerLibro(idLibro).Baja == false && checkBoxBaja.Checked == true)//En el caso de que el libro no este dado de baja y el checkbox este tildado hace lo siguiente.
+            try
+            {
+                if (interfazNucleo.ObtenerLibro(idLibro).Baja == false && checkBoxBaja.Checked == true)//En el caso de que el libro no este dado de baja y el checkbox este tildado hace lo siguiente.
             {
                 if (!string.IsNullOrEmpty(textBoxTitulo.Text) && !string.IsNullOrEmpty(textBoxAutor.Text) && !string.IsNullOrEmpty(textBoxISBN.Text) && !string.IsNullOrEmpty(textBoxAñoPublicacion.Text))//Si no hay compos vacios
                 {
@@ -144,6 +154,13 @@ namespace Programa
             this.Hide();//Esta ventana se oculta y se muestra el owner(GestionarLibros).
             ((GestionarLibros)this.Owner).ObtenerLibros();
             this.Owner.Show();
+            }
+            catch (Exception ex)
+                {
+                string texto= "Error al actualizar libro: "+ ex.Message + ex.StackTrace;
+                interfazNucleo.RegistrarLog(texto,"Ha ocurrido un error");
+                MessageBox.Show();
+                }
         }
 
         private void textBoxBuscar_TextChanged(object sender, EventArgs e)
@@ -177,10 +194,19 @@ namespace Programa
 
         private void buttonBusquedaAvanzada_Click(object sender, EventArgs e)//Botton que nos permite ir al buscador por medio de la api libros, permitiendonos modificar de manera mas rapida el libro.
         {
+            try
+            {
             RegistrarLibro ventana = new RegistrarLibro(NombreUsuario);
             this.Hide();
             ventana.InicializarLibro(idLibro);//Carga los datos del libro en la nueva ventana.
             ventana.Show(this);
+            }
+            catch (Exception ex)
+                {
+                string texto= "Error buttonBusquedaAvanzada_Click: "+ ex.Message + ex.StackTrace;
+                interfazNucleo.RegistrarLog(texto,"Ha ocurrido un error");
+                MessageBox.Show();
+                }
         }
 
         public void CargarDatosDeBusquedaAvanzada(string pTitulo, string pAutor, string pAñoPublicacion, string pISBN)//Se encarga traer los datos actualizados de la ventana del metodo anterior.
@@ -213,6 +239,8 @@ namespace Programa
 
         public void InicializarLibro(string pISBN, string pTitulo, string pAutor, string pAñoPublicacion, string pBaja)//Se encarga de cargar los datos del libro en la ventana actual.
         {
+            try
+            {
             textBoxTitulo.Text = pTitulo;
             textBoxISBN.Text = pISBN;
             textBoxAutor.Text = pAutor;
@@ -222,11 +250,20 @@ namespace Programa
             {
                 checkBoxBaja.Checked = true;
             }
+            }
+            catch (Exception ex)
+                {
+                string texto= "Error InicializarLibro: "+ ex.Message + ex.StackTrace;
+                interfazNucleo.RegistrarLog(texto,"Ha ocurrido un error");
+                MessageBox.Show();
+                }
         }
 
         private void buttonAñadirEjemplares_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(textBoxAñadirEjemplares.Text))//Si el textbox relacionado a añadir ejemplares no esta vacio entonces:
+            try
+            {
+                if (!string.IsNullOrEmpty(textBoxAñadirEjemplares.Text))//Si el textbox relacionado a añadir ejemplares no esta vacio entonces:
             {
                 sumatoriaDeEjemplares += Convert.ToInt32(textBoxAñadirEjemplares.Text);//Agrega a la sumatoria la cantidad cargada.
                 labelCantidadActual.Text = "Cantidad Actual: " + Convert.ToString(interfazNucleo.ObtenerEjemplaresDisponibles(idLibro).Count() + sumatoriaDeEjemplares);//Actualiza la cantidad actual(Explicado en el metodo InicializarLibro)
@@ -237,11 +274,20 @@ namespace Programa
                 labelErrorAñadirEjemplares.Text = "Error,campo vacio";//Label informativo para el administrador.
                 labelErrorAñadirEjemplares.Visible = true;
             }
+            }
+            catch (Exception ex)
+                {
+                string texto= "Error buttonAñadirEjemplares_Click: "+ ex.Message + ex.StackTrace;
+                interfazNucleo.RegistrarLog(texto,"Ha ocurrido un error");
+                MessageBox.Show();
+                }
         }
 
         private void buttonEliminarEjemplares_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(textBoxEliminarEjemplares.Text))
+            try
+            {
+                if (!string.IsNullOrEmpty(textBoxEliminarEjemplares.Text))
             {
                 if (interfazNucleo.ObtenerEjemplaresDisponibles(idLibro).Count() + sumatoriaDeEjemplares >= Convert.ToInt32(textBoxEliminarEjemplares.Text))//Si la cantidad de ejemplares a eliminar es menor o igual ala cantidad actual entonces hace lo siguiente:
                 {
@@ -262,11 +308,20 @@ namespace Programa
                 labelErrorEliminarEjemplares.Text = "Error,campo vacio";//Label informativo para el administrador.
                 labelErrorEliminarEjemplares.Visible = true;
             }
+            }
+            catch (Exception ex)
+                {
+                string texto= "Error buttonEliminarEjemplares_Click: "+ ex.Message + ex.StackTrace;
+                interfazNucleo.RegistrarLog(texto,"Ha ocurrido un error");
+                MessageBox.Show();
+                }
         }
 
         private void checkBoxBaja_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBoxBaja.Checked == true)//Si el checkbox esta tildado entonces hace lo siguiente:
+            try
+            {
+                if (checkBoxBaja.Checked == true)//Si el checkbox esta tildado entonces hace lo siguiente:
             {
                 if (interfazNucleo.ObtenerEjemplaresDisponibles(idLibro).Count() != interfazNucleo.ObtenerEjemplaresTotales(idLibro).Count() && interfazNucleo.ObtenerEjemplaresDisponibles(idLibro).Count() != 0 && interfazNucleo.ObtenerEjemplaresDisponibles(idLibro).Count() != 0)//En el caso en que la cantidad disponible sea menor a la cantidad total, no puede darse de baja ya que esto nos quiere decir que hay un prestamo activo.
                 {
@@ -307,6 +362,13 @@ namespace Programa
                     labelCantidadActual.Text = "Cantidad Actual: " + Convert.ToString(interfazNucleo.ObtenerEjemplaresDisponibles(idLibro).Count());
                 }
             }
+            }
+            catch (Exception ex)
+                {
+                string texto= "Error checkBoxBaja_CheckedChanged: "+ ex.Message + ex.StackTrace;
+                interfazNucleo.RegistrarLog(texto,"Ha ocurrido un error");
+                MessageBox.Show();
+                }
         }
 
         private void textBoxEliminarEjemplares_TextChanged(object sender, EventArgs e)
