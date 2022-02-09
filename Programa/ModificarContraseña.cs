@@ -1,4 +1,4 @@
-﻿using Nucleo;
+using Nucleo;
 using System;
 using System.Windows.Forms;
 
@@ -29,8 +29,9 @@ namespace Programa
         private void button2_Click(object sender, EventArgs e)
         //se ejecutara cuando se presione el boton button2, en el caso de que se hayan ingresado los datos y sean correctos, se actualizara la contraseña del administrador
         {
-
-            if (textBoxContraseñaAntigua.Text != null)//se verifica que se haya ingresado la contraseña antigua
+            try
+            {
+                if (textBoxContraseñaAntigua.Text != null)//se verifica que se haya ingresado la contraseña antigua
             {
                 if (textBoxContraseñaNueva.Text != null&&textBoxContraseñaNueva.Text.Length>=4)
                 // se verifica que se haya ingresado la contraseña nueva y que cumpla con la longitud minima
@@ -63,9 +64,17 @@ namespace Programa
                 textBoxContraseñaAntigua.Focus(); ;
             }
 
+            }
+            catch (Exception ex)
+            {
+                string texto= "Error button2_Click: "+ ex.Message + ex.StackTrace;
+                interfazNucleo.RegistrarLog(texto,"Ha ocurrido un error");
+                MessageBox.Show();
+            }
         }
 
-        private void button1_Click(object sender, EventArgs e)//se ejecutara si se presiona el boton button1
+        private void button1_Click(object sender, EventArgs e)
+        //se ejecutara si se presiona el boton button1
         {
             this.Close();//se cierra la ventana
         }
@@ -75,7 +84,8 @@ namespace Programa
 
         }
 
-        private void buttonMostrarContraseñaVieja_Click(object sender, EventArgs e)//oculta o muestra la contraseña ingresada en textBoxContraseñaAntigua
+        private void buttonMostrarContraseñaVieja_Click(object sender, EventArgs e)
+        //oculta o muestra la contraseña ingresada en textBoxContraseñaAntigua
         {
             if (textBoxContraseñaAntigua.UseSystemPasswordChar == true)
             {
@@ -89,7 +99,8 @@ namespace Programa
             }
         }
 
-        private void buttonMostrarContraseñaNueva_Click(object sender, EventArgs e)//oculta o muestra la contraseña ingresada en textBoxContraseñaNueva
+        private void buttonMostrarContraseñaNueva_Click(object sender, EventArgs e)
+        //oculta o muestra la contraseña ingresada en textBoxContraseñaNueva
         {
             if (textBoxContraseñaNueva.UseSystemPasswordChar == true)
             {
