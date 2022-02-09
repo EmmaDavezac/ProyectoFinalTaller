@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Windows.Forms;
 namespace Programa
 {
@@ -25,9 +25,12 @@ namespace Programa
 
 
 
-        private void botonIniciarSesion_Click(object sender, EventArgs e)//se ejecuta cuando se presiona el boton iniciar sesion, este metodo valida que los datos ingresados sean correctos
+        private void botonIniciarSesion_Click(object sender, EventArgs e)
+        //se ejecuta cuando se presiona el boton iniciar sesion, este metodo valida que los datos ingresados sean correctos
         {
-            if (!string.IsNullOrEmpty(textBoxNombreUsuario.Text))//verifica que se haya ingresado el nombre de usuario
+            try
+            {
+                if (!string.IsNullOrEmpty(textBoxNombreUsuario.Text))//verifica que se haya ingresado el nombre de usuario
             {
                 if (!string.IsNullOrEmpty(textBoxContraseña.Text))//verifica que se haya ingresado la contraseña
                 {
@@ -60,6 +63,13 @@ namespace Programa
 
 
 
+            }
+            catch (Exception ex)
+            {
+                string texto= "Error botonIniciarSesion_Click: "+ ex.Message + ex.StackTrace;
+                interfazNucleo.RegistrarLog(texto,"Ha ocurrido un error");
+                MessageBox.Show();
+            }
         }
 
         private void textBoxUsuario_TextChanged(object sender, EventArgs e)//Este metodo habilita el boton iniciar sesion , cuando se modifique el texto de textBoxUsuario
@@ -106,7 +116,8 @@ namespace Programa
             Application.Exit();//cierra el programa
         }
 
-        private void timer1_Tick(object sender, EventArgs e)//accion que ejecuta el timmer
+        private void timer1_Tick(object sender, EventArgs e)
+        //accion que ejecuta el timmer, animacion de cuando se abre la ventana
         {
             this.Opacity += .05;
             if (this.Opacity == 1)
