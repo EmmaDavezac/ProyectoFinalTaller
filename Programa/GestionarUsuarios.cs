@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
@@ -25,9 +25,12 @@ namespace Programa
 
         }
 
-        private void textBoxId_TextChanged(object sender, EventArgs e)//este evento se ejecuta cuando se modifica el texto de textBoxId y nos permite buscar un usuario escribiendo su nombre de usuario
+        private void textBoxId_TextChanged(object sender, EventArgs e)
+        //este evento se ejecuta cuando se modifica el texto de textBoxId y nos permite buscar un usuario escribiendo su nombre de usuario
         {
-            if (textBoxNombreUsuario.Text != null)
+            try
+            {
+                if (textBoxNombreUsuario.Text != null)
             {
                 for (int i = 0; i < dataGridViewUsuarios.Rows.Count - 1; i++)
                 {
@@ -40,6 +43,13 @@ namespace Programa
                         dataGridViewUsuarios.Rows[i].Visible = true;
                     }
                 }
+            }
+            }
+            catch (Exception ex)
+            {
+                string texto= "Error textBoxId_TextChanged: "+ ex.Message + ex.StackTrace;
+                interfazNucleo.RegistrarLog(texto,"Ha ocurrido un error");
+                MessageBox.Show();
             }
         }
 
@@ -67,8 +77,18 @@ namespace Programa
 
 
         private void ConsultarUsuario_Load(object sender, EventArgs e)
+        //carga la tabla de usuarios al iniciar
         {
-            ObtenerUsuarios();
+            try
+            {
+                ObtenerUsuarios();
+            }
+            catch (Exception ex)
+            {
+                string texto= "Error ConsultarUsuario_Load: "+ ex.Message + ex.StackTrace;
+                interfazNucleo.RegistrarLog(texto,"Ha ocurrido un error");
+                MessageBox.Show();
+            }
         }
 
         private void textBoxApellido_TextChanged(object sender, EventArgs e)
@@ -93,7 +113,9 @@ namespace Programa
 
         public void ObtenerUsuarios()//Este metodo carga la lista de usuario en la tabla
         {
-            IEnumerable<UsuarioSimple> usuarios = interfazNucleo.ObtenerUsuarios();//se le solicita la lista de usuarios al Nucleo del programa y se la almacena
+            try
+            {
+                IEnumerable<UsuarioSimple> usuarios = interfazNucleo.ObtenerUsuarios();//se le solicita la lista de usuarios al Nucleo del programa y se la almacena
             dataGridViewUsuarios.Rows.Clear();//limpiamos el contenido de la tabla
             foreach (var item in usuarios)//recorremos cada item de la lista y lo agregamos a la tabla
             {
@@ -121,11 +143,20 @@ namespace Programa
                     dataGridViewUsuarios.Rows[n].DefaultCellStyle.ForeColor = Color.White;
                 }
             }
+            }
+            catch (Exception ex)
+            {
+                string texto= "Error ObtenerUsuarios: "+ ex.Message + ex.StackTrace;
+                interfazNucleo.RegistrarLog(texto,"Ha ocurrido un error");
+                MessageBox.Show();
+            }
         }
 
         private void dataGridViewUsuarios_CellContentClick(object sender, DataGridViewCellEventArgs e)//este metodo se ejecuta cuando se hace click a una celda de la tabla
         {
-            if (e.RowIndex>=0)
+            try
+            {
+                if (e.RowIndex>=0)
             {
 
                 DataGridViewCell cell = (DataGridViewCell)dataGridViewUsuarios.Rows[e.RowIndex].Cells[e.ColumnIndex];
@@ -136,6 +167,13 @@ namespace Programa
                     this.Hide();
                     ventana.Show(this);
                 } 
+            }
+            }
+            catch (Exception ex)
+            {
+                string texto= "Error dataGridViewUsuarios_CellContentClick: "+ ex.Message + ex.StackTrace;
+                interfazNucleo.RegistrarLog(texto,"Ha ocurrido un error");
+                MessageBox.Show();
             }
         }
 
