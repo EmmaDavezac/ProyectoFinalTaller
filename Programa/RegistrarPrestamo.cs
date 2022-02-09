@@ -1,4 +1,4 @@
-﻿using Dominio;
+using Dominio;
 using Nucleo;
 using System;
 using System.Collections.Generic;
@@ -22,9 +22,19 @@ namespace Programa
         }
 
         private void RegistrarPrestamo_Load(object sender, EventArgs e)
+        //cargas las tablas del formulario al iniciar
         {
-            ObtenerLibros();//cargamos la lista de libros en la tabla de libros
-            ObtenerUsuarios();//cargamos la lista de usuarios simples en la tabla de usuarios simples
+            try
+            {
+             ObtenerLibros();//cargamos la lista de libros en la tabla de libros
+            ObtenerUsuarios();//cargamos la lista de usuarios simples en la tabla de usuarios simples   
+            }
+            catch (Exception ex)
+            {
+                string texto= "Error RegistrarPrestamo_Load: "+ ex.Message + ex.StackTrace;
+                interfazNucleo.RegistrarLog(texto,"Ha ocurrido un error");
+                MessageBox.Show();
+            }
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -34,7 +44,9 @@ namespace Programa
 
         private void textBoxTituloOISBNLibro_TextChanged(object sender, EventArgs e)//permite buscar un libro por titulo o isbn, se ejecuta cuando se modifica el texto de textBoxTituloOISBNLibro
         {
-            if (textBoxTituloOISBNLibro.Text != null)
+            try
+            {
+                if (textBoxTituloOISBNLibro.Text != null)
             {
                 for (int i = 0; i < dataGridViewLibros.Rows.Count - 1; i++)
                 {
@@ -52,6 +64,13 @@ namespace Programa
                     }
                 }
             }
+            }
+            catch (Exception ex)
+            {
+                string texto= "Error textBoxTituloOISBNLibro_TextChanged: "+ ex.Message + ex.StackTrace;
+                interfazNucleo.RegistrarLog(texto,"Ha ocurrido un error");
+                MessageBox.Show();
+            }
         }
 
         private void labelTitulo_Click(object sender, EventArgs e)
@@ -66,7 +85,9 @@ namespace Programa
 
         private void textBox7_TextChanged(object sender, EventArgs e)//permite buscar un libro por nombreUsuario, se ejecuta cuando se modifica el texto de textBoxTituloOISBNLibro
         {
-            if (textBoxNombreUsuario.Text != null)
+            try
+            {
+                if (textBoxNombreUsuario.Text != null)
             {
                 for (int i = 0; i < dataGridViewUsuarios.Rows.Count - 1; i++)
                 {
@@ -82,11 +103,20 @@ namespace Programa
                     
                 }
             }
+            }
+            catch (Exception ex)
+            {
+                string texto= "Error textBoxTituloOISBNLibro_TextChanged: "+ ex.Message + ex.StackTrace;
+                interfazNucleo.RegistrarLog(texto,"Ha ocurrido un error");
+                MessageBox.Show();
+            }
         }
 
         private void dataGridViewLibros_CellContentClick(object sender, DataGridViewCellEventArgs e)//se ejecuta cuando se presiona una celda de la tabla de libros
         {
-            if (e.RowIndex >= 0)
+            try
+            {
+                if (e.RowIndex >= 0)
             {
                 if (dataGridViewLibros.CurrentRow.Cells[5].Value != null)
                 {
@@ -99,11 +129,20 @@ namespace Programa
                     }
                 }
             }
+            }
+            catch (Exception ex)
+            {
+                string texto= "Error dataGridViewLibros_CellContentClick: "+ ex.Message + ex.StackTrace;
+                interfazNucleo.RegistrarLog(texto,"Ha ocurrido un error");
+                MessageBox.Show();
+            }
         }
 
         private void ObtenerLibros()//carga la lista de libros en la tabla de libros
         {
-            IEnumerable<Libro> libros = interfazNucleo.ObtenerLibros();
+            try
+            {
+                IEnumerable<Libro> libros = interfazNucleo.ObtenerLibros();
             dataGridViewLibros.Rows.Clear();
             foreach (var item in libros)
             {
@@ -124,11 +163,20 @@ namespace Programa
                 }
 
             }
+            }
+            catch (Exception ex)
+            {
+                string texto= "Error ObtenerLibros: "+ ex.Message + ex.StackTrace;
+                interfazNucleo.RegistrarLog(texto,"Ha ocurrido un error");
+                MessageBox.Show();
+            }
         }
 
         private void ObtenerUsuarios()//carga la lista de usuarios simples en la tabla de usuarios simples
         {
-            IEnumerable<UsuarioSimple> usuarios = interfazNucleo.ObtenerUsuarios();
+            try
+            {
+                IEnumerable<UsuarioSimple> usuarios = interfazNucleo.ObtenerUsuarios();
             dataGridViewUsuarios.Rows.Clear();
             foreach (var item in usuarios)
             {
@@ -143,15 +191,31 @@ namespace Programa
                     dataGridViewUsuarios.Rows[n].Cells[5].Value = item.Telefono;
                 }      
             }
+            }
+            catch (Exception ex)
+            {
+                string texto= "Error ObtenerUsuarios: "+ ex.Message + ex.StackTrace;
+                interfazNucleo.RegistrarLog(texto,"Ha ocurrido un error");
+                MessageBox.Show();
+            }
         }
 
         private void dataGridViewUsuarios_CellContentClick(object sender, DataGridViewCellEventArgs e)//se ejecuta cuando se presiona una celda de la tabla de usuarios y se muestran los datos del usuario en pantalla
         {
-            if (dataGridViewUsuarios.CurrentRow.Cells[0].Value != null)
+            try
+            {
+                if (dataGridViewUsuarios.CurrentRow.Cells[0].Value != null)
             {
                 textBoxNomUsuario.Text = dataGridViewUsuarios.CurrentRow.Cells[0].Value.ToString();
                 textBoxNombre.Text = dataGridViewUsuarios.CurrentRow.Cells[1].Value.ToString();
                 textBoxApellido.Text = dataGridViewUsuarios.CurrentRow.Cells[2].Value.ToString();
+            }
+            }
+            catch (Exception ex)
+            {
+                string texto= "Error dataGridViewUsuarios_CellContentClick: "+ ex.Message + ex.StackTrace;
+                interfazNucleo.RegistrarLog(texto,"Ha ocurrido un error");
+                MessageBox.Show();
             }
         }
 
@@ -162,7 +226,9 @@ namespace Programa
 
         private void buttonRegistrarPrestamo_Click(object sender, EventArgs e)//se ejecuta cuando se presiona el boton registrar prestamo, registra el prestamo y muestra un mensaje en pantalla
         {
-            if (!string.IsNullOrEmpty(textBoxNomUsuario.Text))//Los primeros tres if verifican que el usuario este seleccionado
+            try
+            {
+                if (!string.IsNullOrEmpty(textBoxNomUsuario.Text))//Los primeros tres if verifican que el usuario este seleccionado
             {
                 if (!string.IsNullOrEmpty(textBoxNombre.Text))
                 {
@@ -216,6 +282,13 @@ namespace Programa
             else
             {
                 MessageBox.Show("Seleccione un usuario!");
+            }
+            }
+            catch (Exception ex)
+            {
+                string texto= "Error buttonRegistrarPrestamo_Click: "+ ex.Message + ex.StackTrace;
+                interfazNucleo.RegistrarLog(texto,"Ha ocurrido un error");
+                MessageBox.Show();
             }
         }
 
