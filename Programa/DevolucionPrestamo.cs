@@ -142,7 +142,7 @@ namespace Programa
             }
             else
             {
-                MessageBox.Show("No selecciono el estado del ejemplar");
+                labelError.Text="No selecciono el estado del ejemplar";
             }
             }
             catch (Exception ex)

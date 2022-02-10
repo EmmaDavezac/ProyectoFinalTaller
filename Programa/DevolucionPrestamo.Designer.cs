@@ -47,6 +47,7 @@ namespace Programa
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.labelError = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // botonRegistrarDevolucion
@@ -57,7 +58,7 @@ namespace Programa
             this.botonRegistrarDevolucion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.botonRegistrarDevolucion.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.botonRegistrarDevolucion.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.botonRegistrarDevolucion.Location = new System.Drawing.Point(162, 205);
+            this.botonRegistrarDevolucion.Location = new System.Drawing.Point(161, 244);
             this.botonRegistrarDevolucion.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.botonRegistrarDevolucion.Name = "botonRegistrarDevolucion";
             this.botonRegistrarDevolucion.Size = new System.Drawing.Size(118, 23);
@@ -191,7 +192,7 @@ namespace Programa
             this.botonVolver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.botonVolver.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.botonVolver.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.botonVolver.Location = new System.Drawing.Point(372, 230);
+            this.botonVolver.Location = new System.Drawing.Point(370, 254);
             this.botonVolver.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.botonVolver.Name = "botonVolver";
             this.botonVolver.Size = new System.Drawing.Size(89, 23);
@@ -249,12 +250,22 @@ namespace Programa
             this.label5.TabIndex = 148;
             this.label5.Text = "ScoringDevolucion:";
             // 
+            // labelError
+            // 
+            this.labelError.AutoSize = true;
+            this.labelError.Location = new System.Drawing.Point(161, 213);
+            this.labelError.Name = "labelError";
+            this.labelError.Size = new System.Drawing.Size(35, 13);
+            this.labelError.TabIndex = 149;
+            this.labelError.Text = "label6";
+            // 
             // DevolucionPrestamo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(470, 260);
+            this.ClientSize = new System.Drawing.Size(470, 289);
+            this.Controls.Add(this.labelError);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -304,5 +315,6 @@ namespace Programa
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label labelError;
     }
 }
