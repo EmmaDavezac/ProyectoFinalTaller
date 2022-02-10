@@ -11,7 +11,7 @@ namespace Programa
     public partial class RegistrarLibro : Form//La finalidad de este formulario es la de permitir registrar un nuevo libro
     {
         private string NombreUsuario { get; set; }//Aqui se almacena el nombre de usuario del administrador que esta usando el programa
-        private FachadaNucleo fachadaNucleo = new FachadaNucleo();//Instancia del nucleo del programa que nos permite acceder a las funciones del mismo
+        private FachadaNucleo interfazNucleo = new FachadaNucleo();//Instancia del nucleo del programa que nos permite acceder a las funciones del mismo
         public RegistrarLibro(string pNombreUsuario)//Constructor de la clase
         {
             InitializeComponent();
@@ -28,13 +28,13 @@ namespace Programa
                 textBoxTitulo.Text = dataGridViewTituloYAutor.CurrentRow.Cells[0].Value.ToString();//se muestra en pantalla el titulo del libro seleccionado
                 textBoxAutor.Text = dataGridViewTituloYAutor.CurrentRow.Cells[1].Value.ToString();//se muestra en pantalla el nombre del autor del libro seleccionado
                 buttonBorrarDatos.Enabled = true;//se activa el boton borrar datos
-                List<string> isbns = fachadaNucleo.TransformarISBNsALista(dataGridViewTituloYAutor.CurrentRow.Cells[3].Value.ToString());
+                List<string> isbns = interfazNucleo.TransformarISBNsALista(dataGridViewTituloYAutor.CurrentRow.Cells[3].Value.ToString());
                 foreach (var item in isbns)//se cargan los isbns del libro seleccionado en la tabla de isbns
                 {
                     int n = dataGridViewISBN.Rows.Add();
                     dataGridViewISBN.Rows[n].Cells[0].Value = item;
                 }
-                List<string> años = fachadaNucleo.TransformarAñosALista(dataGridViewTituloYAutor.CurrentRow.Cells[2].Value.ToString());
+                List<string> años = interfazNucleo.TransformarAñosALista(dataGridViewTituloYAutor.CurrentRow.Cells[2].Value.ToString());
                 foreach (var item in años)//se cargan los años de publicacion del libro seleccionado en la tabla de años
                 {
                     int n = dataGridViewAños.Rows.Add();
@@ -54,12 +54,12 @@ namespace Programa
             {
                 int resultado = 0;
                 dataGridViewTituloYAutor.Rows.Clear();//se limpia la tabla de libros
-                List<Libro> resultados = fachadaNucleo.ListarLibrosDeAPIPorCoincidencia(textBoxBuscar.Text);//se realiza la consulta a Open Library y se almacena la lista de libros
+                List<Libro> resultados = interfazNucleo.ListarLibrosDeAPIPorCoincidencia(textBoxBuscar.Text);//se realiza la consulta a Open Library y se almacena la lista de libros
                 foreach (var item in resultados)//se carga cada uno de los resultados en la tabla de libros
                 {
                     int n = dataGridViewTituloYAutor.Rows.Add();
                     dataGridViewTituloYAutor.Rows[n].Cells[0].Value = item.Titulo;
-                    dataGridViewTituloYAutor.Rows[n].Cells[1].Value = fachadaNucleo.SacarAutorDeLaLista(item.Autor);
+                    dataGridViewTituloYAutor.Rows[n].Cells[1].Value = interfazNucleo.SacarAutorDeLaLista(item.Autor);
                     dataGridViewTituloYAutor.Rows[n].Cells[2].Value = item.AñoPublicacion;
                     dataGridViewTituloYAutor.Rows[n].Cells[3].Value = item.ISBN;
                     resultado += 1;
@@ -99,7 +99,7 @@ namespace Programa
             if (!string.IsNullOrEmpty(textBoxTitulo.Text) && !string.IsNullOrEmpty(textBoxAutor.Text) && !string.IsNullOrEmpty(textBoxISBN.Text) && !string.IsNullOrEmpty(textBoxAñoPublicacion.Text) && !string.IsNullOrEmpty(textBoxCantidadEjemplares.Text))
             //se verifica que se haya ingresado toda la informacion necesaria
             {
-                resultado = fachadaNucleo.AñadirLibro(textBoxISBN.Text, textBoxTitulo.Text, textBoxAutor.Text, textBoxAñoPublicacion.Text, Convert.ToInt32(textBoxCantidadEjemplares.Text));
+                resultado = interfazNucleo.AñadirLibro(textBoxISBN.Text, textBoxTitulo.Text, textBoxAutor.Text, textBoxAñoPublicacion.Text, Convert.ToInt32(textBoxCantidadEjemplares.Text));
                 //se registra el libro en la base de datos
                 if (resultado == true)
                 {
@@ -121,8 +121,8 @@ namespace Programa
            catch (Exception ex)
             {
                 string texto= "Error buttonAñadirLibro_Click: "+ ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto,"Ha ocurrido un error");
-                MessageBox.Show();
+                interfazNucleo.RegistrarLog(texto);
+                MessageBox.Show(texto, "Ha ocurrido un error");
             }
         }
 
@@ -215,8 +215,8 @@ namespace Programa
             catch (Exception ex)
             {
                 string texto= "Error dataGridViewISBN_CellContentClick: "+ ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto,"Ha ocurrido un error");
-                MessageBox.Show();
+                interfazNucleo.RegistrarLog(texto);
+                MessageBox.Show(texto, "Ha ocurrido un error");
             }
         }
 
@@ -236,8 +236,8 @@ namespace Programa
             catch (Exception ex)
             {
                 string texto= "Error dataGridViewAños_CellContentClick: "+ ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto,"Ha ocurrido un error");
-                MessageBox.Show();
+                interfazNucleo.RegistrarLog(texto);
+                MessageBox.Show(texto,"Ha ocurrido un error");
             }
         }
 
@@ -263,8 +263,8 @@ namespace Programa
             catch (Exception ex)
             {
                 string texto= "Error textBoxSeleccionarISBN_TextChanged: "+ ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto,"Ha ocurrido un error");
-                MessageBox.Show();
+                interfazNucleo.RegistrarLog(texto);
+                MessageBox.Show(texto, "Ha ocurrido un error");
             }
         }
 
@@ -290,8 +290,8 @@ namespace Programa
             catch (Exception ex)
             {
                 string texto= "Error textBoxSelccionarAño_TextChanged: "+ ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto,"Ha ocurrido un error");
-                MessageBox.Show();
+                interfazNucleo.RegistrarLog(texto);
+                MessageBox.Show(texto, "Ha ocurrido un error");
             }
         }
 
@@ -320,8 +320,8 @@ namespace Programa
             catch (Exception ex)
             {
                 string texto= "Error VerificarVentanaPadre: "+ ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto,"Ha ocurrido un error");
-                MessageBox.Show();
+                interfazNucleo.RegistrarLog(texto);
+                MessageBox.Show(texto, "Ha ocurrido un error");
             }
         }
 
@@ -329,7 +329,7 @@ namespace Programa
         {
            try
            {
-            var libro = fachadaNucleo.ObtenerLibro(idLibro);
+            var libro = interfazNucleo.ObtenerLibro(idLibro);
             textBoxAutor.Text = libro.Autor;
             textBoxAñoPublicacion.Text = libro.AñoPublicacion;
             textBoxISBN.Text = libro.ISBN;
@@ -340,8 +340,8 @@ namespace Programa
            catch (Exception ex)
             {
                 string texto= "Error InicializarLibro: "+ ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto,"Ha ocurrido un error");
-                MessageBox.Show();
+                interfazNucleo.RegistrarLog(texto);
+                MessageBox.Show(texto, "Ha ocurrido un error");
             }
         }
         private void buttonActualizar_Click(object sender, EventArgs e)
@@ -366,8 +366,8 @@ namespace Programa
             catch (Exception ex)
             {
                 string texto= "Error buttonActualizar_Click: "+ ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto,"Ha ocurrido un error");
-                MessageBox.Show();
+                interfazNucleo.RegistrarLog(texto);
+                MessageBox.Show(texto, "Ha ocurrido un error");
             }
         }
 

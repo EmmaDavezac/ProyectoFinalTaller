@@ -48,8 +48,8 @@ namespace Programa
             catch (Exception ex)
             {
                 string texto= "Error textBoxId_TextChanged: "+ ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto,"Ha ocurrido un error");
-                MessageBox.Show();
+                interfazNucleo.RegistrarLog(texto);
+                MessageBox.Show(texto, "Ha ocurrido un error");
             }
         }
 
@@ -86,8 +86,8 @@ namespace Programa
             catch (Exception ex)
             {
                 string texto= "Error ConsultarUsuario_Load: "+ ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto,"Ha ocurrido un error");
-                MessageBox.Show();
+                interfazNucleo.RegistrarLog(texto);
+                MessageBox.Show(texto, "Ha ocurrido un error");
             }
         }
 
@@ -147,8 +147,8 @@ namespace Programa
             catch (Exception ex)
             {
                 string texto= "Error ObtenerUsuarios: "+ ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto,"Ha ocurrido un error");
-                MessageBox.Show();
+                interfazNucleo.RegistrarLog(texto);
+                MessageBox.Show(texto, "Ha ocurrido un error");
             }
         }
 
@@ -172,8 +172,8 @@ namespace Programa
             catch (Exception ex)
             {
                 string texto= "Error dataGridViewUsuarios_CellContentClick: "+ ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto,"Ha ocurrido un error");
-                MessageBox.Show();
+                interfazNucleo.RegistrarLog(texto);
+                MessageBox.Show(texto, "Ha ocurrido un error");
             }
         }
 

@@ -5,7 +5,7 @@ namespace Programa
     public partial class Login : Form
     //esta ventana tiene la funcion de controlar el inicio de sesion del programa ,validando los datos del usuario que pretende usarlo
     {
-
+        Nucleo.FachadaNucleo interfazNucleo = new Nucleo.FachadaNucleo();//instancia del nucleo que nos permite utilizar las funcionalidades del mismo
         public Login()//constructor de la clase
         {
 
@@ -34,17 +34,17 @@ namespace Programa
             {
                 if (!string.IsNullOrEmpty(textBoxContraseña.Text))//verifica que se haya ingresado la contraseña
                 {
-                    Nucleo.FachadaNucleo fachada = new Nucleo.FachadaNucleo();
+                    
                     if (new Nucleo.FachadaNucleo().ObtenerAdministrador(textBoxNombreUsuario.Text) != null)//verificamos que el usuario exista
                     {
-                        if (fachada.ObtenerAdministrador(textBoxNombreUsuario.Text).Baja == false)//verificamos que el usuario no este dado de baja
+                        if (interfazNucleo.ObtenerAdministrador(textBoxNombreUsuario.Text).Baja == false)//verificamos que el usuario no este dado de baja
                         {
-                            if (textBoxContraseña.Text != null && fachada.VerficarContraseña(textBoxNombreUsuario.Text, textBoxContraseña.Text))
+                            if (textBoxContraseña.Text != null && interfazNucleo.VerficarContraseña(textBoxNombreUsuario.Text, textBoxContraseña.Text))
                             //verificamos que la contraseña ingresada corresponda con la del usuario ingresado
                             {
                                 MenuPrincipal ventanaMenu = new MenuPrincipal(textBoxNombreUsuario.Text);//creamos una instancia de menuprincipal
                                 ventanaMenu.Show();//abrimos el formulario
-                                fachada.RegistrarLog("Sesion iniciada (Usuario: "+textBoxNombreUsuario.Text+")");//registramos el inicio de sesion en la bitacora
+                                interfazNucleo.RegistrarLog("Sesion iniciada (Usuario: "+textBoxNombreUsuario.Text+")");//registramos el inicio de sesion en la bitacora
                                 this.Hide();//ocultamos esta ventana
                             }
                             else { labelError.Text = "Error, la contraseña ingresada es incorrecta "; botonIniciarSesion.Enabled = false; textBoxContraseña.Focus(); }
@@ -67,8 +67,8 @@ namespace Programa
             catch (Exception ex)
             {
                 string texto= "Error botonIniciarSesion_Click: "+ ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto,"Ha ocurrido un error");
-                MessageBox.Show();
+                interfazNucleo.RegistrarLog(texto);
+                MessageBox.Show(texto, "Ha ocurrido un error");
             }
         }
 

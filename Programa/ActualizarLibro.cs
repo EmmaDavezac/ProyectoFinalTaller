@@ -48,8 +48,8 @@ namespace Programa
             catch (Exception ex)
             {
                 string texto= "Error buttonDeshacerCambios_Click: "+ ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto,"Ha ocurrido un error");
-                MessageBox.Show();
+                interfazNucleo.RegistrarLog(texto);
+                MessageBox.Show(texto, "Ha ocurrido un error");
             }
         }
 
@@ -158,8 +158,8 @@ namespace Programa
             catch (Exception ex)
                 {
                 string texto= "Error al actualizar libro: "+ ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto,"Ha ocurrido un error");
-                MessageBox.Show();
+                interfazNucleo.RegistrarLog(texto);
+                MessageBox.Show(texto, "Ha ocurrido un error");
                 }
         }
 
@@ -204,8 +204,8 @@ namespace Programa
             catch (Exception ex)
                 {
                 string texto= "Error buttonBusquedaAvanzada_Click: "+ ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto,"Ha ocurrido un error");
-                MessageBox.Show();
+                interfazNucleo.RegistrarLog(texto);
+                MessageBox.Show(texto, "Ha ocurrido un error");
                 }
         }
 
@@ -254,8 +254,8 @@ namespace Programa
             catch (Exception ex)
                 {
                 string texto= "Error InicializarLibro: "+ ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto,"Ha ocurrido un error");
-                MessageBox.Show();
+                interfazNucleo.RegistrarLog(texto);
+                MessageBox.Show(texto, "Ha ocurrido un error");
                 }
         }
 
@@ -278,8 +278,8 @@ namespace Programa
             catch (Exception ex)
                 {
                 string texto= "Error buttonAñadirEjemplares_Click: "+ ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto,"Ha ocurrido un error");
-                MessageBox.Show();
+                interfazNucleo.RegistrarLog(texto);
+                MessageBox.Show(texto, "Ha ocurrido un error");
                 }
         }
 
@@ -312,8 +312,8 @@ namespace Programa
             catch (Exception ex)
                 {
                 string texto= "Error buttonEliminarEjemplares_Click: "+ ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto,"Ha ocurrido un error");
-                MessageBox.Show();
+                interfazNucleo.RegistrarLog(texto);
+                MessageBox.Show(texto, "Ha ocurrido un error");
                 }
         }
 
@@ -366,8 +366,8 @@ namespace Programa
             catch (Exception ex)
                 {
                 string texto= "Error checkBoxBaja_CheckedChanged: "+ ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto,"Ha ocurrido un error");
-                MessageBox.Show();
+                interfazNucleo.RegistrarLog(texto);
+                MessageBox.Show(texto, "Ha ocurrido un error");
                 }
         }
 

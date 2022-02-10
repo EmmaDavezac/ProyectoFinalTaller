@@ -81,8 +81,8 @@ namespace Programa
            catch (Exception ex)
             {
                 string texto= "Error InicializarDevolucion: "+ ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto,"Ha ocurrido un error");
-                MessageBox.Show();
+                interfazNucleo.RegistrarLog(texto);
+                MessageBox.Show(texto, "Ha ocurrido un error");
             }
         }
 
@@ -123,8 +123,8 @@ namespace Programa
             catch (Exception ex)
             {
                 string texto= "Error comboBoxEstadoEjemplar_SelectedIndexChanged: "+ ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto,"Ha ocurrido un error");
-                MessageBox.Show();
+                interfazNucleo.RegistrarLog(texto);
+                MessageBox.Show(texto, "Ha ocurrido un error");
             }
         }
 
@@ -148,8 +148,8 @@ namespace Programa
             catch (Exception ex)
             {
                 string texto= "Error botonRegistrarDevolucion_Click: "+ ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto,"Ha ocurrido un error");
-                MessageBox.Show();
+                interfazNucleo.RegistrarLog(texto);
+                MessageBox.Show(texto, "Ha ocurrido un error");
             }
         }
 

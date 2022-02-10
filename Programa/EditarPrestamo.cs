@@ -32,8 +32,8 @@ namespace Programa
            catch (Exception ex)
             {
                 string texto= "Error buttonModificarFechas_Click: "+ ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto,"Ha ocurrido un error");
-                MessageBox.Show();
+                interfazNucleo.RegistrarLog(texto);
+                MessageBox.Show(texto, "Ha ocurrido un error");
             }
         }
 
@@ -53,8 +53,8 @@ namespace Programa
             catch (Exception ex)
             {
                 string texto= "Error InicialiarEditarPrestamo: "+ ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto,"Ha ocurrido un error");
-                MessageBox.Show();
+                interfazNucleo.RegistrarLog(texto);
+                MessageBox.Show(texto, "Ha ocurrido un error");
             }
         }
     }

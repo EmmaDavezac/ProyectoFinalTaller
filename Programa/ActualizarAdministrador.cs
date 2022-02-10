@@ -121,14 +121,14 @@ namespace Programa
         catch (Exception ex)
         {
         string texto= "Error al actualizar el usuario: "+ ex.Message + ex.StackTrace;
-        interfazNucleo.RegistrarLog(texto,"Ha ocurrido un error");
-        MessageBox.Show();
+        interfazNucleo.RegistrarLog(texto);
+        MessageBox.Show(texto, "Ha ocurrido un error");
          
         }
         }
 
         private void ActualizarAdministrador_Load(object sender, EventArgs e)
-        
+        { 
         }
 
         private void textBoxNombre_TextChanged(object sender, EventArgs e)
@@ -190,8 +190,8 @@ namespace Programa
             catch (Exception ex)
                 {
                 string texto= "Error al Cargar Administrador Existente: "+ ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto,"Ha ocurrido un error");
-                MessageBox.Show();
+                interfazNucleo.RegistrarLog(texto);
+                MessageBox.Show(texto, "Ha ocurrido un error");
                 }
         }
 
@@ -205,8 +205,8 @@ namespace Programa
             catch (Exception ex)
                 {
                 string texto= "Error button Modificar Contraseña(: "+ ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto,"Ha ocurrido un error");
-                MessageBox.Show();
+                interfazNucleo.RegistrarLog(texto);
+                MessageBox.Show(texto, "Ha ocurrido un error");
                 }
         }
 
@@ -254,8 +254,8 @@ namespace Programa
             
              {
                 string texto= "Error checkBoxBaja_CheckedChanged: "+ ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto,"Ha ocurrido un error");
-                MessageBox.Show();
+                interfazNucleo.RegistrarLog(texto);
+                MessageBox.Show(texto, "Ha ocurrido un error");
             }
         }
 

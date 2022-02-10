@@ -67,9 +67,9 @@ namespace Programa
             }
             catch (Exception ex)
             {
-                string texto= "Error button2_Click: "+ ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto,"Ha ocurrido un error");
-                MessageBox.Show();
+                string texto= "Error button2_Click (Actualizar contraseña): "+ ex.Message + ex.StackTrace;
+                interfazNucleo.RegistrarLog(texto);
+                MessageBox.Show(texto, "Ha ocurrido un error");
             }
         }
 

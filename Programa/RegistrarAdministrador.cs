@@ -177,8 +177,8 @@ namespace Programa
             catch (Exception ex)
             {
                 string texto= "Error buttonRegistrarAdministrador_Click: "+ ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto,"Ha ocurrido un error");
-                MessageBox.Show();
+                interfazNucleo.RegistrarLog(texto);
+                MessageBox.Show(texto, "Ha ocurrido un error");
             }
         }
 
