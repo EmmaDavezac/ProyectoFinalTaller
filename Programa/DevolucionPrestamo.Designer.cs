@@ -77,6 +77,7 @@ namespace Programa
             // 
             // comboBoxEstadoEjemplar
             // 
+            this.comboBoxEstadoEjemplar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxEstadoEjemplar.FormattingEnabled = true;
             this.comboBoxEstadoEjemplar.Items.AddRange(new object[] {
             "Bueno",
