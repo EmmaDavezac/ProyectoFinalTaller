@@ -133,7 +133,7 @@ namespace Programa
         {
             try
             {
-                if (modificado == true)
+                if (modificado == true && comboBoxEstadoEjemplar.SelectedIndex!=0)
             {
                 interfazNucleo.RegistrarDevolucion(idPrestamo, comboBoxEstadoEjemplar.Text);
                 MessageBox.Show("La devolucion se registro correctamente");
@@ -142,7 +142,7 @@ namespace Programa
             }
             else
             {
-                labelError.Text="No selecciono el estado del ejemplar";
+                MessageBox.Show("No selecciono el estado del ejemplar","Error");
             }
             }
             catch (Exception ex)

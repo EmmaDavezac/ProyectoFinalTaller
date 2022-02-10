@@ -47,7 +47,6 @@ namespace Programa
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.labelError = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // botonRegistrarDevolucion
@@ -250,22 +249,12 @@ namespace Programa
             this.label5.TabIndex = 148;
             this.label5.Text = "ScoringDevolucion:";
             // 
-            // labelError
-            // 
-            this.labelError.AutoSize = true;
-            this.labelError.Location = new System.Drawing.Point(161, 213);
-            this.labelError.Name = "labelError";
-            this.labelError.Size = new System.Drawing.Size(35, 13);
-            this.labelError.TabIndex = 149;
-            this.labelError.Text = "label6";
-            // 
             // DevolucionPrestamo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(470, 289);
-            this.Controls.Add(this.labelError);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -315,6 +304,5 @@ namespace Programa
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label labelError;
     }
 }
