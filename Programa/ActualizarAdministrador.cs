@@ -2,6 +2,7 @@ using Nucleo;
 using System;
 using System.Linq;
 using System.Windows.Forms;
+using UtilidadesPresentacion;
 
 namespace Programa
 {
@@ -9,6 +10,7 @@ namespace Programa
     {
         FachadaNucleo interfazNucleo = new FachadaNucleo();//Instancia de la fachada del nucleo para realizar operaciones dentro del dominio
         public string contraseñaNueva;//Variable para guardar la contraseña nueva
+        private BibliotecaUtilidadesPresentacion utilidades = new BibliotecaUtilidadesPresentacion();
         private string nombreUsuario { get; set; }
         public ActualizarAdministrador(string pNombreUsuario)//Inicializamos los datos del administrador actual que se van a mostrar en la interfaz
         {
@@ -34,7 +36,7 @@ namespace Programa
                     {
                         if (DateTime.Now.Year - dateTimePickerFechaNacimiento.Value.Date.Year >= 18 && DateTime.Now.Year - dateTimePickerFechaNacimiento.Value.Date.Year <= 120)//Verifica que la edad del administrador este entre los 18 y 120 años
                         {
-                            if (!string.IsNullOrEmpty(textBoxMail.Text) && interfazNucleo.EsUnEmailValido(textBoxMail.Text))//Verifica que el mail no este vacio y que sea un mail en un formato valido.
+                            if (!string.IsNullOrEmpty(textBoxMail.Text) && utilidades.EsUnEmailValido(textBoxMail.Text))//Verifica que el mail no este vacio y que sea un mail en un formato valido.
                             {
                                 if (!string.IsNullOrEmpty(textBoxTelefono.Text) && textBoxTelefono.Text.All(Char.IsDigit) && textBoxTelefono.Text.Length >= 8 && textBoxTelefono.Text.Length <= 11)//Verifica que el numero de telefono no este vacio, que todos sus valores sean digitos, y que su longitud este entre 8 y 11 digitos.
                                 {

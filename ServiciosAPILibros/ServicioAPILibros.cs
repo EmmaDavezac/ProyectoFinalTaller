@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace ServiciosAPILibros
 {
-    public class FachadaAPILibros//Fachada de la libreria
+    public class ServicioAPILibros//Fachada de la libreria
     {
         static string[] implementacionesAPILibros = new string[] { "OpenLibrary" };//Lista de implementaciones disponibles de la interface
         static private string implementacionAPILibros = implementacionesAPILibros[0];//implementacion que usaremos
@@ -21,4 +21,5 @@ namespace ServiciosAPILibros
         { return GetIServiciosAPILibros(implementacionAPILibros).ListaPorCoincidecia(unaCadena); }
 
     }
+
 }

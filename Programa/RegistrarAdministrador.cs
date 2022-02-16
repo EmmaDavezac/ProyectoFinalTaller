@@ -2,6 +2,7 @@ using Nucleo;
 using System;
 using System.Linq;
 using System.Windows.Forms;
+using UtilidadesPresentacion;
 
 namespace Programa
 {
@@ -10,6 +11,7 @@ namespace Programa
     {
         private string nombreUsuario { get; set; }//Aqui se almacena el nombre de usuario del administrador que esta usando el programa
         private FachadaNucleo interfazNucleo = new FachadaNucleo();//Instancia del nucleo del programa que nos permite acceder a las funciones del mismo
+        private BibliotecaUtilidadesPresentacion utilidades = new BibliotecaUtilidadesPresentacion();
         public RegistrarAdministrador(string pNombreUsuario)//Constructor 
         {
             InitializeComponent();
@@ -85,7 +87,7 @@ namespace Programa
                         { 
                             if (DateTime.Now.Year - dateTimePickerFechaNacimiento.Value.Date.Year >= 18 && DateTime.Now.Year - dateTimePickerFechaNacimiento.Value.Date.Year <= 120)//Verifica que la edad del administrador este entre los 18 y 120 años
                             {
-                                if (!string.IsNullOrEmpty(textBoxMail.Text) && interfazNucleo.EsUnEmailValido(textBoxMail.Text))//se verifica que se haya ingresado el mail y tenga el formato correcto
+                                if (!string.IsNullOrEmpty(textBoxMail.Text) && utilidades.EsUnEmailValido(textBoxMail.Text))//se verifica que se haya ingresado el mail y tenga el formato correcto
                                 {
                                     if (!string.IsNullOrEmpty(textBoxTelefono.Text) && textBoxTelefono.Text.All(Char.IsDigit) && textBoxTelefono.Text.Length >= 8 && textBoxTelefono.Text.Length <= 11)
                                     //se verifica que se haya ingresado numero de telefono y tenga el formato correcto

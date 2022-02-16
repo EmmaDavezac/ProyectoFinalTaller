@@ -3,7 +3,7 @@ using Nucleo;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-
+using UtilidadesPresentacion;
 
 
 namespace Programa
@@ -12,6 +12,7 @@ namespace Programa
     {
         private string NombreUsuario { get; set; }//Aqui se almacena el nombre de usuario del administrador que esta usando el programa
         private FachadaNucleo interfazNucleo = new FachadaNucleo();//Instancia del nucleo del programa que nos permite acceder a las funciones del mismo
+        private BibliotecaUtilidadesPresentacion utilidades = new BibliotecaUtilidadesPresentacion();
         public RegistrarLibro(string pNombreUsuario)//Constructor de la clase
         {
             InitializeComponent();
@@ -28,13 +29,13 @@ namespace Programa
                 textBoxTitulo.Text = dataGridViewTituloYAutor.CurrentRow.Cells[0].Value.ToString();//se muestra en pantalla el titulo del libro seleccionado
                 textBoxAutor.Text = dataGridViewTituloYAutor.CurrentRow.Cells[1].Value.ToString();//se muestra en pantalla el nombre del autor del libro seleccionado
                 buttonBorrarDatos.Enabled = true;//se activa el boton borrar datos
-                List<string> isbns = interfazNucleo.TransformarISBNsALista(dataGridViewTituloYAutor.CurrentRow.Cells[3].Value.ToString());
+                List<string> isbns = utilidades.TransformarISBNsALista(dataGridViewTituloYAutor.CurrentRow.Cells[3].Value.ToString());
                 foreach (var item in isbns)//se cargan los isbns del libro seleccionado en la tabla de isbns
                 {
                     int n = dataGridViewISBN.Rows.Add();
                     dataGridViewISBN.Rows[n].Cells[0].Value = item;
                 }
-                List<string> años = interfazNucleo.TransformarAñosALista(dataGridViewTituloYAutor.CurrentRow.Cells[2].Value.ToString());
+                List<string> años = utilidades.TransformarAñosALista(dataGridViewTituloYAutor.CurrentRow.Cells[2].Value.ToString());
                 foreach (var item in años)//se cargan los años de publicacion del libro seleccionado en la tabla de años
                 {
                     int n = dataGridViewAños.Rows.Add();
@@ -59,7 +60,7 @@ namespace Programa
                 {
                     int n = dataGridViewTituloYAutor.Rows.Add();
                     dataGridViewTituloYAutor.Rows[n].Cells[0].Value = item.Titulo;
-                    dataGridViewTituloYAutor.Rows[n].Cells[1].Value = interfazNucleo.SacarAutorDeLaLista(item.Autor);
+                    dataGridViewTituloYAutor.Rows[n].Cells[1].Value = utilidades.SacarAutorDeLaLista(item.Autor);
                     dataGridViewTituloYAutor.Rows[n].Cells[2].Value = item.AñoPublicacion;
                     dataGridViewTituloYAutor.Rows[n].Cells[3].Value = item.ISBN;
                     resultado += 1;

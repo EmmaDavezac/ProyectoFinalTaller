@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using System.Windows.Forms;
 using Nucleo;
+using UtilidadesPresentacion;
 
 namespace Programa
 {
@@ -9,6 +10,8 @@ namespace Programa
     {
         FachadaNucleo interfazNucleo = new FachadaNucleo();
         private string nombreUsuario { get; set; }
+
+        private BibliotecaUtilidadesPresentacion utilidades = new BibliotecaUtilidadesPresentacion();
         public ActualizarUsuario(string pNombreUsuario)
         {
             InitializeComponent();
@@ -33,7 +36,7 @@ namespace Programa
                         {
                         if (DateTime.Now.Year - dateTimePickerFechaNacimiento.Value.Date.Year >= 12 && DateTime.Now.Year - dateTimePickerFechaNacimiento.Value.Date.Year <= 120)
                         {
-                            if (!string.IsNullOrEmpty(textBoxMail.Text) && interfazNucleo.EsUnEmailValido(textBoxMail.Text))
+                            if (!string.IsNullOrEmpty(textBoxMail.Text) && utilidades.EsUnEmailValido(textBoxMail.Text))
                             {
                                 if (!string.IsNullOrEmpty(textBoxTelefono.Text) && textBoxTelefono.Text.All(Char.IsDigit) && textBoxTelefono.Text.Length >= 8 && textBoxTelefono.Text.Length <= 11)
                                 {

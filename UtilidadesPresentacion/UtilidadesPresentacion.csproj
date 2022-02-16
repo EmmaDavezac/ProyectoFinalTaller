@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9D0C5A72-B749-4212-A08B-D502B4052561}</ProjectGuid>
+    <ProjectGuid>{85D69DCD-0DC9-4B30-8EBD-7AA2A8BB7F4A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>NotificacionAUsuario</RootNamespace>
-    <AssemblyName>NotificacionAUsuario</AssemblyName>
+    <RootNamespace>UtilidadesPresentacion</RootNamespace>
+    <AssemblyName>UtilidadesPresentacion</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -41,16 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EnviarMailOutlook.cs" />
-    <Compile Include="INotificarUsuario.cs" />
-    <Compile Include="ServicioNotificarUsuario.cs" />
+    <Compile Include="BibliotecaUtilidadesPresentacion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Dominio\Dominio.csproj">
-      <Project>{4f50181b-4c40-4f3f-b222-c591aee95853}</Project>
-      <Name>Dominio</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

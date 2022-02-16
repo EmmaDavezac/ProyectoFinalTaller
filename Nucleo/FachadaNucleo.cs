@@ -17,9 +17,9 @@ namespace Nucleo
     public class FachadaNucleo//Fachada principal del nucleo programa que nos permite usar las funciones del programa sin dar a conocer como funcionan por dentro
     {
         //Instancia de la fachada de la libreria DAL
-        private FachadaAPILibros interfazAPILibros = new FachadaAPILibros();
+        private ServicioAPILibros interfazAPILibros = new ServicioAPILibros();
         //Instancia de la fachada de la libreria ServiciosAPILibros
-        private FachadaNotificarUsuario interfazNotificarUsuario = new FachadaNotificarUsuario();
+        private ServicioNotificarUsuario interfazNotificarUsuario = new ServicioNotificarUsuario();
         //Instancia de la fachada de la libreria NotificacionUsuario
         static private string[] implementacionesBase = new string[] { "ConnectionSQLServerLocal", "ConnectionSQLServerHosting" };//Distintas implementaciones para la base de datos, en este caso ambas son base de datos de MSSQL, una en una base de datos local y otra en internet
         static private string implementacionBase = implementacionesBase[1];
@@ -632,9 +632,6 @@ namespace Nucleo
             }
 
         }
-
-
-
         public bool VerficarContraseña(string pNombreUsuario, string contraseña)
     //permite verificar que la combinacion NombreUsuario-Contraseña sea correcta
     {
@@ -786,28 +783,8 @@ namespace Nucleo
     public List<Libro> ListarLibrosDeAPIPorCoincidencia(string unaCadena)//realiza un busqueda en la api de libros y devuelve una lista de libros
     { return interfazAPILibros.ListarLibrosDeAPIPorCoincidencia(unaCadena); }
 
-   
-        public bool EsUnEmailValido(string email)//indica si una cadena tiene el formato de mail valido
-        {
-            try
-            {
-                var addr = new System.Net.Mail.MailAddress(email);
-                return addr.Address == email;
-            }
-            catch
-            {
-                return false;
-            }
-        }
-
-        private void NotificarProximoAVencer(string pNombreUsuario,string titulo,string fechaLimite)//notifica a un usuario que su prestamo esta proximo a vencer
-    {
-        RegistrarLog(interfazNotificarUsuario.NotificarProximoAVencer(ObtenerUsuario(pNombreUsuario), titulo, fechaLimite));
-    }
-    private void NotificarRetraso(string pNombreUsuario,string titulo,string fechaLimite)//notifica a un usuario que su prestamo esta retrasado
-    {
-        RegistrarLog(interfazNotificarUsuario.NotificarRetraso(ObtenerUsuario(pNombreUsuario), titulo, fechaLimite));
-    }
+        
+    
     public string MayusculaPrimeraLetra(string source)//transforma en mayuscula la primer letra de la cadena
     {
         if (string.IsNullOrEmpty(source))
@@ -821,7 +798,11 @@ namespace Nucleo
     }
     public void NotificarPrestamosProximosAVencer()//notifica a todos los usuarios con prestamos proximos a vencer
     {
-        foreach (var item in ObtenerListadePrestamosProximosAVencerse())
+            void NotificarProximoAVencer(string pNombreUsuario, string titulo, string fechaLimite)//notifica a un usuario que su prestamo esta proximo a vencer
+            {
+                RegistrarLog(interfazNotificarUsuario.NotificarProximoAVencer(ObtenerUsuario(pNombreUsuario), titulo, fechaLimite));
+            }
+            foreach (var item in ObtenerListadePrestamosProximosAVencerse())
         {
             UsuarioSimple usuario = ObtenerUsuarioDePrestamo(item.Id);
             Libro libro = ObtenerLibro(item.idLibro);
@@ -829,82 +810,17 @@ namespace Nucleo
         }
     }
 
-    private void NotificarPrestamosRetrasados()//notifica a todos los usuarios con prestamos retrasados
+    public void NotificarPrestamosRetrasados()//notifica a todos los usuarios con prestamos retrasados
     {
-        foreach (var item in ObtenerListadePrestamosRetrasados())
+            void NotificarRetraso(string pNombreUsuario, string titulo, string fechaLimite)//notifica a un usuario que su prestamo esta retrasado
+            {
+                RegistrarLog(interfazNotificarUsuario.NotificarRetraso(ObtenerUsuario(pNombreUsuario), titulo, fechaLimite));
+            }
+            foreach (var item in ObtenerListadePrestamosRetrasados())
         {
             UsuarioSimple usuario = ObtenerUsuarioDePrestamo(item.Id);
                 Libro libro = ObtenerLibro(item.idLibro);
                 NotificarRetraso(usuario.NombreUsuario, libro.Titulo, item.FechaLimite);
-        }
-    }
-
-    public List<string> TransformarISBNsALista(string pLista)//Transforma el campo isbns de un libro ofrecido por la api de libros en una lista de isbn
-    {
-        string palabra = "";
-        int contador = 0;
-        List<string> resultadoIntermedio = new List<string>();
-        List<string> resultado = new List<string>();
-        for (int i = 0; i < pLista.Length; i++)
-        {
-            if (pLista.Substring(i, 1) == "[" || pLista.Substring(i, 1) == "," || pLista.Substring(i, 1) == "]")
-            {
-            }
-            if (pLista.Substring(i, 1) == '"'.ToString())
-            {
-                contador = 1;
-            }
-            if (pLista.Substring(i, 1) == '"'.ToString() && contador == 1)
-            {
-                contador = 0;
-                resultadoIntermedio.Add(palabra);
-                palabra = "";
-            }
-            else
-            {
-                palabra = palabra + pLista.Substring(i, 1);
-            }
-        }
-        for (int i = 1; i < resultadoIntermedio.Count; i += 2)
-        {
-            resultado.Add(resultadoIntermedio[i]);
-        }
-        HashSet<string> hashWithoutDuplicates = new HashSet<string>(resultado);
-        List<string> listWithoutDuplicates = hashWithoutDuplicates.ToList();
-        return listWithoutDuplicates;
-    }
-    public List<string> TransformarAñosALista(string pLista)//Transforma el campo años de publicacion de un libro ofrecido por la api de libros en una lista de años
-    {
-        string palabra = "";
-        pLista = pLista.Remove(0, 1);
-        List<string> resultado = new List<string>();
-        for (int i = 0; i < pLista.Length; i++)
-        {
-            if (pLista.Substring(i, 1) == ','.ToString() || pLista.Substring(i, 1) == "]")
-            {
-                resultado.Add(palabra.Remove(1, 3));
-                palabra = "";
-            }
-            else
-            {
-                palabra = palabra + pLista.Substring(i, 1);
-            }
-        }
-        HashSet<string> hashWithoutDuplicates = new HashSet<string>(resultado);
-        List<string> listWithoutDuplicates = hashWithoutDuplicates.ToList();
-        return listWithoutDuplicates.OrderBy(x => x).ToList();
-    }
-    public string SacarAutorDeLaLista(string pLista)
-    //devuelve el autor de un libro, a partir de la lista de autores de un libro ofrecido por la api de libros
-    {
-        if (pLista == "desconocido" || pLista == "Unknown")
-        {
-            return "Desconocido";
-        }
-
-        else
-        {
-            return TransformarISBNsALista(pLista).First();
         }
     }
 

@@ -59,7 +59,6 @@
     <Compile Include="Imp con MSSQL Y Entity Framework\RepositorioPrestamos.cs" />
     <Compile Include="Imp con MSSQL Y Entity Framework\RepositorioUsuarios.cs" />
     <Compile Include="Imp con MSSQL Y Entity Framework\UnitOfWork.cs" />
-    <Compile Include="FachadaDAL.cs" />
     <Compile Include="IRepositorio.cs" />
     <Compile Include="IRepositorioAdministradores.cs" />
     <Compile Include="IRepositorioEjemplares.cs" />

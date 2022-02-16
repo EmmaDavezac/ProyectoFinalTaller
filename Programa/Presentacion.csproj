@@ -262,6 +262,10 @@
       <Project>{42580751-3ea3-4055-99f8-a2350fc23d8a}</Project>
       <Name>Nucleo</Name>
     </ProjectReference>
+    <ProjectReference Include="..\UtilidadesPresentacion\UtilidadesPresentacion.csproj">
+      <Project>{85d69dcd-0dc9-4b30-8ebd-7aa2a8bb7f4a}</Project>
+      <Name>UtilidadesPresentacion</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\1234.png" />

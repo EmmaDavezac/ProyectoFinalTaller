@@ -2,7 +2,7 @@
 
 namespace NotificacionAUsuario
 {
-    public class FachadaNotificarUsuario//Fachada de la libreria
+    public class ServicioNotificarUsuario//Fachada de la libreria
     {
         static string[] implementacionesNotificar = new string[] { "MailOutlook" };//lista de implementacions de iNotificarUsuario
         static private string implementacionNotificar = implementacionesNotificar[0];//Implementacion que estamos usando
