@@ -2,18 +2,18 @@
 
 namespace NotificacionAUsuario
 {
-    public class ServicioNotificarUsuario//Fachada de la libreria
+    public class ServicioNotificadorUsuario//Fachada de la libreria
     {
         static string[] implementacionesNotificar = new string[] { "MailOutlook" };//lista de implementacions de iNotificarUsuario
         static private string implementacionNotificar = implementacionesNotificar[0];//Implementacion que estamos usando
 
-        public INotificarUsuario GetNotificarUsuario()//metodo que nos devuelve una implementacion de iNotificarUsuario
+        public INotificadorUsuario GetNotificarUsuario()//metodo que nos devuelve una implementacion de iNotificarUsuario
         {
             switch (implementacionNotificar)
             {
-                case "MailOutlook": { return new EnviarMailOutlook(); }
+                case "MailOutlook": { return new NotificadorOutlook(); }
                 default:
-                    { return new EnviarMailOutlook(); }
+                    { return new NotificadorOutlook(); }
 
             }
         }

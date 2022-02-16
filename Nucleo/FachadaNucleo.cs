@@ -19,7 +19,7 @@ namespace Nucleo
         //Instancia de la fachada de la libreria DAL
         private ServicioAPILibros interfazAPILibros = new ServicioAPILibros();
         //Instancia de la fachada de la libreria ServiciosAPILibros
-        private ServicioNotificarUsuario interfazNotificarUsuario = new ServicioNotificarUsuario();
+        private ServicioNotificadorUsuario interfazNotificarUsuario = new ServicioNotificadorUsuario();
         //Instancia de la fachada de la libreria NotificacionUsuario
         static private string[] implementacionesBase = new string[] { "ConnectionSQLServerLocal", "ConnectionSQLServerHosting" };//Distintas implementaciones para la base de datos, en este caso ambas son base de datos de MSSQL, una en una base de datos local y otra en internet
         static private string implementacionBase = implementacionesBase[1];

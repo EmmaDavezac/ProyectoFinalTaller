@@ -41,9 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EnviarMailOutlook.cs" />
-    <Compile Include="INotificarUsuario.cs" />
-    <Compile Include="ServicioNotificarUsuario.cs" />
+    <Compile Include="NotificadorOutlook.cs" />
+    <Compile Include="INotificadorUsuario.cs" />
+    <Compile Include="ServicioNotificadorUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
