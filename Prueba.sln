@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nucleo", "Nucleo\Nucleo.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiciosAPILibros", "ServiciosAPILibros\ServiciosAPILibros.csproj", "{A91220C9-FBA8-454F-B911-4F9002E08FBF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotificacionAUsuario", "NotificacionAUsuario\NotificacionAUsuario.csproj", "{9D0C5A72-B749-4212-A08B-D502B4052561}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServicioNotificacionAUsuario", "NotificacionAUsuario\ServicioNotificacionAUsuario.csproj", "{9D0C5A72-B749-4212-A08B-D502B4052561}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bitacora", "Bitacora\Bitacora.csproj", "{78E66839-ECB5-457F-ADC5-5F3722DEBC5E}"
 EndProject
