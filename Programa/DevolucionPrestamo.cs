@@ -133,17 +133,17 @@ namespace Programa
         {
             try
             {
-                if (modificado == true && comboBoxEstadoEjemplar.SelectedIndex!=0)
-            {
+                if (modificado == true)
+                {
                 interfazNucleo.RegistrarDevolucion(idPrestamo, comboBoxEstadoEjemplar.Text);
                 MessageBox.Show("La devolucion se registro correctamente");
                 ((GestionarPrestamos)this.Owner).ObtenerPrestamos();
                 this.Close();
-            }
-            else
-            {
-                MessageBox.Show("No selecciono el estado del ejemplar","Error");
-            }
+                }
+                else
+                {
+                    MessageBox.Show("No selecciono el estado del ejemplar");
+                }
             }
             catch (Exception ex)
             {
@@ -159,11 +159,6 @@ namespace Programa
             this.Close();
         }
 
-        private void DevolucionPrestamo_FormClosed(object sender, FormClosedEventArgs e)
-        //se ejecuta cuando se cierra la ventana
-        {
-            this.Close();
-        }
 
         private void label8_Click(object sender, EventArgs e)
         {

@@ -200,11 +200,11 @@ namespace Programa
             try
             {
                 ModificarContraseña ventana = new ModificarContraseña(textBoxNombreUsuario.Text);
-            ventana.ShowDialog(this);
+                ventana.ShowDialog(this);
             }
             catch (Exception ex)
                 {
-                string texto= "Error button Modificar Contraseña(: "+ ex.Message + ex.StackTrace;
+                string texto= "Error button Modificar Contraseña: "+ ex.Message + ex.StackTrace;
                 interfazNucleo.RegistrarLog(texto);
                 MessageBox.Show(texto, "Ha ocurrido un error");
                 }

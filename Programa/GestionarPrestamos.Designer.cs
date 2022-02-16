@@ -38,15 +38,6 @@ namespace Programa
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.labelNombreUsuario = new System.Windows.Forms.Label();
             this.dataGridViewPrestamos = new System.Windows.Forms.DataGridView();
-            this.RegistrarDevolucion = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.IdPrestamo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NombreUsuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TituloLibro = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ISBNLibro = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FechaRealizacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FechaVencimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EstadoPrestamo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Editar = new System.Windows.Forms.DataGridViewLinkColumn();
             this.labelTitulo = new System.Windows.Forms.Label();
             this.textBoxUsuarioOTituloLibro = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -56,6 +47,15 @@ namespace Programa
             this.checkDevueltos = new System.Windows.Forms.CheckBox();
             this.labelNombreLista = new System.Windows.Forms.Label();
             this.labelFiltrar = new System.Windows.Forms.Label();
+            this.RegistrarDevolucion = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.IdPrestamo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NombreUsuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TituloLibro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ISBNLibro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FechaRealizacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FechaVencimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EstadoPrestamo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Editar = new System.Windows.Forms.DataGridViewLinkColumn();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -171,75 +171,6 @@ namespace Programa
             this.dataGridViewPrestamos.TabIndex = 77;
             this.dataGridViewPrestamos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPrestamos_CellContentClick);
             // 
-            // RegistrarDevolucion
-            // 
-            this.RegistrarDevolucion.ActiveLinkColor = System.Drawing.SystemColors.ControlText;
-            this.RegistrarDevolucion.HeaderText = "RegistrarDevolucion";
-            this.RegistrarDevolucion.LinkColor = System.Drawing.Color.DodgerBlue;
-            this.RegistrarDevolucion.Name = "RegistrarDevolucion";
-            this.RegistrarDevolucion.ReadOnly = true;
-            this.RegistrarDevolucion.Text = "Devolucion";
-            this.RegistrarDevolucion.TrackVisitedState = false;
-            this.RegistrarDevolucion.UseColumnTextForLinkValue = true;
-            this.RegistrarDevolucion.VisitedLinkColor = System.Drawing.Color.DodgerBlue;
-            this.RegistrarDevolucion.Width = 110;
-            // 
-            // IdPrestamo
-            // 
-            this.IdPrestamo.HeaderText = "IdPrestamo";
-            this.IdPrestamo.Name = "IdPrestamo";
-            this.IdPrestamo.ReadOnly = true;
-            this.IdPrestamo.Width = 75;
-            // 
-            // NombreUsuario
-            // 
-            this.NombreUsuario.HeaderText = "NombreUsuario";
-            this.NombreUsuario.Name = "NombreUsuario";
-            this.NombreUsuario.ReadOnly = true;
-            // 
-            // TituloLibro
-            // 
-            this.TituloLibro.HeaderText = "TituloLibro";
-            this.TituloLibro.Name = "TituloLibro";
-            this.TituloLibro.ReadOnly = true;
-            this.TituloLibro.Width = 140;
-            // 
-            // ISBNLibro
-            // 
-            this.ISBNLibro.HeaderText = "ISBNLibro";
-            this.ISBNLibro.Name = "ISBNLibro";
-            this.ISBNLibro.ReadOnly = true;
-            this.ISBNLibro.Width = 120;
-            // 
-            // FechaRealizacion
-            // 
-            this.FechaRealizacion.HeaderText = "FechaRealizacion";
-            this.FechaRealizacion.Name = "FechaRealizacion";
-            this.FechaRealizacion.ReadOnly = true;
-            // 
-            // FechaVencimiento
-            // 
-            this.FechaVencimiento.HeaderText = "FechaVencimiento";
-            this.FechaVencimiento.Name = "FechaVencimiento";
-            this.FechaVencimiento.ReadOnly = true;
-            // 
-            // EstadoPrestamo
-            // 
-            this.EstadoPrestamo.HeaderText = "EstadoPrestamo";
-            this.EstadoPrestamo.Name = "EstadoPrestamo";
-            this.EstadoPrestamo.ReadOnly = true;
-            // 
-            // Editar
-            // 
-            this.Editar.ActiveLinkColor = System.Drawing.SystemColors.WindowText;
-            this.Editar.HeaderText = "Editar";
-            this.Editar.LinkColor = System.Drawing.SystemColors.WindowText;
-            this.Editar.Name = "Editar";
-            this.Editar.Text = "Edit";
-            this.Editar.UseColumnTextForLinkValue = true;
-            this.Editar.Visible = false;
-            this.Editar.VisitedLinkColor = System.Drawing.SystemColors.WindowText;
-            // 
             // labelTitulo
             // 
             this.labelTitulo.AutoSize = true;
@@ -342,6 +273,74 @@ namespace Programa
             this.labelFiltrar.TabIndex = 86;
             this.labelFiltrar.Text = "Filtrar prestamos por:";
             // 
+            // RegistrarDevolucion
+            // 
+            this.RegistrarDevolucion.ActiveLinkColor = System.Drawing.SystemColors.ControlText;
+            this.RegistrarDevolucion.HeaderText = "RegistrarDevolucion";
+            this.RegistrarDevolucion.LinkColor = System.Drawing.Color.DodgerBlue;
+            this.RegistrarDevolucion.Name = "RegistrarDevolucion";
+            this.RegistrarDevolucion.ReadOnly = true;
+            this.RegistrarDevolucion.Text = "Devolucion";
+            this.RegistrarDevolucion.TrackVisitedState = false;
+            this.RegistrarDevolucion.UseColumnTextForLinkValue = true;
+            this.RegistrarDevolucion.VisitedLinkColor = System.Drawing.Color.DodgerBlue;
+            this.RegistrarDevolucion.Width = 110;
+            // 
+            // IdPrestamo
+            // 
+            this.IdPrestamo.HeaderText = "IdPrestamo";
+            this.IdPrestamo.Name = "IdPrestamo";
+            this.IdPrestamo.ReadOnly = true;
+            this.IdPrestamo.Width = 75;
+            // 
+            // NombreUsuario
+            // 
+            this.NombreUsuario.HeaderText = "NombreUsuario";
+            this.NombreUsuario.Name = "NombreUsuario";
+            this.NombreUsuario.ReadOnly = true;
+            // 
+            // TituloLibro
+            // 
+            this.TituloLibro.HeaderText = "TituloLibro";
+            this.TituloLibro.Name = "TituloLibro";
+            this.TituloLibro.ReadOnly = true;
+            this.TituloLibro.Width = 140;
+            // 
+            // ISBNLibro
+            // 
+            this.ISBNLibro.HeaderText = "ISBNLibro";
+            this.ISBNLibro.Name = "ISBNLibro";
+            this.ISBNLibro.ReadOnly = true;
+            this.ISBNLibro.Width = 120;
+            // 
+            // FechaRealizacion
+            // 
+            this.FechaRealizacion.HeaderText = "FechaRealizacion";
+            this.FechaRealizacion.Name = "FechaRealizacion";
+            this.FechaRealizacion.ReadOnly = true;
+            // 
+            // FechaVencimiento
+            // 
+            this.FechaVencimiento.HeaderText = "FechaVencimiento";
+            this.FechaVencimiento.Name = "FechaVencimiento";
+            this.FechaVencimiento.ReadOnly = true;
+            // 
+            // EstadoPrestamo
+            // 
+            this.EstadoPrestamo.HeaderText = "EstadoPrestamo";
+            this.EstadoPrestamo.Name = "EstadoPrestamo";
+            this.EstadoPrestamo.ReadOnly = true;
+            // 
+            // Editar
+            // 
+            this.Editar.ActiveLinkColor = System.Drawing.SystemColors.WindowText;
+            this.Editar.HeaderText = "Editar";
+            this.Editar.LinkColor = System.Drawing.SystemColors.WindowText;
+            this.Editar.Name = "Editar";
+            this.Editar.Text = "Edit";
+            this.Editar.UseColumnTextForLinkValue = true;
+            this.Editar.VisitedLinkColor = System.Drawing.SystemColors.WindowText;
+            // 
             // GestionarPrestamos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -395,6 +394,8 @@ namespace Programa
         private System.Windows.Forms.CheckBox checkBoxProximosAVencerse;
         private System.Windows.Forms.CheckBox checkBoxRestrasados;
         private System.Windows.Forms.CheckBox checkDevueltos;
+        private System.Windows.Forms.Label labelNombreLista;
+        private System.Windows.Forms.Label labelFiltrar;
         private System.Windows.Forms.DataGridViewLinkColumn RegistrarDevolucion;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdPrestamo;
         private System.Windows.Forms.DataGridViewTextBoxColumn NombreUsuario;
@@ -404,7 +405,5 @@ namespace Programa
         private System.Windows.Forms.DataGridViewTextBoxColumn FechaVencimiento;
         private System.Windows.Forms.DataGridViewTextBoxColumn EstadoPrestamo;
         private System.Windows.Forms.DataGridViewLinkColumn Editar;
-        private System.Windows.Forms.Label labelNombreLista;
-        private System.Windows.Forms.Label labelFiltrar;
     }
 }

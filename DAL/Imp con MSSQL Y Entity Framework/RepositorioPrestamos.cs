@@ -1,4 +1,6 @@
 ﻿using Dominio;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace DAL.EntityFramework
 {
@@ -7,6 +9,16 @@ namespace DAL.EntityFramework
         public RepositorioPrestamos(AdministradorDePrestamosDbContext pDbContext) : base(pDbContext)
         {
 
+        }
+
+        public List<Prestamo> GetAllProximosAVencerse()
+        {
+            return this.iDbContext.Set<Prestamo>().Where(x => x.ProximoAVencerse() == true).ToList();
+        }
+
+        public List<Prestamo> GetAllRestrasados()
+        {
+            return this.iDbContext.Set<Prestamo>().Where(x => x.Retrasado() == true).ToList();
         }
     }
 }

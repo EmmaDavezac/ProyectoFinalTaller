@@ -19,7 +19,6 @@ namespace DAL
                 case "ConnectionSQLServerHosting": { return new UnitOfWork(new AdministradorDePrestamosDbContext(implementacionBase)); }//implementacion en una base de datos relacional de SQLServer con hosting en un servidor proporcionado por  la web https://www.smarterasp.net/
                 case "ConnectionSQLServerLocal": { return new UnitOfWork(new AdministradorDePrestamosDbContext(implementacionBase)); }//implementacion en una base de datos relacional de SQLServer en un servidor local de MSQLSERVER
                 default: { return new UnitOfWork(new AdministradorDePrestamosDbContext("ConnectionSQLServerLocal")); }//implementacion por defecto,implementacion en una base de datos relacional de SQLServer en un servidor local de MSQLSERVER
-
             }
         }
 
