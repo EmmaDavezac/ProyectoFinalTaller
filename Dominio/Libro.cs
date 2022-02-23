@@ -9,7 +9,7 @@ namespace Dominio
         public string Titulo { get; set; }//Titulo del libro
         public string Autor { get; set; }//Nombre del autor del libro
         public string AñoPublicacion { get; set; }//Nombre del autor del libro
-        public virtual List<Ejemplar> Ejemplares { get; set; }//Nombre del autor del libro
+        public virtual List<Ejemplar> Ejemplares { get; set; }//Lista de ejemplares del libro
         public bool Baja { get; set; }//Property que nos permite dar una baja logica al libro
 
 

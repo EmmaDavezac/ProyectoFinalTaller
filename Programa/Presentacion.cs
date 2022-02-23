@@ -21,6 +21,7 @@ namespace Programa
                 interfaz.NotificarUsuarios();//Notificamos a los usuarios con prestamos vencidos o proximos a vencer(en el caso de ser la hora correcta)
                 await Task.CompletedTask;//se da por finalizada la tarea
             }
+
             [STAThread]
             private static async Task Main()
                 //tarea a ejecutarse en primer plano
