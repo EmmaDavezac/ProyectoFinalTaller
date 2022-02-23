@@ -814,7 +814,7 @@ namespace Nucleo
     public void NotificarUsuarios()
     //notifica a todos los usuarios con prestamos retrasados o proximos a vencer en el caso de que la hora este entre las 9 y 10 am
     {
-        if (DateTime.Now.Hour ==19)
+        if (DateTime.Now.Hour ==9)
         {
             NotificarPrestamosRetrasados();
             NotificarPrestamosProximosAVencer();
