@@ -25,6 +25,7 @@ namespace Dominio
             Autor = autor;
             AñoPublicacion = añoPublicacion;
             Baja = false;
+            Ejemplares = new List<Ejemplar>();
         }
 
         public List<Ejemplar> EjemplaresDisponibles()//Metodo que nos devuelve la lista de ejemplares del libro que se encuentran disponibles para prestarse actualmente

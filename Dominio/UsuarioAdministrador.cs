@@ -4,7 +4,7 @@ namespace Dominio
 {
     public class UsuarioAdministrador : Usuario//Esta clase hereda de la clase Usuario y representa un usuarioAdministrador que es quien usa el programa
     {
-        public string Pass { get; set; }//Contraseña pàra acceder al programa
+        public string Pass { get; set; }//Contraseña para acceder al programa
         public bool VerificarContraseña(string contraseña)//Metodo que nos permite saber si la contraseña ingresada para acceder es correcta sin divulgar la contraseña real
         { return contraseña == Pass; }
 

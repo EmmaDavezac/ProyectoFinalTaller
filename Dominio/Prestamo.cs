@@ -49,7 +49,7 @@ namespace Dominio
 
         }
 
-        public EstadoPrestamo ActualizarEstado()//Este metodo nos permite actualizar actualizar el estado actual del prestamo y devolverlo
+        public EstadoPrestamo ActualizarEstado()//Este metodo nos permite actualizar el estado actual del prestamo y devolverlo
         {
             if (Retrasado() )
             {
