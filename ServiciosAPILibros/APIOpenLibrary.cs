@@ -35,7 +35,7 @@ namespace ServiciosAPILibros
             var mUrl = "http://openlibrary.org/search.json?q=" +terminoDeBusqueda ;
             HttpWebRequest mRequest = (HttpWebRequest)WebRequest.Create(mUrl);            // Se crea el request http
             
-            FachadaBitacora oLog = new FachadaBitacora();// Instancia del objeto que maneja los logs.
+            ServicioBitacora oLog = new ServicioBitacora();// Instancia del objeto que maneja los logs.
             string msg;//Mensaje a guardar en el log.
 
             try

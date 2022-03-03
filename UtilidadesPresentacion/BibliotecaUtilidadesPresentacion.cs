@@ -93,5 +93,17 @@ namespace UtilidadesPresentacion
                 return false;
             }
         }
+
+        public string MayusculaPrimeraLetra(string source)//transforma en mayuscula la primer letra de la cadena
+        {
+            if (string.IsNullOrEmpty(source))
+            { return string.Empty; }
+            else
+            {
+                char[] letters = source.ToCharArray();
+                letters[0] = char.ToUpper(letters[0]);
+                return new string(letters);
+            }
+        }
     }
 }

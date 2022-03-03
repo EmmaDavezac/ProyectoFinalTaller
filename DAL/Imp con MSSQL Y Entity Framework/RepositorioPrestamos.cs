@@ -13,12 +13,12 @@ namespace DAL.EntityFramework
 
         public List<Prestamo> GetAllProximosAVencerse()
         {
-            return this.iDbContext.Set<Prestamo>().Where(x => x.ProximoAVencerse() == true).ToList();
+            return this.iDbContext.Set<Prestamo>().ToList().Where(x => x.ProximoAVencerse() == true).ToList();
         }
 
         public List<Prestamo> GetAllRestrasados()
         {
-            return this.iDbContext.Set<Prestamo>().Where(x => x.Retrasado() == true).ToList();
+            return this.iDbContext.Set<Prestamo>().ToList().Where(x => x.Retrasado() == true).ToList();
         }
     }
 }
