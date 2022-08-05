@@ -21,7 +21,7 @@ namespace Nucleo
         private ServicioNotificadorUsuario interfazNotificarUsuario = new ServicioNotificadorUsuario();
         //Instancia de la fachada de la libreria NotificacionUsuario
         static private string[] implementacionesBase = new string[] { "ConnectionSQLServerLocal", "ConnectionSQLServerHosting" };//Distintas implementaciones para la base de datos, en este caso ambas son base de datos de MSSQL, una en una base de datos local y otra en internet
-        static private string implementacionBase = implementacionesBase[1];
+        static private string implementacionBase = implementacionesBase[0];
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private IUnitOfWork GetUnitOfWork()//implementaciones posibles para las base de datos, interactua con la interfaz IUnitOfWork, esta abtraccion nos permite poder trabajar con distintas implementaciones
         {
