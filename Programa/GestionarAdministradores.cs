@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using Bitacora;
 
 namespace Programa
 {
@@ -12,6 +13,7 @@ namespace Programa
     {
         private string nombreUsuario { get; set; }//Aqui se almacena el nombre de usuario del administrador que esta usando el programa
         private FachadaNucleo interfazNucleo = new FachadaNucleo();//Instancia del nucleo del programa que nos permite acceder a las funciones del mismo
+        private IBitacora bitacora = new Bitacora.Bitacora();
 
         public GestionarAdministradores(string pNombreUsuario)//Constructor de la clase
         {
@@ -46,7 +48,7 @@ namespace Programa
             catch (Exception ex)
             {
                 string texto= "Error textBoxId_TextChanged: "+ ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto);
+                bitacora.RegistrarLog(texto);
                 MessageBox.Show(texto, "Ha ocurrido un error");
             }
         }
@@ -104,7 +106,7 @@ namespace Programa
             catch (Exception ex)
             {
                 string texto= "Error dataGridViewAdministradores_CellContentClick: "+ ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto);
+                bitacora.RegistrarLog(texto);
                 MessageBox.Show(texto, "Ha ocurrido un error");
             }
         }
@@ -135,7 +137,7 @@ namespace Programa
             catch (Exception ex)
             {
                 string texto= "Error ObtenerAdministradores: "+ ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto);
+                bitacora.RegistrarLog(texto);
                 MessageBox.Show(texto, "Ha ocurrido un error");
             }
         }
@@ -148,7 +150,7 @@ namespace Programa
             catch (Exception ex)
                 {
                     string texto= "Error buttonRefrescar_Click: "+ ex.Message + ex.StackTrace;
-                    interfazNucleo.RegistrarLog(texto);
+                    bitacora.RegistrarLog(texto);
                     MessageBox.Show(texto, "Ha ocurrido un error");
                 } 
         }

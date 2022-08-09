@@ -3,20 +3,20 @@ using System.IO;
 
 namespace Bitacora
 {
-    public class ServicioBitacora//esta clase nos permite crear y manipular una bitacora del programa donde se registraran las operaciones del programa y los errores que surgan durante la ejecucion del mismo
+    public class Bitacora:IBitacora//esta clase nos permite crear y manipular una bitacora del programa donde se registraran las operaciones del programa y los errores que surgan durante la ejecucion del mismo
     {
         private string Path = "Logs";//establece la direccion relativa del los archivos de la bitacora
 
 
-        public ServicioBitacora()//contructor de la clase
+        public Bitacora()//contructor de la clase
         {
 
         }
 
-        public void Add(string sLog)//añadir entrada a la bitacora
+        public void RegistrarLog(string sLog)//añadir entrada a la bitacora
         {
-            CreateDirectory();//crea un directorio en el caso de que no exista
-            string nombre = GetNameFile();//obtiene el nombre del archivo
+            CrearDirectorio();//crea un directorio en el caso de que no exista
+            string nombre = ObtenerNombreArchivo();//obtiene el nombre del archivo
             string cadena =""+ DateTime.Now + " - " + sLog + Environment.NewLine;//el texto que se va a escribir en la entrada
 
             StreamWriter sw = new StreamWriter(Path + "/" + nombre, true);//establece una transmision para escribir el archivo
@@ -26,7 +26,7 @@ namespace Bitacora
         }
 
 
-        private string GetNameFile()//metodo que devuelve el nombre para un nuevo archivo de la bitacora
+        private string ObtenerNombreArchivo()//metodo que devuelve el nombre para un nuevo archivo de la bitacora
         {
            
 
@@ -35,7 +35,7 @@ namespace Bitacora
             return nombre;//devuelve el nombre del archivo
         }
 
-        private void CreateDirectory()//metodo que crea el directorio de la bitacora en el caso de que no exista
+        private void CrearDirectorio()//metodo que crea el directorio de la bitacora en el caso de que no exista
         {
             try
             {

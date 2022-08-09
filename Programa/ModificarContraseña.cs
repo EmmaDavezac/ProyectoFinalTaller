@@ -1,6 +1,7 @@
 using Nucleo;
 using System;
 using System.Windows.Forms;
+using Bitacora;
 
 namespace Programa
 {
@@ -9,6 +10,7 @@ namespace Programa
     {
         private string nombreUsuario { get; set; }//Aqui se almacena el nombre de usuario del administrador que esta usando el programa
         private FachadaNucleo interfazNucleo = new FachadaNucleo();//Instancia del nucleo del programa que nos permite acceder a las funciones del mismo
+        private IBitacora bitacora = new Bitacora.Bitacora();
         private string contraseñaNueva;
         public ModificarContraseña(string pNombreUsuario)//contructor de la clase
         {
@@ -68,7 +70,7 @@ namespace Programa
             catch (Exception ex)
             {
                 string texto= "Error button2_Click (Actualizar contraseña): "+ ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto);
+                bitacora.RegistrarLog(texto);
                 MessageBox.Show(texto, "Ha ocurrido un error");
             }
         }

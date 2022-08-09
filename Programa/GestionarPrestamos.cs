@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using Bitacora;
 
 namespace Programa
 {
@@ -13,6 +14,7 @@ namespace Programa
     {
         private string nombreUsuario { get; set; }//Aqui se almacena el nombre de usuario del administrador que esta usando el programa
         private FachadaNucleo interfazNucleo = new FachadaNucleo();//Instancia del nucleo del programa que nos permite acceder a las funciones del mismo
+        private IBitacora bitacora = new Bitacora.Bitacora();
 
         public GestionarPrestamos(string pNombreUsuario)//Constructor de la clase
         {
@@ -31,7 +33,7 @@ namespace Programa
             catch (Exception ex)
             {
                 string texto = "Error GestionarPrestamos_Load: " + ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto);
+                bitacora.RegistrarLog(texto);
                 MessageBox.Show(texto, "Ha ocurrido un error");
             }
         }
@@ -100,7 +102,7 @@ namespace Programa
             catch (Exception ex)
             {
                 string texto = "Error ObtenerPrestamos: " + ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto);
+                bitacora.RegistrarLog(texto);
                 MessageBox.Show(texto, "Ha ocurrido un error");
             }
         }
@@ -145,7 +147,7 @@ namespace Programa
             catch (Exception ex)
             {
                 string texto = "Error dataGridViewPrestamos_CellContentClick: " + ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto);
+                bitacora.RegistrarLog(texto);
                 MessageBox.Show(texto, "Ha ocurrido un error");
             }
         }
@@ -211,7 +213,7 @@ namespace Programa
             catch (Exception ex)
             {
                 string texto = "Error checkBoxProximosAVencerse_CheckedChanged: " + ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto);
+                bitacora.RegistrarLog(texto);
                 MessageBox.Show(texto, "Ha ocurrido un error");
             }
         }
@@ -276,7 +278,7 @@ namespace Programa
             catch (Exception ex)
             {
                 string texto = "Error checkBoxRestrasados_CheckedChanged: " + ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto);
+                bitacora.RegistrarLog(texto);
                 MessageBox.Show(texto, "Ha ocurrido un error");
             }
         }
@@ -307,7 +309,7 @@ namespace Programa
             catch (Exception ex)
             {
                 string texto = "Error textBoxUsuarioOTituloLibro_TextChanged: " + ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto);
+                bitacora.RegistrarLog(texto);
                 MessageBox.Show(texto, "Ha ocurrido un error");
             }
         }
@@ -365,7 +367,7 @@ namespace Programa
             catch (Exception ex)
             {
                 string texto = "Error checkDevueltos_CheckedChanged: " + ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto);
+                bitacora.RegistrarLog(texto);
                 MessageBox.Show(texto, "Ha ocurrido un error");
             }
         }

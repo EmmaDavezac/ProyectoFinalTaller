@@ -3,6 +3,7 @@ using System;
 using System.Linq;
 using System.Windows.Forms;
 using UtilidadesPresentacion;
+using Bitacora;
 
 namespace Programa
 {
@@ -11,6 +12,7 @@ namespace Programa
         FachadaNucleo interfazNucleo = new FachadaNucleo();//Instancia de la fachada del nucleo para realizar operaciones dentro del dominio
         public string contraseñaNueva;//Variable para guardar la contraseña nueva
         private BibliotecaUtilidadesPresentacion utilidades = new BibliotecaUtilidadesPresentacion();
+        private IBitacora bitacora = new Bitacora.Bitacora();
         private string nombreUsuario { get; set; }
         public ActualizarAdministrador(string pNombreUsuario)//Inicializamos los datos del administrador actual que se van a mostrar en la interfaz
         {
@@ -123,7 +125,7 @@ namespace Programa
         catch (Exception ex)
         {
         string texto= "Error al actualizar el usuario: "+ ex.Message + ex.StackTrace;
-        interfazNucleo.RegistrarLog(texto);
+        bitacora.RegistrarLog(texto);
         MessageBox.Show(texto, "Ha ocurrido un error");
          
         }
@@ -192,7 +194,7 @@ namespace Programa
             catch (Exception ex)
                 {
                 string texto= "Error al Cargar Administrador Existente: "+ ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto);
+                bitacora.RegistrarLog(texto);
                 MessageBox.Show(texto, "Ha ocurrido un error");
                 }
         }
@@ -207,7 +209,7 @@ namespace Programa
             catch (Exception ex)
                 {
                 string texto= "Error button Modificar Contraseña: "+ ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto);
+                bitacora.RegistrarLog(texto);
                 MessageBox.Show(texto, "Ha ocurrido un error");
                 }
         }
@@ -256,7 +258,7 @@ namespace Programa
             
              {
                 string texto= "Error checkBoxBaja_CheckedChanged: "+ ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto);
+                bitacora.RegistrarLog(texto);
                 MessageBox.Show(texto, "Ha ocurrido un error");
             }
         }

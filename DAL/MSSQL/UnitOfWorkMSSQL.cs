@@ -2,14 +2,14 @@
 
 namespace DAL.EntityFramework
 {
-    public class UnitOfWork : IUnitOfWork
+    public class UnitOfWorkMSSQL : IUnitOfWork
     {
 
         private readonly AdministradorDePrestamosDbContext iDbContext;
 
         private bool iDisposedValue = false;
 
-        public UnitOfWork(AdministradorDePrestamosDbContext pDbContext)
+        public UnitOfWorkMSSQL(AdministradorDePrestamosDbContext pDbContext)
         {
             if (pDbContext == null)
             {

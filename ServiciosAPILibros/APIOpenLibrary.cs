@@ -9,11 +9,12 @@ using System.Web;
 using Bitacora;
 
 
+
 namespace ServiciosAPILibros
 {
-    public class APIOpenLibrary : IServiciosAPILibros//ESta clase es una implementacion de IServiciosAPILibros con la API De busueda de OpenLibrery
+    public class APIOpenLibrary : IServicioAPILibros//ESta clase es una implementacion de IServiciosAPILibros con la API De busueda de OpenLibrery
     {
-        public string TratarCadenaBusqueda(string ca)//Este metodo transforma la cadena que queremos buscar en el formato solicitado por la api para hacer una consulta(palabra+palabra+...+palabra)
+        private string TratarCadenaBusqueda(string ca)//Este metodo transforma la cadena que queremos buscar en el formato solicitado por la api para hacer una consulta(palabra+palabra+...+palabra)
         {
 
             string[] palabrasSeparadas = ca.Split(new char[] { ' ' });//Toma la cadena de entradas,la separa en subcadenas tomando como separador los espacios y las almacena en el array palabrasSeparadas
@@ -27,15 +28,15 @@ namespace ServiciosAPILibros
             return c.ToUpper();//Convertimos la cadena c a mayusculas y la devolvemos como resultado
 
         }
-        public List<Libro> ListaPorCoincidecia(string cadena)//Este metodo nos permite realizar una busqueda en la API de OPenLibrery y obtener como resultado una lista de libros que conincidan con el termino buscado
+        public List<Libro> ListarPorCoincidecia(string cadena)//Este metodo nos permite realizar una busqueda en la API de OPenLibrery y obtener como resultado una lista de libros que conincidan con el termino buscado
         {  
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12; // Establecimiento del protocolo ssl de transporte
             List<Libro> lista = new List<Libro>();//Creamos una lista de libro
             string terminoDeBusqueda=TratarCadenaBusqueda(cadena);//Convertimos la cadena al formato necesario para realizar una busqueda solicitado por la API
             var mUrl = "http://openlibrary.org/search.json?q=" +terminoDeBusqueda ;
             HttpWebRequest mRequest = (HttpWebRequest)WebRequest.Create(mUrl);            // Se crea el request http
-            
-            ServicioBitacora oLog = new ServicioBitacora();// Instancia del objeto que maneja los logs.
+
+            Bitacora.Bitacora oLog = new Bitacora.Bitacora();// Instancia del objeto que maneja los logs.
             string msg;//Mensaje a guardar en el log.
 
             try
@@ -89,7 +90,7 @@ namespace ServiciosAPILibros
                     }
                 }
                 msg = "Listado por coincidencia con la api OpenLibrary a funcionado correctemente.";
-                oLog.Add(msg);//Registramos la operacion en la bitacora
+                oLog.RegistrarLog(msg);//Registramos la operacion en la bitacora
             }
             catch (WebException ex)//Manejamos la excepcion
             {
@@ -102,7 +103,7 @@ namespace ServiciosAPILibros
                     System.Console.WriteLine("Error: {0}", mErrorText);
                 }
                 msg = "Error al intentar conectarse con la api OpenLibrary. Se intento traer un listado por coincidencia. (termino de busqueda: "+terminoDeBusqueda+" cadena: "+cadena+")" +ex.Message+ex.StackTrace+ ex.Response;
-                oLog.Add(msg);
+                oLog.RegistrarLog(msg);
             }
             return lista;
         }

@@ -3,6 +3,7 @@ using System.Linq;
 using System.Windows.Forms;
 using Nucleo;
 using UtilidadesPresentacion;
+using Bitacora;
 
 namespace Programa
 {
@@ -12,6 +13,7 @@ namespace Programa
         private string nombreUsuario { get; set; }
 
         private BibliotecaUtilidadesPresentacion utilidades = new BibliotecaUtilidadesPresentacion();
+        private IBitacora bitacora = new Bitacora.Bitacora();
         public ActualizarUsuario(string pNombreUsuario)
         {
             InitializeComponent();
@@ -119,7 +121,7 @@ namespace Programa
             catch (Exception ex)
                 {
                 string texto= "Error buttonGuardar_Click: "+ ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto);
+                bitacora.RegistrarLog(texto);
                 MessageBox.Show(texto, "Ha ocurrido un error");
                 }
         }
@@ -184,7 +186,7 @@ namespace Programa
             catch (Exception ex)
                 {
                 string texto= "Error CargarUsuarioExistente: "+ ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto);
+                bitacora.RegistrarLog(texto);
                 MessageBox.Show(texto, "Ha ocurrido un error");
                 }
         }
@@ -240,7 +242,7 @@ namespace Programa
             catch (Exception ex)
                 {
                 string texto= "Error checkBoxBaja_CheckedChanged: "+ ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto);
+                bitacora.RegistrarLog(texto);
                 MessageBox.Show(texto, "Ha ocurrido un error");
                 }
         }

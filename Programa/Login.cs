@@ -1,11 +1,13 @@
 using System;
 using System.Windows.Forms;
+using Bitacora;
 namespace Programa
 {
     public partial class Login : Form
     //esta ventana tiene la funcion de controlar el inicio de sesion del programa ,validando los datos del usuario que pretende usarlo
     {
         Nucleo.FachadaNucleo interfazNucleo = new Nucleo.FachadaNucleo();//instancia del nucleo que nos permite utilizar las funcionalidades del mismo
+        private IBitacora bitacora = new Bitacora.Bitacora();
         public Login()//constructor de la clase
         {
 
@@ -44,7 +46,7 @@ namespace Programa
                             {
                                 MenuPrincipal ventanaMenu = new MenuPrincipal(textBoxNombreUsuario.Text);//creamos una instancia de menuprincipal
                                 ventanaMenu.Show();//abrimos el formulario
-                                interfazNucleo.RegistrarLog("Sesion iniciada (Usuario: "+textBoxNombreUsuario.Text+")");//registramos el inicio de sesion en la bitacora
+                                bitacora.RegistrarLog("Sesion iniciada (Usuario: "+textBoxNombreUsuario.Text+")");//registramos el inicio de sesion en la bitacora
                                 this.Hide();//ocultamos esta ventana
                             }
                             else { labelError.Text = "Error, la contraseña ingresada es incorrecta "; botonIniciarSesion.Enabled = false; textBoxContraseña.Focus(); }
@@ -67,7 +69,7 @@ namespace Programa
             catch (Exception ex)
             {
                 string texto= "Error botonIniciarSesion_Click: "+ ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto);
+                bitacora.RegistrarLog(texto);
                 MessageBox.Show(texto, "Ha ocurrido un error");
             }
         }

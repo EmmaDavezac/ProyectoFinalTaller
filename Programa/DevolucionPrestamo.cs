@@ -2,6 +2,7 @@ using Nucleo;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
+using Bitacora;
 
 namespace Programa
 {
@@ -13,6 +14,7 @@ namespace Programa
         private FachadaNucleo interfazNucleo = new FachadaNucleo();
         private int idPrestamo;
         private bool modificado;
+        private IBitacora bitacora = new Bitacora.Bitacora();
         public DevolucionPrestamo()//contructor de la clase
         {
             scoringPorFecha = 0;
@@ -81,7 +83,7 @@ namespace Programa
            catch (Exception ex)
             {
                 string texto= "Error InicializarDevolucion: "+ ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto);
+                bitacora.RegistrarLog(texto);
                 MessageBox.Show(texto, "Ha ocurrido un error");
             }
         }
@@ -123,7 +125,7 @@ namespace Programa
             catch (Exception ex)
             {
                 string texto= "Error comboBoxEstadoEjemplar_SelectedIndexChanged: "+ ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto);
+                bitacora.RegistrarLog(texto);
                 MessageBox.Show(texto, "Ha ocurrido un error");
             }
         }
@@ -148,7 +150,7 @@ namespace Programa
             catch (Exception ex)
             {
                 string texto= "Error botonRegistrarDevolucion_Click: "+ ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto);
+                bitacora.RegistrarLog(texto);
                 MessageBox.Show(texto, "Ha ocurrido un error");
             }
         }

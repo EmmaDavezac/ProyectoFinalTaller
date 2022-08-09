@@ -43,7 +43,6 @@
   <ItemGroup>
     <Compile Include="NotificadorOutlook.cs" />
     <Compile Include="INotificadorUsuario.cs" />
-    <Compile Include="ServicioNotificadorUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -2,36 +2,30 @@
 using System.Collections.Generic;
 using System.Linq;
 using DAL;//Libreria de la capa de acceso a datos,nos permite interactuar con la base de datos, brindandonos control sobre la misma
-//using DAL.EntityFramework;//libreria de implementacion de IUnitOfWork con entityFramework
 using Dominio;//Liberia que contiene las clases de dominio  
 using ServiciosAPILibros;//Libreria que nos permite interactuar con la API de libros, pudiendo hacer consultas y obtener informacion acerca de libros
 using NotificacionAUsuario;//Libreria que nos permite notificar a usuarios con prestamos retrasados o proximos a vencer
 using Bitacora;//Libreria que nos permite registrar logs en la bitacora
 using DAL.EntityFramework;
-using log4net;
+
 
 namespace Nucleo
 //El nucleo es la libreria que nos permite acceder a todas las funciones del programa
 {
     public class FachadaNucleo//Fachada principal del nucleo programa que nos permite usar las funciones del programa sin dar a conocer como funcionan por dentro
     {
-        //Instancia de la fachada de la libreria DAL
-        private ServicioAPILibros interfazAPILibros = new ServicioAPILibros();
-        //Instancia de la fachada de la libreria ServiciosAPILibros
-        private ServicioNotificadorUsuario interfazNotificarUsuario = new ServicioNotificadorUsuario();
-        //Instancia de la fachada de la libreria NotificacionUsuario
-        static private string[] implementacionesBase = new string[] { "ConnectionSQLServerLocal", "ConnectionSQLServerHosting" };//Distintas implementaciones para la base de datos, en este caso ambas son base de datos de MSSQL, una en una base de datos local y otra en internet
-        static private string implementacionBase = implementacionesBase[1];
-        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private IServicioAPILibros ServicioAPILibros = new APIOpenLibrary();
+     
+        private INotificadorUsuario NotificadorUsuarios = new NotificadorOutlook();
+       
+        private Bitacora.Bitacora bitacora = new Bitacora.Bitacora();
+
         private IUnitOfWork GetUnitOfWork()//implementaciones posibles para las base de datos, interactua con la interfaz IUnitOfWork, esta abtraccion nos permite poder trabajar con distintas implementaciones
         {
-            switch (implementacionBase)
-            {
-                case "ConnectionSQLServerHosting": { return new UnitOfWork(new AdministradorDePrestamosDbContext(implementacionBase)); }//implementacion en una base de datos relacional de SQLServer con hosting en un servidor proporcionado por  la web https://www.smarterasp.net/
-                case "ConnectionSQLServerLocal": { return new UnitOfWork(new AdministradorDePrestamosDbContext(implementacionBase)); }//implementacion en una base de datos relacional de SQLServer en un servidor local de MSQLSERVER
-                default: { return new UnitOfWork(new AdministradorDePrestamosDbContext("ConnectionSQLServerLocal")); }//implementacion por defecto,implementacion en una base de datos relacional de SQLServer en un servidor local de MSQLSERVER
-            }
+            return new UnitOfWorkMSSQL(new AdministradorDePrestamosDbContext());//implementacion por defecto,implementacion en una base de datos relacional en un servidor local de MSQLSERVER
+            
         }
+        
         public FachadaNucleo()//Constructor de la clase
         {
         }
@@ -40,7 +34,7 @@ namespace Nucleo
         {
             UsuarioSimple usuario = new UsuarioSimple(nombre, apellido, fechaNacimiento, mail, telefono, pNombreUsuario);//Instanciamos un usuario con los datos pasados por parametro
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
-            ServicioBitacora oLog = new ServicioBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
+            Bitacora.Bitacora oLog = new Bitacora.Bitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             try
             {
                 msg = "Usuario " + pNombreUsuario + " Registrado con exito.";
@@ -49,13 +43,13 @@ namespace Nucleo
                     unitOfWork.RepositorioUsuarios.Add(usuario);//Añado el usuario a la base de datos
                     unitOfWork.Complete();//Guardamos los cambios
                 }
-                oLog.Add(msg);//Añadimos el mensaje al log
+                oLog.RegistrarLog(msg);//Añadimos el mensaje al log
                 return true;
             }
             catch (Exception ex)
             {
                 msg = "Error al registrar usuario (" + nombre + "-" + apellido + ")" + ex.Message + ex.StackTrace;
-                oLog.Add(msg);//Añadimos el mensaje al log
+                oLog.RegistrarLog(msg);//Añadimos el mensaje al log
                 return false;
             }
 
@@ -65,7 +59,7 @@ namespace Nucleo
         public UsuarioSimple ObtenerUsuario(string pNombreUsuario)
     //Nos permite obtener un usuario simple de la base de datos a partir del nombreUsuario del usuario
     {
-            ServicioBitacora oLog = new ServicioBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
+            Bitacora.Bitacora oLog = new Bitacora.Bitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             try
             {
@@ -83,7 +77,7 @@ namespace Nucleo
             {
 
                 msg = "Error al obtener el usuario (" + pNombreUsuario + ") " + ex.Message + ex.StackTrace;
-                oLog.Add(msg);//Añadimos el mensaje al log
+                oLog.RegistrarLog(msg);//Añadimos el mensaje al log
                 return null;//Devolvemos el usuario
             }
         }
@@ -91,7 +85,7 @@ namespace Nucleo
     public void ActualizarUsuario(string pNombreUsuario, string nombre, string apellido, string pFechaNacimiento, string mail, string telefono)
     //Permite actualizar la informacion de un usuario simple
     {
-            ServicioBitacora oLog = new ServicioBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
+            Bitacora.Bitacora oLog = new Bitacora.Bitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             try
             {
@@ -106,12 +100,12 @@ namespace Nucleo
                     unitOfWork.RepositorioUsuarios.Get(pNombreUsuario).Telefono = telefono;
                     unitOfWork.Complete();//Guardamos los cambios
                 }
-                oLog.Add(msg);//Añadimos el mensaje al log
+                oLog.RegistrarLog(msg);//Añadimos el mensaje al log
             }
             catch (Exception ex)
             {
                 msg = "Error al actualizar el usuario (" + pNombreUsuario + ") " + ex.Message + ex.StackTrace;
-                oLog.Add(msg);//Añadimos el mensaje al log
+                oLog.RegistrarLog(msg);//Añadimos el mensaje al log
 
             }
     }
@@ -119,7 +113,7 @@ namespace Nucleo
     public bool AñadirAdministrador(string pNombreUsuario, string nombre, string apellido, DateTime fechaNacimiento, string mail, string contraseña, string telefono)
     //Permite registrar un nuevo usuario administrador
     {
-            ServicioBitacora oLog = new ServicioBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
+            Bitacora.Bitacora oLog = new Bitacora.Bitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             UsuarioAdministrador usuario = new UsuarioAdministrador(nombre, apellido, fechaNacimiento, mail, contraseña, telefono, pNombreUsuario);//Instanciamos un administrador con los datos pasados por parametro
             try
@@ -130,13 +124,13 @@ namespace Nucleo
                     unitOfWork.RepositorioAdministradores.Add(usuario);//Añadimos el administrador a la base de datos
                     unitOfWork.Complete();//Guardamos los cambios
                 }
-                oLog.Add(msg);//Añadimos el mensaje al log
+                oLog.RegistrarLog(msg);//Añadimos el mensaje al log
                 return true;//Indicamos con true que se pudo añadir correctamente
             }
             catch (Exception ex)
             {
                 msg = "Error al Registrar el administrador (" + pNombreUsuario + ") " + ex.Message + ex.StackTrace;
-                oLog.Add(msg);//Añadimos el mensaje al log
+                oLog.RegistrarLog(msg);//Añadimos el mensaje al log
                 return false;//Indicamos con false que no se pudo añadir correctamente
 
             }
@@ -147,7 +141,7 @@ namespace Nucleo
     //Nos permite obtener un usuario administrador de la base de datos a partir del nombreUsuario del usuario
     {
             UsuarioAdministrador administrador = new UsuarioAdministrador();//Instanciamos un administrador para que luego sea devuelto como resultado
-            ServicioBitacora oLog = new ServicioBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
+            Bitacora.Bitacora oLog = new Bitacora.Bitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             try
             {
@@ -161,7 +155,7 @@ namespace Nucleo
             catch (Exception ex)
             {
                 msg = "Error al obtener el administrador (" + pNombreAdministrador + " ) " + ex.Message + ex.StackTrace;
-                oLog.Add(msg);//Añadimos el mensaje al log
+                oLog.RegistrarLog(msg);//Añadimos el mensaje al log
 
             }
 
@@ -170,7 +164,7 @@ namespace Nucleo
     public void ActualizarAdministrador(string pNombreUsuario, string nombre, string apellido, string pFechaNacimiento, string mail, string telefono)
     //Permite actualizar la informacion de un usuario administrador
     {
-            ServicioBitacora oLog = new ServicioBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
+            Bitacora.Bitacora oLog = new Bitacora.Bitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             try
             {
@@ -190,12 +184,12 @@ namespace Nucleo
                 msg = "Error al actualizar el administrador (" + pNombreUsuario + " ) " + ex.Message + ex.StackTrace;
 
             }
-            oLog.Add(msg);//Añadimos el mensaje al log
+            oLog.RegistrarLog(msg);//Añadimos el mensaje al log
     }
     public void ActualizarContraseñaAdministrador(string pNombreAdministrador, string contraseña)
     //Permite actualizar la contraseña de un administrador
     {
-            ServicioBitacora oLog = new ServicioBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
+            Bitacora.Bitacora oLog = new Bitacora.Bitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             try
             {
@@ -211,13 +205,13 @@ namespace Nucleo
                 msg = "Error al actualizar la contraseña del administrador (" + pNombreAdministrador + " ) " + ex.Message + ex.StackTrace;
 
             }
-            oLog.Add(msg);//Añadimos el mensaje al log
+            oLog.RegistrarLog(msg);//Añadimos el mensaje al log
         }
 
     public bool AñadirLibro(string unISBN, string titulo, string autor, string añoPublicacion, int pCantidadEjempalares)
     //Permite registrar un nuevo libro
     {
-            ServicioBitacora oLog = new ServicioBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
+            Bitacora.Bitacora oLog = new Bitacora.Bitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             bool resultado = true;
             try
@@ -263,13 +257,13 @@ namespace Nucleo
 
                 msg = "Error al registrar el libro ( Titulo: " + titulo + " Autor: " + autor + " ISBN:" + unISBN + " ) ." + ex.Message + ex.StackTrace;
             }
-            oLog.Add(msg);//Añadimos el mensaje al log
+            oLog.RegistrarLog(msg);//Añadimos el mensaje al log
             return resultado;
     }
     public Libro ObtenerLibro(int id)
     //Permite obtener un libro de la base de datos a partir del id del mismo 
     {
-            ServicioBitacora oLog = new ServicioBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
+            Bitacora.Bitacora oLog = new Bitacora.Bitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             Libro libro = new Libro();//Instanciamos un libro que sera devuelto por el metodo
             try
@@ -284,39 +278,17 @@ namespace Nucleo
             catch (Exception ex)
             {
                 msg = "Error al obtener el libro (Id: " + id + " ) ." + ex.Message + ex.StackTrace;
-                oLog.Add(msg);//Añadimos el mensaje al log
+                oLog.RegistrarLog(msg);//Añadimos el mensaje al log
 
             }
 
             return libro;//Devolvemos el libro
         }
-    public int ObtenerCantidadEjemplaresLibro(int id)
-    //devuelve la cantidad total de ejemplares de un libro
-    {
-            ServicioBitacora oLog = new ServicioBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
-            string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
-            int cant = 0;//Entero que nos permitira almacenar la cantidad de ejemplares
-            try
-            {
-
-                using (IUnitOfWork unitOfWork = GetUnitOfWork())//Definimos el ambito donde se va a usar el objet unitOfWork
-                {
-                    cant = unitOfWork.RepositorioLibros.Get(id).Ejemplares.Count();//Le asignamos a la variable cant lo que devuele el metodo count sobre la lista de ejemplares del libro.
-                }
-            }
-            catch (Exception ex)
-            {
-
-                msg = "Error al obtener la cantidad de ejemplares del libro (Id: " + id + " ) ." + ex.Message + ex.StackTrace;
-                oLog.Add(msg);//Añadimos el mensaje al log
-            }
-
-            return cant;//Devolvemos la cantidad
-        }
+   
     public List<Ejemplar> ObtenerEjemplaresEnBuenEstadoLibro(int id)
     //devuelve la lista de ejemplares en buen estado de un libro
     {
-            ServicioBitacora oLog = new ServicioBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
+            Bitacora.Bitacora oLog = new Bitacora.Bitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             List<Ejemplar> lista = new List<Ejemplar>(); //Creamos un listado que contenga objetos del tipo Ejemplar para ser devuelto por el metodo
             try
@@ -332,7 +304,7 @@ namespace Nucleo
             catch (Exception ex)
             {
                 msg = "Error al obtener lista de ejemplares en buen estado del libro (id libro: " + id + ")" + ex.Message + ex.StackTrace;
-                oLog.Add(msg);//Añadimos el mensaje al log
+                oLog.RegistrarLog(msg);//Añadimos el mensaje al log
 
             }
 
@@ -342,7 +314,7 @@ namespace Nucleo
     public void AñadirEjemplares(int pIdLibro, int pCantidad)
     //Permite añadir mas ejemplares a un libro
     {
-            ServicioBitacora oLog = new ServicioBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
+            Bitacora.Bitacora oLog = new Bitacora.Bitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             try
             {
@@ -364,12 +336,12 @@ namespace Nucleo
 
 
             }
-            oLog.Add(msg);//Añadimos el mensaje al log
+            oLog.RegistrarLog(msg);//Añadimos el mensaje al log
         }
     public void EliminarEjemplaresDeUnLibro(int pIdLibro, int pCantidad)
     //Permite disminuir la cantidad de ejemplares de un libro
     {
-            ServicioBitacora oLog = new ServicioBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
+            Bitacora.Bitacora oLog = new Bitacora.Bitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             try
             {
@@ -387,12 +359,12 @@ namespace Nucleo
 
 
             }
-            oLog.Add(msg);//Añadimos el mensaje al log
+            oLog.RegistrarLog(msg);//Añadimos el mensaje al log
         }
     public void DarDeBajaUnLibro(int pIdLibro)
     //Permite dar de baja un libro
     {
-            ServicioBitacora oLog = new ServicioBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
+            Bitacora.Bitacora oLog = new Bitacora.Bitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             try
             {
@@ -409,12 +381,12 @@ namespace Nucleo
 
                 msg = "Error al dar de baja el libro (Id: " + pIdLibro + ")." + ex.Message + ex.StackTrace;
             }
-            oLog.Add(msg);//Añadimos el mensaje al log
+            oLog.RegistrarLog(msg);//Añadimos el mensaje al log
         }
     public void DarDeAltaUnLibro(int pIdLibro)
     //Permite dar de alta un libro que ha sido dado de baja 
     {
-            ServicioBitacora oLog = new ServicioBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
+            Bitacora.Bitacora oLog = new Bitacora.Bitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             try
             {
@@ -431,7 +403,7 @@ namespace Nucleo
 
                 msg = "Error al dar de alta el libro (Id: " + pIdLibro + ")." + ex.Message + ex.StackTrace;
             }
-            oLog.Add(msg);//Añadimos el mensaje al log
+            oLog.RegistrarLog(msg);//Añadimos el mensaje al log
     }
   
    
@@ -439,7 +411,7 @@ namespace Nucleo
     public List<Ejemplar> ObtenerEjemplaresDisponibles(int id)
     //Permite obtener la lista de ejemplares disponibles de un libro
     {
-            ServicioBitacora oLog = new ServicioBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
+            Bitacora.Bitacora oLog = new Bitacora.Bitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             List<Ejemplar> lista = new List<Ejemplar>();//Instanciamos una lista de ejemplares que sera devuelta por el metodo
             try
@@ -454,7 +426,7 @@ namespace Nucleo
             catch (Exception ex)
             {
                 msg = "Error al obtener la lista de ejemplares Disponibles del libro (id: " + id + ")." + ex.Message + ex.StackTrace;
-                oLog.Add(msg);//Añadimos el mensaje al log
+                oLog.RegistrarLog(msg);//Añadimos el mensaje al log
             }
 
             return lista;
@@ -463,7 +435,7 @@ namespace Nucleo
     public List<Ejemplar> ObtenerEjemplaresTotales(int id)
     //Permite obtener la lista total de ejemplares  de un libro
     {
-            ServicioBitacora oLog = new ServicioBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
+            Bitacora.Bitacora oLog = new Bitacora.Bitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             List<Ejemplar> lista = new List<Ejemplar>();//Instanciamos una lista de ejemplares que sera devuelta por el metodo
             try
@@ -478,7 +450,7 @@ namespace Nucleo
             catch (Exception ex)
             {
                 msg = "Error al obtener la lista total de ejemplares del libro (id: " + id + ")." + ex.Message + ex.StackTrace;
-                oLog.Add(msg);//Añadimos el mensaje al log
+                oLog.RegistrarLog(msg);//Añadimos el mensaje al log
             }
 
             return lista;//Devolvemos la lista
@@ -487,7 +459,7 @@ namespace Nucleo
     public void RegistrarPrestamo(string pNombreUsuario, int idEjemplar, int idLibro)
     //Permite registrar un nuevo prestamo
     {
-            ServicioBitacora oLog = new ServicioBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
+            Bitacora.Bitacora oLog = new Bitacora.Bitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             try
             {
@@ -505,12 +477,12 @@ namespace Nucleo
                 msg = "Error al registrar el Prestamo  (idLibro: " + idLibro + "Id Ejemplar: " + idEjemplar + " Usuario: " + pNombreUsuario + ") ." + ex.Message + ex.StackTrace;
 
             }
-            oLog.Add(msg);//Añadimos el mensaje al log
+            oLog.RegistrarLog(msg);//Añadimos el mensaje al log
         }
     public Prestamo ObtenerPrestamo(int id)
     //Permite obtener un prestamo de la base de datos a partir del id del prestamo
     {
-            ServicioBitacora oLog = new ServicioBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
+            Bitacora.Bitacora oLog = new Bitacora.Bitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             Prestamo prestamo = new Prestamo();//Instanciamos un objeto del tipo prestamo que luego sera devuelto por el metodo
             try
@@ -525,7 +497,7 @@ namespace Nucleo
             {
 
                 msg = "Error al obtener el prestamo (Id: " + id + ")." + ex.Message + ex.StackTrace;
-                oLog.Add(msg);//Añadimos el mensaje al log
+                oLog.RegistrarLog(msg);//Añadimos el mensaje al log
             }
 
             return prestamo;//Devolvemos el prestamo
@@ -534,7 +506,7 @@ namespace Nucleo
     public void ActualizarLibro(int id, string unISBN, string titulo, string autor, string añoPublicacion)
     //Permite actualizar la informacion de un libro
     {
-            ServicioBitacora oLog = new ServicioBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
+            Bitacora.Bitacora oLog = new Bitacora.Bitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             try
             {
@@ -551,7 +523,7 @@ namespace Nucleo
             catch (Exception ex)
             {
                 msg = "Error al actualizar el libro (Id: " + id + "titulo: " + titulo + "autor: " + autor + ")." + ex.Message + ex.StackTrace;
-                oLog.Add(msg);//Añadimos el mensaje al log
+                oLog.RegistrarLog(msg);//Añadimos el mensaje al log
             }
 
     }
@@ -559,7 +531,7 @@ namespace Nucleo
         public UsuarioSimple ObtenerUsuarioDePrestamo(int id)
     //Permite obtener el usuario de un prestamo a patir del id del prestamo
     {
-            ServicioBitacora oLog = new ServicioBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
+            Bitacora.Bitacora oLog = new Bitacora.Bitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             UsuarioSimple usuario = new UsuarioSimple();//Instanciamos un objeto del tipo UsuariosSimple que luego sera devuelto por el metodo
             try
@@ -574,7 +546,7 @@ namespace Nucleo
             {
 
                 msg = "Error, el usuario del prestamo (Id Prestamo: " + id + ")." + ex.Message + ex.StackTrace;
-                oLog.Add(msg);//Añadimos el mensaje al log
+                oLog.RegistrarLog(msg);//Añadimos el mensaje al log
             }
 
             return usuario;//Devolvemos el usuario
@@ -583,7 +555,7 @@ namespace Nucleo
     public void RegistrarDevolucion(int idPrestamo, string estado)
     //Permite registrar la devolucion de un prestamo
     {
-            ServicioBitacora oLog = new ServicioBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
+            Bitacora.Bitacora oLog = new Bitacora.Bitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             try
             {
@@ -606,14 +578,14 @@ namespace Nucleo
                 msg = "Error al registrar la devolucion del prestamo (Id Prestamo: " + idPrestamo + " Estado:" + estado + ")" + ex.Message + ex.StackTrace;
 
             }
-            oLog.Add(msg);//Añadimos el mensaje al log
+            oLog.RegistrarLog(msg);//Añadimos el mensaje al log
 
         }
 
         public void ModificarFechasPrestamo(int pIdPrestamo, string pFechaPrestamo, string pFechaLimite)
     //permite modificar las fechas de realizacion y limite de un prestamo(funcion solo para versiones de prueba)
     {
-            ServicioBitacora oLog = new ServicioBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
+            Bitacora.Bitacora oLog = new Bitacora.Bitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             try
             {
@@ -628,7 +600,7 @@ namespace Nucleo
             catch (Exception ex)
             {
                 msg = "Error al modificar las fechas  del prestamo (Id Prestamo: " + pIdPrestamo + " Fecha prestamo: " + pFechaPrestamo + " Fecha Limite: " + pFechaLimite + ")." + ex.Message + ex.StackTrace;
-                oLog.Add(msg);//Añadimos el mensaje al log
+                oLog.RegistrarLog(msg);//Añadimos el mensaje al log
             }
 
         }
@@ -640,7 +612,7 @@ namespace Nucleo
     public IEnumerable<UsuarioSimple> ObtenerUsuarios()
     //permite obtener la lista total de usuarios simples
     {
-            ServicioBitacora oLog = new ServicioBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
+            Bitacora.Bitacora oLog = new Bitacora.Bitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             IEnumerable<UsuarioSimple> lista;
             try
@@ -652,7 +624,7 @@ namespace Nucleo
             {
                 msg = "Error al obtener la lista de usuarios." + ex.Message + ex.StackTrace; ;
                 lista = null;
-                oLog.Add(msg);//Añadimos el mensaje al log
+                oLog.RegistrarLog(msg);//Añadimos el mensaje al log
             }
 
 
@@ -662,7 +634,7 @@ namespace Nucleo
     public IEnumerable<UsuarioAdministrador> ObtenerAdministradores()
     //permite obtener la lista total de usuarios adminitradores
     {
-            ServicioBitacora oLog = new ServicioBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
+            Bitacora.Bitacora oLog = new Bitacora.Bitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             IEnumerable<UsuarioAdministrador> lista;
             try
@@ -674,7 +646,7 @@ namespace Nucleo
             {
                 msg = "Error al obtener la lista de administradores." + ex.Message + ex.StackTrace; ;
                 lista = null;
-                oLog.Add(msg);//Añadimos el mensaje al log
+                oLog.RegistrarLog(msg);//Añadimos el mensaje al log
             }
 
             return lista;
@@ -683,7 +655,7 @@ namespace Nucleo
     public IEnumerable<Libro> ObtenerLibros()
     //permite obtener la lista total de libros
     {
-            ServicioBitacora oLog = new ServicioBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
+            Bitacora.Bitacora oLog = new Bitacora.Bitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             IEnumerable<Libro> lista;
             try
@@ -695,7 +667,7 @@ namespace Nucleo
             {
                 msg = "Error al obtener la lista de libros." + ex.Message + ex.StackTrace; ;
                 lista = null;
-                oLog.Add(msg);//Añadimos el mensaje al log
+                oLog.RegistrarLog(msg);//Añadimos el mensaje al log
             }
 
             return lista;
@@ -706,7 +678,7 @@ namespace Nucleo
     public IEnumerable<Prestamo> ObtenerPrestamos()
     //permite obtener la lista total de prestamos
     {
-            ServicioBitacora oLog = new ServicioBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
+            Bitacora.Bitacora oLog = new Bitacora.Bitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             IEnumerable<Prestamo> lista;
             try
@@ -718,7 +690,7 @@ namespace Nucleo
             {
                 msg = "Error al obtener la lista de prestamos." + ex.Message + ex.StackTrace; ;
                 lista = null;
-                oLog.Add(msg);//Añadimos el mensaje al log
+                oLog.RegistrarLog(msg);//Añadimos el mensaje al log
             }
 
             return lista;
@@ -728,16 +700,10 @@ namespace Nucleo
     //devuelve el id del ultimo plibro registrado
     { return ObtenerLibros().Last().Id; }
 
-    
-
-    public int ObtenerUltimoIdPrestamo()
-    //devuelve el id del ultimo prestamo registrado
-    { return ObtenerPrestamos().Last().Id; }
-
     public List<Prestamo> ObtenerListadePrestamosProximosAVencerse()
     //Devuelve la lista de prestamos proximos a vencer
     {
-            ServicioBitacora oLog = new ServicioBitacora();
+            Bitacora.Bitacora oLog = new Bitacora.Bitacora();
             string msg;
             List<Prestamo> lista = new List<Prestamo>();//Instancia de una lista de prestamos que sera devuelta por el metodo
             try
@@ -753,14 +719,14 @@ namespace Nucleo
                 msg = "Error, la lista de prestamos proximos a vencerse no pudo obtenerse." + ex.Message + ex.StackTrace;
 
             }
-            oLog.Add(msg);//Añadimos el mensaje al log
+            oLog.RegistrarLog(msg);//Añadimos el mensaje al log
             return lista;//Devuelve la lista            
         }
 
     public List<Prestamo> ObtenerListadePrestamosRetrasados()
     //Devuelve la lista de prestamos retasados
     {
-            ServicioBitacora oLog = new ServicioBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
+            Bitacora.Bitacora oLog = new Bitacora.Bitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             List<Prestamo> lista = new List<Prestamo>();//Instancia de una lista de prestamos que sera devuelta por el metodo
             try
@@ -776,18 +742,18 @@ namespace Nucleo
                 msg = "Error, la lista de prestamos retrasados no pudo obtenerse. " + ex.Message + ex.StackTrace;
 
             }
-            oLog.Add(msg);//Añadimos el mensaje al log
+            oLog.RegistrarLog(msg);//Añadimos el mensaje al log
             return lista;//Devuelve la lista 
         }
 
     public List<Libro> ListarLibrosDeAPIPorCoincidencia(string unaCadena)//realiza un busqueda en la api de libros y devuelve una lista de libros
-    { return interfazAPILibros.ListarLibrosDeAPIPorCoincidencia(unaCadena); }
+    { return ServicioAPILibros.ListarPorCoincidecia(unaCadena); }
 
     public void NotificarPrestamosProximosAVencer()//notifica a todos los usuarios con prestamos proximos a vencer
     {
             void NotificarProximoAVencer(string pNombreUsuario, string titulo, string fechaLimite)//notifica a un usuario que su prestamo esta proximo a vencer
             {
-                RegistrarLog(interfazNotificarUsuario.NotificarProximoAVencer(ObtenerUsuario(pNombreUsuario), titulo, fechaLimite));
+                bitacora.RegistrarLog(NotificadorUsuarios.NotificarProximoAVencer(ObtenerUsuario(pNombreUsuario), titulo, fechaLimite));
             }
             foreach (var item in ObtenerListadePrestamosProximosAVencerse())
         {
@@ -801,7 +767,7 @@ namespace Nucleo
     {
             void NotificarRetraso(string pNombreUsuario, string titulo, string fechaLimite)//notifica a un usuario que su prestamo esta retrasado
             {
-                RegistrarLog(interfazNotificarUsuario.NotificarRetraso(ObtenerUsuario(pNombreUsuario), titulo, fechaLimite));
+                bitacora.RegistrarLog(NotificadorUsuarios.NotificarRetraso(ObtenerUsuario(pNombreUsuario), titulo, fechaLimite));
             }
             foreach (var item in ObtenerListadePrestamosRetrasados())
         {
@@ -821,17 +787,10 @@ namespace Nucleo
         }
     }
 
-    public void RegistrarLog(string sLog)//Permite registrar un nuevo log en la bitacora
-    {
-
-          ServicioBitacora oLog = new ServicioBitacora();//abrimos o creamos el archivo en caso de no existir
-          oLog.Add(sLog);//añadimos el log en la bitacora
-    }
-
     public bool DarDeBajaUsuario(string pNombreUsuario)
     //pemite dar de baja un usuario simple
     {
-            ServicioBitacora oLog = new ServicioBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
+            Bitacora.Bitacora oLog = new Bitacora.Bitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             bool resultado;//Booleano que se devolvera como resultado
             try
@@ -845,14 +804,14 @@ namespace Nucleo
                     }
                     unitOfWork.Complete();
                     msg = "El usuario " + pNombreUsuario + "ha sido dado de baja exitosamente. ";
-                    oLog.Add(msg);//Añadimos el mensaje al log
+                    oLog.RegistrarLog(msg);//Añadimos el mensaje al log
                     return resultado;//Devuelve el resultado
                 }
             }
             catch (Exception ex)
             {
                 msg = "Error, el usuario " + pNombreUsuario + " no ha podido darse de baja. " + ex.Message + ex.StackTrace;
-                oLog.Add(msg);//Añadimos el mensaje al log
+                oLog.RegistrarLog(msg);//Añadimos el mensaje al log
                 return false;
 
             }
@@ -867,7 +826,7 @@ namespace Nucleo
             }
             else
             {
-                ServicioBitacora oLog = new ServicioBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
+                Bitacora.Bitacora oLog = new Bitacora.Bitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
                 string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
                 try
                 {
@@ -877,13 +836,13 @@ namespace Nucleo
                         unitOfWork.Complete();//Guardamos los cambios
                     }
                     msg = "El administrador " + pNombreUsuario + " ha sido dado de baja correctamente. ";
-                    oLog.Add(msg);//Añadimos el mensaje al log
+                    oLog.RegistrarLog(msg);//Añadimos el mensaje al log
                     return true;
                 }
                 catch (Exception ex)
                 {
                     msg = "Error, el administrador " + pNombreUsuario + " no ha podido darse de baja. " + ex.Message + ex.StackTrace;
-                    oLog.Add(msg);//Añadimos el mensaje al log
+                    oLog.RegistrarLog(msg);//Añadimos el mensaje al log
                     return false;
 
                 }
@@ -893,7 +852,7 @@ namespace Nucleo
     public void DarDeAltaUsuario(string pNombreUsuario)
     //Permite dar de alta un usuario simple dado de baja
     {
-            ServicioBitacora oLog = new ServicioBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
+            Bitacora.Bitacora oLog = new Bitacora.Bitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             try
             {
@@ -903,12 +862,12 @@ namespace Nucleo
                     unitOfWork.Complete();//Guardamos los cambios
                 }
                 msg = "El usuario " + pNombreUsuario + " ha sido dado de alta correctamente";
-                oLog.Add(msg);//Añadimos el mensaje al log
+                oLog.RegistrarLog(msg);//Añadimos el mensaje al log
             }
             catch (Exception ex)
             {
                 msg = "Error, el usuario " + pNombreUsuario + " no ha podido darse de alta. " + ex.Message + ex.StackTrace;
-                oLog.Add(msg);//Añadimos el mensaje al log
+                oLog.RegistrarLog(msg);//Añadimos el mensaje al log
 
             }
 
@@ -917,7 +876,7 @@ namespace Nucleo
         public void DarDeAltaAdministrador(string pNombreUsuario)
     //Permite dar de alta un administrador dado de baja
     {
-            ServicioBitacora oLog = new ServicioBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
+            Bitacora.Bitacora oLog = new Bitacora.Bitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             try
             {
@@ -927,12 +886,12 @@ namespace Nucleo
                     unitOfWork.Complete();//Guardamos los cambios
                 }
                 msg = "El administrador" + pNombreUsuario + " ha sido dado de alta correctamente. ";
-                oLog.Add(msg);//Añadimos el mensaje al log
+                oLog.RegistrarLog(msg);//Añadimos el mensaje al log
             }
             catch (Exception ex)
             {
                 msg = "Error, el administrador" + pNombreUsuario + " no ha podido darse de alta. " + ex.Message + ex.StackTrace;
-                oLog.Add(msg);//Añadimos el mensaje al log
+                oLog.RegistrarLog(msg);//Añadimos el mensaje al log
 
             }
         }

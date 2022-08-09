@@ -3,6 +3,7 @@ using System;
 using System.Linq;
 using System.Windows.Forms;
 using UtilidadesPresentacion;
+using Bitacora;
 
 namespace Programa
 {
@@ -12,6 +13,7 @@ namespace Programa
         private string nombreUsuario { get; set; }//Aqui se almacena el nombre de usuario del administrador que esta usando el programa
         private FachadaNucleo interfazNucleo = new FachadaNucleo();//Instancia del nucleo del programa que nos permite acceder a las funciones del mismo
         private BibliotecaUtilidadesPresentacion utilidades = new BibliotecaUtilidadesPresentacion();
+        private IBitacora bitacora = new Bitacora.Bitacora();
         public RegistrarAdministrador(string pNombreUsuario)//Constructor 
         {
             InitializeComponent();
@@ -179,7 +181,7 @@ namespace Programa
             catch (Exception ex)
             {
                 string texto= "Error buttonRegistrarAdministrador_Click: "+ ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto);
+                bitacora.RegistrarLog(texto);
                 MessageBox.Show(texto, "Ha ocurrido un error");
             }
         }

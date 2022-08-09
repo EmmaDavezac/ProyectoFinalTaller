@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using Bitacora;
 
 namespace Programa
 {
@@ -13,6 +14,7 @@ namespace Programa
     {
         private string nombreUsuario { get; set; }//Aqui se almacena el nombre de usuario del administrador que esta usando el programa
         private FachadaNucleo interfazNucleo = new FachadaNucleo();//Instancia del nucleo del programa que nos permite acceder a las funciones del mismo
+        private IBitacora bitacora = new Bitacora.Bitacora();
         public RegistrarPrestamo(string pNombreUsuario)//Constructor de la clase
         {
             InitializeComponent();
@@ -32,7 +34,7 @@ namespace Programa
             catch (Exception ex)
             {
                 string texto= "Error RegistrarPrestamo_Load: "+ ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto);
+                bitacora.RegistrarLog(texto);
                 MessageBox.Show(texto, "Ha ocurrido un error");
             }
         }
@@ -68,7 +70,7 @@ namespace Programa
             catch (Exception ex)
             {
                 string texto= "Error textBoxTituloOISBNLibro_TextChanged: "+ ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto);
+                bitacora.RegistrarLog(texto);
                 MessageBox.Show(texto, "Ha ocurrido un error");
             }
         }
@@ -107,7 +109,7 @@ namespace Programa
             catch (Exception ex)
             {
                 string texto= "Error textBoxTituloOISBNLibro_TextChanged: "+ ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto);
+                bitacora.RegistrarLog(texto);
                 MessageBox.Show(texto, "Ha ocurrido un error");
             }
         }
@@ -133,7 +135,7 @@ namespace Programa
             catch (Exception ex)
             {
                 string texto= "Error dataGridViewLibros_CellContentClick: "+ ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto);
+                bitacora.RegistrarLog(texto);
                 MessageBox.Show(texto, "Ha ocurrido un error");
             }
         }
@@ -167,7 +169,7 @@ namespace Programa
             catch (Exception ex)
             {
                 string texto= "Error ObtenerLibros: "+ ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto);
+                bitacora.RegistrarLog(texto);
                 MessageBox.Show(texto, "Ha ocurrido un error");
             }
         }
@@ -195,7 +197,7 @@ namespace Programa
             catch (Exception ex)
             {
                 string texto= "Error ObtenerUsuarios: "+ ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto);
+                bitacora.RegistrarLog(texto);
                 MessageBox.Show(texto, "Ha ocurrido un error");
             }
         }
@@ -214,7 +216,7 @@ namespace Programa
             catch (Exception ex)
             {
                 string texto= "Error dataGridViewUsuarios_CellContentClick: "+ ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto);
+                bitacora.RegistrarLog(texto);
                 MessageBox.Show(texto, "Ha ocurrido un error");
             }
         }
@@ -244,7 +246,7 @@ namespace Programa
                                     {
                                         int idEjemplar = interfazNucleo.ObtenerEjemplaresDisponibles(Convert.ToInt32(textBoxIdLibro.Text.ToString())).First().Id;
                                         interfazNucleo.RegistrarPrestamo(textBoxNomUsuario.Text, idEjemplar, Convert.ToInt32(textBoxIdLibro.Text));
-                                        string FechaLimite = Convert.ToDateTime(new FachadaNucleo().ObtenerPrestamo(interfazNucleo.ObtenerUltimoIdPrestamo()).FechaLimite).Date.ToShortDateString();
+                                        string FechaLimite = Convert.ToDateTime(new FachadaNucleo().ObtenerPrestamo(interfazNucleo.ObtenerPrestamos().Last().Id).FechaLimite).Date.ToShortDateString();
                                         ObtenerLibros();//cargamos la lista de libros en la tabla de libros nuevamente para que se actualice
                                         MessageBox.Show("El prestamo ha sido registrado correctamente" + "\nFecha limite: " + FechaLimite);
 
@@ -287,7 +289,7 @@ namespace Programa
             catch (Exception ex)
             {
                 string texto= "Error buttonRegistrarPrestamo_Click: "+ ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto);
+                bitacora.RegistrarLog(texto);
                 MessageBox.Show(texto, "Ha ocurrido un error");
             }
         }

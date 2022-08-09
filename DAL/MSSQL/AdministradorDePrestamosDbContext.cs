@@ -7,18 +7,13 @@ namespace DAL.EntityFramework
 {
     public class AdministradorDePrestamosDbContext : DbContext
     {
-        static private string[] implementacionesBase = new string[] { "ConnectionSQLServerLocal", "ConnectionSQLServerHosting" };
-        static private string implementacionBase = implementacionesBase[0];
-
-        public AdministradorDePrestamosDbContext(string cadena) : base(cadena)
-        {
-        
-        }
-
-        public AdministradorDePrestamosDbContext() : base(implementacionBase)
+     
+        static private string[] cadenasDeConexionMSSQLSERVER = new string[] { "ConnectionSQLServerLocal", "ConnectionSQLServerHosting" };
+        static private string cadenaDeConexion = cadenasDeConexionMSSQLSERVER[0];
+        public AdministradorDePrestamosDbContext() : base(cadenaDeConexion)
         {
 
-        }
+        } 
 
         public IDbSet<Libro> Libros { get; set; }
 

@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
+
 namespace UtilidadesPresentacion
 {
     public class BibliotecaUtilidadesPresentacion
     {
         public BibliotecaUtilidadesPresentacion()
         {
-
         }
 
         public List<string> TransformarISBNsALista(string pLista)//Transforma el campo isbns de un libro ofrecido por la api de libros en una lista de isbn

@@ -3,6 +3,7 @@ using Nucleo;
 using System;
 using System.Linq;
 using System.Windows.Forms;
+using Bitacora;
 
 namespace Programa
 {
@@ -13,6 +14,7 @@ namespace Programa
         private int sumatoriaDeEjemplares { get; set; }//Varible que nos permite guardar las sumatoria de ejemplares que se esta agregando o restando.
         private int idLibro { get; set; }
         private string NombreUsuario { get; set; }
+        private IBitacora bitacora = new Bitacora.Bitacora();
         public ActualizarLibro(string nombreUsuario, int pIdLibro)//Inicializamos los datos del administrador actual que se van a mostrar en la interfaz
         {
             InitializeComponent();
@@ -48,7 +50,7 @@ namespace Programa
             catch (Exception ex)
             {
                 string texto= "Error buttonDeshacerCambios_Click: "+ ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto);
+                bitacora.RegistrarLog(texto);
                 MessageBox.Show(texto, "Ha ocurrido un error");
             }
         }
@@ -158,7 +160,7 @@ namespace Programa
             catch (Exception ex)
                 {
                 string texto= "Error al actualizar libro: "+ ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto);
+                bitacora.RegistrarLog(texto);
                 MessageBox.Show(texto, "Ha ocurrido un error");
                 }
         }
@@ -204,7 +206,7 @@ namespace Programa
             catch (Exception ex)
                 {
                 string texto= "Error buttonBusquedaAvanzada_Click: "+ ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto);
+                bitacora.RegistrarLog(texto);
                 MessageBox.Show(texto, "Ha ocurrido un error");
                 }
         }
@@ -254,7 +256,7 @@ namespace Programa
             catch (Exception ex)
                 {
                 string texto= "Error InicializarLibro: "+ ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto);
+                bitacora.RegistrarLog(texto);
                 MessageBox.Show(texto, "Ha ocurrido un error");
                 }
         }
@@ -278,7 +280,7 @@ namespace Programa
             catch (Exception ex)
                 {
                 string texto= "Error buttonAñadirEjemplares_Click: "+ ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto);
+                bitacora.RegistrarLog(texto);
                 MessageBox.Show(texto, "Ha ocurrido un error");
                 }
         }
@@ -312,7 +314,7 @@ namespace Programa
             catch (Exception ex)
                 {
                 string texto= "Error buttonEliminarEjemplares_Click: "+ ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto);
+                bitacora.RegistrarLog(texto);
                 MessageBox.Show(texto, "Ha ocurrido un error");
                 }
         }
@@ -366,7 +368,7 @@ namespace Programa
             catch (Exception ex)
                 {
                 string texto= "Error checkBoxBaja_CheckedChanged: "+ ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto);
+                bitacora.RegistrarLog(texto);
                 MessageBox.Show(texto, "Ha ocurrido un error");
                 }
         }

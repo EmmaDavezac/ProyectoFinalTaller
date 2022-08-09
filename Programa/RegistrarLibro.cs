@@ -4,6 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using UtilidadesPresentacion;
+using Bitacora;
+using Bitacora;
 
 
 namespace Programa
@@ -12,7 +14,9 @@ namespace Programa
     {
         private string NombreUsuario { get; set; }//Aqui se almacena el nombre de usuario del administrador que esta usando el programa
         private FachadaNucleo interfazNucleo = new FachadaNucleo();//Instancia del nucleo del programa que nos permite acceder a las funciones del mismo
+        
         private BibliotecaUtilidadesPresentacion utilidades = new BibliotecaUtilidadesPresentacion();
+        private IBitacora bitacora = new Bitacora.Bitacora();
         public RegistrarLibro(string pNombreUsuario)//Constructor de la clase
         {
             InitializeComponent();
@@ -122,7 +126,7 @@ namespace Programa
            catch (Exception ex)
             {
                 string texto= "Error buttonAñadirLibro_Click: "+ ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto);
+                bitacora.RegistrarLog(texto);
                 MessageBox.Show(texto, "Ha ocurrido un error");
             }
         }
@@ -216,7 +220,7 @@ namespace Programa
             catch (Exception ex)
             {
                 string texto= "Error dataGridViewISBN_CellContentClick: "+ ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto);
+                bitacora.RegistrarLog(texto);
                 MessageBox.Show(texto, "Ha ocurrido un error");
             }
         }
@@ -237,7 +241,7 @@ namespace Programa
             catch (Exception ex)
             {
                 string texto= "Error dataGridViewAños_CellContentClick: "+ ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto);
+                bitacora.RegistrarLog(texto);
                 MessageBox.Show(texto,"Ha ocurrido un error");
             }
         }
@@ -264,7 +268,7 @@ namespace Programa
             catch (Exception ex)
             {
                 string texto= "Error textBoxSeleccionarISBN_TextChanged: "+ ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto);
+                bitacora.RegistrarLog(texto);
                 MessageBox.Show(texto, "Ha ocurrido un error");
             }
         }
@@ -291,7 +295,7 @@ namespace Programa
             catch (Exception ex)
             {
                 string texto= "Error textBoxSelccionarAño_TextChanged: "+ ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto);
+                bitacora.RegistrarLog(texto);
                 MessageBox.Show(texto, "Ha ocurrido un error");
             }
         }
@@ -321,7 +325,7 @@ namespace Programa
             catch (Exception ex)
             {
                 string texto= "Error VerificarVentanaPadre: "+ ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto);
+                bitacora.RegistrarLog(texto);
                 MessageBox.Show(texto, "Ha ocurrido un error");
             }
         }
@@ -341,7 +345,7 @@ namespace Programa
            catch (Exception ex)
             {
                 string texto= "Error InicializarLibro: "+ ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto);
+                bitacora.RegistrarLog(texto);
                 MessageBox.Show(texto, "Ha ocurrido un error");
             }
         }
@@ -367,7 +371,7 @@ namespace Programa
             catch (Exception ex)
             {
                 string texto= "Error buttonActualizar_Click: "+ ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto);
+                bitacora.RegistrarLog(texto);
                 MessageBox.Show(texto, "Ha ocurrido un error");
             }
         }
