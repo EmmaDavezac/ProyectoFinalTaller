@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using UtilidadesPresentacion;
 using Bitacora;
-using Bitacora;
 
 
 namespace Programa

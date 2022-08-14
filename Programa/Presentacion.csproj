@@ -254,6 +254,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BibliotecaQuartz\BibliotecaQuartz.csproj">
+      <Project>{6d2be314-dcb4-4cf5-93f0-e33ca72bec00}</Project>
+      <Name>BibliotecaQuartz</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Bitacora\BibliotecaBitacora.csproj">
       <Project>{78e66839-ecb5-457f-adc5-5f3722debc5e}</Project>
       <Name>BibliotecaBitacora</Name>
@@ -304,6 +308,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\perfil-del-usuario.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
