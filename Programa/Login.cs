@@ -7,7 +7,7 @@ namespace Programa
     //esta ventana tiene la funcion de controlar el inicio de sesion del programa ,validando los datos del usuario que pretende usarlo
     {
         Nucleo.FachadaNucleo interfazNucleo = new Nucleo.FachadaNucleo();//instancia del nucleo que nos permite utilizar las funcionalidades del mismo
-        private IBitacora bitacora = new Bitacora.Bitacora();
+        private IBitacora bitacora = new Bitacora.ImplementacionBitacora();
         public Login()//constructor de la clase
         {
 

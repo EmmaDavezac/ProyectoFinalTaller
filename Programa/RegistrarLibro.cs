@@ -15,7 +15,7 @@ namespace Programa
         private FachadaNucleo interfazNucleo = new FachadaNucleo();//Instancia del nucleo del programa que nos permite acceder a las funciones del mismo
         
         private BibliotecaUtilidadesPresentacion utilidades = new BibliotecaUtilidadesPresentacion();
-        private IBitacora bitacora = new Bitacora.Bitacora();
+        private IBitacora bitacora = new Bitacora.ImplementacionBitacora();
         public RegistrarLibro(string pNombreUsuario)//Constructor de la clase
         {
             InitializeComponent();

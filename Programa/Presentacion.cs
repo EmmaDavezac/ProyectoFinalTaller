@@ -1,9 +1,10 @@
-﻿using BibliotecaQuartz;
+﻿using BibliotecaTrabajoEnSegundoPlano;
 using Quartz;
 using Quartz.Impl;
 using System;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Nucleo;
 
 
 namespace Programa
@@ -13,7 +14,6 @@ namespace Programa
     {
         [STAThread]
         private static async Task Main()
-        //tarea a ejecutarse en primer plano
         {
             StdSchedulerFactory factory = new StdSchedulerFactory();//creamos una instancia de StdSchedulerFactory (fabrica de planificador)
             IScheduler scheduler = await factory.GetScheduler();//creamos una  planificador
@@ -34,6 +34,7 @@ namespace Programa
             Application.SetCompatibleTextRenderingDefault(false);
             Login ventana = new Login();//Creamos una instancia del formulario login, lel cual va a ser el formulario inicial
             Application.Run(ventana);//asignamos a la aplicacion el formulario inicial y la ejecutamos
+            
         }
 
     }

@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-
 namespace UtilidadesPresentacion
 {
     public class BibliotecaUtilidadesPresentacion
@@ -52,7 +51,6 @@ namespace UtilidadesPresentacion
             {
                 return "Desconocido";
             }
-
             else
             {
                 return TransformarISBNsALista(pLista).First();

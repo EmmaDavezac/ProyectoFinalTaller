@@ -4,11 +4,9 @@ namespace DAL.EntityFramework
 {
     public class UnitOfWorkMSSQL : IUnitOfWork
     {
-
         private readonly AdministradorDePrestamosDbContext iDbContext;
 
         private bool iDisposedValue = false;
-
         public UnitOfWorkMSSQL(AdministradorDePrestamosDbContext pDbContext)
         {
             if (pDbContext == null)
@@ -25,7 +23,6 @@ namespace DAL.EntityFramework
         }
 
         public IRepositorioUsuarios RepositorioUsuarios { get; private set; }
-
         public IRepositorioLibros RepositorioLibros { get; private set; }
         public IRepositorioPrestamos RepositorioPrestamos { get; private set; }
         public IRepositorioEjemplares RepositorioEjemplares { get; private set; }

@@ -14,7 +14,7 @@ namespace Programa
         private int sumatoriaDeEjemplares { get; set; }//Varible que nos permite guardar las sumatoria de ejemplares que se esta agregando o restando.
         private int idLibro { get; set; }
         private string NombreUsuario { get; set; }
-        private IBitacora bitacora = new Bitacora.Bitacora();
+        private IBitacora bitacora = new Bitacora.ImplementacionBitacora();
         public ActualizarLibro(string nombreUsuario, int pIdLibro)//Inicializamos los datos del administrador actual que se van a mostrar en la interfaz
         {
             InitializeComponent();

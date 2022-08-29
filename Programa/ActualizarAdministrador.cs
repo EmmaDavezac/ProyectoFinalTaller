@@ -12,7 +12,7 @@ namespace Programa
         FachadaNucleo interfazNucleo = new FachadaNucleo();//Instancia de la fachada del nucleo para realizar operaciones dentro del dominio
         public string contraseñaNueva;//Variable para guardar la contraseña nueva
         private BibliotecaUtilidadesPresentacion utilidades = new BibliotecaUtilidadesPresentacion();
-        private IBitacora bitacora = new Bitacora.Bitacora();
+        private IBitacora bitacora = new Bitacora.ImplementacionBitacora();
         private string nombreUsuario { get; set; }
         public ActualizarAdministrador(string pNombreUsuario)//Inicializamos los datos del administrador actual que se van a mostrar en la interfaz
         {

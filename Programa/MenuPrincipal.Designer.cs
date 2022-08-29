@@ -131,7 +131,7 @@ namespace Programa
             this.panel5.Controls.Add(this.labelNombreYApellido);
             this.panel5.Controls.Add(this.labelNombreUsuario);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel5.Location = new System.Drawing.Point(693, 0);
+            this.panel5.Location = new System.Drawing.Point(667, 0);
             this.panel5.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(268, 60);
@@ -180,10 +180,10 @@ namespace Programa
             this.panel2.Controls.Add(this.pictureBox3);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel2.Location = new System.Drawing.Point(961, 0);
+            this.panel2.Location = new System.Drawing.Point(935, 0);
             this.panel2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(82, 60);
+            this.panel2.Size = new System.Drawing.Size(108, 60);
             this.panel2.TabIndex = 8;
             // 
             // pictureBox3
@@ -203,7 +203,7 @@ namespace Programa
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(8, 44);
+            this.label1.Location = new System.Drawing.Point(4, 43);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(95, 17);

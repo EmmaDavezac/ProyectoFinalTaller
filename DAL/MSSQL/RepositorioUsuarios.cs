@@ -6,7 +6,6 @@ namespace DAL.EntityFramework
     {
         public RepositorioUsuarios(AdministradorDePrestamosDbContext pDbContext) : base(pDbContext)
         {
-
         }
     }
 }

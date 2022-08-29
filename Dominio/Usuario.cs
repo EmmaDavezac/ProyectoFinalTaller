@@ -16,7 +16,6 @@ namespace Dominio
 
         public Usuario(string nombre, string apellido, DateTime fechaNacimiento, string mail, string telefono, string pNombreUsuario)//constructor de la clase
         {
-            
             Nombre = nombre;
             Apellido = apellido;
             FechaNacimiento = fechaNacimiento;
@@ -28,7 +27,6 @@ namespace Dominio
 
         public Usuario()//constructor de la clase sin parametro
         {
-
         }
     }
 }

@@ -21,7 +21,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BibliotecaUtilidadesPresent
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dominio.Tests", "Dominio.Tests\Dominio.Tests.csproj", "{55BDD9E2-3E8B-4515-868C-DE95CF2916E9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BibliotecaQuartz", "BibliotecaQuartz\BibliotecaQuartz.csproj", "{6D2BE314-DCB4-4CF5-93F0-E33CA72BEC00}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BibliotecaTrabajoEnSegundoPlano", "BibliotecaQuartz\BibliotecaTrabajoEnSegundoPlano.csproj", "{6D2BE314-DCB4-4CF5-93F0-E33CA72BEC00}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

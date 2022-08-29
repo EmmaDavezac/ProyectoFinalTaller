@@ -13,7 +13,7 @@ namespace Programa
         private string nombreUsuario { get; set; }
 
         private BibliotecaUtilidadesPresentacion utilidades = new BibliotecaUtilidadesPresentacion();
-        private IBitacora bitacora = new Bitacora.Bitacora();
+        private IBitacora bitacora = new Bitacora.ImplementacionBitacora();
         public ActualizarUsuario(string pNombreUsuario)
         {
             InitializeComponent();

@@ -12,10 +12,8 @@ namespace Dominio
         public virtual List<Ejemplar> Ejemplares { get; set; }//Lista de ejemplares del libro
         public bool Baja { get; set; }//Property que nos permite dar una baja logica al libro
 
-
         public Libro()//Constructor de la clase sin argumentos
         {
-
         }
 
         public Libro(string unISBN, string titulo, string autor, string añoPublicacion)//Constructor de la clase
@@ -37,7 +35,6 @@ namespace Dominio
                 {
                     ejemplaresDisponibles.Add(item);//Verifica si el ejemplar cumple las condiciones de no encontrarse prestado y estar en buen estado
                 }
-
             }
             return ejemplaresDisponibles;//Verifica si el ejemplar cumple las condiciones de no encontrarse prestado y estar en buen estado
         }
@@ -51,7 +48,6 @@ namespace Dominio
                 {
                     ejemplaresEnBuenEstado.Add(item);
                 }
-
             }
             return ejemplaresEnBuenEstado;
         }
@@ -64,7 +60,6 @@ namespace Dominio
                 {
                     ejemplaresTotales.Add(item);
                 }
-
             }
             return ejemplaresTotales;
         }
@@ -116,7 +111,6 @@ namespace Dominio
                         item.Disponible = true;
                         item.Baja = false;
                     }
-                    
                 }
             }
         }

@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Quartz;
 using Nucleo;
 
-namespace BibliotecaQuartz
+namespace BibliotecaTrabajoEnSegundoPlano
 {
     public class NotificacionJob : IJob
     {
@@ -15,8 +11,6 @@ namespace BibliotecaQuartz
             FachadaNucleo fachada = new FachadaNucleo();
             fachada.NotificarUsuarios();//Notificamos a los usuarios con prestamos vencidos o proximos a vencer(en el caso de ser la hora correcta)
             await Task.CompletedTask;//Se espera que la tarea se complete para terminar el proceso
-
-
         }
     }
 }

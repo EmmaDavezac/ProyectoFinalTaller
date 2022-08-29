@@ -11,7 +11,7 @@ namespace Programa
     {
         private int idPrestamo;//Atributo que almacena el id de un prestamo
         private FachadaNucleo interfazNucleo = new FachadaNucleo();//Instancia del nucleo del programa,  nos permite usar las funciones del mismo
-        private IBitacora bitacora = new Bitacora.Bitacora();
+        private IBitacora bitacora = new Bitacora.ImplementacionBitacora();
         public EditarPrestamo()//Constructor de la clase
         {
             

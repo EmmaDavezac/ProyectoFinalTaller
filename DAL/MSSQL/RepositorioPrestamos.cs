@@ -8,7 +8,6 @@ namespace DAL.EntityFramework
     {
         public RepositorioPrestamos(AdministradorDePrestamosDbContext pDbContext) : base(pDbContext)
         {
-
         }
 
         public List<Prestamo> GetAllProximosAVencerse()

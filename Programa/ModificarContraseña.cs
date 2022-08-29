@@ -10,7 +10,7 @@ namespace Programa
     {
         private string nombreUsuario { get; set; }//Aqui se almacena el nombre de usuario del administrador que esta usando el programa
         private FachadaNucleo interfazNucleo = new FachadaNucleo();//Instancia del nucleo del programa que nos permite acceder a las funciones del mismo
-        private IBitacora bitacora = new Bitacora.Bitacora();
+        private IBitacora bitacora = new Bitacora.ImplementacionBitacora();
         private string contraseñaNueva;
         public ModificarContraseña(string pNombreUsuario)//contructor de la clase
         {

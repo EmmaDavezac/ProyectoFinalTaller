@@ -6,15 +6,12 @@ namespace DAL.EntityFramework
 {
     public class AdministradorDePrestamosDbContext : DbContext
     {
-        private static string[]
-            cadenasDeConexionMSSQLSERVER =
-                new string[] {
-                    "ConnectionSQLServerLocal",
-                    "ConnectionSQLServerHosting"
-                };
+        private static string[]  cadenasDeConexionMSSQLSERVER =new string[] {
+                                                                                "ConnectionSQLServerLocal",
+                                                                                "ConnectionSQLServerHosting"
+                                                                            };
 
-        private static string
-            cadenaDeConexion = cadenasDeConexionMSSQLSERVER[0];
+        private static string cadenaDeConexion = cadenasDeConexionMSSQLSERVER[0];
 
         public AdministradorDePrestamosDbContext() :
             base(cadenaDeConexion)
@@ -22,9 +19,7 @@ namespace DAL.EntityFramework
             if (!Database.Exists())
             {
                 Database
-                    .SetInitializer(new MigrateDatabaseToLatestVersion<AdministradorDePrestamosDbContext,
-                        DAL.Migrations.Configuration
-                    >());
+                    .SetInitializer(new MigrateDatabaseToLatestVersion<AdministradorDePrestamosDbContext,DAL.Migrations.Configuration>());
             }
         }
 
@@ -38,9 +33,7 @@ namespace DAL.EntityFramework
 
         public IDbSet<UsuarioAdministrador> Administradores { get; set; }
 
-        protected override void OnModelCreating(
-            System.Data.Entity.DbModelBuilder modelBuilder
-        )
+        protected override void OnModelCreating(System.Data.Entity.DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }

@@ -9,7 +9,6 @@ namespace DAL.EntityFramework
     {
         public RepositorioLibros(AdministradorDePrestamosDbContext pDbContext) : base(pDbContext)
         {
-
         }
         public List<string> GetAllISBN()
         {

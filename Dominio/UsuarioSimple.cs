@@ -14,7 +14,6 @@ namespace Dominio
 
         public UsuarioSimple()
         {
-
         }
 
         public bool ValidarBaja()

@@ -4,8 +4,8 @@ using System.Data.Entity;
 
 namespace DAL.EntityFramework
 {
-    public abstract class Repositorio<TEntity, TDbContext> : IRepositorio<TEntity> where TEntity : class
-                                                                                 where TDbContext : DbContext
+    public abstract class Repositorio<TEntity, TDbContext> : IRepositorio<TEntity>  where TEntity : class
+                                                                                    where TDbContext : DbContext
     {
 
         protected readonly TDbContext iDbContext;
@@ -26,7 +26,6 @@ namespace DAL.EntityFramework
             {
                 throw new ArgumentNullException(nameof(pEntity));
             }
-
             this.iDbContext.Set<TEntity>().Add(pEntity);
         }
 

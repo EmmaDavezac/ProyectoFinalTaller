@@ -14,7 +14,7 @@ namespace Programa
         private FachadaNucleo interfazNucleo = new FachadaNucleo();
         private int idPrestamo;
         private bool modificado;
-        private IBitacora bitacora = new Bitacora.Bitacora();
+        private IBitacora bitacora = new Bitacora.ImplementacionBitacora();
         public DevolucionPrestamo()//contructor de la clase
         {
             scoringPorFecha = 0;
