@@ -2,6 +2,8 @@ using System;
 using System.Linq;
 using System.Windows.Forms;
 using Nucleo;
+using UtilidadesPresentacion;
+using Bitacora;
 
 namespace Programa
 {
@@ -9,6 +11,9 @@ namespace Programa
     {
         FachadaNucleo interfazNucleo = new FachadaNucleo();
         private string nombreUsuario { get; set; }
+
+        private BibliotecaUtilidadesPresentacion utilidades = new BibliotecaUtilidadesPresentacion();
+        private IBitacora bitacora = new Bitacora.ImplementacionBitacora();
         public ActualizarUsuario(string pNombreUsuario)
         {
             InitializeComponent();
@@ -33,7 +38,7 @@ namespace Programa
                         {
                         if (DateTime.Now.Year - dateTimePickerFechaNacimiento.Value.Date.Year >= 12 && DateTime.Now.Year - dateTimePickerFechaNacimiento.Value.Date.Year <= 120)
                         {
-                            if (!string.IsNullOrEmpty(textBoxMail.Text) && interfazNucleo.EsUnEmailValido(textBoxMail.Text))
+                            if (!string.IsNullOrEmpty(textBoxMail.Text) && utilidades.EsUnEmailValido(textBoxMail.Text))
                             {
                                 if (!string.IsNullOrEmpty(textBoxTelefono.Text) && textBoxTelefono.Text.All(Char.IsDigit) && textBoxTelefono.Text.Length >= 8 && textBoxTelefono.Text.Length <= 11)
                                 {
@@ -116,7 +121,7 @@ namespace Programa
             catch (Exception ex)
                 {
                 string texto= "Error buttonGuardar_Click: "+ ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto);
+                bitacora.RegistrarLog(texto);
                 MessageBox.Show(texto, "Ha ocurrido un error");
                 }
         }
@@ -181,7 +186,7 @@ namespace Programa
             catch (Exception ex)
                 {
                 string texto= "Error CargarUsuarioExistente: "+ ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto);
+                bitacora.RegistrarLog(texto);
                 MessageBox.Show(texto, "Ha ocurrido un error");
                 }
         }
@@ -237,7 +242,7 @@ namespace Programa
             catch (Exception ex)
                 {
                 string texto= "Error checkBoxBaja_CheckedChanged: "+ ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto);
+                bitacora.RegistrarLog(texto);
                 MessageBox.Show(texto, "Ha ocurrido un error");
                 }
         }

@@ -13,10 +13,11 @@ namespace Dominio
         public EstadoEjemplar Estado { get; set; }//Esta property nos permite saber el estado del ejemplar(bueno o malo) solo se puede prestar si esta en buen estado
         public virtual List<Prestamo> Prestamos { get; set; }//Lista de prestamos que se ha hecho del ejemplar
         public bool Baja { get; set; }//Property para dar una baja logica del ejemplar
+
         public Ejemplar()//Constructor de la clase  que no toma parametros
         {
-
         }
+
         public Ejemplar(Libro unLibro)//Constructor de la clase que toma como parametro el libro al que pertenece el ejemplar
         {
             Estado = EstadoEjemplar.Bueno;//El estado original de un ejemplar es buen estado

@@ -10,7 +10,5 @@ namespace DAL
         IRepositorioPrestamos RepositorioPrestamos { get; }
         IRepositorioUsuarios RepositorioUsuarios { get; }
         IRepositorioAdministradores RepositorioAdministradores { get; }
-
-
     }
 }

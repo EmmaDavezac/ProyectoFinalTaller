@@ -2,6 +2,8 @@ using Nucleo;
 using System;
 using System.Linq;
 using System.Windows.Forms;
+using UtilidadesPresentacion;
+using Bitacora;
 
 namespace Programa
 {
@@ -10,6 +12,8 @@ namespace Programa
     {
         private string nombreUsuario { get; set; }//Aqui se almacena el nombre de usuario del administrador que esta usando el programa
         private FachadaNucleo interfazNucleo = new FachadaNucleo();//Instancia del nucleo del programa que nos permite acceder a las funciones del mismo
+        private BibliotecaUtilidadesPresentacion utilidades = new BibliotecaUtilidadesPresentacion();
+        private IBitacora bitacora = new Bitacora.ImplementacionBitacora();
         public RegistrarAdministrador(string pNombreUsuario)//Constructor 
         {
             InitializeComponent();
@@ -37,11 +41,11 @@ namespace Programa
             this.Owner.Show();//se muestra la ventana padre
         }
 
-        
+
 
         private void RegistrarAdministrador_FormClosed(object sender, FormClosedEventArgs e)//se ejecutara cuando se cierre el formulario
         {
-           this.Hide();//la ventana se oculta
+            this.Hide();//la ventana se oculta
             this.Owner.Show();//se muestra la ventana padre
         }
 
@@ -76,108 +80,108 @@ namespace Programa
             try
             {
                 if (!string.IsNullOrEmpty(textBoxNombreUsuario.Text)) //se verifica que se haya ingresado el nombre de usuario y tenga el formato correcto
-            {
-                if (!string.IsNullOrEmpty(textBoxNombre.Text) && textBoxNombre.Text.All(Char.IsLetter))//se verifica que se haya ingresado el nombre y tenga el formato correcto
                 {
-                    if (!string.IsNullOrEmpty(textBoxApellido.Text) && textBoxApellido.Text.All(Char.IsLetter))//se verifica que se haya ingresado el apellido y tenga el formato correcto
+                    if (!string.IsNullOrEmpty(textBoxNombre.Text) && textBoxNombre.Text.All(Char.IsLetter))//se verifica que se haya ingresado el nombre y tenga el formato correcto
                     {
-                        if (dateTimePickerFechaNacimiento.Value.Date != new DateTime(1900, 1, 1))//se verifica que se haya ingresado la fecha de nacimiento
-                        { 
-                            if (DateTime.Now.Year - dateTimePickerFechaNacimiento.Value.Date.Year >= 18 && DateTime.Now.Year - dateTimePickerFechaNacimiento.Value.Date.Year <= 120)//Verifica que la edad del administrador este entre los 18 y 120 años
+                        if (!string.IsNullOrEmpty(textBoxApellido.Text) && textBoxApellido.Text.All(Char.IsLetter))//se verifica que se haya ingresado el apellido y tenga el formato correcto
+                        {
+                            if (dateTimePickerFechaNacimiento.Value.Date != new DateTime(1900, 1, 1))//se verifica que se haya ingresado la fecha de nacimiento
                             {
-                                if (!string.IsNullOrEmpty(textBoxMail.Text) && interfazNucleo.EsUnEmailValido(textBoxMail.Text))//se verifica que se haya ingresado el mail y tenga el formato correcto
+                                if (DateTime.Now.Year - dateTimePickerFechaNacimiento.Value.Date.Year >= 18 && DateTime.Now.Year - dateTimePickerFechaNacimiento.Value.Date.Year <= 120)//Verifica que la edad del administrador este entre los 18 y 120 años
                                 {
-                                    if (!string.IsNullOrEmpty(textBoxTelefono.Text) && textBoxTelefono.Text.All(Char.IsDigit) && textBoxTelefono.Text.Length >= 8 && textBoxTelefono.Text.Length <= 11)
-                                    //se verifica que se haya ingresado numero de telefono y tenga el formato correcto
+                                    if (!string.IsNullOrEmpty(textBoxMail.Text) && utilidades.EsUnEmailValido(textBoxMail.Text))//se verifica que se haya ingresado el mail y tenga el formato correcto
                                     {
-                                        if (!string.IsNullOrEmpty(textBoxContraseña.Text) && textBoxContraseña.Text.Length >= 4)
-                                        //se verifica que se haya ingresado la contraseña y tenga el formato correcto
+                                        if (!string.IsNullOrEmpty(textBoxTelefono.Text) && textBoxTelefono.Text.All(Char.IsDigit) && textBoxTelefono.Text.Length >= 8 && textBoxTelefono.Text.Length <= 11)
+                                        //se verifica que se haya ingresado numero de telefono y tenga el formato correcto
                                         {
-                                            bool resultado = interfazNucleo.AñadirAdministrador(textBoxNombreUsuario.Text, textBoxNombre.Text, textBoxApellido.Text, dateTimePickerFechaNacimiento.Value, textBoxMail.Text, textBoxContraseña.Text, textBoxTelefono.Text);
-                                            //se intenta registrar el nuevo administrador y notifica en pantalla si la operacion fue exitosa o no
-                                            if (resultado == true)
+                                            if (!string.IsNullOrEmpty(textBoxContraseña.Text) && textBoxContraseña.Text.Length >= 4)
+                                            //se verifica que se haya ingresado la contraseña y tenga el formato correcto
                                             {
-                                                MessageBox.Show("Usuario administrador guardado, el nombre de usuario es: " + textBoxNombreUsuario.Text, "Operacion Exitosa", MessageBoxButtons.OK);
+                                                bool resultado = interfazNucleo.AñadirAdministrador(textBoxNombreUsuario.Text, textBoxNombre.Text, textBoxApellido.Text, dateTimePickerFechaNacimiento.Value, textBoxMail.Text, textBoxContraseña.Text, textBoxTelefono.Text);
+                                                //se intenta registrar el nuevo administrador y notifica en pantalla si la operacion fue exitosa o no
+                                                if (resultado == true)
+                                                {
+                                                    MessageBox.Show("Usuario administrador guardado, el nombre de usuario es: " + textBoxNombreUsuario.Text, "Operacion Exitosa", MessageBoxButtons.OK);
 
-                                                this.Hide();//se oculta la ventana actual
-                                                this.Owner.Show();// se vuelve a la ventana padre
+                                                    this.Hide();//se oculta la ventana actual
+                                                    this.Owner.Show();// se vuelve a la ventana padre
+                                                }
+                                                else
+                                                {
+                                                    MessageBox.Show("El usuario: " + textBoxNombreUsuario.Text + " ya se encuentra registrado, pruebe con otro nombre de usuario", "Error", MessageBoxButtons.OK);
+                                                }
+
                                             }
                                             else
                                             {
-                                                MessageBox.Show("El usuario: " + textBoxNombreUsuario.Text + " ya se encuentra registrado, pruebe con otro nombre de usuario", "Error", MessageBoxButtons.OK);
-                                            }
+                                                this.labelError.Text = "Error,la contraseña debe tener al menos 4 digitos";
+                                                buttonRegistrarAdministrador.Enabled = false;
+                                                textBoxContraseña.Clear();
+                                                textBoxTelefono.Focus();
 
+                                            }
                                         }
                                         else
                                         {
-                                            this.labelError.Text = "Error,la contraseña debe tener al menos 4 digitos";
+                                            this.labelError.Text = "Error,telefono ingresado invalido.Ingrese el numero sin 0 ni 15";
                                             buttonRegistrarAdministrador.Enabled = false;
-                                            textBoxContraseña.Clear();
-                                            textBoxTelefono.Focus();
-
+                                            textBoxTelefono.Focus(); ;
                                         }
                                     }
                                     else
                                     {
-                                        this.labelError.Text = "Error,telefono ingresado invalido.Ingrese el numero sin 0 ni 15";
+                                        this.labelError.Text = "Error, el mail ingresado no es valido";
                                         buttonRegistrarAdministrador.Enabled = false;
-                                        textBoxTelefono.Focus(); ;
+                                        textBoxMail.Focus();
                                     }
                                 }
                                 else
                                 {
-                                    this.labelError.Text = "Error, el mail ingresado no es valido";
+                                    if (DateTime.Now.Year - dateTimePickerFechaNacimiento.Value.Date.Year < 12)
+                                    {
+                                        this.labelError.Text = "Error, el usuario debe ser mayor de 12 años";
+                                    }
+                                    else
+                                    {
+                                        this.labelError.Text = "Error, el usuario debe ser menor de 120 años";
+                                    }
                                     buttonRegistrarAdministrador.Enabled = false;
-                                    textBoxMail.Focus(); 
+                                    textBoxMail.Focus();
                                 }
                             }
-                            else 
+                            else
                             {
-                               if(DateTime.Now.Year - dateTimePickerFechaNacimiento.Value.Date.Year < 12)
-                               {
-                                    this.labelError.Text = "Error, el usuario debe ser mayor de 12 años";
-                               }
-                               else
-                               {
-                                    this.labelError.Text = "Error, el usuario debe ser menor de 120 años";
-                               }
+                                this.labelError.Text = "Error, no ha ingresado la fecha de nacimiento";
                                 buttonRegistrarAdministrador.Enabled = false;
-                                textBoxMail.Focus();
+                                dateTimePickerFechaNacimiento.Focus(); ;
                             }
+
                         }
                         else
                         {
-                            this.labelError.Text = "Error, no ha ingresado la fecha de nacimiento";
+                            this.labelError.Text = "Error, apellido invalido.No debe contener numeros, espacios ni simbolos";
                             buttonRegistrarAdministrador.Enabled = false;
-                            dateTimePickerFechaNacimiento.Focus(); ;
+                            textBoxApellido.Focus(); ;
                         }
-
                     }
                     else
                     {
-                        this.labelError.Text = "Error, apellido invalido.No debe contener numeros, espacios ni simbolos";
+                        this.labelError.Text = "Error, nombre invalido.No debe contener numeros, espacios ni simbolos";
                         buttonRegistrarAdministrador.Enabled = false;
-                        textBoxApellido.Focus(); ;
+                        textBoxNombre.Focus(); ;
                     }
                 }
                 else
                 {
-                    this.labelError.Text = "Error, nombre invalido.No debe contener numeros, espacios ni simbolos";
+                    this.labelError.Text = "Error, nombre de usuario esta vacio";
                     buttonRegistrarAdministrador.Enabled = false;
-                    textBoxNombre.Focus(); ;
+                    textBoxNombreUsuario.Focus();
                 }
-            }
-            else
-            {
-                this.labelError.Text = "Error, nombre de usuario esta vacio";
-                buttonRegistrarAdministrador.Enabled = false;
-                textBoxNombreUsuario.Focus();
-            }
             }
             catch (Exception ex)
             {
-                string texto= "Error buttonRegistrarAdministrador_Click: "+ ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto);
+                string texto = "Error buttonRegistrarAdministrador_Click: " + ex.Message + ex.StackTrace;
+                bitacora.RegistrarLog(texto);
                 MessageBox.Show(texto, "Ha ocurrido un error");
             }
         }
@@ -225,7 +229,7 @@ namespace Programa
 
         private void textBoxNombreUsuario_TextChanged(object sender, EventArgs e)//se ejecutara cuando se modifique el texto de textBoxNombreUsuario
         {
-        buttonRegistrarAdministrador.Enabled = true;//se activa el boton registrar administrador
+            buttonRegistrarAdministrador.Enabled = true;//se activa el boton registrar administrador
             labelError.Text = "";
         }
 
@@ -268,6 +272,11 @@ namespace Programa
                 buttonMostrar.Text = "Mostrar";
                 textBoxContraseña.Focus();
             }
+        }
+
+        private void panel5_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

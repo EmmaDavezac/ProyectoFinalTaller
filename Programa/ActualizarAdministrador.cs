@@ -2,6 +2,8 @@ using Nucleo;
 using System;
 using System.Linq;
 using System.Windows.Forms;
+using UtilidadesPresentacion;
+using Bitacora;
 
 namespace Programa
 {
@@ -9,6 +11,8 @@ namespace Programa
     {
         FachadaNucleo interfazNucleo = new FachadaNucleo();//Instancia de la fachada del nucleo para realizar operaciones dentro del dominio
         public string contraseñaNueva;//Variable para guardar la contraseña nueva
+        private BibliotecaUtilidadesPresentacion utilidades = new BibliotecaUtilidadesPresentacion();
+        private IBitacora bitacora = new Bitacora.ImplementacionBitacora();
         private string nombreUsuario { get; set; }
         public ActualizarAdministrador(string pNombreUsuario)//Inicializamos los datos del administrador actual que se van a mostrar en la interfaz
         {
@@ -34,7 +38,7 @@ namespace Programa
                     {
                         if (DateTime.Now.Year - dateTimePickerFechaNacimiento.Value.Date.Year >= 18 && DateTime.Now.Year - dateTimePickerFechaNacimiento.Value.Date.Year <= 120)//Verifica que la edad del administrador este entre los 18 y 120 años
                         {
-                            if (!string.IsNullOrEmpty(textBoxMail.Text) && interfazNucleo.EsUnEmailValido(textBoxMail.Text))//Verifica que el mail no este vacio y que sea un mail en un formato valido.
+                            if (!string.IsNullOrEmpty(textBoxMail.Text) && utilidades.EsUnEmailValido(textBoxMail.Text))//Verifica que el mail no este vacio y que sea un mail en un formato valido.
                             {
                                 if (!string.IsNullOrEmpty(textBoxTelefono.Text) && textBoxTelefono.Text.All(Char.IsDigit) && textBoxTelefono.Text.Length >= 8 && textBoxTelefono.Text.Length <= 11)//Verifica que el numero de telefono no este vacio, que todos sus valores sean digitos, y que su longitud este entre 8 y 11 digitos.
                                 {
@@ -121,7 +125,7 @@ namespace Programa
         catch (Exception ex)
         {
         string texto= "Error al actualizar el usuario: "+ ex.Message + ex.StackTrace;
-        interfazNucleo.RegistrarLog(texto);
+        bitacora.RegistrarLog(texto);
         MessageBox.Show(texto, "Ha ocurrido un error");
          
         }
@@ -190,7 +194,7 @@ namespace Programa
             catch (Exception ex)
                 {
                 string texto= "Error al Cargar Administrador Existente: "+ ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto);
+                bitacora.RegistrarLog(texto);
                 MessageBox.Show(texto, "Ha ocurrido un error");
                 }
         }
@@ -200,12 +204,12 @@ namespace Programa
             try
             {
                 ModificarContraseña ventana = new ModificarContraseña(textBoxNombreUsuario.Text);
-            ventana.ShowDialog(this);
+                ventana.ShowDialog(this);
             }
             catch (Exception ex)
                 {
-                string texto= "Error button Modificar Contraseña(: "+ ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto);
+                string texto= "Error button Modificar Contraseña: "+ ex.Message + ex.StackTrace;
+                bitacora.RegistrarLog(texto);
                 MessageBox.Show(texto, "Ha ocurrido un error");
                 }
         }
@@ -254,7 +258,7 @@ namespace Programa
             
              {
                 string texto= "Error checkBoxBaja_CheckedChanged: "+ ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto);
+                bitacora.RegistrarLog(texto);
                 MessageBox.Show(texto, "Ha ocurrido un error");
             }
         }

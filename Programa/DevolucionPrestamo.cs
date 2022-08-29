@@ -2,6 +2,7 @@ using Nucleo;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
+using Bitacora;
 
 namespace Programa
 {
@@ -13,6 +14,7 @@ namespace Programa
         private FachadaNucleo interfazNucleo = new FachadaNucleo();
         private int idPrestamo;
         private bool modificado;
+        private IBitacora bitacora = new Bitacora.ImplementacionBitacora();
         public DevolucionPrestamo()//contructor de la clase
         {
             scoringPorFecha = 0;
@@ -81,7 +83,7 @@ namespace Programa
            catch (Exception ex)
             {
                 string texto= "Error InicializarDevolucion: "+ ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto);
+                bitacora.RegistrarLog(texto);
                 MessageBox.Show(texto, "Ha ocurrido un error");
             }
         }
@@ -123,7 +125,7 @@ namespace Programa
             catch (Exception ex)
             {
                 string texto= "Error comboBoxEstadoEjemplar_SelectedIndexChanged: "+ ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto);
+                bitacora.RegistrarLog(texto);
                 MessageBox.Show(texto, "Ha ocurrido un error");
             }
         }
@@ -133,22 +135,22 @@ namespace Programa
         {
             try
             {
-                if (modificado == true && comboBoxEstadoEjemplar.SelectedIndex!=0)
-            {
+                if (modificado == true)
+                {
                 interfazNucleo.RegistrarDevolucion(idPrestamo, comboBoxEstadoEjemplar.Text);
                 MessageBox.Show("La devolucion se registro correctamente");
                 ((GestionarPrestamos)this.Owner).ObtenerPrestamos();
                 this.Close();
-            }
-            else
-            {
-                MessageBox.Show("No selecciono el estado del ejemplar","Error");
-            }
+                }
+                else
+                {
+                    MessageBox.Show("No selecciono el estado del ejemplar");
+                }
             }
             catch (Exception ex)
             {
                 string texto= "Error botonRegistrarDevolucion_Click: "+ ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto);
+                bitacora.RegistrarLog(texto);
                 MessageBox.Show(texto, "Ha ocurrido un error");
             }
         }
@@ -159,11 +161,6 @@ namespace Programa
             this.Close();
         }
 
-        private void DevolucionPrestamo_FormClosed(object sender, FormClosedEventArgs e)
-        //se ejecuta cuando se cierra la ventana
-        {
-            this.Close();
-        }
 
         private void label8_Click(object sender, EventArgs e)
         {

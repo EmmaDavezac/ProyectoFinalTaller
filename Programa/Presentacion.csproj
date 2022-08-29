@@ -254,6 +254,14 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BibliotecaQuartz\BibliotecaTrabajoEnSegundoPlano.csproj">
+      <Project>{6d2be314-dcb4-4cf5-93f0-e33ca72bec00}</Project>
+      <Name>BibliotecaTrabajoEnSegundoPlano</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bitacora\BibliotecaBitacora.csproj">
+      <Project>{78e66839-ecb5-457f-adc5-5f3722debc5e}</Project>
+      <Name>BibliotecaBitacora</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Dominio\Dominio.csproj">
       <Project>{4f50181b-4c40-4f3f-b222-c591aee95853}</Project>
       <Name>Dominio</Name>
@@ -261,6 +269,10 @@
     <ProjectReference Include="..\Nucleo\Nucleo.csproj">
       <Project>{42580751-3ea3-4055-99f8-a2350fc23d8a}</Project>
       <Name>Nucleo</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UtilidadesPresentacion\BibliotecaUtilidadesPresentacion.csproj">
+      <Project>{85d69dcd-0dc9-4b30-8ebd-7aa2a8bb7f4a}</Project>
+      <Name>BibliotecaUtilidadesPresentacion</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -296,6 +308,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\perfil-del-usuario.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

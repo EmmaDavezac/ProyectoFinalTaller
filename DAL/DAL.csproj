@@ -51,15 +51,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Imp con MSSQL Y Entity Framework\AdministradorDePrestamosDbContext.cs" />
-    <Compile Include="Imp con MSSQL Y Entity Framework\Repositorio.cs" />
-    <Compile Include="Imp con MSSQL Y Entity Framework\RepositorioAdministradores.cs" />
-    <Compile Include="Imp con MSSQL Y Entity Framework\RepositorioEjemplares.cs" />
-    <Compile Include="Imp con MSSQL Y Entity Framework\RepositorioLibros.cs" />
-    <Compile Include="Imp con MSSQL Y Entity Framework\RepositorioPrestamos.cs" />
-    <Compile Include="Imp con MSSQL Y Entity Framework\RepositorioUsuarios.cs" />
-    <Compile Include="Imp con MSSQL Y Entity Framework\UnitOfWork.cs" />
-    <Compile Include="FachadaDAL.cs" />
+    <Compile Include="MSSQL\AdministradorDePrestamosDbContext.cs" />
+    <Compile Include="MSSQL\Repositorio.cs" />
+    <Compile Include="MSSQL\RepositorioAdministradores.cs" />
+    <Compile Include="MSSQL\RepositorioEjemplares.cs" />
+    <Compile Include="MSSQL\RepositorioLibros.cs" />
+    <Compile Include="MSSQL\RepositorioPrestamos.cs" />
+    <Compile Include="MSSQL\RepositorioUsuarios.cs" />
+    <Compile Include="MSSQL\UnitOfWorkMSSQL.cs" />
     <Compile Include="IRepositorio.cs" />
     <Compile Include="IRepositorioAdministradores.cs" />
     <Compile Include="IRepositorioEjemplares.cs" />
@@ -75,9 +74,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Bitacora\Bitacora.csproj">
+    <ProjectReference Include="..\Bitacora\BibliotecaBitacora.csproj">
       <Project>{78e66839-ecb5-457f-adc5-5f3722debc5e}</Project>
-      <Name>Bitacora</Name>
+      <Name>BibliotecaBitacora</Name>
     </ProjectReference>
     <ProjectReference Include="..\Dominio\Dominio.csproj">
       <Project>{4f50181b-4c40-4f3f-b222-c591aee95853}</Project>

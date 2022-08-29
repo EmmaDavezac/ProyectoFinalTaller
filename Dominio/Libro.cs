@@ -9,13 +9,11 @@ namespace Dominio
         public string Titulo { get; set; }//Titulo del libro
         public string Autor { get; set; }//Nombre del autor del libro
         public string AñoPublicacion { get; set; }//Nombre del autor del libro
-        public virtual List<Ejemplar> Ejemplares { get; set; }//Nombre del autor del libro
+        public virtual List<Ejemplar> Ejemplares { get; set; }//Lista de ejemplares del libro
         public bool Baja { get; set; }//Property que nos permite dar una baja logica al libro
-
 
         public Libro()//Constructor de la clase sin argumentos
         {
-
         }
 
         public Libro(string unISBN, string titulo, string autor, string añoPublicacion)//Constructor de la clase
@@ -25,6 +23,7 @@ namespace Dominio
             Autor = autor;
             AñoPublicacion = añoPublicacion;
             Baja = false;
+            Ejemplares = new List<Ejemplar>();
         }
 
         public List<Ejemplar> EjemplaresDisponibles()//Metodo que nos devuelve la lista de ejemplares del libro que se encuentran disponibles para prestarse actualmente
@@ -36,7 +35,6 @@ namespace Dominio
                 {
                     ejemplaresDisponibles.Add(item);//Verifica si el ejemplar cumple las condiciones de no encontrarse prestado y estar en buen estado
                 }
-
             }
             return ejemplaresDisponibles;//Verifica si el ejemplar cumple las condiciones de no encontrarse prestado y estar en buen estado
         }
@@ -50,7 +48,6 @@ namespace Dominio
                 {
                     ejemplaresEnBuenEstado.Add(item);
                 }
-
             }
             return ejemplaresEnBuenEstado;
         }
@@ -63,7 +60,6 @@ namespace Dominio
                 {
                     ejemplaresTotales.Add(item);
                 }
-
             }
             return ejemplaresTotales;
         }
@@ -115,7 +111,6 @@ namespace Dominio
                         item.Disponible = true;
                         item.Baja = false;
                     }
-                    
                 }
             }
         }

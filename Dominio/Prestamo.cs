@@ -18,6 +18,7 @@ namespace Dominio
         [ForeignKey("idEjemplar")]
         public virtual Ejemplar Ejemplar { get; set; }//Instancia del ejemplar relacionado al prestamo
         public int idLibro { get; set; }//id del libro
+
         private DateTime CalcularFechaLimite(UsuarioSimple usuario)//Este metodo nos permite calcular la fecha limite para un prestamo en funcion del Scoring del usuario que solicita el prestamo
         {
             int scoring = usuario.Scoring;
@@ -49,7 +50,7 @@ namespace Dominio
 
         }
 
-        public EstadoPrestamo ActualizarEstado()//Este metodo nos permite actualizar actualizar el estado actual del prestamo y devolverlo
+        public EstadoPrestamo ActualizarEstado()//Este metodo nos permite actualizar el estado actual del prestamo y devolverlo
         {
             if (Retrasado() )
             {
@@ -68,7 +69,6 @@ namespace Dominio
 
         public bool Retrasado()//Este metodo nos permite saber si el prestamo se encuenta retrasado
         {
-
             if ((DateTime.Now.Date > Convert.ToDateTime(FechaLimite).Date))
             {
                 if (string.IsNullOrEmpty(FechaDevolucion))
@@ -76,7 +76,6 @@ namespace Dominio
                 else return false;
                 }
             else return false;
-
         }
         public bool ProximoAVencerse()//Este metodo nos permite saber si un prestamo esta proximo a vencerse
         {

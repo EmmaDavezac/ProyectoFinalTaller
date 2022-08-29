@@ -31,8 +31,33 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.Abstractions.2.1.1\lib\netstandard2.0\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Quartz, Version=3.3.3.0, Culture=neutral, PublicKeyToken=f6b8c98a402cc8a4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Quartz.3.3.3\lib\net472\Quartz.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.7.1\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Remoting" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,9 +70,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Bitacora\Bitacora.csproj">
+    <ProjectReference Include="..\Bitacora\BibliotecaBitacora.csproj">
       <Project>{78e66839-ecb5-457f-adc5-5f3722debc5e}</Project>
-      <Name>Bitacora</Name>
+      <Name>BibliotecaBitacora</Name>
     </ProjectReference>
     <ProjectReference Include="..\DAL\DAL.csproj">
       <Project>{93845513-84f1-491d-86ce-d76d88161c6a}</Project>
@@ -57,14 +82,18 @@
       <Project>{4f50181b-4c40-4f3f-b222-c591aee95853}</Project>
       <Name>Dominio</Name>
     </ProjectReference>
-    <ProjectReference Include="..\NotificacionAUsuario\NotificacionAUsuario.csproj">
+    <ProjectReference Include="..\NotificacionAUsuario\ServicioNotificacionAUsuario.csproj">
       <Project>{9d0c5a72-b749-4212-a08b-d502b4052561}</Project>
-      <Name>NotificacionAUsuario</Name>
+      <Name>ServicioNotificacionAUsuario</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ServiciosAPILibros\ServiciosAPILibros.csproj">
+    <ProjectReference Include="..\ServiciosAPILibros\ServicioAPILibros.csproj">
       <Project>{a91220c9-fba8-454f-b911-4f9002e08fbf}</Project>
-      <Name>ServiciosAPILibros</Name>
+      <Name>ServicioAPILibros</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,6 +1,7 @@
 using Nucleo;
 using System;
 using System.Windows.Forms;
+using Bitacora;
 
 namespace Programa
 {
@@ -10,6 +11,7 @@ namespace Programa
     {
         private int idPrestamo;//Atributo que almacena el id de un prestamo
         private FachadaNucleo interfazNucleo = new FachadaNucleo();//Instancia del nucleo del programa,  nos permite usar las funciones del mismo
+        private IBitacora bitacora = new Bitacora.ImplementacionBitacora();
         public EditarPrestamo()//Constructor de la clase
         {
             
@@ -32,7 +34,7 @@ namespace Programa
            catch (Exception ex)
             {
                 string texto= "Error buttonModificarFechas_Click: "+ ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto);
+                bitacora.RegistrarLog(texto);
                 MessageBox.Show(texto, "Ha ocurrido un error");
             }
         }
@@ -53,7 +55,7 @@ namespace Programa
             catch (Exception ex)
             {
                 string texto= "Error InicialiarEditarPrestamo: "+ ex.Message + ex.StackTrace;
-                interfazNucleo.RegistrarLog(texto);
+                bitacora.RegistrarLog(texto);
                 MessageBox.Show(texto, "Ha ocurrido un error");
             }
         }
