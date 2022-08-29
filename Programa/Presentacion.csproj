@@ -254,8 +254,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BibliotecaQuartz\BibliotecaTrabajoEnSegundoPlano.csproj">
-      <Project>{6d2be314-dcb4-4cf5-93f0-e33ca72bec00}</Project>
+    <ProjectReference Include="..\BibliotecaTrabajoEnSegundoPlano\BibliotecaTrabajoEnSegundoPlano.csproj">
+      <Project>{85b70ade-a38e-4ec6-adee-088384aaec86}</Project>
       <Name>BibliotecaTrabajoEnSegundoPlano</Name>
     </ProjectReference>
     <ProjectReference Include="..\Bitacora\BibliotecaBitacora.csproj">
