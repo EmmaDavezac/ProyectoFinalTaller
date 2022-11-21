@@ -18,7 +18,7 @@ Este proyecto fue realizado con el objetivo de cumplir con el proyecto final de 
 - **Lenguaje**:  C#.
 - **Base de datos**:  SQL server.
 - **ORM**:  Entity Framework code first.
-- **Maquetado**:  WINFORMS.
+- **Maquetado**:  WinForms.
 
 ## Grupo de trabajo
 
