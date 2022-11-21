@@ -13,6 +13,7 @@ Este proyecto fue realizado con el objetivo de cumplir con el proyecto final de 
 
 - Para correrlo debe estar configurado el inicio a traves de la carpeta llamada UtilidadesPresentacion. 
 - También debe tener SQL Server instalado, el proyecto se encargará de crear automáticamente la base de datos necesaria para que este funcione.
+- El administrador principal tiene como credenciales, nombre: admin, contraseña: admin, se recomienda modificarlo una ves iniciada sesion por primera ves.
 
 ## Tecnologías utilizadas
 - **Lenguaje**:  C#.
