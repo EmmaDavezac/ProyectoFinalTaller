@@ -1,50 +1,60 @@
-﻿using System;
+﻿using DAL;//Libreria de la capa de acceso a datos,nos permite interactuar con la base de datos, brindandonos control sobre la misma
+using DAL.EntityFramework;//ORM para la base de datos
+using Dominio;//Liberia que contiene las clases de dominio  
+using NotificacionAUsuario;//Libreria que nos permite notificar a usuarios con prestamos retrasados o proximos a vencer
+using ServiciosAPILibros;//Libreria que nos permite interactuar con la API de libros, pudiendo hacer consultas y obtener informacion acerca de libros
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using DAL;//Libreria de la capa de acceso a datos,nos permite interactuar con la base de datos, brindandonos control sobre la misma
-using Dominio;//Liberia que contiene las clases de dominio  
-using ServiciosAPILibros;//Libreria que nos permite interactuar con la API de libros, pudiendo hacer consultas y obtener informacion acerca de libros
-using NotificacionAUsuario;//Libreria que nos permite notificar a usuarios con prestamos retrasados o proximos a vencer
-using Bitacora;//Libreria que nos permite registrar logs en la bitacora
-using DAL.EntityFramework;
 
 
 namespace Nucleo
 
 {
-      
+
     /// <summary>
-    ///  Fachada del programa
+    ///  Resumen: Representa la fachada del programa, nos permite acceder a todas las funciones del programa sin dar a conocer como funcionan por dentro
     /// </summary>
-    /// <remarks> Resumen: Representa la fachada del programa, nos permite acceder a todas las funciones del programa sin dar a conocer como funcionan por dentro</remarks>
-    public class FachadaNucleo
-    {   
-        
+
+    public class Nucleo
+    {
         private IServicioAPILibros ServicioAPILibros = new APIOpenLibrary();
         private INotificadorUsuario NotificadorUsuarios = new NotificadorOutlook();
-        private Bitacora.ImplementacionBitacora bitacora = new Bitacora.ImplementacionBitacora();
 
-        private IUnitOfWork GetUnitOfWork()//implementaciones posibles para las base de datos, interactua con la interfaz IUnitOfWork, esta abtraccion nos permite poder trabajar con distintas implementaciones
+
+
+
+
+
+
+        /// <summary>
+        /// Resumen: Nos permite crear una instancia de la Fachada del programa.
+        /// </summary>
+        public Nucleo()
         {
-            return new UnitOfWorkMSSQL(new AdministradorDePrestamosDbContext());//implementacion por defecto,implementacion en una base de datos relacional en un servidor local de MSQLSERVER
         }
 
-        public FachadaNucleo()//Constructor de la clase
-        {
-        }
-
+        /// <summary>
+        ///Resumen:   Permite registrar un nuevo usuario simple, y devuelve el valor true si la operacion es exitosa y false si fue erronea 
+        /// </summary>
+        /// <param name="pNombreUsuario"></param>
+        /// <param name="nombre"></param>
+        /// <param name="apellido"></param>
+        /// <param name="fechaNacimiento"></param>
+        /// <param name="mail"></param>
+        /// <param name="telefono"></param>
+        /// <returns>verdadero si el registro fue exitoso y false en el caso contrario</returns>
         //
-        // Resumen:
-        //     Permite registrar un nuevo usuario simple, y devuelve el valor true si la operacion es exitosa y false si fue erronea
+        // 
         public bool AñadirUsuario(string pNombreUsuario, string nombre, string apellido, DateTime fechaNacimiento, string mail, string telefono)
         {
             UsuarioSimple usuario = new UsuarioSimple(nombre, apellido, fechaNacimiento, mail, telefono, pNombreUsuario);//Instanciamos un usuario con los datos pasados por parametro
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
+            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();
             try
             {
                 msg = "Usuario " + pNombreUsuario + " Registrado con exito.";
-                using (IUnitOfWork unitOfWork = GetUnitOfWork())//Definimos el ambito donde se va a usar el objet unitOfWork
+                using (IUnitOfWork unitOfWork = new UnitOfWorkMSSQL(new AdministradorDePrestamosDbContext()))//Definimos el ambito donde se va a usar la unitOfWork
                 {
                     unitOfWork.RepositorioUsuarios.Add(usuario);//Añado el usuario a la base de datos
                     unitOfWork.Complete();//Guardamos los cambios
@@ -60,17 +70,21 @@ namespace Nucleo
             }
         }
 
-
+        /// <summary>
+        /// Resumen: Nos permite obtener un usuario simple de la base de datos a partir del nombreUsuario del usuario
+        /// </summary>
+        /// <param name="pNombreUsuario"></param>
+        /// <returns>El usuario que posee ese nombre de usuario</returns>
         public UsuarioSimple ObtenerUsuario(string pNombreUsuario)
-        //Nos permite obtener un usuario simple de la base de datos a partir del nombreUsuario del usuario
+
         {
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
+            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             try
             {
 
                 UsuarioSimple usuario;//Creamos una variable de tipo usuario que sera devuelta por el metodo
-                using (IUnitOfWork unitOfWork = GetUnitOfWork())//Definimos el ambito donde se va a usar el objet unitOfWork
+                using (IUnitOfWork unitOfWork = new UnitOfWorkMSSQL(new AdministradorDePrestamosDbContext()))//Definimos el ambito donde se va a usar la unitOfWork
                 {
                     usuario = unitOfWork.RepositorioUsuarios.Get(pNombreUsuario);//Asignamos al usuario el valor obtenido por el get a la base de datos
                 }
@@ -84,15 +98,24 @@ namespace Nucleo
             }
         }
 
+        /// <summary>
+        /// Resumen:Resumen: Permite actualizar la informacion de un usuario simple (No administrador)
+        /// </summary>
+        /// <param name="pNombreUsuario"></param>
+        /// <param name="nombre"></param>
+        /// <param name="apellido"></param>
+        /// <param name="pFechaNacimiento"></param>
+        /// <param name="mail"></param>
+        /// <param name="telefono"></param>
         public void ActualizarUsuario(string pNombreUsuario, string nombre, string apellido, string pFechaNacimiento, string mail, string telefono)
-        //Permite actualizar la informacion de un usuario simple
+
         {
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
-            string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
+            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();
+            string msg;//String que nos permite guardar el mensaje que vamos a registrar en el log
             try
             {
                 msg = "Usuario " + pNombreUsuario + " Actualizado con exito.";
-                using (IUnitOfWork unitOfWork = GetUnitOfWork())//Definimos el ambito donde se va a usar el objet unitOfWork
+                using (IUnitOfWork unitOfWork = new UnitOfWorkMSSQL(new AdministradorDePrestamosDbContext()))//Definimos el ambito donde se va a usar la unitOfWork
                 {
                     unitOfWork.RepositorioUsuarios.Get(pNombreUsuario).Nombre = nombre;//Modificamos uno por uno los valores por los parametros pasados
                     unitOfWork.RepositorioUsuarios.Get(pNombreUsuario).Apellido = apellido;
@@ -111,16 +134,26 @@ namespace Nucleo
             }
         }
 
+        /// <summary>
+        /// Resumen:Este metodo nos permite resgistrar un nuevo Usuario Administrador
+        /// </summary>
+        /// <param name="pNombreUsuario"></param>
+        /// <param name="nombre"></param>
+        /// <param name="apellido"></param>
+        /// <param name="fechaNacimiento"></param>
+        /// <param name="mail"></param>
+        /// <param name="contraseña"></param>
+        /// <param name="telefono"></param>
+        /// <returns>Verdadero si la operacion fue exitosa y Falso en el caso contrario</returns>
         public bool AñadirAdministrador(string pNombreUsuario, string nombre, string apellido, DateTime fechaNacimiento, string mail, string contraseña, string telefono)
-        //Permite registrar un nuevo usuario administrador
         {
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
+            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
-            UsuarioAdministrador usuario = new UsuarioAdministrador(nombre, apellido, fechaNacimiento, mail, contraseña, telefono, pNombreUsuario);//Instanciamos un administrador con los datos pasados por parametro
+            UsuarioAdministrador usuario = new UsuarioAdministrador(nombre, apellido, fechaNacimiento, mail, contraseña, telefono, pNombreUsuario);//Instanciamos un administrador con los datos pasados como parametro
             try
             {
                 msg = "Administrador " + pNombreUsuario + " registrado con exito.";
-                using (IUnitOfWork unitOfWork = GetUnitOfWork())//Definimos el ambito donde se va a usar el objet unitOfWork
+                using (IUnitOfWork unitOfWork = new UnitOfWorkMSSQL(new AdministradorDePrestamosDbContext()))//Definimos el ambito donde se va a usar la unitOfWork
                 {
                     unitOfWork.RepositorioAdministradores.Add(usuario);//Añadimos el administrador a la base de datos
                     unitOfWork.Complete();//Guardamos los cambios
@@ -137,17 +170,21 @@ namespace Nucleo
             }
         }
 
-
+        /// <summary>
+        /// Resumen: Nos permite obtener un usuario administrador de la base de datos a partir del nombreUsuario del usuario
+        /// </summary>
+        /// <param name="pNombreAdministrador"></param>
+        /// <returns>Un Usuario, el Usuario solicitado en el caso de que exista y un Usuario vacio en el caso de que no</returns>
         public UsuarioAdministrador ObtenerAdministrador(string pNombreAdministrador)
-        //Nos permite obtener un usuario administrador de la base de datos a partir del nombreUsuario del usuario
+
         {
             UsuarioAdministrador administrador = new UsuarioAdministrador();//Instanciamos un administrador para que luego sea devuelto como resultado
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
+            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             try
             {
 
-                using (IUnitOfWork unitOfWork = GetUnitOfWork())//Definimos el ambito donde se va a usar el objet unitOfWork
+                using (IUnitOfWork unitOfWork = new UnitOfWorkMSSQL(new AdministradorDePrestamosDbContext())) //Definimos el ambito donde se va a usar la unitOfWork
                 {
                     administrador = unitOfWork.RepositorioAdministradores.Get(pNombreAdministrador);//Asignamos a la variable administrado instanciada el valor que nos devuelve el get.
                 }
@@ -162,15 +199,25 @@ namespace Nucleo
             return administrador;//Devolvemos el administrador
         }
 
+
+        /// <summary>
+        /// Resumen: Permite actualizar la informacion de un Usuario Administrador
+        /// </summary>
+        /// <param name="pNombreUsuario"></param>
+        /// <param name="nombre"></param>
+        /// <param name="apellido"></param>
+        /// <param name="pFechaNacimiento"></param>
+        /// <param name="mail"></param>
+        /// <param name="telefono"></param>
         public void ActualizarAdministrador(string pNombreUsuario, string nombre, string apellido, string pFechaNacimiento, string mail, string telefono)
         //Permite actualizar la informacion de un usuario administrador
         {
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
+            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             try
             {
                 msg = "Administrador " + pNombreUsuario + " actualizado con exito.";
-                using (IUnitOfWork unitOfWork = GetUnitOfWork())//Definimos el ambito donde se va a usar el objet unitOfWork
+                using (IUnitOfWork unitOfWork = new UnitOfWorkMSSQL(new AdministradorDePrestamosDbContext()))//Definimos el ambito donde se va a usar la unitOfWork
                 {
                     unitOfWork.RepositorioAdministradores.Get(pNombreUsuario).Nombre = nombre;//Modificamos uno por uno los valores por los parametros pasados
                     unitOfWork.RepositorioAdministradores.Get(pNombreUsuario).Apellido = apellido;
@@ -187,15 +234,20 @@ namespace Nucleo
             oLog.RegistrarLog(msg);//Añadimos el mensaje al log
         }
 
+        /// <summary>
+        /// Resumen: Nos permite actualizar la contraseña de un Usuario Administrador
+        /// </summary>
+        /// <param name="pNombreAdministrador"></param>
+        /// <param name="contraseña"></param>
         public void ActualizarContraseñaAdministrador(string pNombreAdministrador, string contraseña)
-        //Permite actualizar la contraseña de un administrador
+
         {
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
+            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             try
             {
                 msg = "Contraseña del administrador " + pNombreAdministrador + " actualizada con exito.";
-                using (IUnitOfWork unitOfWork = GetUnitOfWork())//Definimos el ambito donde se va a usar el objet unitOfWork
+                using (IUnitOfWork unitOfWork = new UnitOfWorkMSSQL(new AdministradorDePrestamosDbContext()))//Definimos el ambito donde se va a usar la unitOfWork
                 {
                     unitOfWork.RepositorioAdministradores.Get(pNombreAdministrador).Pass = contraseña;//Modificamos la contraseña actual por la que pasamos como parametro
                     unitOfWork.Complete();//Guardamos los cambios
@@ -208,17 +260,26 @@ namespace Nucleo
             oLog.RegistrarLog(msg);//Añadimos el mensaje al log
         }
 
+        /// <summary>
+        /// Resumen:Permite registrar un nuevo libro
+        /// </summary>
+        /// <param name="unISBN"></param>
+        /// <param name="titulo"></param>
+        /// <param name="autor"></param>
+        /// <param name="añoPublicacion"></param>
+        /// <param name="pCantidadEjempalares"></param>
+        /// <returns></returns>
         public bool AñadirLibro(string unISBN, string titulo, string autor, string añoPublicacion, int pCantidadEjempalares)
-        //Permite registrar un nuevo libro
+
         {
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
+            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             bool resultado = true;
             try
             {
                 msg = "Libro ( Titulo: " + titulo + " Autor: " + autor + " ISBN:" + unISBN + " ) registrado con exito.";
                 Libro libro = new Libro(unISBN, titulo, autor, añoPublicacion);//Instanciamos un libro con los parametros pasados al metodo.
-                using (IUnitOfWork unitOfWork = GetUnitOfWork())//Definimos el ambito donde se va a usar el objet unitOfWork
+                using (IUnitOfWork unitOfWork = new UnitOfWorkMSSQL(new AdministradorDePrestamosDbContext()))//Definimos el ambito donde se va a usar  unitOfWork
                 {
                     foreach (var item in unitOfWork.RepositorioLibros.GetAllISBN())
                     {
@@ -260,15 +321,21 @@ namespace Nucleo
             oLog.RegistrarLog(msg);//Añadimos el mensaje al log
             return resultado;
         }
+
+        /// <summary>
+        /// Permite obtener un libro de la base de datos a partir del id del mismo 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Un libro, el libros solicitado en el caso de exista y un libro vacio en el caso contrario</returns>
         public Libro ObtenerLibro(int id)
-        //Permite obtener un libro de la base de datos a partir del id del mismo 
+
         {
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
+            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             Libro libro = new Libro();//Instanciamos un libro que sera devuelto por el metodo
             try
             {
-                using (IUnitOfWork unitOfWork = GetUnitOfWork())//Definimos el ambito donde se va a usar el objet unitOfWork
+                using (IUnitOfWork unitOfWork = new UnitOfWorkMSSQL(new AdministradorDePrestamosDbContext()))//Definimos el ambito donde se va a usar la unitOfWork
                 {
                     libro = unitOfWork.RepositorioLibros.Get(id);//Obtenemos el libro a travez del metodo get con la id pasada por parametro y se lo asignamos a la variable creada.
                     unitOfWork.Complete();//Guardamos los cambios
@@ -283,15 +350,20 @@ namespace Nucleo
             return libro;//Devolvemos el libro
         }
 
+        /// <summary>
+        /// Resumen:Nos permite obtener la lista de ejemplares en buen estado de un libro
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>List Ejemplar </returns>
         public List<Ejemplar> ObtenerEjemplaresEnBuenEstadoLibro(int id)
-        //devuelve la lista de ejemplares en buen estado de un libro
+
         {
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
+            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             List<Ejemplar> lista = new List<Ejemplar>(); //Creamos un listado que contenga objetos del tipo Ejemplar para ser devuelto por el metodo
             try
             {
-                using (IUnitOfWork unitOfWork = GetUnitOfWork())//Definimos el ambito donde se va a usar el objet unitOfWork
+                using (IUnitOfWork unitOfWork = new UnitOfWorkMSSQL(new AdministradorDePrestamosDbContext()))//Definimos el ambito donde se va a usar la unitOfWork
                 {
                     lista = unitOfWork.RepositorioLibros.Get(id).EjemplaresEnBuenEstado();//Asignamos a la lista creada, la lista que nos devuelve el metodo que EjemplaresEnBuenEstado que posee el libro, cuya id es id.
                 }
@@ -304,15 +376,20 @@ namespace Nucleo
             return lista;//Devolvemos la lista
         }
 
+        /// <summary>
+        /// Resumen: Permite añadir mas ejemplares a un libro
+        /// </summary>
+        /// <param name="pIdLibro"></param>
+        /// <param name="pCantidad"></param>
         public void AñadirEjemplares(int pIdLibro, int pCantidad)
-        //Permite añadir mas ejemplares a un libro
+
         {
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
+            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             try
             {
                 msg = ("Ejemplares Añadidos a libro con exito (ID LIbro: " + pIdLibro + " Cantidad: " + pCantidad + ").");
-                using (IUnitOfWork unitOfWork = GetUnitOfWork())//Definimos el ambito donde se va a usar el objet unitOfWork
+                using (IUnitOfWork unitOfWork = new UnitOfWorkMSSQL(new AdministradorDePrestamosDbContext())) //Definimos el ambito donde se va a usar la unitOfWork
                 {
                     for (int i = 1; i <= pCantidad; i++)//Añadimos la cantidad de ejemplares pasado como parametro al libro con un ciclo for.
                     {
@@ -329,15 +406,20 @@ namespace Nucleo
             oLog.RegistrarLog(msg);//Añadimos el mensaje al log
         }
 
+        /// <summary>
+        /// Resumen: Permite disminuir la cantidad de ejemplares de un libro
+        /// </summary>
+        /// <param name="pIdLibro"></param>
+        /// <param name="pCantidad"></param>
         public void EliminarEjemplaresDeUnLibro(int pIdLibro, int pCantidad)
-        //Permite disminuir la cantidad de ejemplares de un libro
+
         {
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
+            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             try
             {
                 msg = ("Ejemplares del libro eliminados con exito (ID LIbro: " + pIdLibro + " Cantidad: " + pCantidad + ").");
-                using (IUnitOfWork unitOfWork = GetUnitOfWork())//Definimos el ambito donde se va a usar el objet unitOfWork
+                using (IUnitOfWork unitOfWork = new UnitOfWorkMSSQL(new AdministradorDePrestamosDbContext()))//Definimos el ambito donde se va a usar la unitOfWork
                 {
                     unitOfWork.RepositorioLibros.Get(pIdLibro).EliminarEjemplares(pCantidad);//Eliminamos la cantidad ejemplares pasados por parametro del libro.
                     unitOfWork.Complete();//guardamos los cambios
@@ -352,15 +434,19 @@ namespace Nucleo
             oLog.RegistrarLog(msg);//Añadimos el mensaje al log
         }
 
+        /// <summary>
+        /// Resumen: Permite dar de baja un libro
+        /// </summary>
+        /// <param name="pIdLibro"></param>
         public void DarDeBajaUnLibro(int pIdLibro)
-        //Permite dar de baja un libro
+
         {
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
+            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             try
             {
                 msg = "Libro Dado de baja con exito (Id: " + pIdLibro + ").";
-                using (IUnitOfWork unitOfWork = GetUnitOfWork())//Definimos el ambito donde se va a usar el objet unitOfWork
+                using (IUnitOfWork unitOfWork = new UnitOfWorkMSSQL(new AdministradorDePrestamosDbContext()))//Definimos el ambito donde se va a usar la unitOfWork
                 {
                     Libro libro = unitOfWork.RepositorioLibros.Get(pIdLibro);//Obtenemos el libro por medio del metodo get y lo asignamos a una variable libro.
                     libro.DarDeBaja();//Llamamos al metodo dar de baja del libro
@@ -375,15 +461,19 @@ namespace Nucleo
             oLog.RegistrarLog(msg);//Añadimos el mensaje al log
         }
 
+        /// <summary>
+        /// Resumen: Permite dar de alta un libro que se encuentra dado de baja
+        /// </summary>
+        /// <param name="pIdLibro"></param>
         public void DarDeAltaUnLibro(int pIdLibro)
-        //Permite dar de alta un libro que ha sido dado de baja 
+
         {
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
+            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             try
             {
                 msg = "Libro Dado de alta con exito (Id: " + pIdLibro + ").";
-                using (IUnitOfWork unitOfWork = GetUnitOfWork())//Definimos el ambito donde se va a usar el objet unitOfWork
+                using (IUnitOfWork unitOfWork = new UnitOfWorkMSSQL(new AdministradorDePrestamosDbContext()))//Definimos el ambito donde se va a usar la unitOfWork
                 {
                     unitOfWork.RepositorioLibros.Get(pIdLibro).DarDeAlta();//Obtnemos el libro a traves del parametro pasado, y llamamos al metodo DarDeAlta.
                     unitOfWork.Complete();//Guardamos los cambios.
@@ -397,16 +487,20 @@ namespace Nucleo
             oLog.RegistrarLog(msg);//Añadimos el mensaje al log
         }
 
+        /// <summary>
+        /// Resumen:Permite obtener la lista de ejemplares disponibles de un libro
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>List Ejemplar</returns>
         public List<Ejemplar> ObtenerEjemplaresDisponibles(int id)
-        //Permite obtener la lista de ejemplares disponibles de un libro
         {
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
+            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             List<Ejemplar> lista = new List<Ejemplar>();//Instanciamos una lista de ejemplares que sera devuelta por el metodo
             try
             {
 
-                using (IUnitOfWork unitOfWork = GetUnitOfWork())//Definimos el ambito donde se va a usar el objet unitOfWork
+                using (IUnitOfWork unitOfWork = new UnitOfWorkMSSQL(new AdministradorDePrestamosDbContext()))//Definimos el ambito donde se va a usar la unitOfWork
                 {
                     lista = unitOfWork.RepositorioLibros.Get(id).EjemplaresDisponibles();//Asignamos a la lista, los valores que devuelve la lista del metodo EjemplaresDisponible del libro
                     return lista;//Devolvemos la lista
@@ -420,15 +514,20 @@ namespace Nucleo
             return lista;
         }
 
+        /// <summary>
+        /// Resumen:Permite obtener la lista total de ejemplares de un libro
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>List Ejemplar</returns>
         public List<Ejemplar> ObtenerEjemplaresTotales(int id)
-        //Permite obtener la lista total de ejemplares  de un libro
+
         {
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
+            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             List<Ejemplar> lista = new List<Ejemplar>();//Instanciamos una lista de ejemplares que sera devuelta por el metodo
             try
             {
-                using (IUnitOfWork unitOfWork = GetUnitOfWork())//Definimos el ambito donde se va a usar el objet unitOfWork
+                using (IUnitOfWork unitOfWork = new UnitOfWorkMSSQL(new AdministradorDePrestamosDbContext()))//Definimos el ambito donde se va a usar launitOfWork
                 {
                     lista = unitOfWork.RepositorioLibros.Get(id).EjemplaresTotales();//Asignamos a la lista, los valores que devuelve la lista del metodo EjemplaresTotales del libro
 
@@ -442,15 +541,21 @@ namespace Nucleo
             return lista;//Devolvemos la lista
         }
 
+        /// <summary>
+        /// Resumen:Permite registrar un nuevo prestamo
+        /// </summary>
+        /// <param name="pNombreUsuario"></param>
+        /// <param name="idEjemplar"></param>
+        /// <param name="idLibro"></param>
         public void RegistrarPrestamo(string pNombreUsuario, int idEjemplar, int idLibro)
-        //Permite registrar un nuevo prestamo
+
         {
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
+            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             try
             {
                 msg = "Prestamo registrado con exito (idLibro: " + idLibro + "Id Ejemplar: " + idEjemplar + " Usuario: " + pNombreUsuario + ") obtenida con exito.";
-                using (IUnitOfWork unitOfWork = GetUnitOfWork())//Definimos el ambito donde se va a usar el objet unitOfWork
+                using (IUnitOfWork unitOfWork = new UnitOfWorkMSSQL(new AdministradorDePrestamosDbContext()))//Definimos el ambito donde se va a usar la unitOfWork
                 {
                     Prestamo prestamo = new Prestamo(unitOfWork.RepositorioUsuarios.Get(pNombreUsuario), unitOfWork.RepositorioEjemplares.Get(idEjemplar), unitOfWork.RepositorioLibros.Get(idLibro));//Instancia de un prestamo con los valores que pasamos como parametro
                     unitOfWork.RepositorioEjemplares.Get(idEjemplar).Disponible = false;//El ejemplar del prestamo pasa a estar no diponible
@@ -464,15 +569,21 @@ namespace Nucleo
             }
             oLog.RegistrarLog(msg);//Añadimos el mensaje al log
         }
+
+        /// <summary>
+        /// Resumen: Permite obtener un prestamo de la base de datos a partir del id del prestamo
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Prestamo</returns>
         public Prestamo ObtenerPrestamo(int id)
-        //Permite obtener un prestamo de la base de datos a partir del id del prestamo
+
         {
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
+            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             Prestamo prestamo = new Prestamo();//Instanciamos un objeto del tipo prestamo que luego sera devuelto por el metodo
             try
             {
-                using (IUnitOfWork unitOfWork = GetUnitOfWork())//Definimos el ambito donde se va a usar el objet unitOfWork
+                using (IUnitOfWork unitOfWork = new UnitOfWorkMSSQL(new AdministradorDePrestamosDbContext()))//Definimos el ambito donde se va a usar la unitOfWork
                 {
                     prestamo = unitOfWork.RepositorioPrestamos.Get(id);//Obtenemos el prestamo y lo asignamos a la variable prestamo creada
                 }
@@ -485,14 +596,22 @@ namespace Nucleo
             return prestamo;//Devolvemos el prestamo
         }
 
+        /// <summary>
+        /// Resumen: Permite actualizar la informacion de un Libro
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="unISBN"></param>
+        /// <param name="titulo"></param>
+        /// <param name="autor"></param>
+        /// <param name="añoPublicacion"></param>
         public void ActualizarLibro(int id, string unISBN, string titulo, string autor, string añoPublicacion)
-        //Permite actualizar la informacion de un libro
+
         {
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
+            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             try
             {
-                using (IUnitOfWork unitOfWork = GetUnitOfWork())//Definimos el ambito donde se va a usar el objet unitOfWork
+                using (IUnitOfWork unitOfWork = new UnitOfWorkMSSQL(new AdministradorDePrestamosDbContext()))//Definimos el ambito donde se va a usar la unitOfWork
                 {
                     unitOfWork.RepositorioLibros.Get(id).ISBN = unISBN;//Modificamos uno por uno los atributos del libro por los parametros pasados.
                     unitOfWork.RepositorioLibros.Get(id).Titulo = titulo;
@@ -508,15 +627,20 @@ namespace Nucleo
             }
         }
 
+        /// <summary>
+        /// Resumen: Permite obtener el Usuario de un prestamo a patir del id del prestamo
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Usuario Simple</returns>
         public UsuarioSimple ObtenerUsuarioDePrestamo(int id)
-        //Permite obtener el usuario de un prestamo a patir del id del prestamo
+
         {
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
+            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             UsuarioSimple usuario = new UsuarioSimple();//Instanciamos un objeto del tipo UsuariosSimple que luego sera devuelto por el metodo
             try
             {
-                using (IUnitOfWork unitOfWork = GetUnitOfWork())//Definimos el ambito donde se va a usar el objet unitOfWork
+                using (IUnitOfWork unitOfWork = new UnitOfWorkMSSQL(new AdministradorDePrestamosDbContext()))//Definimos el ambito donde se va a usar la unitOfWork
                 {
                     usuario = unitOfWork.RepositorioPrestamos.Get(id).Usuario;//Obtenemos el usuario y se lo asignamos a la variable creada anteriormente
                 }
@@ -529,15 +653,20 @@ namespace Nucleo
             return usuario;//Devolvemos el usuario
         }
 
+        /// <summary>
+        /// Resumen: Permite registrar la devolucion de un prestamo
+        /// </summary>
+        /// <param name="idPrestamo"></param>
+        /// <param name="estado"></param>
         public void RegistrarDevolucion(int idPrestamo, string estado)
-        //Permite registrar la devolucion de un prestamo
+
         {
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
+            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             try
             {
                 msg = " Prestamo devuelto (Id Prestamo: " + idPrestamo + " Estado:" + estado + ")";
-                using (IUnitOfWork unitOfWork = GetUnitOfWork())//Definimos el ambito donde se va a usar el objet unitOfWork
+                using (IUnitOfWork unitOfWork = new UnitOfWorkMSSQL(new AdministradorDePrestamosDbContext()))//Definimos el ambito donde se va a usar la unitOfWork
                 {
                     if (estado == "Bueno")
                     {
@@ -554,42 +683,33 @@ namespace Nucleo
             oLog.RegistrarLog(msg);//Añadimos el mensaje al log
         }
 
-        public void ModificarFechasPrestamo(int pIdPrestamo, string pFechaPrestamo, string pFechaLimite)
-        //permite modificar las fechas de realizacion y limite de un prestamo(funcion solo para versiones de prueba)
-        {
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
-            string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
-            try
-            {
-                using (IUnitOfWork unitOfWork = GetUnitOfWork())
-                {
-                    unitOfWork.RepositorioPrestamos.Get(pIdPrestamo).FechaPrestamo = pFechaPrestamo;
-                    unitOfWork.RepositorioPrestamos.Get(pIdPrestamo).FechaLimite = pFechaLimite;
-                    unitOfWork.Complete();
-                }
-            }
-            catch (Exception ex)
-            {
-                msg = "Error al modificar las fechas  del prestamo (Id Prestamo: " + pIdPrestamo + " Fecha prestamo: " + pFechaPrestamo + " Fecha Limite: " + pFechaLimite + ")." + ex.Message + ex.StackTrace;
-                oLog.RegistrarLog(msg);//Añadimos el mensaje al log
-            }
-        }
 
+
+        /// <summary>
+        /// Resumen: Permite verificar que la combinacion NombreUsuario-Contraseña sea correcta
+        /// </summary>
+        /// <param name="pNombreUsuario"></param>
+        /// <param name="contraseña"></param>
+        /// <returns>(Boolean) Verdadero si la combinacion es correcta y Falso en caso contrario</returns>
         public bool VerficarContraseña(string pNombreUsuario, string contraseña)
-        //permite verificar que la combinacion NombreUsuario-Contraseña sea correcta
+
         {
             return ObtenerAdministrador(pNombreUsuario).VerificarContraseña(contraseña);//Obtiene el administrador y llama a su metodo VerificarContraseña con la contraseña pasada como paramtetro para verificar que el usuario y contraseña son correctos para iniciar sesion
         }
 
+        /// <summary>
+        /// Resumen: Permite obtener la lista total Usuarios Simples
+        /// </summary>
+        /// <returns>List UsuarioSimple</returns>
         public IEnumerable<UsuarioSimple> ObtenerUsuarios()
-        //permite obtener la lista total de usuarios simples
         {
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
+            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             IEnumerable<UsuarioSimple> lista;
             try
             {
-                lista = GetUnitOfWork().RepositorioUsuarios.GetAll();
+                IUnitOfWork unitOfWork = new UnitOfWorkMSSQL(new AdministradorDePrestamosDbContext());
+                lista = unitOfWork.RepositorioUsuarios.GetAll();
             }//Obtiene todos los usuarios simples con el metodo getall del repositorio
             catch (Exception ex)
             {
@@ -601,15 +721,22 @@ namespace Nucleo
             return lista;
         }
 
+        /// <summary>
+        /// Resumen: Permite obtener la lista total Usuarios Administradores
+        /// </summary>
+        /// <returns>List UsuarioAdministrador</returns>
         public IEnumerable<UsuarioAdministrador> ObtenerAdministradores()
-        //permite obtener la lista total de usuarios adminitradores
+
         {
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
+            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             IEnumerable<UsuarioAdministrador> lista;
             try
             {
-                lista = GetUnitOfWork().RepositorioAdministradores.GetAll();//Obtiene todos los usuarios administradores con el metodo getall del repositorio
+                IUnitOfWork unitOfWork = new UnitOfWorkMSSQL(new AdministradorDePrestamosDbContext());
+
+                lista = unitOfWork.RepositorioAdministradores.GetAll();//Obtiene todos los usuarios administradores con el metodo getall del repositorio
+
             }
             catch (Exception ex)
             {
@@ -620,15 +747,22 @@ namespace Nucleo
             return lista;
         }
 
+        /// <summary>
+        /// Resumen: Permite obtener la lista total de Libros
+        /// </summary>
+        /// <returns>List Libro</returns>
         public IEnumerable<Libro> ObtenerLibros()
         //permite obtener la lista total de libros
         {
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
+            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             IEnumerable<Libro> lista;
             try
             {
-                lista = GetUnitOfWork().RepositorioLibros.GetAll();//Obtiene todos los usuarios administradores con el metodo getall del repositorio
+                IUnitOfWork unitOfWork = new UnitOfWorkMSSQL(new AdministradorDePrestamosDbContext());
+
+                lista = unitOfWork.RepositorioLibros.GetAll();//Obtiene todos los usuarios administradores con el metodo getall del repositorio
+
             }
             catch (Exception ex)
             {
@@ -639,15 +773,23 @@ namespace Nucleo
             return lista;
         }
 
+        /// <summary>
+        /// Resumen: Permite obtener la lista total de prestamos
+        /// </summary>
+        /// <returns>List Prestamo</returns>
         public IEnumerable<Prestamo> ObtenerPrestamos()
-        //permite obtener la lista total de prestamos
+
         {
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
+            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             IEnumerable<Prestamo> lista;
             try
             {
-                lista = GetUnitOfWork().RepositorioPrestamos.GetAll();//Obtiene todos los usuarios administradores con el metodo getall del repositorio
+
+                IUnitOfWork unitOfWork = new UnitOfWorkMSSQL(new AdministradorDePrestamosDbContext());
+                lista = unitOfWork.RepositorioPrestamos.GetAll();//Obtiene todos los usuarios administradores con el metodo getall del repositorio
+
+
             }
             catch (Exception ex)
             {
@@ -658,12 +800,20 @@ namespace Nucleo
             return lista;
         }
 
+        /// <summary>
+        /// Resumen: Devuelve el id del ultimo plibro registrado
+        /// </summary>
+        /// <returns> (Int) id del ultimo plibro registrado</returns>
         public int ObtenerUltimoIdLibro()
-        //devuelve el id del ultimo plibro registrado
+
         {
             return ObtenerLibros().Last().Id;
         }
 
+        /// <summary>
+        /// Resumen: Devuelve la lista de prestamos proximos a vencerse
+        /// </summary>
+        /// <returns>List Prestamo </returns>
         public List<Prestamo> ObtenerListadePrestamosProximosAVencerse()
         //Devuelve la lista de prestamos proximos a vencer
         {
@@ -672,7 +822,7 @@ namespace Nucleo
             List<Prestamo> lista = new List<Prestamo>();//Instancia de una lista de prestamos que sera devuelta por el metodo
             try
             {
-                using (IUnitOfWork unitOfWork = GetUnitOfWork())
+                using (IUnitOfWork unitOfWork = new UnitOfWorkMSSQL(new AdministradorDePrestamosDbContext()))
                 {
                     lista = unitOfWork.RepositorioPrestamos.GetAllProximosAVencerse();
                 }
@@ -687,15 +837,20 @@ namespace Nucleo
             return lista;//Devuelve la lista            
         }
 
+
+        /// <summary>
+        /// Resumen: Devuelve la lista de prestamos retasados
+        /// </summary>
+        /// <returns>List Prestamo </returns>
         public List<Prestamo> ObtenerListadePrestamosRetrasados()
-        //Devuelve la lista de prestamos retasados
+
         {
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
+            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             List<Prestamo> lista = new List<Prestamo>();//Instancia de una lista de prestamos que sera devuelta por el metodo
             try
             {
-                using (IUnitOfWork unitOfWork = GetUnitOfWork())
+                using (IUnitOfWork unitOfWork = new UnitOfWorkMSSQL(new AdministradorDePrestamosDbContext()))
                 {
                     lista = unitOfWork.RepositorioPrestamos.GetAllRestrasados();
                 }
@@ -709,16 +864,25 @@ namespace Nucleo
             return lista;//Devuelve la lista 
         }
 
-        public List<Libro> ListarLibrosDeAPIPorCoincidencia(string unaCadena)//realiza un busqueda en la api de libros y devuelve una lista de libros
+        /// <summary>
+        /// Resumen: Realiza una consulta en la API de libros y devuelve una lista de libros que coincidan con el termino buscado
+        /// </summary>
+        /// <param name="unaCadena"></param>
+        /// <returns>List Libro</returns>
+        public List<Libro> ListarLibrosDeAPIPorCoincidencia(string unaCadena)
         {
             return ServicioAPILibros.ListarPorCoincidecia(unaCadena);
         }
 
-        public void NotificarPrestamosProximosAVencer()//notifica a todos los usuarios con prestamos proximos a vencer
+        /// <summary>
+        /// Resumen: Notifica a todos los usuarios con prestamos proximos a vencer
+        /// </summary>
+        public void NotificarPrestamosProximosAVencer()
         {
             void NotificarProximoAVencer(string pNombreUsuario, string titulo, string fechaLimite)//notifica a un usuario que su prestamo esta proximo a vencer
             {
-                bitacora.RegistrarLog(NotificadorUsuarios.NotificarProximoAVencer(ObtenerUsuario(pNombreUsuario), titulo, fechaLimite));
+                Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();
+                oLog.RegistrarLog(NotificadorUsuarios.NotificarProximoAVencer(ObtenerUsuario(pNombreUsuario), titulo, fechaLimite));
             }
             foreach (var item in ObtenerListadePrestamosProximosAVencerse())
             {
@@ -728,11 +892,15 @@ namespace Nucleo
             }
         }
 
-        public void NotificarPrestamosRetrasados()//notifica a todos los usuarios con prestamos retrasados
+        /// <summary>
+        /// Resumen:Notifica a todos los usuarios con prestamos retrasados
+        /// </summary>
+        public void NotificarPrestamosRetrasados()
         {
             void NotificarRetraso(string pNombreUsuario, string titulo, string fechaLimite)//notifica a un usuario que su prestamo esta retrasado
             {
-                bitacora.RegistrarLog(NotificadorUsuarios.NotificarRetraso(ObtenerUsuario(pNombreUsuario), titulo, fechaLimite));
+                Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();
+                oLog.RegistrarLog(NotificadorUsuarios.NotificarRetraso(ObtenerUsuario(pNombreUsuario), titulo, fechaLimite));
             }
             foreach (var item in ObtenerListadePrestamosRetrasados())
             {
@@ -742,25 +910,32 @@ namespace Nucleo
             }
         }
 
+        /// <summary>
+        /// Resumen: Notifica a todos los usuarios con prestamos retrasados o proximos a vencer,en el caso de que la hora este entre las 9 y 10 am
+        /// </summary>
         public void NotificarUsuarios()
-        //notifica a todos los usuarios con prestamos retrasados o proximos a vencer en el caso de que la hora este entre las 9 y 10 am
+
         {
-            if (DateTime.Now.Hour == 9)
+            if (DateTime.Now.Hour != 9)
             {
                 NotificarPrestamosRetrasados();
                 NotificarPrestamosProximosAVencer();
             }
         }
-
+        /// <summary>
+        /// Resumen: Permite dar de baja un Usuario
+        /// </summary>
+        /// <param name="pNombreUsuario"></param>
+        /// <returns></returns>
         public bool DarDeBajaUsuario(string pNombreUsuario)
-        //pemite dar de baja un usuario simple
+
         {
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
+            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             bool resultado;//Booleano que se devolvera como resultado
             try
             {
-                using (IUnitOfWork unitOfWork = GetUnitOfWork())//Definimos el ambito donde se va a usar el objet unitOfWork
+                using (IUnitOfWork unitOfWork = new UnitOfWorkMSSQL(new AdministradorDePrestamosDbContext()))//Definimos el ambito donde se va a usar la unitOfWork
                 {
                     resultado = unitOfWork.RepositorioUsuarios.Get(pNombreUsuario).ValidarBaja();//Obtiene el usuario y llama a su metodo ValidarBaja. El valor que devuelve este metodo se guarda en la variable anterior nombrada.
                     if (resultado == true)//Si el resultado devuelto anterior mente es true
@@ -781,8 +956,13 @@ namespace Nucleo
             }
         }
 
+        /// <summary>
+        /// Resumen: Permite dar de baja un Usuario Adminstrador
+        /// </summary>
+        /// <param name="pNombreUsuario"></param>
+        /// <returns>Un Boolean que indica el exito de la operacion</returns>
         public bool DarDeBajaAdministrador(string pNombreUsuario)
-        //Permite dar de baja un usuario administrador
+
         {
             if (pNombreUsuario == "admin")//Verifica si el administrador que quiere darse de baja no es el admin principal
             {
@@ -790,11 +970,11 @@ namespace Nucleo
             }
             else
             {
-                Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
+                Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();
                 string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
                 try
                 {
-                    using (IUnitOfWork unitOfWork = GetUnitOfWork())//Definimos el ambito donde se va a usar el objet unitOfWork
+                    using (IUnitOfWork unitOfWork = new UnitOfWorkMSSQL(new AdministradorDePrestamosDbContext()))//Definimos el ambito donde se va a usar la unitOfWork
                     {
                         unitOfWork.RepositorioAdministradores.Get(pNombreUsuario).Baja = true;//Obtiene el administrador y coloca en su atributo baja el valor true
                         unitOfWork.Complete();//Guardamos los cambios
@@ -812,14 +992,18 @@ namespace Nucleo
             }
         }
 
+        /// <summary>
+        /// Resumen:Permite dar de alta a un Usuario Simple al cual se le dio una baja logica
+        /// </summary>
+        /// <param name="pNombreUsuario"></param>
         public void DarDeAltaUsuario(string pNombreUsuario)
-        //Permite dar de alta un usuario simple dado de baja
+
         {
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
+            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             try
             {
-                using (IUnitOfWork unitOfWork = GetUnitOfWork())//Definimos el ambito donde se va a usar el objet unitOfWork
+                using (IUnitOfWork unitOfWork = new UnitOfWorkMSSQL(new AdministradorDePrestamosDbContext()))//Definimos el ambito donde se va a usar la unitOfWork
                 {
                     unitOfWork.RepositorioUsuarios.Get(pNombreUsuario).Baja = false;//Obtiene el usuario y coloca en su atributo baja el valor false
                     unitOfWork.Complete();//Guardamos los cambios
@@ -834,14 +1018,18 @@ namespace Nucleo
             }
         }
 
+        /// <summary>
+        /// Resumen:Permite dar de alta a un Usuario Administrador al cual se le dio una baja logica
+        /// </summary>
+        /// <param name="pNombreUsuario"></param>
         public void DarDeAltaAdministrador(string pNombreUsuario)
-        //Permite dar de alta un administrador dado de baja
+
         {
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
+            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             try
             {
-                using (IUnitOfWork unitOfWork = GetUnitOfWork())//Definimos el ambito donde se va a usar el objet unitOfWork
+                using (IUnitOfWork unitOfWork = new UnitOfWorkMSSQL(new AdministradorDePrestamosDbContext()))//Definimos el ambito donde se va a usar la unitOfWork
                 {
                     unitOfWork.RepositorioAdministradores.Get(pNombreUsuario).Baja = false;//Obtiene el administrador y coloca en su atributo baja el valor false
                     unitOfWork.Complete();//Guardamos los cambios

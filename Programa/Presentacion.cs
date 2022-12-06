@@ -4,37 +4,31 @@ using Quartz.Impl;
 using System;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Nucleo;
+using BibliotecaTrabajoEnSegundoPlano;
 
 
 namespace Programa
-{
+{   /// <summary>
+/// RESUMEN: Programa principal de la aplicacion
+/// </summary>
     class Presentacion
-    //Programa principal de la aplicacion
-    {
+    {/// <summary>
+     /// Resumen:Tarea Principal del Programa
+     /// </summary>
+     /// <returns></returns>
         [STAThread]
+
         private static async Task Main()
-        {
-            StdSchedulerFactory factory = new StdSchedulerFactory();//creamos una instancia de StdSchedulerFactory (fabrica de planificador)
-            IScheduler scheduler = await factory.GetScheduler();//creamos una  planificador
+        { 
+            IScheduler scheduler = await Class1.factory.GetScheduler();//creamos un  planificador
             await scheduler.Start();//esperamos que el planificador inicie   
-            IJobDetail job = JobBuilder.Create<NotificacionJob>()//creamos una instancia de trabajo y la asignamos al grupo group1
-                .WithIdentity("job1", "group1")
-                .Build();
-            // el disparador activa el job para que corra, y repite  esta accion cada tantos minutos como lo indique el atributo tiempo
-            ITrigger trigger = TriggerBuilder.Create()//creamos un disparador
-                .WithIdentity("trigger1", "group1")//asignamos el disparador al grupo group1
-                .StartNow()//activamos el disparador
-                .WithSimpleSchedule(x => x
-                    .WithIntervalInMinutes(60)//se activara cada tantos minutos como lo indique el atributo tiempo
-                    .RepeatForever())//se repetira por siempre
-                .Build();
-            await scheduler.ScheduleJob(job, trigger);//le asignamos el disparador al trabajo en segundo plano
+            await Class1.schedulerBuilder(scheduler);
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Login ventana = new Login();//Creamos una instancia del formulario login, lel cual va a ser el formulario inicial
+            Login ventana = new Login();//Creamos una 
             Application.Run(ventana);//asignamos a la aplicacion el formulario inicial y la ejecutamos
-            
+
         }
 
     }

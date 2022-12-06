@@ -3,9 +3,16 @@ using System.Collections.Generic;
 
 namespace ServiciosAPILibros
 {
-    public interface IServicioAPILibros//Interface que nos permite buscar informacion sobre libros en una API de libros
-    {
-        List<Libro> ListarPorCoincidecia(string cadena);//Metodo que nos permite obtener una lista de libros que coinciden con el termino buscado
+    /// <summary>
+    /// Resumen:Interface que nos consultar  informacion sobre libros en alguna API de libros
+    /// </summary>
+    public interface IServicioAPILibros
+    {   /// <summary>
+        /// Resumen: Nos permite obtener una lista de libros que coinciden con el termino buscado
+        /// </summary>
+        /// <param name="cadena"></param>
+        /// <returns>Una lista de libros</returns>
+        List<Libro> ListarPorCoincidecia(string cadena);
 
 
     }

@@ -1,7 +1,16 @@
 ﻿namespace Bitacora
 {
+    /// <summary>
+    /// Interfaz con procedimientos en comun para bitacoras o logs
+    /// </summary>
     public interface IBitacora
     {
-        void RegistrarLog(string sLog);//añadir entrada a la bitacora
+
+
+        /// <summary>
+        /// Añade una entrada a la bitacora
+        /// </summary>
+        /// <param name="entradaLog"></param>
+        void RegistrarLog(string entradaLog);
     }
 }

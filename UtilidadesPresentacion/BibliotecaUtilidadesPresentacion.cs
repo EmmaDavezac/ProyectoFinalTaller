@@ -2,14 +2,22 @@
 using System.Linq;
 
 namespace UtilidadesPresentacion
-{
+{   /// <summary>
+/// Resumen:esta clase posee un conjunto de metodos que brindan soporte a los formularios de la presentacion
+/// </summary>
     public class BibliotecaUtilidadesPresentacion
-    {
+    {   /// <summary>
+        /// Resumen: Constructor de la clase
+        /// </summary>
         public BibliotecaUtilidadesPresentacion()
         {
         }
-
-        public List<string> TransformarISBNsALista(string pLista)//Transforma el campo isbns de un libro ofrecido por la api de libros en una lista de isbn
+        /// <summary>
+        /// Resumen: Transforma el campo isbns de un libro ofrecido por la api de libros en una lista de isbn
+        /// </summary>
+        /// <param name="pLista"></param>
+        /// <returns></returns>
+        public List<string> TransformarISBNsALista(string pLista)
         {
             string palabra = "";
             int contador = 0;
@@ -44,8 +52,13 @@ namespace UtilidadesPresentacion
             return listWithoutDuplicates;
         }
 
+        /// <summary>
+        /// Resumen: Devuelve el autor de un libro, a partir de la lista de autores de un libro ofrecido por la api de libros
+        /// </summary>
+        /// <param name="pLista"></param>
+        /// <returns>(String) Autor del libro</returns>
         public string SacarAutorDeLaLista(string pLista)
-        //devuelve el autor de un libro, a partir de la lista de autores de un libro ofrecido por la api de libros
+
         {
             if (pLista == "desconocido" || pLista == "Unknown")
             {
@@ -57,7 +70,12 @@ namespace UtilidadesPresentacion
             }
         }
 
-        public List<string> TransformarAñosALista(string pLista)//Transforma el campo años de publicacion de un libro ofrecido por la api de libros en una lista de años
+        /// <summary>
+        /// Resumen: Transforma el campo años de publicacion de un libro ofrecido por la api de libros en una lista de años
+        /// </summary>
+        /// <param name="pLista"></param>
+        /// <returns> List String </returns>
+        public List<string> TransformarAñosALista(string pLista)
         {
             string palabra = "";
             pLista = pLista.Remove(0, 1);
@@ -79,7 +97,12 @@ namespace UtilidadesPresentacion
             return listWithoutDuplicates.OrderBy(x => x).ToList();
         }
 
-        public bool EsUnEmailValido(string email)//indica si una cadena tiene el formato de mail valido
+        /// <summary>
+        /// Resumen:indica si una cadena tiene el formato de mail valido
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns>True si la cadena tiene el formato de mail valido y False en caso contrario </returns>
+        public bool EsUnEmailValido(string email)
         {
             try
             {
@@ -92,16 +115,6 @@ namespace UtilidadesPresentacion
             }
         }
 
-        public string MayusculaPrimeraLetra(string source)//transforma en mayuscula la primer letra de la cadena
-        {
-            if (string.IsNullOrEmpty(source))
-            { return string.Empty; }
-            else
-            {
-                char[] letters = source.ToCharArray();
-                letters[0] = char.ToUpper(letters[0]);
-                return new string(letters);
-            }
-        }
+
     }
 }

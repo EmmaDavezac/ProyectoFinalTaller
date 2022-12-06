@@ -4,21 +4,34 @@ using System.Net;
 using System.Net.Mail;
 
 namespace NotificacionAUsuario
-{
-    public class NotificadorOutlook : INotificadorUsuario//es una implementacion de INotificarque nos permite enviar un mail a traves de una cuenta de Outlook
-    {
+{   /// <summary>
+    /// Resumen:es una implementacion de INotificar que nos permite enviar un mail a traves de una cuenta de Outlook
+    /// </summary>
+    public class NotificadorOutlook : INotificadorUsuario
+    {   /// <summary>
+        /// Resumen:Contraseña del correo electronico
+        /// </summary>
         const string pass = "Tallerdeprogramacion2021";// contraseña de la cuenta de outlook
-        const string usuario = "proyectofinaltallerdeprogramacion@outlook.com";// usuario de la cuenta de outlook
-        const string nombre = "Gestor de prestamos";//nuestro nombre de destinatario
+        /// <summary>
+        /// Resumen: usuario de la cuenta de outlook
+        /// </summary>
+        const string usuario = "proyectofinaltallerdeprogramacion@outlook.com";
+        /// <summary>
+        /// Resumen:nombre del destinatario que aparecera en los mails mandados
+        /// </summary>
+        const string nombre = "Gestor de prestamos";
 
         public string NotificarProximoAVencer(UsuarioSimple to, string titulo, string fechaLimite)//metodo que nos permite enviar un mail mediante nuestra cuenta de outlook
         {
             const string encabezado = "Aviso de prestamo de material proximo a vencer";
+            /// cuerpo del mail escrito en html
             string body = @"<style>
                             h1{color: black;}
+                             h3{color: black;}
                             p{color: black;}
                             </style>
-                            <h1>" + encabezado + "</h1>  <h2>Estimado " + to.Nombre + " " + to.Apellido + " , de acuerdo a nuestro registro usted tiene material con el periodo de prestamo proximo a finalizar.<br>Por favor devuelva el libro "+titulo+"  renueve el prestamo antes del "+fechaLimite+ " para evitar penalizaciones.</h2> <br><p>Atte Gestor de prestamos</p>";
+                            <h1>" + encabezado + "</h1>  <h3>Estimado " + to.Nombre + " " + to.Apellido + " , de acuerdo a nuestro registro usted tiene material con el periodo de prestamo proximo a finalizar.<br>Por favor devuelva el libro " + titulo + "  renueve el prestamo antes del " + fechaLimite + " para evitar penalizaciones.</h3> <br><p>Atte E-Library</p>";
+            ///Asunto que aparecera en el mail enviado
             string asunto = "Informe de prestamo proximo a vencer";
             string msge = "Error al enviar este correo. Por favor verifique los datos o intente más tarde (Usuario: " + to.NombreUsuario + ").";//mensaje en el caso de que falle el envio
             try
@@ -45,15 +58,22 @@ namespace NotificacionAUsuario
                 return msge + "-" + ex.Message + ex.StackTrace;//mensaje en el caso de que falle el envio esto deveria registrarse en log
             }
         }
-        public string NotificarRetraso(UsuarioSimple to,string titulo,string fechaLimite)//metodo que nos permite enviar un mail mediante nuestra cuenta de outlook
+        /// <summary>
+        /// Resumen:  nos permite enviar un mail mediante nuestra cuenta de outlook
+        /// </summary>
+        /// <param name="to"></param>
+        /// <param name="titulo"></param>
+        /// <param name="fechaLimite"></param>
+        /// <returns>nos devuelve una cxadena que nos indica si el mensaje fue enviado correctmente o no</returns>
+        public string NotificarRetraso(UsuarioSimple to, string titulo, string fechaLimite)
         {
             const string encabezado = "Aviso de prestamo de prestamo retrasado";
             string body = @"<style>
                             h1{color:black;}
-                            h2{color: #0000;}
-                            p{color: #0000;}
+                            h3{color: black;}
+                            p{color: black;}
                             </style>
-                            <h1>" + encabezado + "</h1> <h2>Estimado " + to.Nombre + " " + to.Apellido + " , de acuerdo a nuestro registro usted no ha devuelto a tiempo un material prestado, el prestamo a vencido el " + fechaLimite + " . <br>Por favor devuelva el libro " + titulo + " para evitar penalizaciones.</h2> <br> <p>Atte Gestor de prestamos</p>";
+                            <h1>" + encabezado + "</h1> <h3>Estimado " + to.Nombre + " " + to.Apellido + " , de acuerdo a nuestro registro usted no ha devuelto a tiempo un material prestado, el prestamo a vencido el " + fechaLimite + " . <br>Por favor devuelva el libro " + titulo + " para evitar penalizaciones.</h3> <br> <p>Atte E-Library</p>";
             string asunto = "Informe Prestamo Retrasado";
             string msge = "Error al enviar este correo. Por favor verifique los datos o intente más tarde (Usuario: " + to.NombreUsuario + ").";//mensaje en el caso de que falle el envio
             try

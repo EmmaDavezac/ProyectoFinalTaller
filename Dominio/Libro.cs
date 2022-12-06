@@ -1,22 +1,61 @@
 ﻿using System.Collections.Generic;
 
 namespace Dominio
-{
-    public class Libro //Esta clase es una abstracciòn de un libro
-    {
-        public int Id { get; set; }//Clave primaria que nos permite diferenciar los libros entre si
-        public string ISBN { get; set; }//Codigo ISBN del libro (en el caso de que lo tenga)
-        public string Titulo { get; set; }//Titulo del libro
-        public string Autor { get; set; }//Nombre del autor del libro
-        public string AñoPublicacion { get; set; }//Nombre del autor del libro
-        public virtual List<Ejemplar> Ejemplares { get; set; }//Lista de ejemplares del libro
-        public bool Baja { get; set; }//Property que nos permite dar una baja logica al libro
+{/// <summary>
+/// Resumen:Esta clase es una abstracciòn de un Libro
+/// </summary>
+    public class Libro
 
-        public Libro()//Constructor de la clase sin argumentos
+    {   /// <summary>
+        /// Resumen:Clave primaria que nos permite diferenciar los libros entre si
+        /// </summary>
+        public int Id { get; set; }
+
+        /// <summary>
+        /// Resumen:Codigo ISBN del libro (en el caso de que lo tenga)
+        /// </summary>
+        public string ISBN { get; set; }
+
+        /// <summary>
+        /// Resumen:Titulo del libro
+        /// </summary>
+        public string Titulo { get; set; }
+
+        /// <summary>
+        /// Resumen:Nombre del autor del libro
+        /// </summary>
+        public string Autor { get; set; }
+
+        /// <summary>
+        /// Resumen:Nombre del autor del libro
+        /// </summary>
+        public string AñoPublicacion { get; set; }
+
+        /// <summary>
+        /// Resumen:Lista de ejemplares del libro
+        /// </summary>
+        public virtual List<Ejemplar> Ejemplares { get; set; }
+
+        /// <summary>
+        /// Resumen:Property que nos permite dar una baja logica al libro
+        /// </summary>
+        public bool Baja { get; set; }
+
+        /// <summary>
+        /// Resumen:Constructor de la clase sin argumentos
+        /// </summary>
+        public Libro()
         {
         }
 
-        public Libro(string unISBN, string titulo, string autor, string añoPublicacion)//Constructor de la clase
+        /// <summary>
+        /// Resumen:Constructor de la clase
+        /// </summary>
+        /// <param name="unISBN"></param>
+        /// <param name="titulo"></param>
+        /// <param name="autor"></param>
+        /// <param name="añoPublicacion"></param>
+        public Libro(string unISBN, string titulo, string autor, string añoPublicacion)
         {
             ISBN = unISBN;
             Titulo = titulo;
@@ -26,7 +65,11 @@ namespace Dominio
             Ejemplares = new List<Ejemplar>();
         }
 
-        public List<Ejemplar> EjemplaresDisponibles()//Metodo que nos devuelve la lista de ejemplares del libro que se encuentran disponibles para prestarse actualmente
+        /// <summary>
+        /// Resumen:Metodo que nos devuelve la lista de ejemplares del libro que se encuentran disponibles para prestarse actualmente
+        /// </summary>
+        /// <returns></returns>
+        public List<Ejemplar> EjemplaresDisponibles()
         {
             List<Ejemplar> ejemplaresDisponibles = new List<Ejemplar>();//Se crea una lista de ejemplares vacia y se guarda en la variable ejemplaresDisponibles
             foreach (var item in this.Ejemplares)//Recorremos la lista de ejemplares del libro
@@ -39,6 +82,10 @@ namespace Dominio
             return ejemplaresDisponibles;//Verifica si el ejemplar cumple las condiciones de no encontrarse prestado y estar en buen estado
         }
 
+        /// <summary>
+        /// Resumen:Devuelve una lista con todos los ejemplares del libro que se encuentran en buen estado
+        /// </summary>
+        /// <returns>List Ejemplar</returns>
         public List<Ejemplar> EjemplaresEnBuenEstado()
         {
             List<Ejemplar> ejemplaresEnBuenEstado = new List<Ejemplar>();
@@ -51,6 +98,11 @@ namespace Dominio
             }
             return ejemplaresEnBuenEstado;
         }
+
+        /// <summary>
+        /// Resumen: Devuelve una lista con todos los ejemplares del libro
+        /// </summary>
+        /// <returns>List Ejemplar</returns>
         public List<Ejemplar> EjemplaresTotales()
         {
             List<Ejemplar> ejemplaresTotales = new List<Ejemplar>();
@@ -64,12 +116,16 @@ namespace Dominio
             return ejemplaresTotales;
         }
 
-        public void EliminarEjemplares(int pCantidad)
+        /// <summary>
+        /// Resumen: Elimina nCantidad de ejemplares del libro
+        /// </summary>
+        /// <param name="pCantidad"></param>
+        public void EliminarEjemplares(int nCantidad)
         {
             int e = 0;
             foreach (var item in Ejemplares)
             {
-                if (e >= pCantidad)
+                if (e >= nCantidad)
                 {
                     break;
                 }
@@ -83,6 +139,9 @@ namespace Dominio
             }
         }
 
+        /// <summary>
+        /// Resumen: Da de baja el libro
+        /// </summary>
         public void DarDeBaja()
         {
             if (Baja == false)
@@ -94,11 +153,14 @@ namespace Dominio
                     {
                         item.Disponible = false;
                         item.Baja = true;
-                    }              
+                    }
                 }
             }
         }
 
+        /// <summary>
+        /// Resumen:Da de alta el libro
+        /// </summary>
         public void DarDeAlta()
         {
             if (Baja == true)

@@ -1,6 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
-using System;
 
 namespace Dominio.Tests
 {
@@ -59,7 +58,7 @@ namespace Dominio.Tests
             List<Ejemplar> original = new List<Ejemplar>() { /*ejemplar1,*/ ejemplar2 };
             unLibro.Ejemplares.Add(ejemplar1);
             unLibro.Ejemplares.Add(ejemplar2);
-           
+
             //Act
             List<Ejemplar> resultado = unLibro.EjemplaresEnBuenEstado();
 
@@ -107,7 +106,7 @@ namespace Dominio.Tests
         {
             //Arange 
             Libro unLibro = new Libro("123", "a", "b", "2000");
-            Ejemplar ejemplar1 = new Ejemplar(unLibro) { Estado = EstadoEjemplar.Malo };           
+            Ejemplar ejemplar1 = new Ejemplar(unLibro) { Estado = EstadoEjemplar.Malo };
 
             //Act
             unLibro.DarDeBaja();

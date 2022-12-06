@@ -30,7 +30,7 @@ namespace Dominio.Tests
             Ejemplar unEjemplar = new Ejemplar(unLibro);
             Prestamo unPrestamo = new Prestamo(unUsuario, unEjemplar, unLibro);
             unPrestamo.FechaLimite = "2008, 2, 2";
- 
+
             //Act
             bool resultado = unPrestamo.Retrasado();
 
@@ -69,7 +69,7 @@ namespace Dominio.Tests
             //Assert
             Assert.AreEqual(true, resultado);
         }*/
-        [TestMethod] 
+        [TestMethod]
         public void RegistrarDevolucion_CaminoExitoso_Test1()
         {
             //Arange 

@@ -1,4 +1,5 @@
-﻿using Dominio;
+﻿using Bitacora;
+using Dominio;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -6,16 +7,23 @@ using System.IO;
 using System.Net;
 using System.Text;
 using System.Web;
-using Bitacora;
 
 namespace ServiciosAPILibros
-{
-    public class APIOpenLibrary : IServicioAPILibros//ESta clase es una implementacion de IServiciosAPILibros con la API De busueda de OpenLibrery
+
+{   /// <summary>
+    /// Resumen: Esta clase nos permite realizar consultas a la base de datos de Open Library, es una implementacion de la interfaz IServiciosAPILibros con la API De busqueda de OpenLibrery
+    /// </summary>
+    public class APIOpenLibrary : IServicioAPILibros//
     {
-        private string TratarCadenaBusqueda(string ca)//Este metodo transforma la cadena que queremos buscar en el formato solicitado por la api para hacer una consulta(palabra+palabra+...+palabra)
+        /// <summary>
+        /// Resumen: Transforma la cadena que queremos buscar en el formato requerido por la API Open Library para hacer una consulta.Ejemplo : palabra1 palabra2 ... palabraN -> palabra1+palabra2+...+palabraN
+        /// </summary>
+        /// <param name="cadena"></param>
+        /// <returns>Devuelve la cadena en el formato requerido por la API Open Library</returns>
+        private string TratarCadenaBusqueda(string cadena)
         {
-            string[] palabrasSeparadas = ca.Split(new char[] { ' ' });//Toma la cadena de entradas,la separa en subcadenas tomando como separador los espacios y las almacena en el array palabrasSeparadas
-            string c = string.Empty;//Creamos una nueva cadena llamada se y le asignamos la cadena vacia
+            string[] palabrasSeparadas = cadena.Split(new char[] { ' ' });//Toma la cadena de entradas,la separa en subcadenas tomando como separador los espacios y las almacena en el array palabrasSeparadas
+            string c = string.Empty;//Creamos una nueva cadena llamada se y le asignamos el valor de la cadena vacia
             foreach (string palabra in palabrasSeparadas) //recorremos todas las palabras del array
             {
                 if (c.Length > 0)
@@ -24,12 +32,18 @@ namespace ServiciosAPILibros
             }
             return c.ToUpper();//Convertimos la cadena c a mayusculas y la devolvemos como resultado
         }
-        public List<Libro> ListarPorCoincidecia(string cadena)//Este metodo nos permite realizar una busqueda en la API de OPenLibrery y obtener como resultado una lista de libros que conincidan con el termino buscado
-        {  
+
+        /// <summary>
+        /// Resumen: Permite realizar una busqueda en la API de OPenLibrery y obtener como resultado una lista de libros que conincidan con el termino buscado
+        /// </summary>
+        /// <param name="cadena"></param>
+        /// <returns>Una lista de libros</returns>
+        public List<Libro> ListarPorCoincidecia(string cadena)
+        {
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12; // Establecimiento del protocolo ssl de transporte
             List<Libro> lista = new List<Libro>();//Creamos una lista de libro
-            string terminoDeBusqueda=TratarCadenaBusqueda(cadena);//Convertimos la cadena al formato necesario para realizar una busqueda solicitado por la API
-            var mUrl = "http://openlibrary.org/search.json?q=" +terminoDeBusqueda ;
+            string terminoDeBusqueda = TratarCadenaBusqueda(cadena);//Convertimos la cadena al formato necesario para realizar una busqueda solicitado por la API
+            var mUrl = "http://openlibrary.org/search.json?q=" + terminoDeBusqueda;
             HttpWebRequest mRequest = (HttpWebRequest)WebRequest.Create(mUrl);            // Se crea el request http
             IBitacora oLog = new ImplementacionBitacora();// Instancia del objeto que maneja los logs.
             string msg;//Mensaje a guardar en el log.
@@ -87,11 +101,11 @@ namespace ServiciosAPILibros
                     String mErrorText = mReader.ReadToEnd();
                     System.Console.WriteLine("Error: {0}", mErrorText);
                 }
-                msg = "Error al intentar conectarse con la api OpenLibrary. Se intento traer un listado por coincidencia. (termino de busqueda: "+terminoDeBusqueda+" cadena: "+cadena+")" +ex.Message+ex.StackTrace+ ex.Response;
+                msg = "Error al intentar conectarse con la api OpenLibrary. Se intento traer un listado por coincidencia. (termino de busqueda: " + terminoDeBusqueda + " cadena: " + cadena + ")" + ex.Message + ex.StackTrace + ex.Response;
                 oLog.RegistrarLog(msg);
             }
             return lista;
         }
-        
+
     }
 }
