@@ -6,7 +6,7 @@ Este proyecto fue realizado con el objetivo de cumplir con el proyecto final de 
 - ABM de libros.
 - ABM de administradores
 - ABM de préstamos.
-- Control de el estado de los préstamos.
+- Control del estado de los préstamos.
 - Sistema de puntos para los clientes.
 
 ## Como configurar este proyecto en local:
@@ -17,10 +17,10 @@ Este proyecto fue realizado con el objetivo de cumplir con el proyecto final de 
 
 ## Tecnologías utilizadas
 - **Lenguaje**:  C#.
-- **Base de datos**:  SQL server.
+- **Base de datos**:  MSSQL server.
 - **ORM**:  Entity Framework code first.
 - **Maquetado**:  WinForms.
 
 ## Grupo de trabajo
 
-El grupo de trabajo se compone de los siguientes integrantes: Acevedo Facuando, Davezac Emmanuel, Rodriguez Franco y Nicolas Villanueva.
+El grupo de trabajo se compone de los siguientes integrantes: Acevedo Facundo, Davezac Emmanuel, Rodriguez Franco y Nicolas Villanueva.
