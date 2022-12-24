@@ -11,7 +11,7 @@ namespace Programa
      /// RESUMEN:instancia del nucleo que nos permite utilizar las funcionalidades del mismo
      /// </summary>
         Nucleo.Nucleo interfazNucleo = new Nucleo.Nucleo();
-        private IBitacora bitacora = new Bitacora.ImplementacionBitacora();
+        private IBitacora bitacora = new Bitacora.ImplementacionBitacoraConLog4Net();
         /// <summary>
         /// RESUMEN:constructor de la clase
         /// </summary>

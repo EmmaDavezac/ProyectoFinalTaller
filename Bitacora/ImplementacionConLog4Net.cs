@@ -1,5 +1,7 @@
 ﻿using System;
 using System.IO;
+using log4net;
+
 
 namespace Bitacora
 {
@@ -7,7 +9,7 @@ namespace Bitacora
     /// <summary>
     /// Resumen: Esta clase nos permite crear y manipular una bitacora del programa donde se registraran las operaciones del programa y los errores que surgan durante la ejecucion del mismo
     /// </summary>
-    public class ImplementacionBitacora : IBitacora//
+    public class ImplementacionBitacoraConLog4Net : IBitacora//
     {   /// <summary>
         /// establece la direccion relativa del los archivos de la bitacora
         /// </summary>
@@ -16,7 +18,7 @@ namespace Bitacora
         /// <summary>
         /// contructor de la clase
         /// </summary>
-        public ImplementacionBitacora()
+        public ImplementacionBitacoraConLog4Net()
         {
         }
 
@@ -26,12 +28,10 @@ namespace Bitacora
         /// <param name="entradaLog"></param>
         public void RegistrarLog(string entradaLog)
         {
-            CrearDirectorio();//crea un directorio en el caso de que no exista
-            string nombre = ObtenerNombreArchivo();//obtiene el nombre del archivo
-            string cadena = "" + DateTime.Now + " - " + entradaLog + Environment.NewLine;//el texto que se va a escribir en la entrada
-            StreamWriter sw = new StreamWriter(Path + "/" + nombre, true);//establece una transmision para escribir el archivo
-            sw.Write(cadena);//escribe la entrada en el archivo
-            sw.Close();//cierra el archivo
+             log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
+            log.Info(entradaLog);
+          
         }
 
         /// <summary>

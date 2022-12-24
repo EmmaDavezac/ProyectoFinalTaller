@@ -12,7 +12,7 @@ namespace ServiciosAPILibros
         /// </summary>
         /// <param name="cadena"></param>
         /// <returns>Una lista de libros</returns>
-        List<Libro> ListarPorCoincidecia(string cadena);
+        List<Libro> ConsultarlistadoDeLibros(string cadena);
 
 
     }

@@ -50,7 +50,7 @@ namespace Nucleo
         {
             UsuarioSimple usuario = new UsuarioSimple(nombre, apellido, fechaNacimiento, mail, telefono, pNombreUsuario);//Instanciamos un usuario con los datos pasados por parametro
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();
+            Bitacora.ImplementacionBitacoraConLog4Net oLog = new Bitacora.ImplementacionBitacoraConLog4Net();
             try
             {
                 msg = "Usuario " + pNombreUsuario + " Registrado con exito.";
@@ -78,7 +78,7 @@ namespace Nucleo
         public UsuarioSimple ObtenerUsuario(string pNombreUsuario)
 
         {
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();
+            Bitacora.ImplementacionBitacoraConLog4Net oLog = new Bitacora.ImplementacionBitacoraConLog4Net();
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             try
             {
@@ -110,7 +110,7 @@ namespace Nucleo
         public void ActualizarUsuario(string pNombreUsuario, string nombre, string apellido, string pFechaNacimiento, string mail, string telefono)
 
         {
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();
+            Bitacora.ImplementacionBitacoraConLog4Net oLog = new Bitacora.ImplementacionBitacoraConLog4Net();
             string msg;//String que nos permite guardar el mensaje que vamos a registrar en el log
             try
             {
@@ -147,7 +147,7 @@ namespace Nucleo
         /// <returns>Verdadero si la operacion fue exitosa y Falso en el caso contrario</returns>
         public bool AñadirAdministrador(string pNombreUsuario, string nombre, string apellido, DateTime fechaNacimiento, string mail, string contraseña, string telefono)
         {
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();
+            Bitacora.ImplementacionBitacoraConLog4Net oLog = new Bitacora.ImplementacionBitacoraConLog4Net();
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             UsuarioAdministrador usuario = new UsuarioAdministrador(nombre, apellido, fechaNacimiento, mail, contraseña, telefono, pNombreUsuario);//Instanciamos un administrador con los datos pasados como parametro
             try
@@ -179,7 +179,7 @@ namespace Nucleo
 
         {
             UsuarioAdministrador administrador = new UsuarioAdministrador();//Instanciamos un administrador para que luego sea devuelto como resultado
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();
+            Bitacora.ImplementacionBitacoraConLog4Net oLog = new Bitacora.ImplementacionBitacoraConLog4Net();
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             try
             {
@@ -212,7 +212,7 @@ namespace Nucleo
         public void ActualizarAdministrador(string pNombreUsuario, string nombre, string apellido, string pFechaNacimiento, string mail, string telefono)
         //Permite actualizar la informacion de un usuario administrador
         {
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();
+            Bitacora.ImplementacionBitacoraConLog4Net oLog = new Bitacora.ImplementacionBitacoraConLog4Net();
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             try
             {
@@ -242,7 +242,7 @@ namespace Nucleo
         public void ActualizarContraseñaAdministrador(string pNombreAdministrador, string contraseña)
 
         {
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();
+            Bitacora.ImplementacionBitacoraConLog4Net oLog = new Bitacora.ImplementacionBitacoraConLog4Net();
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             try
             {
@@ -272,7 +272,7 @@ namespace Nucleo
         public bool AñadirLibro(string unISBN, string titulo, string autor, string añoPublicacion, int pCantidadEjempalares)
 
         {
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();
+            Bitacora.ImplementacionBitacoraConLog4Net oLog = new Bitacora.ImplementacionBitacoraConLog4Net();
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             bool resultado = true;
             try
@@ -330,7 +330,7 @@ namespace Nucleo
         public Libro ObtenerLibro(int id)
 
         {
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();
+            Bitacora.ImplementacionBitacoraConLog4Net oLog = new Bitacora.ImplementacionBitacoraConLog4Net();
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             Libro libro = new Libro();//Instanciamos un libro que sera devuelto por el metodo
             try
@@ -358,7 +358,7 @@ namespace Nucleo
         public List<Ejemplar> ObtenerEjemplaresEnBuenEstadoLibro(int id)
 
         {
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();
+            Bitacora.ImplementacionBitacoraConLog4Net oLog = new Bitacora.ImplementacionBitacoraConLog4Net();
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             List<Ejemplar> lista = new List<Ejemplar>(); //Creamos un listado que contenga objetos del tipo Ejemplar para ser devuelto por el metodo
             try
@@ -384,7 +384,7 @@ namespace Nucleo
         public void AñadirEjemplares(int pIdLibro, int pCantidad)
 
         {
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();
+            Bitacora.ImplementacionBitacoraConLog4Net oLog = new Bitacora.ImplementacionBitacoraConLog4Net();
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             try
             {
@@ -414,7 +414,7 @@ namespace Nucleo
         public void EliminarEjemplaresDeUnLibro(int pIdLibro, int pCantidad)
 
         {
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();
+            Bitacora.ImplementacionBitacoraConLog4Net oLog = new Bitacora.ImplementacionBitacoraConLog4Net();
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             try
             {
@@ -441,7 +441,7 @@ namespace Nucleo
         public void DarDeBajaUnLibro(int pIdLibro)
 
         {
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();
+            Bitacora.ImplementacionBitacoraConLog4Net oLog = new Bitacora.ImplementacionBitacoraConLog4Net();
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             try
             {
@@ -468,7 +468,7 @@ namespace Nucleo
         public void DarDeAltaUnLibro(int pIdLibro)
 
         {
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();
+            Bitacora.ImplementacionBitacoraConLog4Net oLog = new Bitacora.ImplementacionBitacoraConLog4Net();
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             try
             {
@@ -494,7 +494,7 @@ namespace Nucleo
         /// <returns>List Ejemplar</returns>
         public List<Ejemplar> ObtenerEjemplaresDisponibles(int id)
         {
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();
+            Bitacora.ImplementacionBitacoraConLog4Net oLog = new Bitacora.ImplementacionBitacoraConLog4Net();
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             List<Ejemplar> lista = new List<Ejemplar>();//Instanciamos una lista de ejemplares que sera devuelta por el metodo
             try
@@ -522,7 +522,7 @@ namespace Nucleo
         public List<Ejemplar> ObtenerEjemplaresTotales(int id)
 
         {
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();
+            Bitacora.ImplementacionBitacoraConLog4Net oLog = new Bitacora.ImplementacionBitacoraConLog4Net();
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             List<Ejemplar> lista = new List<Ejemplar>();//Instanciamos una lista de ejemplares que sera devuelta por el metodo
             try
@@ -550,7 +550,7 @@ namespace Nucleo
         public void RegistrarPrestamo(string pNombreUsuario, int idEjemplar, int idLibro)
 
         {
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();
+            Bitacora.ImplementacionBitacoraConLog4Net oLog = new Bitacora.ImplementacionBitacoraConLog4Net();
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             try
             {
@@ -578,7 +578,7 @@ namespace Nucleo
         public Prestamo ObtenerPrestamo(int id)
 
         {
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();
+            Bitacora.ImplementacionBitacoraConLog4Net oLog = new Bitacora.ImplementacionBitacoraConLog4Net();
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             Prestamo prestamo = new Prestamo();//Instanciamos un objeto del tipo prestamo que luego sera devuelto por el metodo
             try
@@ -607,7 +607,7 @@ namespace Nucleo
         public void ActualizarLibro(int id, string unISBN, string titulo, string autor, string añoPublicacion)
 
         {
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();
+            Bitacora.ImplementacionBitacoraConLog4Net oLog = new Bitacora.ImplementacionBitacoraConLog4Net();
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             try
             {
@@ -635,7 +635,7 @@ namespace Nucleo
         public UsuarioSimple ObtenerUsuarioDePrestamo(int id)
 
         {
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();
+            Bitacora.ImplementacionBitacoraConLog4Net oLog = new Bitacora.ImplementacionBitacoraConLog4Net();
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             UsuarioSimple usuario = new UsuarioSimple();//Instanciamos un objeto del tipo UsuariosSimple que luego sera devuelto por el metodo
             try
@@ -661,7 +661,7 @@ namespace Nucleo
         public void RegistrarDevolucion(int idPrestamo, string estado)
 
         {
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();
+            Bitacora.ImplementacionBitacoraConLog4Net oLog = new Bitacora.ImplementacionBitacoraConLog4Net();
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             try
             {
@@ -703,7 +703,7 @@ namespace Nucleo
         /// <returns>List UsuarioSimple</returns>
         public IEnumerable<UsuarioSimple> ObtenerUsuarios()
         {
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();
+            Bitacora.ImplementacionBitacoraConLog4Net oLog = new Bitacora.ImplementacionBitacoraConLog4Net();
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             IEnumerable<UsuarioSimple> lista;
             try
@@ -728,7 +728,7 @@ namespace Nucleo
         public IEnumerable<UsuarioAdministrador> ObtenerAdministradores()
 
         {
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();
+            Bitacora.ImplementacionBitacoraConLog4Net oLog = new Bitacora.ImplementacionBitacoraConLog4Net();
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             IEnumerable<UsuarioAdministrador> lista;
             try
@@ -754,7 +754,7 @@ namespace Nucleo
         public IEnumerable<Libro> ObtenerLibros()
         //permite obtener la lista total de libros
         {
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();
+            Bitacora.ImplementacionBitacoraConLog4Net oLog = new Bitacora.ImplementacionBitacoraConLog4Net();
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             IEnumerable<Libro> lista;
             try
@@ -780,7 +780,7 @@ namespace Nucleo
         public IEnumerable<Prestamo> ObtenerPrestamos()
 
         {
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();
+            Bitacora.ImplementacionBitacoraConLog4Net oLog = new Bitacora.ImplementacionBitacoraConLog4Net();
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             IEnumerable<Prestamo> lista;
             try
@@ -817,7 +817,7 @@ namespace Nucleo
         public List<Prestamo> ObtenerListadePrestamosProximosAVencerse()
         //Devuelve la lista de prestamos proximos a vencer
         {
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();
+            Bitacora.ImplementacionBitacoraConLog4Net oLog = new Bitacora.ImplementacionBitacoraConLog4Net();
             string msg;
             List<Prestamo> lista = new List<Prestamo>();//Instancia de una lista de prestamos que sera devuelta por el metodo
             try
@@ -845,7 +845,7 @@ namespace Nucleo
         public List<Prestamo> ObtenerListadePrestamosRetrasados()
 
         {
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();
+            Bitacora.ImplementacionBitacoraConLog4Net oLog = new Bitacora.ImplementacionBitacoraConLog4Net();
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             List<Prestamo> lista = new List<Prestamo>();//Instancia de una lista de prestamos que sera devuelta por el metodo
             try
@@ -871,7 +871,7 @@ namespace Nucleo
         /// <returns>List Libro</returns>
         public List<Libro> ListarLibrosDeAPIPorCoincidencia(string unaCadena)
         {
-            return ServicioAPILibros.ListarPorCoincidecia(unaCadena);
+            return ServicioAPILibros.ConsultarlistadoDeLibros(unaCadena);
         }
 
         /// <summary>
@@ -881,7 +881,7 @@ namespace Nucleo
         {
             void NotificarProximoAVencer(string pNombreUsuario, string titulo, string fechaLimite)//notifica a un usuario que su prestamo esta proximo a vencer
             {
-                Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();
+                Bitacora.ImplementacionBitacoraConLog4Net oLog = new Bitacora.ImplementacionBitacoraConLog4Net();
                 oLog.RegistrarLog(NotificadorUsuarios.NotificarProximoAVencer(ObtenerUsuario(pNombreUsuario), titulo, fechaLimite));
             }
             foreach (var item in ObtenerListadePrestamosProximosAVencerse())
@@ -899,7 +899,7 @@ namespace Nucleo
         {
             void NotificarRetraso(string pNombreUsuario, string titulo, string fechaLimite)//notifica a un usuario que su prestamo esta retrasado
             {
-                Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();
+                Bitacora.ImplementacionBitacoraConLog4Net oLog = new Bitacora.ImplementacionBitacoraConLog4Net();
                 oLog.RegistrarLog(NotificadorUsuarios.NotificarRetraso(ObtenerUsuario(pNombreUsuario), titulo, fechaLimite));
             }
             foreach (var item in ObtenerListadePrestamosRetrasados())
@@ -930,7 +930,7 @@ namespace Nucleo
         public bool DarDeBajaUsuario(string pNombreUsuario)
 
         {
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();
+            Bitacora.ImplementacionBitacoraConLog4Net oLog = new Bitacora.ImplementacionBitacoraConLog4Net();
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             bool resultado;//Booleano que se devolvera como resultado
             try
@@ -970,7 +970,7 @@ namespace Nucleo
             }
             else
             {
-                Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();
+                Bitacora.ImplementacionBitacoraConLog4Net oLog = new Bitacora.ImplementacionBitacoraConLog4Net();
                 string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
                 try
                 {
@@ -999,7 +999,7 @@ namespace Nucleo
         public void DarDeAltaUsuario(string pNombreUsuario)
 
         {
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();
+            Bitacora.ImplementacionBitacoraConLog4Net oLog = new Bitacora.ImplementacionBitacoraConLog4Net();
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             try
             {
@@ -1025,7 +1025,7 @@ namespace Nucleo
         public void DarDeAltaAdministrador(string pNombreUsuario)
 
         {
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();
+            Bitacora.ImplementacionBitacoraConLog4Net oLog = new Bitacora.ImplementacionBitacoraConLog4Net();
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             try
             {

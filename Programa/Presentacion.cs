@@ -4,7 +4,7 @@ using Quartz.Impl;
 using System;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using BibliotecaTrabajoEnSegundoPlano;
+
 
 
 namespace Programa
@@ -26,7 +26,7 @@ namespace Programa
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Login ventana = new Login();//Creamos una 
+            Login ventana = new Login();//Creamos una ventana de login
             Application.Run(ventana);//asignamos a la aplicacion el formulario inicial y la ejecutamos
 
         }

@@ -21,7 +21,7 @@ namespace Programa
         /// </summary>
         public string contraseñaNueva;
         private BibliotecaUtilidadesPresentacion utilidades = new BibliotecaUtilidadesPresentacion();
-        private IBitacora bitacora = new Bitacora.ImplementacionBitacora();
+        private IBitacora bitacora = new Bitacora.ImplementacionBitacoraConLog4Net();
         private string nombreUsuario { get; set; }
         /// <summary>
         /// RESUMEN: Constructor de la clase, Inicializamos los datos del administrador actual que se van a mostrar en la interfaz

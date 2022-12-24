@@ -18,7 +18,7 @@ namespace Programa
         private int sumatoriaDeEjemplares { get; set; }
         private int idLibro { get; set; }
         private string NombreUsuario { get; set; }
-        private IBitacora bitacora = new Bitacora.ImplementacionBitacora();
+        private IBitacora bitacora = new Bitacora.ImplementacionBitacoraConLog4Net();
 
         /// <summary>
         /// Resumen: Constructor de la clase, Inicializamos los datos del administrador actual que se van a mostrar en la interfaz

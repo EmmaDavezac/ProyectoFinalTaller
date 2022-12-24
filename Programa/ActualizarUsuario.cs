@@ -15,7 +15,7 @@ namespace Programa
         private string nombreUsuario { get; set; }
 
         private BibliotecaUtilidadesPresentacion utilidades = new BibliotecaUtilidadesPresentacion();
-        private IBitacora bitacora = new Bitacora.ImplementacionBitacora();
+        private IBitacora bitacora = new Bitacora.ImplementacionBitacoraConLog4Net();
         /// <summary>
         /// Resumen:Constructor de la clase
         /// </summary>
