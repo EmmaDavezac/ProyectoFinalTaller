@@ -2,11 +2,14 @@
 using System.Threading.Tasks;
 
 namespace BibliotecaTrabajoEnSegundoPlano
-{   /// <summary>
+{   
+/// <summary>
 /// RESUMEN: Esta clase representa el trabajo que se va a realizar en segundo plano
 /// </summary>
     public class NotificacionJob : IJob
-    {   /// <summary>
+    {   
+        
+        /// <summary>
         /// RESUMEN:este metodo es la tarea asincronica a ejecutarse en segundo plano
         /// </summary>
         /// <param name="context"></param>

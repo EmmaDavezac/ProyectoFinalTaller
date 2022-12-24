@@ -914,14 +914,11 @@ namespace Nucleo
         /// Resumen: Notifica a todos los usuarios con prestamos retrasados o proximos a vencer,en el caso de que la hora este entre las 9 y 10 am
         /// </summary>
         public void NotificarUsuarios()
-
         {
-            if (DateTime.Now.Hour != 9)
-            {
                 NotificarPrestamosRetrasados();
                 NotificarPrestamosProximosAVencer();
-            }
         }
+
         /// <summary>
         /// Resumen: Permite dar de baja un Usuario
         /// </summary>

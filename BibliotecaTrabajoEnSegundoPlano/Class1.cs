@@ -10,11 +10,19 @@ namespace BibliotecaTrabajoEnSegundoPlano
 {
     public static class Class1
     {
-        public static StdSchedulerFactory factory = new StdSchedulerFactory();//creamos una instancia de StdSchedulerFactory (fabrica de planificador) 
+
+
+        /// <summary>
+        /// Resumen: Fabrica de planificadores
+        /// </summary>
+        public static StdSchedulerFactory factory = new StdSchedulerFactory();
 
 
 
-
+        /// <summary>
+        /// Resumen: Este metodo devuelve un constructor de trabajo (NotificacionTrabajo)
+        /// </summary>
+        /// <returns></returns>
         public static IJobDetail jobBuilder()
         {
             return JobBuilder.Create<NotificacionJob>()//creamos una instancia de trabajo y la asignamos al grupo group1
@@ -22,16 +30,25 @@ namespace BibliotecaTrabajoEnSegundoPlano
                 .Build();
         }
 
+        /// <summary>
+        /// Resumen: Este metodo devuelve un constructor de Triggers
+        /// </summary>
+        /// <returns></returns>
         public static ITrigger triggerBuilder()
         {
             return TriggerBuilder.Create()//creamos un disparador
                .WithIdentity("trigger1", "group1")//asignamos el disparador al grupo group1
                .StartNow()//activamos el disparador
-               .WithSimpleSchedule(x => x
-                   .WithIntervalInMinutes(60)//se activara cada tantos minutos como lo indique el atributo tiempo
-                   .RepeatForever())//se repetira por siempre
+               .WithSchedule(CronScheduleBuilder.CronSchedule("0 0 9 ? * MON-FRI"))//Expresion Cron que establece que la accion se va a ejecutar de Lunes a Viernes a las 9:00 AM
+ 
                .Build();
         }
+
+        /// <summary>
+        /// Resumen: Este metodo devuelve un constructor de planificadores
+        /// </summary>
+        /// <param name="scheduler"></param>
+        /// <returns></returns>
         public static Task schedulerBuilder(IScheduler scheduler)   
             {
 
