@@ -1,5 +1,5 @@
 ﻿
-namespace Programa
+namespace Presentacion
 {
     partial class ActualizarLibro
     {

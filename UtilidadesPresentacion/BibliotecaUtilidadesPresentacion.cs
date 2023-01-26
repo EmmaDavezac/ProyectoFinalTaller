@@ -5,19 +5,17 @@ namespace UtilidadesPresentacion
 {   /// <summary>
 /// Resumen:esta clase posee un conjunto de metodos que brindan soporte a los formularios de la presentacion
 /// </summary>
-    public class BibliotecaUtilidadesPresentacion
+    public  static class BibliotecaUtilidadesPresentacion
     {   /// <summary>
         /// Resumen: Constructor de la clase
         /// </summary>
-        public BibliotecaUtilidadesPresentacion()
-        {
-        }
+        
         /// <summary>
         /// Resumen: Transforma el campo isbns de un libro ofrecido por la api de libros en una lista de isbn
         /// </summary>
         /// <param name="pLista"></param>
         /// <returns></returns>
-        public List<string> TransformarISBNsALista(string pLista)
+        public static List<string> TransformarISBNsALista(string pLista)
         {
             string palabra = "";
             int contador = 0;
@@ -57,7 +55,7 @@ namespace UtilidadesPresentacion
         /// </summary>
         /// <param name="pLista"></param>
         /// <returns>(String) Autor del libro</returns>
-        public string SacarAutorDeLaLista(string pLista)
+        public static string SacarAutorDeLaLista(string pLista)
 
         {
             if (pLista == "desconocido" || pLista == "Unknown")
@@ -75,7 +73,7 @@ namespace UtilidadesPresentacion
         /// </summary>
         /// <param name="pLista"></param>
         /// <returns> List String </returns>
-        public List<string> TransformarAñosALista(string pLista)
+        public static List<string> TransformarAñosALista(string pLista)
         {
             string palabra = "";
             pLista = pLista.Remove(0, 1);
@@ -102,7 +100,7 @@ namespace UtilidadesPresentacion
         /// </summary>
         /// <param name="email"></param>
         /// <returns>True si la cadena tiene el formato de mail valido y False en caso contrario </returns>
-        public bool EsUnEmailValido(string email)
+        public static bool EsUnEmailValido(string email)
         {
             try
             {

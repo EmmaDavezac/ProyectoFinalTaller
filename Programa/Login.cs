@@ -1,7 +1,7 @@
 using Bitacora;
 using System;
 using System.Windows.Forms;
-namespace Programa
+namespace Presentacion
 {/// <summary>
 /// RESUMEN:este formulario tiene la funcion de controlar el inicio de sesion del programa ,validando los datos del usuario que pretende usarlo
 /// </summary>

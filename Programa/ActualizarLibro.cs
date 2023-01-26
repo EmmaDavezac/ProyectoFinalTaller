@@ -4,7 +4,7 @@ using System;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace Programa
+namespace Presentacion
 {   /// <summary>
 /// Resumen: Formulario que nos permite actualizar la informacion de un libro
 /// </summary>

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace Programa
+namespace Presentacion
 {   /// <summary>
 /// RESUMEN:Este formulario es el menu principal de la aplicacion y permite acceder a las funciones del sistema
 /// </summary>
@@ -273,6 +273,11 @@ namespace Programa
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
         {
 
         }

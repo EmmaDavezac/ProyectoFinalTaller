@@ -43,10 +43,7 @@ namespace Nucleo
         /// <param name="fechaNacimiento"></param>
         /// <param name="mail"></param>
         /// <param name="telefono"></param>
-        /// <returns>verdadero si el registro fue exitoso y false en el caso contrario</returns>
-        //
-        // 
-        public bool AñadirUsuario(string pNombreUsuario, string nombre, string apellido, DateTime fechaNacimiento, string mail, string telefono)
+        public void AñadirUsuario(string pNombreUsuario, string nombre, string apellido, DateTime fechaNacimiento, string mail, string telefono)
         {
             UsuarioSimple usuario = new UsuarioSimple(nombre, apellido, fechaNacimiento, mail, telefono, pNombreUsuario);//Instanciamos un usuario con los datos pasados por parametro
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
@@ -60,13 +57,13 @@ namespace Nucleo
                     unitOfWork.Complete();//Guardamos los cambios
                 }
                 oLog.RegistrarLog(msg);//Añadimos el mensaje al log
-                return true;
+                
             }
             catch (Exception ex)
             {
                 msg = "Error al registrar usuario (" + nombre + "-" + apellido + ")" + ex.Message + ex.StackTrace;
                 oLog.RegistrarLog(msg);//Añadimos el mensaje al log
-                return false;
+                
             }
         }
 
@@ -117,11 +114,12 @@ namespace Nucleo
                 msg = "Usuario " + pNombreUsuario + " Actualizado con exito.";
                 using (IUnitOfWork unitOfWork = new UnitOfWorkMSSQL(new AdministradorDePrestamosDbContext()))//Definimos el ambito donde se va a usar la unitOfWork
                 {
-                    unitOfWork.RepositorioUsuarios.Get(pNombreUsuario).Nombre = nombre;//Modificamos uno por uno los valores por los parametros pasados
-                    unitOfWork.RepositorioUsuarios.Get(pNombreUsuario).Apellido = apellido;
-                    unitOfWork.RepositorioUsuarios.Get(pNombreUsuario).FechaNacimiento = Convert.ToDateTime(pFechaNacimiento);
-                    unitOfWork.RepositorioUsuarios.Get(pNombreUsuario).Mail = mail;
-                    unitOfWork.RepositorioUsuarios.Get(pNombreUsuario).Telefono = telefono;
+                    UsuarioSimple usuario = unitOfWork.RepositorioUsuarios.Get(pNombreUsuario);
+                    usuario.Nombre = nombre;//Modificamos uno por uno los valores por los parametros pasados
+                    usuario.Apellido = apellido;
+                    usuario.FechaNacimiento = Convert.ToDateTime(pFechaNacimiento);
+                    usuario.Mail = mail;
+                    usuario.Telefono = telefono;
                     unitOfWork.Complete();//Guardamos los cambios
                 }
                 oLog.RegistrarLog(msg);//Añadimos el mensaje al log
@@ -135,7 +133,7 @@ namespace Nucleo
         }
 
         /// <summary>
-        /// Resumen:Este metodo nos permite resgistrar un nuevo Usuario Administrador
+        /// Resumen: Este metodo nos permite resgistrar un nuevo Usuario Administrador
         /// </summary>
         /// <param name="pNombreUsuario"></param>
         /// <param name="nombre"></param>
@@ -144,8 +142,7 @@ namespace Nucleo
         /// <param name="mail"></param>
         /// <param name="contraseña"></param>
         /// <param name="telefono"></param>
-        /// <returns>Verdadero si la operacion fue exitosa y Falso en el caso contrario</returns>
-        public bool AñadirAdministrador(string pNombreUsuario, string nombre, string apellido, DateTime fechaNacimiento, string mail, string contraseña, string telefono)
+        public void AñadirAdministrador(string pNombreUsuario, string nombre, string apellido, DateTime fechaNacimiento, string mail, string contraseña, string telefono)
         {
             Bitacora.ImplementacionBitacoraConLog4Net oLog = new Bitacora.ImplementacionBitacoraConLog4Net();
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
@@ -159,14 +156,12 @@ namespace Nucleo
                     unitOfWork.Complete();//Guardamos los cambios
                 }
                 oLog.RegistrarLog(msg);//Añadimos el mensaje al log
-                return true;//Indicamos con true que se pudo añadir correctamente
+
             }
             catch (Exception ex)
             {
                 msg = "Error al Registrar el administrador (" + pNombreUsuario + ") " + ex.Message + ex.StackTrace;
                 oLog.RegistrarLog(msg);//Añadimos el mensaje al log
-                return false;//Indicamos con false que no se pudo añadir correctamente
-
             }
         }
 
@@ -174,7 +169,6 @@ namespace Nucleo
         /// Resumen: Nos permite obtener un usuario administrador de la base de datos a partir del nombreUsuario del usuario
         /// </summary>
         /// <param name="pNombreAdministrador"></param>
-        /// <returns>Un Usuario, el Usuario solicitado en el caso de que exista y un Usuario vacio en el caso de que no</returns>
         public UsuarioAdministrador ObtenerAdministrador(string pNombreAdministrador)
 
         {
@@ -218,12 +212,12 @@ namespace Nucleo
             {
                 msg = "Administrador " + pNombreUsuario + " actualizado con exito.";
                 using (IUnitOfWork unitOfWork = new UnitOfWorkMSSQL(new AdministradorDePrestamosDbContext()))//Definimos el ambito donde se va a usar la unitOfWork
-                {
-                    unitOfWork.RepositorioAdministradores.Get(pNombreUsuario).Nombre = nombre;//Modificamos uno por uno los valores por los parametros pasados
-                    unitOfWork.RepositorioAdministradores.Get(pNombreUsuario).Apellido = apellido;
-                    unitOfWork.RepositorioAdministradores.Get(pNombreUsuario).FechaNacimiento = Convert.ToDateTime(pFechaNacimiento);
-                    unitOfWork.RepositorioAdministradores.Get(pNombreUsuario).Mail = mail;
-                    unitOfWork.RepositorioAdministradores.Get(pNombreUsuario).Telefono = telefono;
+                { UsuarioAdministrador administrador = unitOfWork.RepositorioAdministradores.Get(pNombreUsuario);
+                    administrador.Nombre = nombre;//Modificamos uno por uno los valores por los parametros pasados
+                    administrador.Apellido = apellido;
+                    administrador.FechaNacimiento = Convert.ToDateTime(pFechaNacimiento);
+                    administrador.Mail = mail;
+                    administrador.Telefono = telefono;
                     unitOfWork.Complete();//Guardamos los cambios
                 }
             }
@@ -269,57 +263,36 @@ namespace Nucleo
         /// <param name="añoPublicacion"></param>
         /// <param name="pCantidadEjempalares"></param>
         /// <returns></returns>
-        public bool AñadirLibro(string unISBN, string titulo, string autor, string añoPublicacion, int pCantidadEjempalares)
+        public void AñadirLibro(string unISBN, string titulo, string autor, string añoPublicacion, int pCantidadEjempalares)
 
         {
             Bitacora.ImplementacionBitacoraConLog4Net oLog = new Bitacora.ImplementacionBitacoraConLog4Net();
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
-            bool resultado = true;
             try
             {
                 msg = "Libro ( Titulo: " + titulo + " Autor: " + autor + " ISBN:" + unISBN + " ) registrado con exito.";
                 Libro libro = new Libro(unISBN, titulo, autor, añoPublicacion);//Instanciamos un libro con los parametros pasados al metodo.
                 using (IUnitOfWork unitOfWork = new UnitOfWorkMSSQL(new AdministradorDePrestamosDbContext()))//Definimos el ambito donde se va a usar  unitOfWork
                 {
-                    foreach (var item in unitOfWork.RepositorioLibros.GetAllISBN())
-                    {
-                        if (item == unISBN)
-                        {
-                            resultado = false;
-                            break;
-                        }
-                    }
-                    if (resultado == true)
-                    {
-                        foreach (var item in unitOfWork.RepositorioLibros.GetAllTitulo())
-                        {
-                            if (item == titulo)
-                            {
-                                resultado = false;
-                                break;
-                            }
-                        }
-                    }
-                    if (resultado == true)
+                    if (!unitOfWork.RepositorioLibros.ContainsISBN(unISBN))//verificamos que no exista ningun libro con ese ISBN
                     {
                         unitOfWork.RepositorioLibros.Add(libro);//Añadimos el libro a la base de datos
                         for (int i = 0; i < pCantidadEjempalares; i++)//Añadimos la cantidad de ejemplares pasado como parametro al libro con un ciclo for.
                         {
                             Ejemplar ejemplarNuevo = new Ejemplar(libro);//Instanciamos el nuevo ejemplar y le pasamos el objeto libro como parametro.
                             unitOfWork.RepositorioEjemplares.Add(ejemplarNuevo);//Añadimos el ejemplar a la base de datos.
+                            unitOfWork.Complete();//Guardamos los cambios
                         }
-                        unitOfWork.Complete();//Guardamos los cambios
                     }
+                    else throw new Exception("Error: Ya existe un libro en el sistema con ese ISBN");
                 }
-
             }
             catch (Exception ex)
             {
-
                 msg = "Error al registrar el libro ( Titulo: " + titulo + " Autor: " + autor + " ISBN:" + unISBN + " ) ." + ex.Message + ex.StackTrace;
             }
             oLog.RegistrarLog(msg);//Añadimos el mensaje al log
-            return resultado;
+           
         }
 
         /// <summary>
@@ -613,10 +586,11 @@ namespace Nucleo
             {
                 using (IUnitOfWork unitOfWork = new UnitOfWorkMSSQL(new AdministradorDePrestamosDbContext()))//Definimos el ambito donde se va a usar la unitOfWork
                 {
-                    unitOfWork.RepositorioLibros.Get(id).ISBN = unISBN;//Modificamos uno por uno los atributos del libro por los parametros pasados.
-                    unitOfWork.RepositorioLibros.Get(id).Titulo = titulo;
-                    unitOfWork.RepositorioLibros.Get(id).Autor = autor;
-                    unitOfWork.RepositorioLibros.Get(id).AñoPublicacion = añoPublicacion;
+                    Libro libro = unitOfWork.RepositorioLibros.Get(id);
+                    libro.ISBN = unISBN;
+                    libro.Titulo = titulo;
+                    libro.Autor = autor;
+                    libro.AñoPublicacion = añoPublicacion;
                     unitOfWork.Complete();//Guardamos los cambios
                 }
             }
@@ -658,7 +632,7 @@ namespace Nucleo
         /// </summary>
         /// <param name="idPrestamo"></param>
         /// <param name="estado"></param>
-        public void RegistrarDevolucion(int idPrestamo, string estado)
+        public void RegistrarDevolucion(int idPrestamo, int estado)
 
         {
             Bitacora.ImplementacionBitacoraConLog4Net oLog = new Bitacora.ImplementacionBitacoraConLog4Net();
@@ -668,7 +642,7 @@ namespace Nucleo
                 msg = " Prestamo devuelto (Id Prestamo: " + idPrestamo + " Estado:" + estado + ")";
                 using (IUnitOfWork unitOfWork = new UnitOfWorkMSSQL(new AdministradorDePrestamosDbContext()))//Definimos el ambito donde se va a usar la unitOfWork
                 {
-                    if (estado == "Bueno")
+                    if (estado == 1)
                     {
                         unitOfWork.RepositorioPrestamos.Get(idPrestamo).RegistrarDevolucion(EstadoEjemplar.Bueno);//Obtenemos el prestamo por idPrestamo, y llamamos a su metodo registrar debolucion pasandole un EstadoEjemplar bueno
                     }
@@ -710,15 +684,15 @@ namespace Nucleo
             {
                 IUnitOfWork unitOfWork = new UnitOfWorkMSSQL(new AdministradorDePrestamosDbContext());
                 lista = unitOfWork.RepositorioUsuarios.GetAll();
-            }//Obtiene todos los usuarios simples con el metodo getall del repositorio
+                return lista;
+            }
             catch (Exception ex)
             {
                 msg = "Error al obtener la lista de usuarios." + ex.Message + ex.StackTrace; ;
-                lista = null;
                 oLog.RegistrarLog(msg);//Añadimos el mensaje al log
+                throw new ArgumentException("asd");
             }
 
-            return lista;
         }
 
         /// <summary>
@@ -762,15 +736,16 @@ namespace Nucleo
                 IUnitOfWork unitOfWork = new UnitOfWorkMSSQL(new AdministradorDePrestamosDbContext());
 
                 lista = unitOfWork.RepositorioLibros.GetAll();//Obtiene todos los usuarios administradores con el metodo getall del repositorio
+                return lista;
 
             }
             catch (Exception ex)
             {
                 msg = "Error al obtener la lista de libros." + ex.Message + ex.StackTrace; ;
-                lista = null;
                 oLog.RegistrarLog(msg);//Añadimos el mensaje al log
+                return null;
             }
-            return lista;
+
         }
 
         /// <summary>
@@ -800,20 +775,7 @@ namespace Nucleo
             return lista;
         }
 
-        /// <summary>
-        /// Resumen: Devuelve el id del ultimo plibro registrado
-        /// </summary>
-        /// <returns> (Int) id del ultimo plibro registrado</returns>
-        public int ObtenerUltimoIdLibro()
-
-        {
-            return ObtenerLibros().Last().Id;
-        }
-
-        /// <summary>
-        /// Resumen: Devuelve la lista de prestamos proximos a vencerse
-        /// </summary>
-        /// <returns>List Prestamo </returns>
+       
         public List<Prestamo> ObtenerListadePrestamosProximosAVencerse()
         //Devuelve la lista de prestamos proximos a vencer
         {
@@ -924,32 +886,33 @@ namespace Nucleo
         /// </summary>
         /// <param name="pNombreUsuario"></param>
         /// <returns></returns>
-        public bool DarDeBajaUsuario(string pNombreUsuario)
+        public void DarDeBajaUsuario(string pNombreUsuario)
 
         {
             Bitacora.ImplementacionBitacoraConLog4Net oLog = new Bitacora.ImplementacionBitacoraConLog4Net();
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
-            bool resultado;//Booleano que se devolvera como resultado
+            bool sePuedeDarDeBaja=false;    
             try
             {
                 using (IUnitOfWork unitOfWork = new UnitOfWorkMSSQL(new AdministradorDePrestamosDbContext()))//Definimos el ambito donde se va a usar la unitOfWork
-                {
-                    resultado = unitOfWork.RepositorioUsuarios.Get(pNombreUsuario).ValidarBaja();//Obtiene el usuario y llama a su metodo ValidarBaja. El valor que devuelve este metodo se guarda en la variable anterior nombrada.
-                    if (resultado == true)//Si el resultado devuelto anterior mente es true
+                { UsuarioSimple usuario= unitOfWork.RepositorioUsuarios.Get(pNombreUsuario);
+                    sePuedeDarDeBaja = usuario.ValidarBaja();//Obtiene el usuario y llama a su metodo ValidarBaja. Se consulta si se puede dar de baja el usuario(si tiene prestamos pendientes o no)
+                    if (sePuedeDarDeBaja)
                     {
-                        unitOfWork.RepositorioUsuarios.Get(pNombreUsuario).Baja = true;//Da de baja al usuario
+                        usuario.Baja = true;
+                        unitOfWork.Complete();
+                        msg = "El usuario " + pNombreUsuario + "ha sido dado de baja exitosamente. ";
+                        oLog.RegistrarLog(msg);//Añadimos el mensaje al log
                     }
-                    unitOfWork.Complete();
-                    msg = "El usuario " + pNombreUsuario + "ha sido dado de baja exitosamente. ";
-                    oLog.RegistrarLog(msg);//Añadimos el mensaje al log
-                    return resultado;//Devuelve el resultado
+
+                    else throw new ArgumentException("el usuario todavia tiene prestamos pendientes de devolución");  
                 }
             }
             catch (Exception ex)
             {
                 msg = "Error, el usuario " + pNombreUsuario + " no ha podido darse de baja. " + ex.Message + ex.StackTrace;
                 oLog.RegistrarLog(msg);//Añadimos el mensaje al log
-                return false;
+                
             }
         }
 
@@ -957,16 +920,11 @@ namespace Nucleo
         /// Resumen: Permite dar de baja un Usuario Adminstrador
         /// </summary>
         /// <param name="pNombreUsuario"></param>
-        /// <returns>Un Boolean que indica el exito de la operacion</returns>
-        public bool DarDeBajaAdministrador(string pNombreUsuario)
+        
+        public void DarDeBajaAdministrador(string pNombreUsuario)
 
         {
-            if (pNombreUsuario == "admin")//Verifica si el administrador que quiere darse de baja no es el admin principal
-            {
-                return false;
-            }
-            else
-            {
+            
                 Bitacora.ImplementacionBitacoraConLog4Net oLog = new Bitacora.ImplementacionBitacoraConLog4Net();
                 string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
                 try
@@ -978,15 +936,15 @@ namespace Nucleo
                     }
                     msg = "El administrador " + pNombreUsuario + " ha sido dado de baja correctamente. ";
                     oLog.RegistrarLog(msg);//Añadimos el mensaje al log
-                    return true;
+                    
                 }
                 catch (Exception ex)
                 {
                     msg = "Error, el administrador " + pNombreUsuario + " no ha podido darse de baja. " + ex.Message + ex.StackTrace;
                     oLog.RegistrarLog(msg);//Añadimos el mensaje al log
-                    return false;
+                   
                 }
-            }
+            
         }
 
         /// <summary>

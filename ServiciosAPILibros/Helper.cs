@@ -5,7 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ServiciosAPILibros
-{
+{   /// <summary>
+/// RESUMEN: brinda soporte a la clase APIOpenLibrary
+/// </summary>
     internal static class Helper
     {
         /// <summary>

@@ -33,5 +33,6 @@ namespace DAL
         /// </summary>
         /// <returns></returns>
         IEnumerable<TEntity> GetAll();
+
     }
 }

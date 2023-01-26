@@ -1,5 +1,5 @@
 ﻿
-namespace Programa
+namespace Presentacion
 {
     partial class MenuPrincipal
     {
@@ -175,6 +175,7 @@ namespace Programa
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(108, 72);
             this.panel2.TabIndex = 8;
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // pictureBox3
             // 

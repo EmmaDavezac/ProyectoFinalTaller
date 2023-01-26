@@ -2,9 +2,9 @@ using Bitacora;
 using System;
 using System.Linq;
 using System.Windows.Forms;
-using UtilidadesPresentacion;
 
-namespace Programa
+
+namespace Presentacion
 {
     /// <summary>
     /// Resumen: Este Formulario tiene como objetivo servir de interfaz grafica para Actualizar la información de un Usuario Administrador
@@ -20,7 +20,7 @@ namespace Programa
         /// Resumen:Variable para guardar la contraseña nueva
         /// </summary>
         public string contraseñaNueva;
-        private BibliotecaUtilidadesPresentacion utilidades = new BibliotecaUtilidadesPresentacion();
+        
         private IBitacora bitacora = new Bitacora.ImplementacionBitacoraConLog4Net();
         private string nombreUsuario { get; set; }
         /// <summary>
@@ -62,7 +62,7 @@ namespace Programa
                         {
                             if (DateTime.Now.Year - dateTimePickerFechaNacimiento.Value.Date.Year >= 18 && DateTime.Now.Year - dateTimePickerFechaNacimiento.Value.Date.Year <= 120)//Verifica que la edad del administrador este entre los 18 y 120 años
                             {
-                                if (!string.IsNullOrEmpty(textBoxMail.Text) && utilidades.EsUnEmailValido(textBoxMail.Text))//Verifica que el mail no este vacio y que sea un mail en un formato valido.
+                                if (!string.IsNullOrEmpty(textBoxMail.Text) && UtilidadesPresentacion.EsUnEmailValido(textBoxMail.Text))//Verifica que el mail no este vacio y que sea un mail en un formato valido.
                                 {
                                     if (!string.IsNullOrEmpty(textBoxTelefono.Text) && textBoxTelefono.Text.All(Char.IsDigit) && textBoxTelefono.Text.Length >= 8 && textBoxTelefono.Text.Length <= 11)//Verifica que el numero de telefono no este vacio, que todos sus valores sean digitos, y que su longitud este entre 8 y 11 digitos.
                                     {
@@ -258,19 +258,13 @@ namespace Programa
             {
                 if (checkBoxBaja.Checked == true)//Si esta checkeado se fija que el administrador pueda darse de baja
                 {
-                    if (interfazNucleo.DarDeBajaAdministrador(textBoxNombreUsuario.Text) == false)//Si devuelve falso quiere decir que se trata del adminsitrador principal por lo tanto no puede darse de baja.
-                    {
-                        checkBoxBaja.Checked = false;
-                        MessageBox.Show("No puede darse de baja al administrador principal!");
-                    }
-                    else//Caso contrario procede bloquear las opciones que brinda la ventana
-                    {
+                   
                         textBoxNombre.Enabled = false;
                         textBoxApellido.Enabled = false;
                         dateTimePickerFechaNacimiento.Enabled = false;
                         textBoxTelefono.Enabled = false;
                         textBoxMail.Enabled = false;
-                    }
+                    
                 }
 
                 else if (checkBoxBaja.Checked == false)//En el caso de que no este checekado permite utilizar las opciones de la ventana.

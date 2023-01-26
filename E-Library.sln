@@ -17,8 +17,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServicioNotificacionAUsuari
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BibliotecaBitacora", "Bitacora\BibliotecaBitacora.csproj", "{78E66839-ECB5-457F-ADC5-5F3722DEBC5E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BibliotecaUtilidadesPresentacion", "UtilidadesPresentacion\BibliotecaUtilidadesPresentacion.csproj", "{85D69DCD-0DC9-4B30-8EBD-7AA2A8BB7F4A}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dominio.Tests", "Dominio.Tests\Dominio.Tests.csproj", "{55BDD9E2-3E8B-4515-868C-DE95CF2916E9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BibliotecaTrabajoEnSegundoPlano", "BibliotecaTrabajoEnSegundoPlano\BibliotecaTrabajoEnSegundoPlano.csproj", "{85B70ADE-A38E-4EC6-ADEE-088384AAEC86}"
@@ -57,10 +55,6 @@ Global
 		{78E66839-ECB5-457F-ADC5-5F3722DEBC5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{78E66839-ECB5-457F-ADC5-5F3722DEBC5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{78E66839-ECB5-457F-ADC5-5F3722DEBC5E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{85D69DCD-0DC9-4B30-8EBD-7AA2A8BB7F4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{85D69DCD-0DC9-4B30-8EBD-7AA2A8BB7F4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{85D69DCD-0DC9-4B30-8EBD-7AA2A8BB7F4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{85D69DCD-0DC9-4B30-8EBD-7AA2A8BB7F4A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{55BDD9E2-3E8B-4515-868C-DE95CF2916E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{55BDD9E2-3E8B-4515-868C-DE95CF2916E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{55BDD9E2-3E8B-4515-868C-DE95CF2916E9}.Release|Any CPU.ActiveCfg = Release|Any CPU

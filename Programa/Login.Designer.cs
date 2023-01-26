@@ -1,5 +1,5 @@
 ﻿
-namespace Programa
+namespace Presentacion
 {
     partial class Login
     {
@@ -46,12 +46,12 @@ namespace Programa
             // textBoxNombreUsuario
             // 
             this.textBoxNombreUsuario.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxNombreUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
+            this.textBoxNombreUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.textBoxNombreUsuario.Location = new System.Drawing.Point(1, 15);
             this.textBoxNombreUsuario.Margin = new System.Windows.Forms.Padding(0);
             this.textBoxNombreUsuario.MinimumSize = new System.Drawing.Size(0, 28);
             this.textBoxNombreUsuario.Name = "textBoxNombreUsuario";
-            this.textBoxNombreUsuario.Size = new System.Drawing.Size(296, 28);
+            this.textBoxNombreUsuario.Size = new System.Drawing.Size(296, 23);
             this.textBoxNombreUsuario.TabIndex = 0;
             this.textBoxNombreUsuario.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBoxNombreUsuario.TextChanged += new System.EventHandler(this.textBoxUsuario_TextChanged);
@@ -100,7 +100,7 @@ namespace Programa
             // textBoxContraseña
             // 
             this.textBoxContraseña.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxContraseña.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxContraseña.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxContraseña.Location = new System.Drawing.Point(1, 15);
             this.textBoxContraseña.Margin = new System.Windows.Forms.Padding(0);
             this.textBoxContraseña.MinimumSize = new System.Drawing.Size(0, 28);

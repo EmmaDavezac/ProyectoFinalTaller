@@ -82,5 +82,6 @@ namespace DAL.EntityFramework
 
             this.iDbContext.Set<TEntity>().Remove(pEntity);
         }
+      
     }
 }

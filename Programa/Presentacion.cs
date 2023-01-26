@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 
 
-namespace Programa
+namespace Presentacion
 {   /// <summary>
 /// RESUMEN: Programa principal de la aplicacion
 /// </summary>
@@ -19,10 +19,10 @@ namespace Programa
         [STAThread]
 
         private static async Task Main()
-        { 
-            IScheduler scheduler = await Class1.factory.GetScheduler();//creamos un  planificador
+        {
+            IScheduler scheduler = await BibliotecaTrabajoEnSegundoPlano.SchedulerBuilder.factory.GetScheduler();//creamos un  planificador
             await scheduler.Start();//esperamos que el planificador inicie   
-            await Class1.schedulerBuilder(scheduler);
+            await BibliotecaTrabajoEnSegundoPlano.SchedulerBuilder.build(scheduler);
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

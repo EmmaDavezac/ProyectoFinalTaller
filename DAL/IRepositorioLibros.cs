@@ -7,7 +7,9 @@ namespace DAL
 /// </summary>
     public interface IRepositorioLibros : IRepositorio<Libro>
     {
-        List<string> GetAllISBN();
-        List<string> GetAllTitulo();
+        List<string> GetAllISBNs();
+        List<string> GetAllTitulos();
+        bool ContainsISBN(string unISBN);
+        bool ContainsTitulos(string unTitulo);
     }
 }

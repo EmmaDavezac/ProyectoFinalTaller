@@ -2,9 +2,9 @@ using Bitacora;
 using System;
 using System.Linq;
 using System.Windows.Forms;
-using UtilidadesPresentacion;
 
-namespace Programa
+
+namespace Presentacion
 {
     /// <summary>
     /// Resumen: Formulario que permite modificar los datos de un Usuario
@@ -14,7 +14,7 @@ namespace Programa
         Nucleo.Nucleo interfazNucleo = new Nucleo.Nucleo();
         private string nombreUsuario { get; set; }
 
-        private BibliotecaUtilidadesPresentacion utilidades = new BibliotecaUtilidadesPresentacion();
+        
         private IBitacora bitacora = new Bitacora.ImplementacionBitacoraConLog4Net();
         /// <summary>
         /// Resumen:Constructor de la clase
@@ -49,7 +49,7 @@ namespace Programa
                         {
                             if (DateTime.Now.Year - dateTimePickerFechaNacimiento.Value.Date.Year >= 12 && DateTime.Now.Year - dateTimePickerFechaNacimiento.Value.Date.Year <= 120)
                             {
-                                if (!string.IsNullOrEmpty(textBoxMail.Text) && utilidades.EsUnEmailValido(textBoxMail.Text))
+                                if (!string.IsNullOrEmpty(textBoxMail.Text) && UtilidadesPresentacion.EsUnEmailValido(textBoxMail.Text))
                                 {
                                     if (!string.IsNullOrEmpty(textBoxTelefono.Text) && textBoxTelefono.Text.All(Char.IsDigit) && textBoxTelefono.Text.Length >= 8 && textBoxTelefono.Text.Length <= 11)
                                     {
@@ -249,7 +249,7 @@ namespace Programa
             {
                 if (checkBoxBaja.Checked == true)
                 {
-                    if (interfazNucleo.DarDeBajaUsuario(textBoxNombreUsuario.Text) == false)
+                    if (interfazNucleo.ObtenerUsuario(textBoxNombreUsuario.Text).ValidarBaja()== false)
                     {
                         checkBoxBaja.Checked = false;
                         MessageBox.Show("El Usuario " + textBoxNombreUsuario.Text + " no puede darse de baja ya que tiene prestamos pendientes!, intentelo mas tarde");
@@ -261,6 +261,7 @@ namespace Programa
                         dateTimePickerFechaNacimiento.Enabled = false;
                         textBoxTelefono.Enabled = false;
                         textBoxMail.Enabled = false;
+                        interfazNucleo.DarDeBajaUsuario(textBoxNombreUsuario.Text);
                     }
                 }
 
@@ -272,6 +273,7 @@ namespace Programa
                         dateTimePickerFechaNacimiento.Enabled = true;
                         textBoxTelefono.Enabled = true;
                         textBoxMail.Enabled = true;
+                        interfazNucleo.DarDeAltaUsuario(textBoxNombreUsuario.Text);
                     }
                 }
             }

@@ -1,7 +1,7 @@
 ﻿
 using System;
 
-namespace Programa
+namespace Presentacion
 {
     partial class ActualizarUsuario
     {
